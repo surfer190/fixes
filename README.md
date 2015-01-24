@@ -1,5 +1,7 @@
-Fixes: [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes)](http://37.139.28.74:8080/job/fixes/)
-Website: [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=doolan.pw)](http://37.139.28.74:8080/job/doolan.pw/)
+###Fixes
+[![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes)](http://37.139.28.74:8080/job/fixes/)
+##Website
+[![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=doolan.pw)](http://37.139.28.74:8080/job/doolan.pw/)
 
 # fixes
 Common problems and solutions, fixes and tips that I have gathered while trying to solve problems.
