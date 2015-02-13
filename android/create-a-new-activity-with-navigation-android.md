@@ -14,10 +14,10 @@ public void gotoNewActivity(View v){
 3. Add a click Listener to the button/menu item to run the `gotoNewActivity` or add the onCLick in the `xml` layout:
 
 ```
-xml (activity_main.xml): android:onClick="gotoNewActivity"
-```
+xml (activity_main.xml): 
 
-```
+android:onClick="gotoNewActivity"
+
 Listener (MainActivity.java):
 
 Button button= (Button) findViewById(R.id.buttonId);
@@ -31,7 +31,7 @@ button.setOnClickListener(new View.OnClickListener() {
 
 4. CreateUp Navigation
 
-4.1. Make the Activity a Child of Main:
+- Make the Activity a Child of Main:
 
 **AndroidManifest.xml**:
 
@@ -42,7 +42,7 @@ button.setOnClickListener(new View.OnClickListener() {
 		android:value="com.example.myApp.MainActivity" />
 ```
 
-4.2. Add UpAction 
+- Add UpAction 
 
 **NewActivity.java <OnCreate>:**
 
@@ -50,7 +50,7 @@ button.setOnClickListener(new View.OnClickListener() {
 getActionBar().setDisplayHomeAsUpEnabled(true);
 ```
 
-4.3. Handle the Click
+- Handle the Click
 
 **NewActivity.java: OnOptionsItemSelected...:**
 
