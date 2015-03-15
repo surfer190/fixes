@@ -1,4 +1,10 @@
-#How to Update Ruby Versions on Linux
+#How to Update Ruby Versions on Linux with rbenv
+
+##Update `ruby-build` as an rbenv plugin
+
+`cd ~/.rbenv/plugins/ruby-build`
+
+`git pull`
 
 ##Find Available versions
 
@@ -7,12 +13,6 @@
 ##Install version
 
 `rbenv install 2.1.5`
-
-##Update `ruby-build` as an rbenv plugin
-
-`cd ~/.rbenv/plugins/ruby-build`
-
-`git pull`
 
 ##Set the ruby version to use globally
 
