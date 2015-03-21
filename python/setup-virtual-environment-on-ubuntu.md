@@ -2,6 +2,7 @@
 
 1. Install **virtualenv** and **virtualenvwrapper**
 
+
 ```
 sudo pip install virtualenv
 
@@ -11,7 +12,8 @@ sudo pip install virtualenvwrapper
 2. setup and activate a new environemnt
 
 ```
-virtual env
+virtualenv env
+
 source env/bin/activate
 ```
 
