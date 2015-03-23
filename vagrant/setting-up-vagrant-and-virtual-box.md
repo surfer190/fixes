@@ -1,9 +1,9 @@
 #Setting up Vagrant and Virtual Box
 
 1. Download Vagrant and Virtuals box
+
 (Virtualbox)[https://www.virtualbox.org/wiki/Linux_Downloads]
 (Vagrant)[http://www.vagrantup.com/downloads]
-
 *Make sure to install command line tools*
 
 2. Make a directory for vagrantfile and instructions
@@ -28,6 +28,7 @@ vagrant box add debian64 http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x6
 ```
 
 5. Create a default virtual server:
+
 ```
 vagrant init debian64
 ```
@@ -37,36 +38,42 @@ vagrant init debian64
 vagrant up
 ```
 
-* If you get an error on about not being able to connect with ssh *
+*If you get an error on about not being able to connect with ssh*
 
 ```
 vim VagrantFile
 ```
 Add:
+
 ```
 config.vm.provider "virtualbox" do |v|
   v.gui = true
 end
 ```
 Restart:
+
 ```
 vagrant halt
 
 vagrant up
 ```
 
-* You may still get this error *
+*You may still get this error*
 
 ```
 VT-x/AMD-V hardware acceleration is not available on your system. Your 64-bit guest will fail to detect a 64-bit CPU and will not be able to boot.
 ```
+
 You can check your system with:
+
 ```
 egrep '(vmx|svm)' /proc/cpuinfo
 ```
- May need to acvtivate in bios `AMD-V/VT-x`
+
+May need to acvtivate in bios `AMD-V/VT-x`
 
  In VM:
+
  ```
  Settings -> System -> Acceleration" and make sure that "Enable VT-x/AMD-V" is activated
  ```
