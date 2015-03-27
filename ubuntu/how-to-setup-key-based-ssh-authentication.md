@@ -17,10 +17,12 @@ or
 *No `ssh-copy-id` installed?*
 
 ```
-## First create .ssh directory on server ##
+First create .ssh directory on server
+
 ssh user@doolan.pw umask 077; test -d .ssh || mkdir .ssh
  
-## cat local id.rsa.pub file and pipe over ssh to append the public key in remote server ##
+cat local id.rsa.pub file and pipe over ssh to append the public key in remote server
+
 cat $HOME/.ssh/id_rsa.pub | ssh user@doolan.pw cat >> .ssh/authorized_keys
 ```
 
@@ -39,7 +41,7 @@ Get rid of password:
 eval $(ssh-agent)
 ```
 
-add passphrase for private key maintaind by ssh agent
+add passphrase for private key maintained by ssh agent
 ```
 ssh-add
 ```
@@ -48,4 +50,25 @@ Try login you shouldn't be prompted for password
 ```
 ssh user@doolan.pw
 ```
-(source)[http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/]
+
+#Now to Disable Password Authentication on your server
+
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+Set:
+
+```
+PasswordAuthentication no
+```
+
+Restart SSH
+
+```
+sudo service ssh restart
+```
+####Sources:
+[cyberciti](http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/)
+[digitaloceans](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)
+
