@@ -11,7 +11,7 @@ Keeping a reference to help others to be more efficient in problem solving
 ##Where to view Fixes
 
 The whole collection can be viewed with your web browser at:
-[http://doolan.pw](doolan.pw)
+[http://doolan.dw](http://doolan.pw)
 
 The site is built with jekyll and is updated on push to this repo
 
