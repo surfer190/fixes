@@ -10,22 +10,22 @@ The best thing to use is a ruby gem called (MailCatcher)[http://mailcatcher.me/]
 
 Steps to Install:
 
-1. Install (Ruby)[https://github.com/sstephenson/rbenv]
+- Install [Ruby](https://github.com/sstephenson/rbenv)
     Don't use your package manager as it is usually an outdated version
 
-2. Install the gem:
+- Install the gem:
 
 ```
 gem install mailcatcher
 ```
 
-3. Launch the mailcatcher daemon:
+- Launch the mailcatcher daemon:
 
 ```
 mailcatcher
 ```
 
-4. Route all mail sent by your local smtp, in this case `postfix`:
+- Route all mail sent by your local smtp, in this case `postfix`:
 
 ```
 sudo vim /etc/postfix/main.cf
@@ -41,4 +41,4 @@ relayhost = 127.0.0.1:1025
 sudo /etc/init.d/postfix restart
 ```
 
-Source: (nls.io)[https://nls.io/sysadmin/webdev/2013/04/18/use-mailcatcher-on-your-development-box-to-catch-all-outgoing-em.html]
+Source: [nls.io](https://nls.io/sysadmin/webdev/2013/04/18/use-mailcatcher-on-your-development-box-to-catch-all-outgoing-em.html)
