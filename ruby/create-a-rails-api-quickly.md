@@ -45,61 +45,63 @@
 
     ```
     <!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css" media="screen">
-      html, body{
-        background-color: #4B7399;
-        font-family: Verdana, Helvetica, Arial;
-        font-size: 14px;
-      }
-
-      a { color: #0000FF; }
-
-      #container {
-        width: 75%;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px 40px;
-        border: solid 1px black;
-        margin-top: 20px;
-      }
-    </style>
-    <script src="http://code.jquery.com/jquery-latest.min.js"
-        type="text/javascript"></script>
-    <script>
-        $(function(){
-          function addUser(user){
-            $('#users').append('<li>' + user.email + ', ' +
-                                        user.cell + ', ' + '</li>');
+    <html>
+      <head>
+        <style type="text/css" media="screen">
+          html, body{
+            background-color: #4B7399;
+            font-family: Verdana, Helvetica, Arial;
+            font-size: 14px;
           }
 
-          $('#new_user').submit(function(e){
-            console.log('click');
-            $.post('/users', $(this).serialize(), addUser);
-            this.reset();
-            e.preventDefault();
-          });
+          a { color: #0000FF; }
 
-          $.getJSON('/users', function(users){
-            $.each(users, function(){ addUser(this)});
+          #container {
+            width: 75%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px 40px;
+            border: solid 1px black;
+            margin-top: 20px;
+          }
+        </style>
+        <script src="http://code.jquery.com/jquery-latest.min.js"
+            type="text/javascript"></script>
+        <script>
+            $(function(){
+              function addUser(user){
+                $('#users').append('<li>' + user.email + ', ' +
+                                            user.cell + ', ' + '</li>');
+              }
+
+              $('#new_user').submit(function(e){
+                console.log('click');
+                $.post('/users', $(this).serialize(), addUser);
+                this.reset();
+                e.preventDefault();
+              });
+
+              $.getJSON('/users', function(users){
+                $.each(users, function(){ addUser(this)});
+              });
           });
-      });
-    </script>
-  </head>
-<body>
-  <div id="container">
-    <h1>Add User</h1>
-    <form id="new_user">
-      <label for="email">Email</label>
-      <input id="email" type="text" name="user[email]" id="user_email">
-      <br/>
-      <label for="cell">Cell</label>
-      <input id="cell" type="text" name="user[cell]" id="user_cell">
-      <br/>
-      <input type="submit" name="Add">
-    </form>
-    <ul id="users"></ul>
-  </div>
-</body>
-</html>```
+        </script>
+      </head>
+    <body>
+      <div id="container">
+        <h1>Add User</h1>
+        <form id="new_user">
+          <label for="email">Email</label>
+          <input id="email" type="text" name="user[email]" id="user_email">
+          <br/>
+          <label for="cell">Cell</label>
+          <input id="cell" type="text" name="user[cell]" id="user_cell">
+          <br/>
+          <input type="submit" name="Add">
+        </form>
+        <ul id="users"></ul>
+      </div>
+    </body>
+    </html>```
+
+**source: [Railscast rails-api gem](http://railscasts.com/episodes/348-the-rails-api-gem)**
