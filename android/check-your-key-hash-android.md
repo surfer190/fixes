@@ -4,6 +4,9 @@ Because generation of the Key hash using the commandline sometimes does not work
 
 ```
 keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
+
+Password is: android
+
 ```
 
 Use the following code, in an activity. It should output to `Logcat`
