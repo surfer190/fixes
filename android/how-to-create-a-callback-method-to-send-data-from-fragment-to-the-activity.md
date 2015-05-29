@@ -42,9 +42,9 @@
 
 3. Setup Communication from Fragment to Actviity
 
-	In Fragment Class (MyFragment.java):
+	In Fragment Class (**MyFragment.java**):
 
-	Get a reference to the Activity Class
+	#### Get a reference to the Activity Class
 
 	```
 	//Declare a variable as an Implementation of the Callbacks Interface
@@ -57,7 +57,7 @@
 	}
 	```
 
-	Run the Method:
+	#### Run the Method:
 
 	```
 	//Use a Click Listener or Some event
@@ -74,7 +74,7 @@
 
 4. Receive Bundle from MainActivity in New Activity and pass to fragment
 
-	In MyDataActivity.java
+	In **MyDataActivity.java**:
 
 	```
 	MyFragment fragment = new MyFragment();
@@ -87,7 +87,7 @@
 
 5. Receive Arguments - in Fragments `OnCreate`
 
-	In MyFragment.java:
+	In **MyFragment.java**:
 
 	```
 	public void OnCreate(Bundle savedInstanceState){
