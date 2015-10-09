@@ -228,7 +228,20 @@ _Child components can inherit state and props_
 
 ## Keys
 
- To ensure the state and identity of our components is maintain throughout multiple renders we need to assign a **unique key**
+ To ensure the state and identity of our components is maintain throughout multiple renders we need to assign a **unique key** to components:
+
+ ```
+ },
+ eachNote: function(note, i){
+   return(
+     <Note key={note.id}
+     index={i}
+     onChange={this.update}
+     onRemove={this.remove}
+     >{note.note}</Note>
+   );
+ },
+ ```
 
 ## Component Lifecycle
 
@@ -236,5 +249,51 @@ Times of change of state during component lifetime
 
 React provide hooks for creation, lifetime and tearDown
 
+#### Mounting
+
+Called once:
 `getDefaultProps`
 `getInitialState`
+
+Called Just before Render:
+`componentWillMount`
+
+Required Method:
+`render`
+
+After Successful Render:
+`componentDidMount`
+
+#### Updating
+
+`componentWillReceieveProps`
+`shoudlComponentUpdate`
+`componentWillUpdate`
+`render`
+`componentDidUpdate`
+
+#### Unmounting
+
+`componentWillUnmount`: Just before Unmounting
+
+
+## Best Practices
+
+It is `React` best practise to have all `Components` in seperate files
+
+_Note: That means that compents need to be referenced before the React.render() file [Main.js]_
+
+## Frameworks for React
+
+* Browserify
+* Reactify
+* Webpack
+* Grunt
+* Gulp
+
+## Things to Check out
+
+* React Native
+* flow
+* react-TestUtils
+* Jest
