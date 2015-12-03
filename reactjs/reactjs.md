@@ -22,7 +22,7 @@ Javascript library for User Interfaces
 
 * `react-detector` - lets you know when react is there
 * `react-developer-tools` - check react elements
-  - `ctrl + optn + j`
+  - `ctrl + optn + j` / `ctrl + shift + j`
 
 ## Add the React library
 
