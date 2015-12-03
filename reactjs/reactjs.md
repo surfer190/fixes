@@ -24,12 +24,10 @@ Javascript library for User Interfaces
 * `react-developer-tools` - check react elements
   - `ctrl + optn + j` / `ctrl + shift + j`
 
-## Add the React library
+## Add the React library in Head
 
 ```
-<head>
   <script src="https://fb.me/react-0.13.3.min.js"></script>
-</head>
 ```
 
 ## Rendering content
