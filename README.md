@@ -1,3 +1,7 @@
+# View Fixes
+
+[doolan.pw: Fixes and Notes](http://doolan.pw)
+
 ###Fixes
 [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes)](http://37.139.28.74:8080/job/fixes/)
 ##Website
