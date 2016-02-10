@@ -1,4 +1,4 @@
-# Introduction to Javascript
+# Introduction to Ecmascript (Javascript)
 
 Programming language and scripting language.
 
