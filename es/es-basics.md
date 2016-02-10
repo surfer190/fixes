@@ -132,20 +132,33 @@ If you want a task `b()` to run after `a()` has completed.
 
 `a(b)`, `b` is a callback to `a`
 
+When we pass a callback function as an argument to another function, we are only passing the function definition. We are not executing the function in the parameter. Therefore we don't add parenthesis `()` like we do when we are executing a function.
+
+When we pass a callback function as an argument to another function, the callback is executed at some point inside the containing function’s body just as if the callback were defined in the containing function. So it is a closure, having access to the containing functions scope.
+
 #### Callback Syntax
 
 ```
-function a(done) {
-  download('https://pbs.twimg.com/media/B4DDWBrCEAA8u4O.jpg:large', function doneDownloading(error, png) {
-    // handle error if there was one
-    if (err) console.log('uh-oh!', error)
+saySomethingToSon('hello', saySon);
 
-    // call done when you are all done
-    done()
-  })
+// Define main function, takes in url and name of callback method
+function saySomethingToSon(phrase, callback) {
+      console.log(phrase);
+    	// run our callback function
+      callback();
+}
+
+function saySon() {
+    console.log('son');
 }
 ```
 
+## Tips
+
+Don't ever use `alert();`
+
+You should use `console.log()` instead as this works in both browser and server side.
+`alert()` works only on the server side
 
 
 
