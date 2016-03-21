@@ -15,3 +15,7 @@ Output:
       If the user hits EOF (Unix: Ctl-D, Windows: Ctl-Z+Return), raise EOFError.
       On Unix, GNU readline is used if enabled.  The prompt string, if given,
       is printed without a trailing newline before reading.
+
+You can also view a specific function ora package:
+
+  pydoc file.seek
