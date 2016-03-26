@@ -9,6 +9,7 @@ You will need to `zipalign`:
 ```
 android-sdk/build-tools/22.0.1/zipalign -f -v 4 <app-release-unaligned.apk> <app-release.apk>
 ```
+
 ## Make sure Version is updated
 
 You need to update your `versionCode` and `versionName`
