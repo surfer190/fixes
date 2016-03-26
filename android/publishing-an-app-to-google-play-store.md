@@ -9,5 +9,17 @@ You will need to `zipalign`:
 ```
 android-sdk/build-tools/22.0.1/zipalign -f -v 4 <app-release-unaligned.apk> <app-release.apk>
 ```
+## Make sure Version is updated
+
+You need to update your `versionCode` and `versionName`
+
+If you are using `gradle` you can set this in `app/build.gradle` instead of `AndroidManifest.xml`
+
+```
+defaultConfig {
+        versionCode 6
+        versionName "1.0.5"
+    }
+```
 
 Review Permission: [Android Permissions List](http://developer.android.com/reference/android/Manifest.permission.html)
