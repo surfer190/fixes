@@ -5,7 +5,9 @@ sudo apt-get update
 sudo apt-get install python-pip python-devel
 sudo pip install ansible
 ```
+
 ### Basics
+
 #### Inventory File
 
 just like a `hosts` file, inventory file matches ip ipaddresses/domain groups to groups
