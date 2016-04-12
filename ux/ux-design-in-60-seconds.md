@@ -34,12 +34,12 @@ Show via navigation where they are in the site
 breadcrumbs
 
 Type of navigation:
+
 - Task based (Analyse, Watch, Buy, )
 - Category based (Charts, Watchlist, Portfolio)
 - User based: (Business user, home user)
-* Popularity, Alphabetical, Time, Promotion [Secondary Menu Structure]
-
-7-9 menu items is best
+- Popularity, Alphabetical, Time, Promotion [Secondary Menu Structure]
+- 7-9 menu items is best
 
 sitemap can sometimes be placed in the footer of every page instead of a seperate page
 
@@ -50,7 +50,7 @@ sitemap can sometimes be placed in the footer of every page instead of a seperat
 - Search results page should repeat search term: 'Search Results for "<<Search Term>>"'
 
 search result item:
-Link text...description...url
+**Link text...description...url**
 
 Add images for share
 
@@ -59,19 +59,20 @@ Add images for share
 - Try keep links as standard as possible blue and underlined
 - sometimes on hover underline works
 - visited links should change colour
-
 - select cursor (hand cursor) is good
 
 "People tend to move through screens from top left to bottom right", do put important elements on that access
 
 ## Page Title
 
-Title should lead with the most important information / unique for every page (reverse breadcrumb) - Use | "pipe" to seperate
+- Title should lead with the most important information
+- Be **unique for every page** (reverse breadcrumb)
+- Use | "pipe" to seperate
 
 lots of content how to display:
 - scrolling
 - sequential - like tutorial or steps + need pagination (print needs pdf or single page)
-  - sometimes high level overview is good
+- sometimes high level overview is good
 - splitting
 
 ## Layout
@@ -108,17 +109,23 @@ Otherwise use bullets (unordered list)
 
 ## Home Page
 
-Home page should clearly say what the site does - how do you support a need your visitors have
+Home page should **clearly say what the site does** - how do you support a need your visitors have
+
 site tagline - appears on every page
-home page - freshest and most important content (No welcome message) high level data and what to checkout next
+
+home page:
+
+- freshest and most important content
+- **No welcome message**
+- high level data and what to checkout next
 
 Call to action tell them what to do next
 
 Even if just news stories the home should show new users what you offer
 
-If site has singular focus the site can have a splash screen then only show navigation as you go deeper
+If site has _singular focus_ the site can have a _splash screen_ then only show navigation as you go deeper
 
-Don't clutter the homepage Should be simple - like research in motion (User should be to say what site is about in just 5 seconds)
+**Don't clutter** the homepage it should be simple - like research in motion (User should be able to say what site is about in just 5 seconds)
 
 Remember to **save searched terms** for later analysis
 
@@ -192,7 +199,7 @@ Forms should **not look daunting**
 - Best to have a single column of inputs, sometimes users will miss filling out right hand column
 - All fields with the same length are neat but unhelpful to visitors
 - Different lengths give clues of how much info you expect them to provide
-- Give clue as to which fields are required and which are not (an asteris)
+- Give clue as to which fields are required and which are not (an asterisk)
 - limit options to a list (recollection easier than recall)
 - default selections reduce time to complete the form
 - radio and checkboxes - **label must be on right**
