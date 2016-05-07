@@ -24,8 +24,8 @@ Focus on implementation
 
 ### View, Learn and Get certified
 
-Go to (AWS certifications)[https://aws.amazon.com/certification/]
+Go to [AWS certifications](https://aws.amazon.com/certification/)
 
 ### Source
 
-(AWS Certified Sysops Administrator Asscoiate)[https://www.pluralsight.com/courses/aws-certified-sysops-admin-associate]
+[AWS Certified Sysops Administrator Asscoiate](https://www.pluralsight.com/courses/aws-certified-sysops-admin-associate)

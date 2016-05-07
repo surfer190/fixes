@@ -10,7 +10,7 @@ Outsources physical hardware, the human capital and intellectual property is mai
 - Security and Compliance
 - Pricing and availability
 
-(AWS Certification Tracks)[https://doolan.pw/certifications/]
+[AWS Certification Tracks](https://doolan.pw/certifications/)
 
 ## Prerequisites (Requirements)
 
@@ -73,7 +73,7 @@ Availability zone - data centre in a region
 Edge Locations - Places to consume services
 GovCloud - Specifically for US government
 
-(Check Amazon global infrastructure **Africa, No chance...**)[https://aws.amazon.com/about-aws/global-infrastructure/]
+[Check Amazon global infrastructure **Africa, No chance...**](https://aws.amazon.com/about-aws/global-infrastructure/)
 
 ## Security
 
@@ -90,7 +90,7 @@ GovCloud - Specifically for US government
 * Properly decommissioned storage
 * Always on monitoring
 
-(AWS security certifications and compliance)[https://aws.amazon.com/compliance/]
+[AWS security certifications and compliance](https://aws.amazon.com/compliance/)
 
 #### Shared Security
 
@@ -124,9 +124,9 @@ Amazon does its part but **you need to secure your environment**
 
 Can be found on the crazily complex console home screen
 
-!(Amazon fundamentals IAM icon)[http://number1.co.za/wp-content/uploads/2016/05/Screen-Shot-2016-05-07-at-9.58.12-PM.png]
+![Amazon fundamentals IAM icon](http://number1.co.za/wp-content/uploads/2016/05/Screen-Shot-2016-05-07-at-9.58.12-PM.png)
 
-(Brain numbing Amazon IAM shit)[http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html]
+[Brain numbing Amazon IAM shit](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
 
 ## AWS Free Tier
 
@@ -134,7 +134,7 @@ Can be found on the crazily complex console home screen
 - Credit card is required
 - Some services only free for 12 months: EC2, ELB, EBS, S3
 
-(An extensive list of offerings on the Amazon Free Tier Account)[https://aws.amazon.com/free/]
+[An extensive list of offerings on the Amazon Free Tier Account](https://aws.amazon.com/free/)
 
 **Go ahead and create an account now**
 
@@ -144,13 +144,13 @@ The amazon web services' screens on their website are very convoluted. Full of l
 
 Don't be **daunted** when you login, you will see the below screen when you first log in, full of services...just calm down eventually you might learn a few of them.
 
-!(Complicated Management Console Screen Amazon Web Services)[http://number1.co.za/wp-content/uploads/2016/05/Screen-Shot-2016-05-07-at-11.14.15-PM.png]
+![Complicated Management Console Screen Amazon Web Services](http://number1.co.za/wp-content/uploads/2016/05/Screen-Shot-2016-05-07-at-11.14.15-PM.png)
 
 # Amazon Web Services
 
 ## EC2 (Elastic Compute)
 
-Open `EC2` under `Compute`, it will open a screen called `Resources` which feels unnatural coming from (Digital ocean)[https://m.do.co/c/fc14942ee702] but it apparently gives you a summary or overview of what is going on. Could be useful if you have > 10 ec2 instances.
+Open `EC2` under `Compute`, it will open a screen called `Resources` which feels unnatural coming from [Digital ocean](https://m.do.co/c/fc14942ee702) but it apparently gives you a summary or overview of what is going on. Could be useful if you have > 10 ec2 instances.
 
 It may have automatically selected an availability zone in the top right, you can change it by selecting from the dropdown. It can be annoying as you would expect to have an overview of all instances in all regions, apparently that is not how AWS does stuff. It is **very region specific**.
 
