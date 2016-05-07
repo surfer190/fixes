@@ -127,3 +127,43 @@ Can be found on the crazily complex console home screen
 !(Amazon fundamentals IAM icon)[http://number1.co.za/wp-content/uploads/2016/05/Screen-Shot-2016-05-07-at-9.58.12-PM.png]
 
 (Brain numbing Amazon IAM shit)[http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html]
+
+## AWS Free Tier
+
+- Gives a taste
+- Credit card is required
+- Some services only free for 12 months: EC2, ELB, EBS, S3
+
+(An extensive list of offerings on the Amazon Free Tier Account)[https://aws.amazon.com/free/]
+
+**Go ahead and create an account now**
+
+##### Note on the management console screen
+
+The amazon web services' screens on their website are very convoluted. Full of links, videos, and useful FAQ and information. Moreover their are tens of different ways to get to all the places except the place you want to go. Naturally this will annoy you or put you off, sometimes it will inspire you though.
+
+Don't be **daunted** when you login, you will see the below screen when you first log in, full of services...just calm down eventually you might learn a few of them.
+
+!(Complicated Management Console Screen Amazon Web Services)[http://number1.co.za/wp-content/uploads/2016/05/Screen-Shot-2016-05-07-at-11.14.15-PM.png]
+
+# Amazon Web Services
+
+## EC2 (Elastic Compute)
+
+Open `EC2` under `Compute`, it will open a screen called `Resources` which feels unnatural coming from (Digital ocean)[https://m.do.co/c/fc14942ee702] but it apparently gives you a summary or overview of what is going on. Could be useful if you have > 10 ec2 instances.
+
+It may have automatically selected an availability zone in the top right, you can change it by selecting from the dropdown. It can be annoying as you would expect to have an overview of all instances in all regions, apparently that is not how AWS does stuff. It is **very region specific**.
+
+Create an instance with `Launch Instance`, which is essentially (in my mind anyway) `Launch a server`
+
+You will be asked to choose an `Amazon Machine Image (AMI)` similar to a virtual image. Make sure that you choose a `Free Tier Eligible` machine.
+
+Choose `Ubuntu Server 14.04 LTS (HVM), SSD Volume Type`, otherwise if you choose a windows server, corporate linux or any other junk Linux Distro you're an idiot.
+
+Choose the instance type, best to choose the free tier one `t2.micro`
+
+You can skip through the next few settings: `Configure Instance Details`, `Add Storage`, `Tag Instance`, `Configure Security Group`. Then `review` and `launch`.
+
+You will need to create a new `Key-pair`, select `Create a New Key-pair` then `Download Key-pair`
+
+**Launched**, Now go back to the console (Click the amazon logo in the top right), then select `EC2` and then select `1 Running Instance` it might be in a status of `Initialising`
