@@ -22,7 +22,7 @@ Focus on implementation
 
 **Hands-on**, familiarise with components, practical and pragmatic. Next steps will be design.
 
-### Get certified
+### View, Learn and Get certified
 
 Go to (AWS certifications)[https://aws.amazon.com/certification/]
 
