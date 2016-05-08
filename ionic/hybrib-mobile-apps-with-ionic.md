@@ -1,6 +1,6 @@
-## Hybrid mobile applications with Ionic Framework
+# Hybrid mobile applications with Ionic Framework
 
-#### Introduction
+## Introduction
 
 Open source frontend SDK (Standard Development Kit - Tools to develop) to develop hybrid mobile applications with web technologies
 
@@ -8,14 +8,14 @@ It is a web app run within a **native web view component** which has access to t
 
 Ionic is built on top of **Apache Cordova**, an open source framework allowing developers to access native device functions eg. camera, accelerometer from JS.
 
-#### Knowledge requirements
+## Knowledge requirements
 
 - HTML5
 - CSS
 - JS
 - Angular
 
-#### Setting up Environment
+## Setting up Environment
 
 - (Install node js)[https://nodejs.org/en/download/]
 - (Install git)[https://git-scm.com/]
@@ -35,7 +35,7 @@ Ionic is built on top of **Apache Cordova**, an open source framework allowing d
 
 - Install native mobile SDK's
   - for iOS you need [Xcode](https://developer.apple.com/xcode/)
-    - Install Command line tools: `Xcode -> preferences -> Downloads -> Command Line Tools`
+    - Install Command line tools: `Xcode -> preferences -> Components -> Select ones you want`
     - iOS Simulator: `sudo npm install -g ios-sim`
     - iOS Deploy: `sudo npm install -g ios-deploy`
     - Provision phone for development - sign up as apple developer (**$99 a month fee** Madness!!)
@@ -48,10 +48,10 @@ Ionic is built on top of **Apache Cordova**, an open source framework allowing d
       - Android SDK build-tools
       - SDK Platform (Any android version preferably the latest stable)
 
+## What you need to know about Angular JS?
 
-
-
+[Key Knowledge required about Angular JS](https://doolan.pw/key-knowledge-angular-js)
 
 #### Source
 
-(Hybrid Mobile App Development with Ionic)[http://shop.oreilly.com/product/0636920046141.do]
+[Hybrid Mobile App Development with Ionic](http://shop.oreilly.com/product/0636920046141.do)
