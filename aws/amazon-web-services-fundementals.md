@@ -167,3 +167,5 @@ You can skip through the next few settings: `Configure Instance Details`, `Add S
 You will need to create a new `Key-pair`, select `Create a New Key-pair` then `Download Key-pair`
 
 **Launched**, Now go back to the console (Click the amazon logo in the top right), then select `EC2` and then select `1 Running Instance` it might be in a status of `Initialising`
+
+**...Continue from 05_04**
