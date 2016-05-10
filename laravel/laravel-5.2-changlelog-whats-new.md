@@ -85,23 +85,28 @@ then refresh
 
 Now the user has an api token associated with the account and give that to a third party account. They can't sign in with password, but can query.
 
-```
+```php
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function(){
   Route::get('users/{user}', function (App\User $user) {
       return $user;
     });
+
+  Route::get('/', function(){
+      // return Auth::user(); //won't work as it still uses the web guard
+      return Auth::guard('api')->user();
+    })
 })
 ```
 
-Note the **auth:api** which uses the token guard
+**Note**:
 
-To test as an api must simulate an ajax request with `httpie --json`
+- The **auth:api** which uses the token guard
+- To test as an api must simulate an ajax request with `httpie --json`
+- To test with the `api_token` included in the request:
 
-To test with the `api_token` included in the request:
+    `http localhost:8888/api/v1/users/1 api_token=3245jfbsldifuya8yf --json`
 
-`http localhost:8888/api/v1/users/1 api_token=3245jfbsldifuya8yf --json`
-
-
+- Change the default guard in `app/config/auth.php`
 
 #### Source
 
