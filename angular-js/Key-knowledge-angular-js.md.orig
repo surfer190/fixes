@@ -10,10 +10,15 @@
 - html elements with `ng-` attributes, these are called `angular directives`
 - A directive modifies the functionality
 
+<<<<<<< HEAD
+`{{ planet.name == "Earth" ? "Yeah! We 're home!" : "Eh! Where 're we?" }}` **Double Curly Braces** indicate that data will be replaced with data binding (angular expression)
+`{ mon:2, tue:2.5 }` **Single Curly Braces** replaces a reference with an object
+=======
 {% raw %}
 `{{` **Double Curly Braces** indicate that data will be replaced with data binding
 {% endraw %}
 `{` **Single Curly Braces** replaces a reference with an object
+>>>>>>> e10b8ec72e4ddeee02995fb2e8de3dfe8c5ec3ab
 
 ##### Example Code
 
