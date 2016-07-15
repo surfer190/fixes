@@ -13,6 +13,12 @@ Django apps that can be moved from project to prject, usually installed from the
 
 App Names should be the Plural form of the main model that your app uses
 
+## Create a Project
+
+`django-admin.py startproject tangeneer . `
+
+_Note: The importance of the dot is it will not create a seperate folder with the project name_
+
 ## Creating an App
 
   python manage.py startapp <app_name>
