@@ -92,6 +92,14 @@ Press `/` and then the text you are searchng for
 
 `.` : Repeats the previous command
 
+## Copy
+
+`yy` - yank(copy) a line
+
+## Paste
+
+`p`: paste after current position
+`P`: paste after current position
 
 # Sources:
 
