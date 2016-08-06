@@ -1,74 +1,72 @@
-#How to Setup key-based (SSH) authentication on your Server
+# How to Setup key-based (SSH) authentication on your Server
 
 1. Create the key pair on client
 
-`ssh-keygen -t rsa`
+    `ssh-keygen -t rsa`
 
-*Convention over configuration keep the default location*
+    *Convention over configuration keep the default location*
 
 2. Install the public key on remote server
 
-`ssh-copy-id -i $HOME/.ssh/id_rsa.pub user@doolan.pw`
+    `ssh-copy-id -i $HOME/.ssh/id_rsa.pub user@doolan.pw`
 
-or
+    Not if you don't have the private key you need to use the `-f` option:
 
-`scp $HOME/.ssh/id_rsa.pub user@doolan.pw:~/.ssh/authorized_keys`
+    `ssh-copy-id -f -i $HOME/.ssh/id_rsa.pub user@doolan.pw`
 
-*No `ssh-copy-id` installed?*
+    or
 
-```
-First create .ssh directory on server
+        scp $HOME/.ssh/id_rsa.pub user@doolan.pw:~/.ssh/authorized_keys
 
-ssh user@doolan.pw umask 077; test -d .ssh || mkdir .ssh
- 
-cat local id.rsa.pub file and pipe over ssh to append the public key in remote server
+    #### No `ssh-copy-id` installed?
 
-cat $HOME/.ssh/id_rsa.pub | ssh user@doolan.pw cat >> .ssh/authorized_keys
-```
+        First create .ssh directory on server
+
+        ssh user@doolan.pw umask 077; test -d .ssh || mkdir .ssh
+
+        cat local id.rsa.pub file and pipe over ssh to append the public key in remote server
+
+        cat $HOME/.ssh/id_rsa.pub | ssh user@doolan.pw cat >> .ssh/authorized_keys
 
 3. Test
-```
-ssh -T user@doolan.pw
 
-or
+        ssh -T user@doolan.pw
 
-scp foo.txt user@doolan.pw:/tmp
-```
+        or
 
-Get rid of password:
+        scp foo.txt user@doolan.pw:/tmp
 
-```
-eval $(ssh-agent)
-```
+    Get rid of password:
 
-add passphrase for private key maintained by ssh agent
-```
-ssh-add
-```
+    `eval $(ssh-agent)`
 
-Try login you shouldn't be prompted for password
-```
-ssh user@doolan.pw
-```
+    add passphrase for private key maintained by ssh agent
 
-#Now to Disable Password Authentication on your server
+    `ssh-add`
+
+    Try login you shouldn't be prompted for password
+
+    `ssh user@doolan.pw`
+
+## Now to Disable Password Authentication on your server
 
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 
-Set:
+#### Set:
 
 ```
 PasswordAuthentication no
 ```
 
-Restart SSH
+**Restart SSH**
 
 ```
 sudo service ssh restart
 ```
-####Sources:
-[cyberciti](http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/)
-[digitaloceans](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)
+#### Sources:
 
+[cyberciti](http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/)
+
+[digitaloceans](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)
