@@ -23,6 +23,49 @@ As you move lower **difficulty** and **value** increases
 4. Deploy model
 5. Monitor model performance
 
+# Common Data Science Techniques
+
+* Classification
+
+  ```
+  - Supervised learning
+  - logistic regression, decision trees,
+  booster decision trees, multimodal neural networks
+  ```
+
+* Clustering
+
+  ```
+  - Unsupervised learning
+  - Outcomes unknown
+  - k-means algorithm: set number of clusters you want with k variable
+  - self organising maps, ART (adaptive resonance theory)
+  ```
+* Regression - predict numerical outcomes
+
+  ```
+  - linear regression, decision trees, neural networks, boosted decision tree regression
+  ```
+* Simulation - testing scenarios
+
+  ```
+  - Markov chain analysis
+  ```
+
+* Content Analysis - mine text files, image and video
+
+  ```
+  - pattern recognition, neural networks: multilayered perceptron, ART network
+  ```
+
+* Recommenders
+
+  ```
+  - Collaborative filtering - similarity or ratings etc
+  - Analysing selected content
+  - Naïve Bayes, Microsoft Association rules
+  ```
+
 ## Azure Algorithms
 
 Algorithms are baked into the modules
