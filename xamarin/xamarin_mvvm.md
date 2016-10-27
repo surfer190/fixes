@@ -12,7 +12,7 @@ MVVM
 -> MVVM.Services (Create this folder and everything below)
 ---> Implemenation
 ---> Intefaces
----> Stubes
+---> Stubbes
 
 On each platform(Android, iOS, Shared) right click packagesRight click on Packages -> Add Package
 
