@@ -2,14 +2,12 @@
 
 ### Extract
 
-```
-tar -vxjf /tmp/archive.tar.bz2
+    tar -vxjf /tmp/archive.tar.bz2
 
--v: verbose
--x: extract
--z: pass through gzip
--f: bzip2 file
-```
+    -v: verbose
+    -x: extract
+    -z: pass through gzip
+    -f: bzip2 file
 
 ### Compress
 
