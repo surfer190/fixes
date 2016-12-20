@@ -20,20 +20,20 @@ adminhtml, frontend, crontab, REST web api, SOAL web api, Install
 entry point for `adminhtml` and `frontend` is `index.php`
 
 **Exceptions**
-1. Framework files not technically modular and some static files belong to a theme, 
+1. Framework files not technically modular and some static files belong to a theme,
 not a module.
 2. Themes include all types of static assets connected to the magento rendering system.
 Some assets are in the module folder and some are in the theme folder.
 PHP code is mostly located in modules.
-3. Layout files are `xml` define which elements should be on a page. Blocks are special PHP classes 
+3. Layout files are `xml` define which elements should be on a page. Blocks are special PHP classes
 that are usually connected to a template. A block class generates HTML using its template.
 4. Each module has its own configuration files: `events.xml`, `routes.xml`, `acl.xml`...Magento merges
 all these files together.
-5. Dependency injection / object instantiation magic is a magento 2 feature. A new object is declared in 
+5. Dependency injection / object instantiation magic is a magento 2 feature. A new object is declared in
 the constructor, magento will deliver the instance.
-6. Naming conventions: routes need a special corresponding controller (and route in `route.xml`). 
+6. Naming conventions: routes need a special corresponding controller (and route in `route.xml`).
 Layouts are also connected to route names.
-7. 
+7.
 Events: fired in core, developers can add observers to that event.
 Plugin: add specific behaviour to every public method of each class.
 
@@ -57,7 +57,7 @@ Dev tools: `dev`: tools that assist the developer like testing framework
 
         lib/internal/Magento/Framework/*
         vendor/magento/framework
-        
+
 * Themes
 
         vendor/magento/theme-frontend-*
@@ -83,7 +83,7 @@ global, module and theme
 ### PHP classes
 
 * `Model/resource` and `module/collection`: interact with db, magento 2 moving away towards api
-* API interfaces: CRUD for modules entities, 
+* API interfaces: CRUD for modules entities,
 * controllers: handle pages in accordance with MVC
 * Blocks: special classes representing part of a page. Usually connected to a `.phtml` template file
 * observers: Events fire during different places along its execution flow.
@@ -232,7 +232,7 @@ Soft dependency: can function without
 The only required folder is `etc`
 
 * `Api`
-* `Block` 
+* `Block`
 * `Console`
 * `Controller`
 * `etc`
@@ -295,19 +295,401 @@ The only required folder is `etc`
 
 * Enable and disable: `magento module:enable <module-list>`
 * Change caching `app/etc/env.php`
-* Cleaning cache: from admin,using cli, manually removing cache files 
+* Cleaning cache: from admin,using cli, manually removing cache files
+
+### DI and Object Manager
+
+Dependency Injection - Manage object dependencies by settings objects in current objects constructor
+The object manager is responsible for creating the objects a class requires.
+
+Lots of depedency limits code reuse and makes moving components to new projects difficult
+
+Dependency injection is configuration that is XML-based and validated by XSD
+
+Eg. You need a `storeManager` instance in the `Product` class. You can declare an argument with type
+`StoreManagerInterface` in the constructor of the product.
+Then using `di.xml` you have to define which class will be substituted for the interface.
+
+> Constructor has a list of objects assigned to protected properties, then used inside a class.
+
+### Class Instantiation
+
+`di.xml` specifies the List or interfaces, classes and factories sent into `__construct()` method
+
+THe best candidate to use `di` is a singleton-type class - only single instance but used in multiple places. Eg. Cache, session, registry, helpers. Factory / API classes als match this definition.
+
+Not every class has to be injected. Eg. an entity class like `product` depends on data from database. So a `factory` is recommended for injecting.
+
+eg.
+
+```
+public function __construct(\Magento\Catalog\Model\ProductFactory $factory) {
+  $this->factory = $factory;
+}
+
+...
+
+public function someFunction(){
+  $product = $this->factory->create();
+  $product->load($someId);
+}
+```
+
+The **factor class may not exist**, when the DI mechanism identifies a class ending in Factory and it does not exist it generates it in `var/generation`
+
+### Object Manager
+
+A class that:
+* Creates objects
+* Implements singleton pattern
+* Manages dependencies
+* Automatically instatiates parameters
+
+Parameters - variables declared in the constructor signature
+arguments - values passed to the constructor when the class instance is created
+
+Has replaced the `Mage` class.
+
+Magento 1 instantiation was centralised most classes created through `Mage` class and a config file.
+4 Generic patterns:
+* Abstract Factory
+* Factory Method
+* Singleton
+* Builder
+
+For all `singletons` the `registry` was used, so you could request singletons from the registry, creating them if not present.
+
+#### Magento 2
+
+Object Manager has 2 methods: `get` and `create`.
+Get method: return a singleton object called `Shared Instance` from protected registry.
+Create method: creates a new instance of a given class
+
+`Mage` was a static class always included in the beginning of the request flow. Now the object manager is no longer static or globally available.
+
+Best practice to avoid calling the object manager directly.
+
+#### Object Manager Usage
+
+To use the `ObjectManager` include it in the constructor (`__construct()`)
+
+Then assign it to the protected property and use it in your class:
+
+`$this->objectManager = $objectManager`
+
+`$objectManager->get(’Magento\Catalog\Api\ProductRepositoryInterface’);` will return the same implementation of... `ProductRepositoryInterface` as you would receive by including it in the constructor
+
+You should not use `ObjectManager` in your code as it breaks the `DI` concept
+
+#### Autogenerated Classes
+
+`factory classes`, `Interceptors` and `proxies` are autogenerated.
+
+Interceptor: class that allows plugin functionality to work. When you require a class that has a registered plugin, magento generates an interceptor with the same method as the required class but will call a plugin in that method.
+
+Interceptors use PHP traits to extend both the abstract interceptor and the original class.
+
+Proxy - tool that helps with circular dependencies, and relates to an internal implementation of how DI works.
+So you won't have to deal with them directly.
+
+#### Object Manager Configuration
+
+Uses config from `di.xml` to define which instance to deliver into the constructor of a class
+
+Each module can have multiple `di.xml` files - global or specific
+
+* You need to use the **real class name including the PHP namespace** when you require an instance of a class
+* Creation of objects is managed for you
+* Recursively creates any arguments for the objects yourboject requires
+* Declaring an interface in the constructor, the boject manager automatically creates the matching implementation for it.
+* Thinking in terms of `interfaces` and not `implementations`
+
+#### Where to specify object manager configurations
+
+* Global across all of magento: `app/etc/di.xml`
+* Entire module `<your directory>/etc/di.xml`
+* Area specific configuration: `<your directory>/etc/<area>/di.xml`
+
+Magento only uses 1 `di.xml`...the merged one
+
+#### Defining preferences
+
+* Preferences can be defined for interfaces and regular classes
+* Preferences define which classes will be instantiated for a constructor argument of your class
+
+**Best Practice** to request only interfaes and not concrete classes.
+
+Eg. Request `\Magneto\Framework\App\Response\HttpInterface` instead of `\Magento\Framework\App\Response\Http`
+
+#### Defining Arguments
+
+There are different types of arguments: `string, array, object`
+DI defines which objects should be used as an argument when a new instance is created
+
+Sometimes you need a specific product but the object manager can only deliver a generic product.
+It can't provide a loaded entity. As a result this object type is not injectable.
+
+Some objects have to be gotten with the `object manager`
+
+#### DI affecting parameters of a class
+
+1. Define which classes correspond to certain interfaces. An interface cannot be instantiated, a class implements the interface. Using DI we can figure out exactly which class is being used.
+Look at `\Magento\Catalog\etc\di.xml` search for `ProductAttributeRepositoryInterface`, a line substitutes `Magento\Catalog\Model\Product\Attribute\Repository` assigned to parameter `$metadataService`
+
+2. Define a specific parameter for a specific class. Define a specific instance for a specific class. For products you may need a particular class only for products. Eg. magento data parameter. With `di.xml` we can add something to `data` parameter. So for `\Magento\Catalog\Model\Product\ReservedAttributeList.php` look at parameters of constructor and see `$productModel`. Now search `productModel` in `Magento/Catalog/etc/di.xml`
+
+Example: So when instance of this class is created, `productModel` is set to the string `\Magento\Catalog\Model\Product`
+
+```
+<type name="Magento\Catalog\Model\Product\ReservedAttributeList">
+    <arguments>
+        <argument name="productModel" xsi:type="string">\Magento\Catalog\Model\Product</argument>
+        <argument name="reservedAttributes" xsi:type="array">
+            <item name="position" xsi:type="string">position</item>
+        </argument>
+        <argument name="allowedAttributes" xsi:type="array">
+            <item name="type_id" xsi:type="string">type_id</item>
+            <item name="calculated_final_price" xsi:type="string">calculated_final_price</item>
+            <item name="request_path" xsi:type="string">request_path</item>
+        </argument>
+    </arguments>
+</type>
+```
+
+#### Configuration Shared Argument
+
+* shared object == singleton
+* Use same instance of a class within several other classes
+
+In `di.xml` if the node has `shared="false"` it won't be shared.
+
+* Can use on both `type` and `argument` nodes with the `xsi:type="object"`
+
+### Plugins
+
+* Plugins extend / change the behaviour of a native method within a magento class
+* Plugins change behaviour of original class, but not class itself
+* Can't use with `final methods`, `final classes`, `private methods` or classes without dependency injection.
+
+`plugins` allow you to modify a single method, `preference` allows you to change a whole class.
+
+#### Customisations
+
+* Events: commonly handle external actions or input
+* Plugins: Allow you to customise a method. Executed sequentially.
+
+Magento 1 used `events` and `rewrites`. Sometimes events not in correct places and too many events might cause many firing hurting response time. Class rewrites need a thorough understanding.
+
+#### Declaring a plugin
+
+Use `di.xml`:
+
+```
+<config>
+  <type name="{ObservedType}">
+    <plugin name="{pluginName}"
+      type="{pluginClassName}"
+      sortOrder="1"
+      dsabled="true"/>
+</config>
+```
+
+Required:
+
+* `type name`: class, inheritance or virtual type the plugin observes
+* `plugin name`: name identifying the plugin
+* `plugin type`: name of plugin class or `virtual` type. Naming convention: `<ModelName>\Plugin`
+
+Optional:
+
+* `plugin sort order`: order that plugins calling the same method run
+* `plugin disabled`: **true** to disable
+
+> The syntax is very simple. The way it works: you define a plugin -- you create a class within another
+class, then inside that class you can define which methods write the plugin. - MagentoU
+
+* Before-Listener: Chnage an argument before a method is called
+
+    public function beforeSetName(\Magento\Catalog\Model\Product $subject, $name){
+        return ['(' . $name . ')'];
+    }
+
+* After-Listenenr: Add after
+
+    public function afterSetName(\Magento\Catalog\Model\Product $subject, $result){
+      return '|' . $result . '|';
+    }
+
+* Change arguments and returned values of original method use an **aroundlistener**
+
+    namespace My\Module\Model\Product;
+
+    class Plugin
+    {
+      public function aroundSave(\Magento\Catalog\Model\Product $subject, \Closure $proceed)
+      {
+        $this->doSmthBeforeProductIsSaved();
+        $returnValue = $proceed();
+        if ($returnValue){
+          $this->postProductToFacebook();
+        }
+        retunr $returnValue;
+      }
+    }
+
+* `$subject` provides access to all public methods of the original class
+* `$process` is a ambda that will call the next plugin or method
+
+further arguments passed to net plugin with `$proceed()`
+
+Can also ovveride an original method (a conflicting change)
+
+#### Sequence of plugins
+
+1. `before` listener in plugin with highest priortiy (smallest `sortOrder`)
+2. `around` listener in plugin with highest priorty
+3. Other `before` listeners
+4. other `around` listeners
+5. `after` listneer of plugin with lowest priorty (highest `sortOrder`)
+6. `after` listeners in reverse sort order
+
+#### Configuration inheritance
+
+We can create a module, make it dependent from the core module, and redefine preference for a certain interface.
+Similar to a magento 1 rewrite.
+Compiler tool can minimise the performance impact.
+
+#### Interception
+
+Object manager checks whether the are any plugins registered for any methods of a required class.
+If so it generates an interceptor class.
+Interceptor extends the original class but wrraps its methods to all plugin to be called before, after or instead.
+They are creted in `var/generation` folder
+
+### Events
+
+External actions
+
+Event-observer pattern. Objects (subjects) and their list of dependents (observers). Events trigger objects to notify their observers of state changes.
+
+Magento 1 used `Mage::dispatchEvent()`, magento 2 uses the special event manager class.
+
+declared in `events.xml`
+
+Eg. `Magento\Checkout\Model\OnePage` method `saveOrder()`:
+
+    $this->_eventManager->dispatch(
+        'checkout_submit_all_after',
+        [
+          'order' => $order,
+          'quote' => $this->getQuote()
+        ]
+      )
+
+Then in `Magento/VatalogInventor/etc/events.xml`:
+
+    <event name="checkout_submit_all_after">
+      <observer name="inventory" instance="Magento\CatalogInventory\Observer\CheckoutAllSubmitAfterObserver"/>
+    </event>
+
+#### Observer class
+
+`Magento\CatalogInventor\Observer\CheckoutSubmitAllAfterObserver` and `execute()` function
+
+    public function execute(EventObserver $observer)
+    {
+      $quote = $observer->getEvent()->getQuote();
+      if (!$quote->getinventoryProcessed()){
+        $this->subtractQuoteInventoryObserver->execute($observer);
+        $this->reindexQuoteinventoryObserver->execute($observer);
+      }
+      return $this;
+    }
+
+event object contains event's parameters
+
+### Module Configuration
+
+Files split into funtion
+
+* `app/etc/config.php` - delcaration of all modules
+* `app/etc/env.php` - db connectino info
+
+* `module.xml` - module declaration
+* `config.xml` - default admin settings
+* `events.xml` - observers and events they are subscribed to
+* `di.xml` - dependency injection config
+* `routes.xml` - lists the routes and routers
+
+Auto completion for xsd
+
+#### Storing config values
+
+* Database: Merchants (`core_config_data`)
+* ML files: Developers, technical config
+
+Table `core_config_data` is the same as magento 1.
+
+If scope is `website` then `scope_id` is treated as `website_id`
+If scope is `store` then `store_id` for global scope does not apply
+
+#### Configuration scopes
+
+* Global: config file in `etc/`
+* Frontend: `etc/frontend`
+* Admin: `etc/adminhtml`
+
+#### Load order of config files
+
+* Primary: loaded on bootstrap (config for app start and install specific)
+* Global: All config files common across all app areas
+* Area-specific: Files that apply to specific areas such as `adminhtml`
+
+#### Merging Config files
+
+Merged based on Fully qualified Xpaths
+Special attribute is defined in `$idAttributes` array
+After 2 XML documents are merged, resulting document contains all nodes from the original files
+Second XML file supplements or overwrites nodes in the first XML file
+
+#### Validation
+
+Each file is validated against a schema
+
+Eg. `events.xml` is validated against `events.xsd`
+
+Validated against: `lib/internal/Magento/Framework`
+
+All config files are processed by `Magento\Framework\Config`. Loan, merge, validate and convert into array.
+
+#### Interfaces to manage config files:
+
+* `\Magento\Framework\Config\DataInterface` - config data within a scope
+* `\Magento\Framework\Config\ScopeInterface` - Identifies current application scope
+* `\Magento\Framework\Config\FileResolverInterface` - identies files read by `\Magento\Framework\Config\ReaderInterface`
+* `\Magento\Framework\Config\ReaderInterface` - reads config from storage
+
+#### Loading XML configuration
+
+* `Config`: Class that is used to get access to the config values
+* `Reader`: reads a file
+* `SchemaLocator`: encapsulates path to the schema
+* `Converter`: Converts XMl to array
+* `XSD`: schema file
+
+**New config files must be accompanied with an XSD validations schema**
+
+#### Creating a custom config file
+
+Requires:
+* XML file
+* XSD schema
+* Config PHP file
+* Config reader
+* Schema locator
+* Converter
 
 
+## Error Reporting
 
-
-
-
-
-
-
-
-
-
-
-
-
+Magento uses strongest error reporting, even PHP notice will cause an exception
