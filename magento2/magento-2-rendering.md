@@ -462,4 +462,4 @@ Many additional handles:
 Developers can add custom handles:
 
 Use `Magento\Framework\View\Result\Page::addHandle('example_handle')`
-Or using Layout XML: `<update handle="example_handle"/>`
+Or using Layout XML: `<update handle="example_handle

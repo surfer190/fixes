@@ -563,7 +563,7 @@ Compiler tool can minimise the performance impact.
 
 Object manager checks whether the are any plugins registered for any methods of a required class.
 If so it generates an interceptor class.
-Interceptor extends the original class but wrraps its methods to all plugin to be called before, after or instead.
+Interceptor extends the original class but wraps its methods to all plugin to be called before, after or instead.
 They are creted in `var/generation` folder
 
 ### Events
@@ -586,7 +586,7 @@ Eg. `Magento\Checkout\Model\OnePage` method `saveOrder()`:
         ]
       )
 
-Then in `Magento/VatalogInventor/etc/events.xml`:
+Then in `Magento/CatalogInventor/etc/events.xml`:
 
     <event name="checkout_submit_all_after">
       <observer name="inventory" instance="Magento\CatalogInventory\Observer\CheckoutAllSubmitAfterObserver"/>
