@@ -1,7 +1,7 @@
 # Fixes
 
 Problems, Fixes, Solutions and Notes
-## [doolan.pw](http://doolan.pw)
+## [fixes.co.za](http://fixes.co.za)
 
 [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes)](http://37.139.28.74:8080/job/fixes/)
 [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=doolan.pw)](http://37.139.28.74:8080/job/doolan.pw/)
