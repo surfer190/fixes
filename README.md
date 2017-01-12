@@ -15,7 +15,7 @@ Keeping a reference of common development problems and solutions I have come acr
 ### Where to view Fixes
 
 The whole collection of fixes can be viewed with your web browser at:
-[http://doolan.dw](http://doolan.pw)
+[http://fixes.co.za](http://fixes.co.za)
 
 The site is built with [jekyll](https://jekyllrb.com/) and is updated on a post-receive hook to this repo
 
