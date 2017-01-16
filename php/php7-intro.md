@@ -81,3 +81,7 @@ Usage passwords and password salts
 ### Unicode Support
 
 For `emoji` and international characters
+
+## Removed Features
+
+*
