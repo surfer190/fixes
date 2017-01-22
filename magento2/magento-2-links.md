@@ -4,9 +4,10 @@
 
 * [Magento 2 Cache Invalidation](http://www.sivaschenko.com/magento2-varnish-cache-invalidation/)
 
-## Tools and Modules
+## Tools, Extensions and Modules
 
 * [Free ElasticSearch Magento 2 Modules](https://github.com/Smile-SA/elasticsuite)
+* [Free Custom Fee Magento 2: Insurance etc](https://github.com/sivajik34/Custom-Fee-Magento2)
 * [Magento 2 Database Diagram](http://anna.voelkl.at/magento-ce-2-1-3-database-diagram/)
 
 ## Tutorials
@@ -26,3 +27,7 @@
 
 * [Writing Testable Code](http://www.slideshare.net/vinaikopp/writing-testable-code-for-magento-1-and-2-2016-romaina)
 * [Testing Annotations](http://dusanlukic.com/annotations-in-magento-2-integration-tests)
+
+## Performance
+
+* [Improve google Pagespeed move render blocking js to bottom](https://t.co/7iU0N36hzK)
