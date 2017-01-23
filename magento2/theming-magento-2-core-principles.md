@@ -88,3 +88,37 @@ Magento 2 theme is in a single directory, instead of `skin` and `app/design`
 Applying a theme `Stores -> Configuration -> Design -> Design Theme Select`
 
 ## Inheritance
+
+You can extend an existing
+
+Can add minor customisations for holiday designs
+
+Static files also have a fallback but only when compile pub directory with the command line tool
+
+Only override files that require changes
+
+Inheritance logic: searches current directory, ancestor themes, module view files then library
+
+Slight differences between countries. Retail outlets similar but less flashy than the main store.
+
+If themes share a lot of things, it may be best to create a base theme.
+
+## Overriding files
+
+Create a file of the same name and in the relevant location
+
+Don't ever change core themes as changes will not be lost during an upgrade
+Enables easy identification of customised files
+
+## RWD
+
+Responsive web design
+
+# Theme Creation
+
+## Creating custom themes
+
+1. Create vendor directory: `app/design/frontend/MyVendor`
+2. Create a custom theme: `app/design/frontend/MyVendor/my_theme`
+3. Declare parent theme in `theme.xml`, create `registration.php`
+4. Make new directories and customisations here
