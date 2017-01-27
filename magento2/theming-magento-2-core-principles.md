@@ -121,4 +121,48 @@ Responsive web design
 1. Create vendor directory: `app/design/frontend/MyVendor`
 2. Create a custom theme: `app/design/frontend/MyVendor/my_theme`
 3. Declare parent theme in `theme.xml`, create `registration.php`
-4. Make new directories and customisations here
+4. Make new directories and customisations here (`i18n`, `layout`, `templates`, `media`, `web`)
+
+NB! Never edit files directly in:
+* `app/code/Magento`
+* `app/design/frontend/Magento`
+* `lib`
+
+## File types
+
+Static - files used by browser to render page (fonts, CSS, JS, images)
+Dynamic - files used to generate HTML (less files, templates, layouts)
+
+# Deployment
+
+## Static files
+
+Developer mode: generates on demand
+default/production: static files are not generated or cached
+
+## Modes
+
+### Default mode
+
+* Errors logged to file reports
+* Static view files created by request (if not in cache)
+
+### Developer mode
+
+* Slowest mode
+* static files are not cache and are written to pub.static each time
+* exceptions displayed in browser
+* system logging in `var/report` is verbose
+
+ensure to flush cache and disable
+
+### Production mode
+
+* Static view files are deployed once
+* Errors are never displayed to user
+
+## Static asset deployment
+
+`bin/magento setup:static-content:deploy`
+
+or delete `<mage dir>/pub/static`
