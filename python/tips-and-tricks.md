@@ -10,4 +10,8 @@ dir(object)
 type(object)
 ```
 
+# Clear the python terminal screen
 
+```
+ctrl + l
+```
