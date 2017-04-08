@@ -14,4 +14,10 @@
 
 The key part is allowing the `.well-known/acme-challenge`
 
-THen follow this (nginx letencrypt on ubuntu 16.04)[https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04]
+## step 2
+
+Then make sure to point `letsencypt` to the `pub` directory
+
+    sudo letsencrypt certonly -a webroot --webroot-path=/var/www/root_html/pub -d example.co.za -d www.example.co.za
+
+Any issues follow this tutorial [nginx letencrypt on ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
