@@ -215,7 +215,92 @@ Eg. `@click=...` === `v-on:click=...`
 
 Eg. `:href` === `v-bind:href`
 
+## Attributes are Merged
+
+You can have a `class` attribute on an element, but a bound attribute `:class` can also be added and vue js will manage it.
+
+`<div :class="{red: attachRed}">`
+
+With the `v-class` or `:class` bound value it expects a list or javascript object. 
+`key` - name of class
+`value` - true/false, whether to add that class
+
+### Can also directly change properties
+
+`<div :style="{ 'background-color':color }">`
+
+And it bind to the `color` data attribute
 
 #### Source
 
 Udemy Vuejs 2 Course
+
+## Conditionals
+
+Actually removes or adds the element to the DOM (Including nested) based on a data field that resovles to true of false
+
+Use **v-if=**
+
+```
+<p v-if="show">See me</p>
+```
+
+**Very important to use `v-if=` instead of `v-if:` as that will break html on the page**
+
+Basically if html on the page is borked, then ensure it is formatted correctly
+
+Can switch to the negative if we use `v-else`
+
+No need for a condition on the `v-else`
+
+#### Show or Hide instead of Removing or adding
+
+Use `v-show=`
+
+## Lists
+
+`v-for=` directive
+
+        <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+
+With an index:
+
+        <li v-for="ingredient, index in ingredients">{{ ingredient }} ({{ index }})</li>
+
+Can also put a `v-for` on a `template` element
+
+### Loop through properties of Objects
+
+        <li v-for="person in persons">
+            <span v-for="value in person">{{ value }}</span>
+        </li>
+
+        <li v-for="person in persons">
+            <div v-for="value, key, index in person">{{ key }}: {{ value }} - ({{ index }})</div>
+        </li>
+
+        new Vue({
+            el: '#app',
+            data: {
+                ingredients: ['Meat', 'fruit', 'cookies'],
+                persons: [
+                    {name: 'Max', age:27 , colour:'red'},
+                    {name: 'Anna', age:'unknown' , colour: 'blue'},
+                ]
+            }
+        })
+
+### Looping through a range of integers
+
+        <span v-for="n in 10">{{ n }}</span>
+
+### For loop and keeping track
+
+Sometimes there are issues where updates are not where they should be or sorting is not correct.
+This is due to be a reference to the value in memeory and not to the actual value.
+
+So sometimes we need to bind the `:key=` directive
+
+### Check if variable is an array
+
+        Array.isArray(value)
