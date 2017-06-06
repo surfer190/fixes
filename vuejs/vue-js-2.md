@@ -304,3 +304,157 @@ So sometimes we need to bind the `:key=` directive
 ### Check if variable is an array
 
         Array.isArray(value)
+
+## The Vue Instance in Detail
+
+Multiple Vue Instances are allowed, as long as there is no connection between them.
+
+Can store the vue instance in a variable with:
+
+        var vm1 = new Vue({
+            el: "#app1",
+            data: {
+                title: "Hello world"
+            },
+            methods: {
+                onChange: function(){
+                    vm1.title = 'Changed!';
+                }
+            }
+        })
+
+Access properties and functions with:
+
+        vm1.title = 'Changed by Me';
+
+        vm1.onChange();
+
+However Vue JS will not watch or be reactive to properties created from outside the instance:
+
+VueJS doesn't proxy or watch these properties with getters and setters.
+
+        vm1.newProp = 'New!';
+
+Can `console.log()` the instance:
+
+        console.log(vm1);
+
+### Inspecting the Vue Instance
+
+* `$el` - refers to instance, the html representation of the instance
+* `$data` - holds data properties, a way of accesing the data from outside: eg. `vm1.$data.title`
+* `$ref` - put the `ref` key on an attribute (not a directive), set to any name you like. If you console `this.$refs`. You can access with `this.$this.myButton.text = "Hello world";`. If we access from outside Vue, we are changing in the DOM but not in VueJS. So VueJS will overwrite the change of DOM. **Not Reactive**
+
+### Can create the data variable before Vue Instance and then pass it
+
+        var data = {
+            title: 'The VueJS Instance',
+            showParagraph: false
+        }
+
+        var vm1 = new Vue({
+            el: '#app1',
+            data: data
+        })
+
+### More info on the API
+
+[VUE API Information](https://vuejs.org/v2/api/)
+
+### Mount
+
+Properties prefixed by `$` are native `Vue` js methods and properties.
+
+        vm.$mount('#app1`);
+
+You can specify the template of the `Vue` instance and not have it derive from the `html` with:
+
+        var vm3 = new Vue({
+            template: `<h1>Hello!</h1>'
+        });
+
+        vm3.$mount('#app3');
+
+Can also create it off screen:
+
+        vm3.$mount();
+
+        //then append it
+        document.getElementById('app3').appendChild(vm3.$el);
+
+### Components
+
+Creating reusable components are greated with:
+
+        Vue.components('hello', {
+            template: '<h1>Hello!</h1>'
+        });
+
+Add the new element:
+
+        <hello></hello>
+        <hello></hello>
+
+**Limitation of templates**: We have to specify everything as a string
+
+### Versions
+
+* Compiler version: respects DOM rules
+* No-compiler: compiler is stripped out, compile templates during build process
+
+### How Vuejs Updates the DOM
+
+Each property has it's own watcher
+
+Accessing the real DOM is the biggest performance bottleneck, so want to do as selodom as posible.
+
+Vue Instance -> Virtual DOM -> DOM
+
+### VueJS Instance Lifecycle
+
+new Vue()
+
+* beforeCreate() - Initialise Data and Events
+* created() - Instance Created - Compile template or el's template
+* beforeMount() - before template written to real DOM - replace `el` with compiled template
+* **Mount to DOM** 
+* Data changed
+* beforeUpdate()
+* updated()
+* beforeDestroy()
+* destroyed()
+
+These are all fucntions of the Vue Instance:
+
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'The Vue Instance'
+            },
+            beforeCreated: function() {
+                console.log('beforeCreated()');
+            },
+            created: function() {
+                console.log('created()');
+            },
+            beforeMount: function() {
+                console.log('beforeCreate()');
+            },
+            mounted: function(){
+                console.log('mounted()');
+            },
+            beforeUpdate: function(){
+                console.log('beforeUpdate()');
+            },
+            updated: function(){
+                console.log('updated()')
+            },
+            beforeDestroy: function(){
+                console.log('beforeDestroy()')
+            },
+            destroyed: functino(){
+                console.log('destroyed()')
+            }
+        })
+
+

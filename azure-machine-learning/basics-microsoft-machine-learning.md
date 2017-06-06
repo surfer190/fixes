@@ -1,8 +1,13 @@
+
+
+
+Data rich, information poor
+
 # 4 Pillars of analytics
 
-* Description (what happened)
-* diagnostic analysis (why things happened)
-* predictive (what will happen in the future)
+* Description (what happened, who are my customers)
+* diagnostic analysis (why things happened, drivers behind why)
+* predictive (what will happen in the future, predict probability of an outcome)
 * prescriptive (what should we do)
 
 As you move lower **difficulty** and **value** increases
