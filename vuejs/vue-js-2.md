@@ -458,3 +458,53 @@ These are all fucntions of the Vue Instance:
         })
 
 
+## Filters
+
+Filter helps you transform output in the data
+Transforms what the user sees
+
+Ie. Turning to uppercase letters
+
+No built-in filters, have to create your own
+
+Local filter:
+
+    <p>{{ text || toUppercase }}</p>
+
+
+    export default {
+        filters: {
+            'to-uppercase'(value) {
+                return value.toUpperCase();
+            }
+        }
+    }
+
+Global filter:
+
+    Vue.filter('to-lowercase');
+
+Sometimes a computed property is the better solution - performance reasons
+
+## Mixins
+
+Reusable pieces of code
+
+        import { fruitMixin } from './fruitMixin';
+
+        export default {
+            mixins: [fruitMixin],
+        }
+
+A global instance is added to every instance and eery component. Rarely should use this.
+
+        Vue.mixin({
+            created() {
+                console.log('Global Mixin - Created Hook');
+            }
+        });
+
+### Mixin Order
+
+Global Mixins, local mixins then local instance code
+
