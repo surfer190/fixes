@@ -70,3 +70,38 @@ A `POST` is used to make a change on the server
 
 If there is data in a response body the `Content-Length` will give response in `bytes`
 
+## User Agent
+
+Identifier for client making the request
+
+## Content-Type
+
+Communicates the way form data has been encoded
+
+`application/x-www-form-urlencode` communicates that has used url encoded characters
+
+## HTML - HyperText Markup Lanugage
+
+## URI vs URL
+
+URI: `/xml`
+URL: `http://httpbin.org/xml` 
+
+URL contains the `protocol` and the `hostname`
+Adds `how` and `where` a resource can be found
+
+A URL can be relative `<a href="/html">` is relative to current site
+
+## HTML Form
+
+* `method`: `GET`, `POST` (default is `GET`)
+* `action`: relative or absolute url
+* `inputs`: Named input parameters. Must use the `name` attribute.
+
+Post form submission: `Content-Type` and `Content-Length` is requered
+
+## URL Encoded
+
+Form data is encoded as a query string, that make a querystring ok to send over http
+
+
