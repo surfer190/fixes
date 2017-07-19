@@ -35,3 +35,15 @@ Use `{{ var_name }}` to print out a variable
 * Name a block `<title>{% block title %}{% endblock %}</title>`
 * Extends: `{% extends "layout.html" %}`
 * Then set block content
+
+## URLs
+
+### Named Url
+
+Give your url's in `urls.py` a name
+
+        url(r'^$', views.courselist, name='list')
+
+Setting parameters
+
+        <h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>
