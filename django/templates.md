@@ -87,11 +87,15 @@ Good use case for custom filters:
 
 Arguments are seperated by a space
 
+        {% raw %}
         {% is_conjugate test_var %}
+        {% endraw %}
 
 ### Load multiple filters
 
+        {% raw %}
         {% load humanize course_extras %}
+        {% endraw %}
 
 ### Chaining
 
@@ -105,31 +109,39 @@ Applied **in order**, applied to result of one before
 
 Shorten a long variable
 
+        {% raw %}
         {% with con=step.content %}
                 {{ con|linebreaks }}
         {% endwith %}
+        {% endraw %}
 
 ## If
 
 Conditionally show a template
 
+        {% raw %}
         {% if course.description %}
             {{ course.description }}
         {% endif %}
+        {% endraw %}
 
 Can also use an else
 
+        {% raw %}
         {% if course.description|wordcountt <= 5 %}
             {{ course.description }}
         {% else %}
             {{ course.description|truncatewords:5 }}
         {% endif %}
+        {% endraw %}
 
 ## Static files
 
 Remember to let django know you will be using `static` with:
 
+        {% raw %}
         {% load static from staticfiles %}
+        {% endraw %}
 
 ## Custom template tags
 
