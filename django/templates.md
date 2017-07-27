@@ -25,7 +25,7 @@ Call the template `my_file.html`
 
 ## Template tags
 
-`{%` and `%}` that allow you to write python within
+{% raw %}`{%` and `%}`{% endraw %} that allow you to write python within
 
 Use `{{ var_name }}` to print out a variable
 
@@ -33,7 +33,7 @@ Use `{{ var_name }}` to print out a variable
 
 * Extending a parent template allows overridable `blocks`
 * Name a block {% raw %}`<title>{% block title %}{% endblock %}</title>`{% endraw %}
-* Extends: `{% extends "layout.html" %}`
+* Extends: {% raw %}`{% extends "layout.html" %}`{% endraw %}
 * Then set block content
 
 ## URLs
