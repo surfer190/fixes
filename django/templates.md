@@ -32,7 +32,7 @@ Use `{{ var_name }}` to print out a variable
 ## Inheriting
 
 * Extending a parent template allows overridable `blocks`
-* Name a block `<title>{% block title %}{% endblock %}</title>`
+* Name a block {% raw %}`<title>{% block title %}{% endblock %}</title>`{% endraw %}
 * Extends: `{% extends "layout.html" %}`
 * Then set block content
 
@@ -77,7 +77,7 @@ In settings add to INSTALLED_APPS
 
 at top of template load humanize
 
-        {% load humanize %}
+        {% raw %}{% load humanize %}{% endraw %}
 
 Good use case for custom filters:
 
