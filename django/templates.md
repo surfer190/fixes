@@ -50,7 +50,7 @@ Setting parameters
 
 ## Filters
 
-        {{ myVar | filter}
+        {% raw %}{{ myVar | filter}{% endraw %}
 
 * `linebreaks` - converting linebreaks into valid html
 * `join` - joins a list with a between
@@ -101,7 +101,7 @@ Arguments are seperated by a space
 
 You can chain filters
 
-        {{ word|lower|capfirst }}
+        {% raw %}{{ word|lower|capfirst }}{% endraw %}
 
 Applied **in order**, applied to result of one before
 
