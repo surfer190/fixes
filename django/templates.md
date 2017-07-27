@@ -46,7 +46,7 @@ Give your url's in `urls.py` a name
 
 Setting parameters
 
-        <h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>
+        {% raw %}<h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>{% endraw %}
 
 ## Filters
 
