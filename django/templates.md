@@ -25,15 +25,15 @@ Call the template `my_file.html`
 
 ## Template tags
 
-`{%` and `%}` that allow you to write python within
+{% raw %}`{%` and `%}`{% endraw %} that allow you to write python within
 
 Use `{{ var_name }}` to print out a variable
 
 ## Inheriting
 
 * Extending a parent template allows overridable `blocks`
-* Name a block `<title>{% block title %}{% endblock %}</title>`
-* Extends: `{% extends "layout.html" %}`
+* Name a block {% raw %}`<title>{% block title %}{% endblock %}</title>`{% endraw %}
+* Extends: {% raw %}`{% extends "layout.html" %}`{% endraw %}
 * Then set block content
 
 ## URLs
@@ -46,11 +46,11 @@ Give your url's in `urls.py` a name
 
 Setting parameters
 
-        <h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>
+        {% raw %}<h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>{% endraw %}
 
 ## Filters
 
-        {{ myVar | filter}
+        {% raw %}{{ myVar | filter}{% endraw %}
 
 * `linebreaks` - converting linebreaks into valid html
 * `join` - joins a list with a between
@@ -77,7 +77,7 @@ In settings add to INSTALLED_APPS
 
 at top of template load humanize
 
-        {% load humanize %}
+        {% raw %}{% load humanize %}{% endraw %}
 
 Good use case for custom filters:
 
@@ -101,7 +101,7 @@ Arguments are seperated by a space
 
 You can chain filters
 
-        {{ word|lower|capfirst }}
+        {% raw %}{{ word|lower|capfirst }}{% endraw %}
 
 Applied **in order**, applied to result of one before
 

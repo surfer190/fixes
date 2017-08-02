@@ -103,3 +103,56 @@ To write tests for this you need to set up environments
 So use the `bootstrap` node which tells phpunit to load this file before running tests
 
 #### Writing a test
+
+## What needs to be tested
+
+* Every conditional statement needs at least 1 test
+* You will need to refactor code for your tests to run - remove conditional dependencies
+
+[Mockery](https://github.com/mockery/mockery) makes it easier to make duplicate calls than built in PHPunit mocks
+
+Another good tool is [HTML purifier](http://htmlpurifier.org/) which can be used to strip out unwanted characters
+
+PDO objects have some functionality internally that PHP's Reflection API doesn't handle properly so the built-in test double features of PHPUnit can't create doubles of them
+
+## Princliples
+
+* Every testcase has at least 1 assertion
+
+Explicit is better than implicit, so multiple assertions are probably the best way to go
+
+## Acceptance Tests
+
+Unit tests - inidividual modules of code working in the way you expect, using dependencies and doubles for a consistent state.
+
+Acceptance tests - Ensure individual modules of code are speaking to each other correctly a.k.a integration tests, no need to worry about test doubles.
+
+### Data Provider
+
+Making multiple assertions can be done with the use of a `DataProvider`
+
+### DB Unit Tests
+
+> Thou shalt not use a real database, and create test doubles
+
+Fast running tests that work even if database is not there
+
+On the other hand there are those that advocate using `DB_unit` that requires a live database to run tests
+
+A tool that phpunit can use to create database connections
+
+Need to extend from a different test class:
+
+`PHPUnit_Extensions_Database_Testcase`
+
+**2 methods** have to be implemented: `getConnection()` and `getDataSet()`
+
+A `dataset.xml` is imported but there is a caveat for `null` values
+
+If you are using `db_unit` you won't be using mocks
+
+**DB Unit will delete everything** before adding data from seed files
+
+Unit tests are not supposed to talk to databases or 3rd party, use test doubles as standins.
+
+
