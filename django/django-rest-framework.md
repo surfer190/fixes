@@ -379,3 +379,148 @@ Can set ad-hoc with:
                 course.reviews.all(), many=True
             )
             return Response(serializer.data)
+
+# Authentication
+
+Session authentication is best used for ajax, so API is in same context as website
+Session authentication does not work if there is no session, token based auth is better choice.
+
+## Token Based Auth
+
+Settings add installed apps: `rest_framework.authtoken`
+
+Then ensure this is in `settings.py`:
+
+        REST_FRAMEWORK = {
+            'DEFAULT_AUTHENTICATION_CLASSES': (
+                'rest_framework.authentication.TokenAuthentication',
+            ),
+
+Remember to migrate
+
+Usually create a token when user signs up
+
+### Token Manipulation
+
+        >>> from rest_framework.authtoken.models import Token
+        >>> from django.contrib.auth.models import User
+        >>> user = User.objects.get(id=1)
+        >>> user
+        <User: kennethlove>
+        >>> token = Token.objects.create(user=user)
+        >>> token
+        <Token: 20e4b51df8258feb77726168051c23e8e522d8b8>
+
+To call from client:
+
+Add header:
+
+`Authorization: Token 20e4b51df8258feb77726168051c23e8e522d8b8`
+
+### Authorization Options
+
+* `AllowAny` - allows anyone do as they please
+* `isAuthenticated` - authenticated normal user
+* `isAdmin` - authenticated admin
+* `DjangoModelPermissions` - users assigned model permissions
+
+### Per view permission
+
+        from rest_framework import permissions
+
+Set the `permission_classes`:
+
+        class CourseViewSet(viewsets.ModelViewSet):
+            permission_classes = (permissions.DjangoModelPermissions,)
+
+But to only allow superuser to delete for example:
+
+        class IsSuperUser(permissions.BasePermission):
+            def has_permission(self, request, view):
+                if request.user.is_super_user:
+                        return True
+                else:
+                    if request.method == 'DELETE:
+                        return False
+
+
+        class CourseViewSet(viewsets.ModelViewSet):
+            queryset = models.Course.objects.all()
+            serializer_class = serializers.CourseSerializer
+            permission_classes = (
+                IsSuperUser,
+                permissions.DjangoModelPermissions,
+            )
+    
+### Per-Object Permissions
+
+A library called [Django Gaurdian](http://django-guardian.readthedocs.io/en/stable/overview.html) can be used
+
+## Throttling controls access to a view
+
+You can set limits to amount of requests to a specific view
+
+There are multiple approaches
+
+### Global Approach
+
+Add to `settings.py` : `REST_FRAMEWORK`:
+
+        'DEFAULT_THROTTLE_CLASSES': (
+            'rest_framework.throttling.AnonRateThrottle',
+            'rest_framework.throttling.UserRateThrottle',
+        ),
+        'DEFAULT_THROTTLE_RATES': {
+            'anon': '5/minute',
+            'user': '10/minute'
+        }
+
+Cache is used to store throttling data. Best to use a production cache backend.
+
+### Serializer Field level Validation
+
+Use `validate_<fieldName>` method
+
+Field must be required for validation to run **always**
+
+Add to serializer class:
+
+        def validate_rating(self, value):
+            if value in range(1, 6):
+                return value
+            else:
+                raise serializers.ValidationError(
+                    'Rating must be a value between 1 and 5'
+                )
+
+Check the [DRF Docs for object level validations](http://www.django-rest-framework.org/api-guide/serializers/#validation)
+
+## Adding data to Serialized representation of Data
+
+This will do alot of calculations, probably better to store in db field
+
+        class CourseSerializer(serializers.ModelSerializer):
+
+            reviews = serializers.PrimaryKeyRelatedField(
+                many=True,
+                read_only=True
+            )
+            average_rating = serializers.SerializerMethodField()
+
+            class Meta:
+                model = models.Course
+                fields = (
+                    'id',
+                    'title',
+                    'url',
+                    'reviews',
+                    'average_rating'
+                )
+
+            def get_average_rating(self, obj):
+                average = obj.reviews.aggregate(Avg('rating')).get('rating__avg')
+                if average is None:
+                    return 0
+                else:
+                    return round(average*2) / 2
+                    
