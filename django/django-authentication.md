@@ -51,6 +51,7 @@ In `urls.py`:
 
 Add the template is `accounts/templates/accounts/login.html`:
 
+        {% raw %}
         {% extends 'layout.html' %}
 
         {% load bootstrap3 %}
@@ -67,6 +68,7 @@ Add the template is `accounts/templates/accounts/login.html`:
             </form>
         </div>
         {% endblock %}
+        {% endraw %}
 
 ## The Easier Way
 
@@ -122,6 +124,7 @@ Signing up is usually very site specific so there is no generic
 
 **template**:
 
+        {% raw %}
         {% extends 'layout.html' %}
 
         {% load bootstrap3 %}
@@ -138,6 +141,7 @@ Signing up is usually very site specific so there is no generic
             </form>
         </div>
         {% endblock %}
+        {% endraw %}
 
 
 **url**:
