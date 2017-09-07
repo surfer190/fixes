@@ -312,5 +312,32 @@ In a model add to `class Meta:`
             ('ban_member', 'Can ban members'),
         )
 
-**When you add a permission you need to migrate**
+**When you add a permission you need to migrate, as adds to permissions table**
 
+Check if a user has a permission:
+
+    if self.request.user.has_perm("products.can_give_discount")
+
+So it uses `model plural name` + `permission_name`
+
+### Creating groups
+
+from django.contrib.auth.models import (
+    Permission,
+    Group
+)
+
+new_group, group = Group.objects.get_or_create(name="Editors")
+
+### Creating permissions
+
+content_type = ContentType.objects.get_for_model(models.Product)
+permission = Permission.objects.get_or_create(
+    codename='can_give_discount',
+    name='Can Give Discount',
+    content_type=content_type
+)
+
+group.permissions.add(permission)
+
+user.groups.add(group)
