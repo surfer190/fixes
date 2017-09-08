@@ -6,12 +6,10 @@ Everything in python is an Object
 
 ## Declaration
 
-```
-class Monster:
-    hit_points = 1
-    color = 'yellow'
-    weapon = 'sword'
-```
+        class Monster:
+            hit_points = 1
+            color = 'yellow'
+            weapon = 'sword'
 
 ## importing a class
 
@@ -45,56 +43,45 @@ Can use self variable to get info about the current instance
 
 Runs when a new instance is created
 
-a pythonic `consturcutor`
+a pythonic `construcutor`
 
 eg.
 
-```
-class Monster:
-    def __init__(self, hit_points, weapon, color, sound):
-        self.hit_points = hit_points
-        self.weapon = weapon
-        self.color = color
-        self.sound = sound
+        class Monster:
+            def __init__(self, hit_points, weapon, color, sound):
+                self.hit_points = hit_points
+                self.weapon = weapon
+                self.color = color
+                self.sound = sound
 
-    def battlecry(self):
-        return self.sound.upper()
-```
+            def battlecry(self):
+                return self.sound.upper()
 
-```
-slimey = Monster(5, 'Sword', 'blue', 'GLUG')
-```
+        slimey = Monster(5, 'Sword', 'blue', 'GLUG')
 
 Can set **defaults**:
 
-```
-def __init__(self, hit_points=5, weapon='Sword', color='yellow', sound='roar'):
-```
+        def __init__(self, hit_points=5, weapon='Sword', color='yellow', sound='roar'):
 
 Or dictionary unpacking:
 
-```
-## ** means handle as dictionary
-def __init__(self, **kwargs):
-    self.hit_points = kwargs.get('hit_points', 1)
-    # Can still set the default
-```
+`**` means handle as _dictionary_
+
+        def __init__(self, **kwargs):
+            self.hit_points = kwargs.get('hit_points', 1)
+            # Can still set the default
 
 ## Delete an instance
 
-```
-jubjub = Monster()
-del jubjub
-```
+        jubjub = Monster()
+        del jubjub
 
 ## Setting attributes
 
 Usually used in `__init__(self, **kwargs)`
 
-```
        for key, value in kwargs.items():
             setattr(self, key, value)
-```
 
 Usage: `jabber = Monster(color='blue', hit_points=500, sound='whiffling', adjective='manxsome')`
 
@@ -102,10 +89,8 @@ Usage: `jabber = Monster(color='blue', hit_points=500, sound='whiffling', adject
 
 Showing a subclass = Inheriting all attribute of parent class:
 
-```
-class Goblin(Monster):
-    pass
-```
+        class Goblin(Monster):
+            pass
 
 Every class inherits from default `object` class 
 
@@ -119,21 +104,18 @@ so `class Monster:` === `class Monster(objecy)`
 
 `self.__class__.__name__` - class name and string representation of that class
 
-```
-    def __str__(self):
-        return '{} {}, HP: {}, XP: {}'.format(self.color.title(),
-                                              self.__class__.__name__,
-                                              self.hit_points,
-                                              self.experience)
-```
+        def __str__(self):
+            return '{} {}, HP: {}, XP: {}'.format(self.color.title(),
+                                                self.__class__.__name__,
+                                                self.hit_points,
+                                                self.experience)
 
-```
-from monster import Monster
-my_mon = Monster()
-print(my_mon)
+        from monster import Monster
+        my_mon = Monster()
+        print(my_mon)
 
-# Will print the dunder str
-```
+
+**Will print the dunder str**
 
 ## DRY
 
@@ -151,6 +133,5 @@ You can override an inherited class simply by writing the method in the subclass
 Special variable only ever equa to itself
 
 It is `falsey`
-
 
 `sys.exit()`..`sys` is a library to exit the interpreter
