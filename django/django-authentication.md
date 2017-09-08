@@ -341,3 +341,25 @@ permission = Permission.objects.get_or_create(
 group.permissions.add(permission)
 
 user.groups.add(group)
+
+group.user_set.add(user)
+
+### Create group, create permission and add to permission
+
+    def create_editor(self, email, dob, password):
+        user = self.create_user(
+            email,
+            dob,
+            accepted_tos=True,
+            password=password
+        )
+
+        try:
+            editors = Group.objects.get(name__iexact="Editors")
+        except Group.DoesNotExist:
+            editors = Group.objects.create(name="Editors")
+
+        editors.permissions.add(Permission.objects.get(codename="can_give_discount")) # add can_give_discount permission
+        user.groups.add(editors)
+        user.save()
+        return user
