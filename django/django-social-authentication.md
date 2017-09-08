@@ -56,7 +56,7 @@ Add client is and client secret
 
 ## Tempalte
 
-Add tempalte tags: `{% import socialaccount %}`
+Add tempalte tags: `{% raw %}{% import socialaccount %}{% endraw %}`
 
 Add provider login: 
 
