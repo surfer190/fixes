@@ -9,3 +9,8 @@ So in python you can use `else` after a for loop:
         else:
             # Come to the end and we do this
             # like a finally
+            ...
+
+### Try...Except...Else
+
+    
