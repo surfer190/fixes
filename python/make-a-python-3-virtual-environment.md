@@ -25,6 +25,16 @@ or
 
     python3.6 -m venv my-venv
 
+## VirtualEnv is now built into Python3
+
+So you can use:
+
+        python3 -m venv env
+
+and activate:
+
+        source env/bin/active
+
 Source: 
 
 * [Stackoverflow using python 3 virtulenv](http://stackoverflow.com/questions/23842713/using-python-3-in-virtualenv)
