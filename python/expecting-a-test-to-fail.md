@@ -20,4 +20,4 @@ To expect a `TypeError`:
             with self.assertRaises(TypeError):
                 s.split(2)
 
-Source: (assertRaises)[https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertRaises]
+Source: [assertRaises](https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertRaises)
