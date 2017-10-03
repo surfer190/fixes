@@ -202,7 +202,7 @@ Replace a directory
 
 **Get file extension without pathlib**
 
-(Source)[https://stackoverflow.com/questions/541390/extracting-extension-from-filename-in-python]
+[Source](https://stackoverflow.com/questions/541390/extracting-extension-from-filename-in-python)
 
         >>> import os
         >>> filename, file_extension = os.path.splitext('/path/to/somefile.ext')
@@ -213,3 +213,60 @@ Replace a directory
 
 
 ### File Deletions
+
+        >>> import os
+
+Remove a file
+
+        >>> os.remove('bootstrap/bootstrap.js')
+
+Remove an empty directory, an error given if not empty
+
+        >>> os.rmdir('bootstrap/img')
+
+Deleting a directory that is not empty
+
+        for thing in os.scandir('bootstrap/js'):
+            if thing.is_file():
+                os.remove(thing.path)
+
+        os.rmdir('bootstrap/js')
+
+Make dirs
+
+        os.makedirs('bootstrap/js/packages/stuff')
+        os.removedirs('bootstrap/js/packages/stuff')
+
+Will remove everything except directory not empty
+
+### Send2Trash
+
+There is a package called `send2trash` 
+
+        from send2trash import send2trash
+
+        send2trash('tree.py')
+
+### Working with temporary files, dirctories and friends
+
+        import tempfile
+
+Using the `TemporaryDirectory`:
+
+        with tempfile.TemporaryDirectory() as tmpdirname:
+            print("Printed temporary directory named: {}".format(tmpdirname))
+            with open(os.path.join(tmpdirname, 'temp_file.txt'), 'w') as f:
+                f.write('hello\n')
+            input()
+
+Using `TemporaryFile`:
+
+        fp = tempfile.TemporaryFile()
+        fp.write(b'hello\n')
+        fp.close()
+
+To be able to find the file later on:
+
+        fp = tempfile.NamedTemporaryFile()
+        fp.name
+        
