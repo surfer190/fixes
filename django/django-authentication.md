@@ -322,27 +322,27 @@ So it uses `model plural name` + `permission_name`
 
 ### Creating groups
 
-from django.contrib.auth.models import (
-    Permission,
-    Group
-)
+        from django.contrib.auth.models import (
+            Permission,
+            Group
+        )
 
-new_group, group = Group.objects.get_or_create(name="Editors")
+        new_group, group = Group.objects.get_or_create(name="Editors")
 
 ### Creating permissions
 
-content_type = ContentType.objects.get_for_model(models.Product)
-permission = Permission.objects.get_or_create(
-    codename='can_give_discount',
-    name='Can Give Discount',
-    content_type=content_type
-)
+        content_type = ContentType.objects.get_for_model(models.Product)
+        permission = Permission.objects.get_or_create(
+            codename='can_give_discount',
+            name='Can Give Discount',
+            content_type=content_type
+        )
 
-group.permissions.add(permission)
+        group.permissions.add(permission)
 
-user.groups.add(group)
+        user.groups.add(group)
 
-group.user_set.add(user)
+        group.user_set.add(user)
 
 ### Create group, create permission and add to permission
 
