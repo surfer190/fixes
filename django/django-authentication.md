@@ -320,6 +320,20 @@ Check if a user has a permission:
 
 So it uses `model plural name` + `permission_name`
 
+## Permissions
+
+* `add` - View the add form and add an object
+* `change` - View the change form and change an object
+* `delete` - View the delete form
+
+**Checking if a user has a specific permission**
+
+App name `foo`, model name `Bar`
+
+* add: `user.has_perm('foo.add_bar')`
+* change: `user.has_perm('foo.change_bar')`
+* delete: `user.has_perm('foo.delete_bar')`
+
 ### Creating groups
 
         from django.contrib.auth.models import (
@@ -359,7 +373,8 @@ So it uses `model plural name` + `permission_name`
         except Group.DoesNotExist:
             editors = Group.objects.create(name="Editors")
 
-        editors.permissions.add(Permission.objects.get(codename="can_give_discount")) # add can_give_discount permission
+        editors.permissions.add(Permission.objects.get(codename="can_give_discount")) 
+        # add can_give_discount permission
         user.groups.add(editors)
         user.save()
         return user
