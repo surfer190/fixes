@@ -11,3 +11,9 @@
 ### Django Debug Toolbar
 
         pip install django-debug-toolbar
+
+### Django Extensions
+
+[Django extensions](https://github.com/django-extensions/django-extensions)
+
+        pip install django-extensions
