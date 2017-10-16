@@ -80,3 +80,7 @@ Ie. they can be called without an instance. They do require the `cls` as an argu
         TypeError: 
             "unbound method method() must be called with MyClass "
             "instance as first argument (got nothing instead)"
+
+#### Source
+
+* [Dan Bader Python Tricks](https://dbader.org)
