@@ -79,6 +79,26 @@ Use the `clean` method without a field name:
                         "You need to enter the same email in both fields"
                 )
 
+## Related Fields
+
+Say you have a related field on the model:
+
+        company = models.ForeignKey('projects.Company', on_delete=models.PROTECT)
+
+when you fill out the `ModelForm` for that model the company field will have different states.
+
+        >>>> form.data['company']
+        1
+
+Only the `cleaned_data` actually gives you back the related object
+
+        >>>> form.cleaned_data['company']
+        <Company: Default Company>
+
+When assigning the foreign key with kwargs you can use the instance or the pk or primary key.
+
+Just ensure that you use `company_id=3` when using integers and `company=my_company` when using the object instance.
+
 ## Abstract Inheritance
 
 Model inheritance that does not create a new table
