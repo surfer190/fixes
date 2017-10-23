@@ -278,5 +278,113 @@ Then set the widget for your field
                 'tasks': CheckboxSelectMultiple
                 }
 
+## Working with a many-to-many field with an intermediary model
+
+ [Working with a many-to-many field with an intermediary model in the admin](https://docs.djangoproject.com/en/1.11/ref/contrib/admin/#working-with-many-to-many-intermediary-models) for this topic.
+
+ This same method can be used for editing outside of admin, in a normal view:
+
+ The `many-to-many` field and models
+
+        class Project(models.Model):
+                '''Project model
+                '''
+                name = models.CharField(max_length=255, unique=True)
+                description = models.TextField()
+                tasks = models.ManyToManyField(Task)
+                users = models.ManyToManyField(
+                        settings.AUTH_USER_MODEL,
+                        through='ProjectMembership'
+)
+
+
+        class ProjectMembership(models.Model):
+                '''Project Membership model
+                '''
+                user = models.ForeignKey(
+                        settings.AUTH_USER_MODEL,
+                        on_delete=models.PROTECT
+                )
+                project = models.ForeignKey(Project, on_delete=models.PROTECT)
+                is_project_manager = models.BooleanField(default=False)
+                full_time_equivalent = models.DecimalField(
+                        max_digits=5,
+                        decimal_places=2,
+                        default=100,
+                        validators=[
+                        MinValueValidator(Decimal(0)),
+                        MaxValueValidator(Decimal(100))
+                        ]
+                )
+
+1. Create a form for the intermediary table in `forms.py`
+
+    class ProjectMembershipForm(forms.ModelForm):
+        class Meta:
+            model = ProjectMembership
+            fields = (
+                'user',
+                'project',
+                'is_project_manager',
+                'full_time_equivalent'
+            )
+
+2. Create a formset from the created form above in `forms.py`
+
+    ProjectMembershipFormSet = inlineformset_factory(
+        Project,
+        ProjectMembership,
+        form=ProjectMembershipForm
+    )
+
+3. Ensure that the template of the classview the `formset` is in the template
+
+    <div class='col-sm-6 col-sm-offset-3'>
+        <h2>Create Project</h2>
+        <hr/>
+
+        <form method='POST'>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div id="#inline">
+                {% bootstrap_formset projectmembership_formset layout='inline' %}
+            </div>
+            <input type="submit" class="btn btn-primary btn-lg" values="Save">
+        </form>
+    </div>
+
+4. Change the class-based view methods so that the formset is included and validated and data saved
+
+    class ProjectCreateView(CreateView):
+        model = Project
+        form_class = ProjectForm
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            if self.request.POST:
+                context['projectmembership_formset'] = ProjectMembershipFormSet(
+                    self.request.POST
+                )
+            else:
+                context['projectmembership_formset'] = ProjectMembershipFormSet()
+            return context
+
+        def form_valid(self, form):
+            '''Handle saving of the project membership formset
+            '''
+            context = self.get_context_data()
+            project_memberships = context['projectmembership_formset']
+            if project_memberships.is_valid():
+                self.object = form.save()
+                project_memberships.instance = self.object
+                project_memberships.save()
+
+            return super().form_valid(form)
+
+
+ Sources:
+ * [Django class based views with inline model formset](https://stackoverflow.com/questions/4497684/django-class-based-views-with-inline-model-form-or-formset)
+ * [Old Gist - Do not use](https://gist.github.com/neara/6209563)
+
 
 
