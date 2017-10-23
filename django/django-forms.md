@@ -259,3 +259,24 @@ Still need to add to layout css and js blocks with:
 
     {{ form.media.css }}
     {{ form.media.js }}
+
+## Changing the widget type for a field on a model form
+
+Use `class Meta`...`widgets` attribute
+
+To use checkboxes instead of a MultiSelect, first import
+
+        from django.forms.widgets import CheckboxSelectMultiple
+
+Then set the widget for your field
+
+        class MyForm(forms.ModelForm):
+        class Meta:
+                model = MyModel
+                fields = ('tasks',)
+                widgets = {
+                'tasks': CheckboxSelectMultiple
+                }
+
+
+
