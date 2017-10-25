@@ -343,6 +343,7 @@ Then set the widget for your field
         <h2>Create Project</h2>
         <hr/>
 
+        {% raw %}
         <form method='POST'>
             {% csrf_token %}
             {% bootstrap_form form %}
@@ -351,6 +352,7 @@ Then set the widget for your field
             </div>
             <input type="submit" class="btn btn-primary btn-lg" values="Save">
         </form>
+        {% endraw %}
     </div>
 
 4. Change the class-based view methods so that the formset is included and validated and data saved
@@ -386,5 +388,10 @@ Then set the widget for your field
  * [Django class based views with inline model formset](https://stackoverflow.com/questions/4497684/django-class-based-views-with-inline-model-form-or-formset)
  * [Old Gist - Do not use](https://gist.github.com/neara/6209563)
 
+### More on FormSets
 
+A formset always comes with a `ManagementForm` which contains metadata about the formset such as `form-TOTAL_FORMS`, `form-INITIAL_FORMS` and `form-MAX_NUM_FORMS`.
 
+**If you are adding new forms via JavaScript, you should increment the count fields in this form as well.**
+
+**if you are using JavaScript to allow deletion of existing objects, then you need to ensure the ones being removed are properly marked for deletion by including form-#-DELETE in the POST data**
