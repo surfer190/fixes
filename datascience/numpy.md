@@ -314,3 +314,281 @@ A new array created by an array of arrays will share the same shape
     array([[3, 4],
         [9, 7]])
 
+
+**Remember for an element `a[5,6]` the x-axis is `6` and the y-axis is `5`
+
+### Indexing 
+
+An iteratable can be used `tuple` works the same as a `list`:
+
+    full[[0,1,2,3,4], [1,2,3,4,5]]
+    full[(0,1,2,3,4), (1,2,3,4,5)]
+
+You can use standard list manipulation notation:
+
+    full[(3:, [0,2,5]]
+
+## Numerical operations on arrays
+
+### With Scalars
+
+scalars are single element or number fields
+
+You can simply apply the arithmetic to the whole array
+
+    >>> a = np.array([1, 2, 3, 4])
+    >>> a + 1
+    array([2, 3, 4, 5])
+
+Lets try `a` to the power of `2`
+
+    >>> a**2
+    array([ 1,  4,  9, 16])
+
+**All arithmetic operates element-wise**
+
+    >>> b = np.ones(4) + 1
+    >>> b
+    array([ 2.,  2.,  2.,  2.])
+    >>> a - b
+    array([-1.,  0.,  1.,  2.])
+
+Another example:
+
+    >>> j = np.arange(5)
+    >>> j
+    array([0, 1, 2, 3, 4])
+    >>> 2**(j + 1) - j
+    array([ 2,  3,  6, 13, 28])
+
+__The operations are much faster than if you did them in pure python__
+
+### Matrix Multiplcation
+
+In [6]: c = np.ones((3, 3))
+
+In [7]: c
+Out[7]:
+array([[ 1.,  1.,  1.],
+       [ 1.,  1.,  1.],
+       [ 1.,  1.,  1.]])
+
+**Using `*` is not matrix multiplication**
+
+In [8]: c * c
+Out[8]:
+array([[ 1.,  1.,  1.],
+       [ 1.,  1.,  1.],
+       [ 1.,  1.,  1.]])
+
+**Using the `dot` function is matrix multiplciation**
+
+`dot` is the product of 2 arrays
+
+In [9]: c.dot(c)
+Out[9]:
+array([[ 3.,  3.,  3.],
+       [ 3.,  3.,  3.],
+       [ 3.,  3.,  3.]])
+
+### Comparison is also element-wise
+
+        In [20]: a = np.array([1, 2, 3, 4])
+
+        In [21]: b = np.array([4, 2, 2, 4])
+
+        In [22]: a == b
+        Out[22]: array([False,  True, False,  True], dtype=bool)
+
+        In [23]: a > b
+        Out[23]: array([False, False,  True, False], dtype=bool)
+
+If you want to compare the entire array use `np.array_equal()`:
+
+        a = np.array([1, 2, 3, 4])
+        b = np.array([1, 2, 3, 4])
+        np.array_equal(a, b)
+
+### Logic operations
+
+Use `np.logical_or()` and `np.logical_and()`
+
+    >>> a = np.array([1, 1, 0, 0], dtype=bool)
+    >>> b = np.array([0, 1, 1, 0], dtype=bool)
+    >>> np.logical_or(a, b)
+    array([ True,  True,  True, False], dtype=bool)
+    >>> np.logical_and(a, b)
+    array([False,  True, False, False], dtype=bool)
+
+### Transcendental operations
+
+Use `np.sin`, `np.cos`, `np.tan`, `np.log` and `np.exp`
+
+        >>> a = np.array([-1, 0, 1, 2])
+        >>> a
+        array([-1,  0,  1,  2])
+        >>> np.sin(a)
+        array([-0.84147098,  0.        ,  0.84147098,  0.90929743])
+        >>> np.log(a)
+        __main__:1: RuntimeWarning: divide by zero encountered in log
+        __main__:1: RuntimeWarning: invalid value encountered in log
+        array([        nan,        -inf,  0.        ,  0.69314718])
+        >>> np.exp(a)
+        array([ 0.36787944,  1.        ,  2.71828183,  7.3890561 ])
+
+### Mimatch
+
+    >>> a = np.arange(4)
+    >>> a + np.array([1, 2])
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    ValueError: operands could not be broadcast together with shapes (4,) (2,)
+
+When the shapes of the arrays do not match they cannot be **broadcast**
+
+### Transpose
+
+Invert and reflect. Opposite on both axis.
+
+Create a triangle with `np.triu` (Use `help(np.triu)`)
+
+    >>> np.triu(np.ones((3,3)),1)
+    array([[ 0.,  1.,  1.],
+        [ 0.,  0.,  1.],
+        [ 0.,  0.,  0.]])
+
+then transpose with:
+
+    >>> a.T
+    array([[ 0.,  0.,  0.],
+        [ 1.,  0.,  0.],
+        [ 1.,  1.,  0.]])
+
+**Remember a transposition is a view, so when arrays become larger they will fail in unpredicatable ways**
+
+### Extras
+
+* `np.allclose` - Returns True if two arrays are element-wise equal within a tolerance.
+* `np.tril`- Lower triangle of an array.
+
+## Basic Reductions
+
+### Finding the sum of an array
+
+    >>> a
+    array([ 0,  5, 10, 15, 20, 25])
+    >>> a.sum()
+    75
+    >>> np.sum(a)
+    75
+
+On the `axis`:
+
+    >>> a = np.array([[1,1], [2,2]])
+    >>> a
+    array([[1, 1],
+        [2, 2]])
+
+Find sum of the `column` along the `y-axis` - `first dimension`
+
+    >>> a.sum(axis=0)
+    array([3, 3])
+
+Find the sum of `column` along the `x-axis` - `second dimension`:
+
+    >>> a.sum(axis=1)
+    array([2, 4])
+
+Same idea at higher dimensions:
+
+    >>> x = np.random.rand(2, 2, 2)
+    >>> x
+    array([[[ 0.73091254,  0.3126328 ],
+            [ 0.52196148,  0.51212003]],
+
+        [[ 0.07157999,  0.15920737],
+            [ 0.75733851,  0.99707551]]])
+    >>> x.sum(axis=2)[0, 1]
+    1.0340815143357149
+
+`min`, `max` and index of min and max
+
+    x = np.array([1, 3, 2])
+    >>> x.min()
+    1
+    >>> x.max()
+    3
+
+Get the index of the min or max:
+
+
+    >>> x.argmin()
+    0
+    >>> x.argmax()
+    1
+
+### Logic operations
+
+    >>> np.all([True, True, False])
+    False
+    >>> np.any([True, True, False])
+    True
+
+Can be used with an argument:
+
+    >>> a = np.array([1, 2, 3, 2])
+    >>> b = np.array([2, 2, 3, 2])
+    >>> np.all(a < 4)
+    True
+    >>> np.any(a > 4)
+    False
+    >>> np.any(a > 3)
+    False
+    >>> np.any(a > 2)
+    True
+
+With multiple conditions:
+
+    >>> a = np.array([1, 2, 3, 2])
+    >>> b = np.array([2, 2, 3, 2])
+    >>> c = np.array([6, 4, 4, 5])
+    >>> ((a <= b) & (b <= c))
+    array([ True,  True,  True,  True], dtype=bool)
+    >>> ((a <= b) & (b <= c)).all()
+    True
+
+### Statistics
+
+>>> y = np.array([[1, 2, 3], [5, 6, 1]])
+
+The average or `mean`:
+
+    >>> y.mean()
+    3.0
+
+The median along the `-1` last axis
+
+    >>> np.median(y, axis=-1)
+    array([ 2.,  5.])
+
+The standard devication
+
+    >>> x.std()
+    0.81649658092772603
+
+cumsum is the cumulative sum
+
+    >>> y.cumsum(axis=0)
+    array([[1, 2, 3],
+        [6, 8, 4]])
+    >>> y.cumsum(axis=1)
+    array([[ 1,  3,  6],
+        [ 5, 11, 12]])
+    >>> y
+    array([[1, 2, 3],
+        [5, 6, 1]])
+
+**Remember in ipython you can run bash commands with `!` in front**
+
+Eg. `!cat data/populations.txt`
+
