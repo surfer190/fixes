@@ -26,3 +26,5 @@ Dependent dynamic dropdowns for admin and frontend:
 
 Remember if you aren't getting expected results, then insepect the ajax request with developer tools and get decent error messages which will help you correct.
 
+Also keep in mind that the selects are globally accessible so if you want to protect them you may want to use []django-decorrator-incldue(https://github.com/twidi/django-decorator-include) and have the incldued urls decorated with a `login_required`
+
