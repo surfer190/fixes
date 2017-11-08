@@ -122,4 +122,164 @@ Run the test with:
 
     ./manage.py test
 
+## A proper example
+
+        from django.urls import resolve
+        from django.test import TestCase
+        from lists.views import home_page
+
+
+        class HomePageTest(TestCase):
+
+            def test_root_url_resolves_to_home_page_view(self):
+                found = resolve('/')
+                self.assertEqual(found.func, home_page)
+
+* `resolve` maps a `uri` to a view function
+* The view does not exist yet so the function returns:
+
+        ImportError: cannot import name 'home_page'
+
+Let us make it pass:
+
+    home_page = None
+
+then run the test again and you will get a `traceback`
+
+        ======================================================================
+        ERROR: test_root_url_resolves_to_home_page_view (lists.tests.HomePageTest)
+        ----------------------------------------------------------------------
+        Traceback (most recent call last):
+        File "/Users/stephen/projects/testing-goat/superlists/lists/tests.py", line 9, in test_root_url_resolves_to_home_page_view
+            found = resolve('/')
+        File "/Users/stephen/Envs/superlists/lib/python3.6/site-packages/django/urls/base.py", line 27, in resolve
+            return get_resolver(urlconf).resolve(path)
+        File "/Users/stephen/Envs/superlists/lib/python3.6/site-packages/django/urls/resolvers.py", line 392, in resolve
+            raise Resolver404({'tried': tried, 'path': new_path})
+        django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>]], 'path': ''}
+
+So let us decrypt this gibberish:
+
+* `django.urls.exceptions.Resolver404` is the actual error, sometimes it is self-evident other times not so much.
+* Double check what test is actually failing
+* Then trace through and find the part of `our` code that actually kicked off the failure (ie. not in django env)
+
+        found = resolve('/')
+
+So to sum it up django can't find a mapping for `/` and a `404` is given
+
+It can be fixed with adding the `url`:
+
+    urlpatterns = [
+        url(r'^$', views.home_page, name='home'),
+    ]
+
+Now it is complaining that `views.home_page` is not a callable:
+
+    TypeError: view must be a callable or a list/tuple in the case of include()
+
+**Every code change is driven by a test**
+
+        def home_page():
+            pass
+
+**Tests Pass**
+
+        .
+        ----------------------------------------------------------------------
+        Ran 1 test in 0.001s
+
+        OK
+
+## The TDD Cycle
+
+The cycle now has 2 steps
+
+1. In the terminal, run the unit tests and see how they fail.
+2. In the editor, make a minimal code change to address the current test failure.
+
+> The more nervous we are about getting our code right, the smaller and more minimal we make each code change—​the idea is to be absolutely sure that each bit of code is justified by a test.
+
+> TDD is a discipline, and that means it’s not something that comes naturally
+
+## Interacting with the page with Selenium
+
+* `find_element_by_tag_name` / `find_elements_by_tag_name`
+
+        header_text = self.browser.find_element_by_tag_name('h1').text
+
+* `find_element_by_id`
+
+        inputbox = self.browser.find_element_by_id('id_new_item')
+
+* `send_keys` - seleniums way of typing into an element
+        
+        inputbox.send_keys('Buy peacock feathers')
+
+* Use the `ENTER` key
+
+        from selenium.webdriver.common.keys import Keys
+        inputbox.send_keys(Keys.ENTER)
+
+* Wait for the page to refresh
+
+        import time
+        time.sleep(1)
+
+## Asserting existance in iterables
+
+Make use of `any` to ensure existance in iterables
+
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')  
+        self.assertTrue(
+            any(row.text == '1: Buy peacock feathers' for row in rows)
+        )
+
+> Big changes to a functional test are usually a good thing to commit on their own
+
+## Dont test constants rule
+
+> Unit tests are really about testing logic, flow control, and configuration. Making assertions about exactly what sequence of characters we have in our HTML strings isn’t doing that.
+
+**refactor - improve the code without changing its functionality**
+
+## The Django Test Client
+
+Instead of manually creating an `HttpRequest()` we can use `response = self.client.get('/')`
+
+You can then make use of `assertTemplateUsed`:
+
+    self.assertTemplateUsed(response, 'home.html')
+
+**Always be suspicious of tests you have not seen fail**
+
+This lets us remove tests about `resolve` and tests about actual html
+
+So we are now _testing our implementation and not constants_
+
+## On Refactoring
+
+> keep refactoring and functionality changes entirely separate
+
+We can pass a custom error message as an argument to most assertX methods in unittest
+
+Example:
+
+        self.assertTrue(
+            any(row.text == '1: Buy peacock feathers' for row in rows),
+            "New to-do item did not appear in table"
+        )
+
+## The TDD Process
+
+1. Functional test
+2. Unit test
+3. Minimal code ot pass test
+4. Refactor
+
+> The functional tests are the ultimate judge of whether your application works or not. The unit tests are a tool to help you along the way.
+
+
+
 

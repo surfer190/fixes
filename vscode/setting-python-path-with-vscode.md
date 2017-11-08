@@ -6,7 +6,7 @@ So if you check [stackoverflow](https://stackoverflow.com/questions/37642045/use
 
 You will find you can just type:
 
-    <kbd>Shift</kbd> + <kbd>Command</kbd> + <kbd>P</kbd>
+    Shift + Command + P
 
 Type:
 

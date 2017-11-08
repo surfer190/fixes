@@ -69,3 +69,7 @@ Basically returns the same index position for all iterables
 Sets are like a list but they don't have an order and are **unique**
 
 They are created with `{` `}` but they don't have a colon to seperate values
+
+## Interesting Reads
+
+[Python History: The history of List Comprehensions](http://python-history.blogspot.co.za/2010/06/from-list-comprehensions-to-generator.html)
