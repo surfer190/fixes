@@ -203,7 +203,11 @@ Setting flash message inthe view
 
         flash("Saved changes!")
 
-Displaying messags in the tempalte
+Can set a category:
+
+        flash("Yay! you registered", "success")
+
+Displaying messags in the template
 
         <div class="wrap no-bottom messages">
             {% with messages = get_flashed_messages() %}
@@ -218,4 +222,224 @@ Displaying messags in the tempalte
         </div>
 
 > Remember flashes only happen once (persist till next time page is viewed)
+
+## Database
+
+Connecting to and disconnecting from the db responsibility.
+
+We can run certain things before and after a request.
+With decorators `@app.before_request`
+
+> Remember the function for `@app.after_request` takes in a response object
+
+### The Global object
+
+`g` is a global object that gets passed around.
+We can use to set up things we want available everywhere.
+
+        from flask import g
+
+Then you can set the database:
+
+    @app.before_request
+    def before_request():
+        '''Connect to the database before each request'''
+        g.db = models.DATABASE
+        g.db.connect()
+
+and close the database after:
+
+    @app.after_request
+    def after_request(response):
+        '''Close the database connection after each request'''
+        g.db.close()
+        return response
+
+### Run the app
+
+    if __name__ == '__main__':
+        app.run(debug=DEBUG)
+
+## Login
+
+To get the login sorted you need the `LoginManager`
+
+        from flask_login import LoginManager
+
+You also need to enable sessions so you need the `secret_key`
+
+        app.secret_key = 'djkh7dhYYGSHhhsbjdyd'
+
+You need to create the login mnager and initilaise the app and give it the view t redirect anonymous users to:
+
+        login_manager = LoginManager()
+        login_manager.init_app(app)
+        login_manager.login_view = 'login'
+
+Add the `user_loader` method:
+
+        @login_manager.user_loader
+        def load_user(userid):
+            try:
+                return models.User.get(models.User.id == userid)
+            except models.DoesNotExist:
+                return None
+
+## Forms
+
+Forms are all about validation and a bit about display
+
+The defactor package is `flask_wtf` build on `wtforms`
+
+    pip install flask-wtf
+
+Example form with validation
+
+        from flask_wtf import Form
+        from wtforms import StringField, PasswordField
+        from wtforms.validators import (
+            DataRequired, Email, Regexp, ValidationError
+            Length, EqualTo)   
+
+        from models import User
+
+        def name_exists(form, field):
+            if User.select().where(User.username == field.data).exists():
+                raise ValidationError('Username already exists')
+
+        def email_exists(form, field):
+            if User.select().where(User.email == field.data).exists():
+                raise ValidationError('Email already exists')
+
+        class RegisterForm(Form):
+            username = StringField(
+                'Username',
+                validators=[
+                    DataRequired(),
+                    Regexp(
+                        r'^[a-zA-Z0-9_]+$',
+                        messsage=("Username should be one word; letters, "
+                                "numbers or underscores only")
+                    ),
+                    name_exists
+                ]
+            )
+            email = StringField(
+                'Email',
+                validators=[
+                    DataRequired(),
+                    Email(),
+                    email_exists
+                ]
+            )
+            password = PasswordField(
+                'Password',
+                validators=[
+                    DataRequired(),
+                    Length(min=2),
+                    EqualTo('password2', message='Passwords must match'),
+                ]
+            )
+            password2 = PasswordField(
+                'Confirm Password',
+                validators=[
+                    DataRequired()
+                ]
+            )
+
+### Handling forms in the view
+
+        @app.route('/register', methods=('GET', 'POST',))
+        def register():
+            form = forms.RegisterForm()
+            if form.validate_on_submit():
+                flash("Yay! you registered", "success")
+                models.User.create_user(
+                    username=form.username.data,
+                    email=form.email.data,
+                    password=form.password.data
+                )
+                return redirect(url_for('index'))
+            return render_template('register.html', form=form)
+
+### Showing the view
+
+        <form method="POST" action="" class="form">
+            {{ form.hidden_tag() }}
+            {% for field in form %}
+                <div class="field">
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="notification error">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                    {{ field(placeholder=field.label.text) }}
+                </div>
+        </form>
+
+### Macros
+
+Macros are pieces of reusabel tremplate code
+
+Create the macro in `templates/macros.html`:
+
+        {% macro render_field(field) %}
+        <div class="field">
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="notification error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+            {{ field(placeholder=field.label.text) }}
+        </div>
+        {% endmacro %}
+
+Then use the macro with:
+
+{% from 'macros.html' import render_field %}
+
+<form method="POST" action="" class="form">
+    {{ form.hidden_tag() }}
+    {% for field in form %}
+        {{ render_field(field) }}
+    {% endfor %}
+</form>
+
+## Template Layout
+
+Setting variables for flash messages:
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="notification {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+Checking logged in:
+
+        <!-- Log in/Log out -->
+        {% if current_user.is_authenticated() %}
+        <a href="{{ url_for('logout') }}" class="icon-power" title="Log out"></a>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="icon-power" title="Log in"></a>
+        <a href="{{ url_for('register') }}" class="icon-profile" title="Register"></a>
+        {% endif %}
+
+## Returning a 404
+
+To return a 404 we need `abort`
+
+        from flask import abort
+
+Usage:
+
+        abort(404)
+
+### Setting a custom404 page
+
+        @app.errorhandler(404)
+        def not_found(error):
+            return render_template('404.html'), 404
 
