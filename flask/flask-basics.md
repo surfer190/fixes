@@ -132,12 +132,16 @@ Removes duplicate html and makes use of `blocks` that can be swapped out
 
 Create a `layout.html` file in `templates`, copy generic code and add blocks for changable context:
 
+        {% raw %}
         {% block content %}
         {% endblock %}
+        {% endraw %}
 
 To use it in other template files you need to `extend`:
 
+        {% raw %}
         {% extends 'layout.html' %}
+        {% endraw %}
 
 To add the content from the parent block use the `super()` function in the block
 
@@ -209,6 +213,7 @@ Can set a category:
 
 Displaying messags in the template
 
+        {% raw %}
         <div class="wrap no-bottom messages">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -220,6 +225,7 @@ Displaying messags in the template
                 {% endif %}
             {% endwith %}
         </div>
+        {% endraw %}
 
 > Remember flashes only happen once (persist till next time page is viewed)
 
@@ -364,6 +370,7 @@ Example form with validation
 
 ### Showing the view
 
+        {% raw %}
         <form method="POST" action="" class="form">
             {{ form.hidden_tag() }}
             {% for field in form %}
@@ -376,6 +383,7 @@ Example form with validation
                     {{ field(placeholder=field.label.text) }}
                 </div>
         </form>
+        {% endraw %}
 
 ### Macros
 
@@ -383,6 +391,7 @@ Macros are pieces of reusabel tremplate code
 
 Create the macro in `templates/macros.html`:
 
+        {% raw %}
         {% macro render_field(field) %}
         <div class="field">
             {% if field.errors %}
@@ -393,22 +402,27 @@ Create the macro in `templates/macros.html`:
             {{ field(placeholder=field.label.text) }}
         </div>
         {% endmacro %}
+        {% endraw %}
 
 Then use the macro with:
 
-{% from 'macros.html' import render_field %}
+        {% raw %}
+        {% from 'macros.html' import render_field %}
 
-<form method="POST" action="" class="form">
-    {{ form.hidden_tag() }}
-    {% for field in form %}
-        {{ render_field(field) }}
-    {% endfor %}
-</form>
+        <form method="POST" action="" class="form">
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+                {{ render_field(field) }}
+        {% endfor %}
+        </form>
+
+        {% endraw %}
 
 ## Template Layout
 
 Setting variables for flash messages:
 
+        {% raw %}
         {% with messages = get_flashed_messages(with_categories=True) %}
           {% if messages %}
             {% for category, message in messages %}
@@ -416,9 +430,11 @@ Setting variables for flash messages:
             {% endfor %}
           {% endif %}
         {% endwith %}
+        {% endraw %}
 
 Checking logged in:
 
+        {% raw %}
         <!-- Log in/Log out -->
         {% if current_user.is_authenticated() %}
         <a href="{{ url_for('logout') }}" class="icon-power" title="Log out"></a>
@@ -426,6 +442,7 @@ Checking logged in:
         <a href="{{ url_for('login') }}" class="icon-power" title="Log in"></a>
         <a href="{{ url_for('register') }}" class="icon-profile" title="Register"></a>
         {% endif %}
+        {% endraw %}
 
 ## Returning a 404
 
