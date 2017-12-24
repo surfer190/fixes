@@ -10,17 +10,28 @@ Now the official recommendation for managing python dependencies is [pipenv](htt
 
 ## Installing
 
-Install on your system:
+#### Install on your system:
 
         pip install pipenv
 
-Install a package
+#### Install a package
 
         pipenv install requests
 
 1. Creates a pipfile
 2. Installs `requests`
 3. Creates a lockfile
+
+#### Installing just for development
+
+Use the `---dev` parameter
+
+        pipenv install --dev nose2
+
+Then to install with dev packages run:
+
+        pipenv install --dev
+
 
 ## Open shell
 
@@ -46,6 +57,17 @@ Eg.
 
 Personally I don't like this but perhaps the advantages outway the longer command
 
+## Using Pipenv with Visual Studio
+
+Often times we want intellisense from the python virtualenv.
+
+With `pipenv` and `vscode` we first need to find where the virtual environment is with:
+
+        pipenv --venv
+
+Then open `cmd + shift + p` and `Select Interpreter` and paste the path
+
 ## Source
 
 * [More Information on pipenv](https://docs.pipenv.org/)
+* [vscode with pipenv](https://olav.it/2017/03/04/pipenv-visual-studio-code/)
