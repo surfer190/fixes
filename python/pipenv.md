@@ -34,6 +34,18 @@ If you still want to use this relic you can:
 
         pipenv lock -r
 
+## Use with django
+
+To run commands from the environment prefix the command with:
+
+        pipenv run xxx
+
+Eg.
+
+        pipenv run ./manage.py runserver
+
+Personally I don't like this but perhaps the advantages outway the longer command
+
 ## Source
 
 * [More Information on pipenv](https://docs.pipenv.org/)
