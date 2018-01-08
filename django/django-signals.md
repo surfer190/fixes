@@ -25,6 +25,10 @@ In this example we will be catching the user logout signal with the `django.cont
             def ready(self):
                 import users.signals
 
+2. Make sure the Config is loaded in `__init__.py`:
+
+        default_app_config = '<app_name>.apps.<AppConfig>'
+
 3. In `signals.py` create your signal receiver
 
     Remember the parameters available are specified in [built-in signal](https://docs.djangoproject.com/en/1.11/ref/signals/)
