@@ -851,3 +851,47 @@ Remember that we are inheriting from a helper class in functional tests. If you 
             ItemForm
         )
 
+#### Refactoring Tests
+
+You can refactor for finding elements:
+
+Say you have a lot of:
+
+        self.browser.find_element_by_id('id_text')
+
+And the id changes, you can create a function:
+
+        def get_item_input_box(self):
+                return self.browser.find_element_by_id('id_text')
+
+And make calls like:
+
+        inputbox = self.get_item_input_box()
+
+or enter text with:
+
+        self.browser.get(self.live_server_url)
+        self.get_item_input_box().send_keys(Keys.ENTER)
+
+**Be wary of testing too many things in a single test. Tests should clearly test one thing.**
+
+Another way to ensure many smalltests is create a helper method called `post_invalid_data` for example.
+
+Then have `response = self.post_invlaid_data()`
+
+__Helper methods are one of the tools that lower the psychological barrier.__
+
+## Free Browser Client-Side Validation
+
+With html5 if an input has the `required` attribute 
+
+Make sure to check for the CSS psuedo-selector `:invalid`
+
+        self.wait_for(lambda: self.browser.find_elements_by_css_selector(
+            '#id_text:invalid'
+        ))
+
+> One way of putting it is that you should trust yourself not to do something deliberately stupid, but not something accidentally stupid.
+
+
+
