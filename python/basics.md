@@ -37,7 +37,7 @@ Use `help`:
 
 Can't contanin hyphen or start with a number
 
-Eg. `favourite_nmber = 42`
+Eg. `favourite_number = 42`
 
 Can explicitly delete a variable
 

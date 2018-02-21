@@ -891,7 +891,288 @@ Make sure to check for the CSS psuedo-selector `:invalid`
             '#id_text:invalid'
         ))
 
+> You can’t be writing tests for every possible way we could have coded something wrong
+
 > One way of putting it is that you should trust yourself not to do something deliberately stupid, but not something accidentally stupid.
 
+## Skipping a test
 
+Sometimes you may want to `skip` a test.
+
+This can be done:
+
+        from unittest import skip
+        [...]
+
+                @skip
+                def test_duplicate_item_validation_errors_end_up_on_lists_page(self):
+
+## Asserting Instance fo Form
+
+You can use `unittests`'s `assertIsInstance`
+
+    def test_for_invalid_input_passes_form_to_template(self):
+        response = self.client.post('/lists/new', data={'text': ''})
+        self.assertIsInstance(
+            response.context['form'],
+            ExistingListItemForm
+        )
+
+## Ensure something is displayed
+
+Use selenium's: `is_displayed()`
+
+        self.wait_for(lambda: self.assertTrue(  
+                self.browser.find_element_by_css_selector('.has-error').is_displayed()  
+                ))
+
+# Testing Javascript
+
+Choosing a testing library and a test runner with python and django is straightforward. We use the standard library's `unittest` and django's `manage` testrunner.
+
+There are others though: [pytest](https://docs.pytest.org/en/latest/), [nose](http://nose.readthedocs.io/en/latest/) and [green](https://github.com/CleanCut/green)
+
+It is not as straightforward in the js testing world...
+
+There are a lot of options: jsUnit, Qunit, Mocha, Chutzpah, Karma, Jasmine and many more
+
+Unfortunately it does not stop there, you need to find an __assertion framework__ and a __reporter__, and maybe a __mocking library__, and it never ends!
+
+Let's try [QUnit](http://qunitjs.com/)
+
+Follow the instructions and put the files in `<app_name>/static/tests`
+
+A QUnit test looks like:
+
+        QUnit.test("smoke test", function (assert) { 
+            assert.equal(1, 1, "Maths works!"); 
+        });
+
+`QUnit.test` defines a test case much like `def test_something(self)` with the test name the first argument
+
+`assert.equal` is much like `assertEqual`. The message is displayed whether it works or not so make it a positive message.
+
+### Asserting html properties
+
+        QUnit.test("smoke test", function(assert) {
+            assert.equal($('.has-error').is(':visible'), true);
+            $('.has-error').hide();
+            assert.equal($('.has-error').is(':visible'), false);
+        });
+
+> QUnit tests do not run in a predictable order
+
+So we need a `setUp` and `tearDown` which can be achieved with a `qunit-fixture`
+
+It will reset each time if it is in:
+
+    <div id="qunit-fixture">
+        ...
+    </div>
+
+> Order execution is the biggest headache in JS testing and how it interacts with the global DOM state
+
+An element's events are removed when that element is removed and reloaded into the DOM
+
+Make use of `console.log()` statements
+
+Make use of an initialize function:
+
+    var initialize = function () {
+        $('input[name="text"]').on('keypress', function () {
+            $('.has-error').hide();
+        });
+    };
+
+Then be sure to call it as the first thing in your tests:
+
+    QUnit.test("errors should be hidden on keypress", function (assert) {
+        initialize();
+        $('input[name="text"]').trigger('keypress'); 
+        assert.equal($('.has-error').is(':visible'), false);
+    });
+
+    QUnit.test("errors aren't hidden if there is no keypress", function (assert) {
+        initialize();
+        assert.equal($('.has-error').is(':visible'), true);
+    });
+
+Then once your tests are passing then add them to your django template and call `initialize`:
+
+    <script src="/static/list.js"></script>
+
+    <script>
+      initialize();
+    </script>
+
+### Onload Boilerplate and Namespacing
+
+Initialize is too generic. Another 3rd party javascript library might use it. So use a `namespace`.
+
+    window.Superlists = {}; 
+    window.Superlists.initialize = function () { 
+        $('input[name="text"]').on('keypress', function () {
+            $('.has-error').hide();
+        });
+    };
+
+Then run:
+
+    window.Superlists.initialize();
+
+Then it is good to ensure that the page has loaded before running js:
+
+    $(document).ready(function () {
+        window.Superlists.initialize();
+    });
+
+### Testing Cycle Update
+
+1. Write a FT and see it fail
+2. Figure out which kind of code your are testing. Javascript or Python.
+3. Write a unit test in either language and see it fail.
+4. Write code in either language and see it pass.
+5. Rince and repeat.
+
+**Gotchas**:
+
+* You can make QUnit run tests from the command line as well
+* If you are using Angular, React or Vue it might be easier to use [jasmine](https://jasmine.github.io/) for tests
+
+# USer Authenticaiton, Spiking and DeSpiking
+
+> Whenever you hear a user requirement, it’s important to dig a little deeper and think—​what is the real requirement here?
+
+## Spiking
+
+Spiking refers to a quick, exploratory, investigation that involves coding.
+[See more info about how the spike word came about](https://stackoverflow.com/questions/249969/why-are-tdd-spikes-called-spikes)
+
+Despiking is replacing the prototype with tested production ready code.
+
+## Mocking
+
+### Monkey Patching
+
+During testing you never want to be sending out real data and doing real actions against 3rd-party services.
+
+For example `send_mail`. We want to tell python to swap out the `send_mail` function with a fake version at runtime.
+
+You define a fake version that takes the same parameters, inside the parent test function:
+
+    def fake_send_mail(subject, body, from_email, to_list):  
+        self.send_mail_called = True
+        self.subject = subject
+        self.body = body
+        self.from_email = from_email
+        self.to_list = to_list
+
+It saves information about how it was called
+
+Then you simply swap out the real one in the view with the fake one:
+
+    accounts.views.send_mail = fake_send_mail
+
+> It’s important to realise that there isn’t really anything magical going on here; we’re just taking advantage of Python’s dynamic nature and scoping rules.
+
+Remember we need the corect namespace which means the correct scope that the function is being swapped out at.
+
+**Always mock before the function you want to call is run**
+
+## UnitTest.Mock
+
+As of Python 3.3 you can `from unittest.mock import Mock`
+
+Allows you to do:
+
+        >>> from unittest.mock import Mock
+        >>> m = Mock()
+        >>> m.any_attribute
+        <Mock name='mock.any_attribute' id='140716305179152'>
+        >>> type(m.any_attribute)
+        <class 'unittest.mock.Mock'>
+        >>> m.any_method()
+        <Mock name='mock.any_method()' id='140716331211856'>
+        >>> m.foo()
+        <Mock name='mock.foo()' id='140716331251600'>
+        >>> m.called
+        False
+        >>> m.foo.called
+        True
+        >>> m.bar.return_value = 1
+        >>> m.bar(42, var='thing')
+        1
+        >>> m.bar.call_args
+        call(42, var='thing')
+
+## Unittest.patch
+
+We can use `patch` to do monkey patching.
+
+First import it:
+
+        from unittest.mock import patch
+
+Add a decorator to the test, specifying which dot-notated fucntion to patch.
+THe mocked object is then injected as an argument to the test
+
+        @patch('accounts.views.send_mail')
+        def test_sends_mail_to_address_from_post(self, mock_send_mail):
+            ...
+
+Convention is to use the `mock_` prefix then the name of function being replaced.
+
+Then assertions can be made about the test:
+
+    self.assertEqual(mock_send_mail.called, True)  
+        (subject, body, from_email, to_list), kwargs = mock_send_mail.call_args  
+        self.assertEqual(subject, 'Your login link for Superlists')
+        self.assertEqual(from_email, 'noreply@superlists')
+        self.assertEqual(to_list, ['edith@example.com'])
+
+> mocks can leave you "tightly coupled with the implementation". We usually say it’s better to test behaviour, not implementation details; test what happens, not how you do it
+
+## The Call Object
+
+A `call` object is essentially a tuple of `(positional_args, keyword_args)`
+
+    from unittest.mock import call
+
+* `positional_args` is itself a tuple, consisting of the set of positional arguments
+* `keyword_args` is a dictionary
+
+So the below 2 are the same:
+
+        self.assertEqual(
+            mock_auth.authenticate.call_args,
+            ((,), {'uid': 'abcd123'})
+        )
+        # or this
+        args, kwargs = mock_auth.authenticate.call_args
+        self.assertEqual(args, (,))
+        self.assertEqual(kwargs, {'uid': 'abcd123'})
+
+> When you call a mock, you get another mock. But you can also get a copy of that returned mock from the original mock that you called.
+
+**Geez!**
+
+You can patch at class level if needed (more than 3 cases):
+
+        @patch('accounts.views.auth')  
+        class LoginViewTest(TestCase):
+
+            def test_redirects_to_home_page(self, mock_auth):  
+                [...]
+
+            def test_calls_authenticate_with_uid_from_get_request(self, mock_auth):  
+                [...]
+
+            def test_calls_auth_login_with_user_if_there_is_one(self, mock_auth):  
+                [...]
+
+
+            def test_does_not_login_if_user_is_not_authenticated(self, mock_auth):
+                mock_auth.authenticate.return_value = None  
+                self.client.get('/accounts/login?token=abcd123')
+                self.assertEqual(mock_auth.login.called, False)
 
