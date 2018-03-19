@@ -487,3 +487,719 @@ Add column names
 
 ## Logic
 
+The basic of logic will not be mentioned here.
+
+In `R`: 
+* `&` evalautes to `AND` for the entire vector
+* `&&` evaluates to `AND` just for the first element for vector
+
+    > TRUE & c(TRUE, FALSE, FALSE)
+    [1]  TRUE FALSE FALSE
+
+and
+
+    > TRUE && c(TRUE, FALSE, FALSE)
+    [1] TRUE
+
+* `|`  evaluates to OR across the entire vector
+* `||` version of OR only evaluates the first member of a vector
+
+**All AND operators are evaluated before OR operators**
+
+There is a `isTRUE` function
+
+* `isTRUE()` will only return TRUE if the statement passed to it as an argument is TRUE
+
+    > isTRUE(NA)
+    [1] FALSE
+    > isTRUE(3)
+    [1] FALSE
+
+`xor()` function stands for exclusive OR
+
+    > xor(TRUE, TRUE)
+    [1] FALSE
+
+Get a random sample of `ints` 1 to 10
+
+    > ints <- sample(10)
+    > ints
+    [1]  4  6  8  7  2  9 10  5  3  1
+
+`which()` function takes a logical vector as an argument and returns the indices of the vector that are TRUE
+
+Finding which ints are greater than 7
+
+    > which(ints > 7)
+    [1] 3 6 7
+
+* `any()` function will return TRUE if one or more of the elements in the logical vector is TRUE
+* `all()` function will return TRUE if every element in the logical vector is TRUE
+
+    > any(ints < 0)
+    [1] FALSE
+    > all(ints > 0)
+    [1] TRUE
+
+## Functions
+
+    > Sys.Date()
+    [1] "2018-03-16"
+
+Get the `mean()`
+
+    > mean(c(2, 4, 5))
+    [1] 3.666667
+
+Writing a function:
+
+    function_name <- function(arg1, arg2){
+        # Manipulate arguments in some way
+        # Return a value
+    }
+
+Use the function:
+
+    function_name(value1, value2)
+
+> Note: There is no `return`. The last expression evaluated will be returned! 
+
+John Chambers the creator of `R` said:
+
+> To understand computations in R, two slogans are helpful:
+> 1. Everything that exists is an object.
+> 2. Everything that happens is a function call.
+
+You can view a function's source code by just typing the function name
+
+Setting default arguments
+
+    remainder <- function(num, divisor=2) {
+    num %% divisor
+    }
+
+You can use named parameters:
+
+    remainder(divisor = 11, num = 5)
+
+Check what arguments a function expects with:
+
+    > args(remainder)
+    function (num, divisor = 2)
+
+You can pass functions as arguments
+
+    evaluate <- function(func, dat){
+        func(dat)
+    }
+
+Running it:
+
+    > evaluate(sd, c(1.4, 3.6, 7.9, 8.8))
+    [1] 3.514138
+
+Anonymous functions:
+
+    > evaluate(function(x){x + 1}, 6)
+    [1] 7
+
+`paste` function: Concatenate vectors after converting to character
+
+The first argument is an `...` meaning it allows an indefinite number of arguments to be passed into a function. Any number of strings can be passed to function and a concatenated string will return.
+
+> Strict rule in R programming: all arguments after an ellipses must have default values.
+
+Unpacking arguments:
+
+    args <- list(...)
+
+    alpha <- args[["alpha"]]
+    beta  <- args[["beta"]]
+
+`+, -, *, and /` symbols. These symbols are called binary operators because they take two inputs, an input from the left and an input from the right.
+
+#### User defined Binary Operators
+
+    "%mult_add_one%" <- function(left, right){ # Notice the quotation marks!
+    left * right + 1
+    }
+
+I could then use this binary operator like `4 %mult_add_one% 5` which would
+evaluate to 21.
+
+# Lapply and Sapply
+
+`loop` functions
+
+Used for implementing the `Split-Apply-Combine strategy for data analysis`
+
+We will be using the [uci flag dataset(http://archive.ics.uci.edu/ml/datasets/Flags)
+
+View the first 6 lines of a dataset:
+
+        head(flags)
+
+Dimensions:
+
+        > dim(flags)
+        [1] 194  30
+
+194 rows and 30 columns
+
+> To open a more complete description of the dataset in a separate text file, type `viewinfo()`
+
+Class type:
+
+        > class(flags)
+        [1] "data.frame"
+
+But what is the `class` of each variable or column in the dataset?
+
+`lapply()` takes a list as input and applies a function to each element of the list.
+A dataframe is really just a list of vectors: `as.list(flags))`
+
+Remember to only give the name of the function you want to call (don't call it with the results):
+
+    > cls_list <- lapply(flags, class)
+
+    > cls_list
+    $name
+    [1] "factor"
+
+    $landmass
+    [1] "integer"
+
+    $zone
+    [1] "integer"
+
+    $area
+    [1] "integer"
+
+    $population
+    [1] "integer"
+
+    $language
+    [1] "integer"
+
+    $religion
+    [1] "integer"
+
+    $bars
+    [1] "integer"
+
+    $stripes
+    [1] "integer"
+
+    $colours
+    [1] "integer"
+
+    $red
+    [1] "integer"
+
+    $green
+    [1] "integer"
+
+    $blue
+    [1] "integer"
+
+    $gold
+    [1] "integer"
+
+    $white
+    [1] "integer"
+
+    $black
+    [1] "integer"
+
+    $orange
+    [1] "integer"
+
+    $mainhue
+    [1] "factor"
+
+    $circles
+    [1] "integer"
+
+    $crosses
+    [1] "integer"
+
+    $saltires
+    [1] "integer"
+
+    $quarters
+    [1] "integer"
+
+    $sunstars
+    [1] "integer"
+
+    $crescent
+    [1] "integer"
+
+    $triangle
+    [1] "integer"
+
+    $icon
+    [1] "integer"
+
+    $animate
+    [1] "integer"
+
+    $text
+    [1] "integer"
+
+    $topleft
+    [1] "factor"
+
+    $botright
+    [1] "factor"
+
+The `l` in `lapply` stands for `list`
+
+Simpified to a character vector:
+
+    > as.character(cls_list)
+    [1] "factor"  "integer" "integer" "integer" "integer" "integer" "integer" "integer"
+    [9] "integer" "integer" "integer" "integer" "integer" "integer" "integer" "integer"
+    [17] "integer" "factor"  "integer" "integer" "integer" "integer" "integer" "integer"
+    [25] "integer" "integer" "integer" "integer" "factor"  "factor" 
+
+`sapply` stands for `simplify` apply. It converts to a character vector.
+
+    > cls_vect <- sapply(flags, class)
+    > class(cls_vect)
+    [1] "character"
+
+> if the result is a list where every element is of length one, then sapply() returns a vector. If the result is a list where every element is a vector of the same length (> 1), sapply() returns a matrix. If sapply() can't figure things out, then it just returns a list, no different from what lapply() would give you.
+
+See number of flags that has `orange`:
+
+    > sum(flags$orange)
+    [1] 26
+
+Get only certain columns but keep all the rows:
+
+    > flag_colors <- flags[, 11:17]
+
+    > lapply(flag_colors, sum)
+    $red
+    [1] 153
+
+    $green
+    [1] 91
+
+    $blue
+    [1] 99
+
+    $gold
+    [1] 91
+
+    $white
+    [1] 146
+
+    $black
+    [1] 52
+
+    $orange
+    [1] 26
+
+Using `sapply`:
+
+    > sapply(flag_colors, sum)
+   red  green   blue   gold  white  black orange 
+   153     91     99     91    146     52     26
+
+    > sapply(flag_colors, mean)
+      red     green      blue      gold     white     black    orange 
+    0.7886598 0.4690722 0.5103093 0.4690722 0.7525773 0.2680412 0.1340206
+
+The `range()` function returns the minimum and maximum of its first argument
+
+    > shape_mat <- sapply(flag_shapes, range)
+    > shape_mat
+     circles crosses saltires quarters sunstars
+    [1,]       0       0        0        0        0
+    [2,]       4       2        1        4       50
+
+`unique()` returns a vector of only the 'unique' elements
+
+    > unique(c(3, 4, 5, 5, 5, 6, 6))
+    [1] 3 4 5 6
+
+Use with anonymous functions:
+
+    > lapply(unique_vals, function(elem) elem[2])
+
+## vapply and tapply
+
+`vapply()` allows you to specify format of result explicitly
+
+Alows you to be mroe strict and will throw an error when data does not a single numeric value
+
+    > vapply(flags, unique, numeric(1))
+    Error in vapply(flags, unique, numeric(1)) : values must be length 1,
+    but FUN(X[[1]]) result is length 194
+
+To explicitly get the data types as a single element character vector
+
+    > vapply(flags, class, character(1))
+
+> As a data analyst, you'll often wish to split your data up into groups based on the value of some variable, then apply a function to the members of each group.
+
+See amount in each group based on landmass:
+
+    > table(flags$landmass)
+    1  2  3  4  5  6 
+    31 17 35 52 39 20 
+
+Aplitting data into groups by landmass and running stats on it:
+
+    > tapply(flags$animate, $flags$landmass, mean)
+    See mean of animate flags per landmass
+
+Get summary of popualtion for flags with/without red in:
+
+    > tapply(flags$population, flags$red, summary)
+    $`0`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    0.00    3.00   27.63    9.00  684.00 
+
+    $`1`
+    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        0.0     0.0     4.0    22.1    15.0  1008.0 
+
+## Looking at Data
+
+> Whenever you're working with a new dataset, the first thing you should do is look at it! What is the format of the data? What are the dimensions? What are the variable names? How are the variables stored? Are there missing data? Are there any flaws in the data?
+
+List variables in your workspace: `> ls()`
+
+Check strucute of data:
+
+    > class(plants)
+    [1] "data.frame"
+
+> It's very common for data to be stored in a data frame. It is the default class for data read into R using functions like read.csv() and read.table(), which you'll learn about in another lesson.
+
+Check rows and columns:
+
+    > dim(plants)
+    [1] 5166   10
+    > nrow(plants)
+    [1] 5166
+    > ncol(plants)
+    [1] 10
+
+Size in memeory:
+
+    > object.size(plants)
+    644232 bytes
+
+Get column names:
+
+    > names(plants)
+    [1] "Scientific_Name"      "Duration"             "Active_Growth_Period"
+    [4] "Foliage_Color"        "pH_Min"               "pH_Max"              
+    [7] "Precip_Min"           "Precip_Max"           "Shade_Tolerance"     
+    [10] "Temp_Min_F"
+
+By defulat `head()` shows you the first 6 lines you can get the first 10 with:
+
+    > head(plants, 10)
+
+Same for tail:
+
+    > tail(plants, 15)
+
+Get a summary of the dataset and missing values:
+
+    > summary(plants)
+
+> Categorical values are called factors in R
+
+Sometimes number of categories is truncated by saying `Other` in that case use:
+
+    > table(plants$Active_Growth_Period)
+
+The best is casting to `str()`
+
+`str()` can be used on many other datastructures
+
+## Simlulation
+
+Creating random numbers
+
+    sample(x, size, replace = FALSE, prob = NULL)
+
+Roll 4 dice (6 sided):
+
+    > sample(1:6, 4, replace=TRUE)
+    [1] 6 2 3 3
+
+Choose 4 numbers, from 1 to 6, each number is replaced after selection so it can show up more than once
+
+Get 10 numbers from 1 to 20 that won't appear again:
+
+    > sample(1:20, 10)
+    [1]  1  7 20 14 13 10  6  2 15 18
+
+`LETTERS` is a predefined variable in R containing a vector of all 26 letters of the English alphabet
+
+permute a sample of letters:
+
+    > sample(LETTERS)
+    [1] "I" "L" "B" "R" "F" "S" "Q" "J" "G" "M" "A" "H" "W" "U" "O" "P" "K" "T" "Y" "X" "E"
+    [22] "D" "Z" "N" "C" "V"
+
+If `size` is not given, `R` takes a sample equal in size.
+
+Get an unfair coin with 100 flips:
+
+    flips <- sample(c(0, 1), 100, replace=TRUE, prob=c(0.3, 0.7))
+
+### Rbinom
+
+Random binomial distribution: `rbinom`
+
+> Each probability distribution in R has an r*** function (for "random"), a d*** function (for "density"), a p*** (for "probability"), and q*** (for "quantile").
+
+Binomial distribution - Number of successes
+
+Only specify the number of successes
+
+To see number of successes:
+
+    > rbinom(1, size = 100, prob = 0.7)
+
+To store number of flips:
+
+    > flips2 <- rbinom(100, size = 1, prob = 0.7)
+
+### RNorm
+
+The standard normal distribution has mean 0 and standard deviation 1
+
+10 random numbers in a normal distribution:
+
+    > rnorm(10)
+    [1]  0.53665009 -2.39624561 -1.50745602 -1.27852621 -0.85378324 -0.04011113  0.49547350
+    [8] -0.21447406 -0.81949348  0.75271073
+
+### RPois
+
+Poisson Distribution - Expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant rate and independently of the time since the last event.[1] The Poisson distribution can also be used for the number of events in other specified intervals such as distance, area or volume.
+
+Generate 5 numbers with mean on 10:
+
+    > rpois(5, lambda=10)
+    [1]  9  7  6 12  6
+
+TO get that 10 times use:
+
+    > my_pois <- replicate(100, rpois(5, 10))
+
+Get the column means:
+
+    > cm <- colMeans(my_pois)
+
+Plot a histogram of column means:
+
+    > hist(cm)
+
+All the other standard probability distributions are built into R: 
+
+* Exponential: `rexpr()`
+* Chi-squared: `rchisq()`
+* Gamma: `rgamma()`
+
+## Dates and Times
+
+Timeseries data or temporal information
+
+```
+Dates are represented by the 'Date' class and times are represented by the 'POSIXct' and 'POSIXlt' classes. Internally, dates are stored as the number of days since 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for 'POSIXct') or a list of seconds, minutes, hours, etc. (for 'POSIXlt').
+```
+
+    > d1 <- Sys.Date()
+    > d1
+    [1] "2018-03-19"
+    > class(d1)
+    [1] "Date"
+
+See internal look of class
+
+    > unclass(d1)
+    [1] 17609
+
+The total number of days since: `1970-01-01`
+
+Create a date before epoch:
+
+    > d2 <- as.Date("1969-01-01")
+    > unclass(d2)
+    [1] -365
+
+System time:
+
+    > t1 <- Sys.time()
+    > t1
+    [1] "2018-03-19 12:16:16 SAST"
+    > class(t1)
+    [1] "POSIXct" "POSIXt"
+
+coerce the result to `POSIXlt` (Not sure why though)
+
+    > t2 <- as.POSIXlt(Sys.time())
+    > t2
+    [1] "2018-03-19 12:17:49 SAST"
+
+    > unclass(t2)
+    $sec
+    [1] 49.87161
+
+    $min
+    [1] 17
+
+    $hour
+    [1] 12
+
+    $mday
+    [1] 19
+
+    $mon
+    [1] 2
+
+    $year
+    [1] 118
+
+    $wday
+    [1] 1
+
+    $yday
+    [1] 77
+
+    $isdst
+    [1] 0
+
+    $zone
+    [1] "SAST"
+
+    $gmtoff
+    [1] 7200
+
+    attr(,"tzone")
+    [1] ""     "SAST" "SAST"
+
+    > str(unclass(t2))
+    List of 11
+    $ sec   : num 49.9
+    $ min   : int 17
+    $ hour  : int 12
+    $ mday  : int 19
+    $ mon   : int 2
+    $ year  : int 118
+    $ wday  : int 1
+    $ yday  : int 77
+    $ isdst : int 0
+    $ zone  : chr "SAST"
+    $ gmtoff: int 7200
+    - attr(*, "tzone")= chr [1:3] "" "SAST" "SAST"
+
+Just get minutes:
+
+    > t2$min
+    [1] 17
+
+Return day of the week:
+
+    > weekdays(d1)
+    [1] "Monday"
+
+Similarly with months and quarters:
+
+    > months(t1)
+    [1] "March"
+
+    > quarters(t2)
+    [1] "Q1"
+
+> `strptime()` converts character vectors to POSIXlt. In that sense, it is similar to `as.POSIXlt()`, except that the input doesn't have to be in a particular format (YYYY-MM-DD).
+
+    > t3 <- "October 17, 1986 08:24"
+    > t4 <- strptime(t3, "%B %d, %Y %H:%M")
+    > t4
+    [1] "1986-10-17 08:24:00 SAST"
+
+    > class(t4)
+    [1] "POSIXlt" "POSIXt"
+
+Comparison of time:
+
+    > Sys.time() > t1
+    [1] TRUE
+
+Time difference:
+
+    > Sys.time() - t1
+    Time difference of 9.086724 mins
+
+Find time difference in specific unit:
+
+    > difftime(Sys.time(), t1, units = 'days')
+    Time difference of 0.006632809 days
+
+## Base Graphics
+
+Not covered are more advanced graphics:
+
+* lattice
+* ggplot2
+* ggvis
+
+Load dataset `cars`:
+
+    data(cars)
+
+Get help page for cars:
+
+    `?cars`
+
+Create basic chart:
+
+    > plot(cars)
+
+If dataset has 2 columns it assumes what you want to plot. Since we do not provide labels for either axis, R uses the names of the columns
+
+> `plot` is short for scatterplot
+
+Can be plotted with:
+
+    > plot(x = cars$speed, y=cars$dist)
+
+Setting labels:
+
+    > plot(x = cars$speed, y=cars$dist, xlab='Speed', ylab='Stopping Distance')
+
+Plot so points are `red`:
+
+    > plot(cars, col = 2)
+
+PLot and limit x-axis:
+
+    > plot(cars, xlim=c(10, 15))
+
+PLot with triangles:
+
+    > plot(cars, pch=2)
+
+#### Boxplot
+
+You can pass the entire data frame
+
+> `boxplot()`, like many `R` functions, also takes a "formula" argument, generally an expression with a tilde ("~") which indicates the relationship between the input variables. This allows you to enter something like `mpg ~ cyl` to plot the relationship between `cyl` (number of cylinders) on the x-axis and `mpg` (miles per gallon) on the y-axis.
+
+    > boxplot(formula=mpg ~ cyl, data = mtcars)
+
+A histogram can be used for a single vector:
+
+    > hist(mtcars$mpg)
+
