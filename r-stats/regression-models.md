@@ -254,6 +254,306 @@ cooks.distance: The function, cooks.distance, will calculate Cook's distance for
 
 # Variance Inflation Factors
 
+> In modeling, our interest lies in parsimonious, interpretable representations of the data that enhance our understanding of the phenomena under study. Omitting variables results in bias in the coefficients of interest - unless their regressors are uncorrelated with the omitted ones.
+
+> On the other hand, including any new variables increases (actual, not estimated) standard errors of other regressors.S o we don't want to idly throw variables into the model causing **variance inflation**
 
 
+            x1      x1      x1 
+        0.00110 0.00240 0.00981 
+
+variance inflation due to correlated regressors is clear
+
+Theoretical estimates contain an unknown constant of proportionality - we therefore depend on ratios of theoretical estimates called Variance Inflation Factors (VIF)
+
+A variance inflation factor (VIF) is a ratio of estimated variances
+
+Create a linear regression model for Fertility, dataset is swiss
+
+    > mdl <- lm(swiss$Fertility ~ ., swiss)
+
+You can calculate the VIF's for each regressor:
+
+    > vif(mdl)
+     Agriculture      Examination        Education         Catholic Infant.Mortality 
+        2.284129         3.675420         2.774943         1.937160         1.107542 
+
+> These VIF's show, for each regression coefficient, the variance inflation due to including all the others.
+
+The variance in the estimated coefficient of Education is 2.774943 times what it might have been if Education were not correlated with the other regressors
+
+Exclude examination regressor:
+
+    > mdl2 <- lm(swiss$Fertility ~ . -Examination, swiss)
+
+with variable inflation factors:
+
+    > vif(mdl2)
+        Agriculture        Education         Catholic Infant.Mortality 
+            2.147153         1.816361         1.299916         1.107528
+
+It has decreased the VIF for education, omitting examination has almost no effect on Infant mortality.
+Chances are they are not correlated.
+
+Variance is the square of standard deviation, and standard error is the standard deviation of an estimated coefficient.
+
+**VIF is the square of standard error inflation.**
+
+If a regressor is strongly correlated with others, hence will increase their VIF's, why shouldn't we just exclude it?
+
+Excluding it might bias coefficient estimates of regressors with which it is correlated.
+
+> The problems of variance inflation and bias due to excluded regressors both involve correlated regressors. However there are methods, such as factor analysis or principal componenent analysis, which can convert regressors to an equivalent uncorrelated set.
+
+Converting regressors to uncorrelated makes interpretation difficult.
+
+## Overfitting and Underfitting
+
+To demonstrate the effect of omitted variables and discuss the use of ANOVA to construct parsimonious, interpretable representations of the data.
+
+Analysis of variance (ANOVA) is a useful way to quantify the significance of additional regressors
+
+The null hypothesis is that the added regressors are not significant
+
+    > fit1 <- lm(swiss$Fertility ~ swiss$Agriculture, swiss)
+    > fit3 <- lm(swiss$Fertility ~ swiss$Agriculture + swiss$Examination + swiss$Education, swiss)
+    > anova(fit1, fit3)
+
+    Analysis of Variance Table
+
+    Model 1: swiss$Fertility ~ swiss$Agriculture
+    Model 2: swiss$Fertility ~ swiss$Agriculture + swiss$Examination + swiss$Education
+    Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+    1     45 6283.1                                  
+    2     43 3180.9  2    3102.2 20.968 4.407e-07 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+The three asterisks, ***, at the lower right of the printed table indicate that the null hypothesis is rejected at the 0.001 level
+
+An F statistic is a ratio of two sums of squares divided by their respective degrees of freedom.
+
+R's function, deviance(model), calculates the residual sum of squares, also known as the deviance, of the linear model given as its argument. 
+
+    > deviance(fit3)
+    [1] 3180.925
+
+> Based on the calculated p-value, a false rejection of the null hypothesis is extremely unlikely. We are confident that fit3 is significantly better than fit1, with one caveat: analysis of variance is sensitive to its assumption that model residuals are approximately normal. If they are not, we could get a small p-value for that reason. It is thus worth testing residuals for normality. The Shapiro-Wilk test is quick and easy in R. Normality is its null hypothesis.
+
+    > shapiro.test(fit3$residuals)
+
+        Shapiro-Wilk normality test
+
+    data:  fit3$residuals
+    W = 0.97276, p-value = 0.336
+
+The Shapiro-Wilk p-value of 0.336 fails to reject normality, supporting confidence in our analysis of variance.
+
+Omitting a regressor can bias estimation of the coefficient of certain other correlated regressors
+
+Including more regressors will reduce a model's residual sum of squares, even if the new regressors are irrelevant.
+
+When adding regressors, the reduction in residual sums of squares should be tested for significance above and beyond that of reducing residual degrees of freedom. R's anova() function uses an F-test for this purpose.
+
+To ensure anova applies ensure Model residuals are normal
+
+## Binary Outcomes
+
+Frequently we care about outcomes that have two values such as alive or dead, win or lose, success or failure. Such outcomes are called binary, Bernoulli, or 0/1.
+
+A collection of exchangeable binary outcomes for the same covariate data are called binomial outcomes
+
+For break even odds:
+
+If p is the probability of an event, the associated odds are `p/(1-p)`
+
+Now suppose we want to see how the Ravens' odds depends on their offense. In other words, we want to model how p, or some function of it, depends on how many points the Ravens are able to score. Of course, we can't observe p, we can only observe wins, losses, and the associated scores. Here is a Box plot of one season's worth of such observations.
+
+> A generalized linear model which has these properties supposes that the log odds of a win depend linearly on the score. That is, log(p/(1-p)) = b0 + b1*score. The link function, log(p/(1-p)), is called the logit, and the process of finding the best b0 and b1, is called logistic regression.
+
+Get the maximum likelihood estimates:
+
+    > mdl <- glm(ravenWinNum ~ ravenScore, binomial, ravenData)
+
+The model is less credible at scores lower than 9. Of course, there is no data in that region.
+
+We can use R's predict() function to see the model's estimates for lower scores
+
+The function will take mdl and a data frame of scores as arguments and will return log odds for the give scores
+
+    > lodds <- predict(mdl, data.frame(ravenScore=c(0, 3, 6)))
+
+Since predict() gives us log odds, we will have to convert to probabilities.
+
+    > exp(lodds)/(1+exp(lodds))
+            1         2         3 
+    0.1570943 0.2041977 0.2610505 
+
+As it turns out, though, the model is not that sure of itself. Typing summary(mdl) you can see the estimated coefficients are both within 2 standard errors of zero. Check out the summary now.
+
+    > summary(mdl)
+
+    Call:
+    glm(formula = ravenWinNum ~ ravenScore, family = binomial, data = ravenData)
+
+    Deviance Residuals: 
+        Min       1Q   Median       3Q      Max  
+    -1.7575  -1.0999   0.5305   0.8060   1.4947  
+
+    Coefficients:
+                Estimate Std. Error z value Pr(>|z|)
+    (Intercept) -1.68001    1.55412  -1.081     0.28
+    ravenScore   0.10658    0.06674   1.597     0.11
+
+    (Dispersion parameter for binomial family taken to be 1)
+
+        Null deviance: 24.435  on 19  degrees of freedom
+    Residual deviance: 20.895  on 18  degrees of freedom
+    AIC: 24.895
+
+    Number of Fisher Scoring iterations: 5
+
+The coefficients have relatively large standard errors. A 95% confidence interval is roughly 2 standard errors either side of a coefficient
+
+    > exp(confint(mdl))
+    Waiting for profiling to be done...
+                    2.5 %   97.5 %
+    (Intercept) 0.005674966 3.106384
+    ravenScore  0.996229662 1.303304
+
+The lower confidence bound on the odds of winning with a score of 0 is near zero, which seems much more realistic than the 16/84 figure of the maximum likelihood model
+
+The lower confidence bound on exp(b1) suggests that the odds of winning would decrease slightly with every additional point scored. This is obviously unrealistic.Of course, confidence intervals are based on large sample assumptions and our sample consists of only 20 games
+
+> Linear regression minimizes the squared difference between predicted and actual observations
+
+    > anova(mdl)
+    Analysis of Deviance Table
+
+    Model: binomial, link: logit
+
+    Response: ravenWinNum
+
+    Terms added sequentially (first to last)
+
+
+            Df Deviance Resid. Df Resid. Dev
+    NULL                          19     24.435
+    ravenScore  1   3.5398        18     20.895
+
+The value, 3.5398, labeled as the deviance of ravenScore, is actually the difference between the deviance of our model, which includes a slope, and that of a model which includes only an intercept, b0. This value is centrally chi-square distributed (for large samples) with 1 degree of freedom (2 parameters minus 1 parameter, or equivalently 19-18.) The null hypothesis is that the coefficient of ravenScore is zero. To confidently reject this hypothesis, we would want 3.5398 to be larger than the 95th percentile of chi-square distribution with one degree of freedom. Use qchisq(0.95, 1) to compute the threshold of this percentile.
+
+## Count Outcomes
+
+Many data take the form of counts. These might be calls to a call center, number of flu cases in an area, or number of cars that cross a bridge. Data may also be in the form of rates, e.g., percent of children passing a test. In this lesson we will use Poisson regression to analyze daily visits to a web site as the web site's popularity grows, and to analyze the percent of visits which are due to references from a different site.
+
+A Poisson process is characterized by a single parameter, the expected rate of occurrence, which is usually called lambda.
+
+Somwhat remarkably, the variance of a Poisson process has the same value as its mean, lambda. You can quickly illustrate this by generating, say, n=1000 samples from a Poisson process using R's rpois(n, lambda) and calculating the sample variance. For example, type var(rpois(1000, 50)). The sample variance won't be exactly equal to the theoretical value, of course, but it will be fairly close.
+
+    > var(rpois(1000, 50))
+    [1] 51.05576
+
+A famous theorem implies that properly normalized sums of independent, identically distributed random variables will tend to become normally distributed as the number of samples grows large.
+
+    The Central Limit Theorem
+
+In a Poisson regression, the log of lambda is assumed to be a linear function of the predictors. 
+
+    > class(hits[,'date'])
+    [1] "Date"
+
+R's Date class represents dates as days since or prior to January 1, 1970
+
+You can view a date as an integer
+
+    > as.integer(head(hits[,'date']))
+    [1] 14975 14976 14977 14978 14979 14980
+
+The arithmetic properties of Dates allow us to use them as predictors.
+
+Since our outcomes (visits) are counts, our family will be 'poisson', and our third argument will be the data, hits
+
+    > mdl <- glm(visits ~ date, poisson, hits)
+
+    > summary(mdl)
+
+    Call:
+    glm(formula = visits ~ date, family = poisson, data = hits)
+
+    Deviance Residuals: 
+        Min       1Q   Median       3Q      Max  
+    -5.0466  -1.5908  -0.3198   0.9128  10.6545  
+
+    Coefficients:
+                Estimate Std. Error z value Pr(>|z|)    
+    (Intercept) -3.275e+01  8.130e-01  -40.28   <2e-16 ***
+    date         2.293e-03  5.266e-05   43.55   <2e-16 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+    (Dispersion parameter for poisson family taken to be 1)
+
+        Null deviance: 5150.0  on 730  degrees of freedom
+    Residual deviance: 3121.6  on 729  degrees of freedom
+    AIC: 6069.6
+
+    Number of Fisher Scoring iterations: 5
+
+Both coefficients are significant, being far more than two standard errors from zero.
+The Residual deviance is also very significantly less than the Null, indicating a
+strong effect.
+
+Get the 95% confidence interval for exp(b1) by exponentiating confint(mdl, 'date')
+
+    > exp(confint(mdl, 'date'))
+    Waiting for profiling to be done...
+    2.5 %   97.5 % 
+    1.002192 1.002399 
+
+ie. Visits are estimated to increase by a factor of between 1.002192 and 1.002399 per day
+
+Representing more than doubling each year
+
+Our model looks like a pretty good description of the data, but no model is perfect and we can often learn about a data generation process by looking for a model's shortcomings. As shown in the figure, one thing about our model is 'zero inflation' in the first two weeks of January 2011, before the site had any visits. The model systematically overestimates the number of visits during this time. A less obvious thing is that the standard deviation of the data may be increasing with lambda faster than a Poisson model allows. This possibility can be seen in the rightmost plot by visually comparing the spread of green dots with the standard deviation predicted by the model (black dashes.) Also, there are four or five bursts of popularity during which the number of visits far exceeds two standard deviations over average. Perhaps these are due to mentions on another site.
+
+Find the date of the maximum visits:
+
+    > which.max(hits[,'visits'])
+    [1] 704 
+
+Giving row 704
+
+    > hits[704,]
+          date visits simplystats
+          704 2012-12-04     94          64
+
+We might consider the 64 visits to be a special event, over and above normal. Can the difference, 94-64=30 visits, be attributed to normal traffic as estimated by our model? To check, we will need the value of lambda on December 4, 2012. This will be entry 704 of the fitted.values element of our model. Extract mdl$fitted.values[704] and store it in a variable named lambda
+
+    > lambda <- mdl$fitted.values[704]
+    > qpois(.95, lambda)
+    [1] 33
+
+95% of the time we would see 33 or fewer visits, hence 30 visits would not be rare according to our model.
+
+To gauge the importance of references from Simply Statistics we may wish to model the proportion of traffic such references represent. Doing so will also illustrate the use of glm's parameter, offset, to model frequencies and proportions.
+
+A Poisson process generates counts, and counts are whole numbers, 0, 1, 2, 3, etc. A proportion is a fraction.
+
+We would like to model the fraction simplystats/visits, but to avoid division by zero we'll actually use simplystats/(visits+1)
+
+glm's parameter, offset, has precisely this effect. It fixes the coefficient of the offset to 1
+
+    > mdl2 <- glm(simplystats ~ date, poisson, hits, offset= log(visits + 1))
+
+Although summary(mdl2) will show that the estimated coefficients are significantly different than zero, the model is actually not impressive. We can illustrate why by looking at December 4, 2012, once again. On that day there were 64 actual visits from Simply Statistics. However, according to mdl2, 64 visits would be extremely unlikely. You can verify this weakness in the model by finding mdl2's 95th percentile for that day. Recalling that December 4, 2012 was sample 704, find qpois(.95, mdl2$fitted.values[704]).
+
+    > qpois(.95, mdl2$fitted.values[704])
+    [1] 47
+
+A Poisson distribution with lambda=1000 will be well approximated by a normal distribution. The variance is lambda.
+
+Count outcomes and their means are never negative, but linear combinations of predictors may be.
+
+When modeling count outcomes as a Poisson process, The log of the mean is modeled as a linear combination of the predictors
 
