@@ -1231,4 +1231,605 @@ Parallelism is _actually_ doing many different things at the same time.
 
 Concurrency provides no speedup for the total work.
 
+These topics are a bit too hectic for now... you are welcome to read the book...I will leave the headings here
+
+### Use Subprocess to manage Child processes
+
+Read full details in the book...
+
+### Use Threads for Blocking I/O, Avoid Parrallelism
+
+Read full details in the book...
+
+### Use Lock to Prevent Data Races in Threads
+
+Read full details in the book...
+
+### Use Queue to Coordinate Work between Threads
+
+Read full details in the book...
+
+### Consider Coroutines to Run Many Functions Concurrently
+
+Read full details in the book...
+
+### Consider concurrent.futures for True Parrallelism
+
+Read full details in the book...Item 41
+
+## Built-in Modules
+
+Python takes a _batteries included_ approach to the standard library. Some of these built-in modules are closely intertwined with idiomatic python they may as well be part of the language specification.
+
+### Define Function Decorators with functools.wraps
+
+Decorators have the ability to run additional code before or after any calls to the function they wrap. This allows them to access and modify input arguments and return values.
+
+Say you want to print aruments and return values for a recursive function call:
+
+    def trace(func):
+        '''Decorator to display input arguments and return value'''
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            print(f'{ func.__name__ }({ args },{ kwargs }) -> { result}')
+            return result
+        return wrapper
+
+You can apply this function with the `@` symbol
+
+    @trace
+    def fibonacci(n):
+        '''Return the n-th fibonacci number'''
+        if n in (0, 1):
+            return 1
+        return fibonacci(n-1) + fibonacci(n-2)
+
+The `@` symbol is equivalent to calling: `fibonacci = trace(fibonacci)`
+
+Testing it:
+
+    result = fibonacci(3)
+    print(result)
+
+gives:
+
+    fibonacci((1,),{}) -> 1
+    fibonacci((0,),{}) -> 1
+    fibonacci((2,),{}) -> 2
+    fibonacci((1,),{}) -> 1
+    fibonacci((3,),{}) -> 3
+    3
+
+There is however an unintended side effect, the function returned does not think it is called `fibonacci`.
+
+    print(fibonacci)
+    <function trace.<locals>.wrapper at 0x108a0fbf8>
+
+The `trace` function returns the `wrapper` it defines. The `wrapper` function is what is assigned to the `fibonacci` name with the decorator. The problem is that is undermines debuggers and object serialisers.
+
+For example the help is useless:
+
+    >>> from test import fibonacci
+    >>> help(fibonacci)
+    Help on function wrapper in module test:
+
+    wrapper(*args, **kwargs)
+
+The solution is to use the `wraps` helper function from the `functools` built-in module.
+**This is a decorator that helps you write decorators**
+
+Applying it to `wrapper` copies the important metadata about the innner function to the outer function.
+The important part below is **`@wraps(func)`**
+
+    from functools import wraps
+
+    def trace(func):
+        '''Decorator to display input arguments and return value'''
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            ...
+
+Now `help()` works well
+
+    In [1]: from test import fibonacci
+    In [2]: help(fibonacci)
+    Help on function fibonacci in module test:
+
+    fibonacci(n)
+        Return the n-th fibonacci number
+
+### Consider contextlib and with statements for reuasable try/finally behaviour
+
+The `with` statement in python is used to indicate when code is running in a special context.
+
+    lock = Lock()
+    with lock:
+        print('Lock is held')
+
+is equivalent to:
+
+    lock.acquire()
+    try:
+        print('Lock is held')
+    finally:
+        lock.release()
+
+The `with` is better asit eliminates the need to write repetitive code.
+
+> It’s easy to make your objects and functions capable of use in with statements by using the contextlib built-in module. This module contains the contextmanager decorator, which lets a simple function be used in with statements. This is much easier than defining a new class with the special methods `__enter__` and `__exit__` (the standard way).
+
+There is more information in the book...Item 43
+
+### Make pickle reliable with copyreg
+
+The `pickle` built in module can serialize python objects into a strema of bytes and deserialise back into python objects. Pickle byte streams houldn't be used to communicate between untrusted parties. The purpose of pickle is to communicate between 2 programs you control over binary channels.
+
+> The `pickle` module’s serialization format is unsafe by design. The serialized data contains what is essentially a program that describes how to reconstruct the original Python object. This means a malicious pickle payload could be used to compromise any part of the Python program that attempts to deserialize it.
+In contrast, the `json` module is safe by design. Serialized JSON data contains a simple description of an object hierarchy. Deserializing JSON data does not expose a Python program to any additional risk. Formats like JSON should be used for communication between programs or people that don’t trust each other.
+
+Say you have a class tracking the state of a game for a player:
+
+    class GameState(object):
+        '''Track the state of you game'''
+        def __init__(self):
+            self.level = 0
+            self.lives = 4
+
+You use and save the state of a player:
+
+    state = GameState()
+    state.level += 1
+    state.lives -= 1
+
+    state_path = '/tmp/game_state.bin'
+    with open(state_path, 'wb') as f:
+        pickle.dump(state, f)
+
+You can later resume the game state with:
+
+    state_path = '/tmp/game_state.bin'
+    with open(state_path, 'rb') as f:
+        state_after = pickle.load(f)
+
+    print(state_after.__dict__)
+
+But what if you add a new field to the state class? Serialising and deserialising a `GameState` instance will work but resuming the old state will not have the `points` attribute.
+
+Even though the instance is of the `GameState` type.
+
+Fixing these issues requires `copyreg`
+
+#### Default attribute values
+
+You can set default attribute values:
+
+    def __init__(self, lives=4, level=0, points=0):
+        ...
+
+To use this constuctor for pickling, create a helper function that takes a `GameState` object and turns it into a tuple of parameters for the `copyreg`module.
+The returned tuple contains the function and paramters to use when unpickling:
+
+    def pickle_game_state(game_state):
+        kwargs = game_state.__dict__
+        return unpickle_game_state, (kwargs,)
+
+Now I need `unpickle_game_state` that takes serialised data and parameters and returns a `GameState` object
+
+    def unpickle_game_state(kwargs):
+        return GameState(**kwargs)
+
+Now register them with `copyreg`:
+
+    import copyreg, pickle
+    copyreg.pickle(GameState, pickle_game_state)
+
+Unfortunately this worked for new objects, but did not work for me when deserialising the old saved pickle file.
+The `unpickle_game_state` function was not run.
+
+There is more info in the book on versioning of classes and providing stable import paths...
+
+### Use datetime instead of local clocks
+
+`UTC` Coordinated Universal Time is the standard timezone independent representation of time. It is good for computers but not great for humans as they need a reference point.
+
+Use `datetime` with the help of `pytz` for conversions. The old `time` module should be avoided.
+
+#### The time module
+
+The `localtime` function from the `time` built-in module lets you convert unix time (from epock in seconds) to local time of the home computer.
+
+    from time import localtime, mktime, strftime, strptime
+
+    now = 1407694710
+    local_tuple = localtime(now)
+
+    time_format = '%Y-%m-%d %H:%M:%S'
+    time_str = strftime(time_format, local_tuple)
+    print(time_str)
+
+    time_tuple = strptime(time_str, time_format)
+    utc_now = mktime(time_tuple)
+    print(utc_now)
+
+    >>> 2014-08-10 20:18:30
+    >>> 1407694710.0
+
+The problem comes when converting time to other timezones. The `time` module uses the host platform/operating system and this has different formats and missing timezones.
+
+**If you must use time, only use it for converting unixtime to the local pc time, in all other times use `datetime`**
+
+#### The datetime module
+
+You can use `datetime` to convert a time to your local timezone:
+
+    now = datetime.datetime(2014, 8, 10, 18, 18, 30)
+    now_utc = now.replace(tzinfo=datetime.timezone.utc)
+    now_local = now_utc.astimezone()
+    print(now_local)
+
+Datetime lets you change timezones but it does not hold the definitions of the rules for the timezones.
+
+Enter [pytz](https://pypi.org/project/pytz/) 
+
+`pytz` holds the timezone information of every timezone you might need.
+To use `pytz` effectively always convert first to `UTC` then to the target time.
+
+Top tip, you can get all timezones with: `pytz.all_timezones`
+
+In this example I convert a sydney flight arrivcal time into utc (note all these calls are required):
+
+    import datetime
+    import pytz
+
+    time_format = '%Y-%m-%d %H:%M:%S'
+    arrival_sydney = '2014-05-01 05:33:24'
+    sydney_dt_naive = datetime.datetime.strptime(arrival_sydney, time_format)
+    sydney = pytz.timezone('Australia/Sydney')
+    sydney_dt = sydney.localize(sydney_dt_naive)
+    utc_dt = pytz.utc.normalize(sydney_dt.astimezone(pytz.utc))
+    print(utc_dt)
+
+    >>> 2014-04-30 19:33:24+00:00
+
+Now I can convert that UTC time to Johannesburg time:
+
+    jhb_timezone = pytz.timezone('Africa/Johannesburg')
+    jhb_dt = jhb_timezone.normalize(utc_dt.astimezone(jhb_timezone))
+    print(jhb_dt)
+
+    >>> 2014-04-30 21:33:24+02:00
+
+### Use Built-in algorithms and data structures
+
+When implementing programs with non-trivial amounts of data eventually you see slowdowns.
+Most likely due to you not using the most suitable alorithms and data structures.
+On top of speed, these algorithms also make life easier.
+
+#### Double Ended Queue
+
+The `deque` class from the `collections` module is a double ended queue.
+Ideal for a FIFO (First in, firsdt out) queue
+
+    from collections import deque
+    fifo = deque()
+    fifi.append(1)
+    x = fife.popleft()
+
+`list` also contains a sequence of items, you can insert or remove items from the end in constant time. Inserting and removing items from the head of the list takes liner time O(n) and constant time for a `deque` O(1)
+
+#### Ordered Dictionary
+
+Standard dictionaries are unordered. Meaning the same `dict` can have different orders of iteration.
+
+The `OrderedDict` class from the `collections` module is a special type of dictionary that keeps track of the order keys were inserted. Iteracting through it has predictable behaviour.
+
+    a = OrderedDict()
+    a['one'] = 1
+    a['two'] = 2
+    b = OrderedDict()
+    b['one'] = 'red'
+    b['two'] = 'blue'
+
+    for number, colour in zip(a.values(), b.values()):
+        print(number, colour)
+
+#### Default Dictionary
+
+USeful for bookeeping and tracking statistics. 
+
+With dictionaries you cannot assume a key is present, making it difficult to increase a counter for example:
+
+    stats = {}
+    key = 'my_counter'
+    if key not in stats:
+        stats['key'] = 0
+    stats['key'] += 1
+
+`defaultdict` automatically stores a default value when a key does not exist, all you need to do is to provide a function for when a key does not exist. In this case `int() == 0`
+
+    from collections import defaultdict
+    stats = defaultdict(int)
+    stats['my_counter'] += 1
+
+#### Heap Queue
+
+Heaps are useful for maintaining a priority queue. The `heapq` module provides functions for creating heaps in standard `list` types with functions like `heappush`, `heappop` amd `nsmallest`.
+
+Remember items are always removed with highest priority first (lowest number):
+
+    a = []
+    heapq.heappush(a, 5)
+    heapq.heappush(a, 3)
+    heapq.heappush(a, 7)
+    heapq.heappush(a, 4)
+
+    print(
+        heapq.heappop(a),
+        heapq.heappop(a),
+        heapq.heappop(a),
+        heapq.heappop(a)
+    )
+
+Accessing the list with `list[0]` always returns the smallest item:
+
+    assert a[0] == nsmallest(1, a)[0] == 3
+
+Calling the sort method on the list maintains the heap invariant.
+
+    print('Before:', a)
+    a.sort()
+    print('After: ', a)
+
+    >>>
+    Before: [3, 4, 7, 5]
+    After:  [3, 4, 5, 7]
+
+`list` takes linear time, heap sort logarithmic.
+
+#### Bisection
+
+Search for an item in a list takes linear time proportional to it's length when you call the `index` method.
+
+The `bisect` module's function `bisect_left` provides an efficient binary search through a sequence of srted items. The value it returns is the insertion point of the value into the sequence.
+
+    x = list(range(10**6))
+    i = x.index(991234)
+    i = bisect_left(x, 991234)
+
+Teh binay search is logarithmic.
+
+#### Iterator Tools
+
+`itertools` contains a large number of functions for organising and interacting with iterators.
+
+There are 3 main categories:
+1. Linking iterators together
+    * `chain` - Combines multiple iteractors into a single  sequential iterator
+    * `cycle` - Repeat's an iterators items forever
+    * `tee` - Splits a single iterator into multiple parrallel iterators
+    * `zip_longest` - `zip` for iterators of differing lengths
+2. Filtering
+    * `islice` - slices an iteractor by numerical indexes without copying
+    * `takewhile` - returns items from an iteractor while predicate condition is true
+    * `dropwhile` - returns items from an iteractor when previous function returns `False` he first time
+    * `filterfalse` - Returns items from iteractor when predicate function returns false
+3. Comnbinations
+    * `product` - returns cartesian product of items from an iterator
+    * `permutations` - returns ordered permutations of length N with items from an iterator
+    * `combination` - returns ordered combinations of length N with unrepeated items from an iterator
+
+
+### Use decimal when precision is paramount
+
+    rate = 1.45
+    seconds = 3*60 + 42
+    cost = rate * seconds / 60
+    print(cost)
+
+    print(round(cost, 2))
+
+With floating point math and rounding down you get:
+
+    5.364999999999999
+    5.36
+
+This wont do. The `Decimal` class provides fixed point math of 28 decimal points by default.
+It gives you more precision and control over rounding.
+
+    from decimal import Decimal, ROUND_UP
+    rate = Decimal('1.45')
+    seconds = Decimal('222')  # 3*60 + 42
+    cost = rate * seconds / Decimal('60')
+    print(cost)
+    rounded = cost.quantize(Decimal('0.01'), rounding=ROUND_UP)
+    print(rounded)  
+
+Gives:
+
+    5.365
+    5.37
+
+Using the quantize method this way also properly handles the small usage case for short, cheap phone calls.
+So it still returns `0` if it is zero, but `001` if it is `0.000000000001`.
+
+### Know where to find Community built modules
+
+Python has a central repo of modules called [pypi](https://pypi.org/), that are maintained by the community. 
+
+## Collaboration
+
+There are language features in python to help you construct well defined API's with clear interface boundaries.
+The python community has established best practices that maximise the maintainability over time.
+You need to be deliberate in your collaboration goal.
+
+### Write docstrings for every function, class and module
+
+Documentation is very important due to the dynamic nature of the language. Unlike other languages the documentation from source is available when a program runs.
+
+You can add documentation imeediately after the `def` statement of a function:
+
+    def palindrom(word):
+        '''Return True if the given word is a palindrome'''
+        return word == word[::-1]
+
+You can retrive the docstring with:
+
+    print(repr(palindrom.__doc__))
+
+Consequences:
+* Makes interactive development easier with `ipython` and using the `help` function
+* A standard way of defining documentation makes it easier to build tools to convert it into more appealing formats like `html`: Like [sphinx](http://www.sphinx-doc.org/en/master/) or [readthedocs](https://readthedocs.org/)
+* First class, accessible and good looking documentation encourages people to write it
+
+#### Documenting Modules
+
+Each module should ahve a top level doc string. 
+
+    #!/usr/bin/env python3
+    '''Single sentence describing modules purpose
+
+    The paragraphs that follow should contain details that all
+    users should know about
+
+    It is a good place to highlight important features:
+    - 
+    -
+
+    Usage information for command line utilities
+    '''
+
+#### Documenting Classes
+
+Each class should have a docstring highlighting public attributes and methods, along with guidance on interating with protected attributes etc.
+
+eg.
+
+    class Player(object):
+        """Represents a player of the game.
+
+        Subclasses may override the 'tick' method to provide
+        custom animations for the player's movement depending
+        on their power level, etc.
+
+        Public attributes:
+        - power: Unused power-ups (float between 0 and 1).
+        - coins: Coins found during the level (integer).
+        ""”
+
+#### Documenting Functions
+
+Every public method and function should have a docstring. Similar to other docstrings with arguments at the end.
+
+eg.
+
+    def find_anagrams(word, dictionary):
+        """Find all anagrams for a word.
+
+        This function only runs as fast as the test for
+        membership in the 'dictionary' container. It will
+        be slow if the dictionary is a list and fast if
+        it's a set.
+
+        Args:
+            word: String of the target word.
+            dictionary: Container with all strings that
+                are known to be actual words.”
+        Returns:
+            List of anagrams that were found. Empty if
+            none were found.
+        """
+
+* If your function has no arguments and a simple return value, a single sentence description is probably good enough.
+* If your function uses `*args` and `**kwargs` use documentation to describe their purpose.
+* Default values should be mentioned
+* Generators should describe what the generator yields
+
+
+### Use packages to organise modules and provide stable APIs
+
+As the size of a codebase grows it is natural to reogranise its structure into smaller functions.
+You may find yourself with so many modules that another layer is needed.
+For that python provides `packages` which are modules containing other modules.
+
+In most cases `packages` are created by putting a `__init__.py` file into a directory.
+Once that is present you can import modules from that package:
+
+    main.py
+    mypackage/__init__.py
+    mypackage/models.py
+    mypackage/utils.py
+
+in `main.py`:
+
+    from mypackage import utils
+
+#### Namespaces
+
+Packages let you divide modules into seperate namespaces.
+
+    from analysis.utils import inspect as analysis_inspect
+    from frontend.utils import inspect as frontend_inspect
+
+When functions have the same name you can imports them as a different name
+
+> Even better is to avoid the `as` altogether and access the function with the `package.module.function` way
+
+#### Stable API
+
+Python provides a strict, stable API for external consumers.
+You will want to provide stable functionality that does not change between releases.
+
+Say you want all functions in `my_module.utils` and `my_module.models` to be accessible via `my_module`.
+
+You can, add a `__init__.py`:
+
+    __all__ = []
+    from . models import *
+    __all__ += models.__all__
+    from . utils import *
+    __all__ += utils.__all__”
+
+in `utils.py`:
+
+    from . models import Projectile
+
+    __all__ = ['simulate_collision']
+
+    ...
+
+in `models.py`:
+
+    __all__ = ['Projetile', ]
+
+    class Projectile:
+        ...
+
+Try avoid using `import *` as they can overwrite names existing in your module and they hide the source fo names of functions to new readers
+
+### Define a root exception to insulate callers from APIs
+
+A good read in the book, great if you are building a package for external use...
+
+### Know How to Break Circular Dependencies
+
+Read more in the book...Item 52
+
+### Use Virtual Environments for isolated and reproducible Deendencies
+
+Potencially use [pipenv](https://docs.pipenv.org/) in this case...
+
+## Production
+
+### Consider Module-scoped code to configure deployment environments
+
+
+
+
+
+
+
+Excerpt From: Brett Slatkin. “Effective Python: 59 Specific Ways to Write Better Python (Effective Software Development Series).” iBooks. 
+
+
 
