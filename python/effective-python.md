@@ -1809,11 +1809,165 @@ Try avoid using `import *` as they can overwrite names existing in your module a
 
 ### Define a root exception to insulate callers from APIs
 
-A good read in the book, great if you are building a package for external use...
+> Python has a built-in hierarchy of exceptions for the language and standard library. There’s a draw to using the built-in exception types for reporting errors instead of defining your own new types
+
+Sometimes raising a `ValueError` makes sense but it is much more powerful for an API to define its own hierachy of exceptions.
+
+    # my_module.py
+    class Error(Exception):
+        """Base-class for all exceptions raised by this module."""
+
+    class InvalidDensityError(Error):
+        """There was a problem with a provided density value.""”
+
+Having a root exception lets consumers of your API catch exceptions you raise on purpose. 
+
+eg: We are specifically catching the `my_module.Error`
+
+    try:
+        weight = my_module.determine_weight(1, -1)
+    except my_module.Error as e:
+        logging.error('Unexpected error: %s', e)
+
+These root exceptions:
+* Let callers know there is a problem with the usage of the API
+* If an exception is not caught properly it will propagate all the way up to an `except` - bringing attention to the consumer (Catching the Python `Exception` base class can help you find bugs)
+* They help find bugs in your API code - so other exeptions (non-root) are one's you did not intend to raise
+* Futureproof's API when expanding
+
+    class NegativeDensityError(InvalidDensityError):
+        """A provided density value was negative.
+
+The calling code will still work as it catches the parent `INvalidDensityError`
+
 
 ### Know How to Break Circular Dependencies
 
-Read more in the book...Item 52
+When collaborating with others you will have a mutual independency between modules. 
+
+You have a dialog module, importing `app`:
+
+    import app
+
+    class Dialog(object):
+        def __init__(self, save_dir):
+            self.save_dir = save_dir
+        # ...
+
+    save_dialog = Dialog(app.prefs.get('save_dir'))
+
+    def show():
+        # ...
+
+The `app` modules contains a `prefs` object that also imports the `dialog` class:
+
+    import dialog
+
+    class Prefs(object):
+        # ...
+        def get(self, name):
+            # ...
+
+    prefs = Prefs()
+    dialog.show()
+
+It is a `circular dependency` if you try to use the `app` module you will get:
+
+    AttributeError: 'module' object has no attribute 'prefs'
+
+So how does python's import work?...In dept first order:
+
+1. Searches for your module in `sys.path`
+2. Loads the code and ensures it compiles
+3. Creates corresponding empty module object
+4. Inserts the module into `sys.modules`
+5. Runs the code in the module object to define its contents
+
+The **attributes** of a module aren't defined until the code runs in step 5. But a module can be loaded immediately after it is inserted into `sys.modules`
+
+The `app` module imports `dialog`. The `dialog` module imports `app`. 
+
+`app.prefs` raises the error because `app` is just an empty shell at this point.
+
+The best way to fix this is to ensure that `prefs` is at the bottom of the dependency tree.
+
+Here are 3 approaches to breaking the circular dependency:
+
+#### Reordering Imports
+
+Import `dialog` at the bottom of `app`:
+
+    class Prefs(object):
+        # ...
+
+    prefs = Prefs()
+
+    import dialog  # Moved
+    dialog.show()
+
+This will avoid the `AttributeError` but it goes agianst `PEP8`
+
+#### Import, COnfigure, Run
+
+Have modules minimise side effects at import time.
+Have modules only define `functions`, `classes` and `constants`
+Avoid running any functions at import time.
+
+Then each module provides a `configure` function once all other modules have finished importing. 
+
+dialog.py:
+
+    import app
+
+    class Dialog(object):
+        # ...
+
+app.py:
+
+    import dialog
+
+    class Prefs(object):
+        # ...
+
+    prefs = Prefs()
+
+    def configure():
+        # ...
+
+main.py:
+
+    import app
+    import dialog
+
+    app.configure()
+    dialog.configure()
+
+    dialog.show() 
+
+Then your `main.py` should:
+1. Import
+2. Configre
+3. Run
+
+This can make your code harder to read but will allow for the _dependency injection_ design pattern.
+
+#### Dynamic Import
+
+The simplest is to use an `import` statement in a function. A dynamic import as the importing is done when the program is running.
+
+dialog.py:
+
+    class Dialog(object):
+        # ...
+
+    save_dialog = Dialog()
+
+    def show():
+        import app  # Dynamic import
+
+It requires no structural changes to the way modules are defined and imported. 
+There are downsides: the cost can be bad espescially inside loops, by delaying execution there may be surprising failures at runtime.
+
 
 ### Use Virtual Environments for isolated and reproducible Deendencies
 
@@ -1823,13 +1977,231 @@ Potencially use [pipenv](https://docs.pipenv.org/) in this case...
 
 ### Consider Module-scoped code to configure deployment environments
 
+When putting things into production you have to rely on database configurations and these can be handled by your module, take a test and produciton database.
+
+You can override parts of your program at startup time to provide different functionality:
+
+dev_main.py:
+
+    TESTING = True
+    import db_connection
+    db = db_connection.Database()
+
+prod_main.py:
+
+    TESTING = False
+    import db_connection
+    db = db_connection.Database()
+
+The only difference is the value of `TESTING`
+
+Then in your code you can decide which db to use with:
+
+db_connection.py
+
+    import __main__
+
+    class TestingDatabase(object):
+        # ...
+
+    class RealDatabase(object):
+        # ...
+
+    if __main__.TESTING:
+        Database = TestingDatabase
+    else:
+        Database = RealDatabase
+
+> Once your deployment environments get complicated, you should consider moving them out of Python constants (like `TESTING`) and into dedicated configuration files. Tools like the `configparser` built-in module let you maintain production configurations separate from code, a distinction that’s crucial for collaborating with an operations team.
+
+Another example is if you know your program works differently based on the host platform, you can inspect the `sys` module.
+
+db_connection.py:
+
+    import sys
+
+    class Win32Database(object):
+        # ...
+
+    class PosixDatabase(object):
+        # ...
+
+    if sys.platform.startswith('win32'):
+        Database = Win32Database
+    else:
+        Database = PosixDatabase
+
+You can also get environment variables with: `os.environ`
+
+### Use repr Strings for Debugging Output
+
+`print` will get you surprisingly far when debugging.
+
+The problem is that these human readable results don't show the type.
+
+    >>> print('5')
+    5
+    >>> print(5)
+    5
+
+You always want to see the `repr` version which is the printable representation of an object.
+
+    >>> print(repr('5'))
+    '5'
+    >>> print(repr(5))
+    5
+
+The `repr` of a class is not partocularly helpful although if you have control of th class you can define your own `__repr__` method to display the object:
+
+    class BetterClass(object):
+        def __init__(self, x, y):
+            # ...
+
+        def __repr__(self):
+            return 'BetterClass(%d, %d)' % (self.x, self.y)
+
+When you don't hve control over the class you can check the object's instance dictionary with `obj.__dict__`
+
+### Test Everything with unittest
+
+So many people don't do this (you should start with the test)
+
+* Python doesn't have static type checking, so the compiler doesn't stop the program when types are wrong.
+* You don't knwo whether functions will be defined at runtime.
+
+This is a blessing by most python dev's because of the productivity gained from the brevity and simplicity.
+
+Also type safety isn't everything and code needs to be tested. **You should always test your code no matter what language it is written in**. 
+
+In python the only way to have _any_ confidence in your code is to write tests, there is no veil of static type checking to make you feel safe.
+
+Tests are easy to write in python due to the same dynamic features like easily overridable behaviours.
+Tests are insurance, giving you confidence your code is correct but also making it harder for future modification and refactoring to burden functionality.
+
+The simplesdt way to write a tesdt is by using `unittest`.
+
+[See more on writing Unit Tests](https://fixes.co.za/python/python-unit-tests/)
+
+For more advance testing libraries see [pytest](https://docs.pytest.org/en/latest/) and [nose](http://nose.readthedocs.io/en/latest/)
+
+### Consider Interactive Debugging with pdb
+
+Everyone encounters bugs.
+Writing tests isolates code but does not help you find the root cause of issues.
+
+You should use pythons built-in `interactive debugger`
+
+Other programming languages make you put a breakpoint on a certain line. The python debugger differs in that you directly initiate the debugger in the code.
+
+All you need to do is add: `import pdb; pdb.set_trace()`
+
+    def complex_func(a, b, c):
+        # ...
+        import pdb; pdb.set_trace()
+
+As soon as the statement runs, execution is paused and you can inspect local variables.
+You can use `locals`, `help` and `import`.
+
+inspecting current state:
+* `bt` - Print the traceback of the current execution stack
+* `up` - Move the scope up, to caller of current function
+* `down` - Move scope down one level on function call
+
+Resuming execution:
+* `step` - Run the program till the next line stopping in next function called
+* `next` - Run the next line, do not stop when the next function is called
+* `return` - Run the program until the current function returns
+* `continue` - continue running until the next breakpoint.
+
+### Profile Before Optimising
+
+Slowdowns can be obscure. The best thing to do is ignore intuition and directly measure the performance of a program before you try optimise it.
+
+Python provides a built in _profiler_.
+
+Lets try it on this insertion sort:
+
+    from random import randint
+    max_size = 10**4
+    data = [randint(0, max_size) for _ in range(max_size)]
+    test = lambda: insertion_sort(data)
+
+    def insertion_sort(data):
+        result = []
+        for value in data:
+            insert_value(result, value)
+        return result
 
 
+    def insert_value(array, value):
+        for i, existing in enumerate(array):
+            if existing > value:
+                array.insert(i, value)
+                return
+        array.append(value)
 
+Python provides `profile` in pure python and `cProfile` a C-extension with low overhead.
 
+> Ensure to only test the portion of the code you have control over, not external systems.
 
+    import cProfile
+    from pstats import Stats
 
-Excerpt From: Brett Slatkin. “Effective Python: 59 Specific Ways to Write Better Python (Effective Software Development Series).” iBooks. 
+    profiler = cProfile.Profile()
+    profiler.runcall(test)
+    stats = Stats(profiler)
+    stats.strip_dirs()
+    stats.sort_stats('cumulative')
+    stats.print_stats()
 
+Results:
 
+    $ python test.py
+            20003 function calls in 2.167 seconds
 
+    Ordered by: cumulative time
+
+    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+         1    0.000    0.000    2.167    2.167 test.py:198(<lambda>)
+         1    0.004    0.004    2.167    2.167 test.py:181(insertion_sort)
+     10000    2.142    0.000    2.163    0.000 test.py:188(insert_value)
+      9988    0.020    0.000    0.020    0.000 {method 'insert' of 'list' objects}
+        12    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+* `ncalls` - Number of calls to function during profiling period
+* `tottime` - Number of seconds spent executing the function `9not other functions it calls)
+* `percall` - Average time spent in seconds spent in function per call
+* `cumtime` - Cumulative sends in call including other calls
+* `cumtimepercall` - Average seconds spent including other calls
+
+You can see the time spent in `insert_value` is the biggest time waster
+
+    from bisect import bisect_left
+
+    def insert_value(array, value):
+        i = bisect_left(array, value)
+        array.insert(i, value)
+
+Now the results:
+
+            30003 function calls in 0.067 seconds
+
+    Ordered by: cumulative time
+
+    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.067    0.067 test.py:196(<lambda>)
+        1    0.007    0.007    0.067    0.067 test.py:182(insertion_sort)
+    10000    0.008    0.000    0.060    0.000 test.py:189(insert_value)        10000    0.028    0.000    0.028    0.000 {method 'insert' of 'list' objects}
+    10000    0.024    0.000    0.024    0.000 {built-in method _bisect.bisect_left}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+Sometimes for more complex issues you can use `stats.print_callers()`
+
+### Use tracemalloc to Understand Memory Usage and Leaks
+
+More about this in the book...Item 59
+
+Source: 
+
+* “Effective Python: 59 Specific Ways to Write Better Python (Effective Software Development Series).” - Brett Slatkin
