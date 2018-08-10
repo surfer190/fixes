@@ -240,6 +240,7 @@ Use `try...finally` when you want exceptions to propagate up but you also want t
 * When the `try` block doesn’t raise an exception, the `else` block will run.
 * The `else` block helps you **minimize the amount of code in the try block and improves readability**
 
+
     def load_json_key(data, key):
         try:
             result_dict = json.loads(data)  # May raise ValueError
@@ -255,23 +256,22 @@ If decoding is successful the result key is returned if there is a `KeyError` th
     UNDEFINED = object()
 
     def divide_json(path):
-        handle = open(path, 'r+')   # May raise IOError
-        try:
-            data = handle.read()    # May raise UnicodeDecodeError
-            op = json.loads(data)   # May raise ValueError
-            value = (
-                op['numerator'] /
-                op['denominator'])  # May raise ZeroDivisionError
-    except ZeroDivisionError as e:
-        return UNDEFINED
-    else:
-        op['result'] = value
-        result = json.dumps(op)
-        handle.seek(0)
-        handle.write(result)    # May raise IOError
-        return value
-    finally:
-        handle.close()          # Always runs”
+        handle = open(path, 'r+')   # May raise IOError
+        try:
+            data = handle.read()    # May raise UnicodeDecodeError
+            op = json.loads(data)   # May raise ValueError
+            value = (op['numerator'] / op['denominator'])
+            # May raise ZeroDivisionError
+        except ZeroDivisionError as e:
+            return UNDEFINED
+        else:
+            op['result'] = value
+            result = json.dumps(op)
+            handle.seek(0)
+            handle.write(result)    # May raise IOError
+            return value
+        finally:
+            handle.close() # Always runs
 
 ## Functions
 
@@ -1131,7 +1131,7 @@ Check the book for a good example...
 * Make incremental progress towards better data models
 * Consider refactoring a class when using a `@property` too regularly
 
-### Use Descriptors for erusable @property methods
+### Use Descriptors for reusable @property methods
 
 The big problem with `@property` is reuse. The methods it decorates cannot be reused for multiple attributes in the same class or external classes.
 

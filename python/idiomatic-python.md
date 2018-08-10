@@ -43,4 +43,3 @@ Use `zip`
         print(name, colour)
 
 Problem with zip is they use alot of memory so can use `izip` instead
-
