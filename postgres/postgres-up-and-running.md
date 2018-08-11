@@ -38,6 +38,28 @@ It can be combined with other db types like `redis` or `memchache` to cache quer
 
 Install from [Postgres core Distribution](https://www.postgresql.org/download/)
 
+#### Ubuntu
+
+On Ubuntu you can intall with:
+
+    sudo apt install postgresql postgresql-contrib
+
+Log into psql:
+
+    sudo -u postgres psql
+
+Get out:
+
+    \q
+
+From command prompt create a user:
+
+    sudo -u postgres createuser --interactive
+
+Create a database:
+
+    createdb crowdminder
+
 ### Administration tools
 
 * psql - postgreSQL's command line interface that comes with the core distribution
@@ -384,7 +406,181 @@ then add the new extension to the `search path`:
 
     ALTER DATABASE mydb SET search_path='$user', public, my_extensions;
 
+* Requires a reconnect
 
+### Privileges
+
+Privileges or permissions are tricky to administer. It can even go to row and column level.
+You can achieve most privilege audmin in `pgAdmin`.
+
+Most privileges have a context (a target acted upon), the only 2 with no context are `CREATEDB` and `CREATE ROLE`
+
+#### Getting Started
+
+After installing postgres
+
+Create a role that will ownt he db:
+
+    CREATE ROLE mydb_admin LOGIN PASSWORD 'something';
+
+Create the database and set the owner:
+
+    CREATE DATABASE mydb WITH owner = mydb_admin;
+
+### Grant
+
+Primary way to assign privileges:
+
+    GRANT some_privilege TO some_role;
+
+> Some privileges always remain with the owner of an object and can never be granted away. These include DROP and ALTER.
+
+> The owner of an object retains all privileges. Granting an owner privilege in what it already owns is unnecessary
+
+Giving another role ability to give others the permission, use `OPTION`:
+
+    GRANT ALL ON ALL TABLES IN SCHEMA public TO mydb_admin WITH GRANT OPTION;
+
+To grant a privilege on all roles, use `PUBLIC`:
+
+    GRANT USAGE ON SCHEMA my_schema TO PUBLIC;
+
+> Unlike in other database products, being the owner of a PostgreSQL database does not give you access to all objects in the database. Another role could conceivably create a table in your database and deny you access to it! However, the privilege to drop the entire database could never be wrestled away from you.
+
+> After granting privileges to tables and functions with a schema, don’t forget to grant usage on the schema itself.
+
+## Backup and Restore
+
+3 utilities:
+
+* `pg_dump` - backup specific database
+* `pg_dumpall` - backup all databases (as superuser)
+* `pg_basebackup` - system level disk backups
+
+If your db is >= 500Gb then you should use `pg_basebackup` as part of your backup strategy - but that requires settings turned on for replication.
+
+> pg_dump can selectively back up tables, schemas, and databases
+
+### Create a compressed, single database backup
+
+    pg_dump -h localhost -p 5432 -U someuser -F c -b -v -f mydb.backup mydb
+
+A plain text backup can be created with:
+
+    pg_dump -h localhost -p 5432 -U someuser -C -F p -b -v -f mydb.backup mydb
+
+(Jeepuz, lots of options) `-C` means `CREATE DATABASE`
+
+Create a dump of tables whose name starts with `pay*`:
+
+    pg_dump -h localhost -p 5432 -U someuser -F c -b -v -t *.pay* -f pay.backup mydb
+
+A backup of all objects in the `hr` and `payroll` schemas:
+
+    pg_dump -h localhost -p 5432 -U someuser -F c -b -v \
+    -n hr -n payroll -f hr.backup mydb
+
+Create a compressed backup of all objects in all schemas including public:
+
+    pg_dump -h localhost -p 5432 -U someuser -F c -b -v -N public \
+    -f all_sch_except_pub.backup mydb
+
+#### Directory
+
+To crate the backup as a directory and getting around file size limitations:
+
+    pg_dump -h localhost -p 5432 -U someuser -F d -f /somepath/a_directory mydb
+
+#### System wide backup
+
+A server wide backup using `pg_dumpall` puts everything into a plain text file, including server globals.
+It is recommended to prefer inidividual backups though as restoring from a huge text file can be slow.
+`pg_basebackup` is the fastest option when restoring from a major issue.
+
+To backup all globals and tablespace definitions:
+
+    pg_dumpall -h localhost -U postgres --port=5432 -f myglobals.sql --globals-only
+
+Backing up specific global settings:
+
+    pg_dumpall -h localhost -U postgres --port=5432 -f myroles.sql --roles-only
+
+### Restoring Data
+
+From `pg_dump` and `pg_dumpall` use:
+
+1. `psql` for plain-text
+2. `pg_restore` for compressed, tar and directory backups
+
+#### Psql
+
+Restore a backup and ignore errors:
+
+    psql -U postgres -f myglobals.sql
+
+Restore, stopping when error found:
+
+    psql -U postgres --set ON_ERROR_STOP=on -f myglobals.sql
+
+Restore a specific database:
+
+    psql -U postgres -d mydb -f select_objects.sql
+
+#### Pg_restore
+
+* You can perform parrallel restores with `-j` or `--jobs=3`. Restoring a table per thread. 
+* You can review what is being restored before starting
+* You can sleectively restore: table or schema
+
+To restore:
+
+1. First create the databsae anew:
+
+    CREATE DATABASE mydb;
+
+2. Restore:
+
+    pg_restore --dbname=mydb --jobs=4 --verbose mydb.backup
+
+If the name of the db is the same as the backup, you can do the above in one step:
+
+    pg_restore --dbname=postgres --create --jobs=4 --verbose mydb.backup
+
+With the `--create` option, the database name is always the same as the one you backed up.
+
+A restore will not recreate objects, so you need to use the `--clean` switch.
+
+To restore just the structure with no data:
+
+    pg_restore --dbname=mydb2 --section=pre-data --jobs=4 mydb.backup
+
+### Tablespaces
+
+Postgres uses table spaces to map logical names ot physical locations on disk.
+Defaults: `pg_default` (user data) and `pg_global` (system data)
+
+Creating a tablespace:
+
+For unix, firt create the folder and `fstab` location, then:
+
+    CREATE TABLESPACE secondary LOCATION '/usr/data/pgdata94_secondary';
+
+Moving objects to another tablesapce:
+
+    ALTER DATABASE mydb SET TABLESPACE secondary;
+
+To move a single table:
+
+    ALTER TABLE mytable SET TABLESPACE secondary;
+
+To move all objects from defualt to secondary (db will be locaked):
+
+    ALTER TABLESPACE pg_default MOVE ALL TO secondary;
+
+### Important SysAdmin Points
+
+* Always check the logs when something goes wrong
+* You can clear your `pg_log` folder (not any others, `pg_xlog` and `pg_clog` are very important - renamed in postgres 10 to stop people thinking they were log files)
 
 
 
