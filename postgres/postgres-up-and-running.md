@@ -2,6 +2,27 @@
 
 A few notes I took from the excellent book" __PostgreSQL: Up and Running, Third Edition by Regina Obe and Leo Hsu”__
 
+## Quick Reference
+
+[Add superuser privilege to a user](https://stackoverflow.com/questions/10757431/postgres-upgrade-a-user-to-be-a-superuser)
+
+In psql:
+
+    ALTER USER my_user WITH SUPERUSER;
+
+[List all databases](https://dba.stackexchange.com/questions/1285/how-do-i-list-all-databases-and-tables-using-psql)
+
+In psql:
+
+    \l
+
+[View the users of a postgres instance](https://unix.stackexchange.com/questions/201666/command-to-list-postgresql-user-accounts)
+
+In psql:
+
+    \du 
+
+
 ## Basics
 
 ### Why PostgreSQL
@@ -59,6 +80,38 @@ From command prompt create a user:
 Create a database:
 
     createdb crowdminder
+
+**This will only install postgres 9.5**
+
+### Installing Latest on Ubuntu
+
+Follow the steps in [Installing postgres on ubuntu core](https://www.postgresql.org/download/linux/ubuntu/)
+
+The installer will tell you to login as `postgres` and run:
+
+    /usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start
+
+but it didn't work for me so I just started it with:
+
+    sudo service postgres start
+
+Wierdly it started the previous install I had of postgres:
+
+    postgres=# select version();
+                                                        version                                                      
+    ------------------------------------------------------------------------------------------------------------------
+    PostgreSQL 9.5.13 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609, 64-bit
+    (1 row)
+
+I had to purge the old one with:
+
+    sudo apt purge postgresql-9.5
+
+then install with:
+
+    sudo apt install postgresql-10 postgresql-client-10
+
+Use `select version();` inside `psql` to check the version.
 
 ### Administration tools
 
