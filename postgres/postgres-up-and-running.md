@@ -2,27 +2,6 @@
 
 A few notes I took from the excellent book" __PostgreSQL: Up and Running, Third Edition by Regina Obe and Leo Hsu”__
 
-## Quick Reference
-
-[Add superuser privilege to a user](https://stackoverflow.com/questions/10757431/postgres-upgrade-a-user-to-be-a-superuser)
-
-In psql:
-
-    ALTER USER my_user WITH SUPERUSER;
-
-[List all databases](https://dba.stackexchange.com/questions/1285/how-do-i-list-all-databases-and-tables-using-psql)
-
-In psql:
-
-    \l
-
-[View the users of a postgres instance](https://unix.stackexchange.com/questions/201666/command-to-list-postgresql-user-accounts)
-
-In psql:
-
-    \du 
-
-
 ## Basics
 
 ### Why PostgreSQL
