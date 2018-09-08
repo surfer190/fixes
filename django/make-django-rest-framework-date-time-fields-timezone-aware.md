@@ -1,7 +1,7 @@
 ## How to Make Django Rest Framework's DateTimeField Timezone Aware when outputting
 
 The truth is that `django` and `drf` do really well with timezones. 
-As shown in the (docs)[https://docs.djangoproject.com/en/1.11/topics/i18n/timezones], when `USE_TZ=True` django will store datetimes in `UTC`.
+As shown in the [docs](https://docs.djangoproject.com/en/1.11/topics/i18n/timezones), when `USE_TZ=True` django will store datetimes in `UTC`.
 Then when they are retrieved to the template they will be output in the timezone set with the `TIME_ZONE` setting.
 
 **But Django Rest Framework serialisers don't output date and times in the set timezone**
@@ -29,4 +29,4 @@ __Writing tests for these scenarios is very important__
 
 Sources:
 
-[Make DRF Timezone aware](https://stackoverflow.com/questions/17331578/django-rest-framework-timezone-aware-renderers-parser)s
+[Make DRF Timezone aware](https://stackoverflow.com/questions/17331578/django-rest-framework-timezone-aware-renderers-parsers)
