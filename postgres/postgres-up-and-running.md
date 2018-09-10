@@ -581,6 +581,38 @@ To move all objects from defualt to secondary (db will be locaked):
 
 * Always check the logs when something goes wrong
 * You can clear your `pg_log` folder (not any others, `pg_xlog` and `pg_clog` are very important - renamed in postgres 10 to stop people thinking they were log files)
+* Don't grant full OS permissions to the `postgres` account - opens up chance of SQL injection
+* Don't set `shared_buffers` too high
+* Dont try to start postgres on a port already in use - you will get an error saying it is already running.
+
+
+## PgAdmin
+
+You can download [pgAdmin](https://www.pgadmin.org/)
+
+Features:
+
+* Server and desktop mode (as a web server)
+* Graphical explain for queries
+* SQl Pane
+* GUI editor for `postgres.conf` and `pg_hba.conf`
+* Data export and import - CSV, Html
+* Backup and restore wizard
+* Grant wizard - privileges
+* `pgScript` engine - for db scripts without transactions
+* SQL intellisense (`ctrl + space`)
+* `pgAgent` - job scheduling
+s
+### Navigating pgAdmin
+
+Don't panic, there are alot of things here (many of these won't matter for a while).
+You can declutter this by going: `Files -> Preferences -> Browser -> Nodes`
+
+### Editing server files
+
+You need the `adminpack` extension installed:
+
+    CREATE EXTENSION adminpack;
 
 
 
