@@ -60,6 +60,38 @@ Create a database:
 
     createdb crowdminder
 
+**This will only install postgres 9.5**
+
+### Installing Latest on Ubuntu
+
+Follow the steps in [Installing postgres on ubuntu core](https://www.postgresql.org/download/linux/ubuntu/)
+
+The installer will tell you to login as `postgres` and run:
+
+    /usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start
+
+but it didn't work for me so I just started it with:
+
+    sudo service postgres start
+
+Wierdly it started the previous install I had of postgres:
+
+    postgres=# select version();
+                                                        version                                                      
+    ------------------------------------------------------------------------------------------------------------------
+    PostgreSQL 9.5.13 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609, 64-bit
+    (1 row)
+
+I had to purge the old one with:
+
+    sudo apt purge postgresql-9.5
+
+then install with:
+
+    sudo apt install postgresql-10 postgresql-client-10
+
+Use `select version();` inside `psql` to check the version.
+
 ### Administration tools
 
 * psql - postgreSQL's command line interface that comes with the core distribution
