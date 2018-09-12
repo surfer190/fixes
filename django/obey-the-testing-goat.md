@@ -1176,3 +1176,407 @@ You can patch at class level if needed (more than 3 cases):
                 self.client.get('/accounts/login?token=abcd123')
                 self.assertEqual(mock_auth.login.called, False)
 
+> One good justification for using mocks is when they will reduce duplication between tests. It’s one way of avoiding combinatorial explosion. 
+
+### Avoid Mock’s Magic assert_called
+
+Instead of:
+
+        self.assertEqual(a_mock.call_args, call(foo, bar))
+
+Just do:
+
+        a_mock.assert_called_with(foo, bar)
+
+The problem is it is too easy to make a type on the mock method, which will return a regular mock which will pass.
+
+# Test Fixtures and a Decorator for Explicit Waits
+
+We’re going to have to write FTs that have a logged-in user. Rather than making each test go through the (**time-consuming**) login email dance, we want to be able to skip that part.
+
+## Skipping the Login Process by Pre-creating a Session
+
+Usually a user will return to a site with a session anyway, so it is not an unrealistic cheat.
+
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth import BACKEND_SESSION_KEY, SESSION_KEY
+from django.contrib.sessions.backends.db import SessionStore
+
+from .base import FunctionalTest
+
+User = get_user_model()
+
+
+        class MyListTest(FunctionalTest):
+
+        def create_pre_authenticated_session(self, email):
+                user = User.objects.create(email=email)
+                session = SessionStore()
+                # session key is the primary key of the user object
+                session[SESSION_KEY] = user.pk
+                session[BACKEND_SESSION_KEY] = settings.AUTHENTICATION_BACKENDS[0]
+                session.save()
+                # To set a cookie we first need to visit the domain
+                # 404 pages load the quickest!
+                self.browser.get(self.live_server_url + "/404_no_such_url/")
+                # Add a cookie to the browser matching the session on server
+                self.browser.add_cookie(dict(
+                name=settings.SESSION_COOKIE_NAME,
+                value=session.session_key,
+                path='/'
+                ))
+
+Using it in a test:
+
+        def test_logged_in_users_lists_are_saved_as_my_lists(self):
+                email = 'edith@example.com'
+                self.browser.get(self.live_server_url)
+                self.wait_to_be_logged_out(email)
+
+                # Edith is a logged-in user
+                self.create_pre_authenticated_session(email)
+                self.browser.get(self.live_server_url)
+                self.wait_to_be_logged_in(email)
+
+### JSON Test Fixtures
+
+Sometimes creating json fixtures wtih `dumpdata` can seem to save time, when setting up a test.
+
+The problem is they are a:
+
+* Nightmare to maintain with model changes.
+* Difficult for the reader to determine which attributes are important and which are just fillers. 
+* Shareing fixtures that need something slightly different, will end up with you copying the whole thing to keep them isolated.
+
+So it is advisable just to load directly from the ORM.
+
+### A Wait Decorator
+
+The difference is that the decorator doesn’t actually execute any code itself—it returns a modified version of the function that it was given.
+
+    def wait(fn):
+        def modified_fn():
+            start_time = time.time()
+            while True:
+                try:
+                    return fn()
+                except (AssertionError, WebDriverException) as e:
+                    if time.time() - start_time > MAX_WAIT:
+                        raise e
+                    time.sleep(0.5)
+
+        return modified_fn
+
+* The decorator take a function as an argument and returns a modified function
+* We keep catching exceptions until the timer runs out
+
+
+Using it with:
+
+       table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
+
+
+    @wait
+    def wait_to_be_logged_in(self, email):
+        self.browser.find_element_by_link_text('Log out')
+        navbar = self.browser.find_element_by_css_selector('.navbar')
+        self.assertIn(email, navbar.text)
+
+
+    @wait
+    def wait_to_be_logged_out(self, email):
+        self.browser.find_element_by_name('email')
+        navbar = self.browser.find_element_by_css_selector('.navbar')
+        self.assertNotIn(email, navbar.text)
+
+But when we run it we get:
+
+        TypeError: modified_fn() takes 0 positional arguments but 2 were given
+
+So our arguments are not being sent into the `modified_fn`
+
+We use [variadic arguments](https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments) with `*args` and `**kwargs`
+
+    def wait(fn):
+        def modified_fn():
+            start_time = time.time()
+            while True:
+                try:
+                    return fn()
+                except (AssertionError, WebDriverException) as e:
+                    if time.time() - start_time > MAX_WAIT:
+                        raise e
+                    time.sleep(0.5)
+
+        return modified_fn
+
+We can now use the `@wait` with `wait_for`:
+
+    @wait
+    def wait_for(self, fn):
+        return fn()
+    
+# Server Side Debugging
+
+Skipped this...ruffhouse
+
+# Outside-In TDD
+
+Writing the functional test first nd then the unit test is a manifestation of outside-in.
+
+Design the system from the outside and build up the code in layers.
+
+Inside-out is starting with the innermost components first.
+It **feels** comfortable because you are never working on a piece of code that depends on something that has not been implemented.
+
+Why "Inside-out" is kak?:
+
+* We might have ideas in our head about the new desired behaviour of our inner layers like database models that  are actually just speculation
+* Inside out causes us to stray from the TDD workflow. 
+* One problem that can result is to build inner components that are more general or more capable than we actually need
+* You might end up with inner components which, you later realise, don’t actually solve the problem that your outer layers need solved
+
+> In contrast, working outside-in allows you to use each layer to imagine the most convenient API you could want from the layer beneath it
+
+> Another Pass, Outside-In
+
+At each stage, we still let the FT drive what development we do.
+
+> Outside-In TDD is sometimes called "programming by wishful thinking"
+
+### A Decision Point: Whether to Proceed to the Next Layer with a Failing Test
+
+Should we use a mock to isolate something from the model layer?
+
+It is mroe effort to use mocks, and mocks can make the test harder to read.
+
+But what if there are 5 or more layers, we would leave this failing test and still won't have an idea if anything is working.
+
+# Test Isolation, and "Listening to Your Tests"
+
+Proceeding to work on lower levels while you’re not sure that the higher levels are really finished or not is a risky strategy
+
+> Using mocks does tie you to specific ways of using an API. This is one of the many trade-offs involved in the use of mock objects. 
+
+You have to use `List()` instead of django's `List.objects.create`
+
+Sometimes it's not enough just to check an attribute, we need to ensure the sequence is correct. That assignment is done before a `save`
+
+You would use a `side_effect`
+
+eg:
+
+    def test_list_owner_is_saved_if_user_is_authenticated(
+            self, mockItemFormClass, mockListClass
+        ):
+            user = User.objects.create(email='a@b.com')
+            self.client.force_login(user)
+            mock_list = mockListClass.return_value
+
+            def check_owner_assigned():  
+                self.assertEqual(mock_list.owner, user)
+            mock_list.save.side_effect = check_owner_assigned  
+
+            self.client.post('/lists/new', data={'text': 'new item'})
+
+            mock_list.save.assert_called_once_with()
+
+So when `save` function is called it will run the assertion.
+
+It is important to ensure the side_effect is run using:
+
+    mock_list.save.assert_called_once_with()
+
+So importantly:
+
+* Always assign the side_effect earlier rather than later (to ensure it is assigned when it runs)
+* Ensure the method assigned the side_effect is actually run
+
+> In order to rewrite our tests to be fully isolated, we need to throw out our old way of thinking about the tests in terms of the "real" effects of the view on things like the database, and instead think of it in terms of the objects it collaborates with, and how it interacts with them.
+
+A veey isolated test:
+
+    from unittest.mock import patch
+    from django.http import HttpRequest
+    from lists.views import new_list2
+    [...]
+
+    @patch('lists.views.NewListForm')  
+    class NewListViewUnitTest(unittest.TestCase):  
+
+        def setUp(self):
+            self.request = HttpRequest()
+            self.request.POST['text'] = 'new list item'  
+
+        def test_passes_POST_data_to_NewListForm(self, mockNewListForm):
+            new_list2(self.request)
+            mockNewListForm.assert_called_once_with(data=self.request.POST)
+
+### Patching a redirect
+
+**patch decorators are applied innermost first**
+
+    @patch('lists.views.redirect')
+    def test_redirects_to_form_returned_object_if_form_valid(
+        self, mock_redirect, mockNewListForm
+    ):
+        mock_form = mockNewListForm.return_value
+        mock_form.is_valid.return_value = True
+
+        response = new_list2(self.request)
+
+        # Ensure response is result of redriect function
+        self.assertEqual(
+            response,
+            mock_redirect.return_value
+        )
+
+        # Ensure redirect called with object we return from save
+        mock_redirect.assert_called_once_with(mock_form.save.return_value)
+
+### Patching a render
+
+    @patch('lists.views.render')
+    def test_renders_home_template_with_form_if_form_invalid(
+        self, mock_render, mockNewListForm
+    ):
+        mock_form = mockNewListForm
+        mock_form.is_valid.return_value = False
+
+        response = new_list2(self.request)
+
+        self.assertEqual(response, mock_render.return_value)
+        mock_render.assert_called_once_with(
+            self.request, 'home.html', {'form': mock_form}
+        )
+
+### A horrendous form test
+
+    @patch('lists.models.List')
+    @patch('list.models.Item')
+    def test_save_creates_new_list_and_item_from_post_data(
+        self, mockItem, mockList
+    ):
+        mock_item = mockItem.return_value
+        mock_list = mockList.return_value
+        user = Mock()
+
+        form = NewListForm(data={'text': 'My New Item'})
+        # populate cleaned_data
+        form.is_valid()
+
+        def check_item_text_and_list():
+            self.assertEqual(mock_item.text, 'My New Item')
+            self.assertEqual(mock_item.list, mock_list)
+            self.assertTrue(mock_ist.save.called)
+        mock_item.save.side_effect = check_item_text_and_list
+
+        form.save(owner=user)
+
+        self.assertEqual(mock_item.save.called)
+
+### Hiding ORM Code Behind Helper Methods
+
+Many people try and limit the ORM methods in views and forms because it is easier to test.
+
+Helper functions also help us express our domain logic more clearly.
+
+compare:
+
+    list_ = List()
+    list_.save()
+    item = Item()
+    item.list = list_
+    item.text = self.cleaned_data['text']
+    item.save()
+
+with:
+
+    List.create_new(first_item_text=self.cleaned_data['text'])
+
+This also includes read queries:
+
+    Book.objects.filter(in_print=True, pub_date__lte=datetime.today())
+
+instead of:
+
+    Book.all_available_books()
+
+We can give more descriptive names, making the code more readible and the application more loosely coupled.
+
+### Model Layer
+
+At the model layer the whole point is storing data in the database, so no longer need isolated tests and can use integrated tests.
+
+The model helper method can be a static method:
+
+    def create_new(self):
+        pass
+
+turns to:
+
+    @staticmethod
+    def create_new(first_item_text):
+        list_ = List.objects.create()
+        Item.objects.create(text=first_item_text, list=list_)
+
+> Use in-memory (unsaved) model objects in your tests whenever you can; it makes your tests faster. 
+
+An example of in-memory tests:
+
+    def test_lists_can_have_owners(self):
+        List(owner=User())
+
+    def test_list_owner_optional(self):
+        List().full_clean()
+
+> Here’s an important lesson to learn about test isolation: it might help you to drive out good design for individual layers, but it won’t automatically verify the integration between your layers.
+
+### Thinking of Interactions Between Layers as "Contracts"
+
+A functional test would catch these thigns but they take a long time to run. 
+Whenever we mock out the behaviour of one layer, we have to make a mental note that there is now an implicit contract between the layers, and that a mock on one layer should probably translate into a test at the layer below.
+
+**Each contract should have a test in the lwoer layer**
+
+Complexity should be your guide as to when to write isolated tests with mocks.
+
+### Pros and cons of test types
+
+Functional tests:
+
+* Provide the best guarantee that your application really works correctly, from the point of view of the user
+* Slower feedback cycle
+* Don’t necessarily help you write clean code
+
+Integrated tests (Reliant on ORM or test client)
+
+* Quick to write
+* easy to understand
+* Warn you of any integration issues
+* May not always drive good design (that’s up to you!)
+* Slower than isolated tests
+
+Isolated ("mocky") tests
+
+* Most hard work
+* Harder to read and understand
+* Best ones for guiding you towards better design
+* Run the fastest
+
+# Continuous Integration (CI)
+
+As our site grows, it takes longer and longer to run all of our functional tests. If this continues, the danger is that we’re going to stop bothering.
+
+In day-to-day development, we can just run the FT that we’re working on at that time, and rely on the CI server to run all the tests automatically and let us know if we’ve broken anything accidentally. The unit tests should stay fast enough that we can keep running them every few seconds.
+
+There is info about how to setup how jenkins instance for running functional and JS tests: http://www.obeythetestinggoat.com/book/chapter_CI.html
+
+# Fast Tests, Slow Tests, and Hot Lava
+
+> There is an argument that a true unit test should always be isolated, because it’s meant to test a single unit of software. If it touches the database, it can’t be a unit test. The database is hot lava!
+
+
