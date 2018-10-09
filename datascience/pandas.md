@@ -562,4 +562,4 @@ Create the colourmap:
         top = top.append(element)
     top
 
-Source: [Lynda Pandas for Datascience](https://www.lynda.com/Pandas-tutorials/pandas-Data-Science/518161-2.html)
+Source: [Lynda Pandas for Datascience](https://www.lynda.com/Data-Science-tutorials/pandas-Essential-Training/636129-2.html)
