@@ -4680,7 +4680,7 @@ Libraries like seaborn and panda's built-in plotting functions deal with the mun
 
 Plots in `matplotlib` reside within a `Figure` object.
 
-I used a jupyter notbook for notes on this chapter, which I will attempt to host if possible.
+Check the [Chapter 9: Figures and Subplots Jupter Notebook Notes](https://fixes.co.za/notebooks/chp_9_plots.html), which I will attempt to host if possible.
 
 # Chapter 10: Data Aggregation and Group Operations
 
