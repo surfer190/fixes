@@ -3075,8 +3075,1614 @@ Eg.
 
 # Chapter 7: Data Cleaning and Preparation
 
+A significant amount of your time in data analysis and modelling is spent on data preparation: loading, cleaning, transforming and rearranging.
 
+Apparently taking up to 80% of your codng time
 
+## Handling Missing Data
+
+All descriptive statistics exclude missing data by default.
+
+The missing sentinel value for floating points is `NaN` which is imperfect but functional.
+
+    In [1]: import pandas as pd
+    In [2]: import numpy as np
+
+    In [5]: string_data = pd.Series(['Aardvark', 'Artichoke', np.nan, 'Avocado'])
+
+    In [6]: string_data.isnull()
+    Out[6]:
+    0    False
+    1    False
+    2     True
+    3    False
+    dtype: bool
+
+In pandas, we've adopted a convention used in the R languageby reffering to missing data as `NA` (Not Available).
+`NA` may mean data that does not exist or data that exists but was not observed (due to data collection problems).
+
+The built-in python `None` value is also treated as `NA` in object arrays
+
+    In [7]: string_data[0] = None
+
+    In [8]: string_data
+    Out[8]:
+    0         None
+    1    Artichoke
+    2          NaN
+    3      Avocado
+    dtype: object
+
+    In [10]: string_data.isnull()
+    Out[10]:
+    0     True
+    1    False
+    2     True
+    3    False
+    dtype: bool
+
+### Filtering out Missing Data
+
+You can use `isnull()` and boolean indexing but `dropna` can also be helpful.
+
+    In [11]: from numpy import nan as NA
+
+    In [12]: data = pd.Series([1, NA, 3.5, 7])
+
+    In [13]: data.dropna()
+    Out[13]:
+    0    1.0
+    2    3.5
+    3    7.0
+    dtype: float64
+
+which is equivalent to:
+
+    In [15]: data[data.notnull()]
+    Out[15]:
+    0    1.0
+    2    3.5
+    3    7.0
+    dtype: float64
+
+On a dataframe `dropna()` drops all rows containing a missing value
+
+Passing `how=all` will only drop rows where all the values are missing
+
+    data.dropna(how='all')
+
+To drop columns, do the same thing but where `axis=1`
+
+    data.dropna(axis=1, how='all')
+
+Suppose you only want to keep rows containing a certain number of observations. For that you would use `thresh`:
+
+    In [16]: df = pd.DataFrame(np.random.randn(7, 3))
+
+    In [17]: df
+    Out[17]:
+            0         1         2
+    0  0.871250 -1.434184  1.323816
+    1 -2.049019  1.685563 -0.028869
+    2 -0.284594 -1.658746 -0.893838
+    3 -0.306614 -0.045451  0.072289
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+    In [18]: df.iloc[:4, 1] = NA
+
+    In [19]: df
+    Out[19]:
+            0         1         2
+    0  0.871250       NaN  1.323816
+    1 -2.049019       NaN -0.028869
+    2 -0.284594       NaN -0.893838
+    3 -0.306614       NaN  0.072289
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+    In [20]: df.iloc[:2, 2] = NA
+
+    In [21]: df
+    Out[21]:
+            0         1         2
+    0  0.871250       NaN       NaN
+    1 -2.049019       NaN       NaN
+    2 -0.284594       NaN -0.893838
+    3 -0.306614       NaN  0.072289
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+    In [22]: df.dropna(thresh=3)
+    Out[22]:
+            0         1         2
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+    In [23]: df.dropna(thresh=2)
+    Out[23]:
+            0         1         2
+    2 -0.284594       NaN -0.893838
+    3 -0.306614       NaN  0.072289
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+### Filling in Missing Data
+
+Calling `fillna` with a constant replaces missing values with that value:
+
+    In [24]: df.fillna(0)
+    Out[24]:
+            0         1         2
+    0  0.871250  0.000000  0.000000
+    1 -2.049019  0.000000  0.000000
+    2 -0.284594  0.000000 -0.893838
+    3 -0.306614  0.000000  0.072289
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+You can use a different fill value for a different column with a dict:
+
+    In [28]: df.fillna({0: -1, 1: 0.5, 2: 0})
+    Out[28]:
+            0         1         2
+    0  0.871250  0.500000  0.000000
+    1 -2.049019  0.500000  0.000000
+    2 -0.284594  0.500000 -0.893838
+    3 -0.306614  0.500000  0.072289
+    4  1.253934  0.242588  0.802684
+    5  1.301810 -1.869278  0.492717
+    6  0.307062 -0.273495 -0.468776
+
+You can change it inplace with `inplace=True` instead of retruning a new object
+
+The same indexing methods available can be used with `fillna`:
+
+    In [30]: df = pd.DataFrame(np.random.randn(6, 3))
+
+    In [31]: df.iloc[2:, 1] = NA; df.iloc[4:, 2] = NA
+
+    In [32]: df
+    Out[32]:
+            0         1         2
+    0  0.427217 -0.321663  0.806618
+    1 -0.918541  1.607939 -0.374820
+    2 -0.720018       NaN -0.989154
+    3  0.740126       NaN  0.176258
+    4 -0.920978       NaN       NaN
+    5  0.449166       NaN       NaN
+
+    In [33]: df.fillna(method='ffill')
+    Out[33]:
+            0         1         2
+    0  0.427217 -0.321663  0.806618
+    1 -0.918541  1.607939 -0.374820
+    2 -0.720018  1.607939 -0.989154
+    3  0.740126  1.607939  0.176258
+    4 -0.920978  1.607939  0.176258
+    5  0.449166  1.607939  0.176258
+
+and limit:
+
+    In [34]: df.fillna(method='ffill', limit=2)
+    Out[34]:
+            0         1         2
+    0  0.427217 -0.321663  0.806618
+    1 -0.918541  1.607939 -0.374820
+    2 -0.720018  1.607939 -0.989154
+    3  0.740126  1.607939  0.176258
+    4 -0.920978       NaN  0.176258
+    5  0.449166       NaN  0.176258
+
+You could also fill data with the mean:
+
+    In [35]: data = pd.Series([1.0, NA, 3.5, NA, 7])
+
+    In [36]: data.fillna(data.mean())
+    Out[36]:
+    0    1.000000
+    1    3.833333
+    2    3.500000
+    3    3.833333
+    4    7.000000
+    dtype: float64
+
+## Data Transformation
+
+### Removing Duplicates
+
+The `duplicated()` method returns a boolean series of whether each row is duplicated or not:
+
+    df.duplicated() == True
+
+To get a dataframe with duplciates dropped:
+
+    df.drop_duplicates()
+
+Both methods consider all of the columns by default.
+
+Suppose you want to filter only on a certain column:
+
+    data.drop_duplicates(['k1'])
+
+The first occurance is kept by default, if you want to keep the last use the kwarg `keep='last'`
+
+### Transforming Data Using a Function or Mapping
+
+    In [39]: data = pd.DataFrame({'food': ['bacon', 'pulled pork', 'bacon', 'pastrami', 'corned beef', 'Bacon', 'Pastrami'],
+    ...: 'ounces': [4, 3, 12, 6, 7.5, 8, 3,]})
+    In [40]: data
+    Out[40]:
+            food  ounces
+    0        bacon     4.0
+    1  pulled pork     3.0
+    2        bacon    12.0
+    3     pastrami     6.0
+    4  corned beef     7.5
+    5        Bacon     8.0
+    6     Pastrami     3.0
+
+Suppose you wanted to add a column for the animal a type of meat comes from:
+
+    meat_to_animal = {
+        'bacon': 'pig',
+        'pulled pork': 'pig',
+        'pastrami': 'cow',
+        'corned beef': 'cow',
+    }
+
+The `map` method on a series accepts a function or dict-like mapping, but there is a problem some meats are capitalised.
+
+In [42]: data['animal'] = data['food'].str.lower().map(meat_to_animal)
+
+    In [43]: data
+    Out[43]:
+            food  ounces animal
+    0        bacon     4.0    pig
+    1  pulled pork     3.0    pig
+    2        bacon    12.0    pig
+    3     pastrami     6.0    cow
+    4  corned beef     7.5    cow
+    5        Bacon     8.0    pig
+    6     Pastrami     3.0    cow
+
+We could have also used a function:
+
+    In [45]: data['animal'] = data['food'].map(lambda x: meat_to_animal[x.lower()])
+
+### Replaceing Values
+
+Take this data:
+
+    In [48]: data = pd.Series([1., -999., 2., -999., -1000., 3.])
+
+    In [49]: data
+    Out[49]:
+    0       1.0
+    1    -999.0
+    2       2.0
+    3    -999.0
+    4   -1000.0
+    5       3.0
+    dtype: float64
+
+Say that `-999` is a sentinel for missing data. To replace this with data pandas understands we can use `replace`:
+
+    In [50]: data.replace(-999, np.NAN)
+    Out[50]:
+    0       1.0
+    1       NaN
+    2       2.0
+    3       NaN
+    4   -1000.0
+    5       3.0
+    dtype: float64
+
+You can replace multiple values:
+
+    In [51]: data.replace([-999, -1000], np.NAN)
+    Out[51]:
+    0    1.0
+    1    NaN
+    2    2.0
+    3    NaN
+    4    NaN
+    5    3.0
+    dtype: float64
+
+Multiple specific replacements:
+
+    In [52]: data.replace({-999: 0 , -1000: np.NAN})
+    Out[52]:
+    0    1.0
+    1    0.0
+    2    2.0
+    3    0.0
+    4    NaN
+    5    3.0
+    dtype: float64
+
+### Renaming axis
+
+    transform = lambda x: x[:4].upper()
+    data.index.map(transform)
+
+or 
+
+data.rename(index=str.title, columns=str.upper)
+data.rename(index={'OHIO': 'INDIANA'}, inplace=True)
+
+## Discretisation and Binning
+
+Continuous data is often seperated into bins
+
+Say you have ages:
+
+    In [53]: ages = [20, 22, 25, 27, 21, 23, 37, 31, 61, 45, 41, 32]
+
+    In [54]: ages
+    Out[54]: [20, 22, 25, 27, 21, 23, 37, 31, 61, 45, 41, 32]
+
+    In [55]: bins = [18, 25, 35, 60, 100]
+
+You then use the `cut` function
+
+In [56]: cats = pd.cut(ages, bins)
+
+    In [57]: cats
+    Out[57]:
+    [(18, 25], (18, 25], (18, 25], (25, 35], (18, 25], ..., (25, 35], (60, 100], (35, 60], (35, 60], (25, 35]]
+    Length: 12
+    Categories (4, interval[int64]): [(18, 25] < (25, 35] < (35, 60] < (60, 100]]
+
+The object returned is a special `Categorical` object
+
+    In [58]: cats.codes
+    Out[58]: array([0, 0, 0, 1, 0, 0, 2, 1, 3, 2, 2, 1], dtype=int8)
+
+    In [59]: cats.categories
+    Out[59]:
+    IntervalIndex([(18, 25], (25, 35], (35, 60], (60, 100]]
+                closed='right',
+                dtype='interval[int64]')
+
+    In [60]: pd.value_counts(cats)
+    Out[60]:
+    (18, 25]     5
+    (35, 60]     3
+    (25, 35]     3
+    (60, 100]    1
+    dtype: int64
+
+Consistent with mathemtical notation: a parenthesis `(` means that side is open while a square bracket means closed `]` (inclusive).
+You can set which side is open or closed with `right=False`
+
+    In [61]: cats = pd.cut(ages, bins, right=False)
+
+    In [62]: cats
+    Out[62]:
+    [[18, 25), [18, 25), [25, 35), [25, 35), [18, 25), ..., [25, 35), [60, 100), [35, 60), [35, 60), [25, 35)]
+    Length: 12
+    Categories (4, interval[int64]): [[18, 25) < [25, 35) < [35, 60) < [60, 100)]
+
+If you give cut an integer instead of explicit bin edges it will computer equal length bins based on minimum and maximum values in the data.
+
+    In [64]: data = np.random.randn(20)
+
+    In [65]: data
+    Out[65]:
+    array([ 0.31992007, -1.37057101, -0.78414082,  1.41844717, -0.29812797,
+            0.9521121 ,  0.82879956,  2.77438651,  0.75959752, -1.31259677,
+            0.51138379, -0.32840281,  1.81732981, -0.52482447,  0.72973532,
+            0.49750981, -0.56058252, -0.25608326,  0.28111671,  2.05995848])
+
+    In [66]: pd.cut(data, 4, precision=2)
+    Out[66]:
+    [(-0.33, 0.7], (-1.37, -0.33], (-1.37, -0.33], (0.7, 1.74], (-0.33, 0.7], ..., (-0.33, 0.7], (-1.37, -0.33], (-0.33, 0.7], (-0.33, 0.7], (1.74, 2.77]]
+    Length: 20
+    Categories (4, interval[float64]): [(-1.37, -0.33] < (-0.33, 0.7] < (0.7, 1.74] < (1.74, 2.77]]
+
+A similar related function `qcut`, cuts bins based on quantiles.
+Depending on the distribution of the data using `cut` will not usually result in each bin having the same amount of data points.
+
+`qcut` uses sample quantiles instead, by definition you receive roughly equal sized bins.
+
+    In [67]: data = np.random.randn(1000)
+
+    In [68]: cats = pd.qcut(data, 4)
+
+    In [69]: cats
+    Out[69]:
+    [(-0.647, 0.0519], (0.719, 3.005], (-0.647, 0.0519], (-0.647, 0.0519], (-0.647, 0.0519], ..., (0.719, 3.005], (0.0519, 0.719], (0.719, 3.005], (-0.647, 0.0519], (0.719, 3.005]]
+    Length: 1000
+    Categories (4, interval[float64]): [(-3.189, -0.647] < (-0.647, 0.0519] < (0.0519, 0.719] <
+                                        (0.719, 3.005]]
+
+    In [70]: pd.value_counts(cats)
+    Out[70]:
+    (0.719, 3.005]      250
+    (0.0519, 0.719]     250
+    (-0.647, 0.0519]    250
+    (-3.189, -0.647]    250
+    dtype: int64
+
+You can pass your own quantiles (values from 0 to 1):
+
+    In [71]: cats = pd.qcut(data, [0, 0.1, 0.5, 0.9, 1])
+
+    In [72]: cats.value_counts()
+    Out[72]:
+    (-3.189, -1.305]    100
+    (-1.305, 0.0519]    400
+    (0.0519, 1.257]     400
+    (1.257, 3.005]      100
+    dtype: int64
+
+### Detecting and Filtering Outliers
+
+Filtering or transforming outliers is largely a matter of applying array operations.
+
+    In [73]: data = pd.DataFrame(np.random.randn(1000, 4))
+
+    In [74]: data.describe()
+    Out[74]:
+                    0            1            2            3
+    count  1000.000000  1000.000000  1000.000000  1000.000000
+    mean     -0.007788    -0.010025     0.029215     0.011847
+    std       0.983244     1.028296     1.004748     1.009238
+    min      -3.015770    -3.204882    -3.727639    -2.709379
+    25%      -0.650793    -0.670933    -0.699211    -0.655731
+    50%      -0.028469    -0.024508     0.036163    -0.006192
+    75%       0.675486     0.668831     0.762269     0.694783
+    max       3.156981     3.034008     2.976704     3.516318
+
+Suppose you want to find the values in a column exceeding 3 in magnitude:
+
+    In [76]: col[np.abs(col)> 3]
+    Out[76]:
+    218    3.128675
+    509    3.011054
+    699    3.516318
+    Name: 3, dtype: float64
+
+To select all the rows have a magnitude greater than 3, use `any`
+
+    In [77]: data[(np.abs(data) > 3).any(1)]
+    Out[77]:
+                0         1         2         3
+    187 -3.015770 -0.028759 -0.087647  1.514852
+    218  0.677857  0.448257  0.334189  3.128675
+    313  3.156981 -0.842627 -0.762875  0.803619
+    487 -0.620277 -3.094748  0.769148 -0.081738
+    509  0.346854 -1.075202  0.175269  3.011054
+    640  0.538403 -3.204882 -2.088300  1.448109
+    697 -0.388438  1.511103 -3.727639  0.479053
+    699  0.580033  1.228524  1.146316  3.516318
+    953  1.060103  3.034008  0.980496  0.985401
+    962 -0.683237 -3.093548  0.467704  0.111335
+
+You can set the values of the outliers, eg:
+
+    data[np.abs(data) > 3] = np.sign(data) * 3
+
+> `np.sign` returns -1 or 1 based on the sign of the values
+
+### Permutation and Random Sampling
+
+Permuting (random reordering) a series or rows in a dataframe is easy to do suing the `numpy.random.permutations` function.
+
+You can create a sampler and then use `df.take` - return values in positional indexing
+
+    In [79]: df = pd.DataFrame(np.arange(5 * 4).reshape((5, 4)))
+
+    In [80]: df
+    Out[80]:
+        0   1   2   3
+    0   0   1   2   3
+    1   4   5   6   7
+    2   8   9  10  11
+    3  12  13  14  15
+    4  16  17  18  19
+
+    In [81]: sampler = np.random.permutation(5)
+
+    In [82]: sampler
+    Out[82]: array([3, 0, 4, 1, 2])
+
+    In [83]: df.take(sampler)
+    Out[83]:
+        0   1   2   3
+    3  12  13  14  15
+    0   0   1   2   3
+    4  16  17  18  19
+    1   4   5   6   7
+    2   8   9  10  11
+
+To get a random subset without replacement:
+
+    In [85]: df.take(np.random.permutation(len(df))[:3])
+    Out[85]:
+    0  1   2   3
+    1  4  5   6   7
+    0  0  1   2   3
+    2  8  9  10  11
+
+To generate a sample with replacement:
+
+    In [86]: bag = np.array([5, 7, -1, 6, 4])
+
+    In [87]: sampler = np.random.randint(0, len(bag), size=10)
+
+    In [88]: sampler
+    Out[88]: array([0, 0, 0, 0, 2, 1, 0, 3, 1, 2])
+
+    In [89]: draws = bag.take(sampler)
+
+    In [90]: draws
+    Out[90]: array([ 5,  5,  5,  5, -1,  7,  5,  6,  7, -1])
+
+    In [91]: bag
+    Out[91]: array([ 5,  7, -1,  6,  4])
+
+## Computing Indicator / Dummy Variables
+
+Another type of trasformation for statistical modelling and machine learning is converting a categorical variable into a "dummy" or "indicator" matrix. 
+
+**More in the book about this**
+
+## String Manipulation
+
+Most text handling in python is made easy with the built in string object and functions.
+
+### String Object Methods
+
+Split a broken string
+
+    In [92]: values = 'a,b,    guido'
+
+    In [93]: values.split(',')
+    Out[93]: ['a', 'b', '    guido']
+
+It is often combined with `strip()` to trim whitespace and linebreaks
+
+    In [96]: pieces = [x.strip() for x in values.split(',')]
+
+    In [97]: pieces
+    Out[97]: ['a', 'b', 'guido']
+
+These values can be concatenated
+
+    In [98]: first, second, third = pieces
+
+    In [99]: first + '::' + second + '::' + third
+    Out[99]: 'a::b::guido'
+
+A more pythonic and faster way is using `str.join()`:
+
+    In [101]: '::'.join(pieces)
+    Out[101]: 'a::b::guido'
+
+> This always feels like it is called in reverse
+
+Detecting substring use `in`, but you can use `find` and `index`:
+
+    In [104]: 'guido' in values
+    Out[104]: True
+
+    In [105]: values.index(',')
+    Out[105]: 1
+
+    In [108]: values.find(':')
+    Out[108]: -1
+
+> `index` raises an exception if the string isn't found. Found returns `-1`
+
+Number of occurances of a string, use `count`:
+
+    In [109]: values.count(',')
+    Out[109]: 2
+
+Substitution and removal of certain chars can use `str.replace()`
+
+    In [110]: values.replace(',', '::')
+    Out[110]: 'a::b::    guido'
+
+Remove with an empty string:
+
+    In [111]: values.replace(',', '')
+    Out[111]: 'ab    guido'
+
+## Regular Expressions
+
+A way to search or match string patterns in text. Python's `re` module is responsible for applying regilar expressions to strings.
+
+3 categories:
+* pattern matching
+* substitution
+* splitting
+
+Splitting a string by variable whitespace:
+
+    In [112]: import re
+
+    In [113]: text = 'Foo     Bar\t baz     \tqux'
+
+    In [115]: re.split('\s+', text)
+    Out[115]: ['Foo', 'Bar', 'baz', 'qux']
+
+> Split with one or more white spaces
+
+The regular expression is first compiled and then apploied to the text. It is much more efficient to compile a regular expression to create a reusable opbject with `re.compile()`
+
+    In [117]: regex = re.compile('\s+')
+
+    In [118]: regex.split(text)
+    Out[118]: ['Foo', 'Bar', 'baz', 'qux']
+
+If instead you want a list of all pattterns matching the regex:
+
+    In [119]: regex.findall(text)
+    Out[119]: ['     ', '\t ', '     \t']
+
+> To avoid verbose escaping with the `\` character, it is better to use raw string literals eg. r'C:\x' isntead of 'C:\\x'
+
+`match` and `search` are closely related to `findall`:
+
+* `search` only returns the first match
+* `match` only matches the beginning of a string
+
+Lets consider a block of text with email addresses:
+
+    In [120]: text = """Dave dave@google.com
+        ...:         Steve steve@gmail.com
+        ...:         Rob rob@gmail.com
+        ...:         Ryan ryan@yahoo.com
+        ...:         """
+
+    In [121]: pattern = r'[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'
+
+    In [122]: regex = re.compile(pattern, flags=re.IGNORECASE)
+
+    In [123]: regex.findall(text)
+    Out[123]: ['dave@google.com', 'steve@gmail.com', 'rob@gmail.com', 'ryan@yahoo.com']
+
+`re.IGNORECASE` makes the search case insensitive
+
+`search` returns a special match objectfor the first email found. The match object only shows use the start and end characters.
+
+    In [124]: m = regex.search(text)
+
+    In [125]: m
+    Out[125]: <_sre.SRE_Match object; span=(5, 20), match='dave@google.com'>
+
+    In [126]: text[m.start():m.end()]
+    Out[126]: 'dave@google.com'
+
+`match` returns `None` as it will only match if the string starts with a match
+
+`sub` will return a new string with matches replaced:
+
+    In [127]: print(regex.sub('REDACTED', text))
+    Dave REDACTED
+            Steve REDACTED
+            Rob REDACTED
+            Ryan REDACTED
+
+Suppose you want to group parts of the match, you should use parenthesis `()`:
+
+    In [130]: pattern = r'([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\.([A-Z]{2,4})'
+
+    In [131]: regex = re.compile(pattern, flags=re.IGNORECASE)
+
+    In [132]: m = regex.match('abc@example.com')
+
+    In [133]: m.groups()
+    Out[133]: ('abc', 'example', 'com')
+
+`findall` will return tuples:
+
+    In [134]: regex.findall(text)
+    Out[134]:
+    [('dave', 'google', 'com'),
+    ('steve', 'gmail', 'com'),
+    ('rob', 'gmail', 'com'),
+    ('ryan', 'yahoo', 'com')]
+
+`sub` has access to special symbols `\1` and `'\2` which correspond to matched groups
+
+    In [136]: regex.sub(r'Username: \1 Domain: \2 Suffix: \3', text)
+    Out[136]: 'Dave Username: dave Domain: google Suffix: com\n        Steve Username: steve Domain: gmail Suffix: com\n        Rob Username: rob Domain: gmail Suffix: com\n        Ryan Username: ryan Domain: yahoo Suffix: com\n        '
+You can also name matched groups using the notation:
+
+    r'(?P<name>[A-Z]+)'
+
+Example:
+
+    In [139]: pattern = r'(?P<username>[A-Z0-9._%+-]+)@(?P<domain>[A-Z0-9.-]+)\.(?P<suffix>[A-Z]{2,4})'
+
+    In [140]: regex = re.compile(pattern, flags=re.IGNORECASE|re.VERBOSE)
+
+    In [141]: m = regex.match('abc@example.com')
+
+    In [142]: m.groupdict()
+    Out[142]: {'username': 'abc', 'domain': 'example', 'suffix': 'com'}
+
+### Vectorised String Functions
+
+    In [144]: data = {'Dave': 'dave@gmail.com', 'Pat': 'pat@yahoo.com', 'elaine': 'elaine@gmail.com', 'petri': np.NaN}
+
+    In [145]: data = pd.Series(data)
+
+    In [146]: data
+    Out[146]:
+    Dave        dave@gmail.com
+    Pat          pat@yahoo.com
+    elaine    elaine@gmail.com
+    petri                  NaN
+    dtype: object
+
+    In [147]: data.isnull()
+    Out[147]:
+    Dave      False
+    Pat       False
+    elaine    False
+    petri      True
+    dtype: bool
+
+You can use string functoins using `.str`:
+
+    In [148]: data.str.upper()
+    Out[148]:
+    Dave        DAVE@GMAIL.COM
+    Pat          PAT@YAHOO.COM
+    elaine    ELAINE@GMAIL.COM
+    petri                  NaN
+    dtype: object
+
+    In [149]: data.str.contains('gmail')
+    Out[149]:
+    Dave       True
+    Pat       False
+    elaine     True
+    petri       NaN
+    dtype: object
+
+Regular expressions can be applied:
+
+    In [150]: data.str.findall(pattern, flags=re.IGNORECASE)
+    Out[150]:
+    Dave        [(dave, gmail, com)]
+    Pat          [(pat, yahoo, com)]
+    elaine    [(elaine, gmail, com)]
+    petri                        NaN
+    dtype: object
+
+Retrieval:
+
+    In [151]: matches = data.str.match(pattern, flags=re.IGNORECASE)
+
+    In [152]: matches
+    Out[152]:
+    Dave      True
+    Pat       True
+    elaine    True
+    petri      NaN
+    dtype: object
+
+Not sure what this does:
+
+    In [154]: matches.str.get(1)
+    Out[154]:
+    Dave     NaN
+    Pat      NaN
+    elaine   NaN
+    petri    NaN
+    dtype: float64
+
+You can also slive strings:
+
+    In [155]: data.str[:5]
+    Out[155]:
+    Dave      dave@
+    Pat       pat@y
+    elaine    elain
+    petri       NaN
+    dtype: object
+
+# Chapter 8: Data Wrangling, Join, Combine and Reshape
+
+In many applications data is spread across different files or databases and arranged in a form that is difficult to analyse.
+
+## Hierachical Indexing
+
+Allows you to have multiple index levels on an axis.
+
+It allows you to work with higher dimension data in a lower dimension form.
+
+    In [163]: data = pd.Series(np.random.randn(9), index = [['a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd' ], [1, 2, 3, 1, 3, 1, 2, 2, 3]])
+
+    In [164]: data
+    Out[164]:
+    a   1   -0.766229
+        2    0.041728
+    3    0.114579
+    b   1   -0.726996
+        3   -1.168821
+    c   1    0.851205
+        2   -0.131947
+    d   2   -0.447351
+        3    0.449313
+    dtype: float64
+
+This is a series with `MultiIndex` as its index.
+
+    In [165]: data.index
+    Out[165]:
+    MultiIndex(levels=[['a', 'b', 'c', 'd'], [1, 2, 3]],
+            labels=[[0, 0, 0, 1, 1, 2, 2, 3, 3], [0, 1, 2, 0, 2, 0, 1, 1, 2]])
+
+_Partial Indexing_ is possible to select subsets:
+
+    In [166]: data['b']
+    Out[166]:
+    1   -0.726996
+    3   -1.168821
+    dtype: float64
+
+    In [168]: data[['b', 'd']]
+    Out[168]:
+    b   1   -0.726996
+        3   -1.168821
+    d   2   -0.447351
+        3    0.449313
+    dtype: float64
+
+    In [169]: data['b':'c']
+    Out[169]:
+    b   1   -0.726996
+        3   -1.168821
+    c   1    0.851205
+        2   -0.131947
+    dtype: float64
+
+Select the second element in the inner level from each outer level:
+
+    In [170]: data.loc[:, 2]
+    Out[170]:
+    a    0.041728
+    c   -0.131947
+    d   -0.447351
+    dtype: float64
+
+Hierachical indexing plays an important role in reshaping data and group-based operations like forming a _pivot_ table.
+
+This data could be rearranged into a dataframe using the `unstack()` method:
+
+    In [171]: data.unstack()
+    Out[171]:
+            1         2         3
+    a -0.766229  0.041728  0.114579
+    b -0.726996       NaN -1.168821
+    c  0.851205 -0.131947       NaN
+    d       NaN -0.447351  0.449313
+
+The inverse operation is `stack()`:
+
+    In [172]: data.unstack().stack()
+    Out[172]:
+    a   1   -0.766229
+        2    0.041728
+    3    0.114579
+    b   1   -0.726996
+        3   -1.168821
+    c   1    0.851205
+        2   -0.131947
+    d   2   -0.447351
+        3    0.449313
+    dtype: float64
+
+With a dataframe, each axis can have a hierachical index:
+
+    In [173]: frame = pd.DataFrame(np.arange(12).reshape((4, 3)),
+        ...: index=[['a', 'a', 'b', 'b',],[1, 2, 1, 2]],
+        ...: columns=[['Ohio', 'Ohio', 'Colarado'], ['Green', 'Red', 'Green']])
+
+    In [174]: frame
+    Out[174]:
+        Ohio     Colarado
+        Green Red    Green
+    a 1     0   1        2
+      2     3   4        5
+    b 1     6   7        8
+      2     9  10       11
+
+Hierachical levels can have names. Don't confuse index names for axis labels:
+
+In [176]: frame.index.names = ['key1', 'key2']
+
+In [177]: frame.columns.names = ['state', 'colour']
+
+    In [178]: frame
+    Out[178]:
+    state      Ohio     Colarado
+    colour    Green Red    Green
+    key1 key2
+    a    1        0   1        2
+         2        3   4        5
+    b    1        6   7        8
+         2        9  10       11
+
+With partial indexing:
+
+    In [179]: frame['Ohio']
+    Out[179]:
+    colour     Green  Red
+    key1 key2
+    a    1         0    1
+         2         3    4
+    b    1         6    7
+         2         9   10
+
+### Reorderng and Sorting Levels
+
+`swaplevel` takes 2 level number or names and returns a new object with the levels interchanged.
+
+    In [180]: frame.swaplevel('key1', 'key2')
+    Out[180]:
+    state      Ohio     Colarado
+    colour    Green Red    Green
+    key2 key1
+    1    a        0   1        2
+    2    a        3   4        5
+    1    b        6   7        8
+    2    b        9  10       11
+
+`sort_index` can sort the values in a single level.
+
+    In [181]: frame.sort_index(level=1)
+    Out[181]:
+    state      Ohio     Colarado
+    colour    Green Red    Green
+    key1 key2
+    a    1        0   1        2
+    b    1        6   7        8
+    a    2        3   4        5
+    b    2        9  10       11
+
+Data selectino performance is much better on hierachically indexed objects if the index is alphabetically sorted starting from the outermost level. ie. the result of `sort_index()` or `sort_index(level=0)`
+
+### Summary Statistics by Level
+
+Many descricptive statistics have a `level` option to apply on a specific axis.
+
+    In [183]: frame
+    Out[183]:
+    state      Ohio     Colarado
+    colour    Green Red    Green
+    key1 key2
+    a    1        0   1        2
+         2        3   4        5
+    b    1        6   7        8
+         2        9  10       11
+
+    In [185]: frame.sum(level='key2')
+    Out[185]:
+    state   Ohio     Colarado
+    colour Green Red    Green
+    key2
+    1          6   8       10
+    2         12  14       16
+
+    In [189]: frame.sum(level='colour', axis=1)
+    Out[189]:
+    colour     Green  Red
+    key1 key2
+    a    1         2    1
+         2         8    4
+    b    1        14    7
+         2        20   10
+
+> It uses `groupby`
+
+### Indexing with dataframe's columns
+
+    In [190]: frame = pd.DataFrame({'a': range(7), 'b': range(7, 0 , -1), 'c': ['one', 'one', 'one', 'two', 'two', 'two', 'two',], 'd': [0, 1, 2, 0, 1,
+        ...: 2, 3]})
+
+    In [191]: frame
+    Out[191]:
+    a  b    c  d
+    0  0  7  one  0
+    1  1  6  one  1
+    2  2  5  one  2
+    3  3  4  two  0
+    4  4  3  two  1
+    5  5  2  two  2
+    6  6  1  two  3
+
+`set_index` will return a new dataframe that will use one or more of its columns as the inex:
+
+    In [192]: frame2 = frame.set_index(['c', 'd'])
+    In [193]: frame2
+    Out[193]:
+        a  b
+    c   d
+    one 0  0  7
+        1  1  6
+        2  2  5
+    two 0  3  4
+        1  4  3
+        2  5  2
+        3  6  1
+
+By default the columns are removed from the dataframe, though you can leave them in:
+
+    In [194]: frame.set_index(['c', 'd'], drop=False)
+    Out[194]:
+           a  b    c  d
+    c   d
+    one 0  0  7  one  0
+        1  1  6  one  1
+        2  2  5  one  2
+    two 0  3  4  two  0
+        1  4  3  two  1
+        2  5  2  two  2
+        3  6  1  two  3
+
+To undo this hierachical indexing use `reset_index()`:
+
+    In [196]: frame2.reset_index()
+    Out[196]:
+        c  d  a  b
+    0  one  0  0  7
+    1  one  1  1  6
+    2  one  2  2  5
+    3  two  0  3  4
+    4  two  1  4  3
+    5  two  2  5  2
+    6  two  3  6  1
+
+### Integer Indexes
+
+There are subtle differences in integer indexing between python and numpy/pandas:
+
+    In [197]: ser = pd.Series(np.arange(3.))
+    In [198]: ser[-1]
+
+gives an error:
+
+    KeyError: -1
+
+Whereas with a non-integer index, there is no potencial for ambiguity:
+
+    In [200]: ser2 = pd.Series(np.arange(3.), index=['a', 'b', 'c'])
+
+    In [201]: ser2
+    Out[201]:
+    a    0.0
+    b    1.0
+    c    2.0
+    dtype: float64
+
+    In [203]: ser2[-1]
+    Out[203]: 2.0
+
+With an axis containing integers, data indexing with always be label-oriented.
+Use `loc` for label selection and `iloc` for integer selection
+
+    In [204]: ser[:1]
+    Out[204]:
+    0    0.0
+    dtype: float64
+
+    In [205]: ser.iloc[:1]
+    Out[205]:
+    0    0.0
+    dtype: float64
+
+    In [206]: ser.loc[:1]
+    Out[206]:
+    0    0.0
+    1    1.0
+    dtype: float64
+
+## Combining and Merging Datasets
+
+The following ways:
+* `pandas.merge` - connects rows based on keys, similar to a db `join`
+* `pandas.concat` - concatenates or stacks objects together along an axis
+* `combine_first` - instance method that enables splicing together ovverlapping data to fill in missing data in one obejct with values in another
+
+### Database-style joins
+
+    In [207]: df1 = pd.DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'a', 'b'], 'data1': range(7)})
+
+    In [208]: df2 = pd.DataFrame({'key': ['a', 'b', 'd'], 'data2': range(3)})
+
+    In [209]: df1
+    Out[209]:
+        key  data1
+    0   b      0
+    1   b      1
+    2   a      2
+    3   c      3
+    4   a      4
+    5   a      5
+    6   b      6
+
+    In [210]: df2
+    Out[210]:
+        key  data2
+    0   a      0
+    1   b      1
+    2   d      2
+
+    In [211]: pd.merge(df1, df2)
+    Out[211]:
+        key  data1  data2
+    0   b      0      1
+    1   b      1      1
+    2   b      6      1
+    3   a      2      0
+    4   a      4      0
+    5   a      5      0
+
+This is a _many-to-one_ join as `df2` only has single values for each `key`
+
+If the column to join on is not specified `merge` uses the overlapping column names as keys.
+
+It is good practice to to `explicit, not implicit` about what to join on:
+
+    In [213]: pd.merge(df1, df2, on='key')
+    Out[213]:
+        key  data1  data2
+    0   b      0      1
+    1   b      1      1
+    2   b      6      1
+    3   a      2      0
+    4   a      4      0
+    5   a      5      0
+
+If the colum names are different on each dataframe, you can specify them seperately:
+
+    In [214]: df3 = pd.DataFrame({'lkey': ['b', 'b', 'a', 'c', 'a', 'a', 'b'], 'data1': range(7)})
+
+    In [215]: df4 = pd.DataFrame({'rkey': ['a', 'b', 'd'], 'data2': range(3)})
+
+    In [216]: pd.merge(df3, df4, left_on='lkey', right_on='rkey')
+    Out[216]:
+       lkey  data1 rkey  data2
+    0    b      0    b      1
+    1    b      1    b      1
+    2    b      6    b      1
+    3    a      2    a      0
+    4    a      4    a      0
+    5    a      5    a      0
+
+> By default, merge does an `inner join` which results in an intersection or the common set in the tables.
+
+Other options are `left`, `right` and `outer`. `outer` takes the union by applying both left and right joins:
+
+    In [218]: pd.merge(df1, df2, how='outer')
+    Out[218]:
+       key  data1  data2
+    0   b    0.0    1.0
+    1   b    1.0    1.0
+    2   b    6.0    1.0
+    3   a    2.0    0.0
+    4   a    4.0    0.0
+    5   a    5.0    0.0
+    6   c    3.0    NaN
+    7   d    NaN    2.0
+
+_many-to-many_ joins have well-defined but not intuitive behaviour:
+
+    In [222]: df1
+    Out[222]:
+        key  data1
+    0   b      0
+    1   b      1
+    2   a      2
+    3   c      3
+    4   a      4
+    5   a      5
+    6   b      6
+
+    In [223]: df2
+    Out[223]:
+        key  data2
+    0   a      0
+    1   b      1
+    2   a      2
+    3   b      3
+    4   d      4
+
+    In [224]: pd.merge(df1, df2, on='key', how='left')
+    Out[224]:
+        key  data1  data2
+    0    b      0    1.0
+    1    b      0    3.0
+    2    b      1    1.0
+    3    b      1    3.0
+    4    a      2    0.0
+    5    a      2    2.0
+    6    c      3    NaN
+    7    a      4    0.0
+    8    a      4    2.0
+    9    a      5    0.0
+    10   a      5    2.0
+    11   b      6    1.0
+    12   b      6    3.0
+
+Many-to-many joins form a cartesian product of the rows. There were 3 b's in `df1` and 2 b's in `df2` therefore in the merged dataframe there are 6 b's.
+
+    In [225]: pd.merge(df1, df2, how='inner')
+    Out[225]:
+       key  data1  data2
+    0    b      0      1
+    1    b      0      3
+    2    b      1      1
+    3    b      1      3
+    4    b      6      1
+    5    b      6      3
+    6    a      2      0
+    7    a      2      2
+    8    a      4      0
+    9    a      4      2
+    10   a      5      0
+    11   a      5      2
+
+To join with multiple keys, pass a list of column names:
+
+    In [226]: left = pd.DataFrame({'key1': ['foo', 'foo', 'bar'], 'key2': ['one', 'two', 'one'], 'lval': [1, 2, 3]})
+
+    In [227]: right = pd.DataFrame({'key1': ['foo', 'foo', 'bar', 'bar'], 'key2': ['one', 'one', 'one', 'two'], 'rval': [4, 5, 6, 7]})
+    In [229]: left
+
+    Out[229]:
+        key1 key2  lval
+    0  foo  one     1
+    1  foo  two     2
+    2  bar  one     3
+
+    In [230]: right
+    Out[230]:
+        key1 key2  rval
+    0  foo  one     4
+    1  foo  one     5
+    2  bar  one     6
+    3  bar  two     7
+
+    In [228]: pd.merge(left, right, on=['key1', 'key2'], how='outer')
+    Out[228]:
+        key1 key2  lval  rval
+    0  foo  one   1.0   4.0
+    1  foo  one   1.0   5.0
+    2  foo  two   2.0   NaN
+    3  bar  one   3.0   6.0
+    4  bar  two   NaN   7.0
+
+> To determine which combination will appear in the results think of multiple keys as forming an array of tuples to be used as a single join key.
+
+Overlapping column names can be addressed manually by renaming the axis labels. `merge` has a `suffix` option for specifying strings to append to overlapping key names:
+
+    In [231]: pd.merge(left, right, on='key1')
+    Out[231]:
+        key1 key2_x  lval key2_y  rval
+    0  foo    one     1    one     4
+    1  foo    one     1    one     5
+    2  foo    two     2    one     4
+    3  foo    two     2    one     5
+    4  bar    one     3    one     6
+    5  bar    one     3    two     7
+
+    In [232]: pd.merge(left, right, on='key1', suffixes=['_left', '_right'])
+    Out[232]:
+        key1 key2_left  lval key2_right  rval
+    0  foo       one     1        one     4
+    1  foo       one     1        one     5
+    2  foo       two     2        one     4
+    3  foo       two     2        one     5
+    4  bar       one     3        one     6
+    5  bar       one     3        two     7
+
+## Merging on Index
+
+Sometimes the merge keys are found in its index.
+To indicate which index should be used as the merge key use `left_index=True` or `right_index=True` or both.
+
+    In [233]: left1 = ({'key': ['a', 'b', 'a', 'b', 'c'], 'value': range(6)})
+
+    In [245]: right1 = pd.DataFrame({'group_val': [3.5, 7]}, index=['a', 'b'])
+
+    In [240]: left1
+    Out[240]:
+       key  value
+    0   a      0
+    1   b      1
+    2   a      2
+    3   a      3
+    4   b      4
+    5   c      5
+
+    In [246]: right1
+    Out[246]:
+        group_val
+    a        3.5
+    b        7.0
+
+    In [247]: pd.merge(left1, right1, left_on='key', right_index=True)
+    Out[247]:
+        key  value  group_val
+    0   a      0        3.5
+    2   a      2        3.5
+    3   a      3        3.5
+    1   b      1        7.0
+    4   b      4        7.0
+
+You can do the union instead of intersection:
+
+    In [248]: pd.merge(left1, right1, left_on='key', right_index=True, how='outer')
+    Out[248]:
+    key  value  group_val
+    0   a      0        3.5
+    2   a      2        3.5
+    3   a      3        3.5
+    1   b      1        7.0
+    4   b      4        7.0
+    5   c      5        NaN
+
+Hierachically indexed data, things are more complicated as joining on index is innherantly a multiple key merge.
+
+In this case you have to state the multiple keys to merge on. More in the book...
+
+### Concatenating along an axis
+
+Concatenating, binging or stacking
+
+    In [249]: arr = np.arange(12).reshape((3, 4))
+    In [256]: arr
+    Out[256]:
+    array([[ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11]])
+
+    In [257]: np.concatenate([arr, arr], axis=1)
+    Out[257]:
+    array([[ 0,  1,  2,  3,  0,  1,  2,  3],
+        [ 4,  5,  6,  7,  4,  5,  6,  7],
+        [ 8,  9, 10, 11,  8,  9, 10, 11]])
+
+In a dataframe context:
+* Should we combine or use shared values on an index?
+* Do concatenated chunks of data need to be identifiable in the resulting object?
+* Does the concatenation axis contain data that needs to be preserved? In many cases the integer integer labels should be discarded.
+
+The `concat` function in pandas provides a conistent way to do the above.
+
+    In [258]: s1 = pd.Series([0, 1], index=['a', 'b'])
+
+    In [259]: s2 = pd.Series([2, 3,4], index=['c', 'd', 'e'])
+
+    In [260]: s3 = pd.Series([5, 6], index=['f', 'g'])
+
+    In [263]: s1
+    Out[263]:
+    a    0
+    b    1
+    dtype: int64
+
+    In [264]: s2
+    Out[264]:
+    c    2
+    d    3
+    e    4
+    dtype: int64
+
+    In [265]: s3
+    Out[265]:
+    f    5
+    g    6
+    dtype: int64
+
+Concatenated:
+
+    In [262]: pd.concat([s1, s2, s3])
+    Out[262]:
+    a    0
+    b    1
+    c    2
+    d    3
+    e    4
+    f    5
+    g    6
+    dtype: int64
+
+By default `concat` works along `axis=0`
+
+If you pass `axis=1` the result is a `DataFrame`:
+
+    In [266]: pd.concat([s1, s2, s3], axis=1)
+    Out[266]:
+        0    1    2
+    a  0.0  NaN  NaN
+    b  1.0  NaN  NaN
+    c  NaN  2.0  NaN
+    d  NaN  3.0  NaN
+    e  NaN  4.0  NaN
+    f  NaN  NaN  5.0
+    g  NaN  NaN  6.0
+
+You can intersect with `join=inner`
+
+alot more detailed stuff in the bool...like `join_axes`
+
+Also combing data with an overlap is explained
+
+## Reshaping and Pivoting
+
+### Reshaping with Hierachical Indexing
+
+`stack` rotates or pivots from the columns in the data to rows
+
+`unstack` pivots from rows to columns
+
+    In [3]: data = pd.DataFrame(np.arange(6).reshape(2,3), index=pd.Index(['Ohio', 'Colarado']), columns=pd.Index(['one', 'two', 'three'], name='number'))
+
+    In [4]: data
+    Out[4]:
+    number    one  two  three
+    Ohio        0    1      2
+    Colarado    3    4      5
+
+`stack()` pivots the columns into rows, producing a series:
+
+    In [5]: result = data.stack()
+
+    In [6]: result
+    Out[6]:
+            number
+    Ohio      one       0
+            two       1
+            three     2
+    Colarado  one       3
+            two       4
+            three     5
+    dtype: int64
+
+You can rearrange the series back into a dataframe with `unstack()`:
+
+    In [7]: result.unstack()
+    Out[7]:
+    number    one  two  three
+    Ohio        0    1      2
+    Colarado    3    4      5
+
+By default the innermost level is unstacked, you can choose a different level by giving the name or number:
+
+    In [8]: result.unstack(0)
+    Out[8]:
+            Ohio  Colarado
+    number
+    one        0         3
+    two        1         4
+    three      2         5
+
+> Unstacking might give missing data
+
+Stacking filters out missing data, you can stop that by passing `dropna=False`:
+
+    data2.unstack().stack(dropna=False)
+
+> The level unstacked becomes the lowest level in the result
+
+### Pivoting Long to Wide Format
+
+A comoon way of storing time series in a database and CSV is _long_ or _stacked_ format.
+
+Lets load time series data and do some wrangling on it:
+
+    In [4]: data = pd.read_csv('macrodata.csv')
+
+    In [5]: periods = pd.PeriodIndex(year=data.year, quarter=data.quarter, name='data')
+
+    In [6]: data.head()
+    Out[6]:
+        year  quarter   realgdp  realcons  realinv  realgovt  realdpi    cpi     m1  tbilrate  unemp      pop  infl  realint
+    0  1959.0      1.0  2710.349    1707.4  286.898   470.045   1886.9  28.98  139.7      2.82    5.8  177.146  0.00     0.00
+    1  1959.0      2.0  2778.801    1733.7  310.859   481.301   1919.7  29.15  141.7      3.08    5.1  177.830  2.34     0.74
+    2  1959.0      3.0  2775.488    1751.8  289.226   491.260   1916.4  29.35  140.5      3.82    5.3  178.657  2.74     1.09
+    3  1959.0      4.0  2785.204    1753.7  299.356   484.052   1931.3  29.37  140.0      4.33    5.6  179.386  0.27     4.06
+    4  1960.0      1.0  2847.699    1770.5  331.722   462.199   1955.5  29.54  139.6      3.50    5.2  180.007  2.31     1.19
+
+    In [7]: data = pd.DataFrame(data.to_records(), columns=pd.Index(['realgdp', 'infl', 'unemp'], name='item'),
+    ...: index=periods.to_timestamp('D', 'end'))
+
+    In [8]: data.head()
+    Out[8]:
+    item         realgdp  infl  unemp
+    data
+    1959-03-31  2710.349  0.00    5.8
+    1959-06-30  2778.801  2.34    5.1
+    1959-09-30  2775.488  2.74    5.3
+    1959-12-31  2785.204  0.27    5.6
+    1960-03-31  2847.699  2.31    5.2
+
+    In [9]: ldata = data.stack().reset_index().rename(columns={0: 'value'})
+
+    In [10]: ldata.head()
+    Out[10]:
+            data     item     value
+    0 1959-03-31  realgdp  2710.349
+    1 1959-03-31     infl     0.000
+    2 1959-03-31    unemp     5.800
+    3 1959-06-30  realgdp  2778.801
+    4 1959-06-30     infl     2.340
+
+This is `long` format as it is time series with multiple keys.
+Each row represents a single observation.
+
+Data is frequently stored like this in MySQL db's.
+In this case `date` (`data`) and `item` would be primary keys.
+
+You may prefer a dataframe with one column per distinct date.
+The `pivot` method does this:
+
+    In [11]: pivoted = ldata.pivot('data', 'item', 'value')
+
+    In [13]: pivoted.head()
+    Out[13]:
+    item        infl   realgdp  unemp
+    data
+    1959-03-31  0.00  2710.349    5.8
+    1959-06-30  2.34  2778.801    5.1
+    1959-09-30  2.74  2775.488    5.3
+    1959-12-31  0.27  2785.204    5.6
+    1960-03-31  2.31  2847.699    5.2
+
+The first two arguments passed are the row and column index, then fianlly an optional value to fill the data.
+
+More in the book omn pivoting mutliple keys with multiple values per keys - it will create a hierachical index.
+
+# Chapter 9: Plotting and Visualisation
+
+Informative visualisations (plots) is one of the most important tasks in data analysis.
+It may be part of the exploratory process: identifying outliers, ideas for models and data transformations.
+
+For others building interactive visualisations for the web may be the end goal.
+
+Matplotlib is  desktop plotting package for creating two-dimensional publicationquality plots.
+
+* `mplot3d` for 3d plots
+* `basemap` for mappingand projections
+
+The best way to follow along is with inline plotting in a jupyter notebook: `%matplotlib line`
+
+## matplot API Primer
+
+Import convention:
+
+    from matplotlib.pyplot import plt
+
+First plot:
+
+    plt.plot(np.arange(10));
+
+Libraries like seaborn and panda's built-in plotting functions deal with the mundane tasks of creating plots, it is important to learn a bit about the api.
+
+### Figures and Subplots
+
+Plots in `matplotlib` reside within a `Figure` object.
+
+I used a jupyter notbook for notes on this chapter, which I will attempt to host if possible.
+
+# Chapter 10: Data Aggregation and Group Operations
 
 
 Excerpt From: Unknown. “Python for Data Analysis, 2nd Edition.” iBooks. 
