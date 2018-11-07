@@ -4684,7 +4684,791 @@ Check the [Chapter 9: Figures and Subplots Jupter Notebook Notes](https://fixes.
 
 # Chapter 10: Data Aggregation and Group Operations
 
+Categorising a data set and applying functions to each group is a critical part of the data analysis workflow.
+After loading, merging and preparing a dataset you may need to compute group statistics or pivot tables for visualisations.
 
-Excerpt From: Unknown. “Python for Data Analysis, 2nd Edition.” iBooks. 
+SQL can be limited in this regard, you will learn:
+
+* Split a pandas object into pieces based on keys (functions, arrays or datadframe columns)
+* Computing group sumamry statistics
+* Apply transformations, linear regression, rank or subset per group.
+* Computer pivot tables and cross tabulation
+* Quantile analysis
+
+## GroupBy Mechanics
+
+`Split-Apply-Combine` for group operations was coined by R's Hadley Wickham. 
+
+1. **Split** the group based on one or more keys, on a specific axis (0 = rows, 1 = columns)
+2. A function is **applied** to each group producing a new value
+3. Finally the results of those functions are combined into a result object
+
+For example summing the total spend at different shops (as the key) in a dataset
+
+The keys do not need to be of the same type, it can be:
+* A list of array values the same length as teh axis being grouped
+* a column name in a dataframe
+* a dict or series corresponding to values on an axis
+* A function to be invoked on axis index or labels
+
+    In [4]: df = pd.DataFrame({'key1': ['a', 'a', 'b', 'b', 'a'], 'keys2': ['one', 'two', 'one', 'two', 'one'], 'data1': np.random.randn(5),
+    ...: 'data2': np.random.randn(5)})
+
+    In [5]: df
+    Out[5]:
+        key1 keys2     data1     data2
+    0    a   one  0.148874  0.617623
+    1    a   two  0.421171  0.352511
+    2    b   one -0.566405  1.491486
+    3    b   two  2.147993 -0.948390
+    4    a   one  0.423003 -1.586536
+
+Suppose you want to calculate the `mean` of the `data1` column using the group labels from `key1`, one way:
+
+    In [6]: grouped = df['data1'].groupby(df['key1'])
+
+    In [7]: grouped
+    Out[7]: <pandas.core.groupby.groupby.SeriesGroupBy object at 0x11512f748>
+
+The `grouped` variable is now a `GroupBy` object, it hasn;t calulated anything except some intermediate data about the group key `df['key1']`.
+
+To calculate the `mean`:
+
+    In [8]: grouped.mean()
+    Out[8]:
+    key1
+    a    0.331016
+    b    0.790794
+    Name: data1, dtype: float64
+
+The data (a series) has been aggregated according to the group key, producing a new series indexed by unique values in the `key1` column.
+
+    In [19]: means = df['data1'].groupby([df['key1'], df['key2']]).mean()
+
+    In [20]: means
+    Out[20]:
+    key1  key2
+    a     one     0.285939
+          two     0.421171
+    b     one    -0.566405
+          two     2.147993
+    Name: data1, dtype: float64
+
+In this case we grouped by 2 keys and the resulting series now has a hierachical index
+
+    In [21]: means.unstack()
+    Out[21]:
+    key2       one       two
+    key1
+    a     0.285939  0.421171
+    b    -0.566405  2.147993
+
+The group keys are Series but they could also be arrays of the correct length
+
+    In [22]: states = np.array(['Gauteng', 'Western Cape', 'Mpumalanga', 'Kwa-Zulu Natal', 'Northern Cape'])
+
+    In [23]: years = np.array([2005, 2006, 2007, 2008, 2009])
+
+    In [26]: df['data1'].groupby([states, years]).mean()
+    Out[26]:
+    Gauteng         2005    0.148874
+    Kwa-Zulu Natal  2008    2.147993
+    Mpumalanga      2007   -0.566405
+    Northern Cape   2009    0.423003
+    Western Cape    2006    0.421171
+    Name: data1, dtype: float64
+
+Not sure what the hell I just did above
+
+Frequently the grouping data is in your dataframe already:
+
+    In [28]: df.groupby('key1').mean()
+    Out[28]:
+            data1     data2
+    key1
+    a     0.331016 -0.205467
+    b     0.790794  0.271548
+
+or with 2 keys:
+
+    In [29]: df.groupby(['key1', 'key2']).mean()
+    Out[29]:
+                data1     data2
+    key1 key2
+    a    one   0.285939 -0.484456
+         two   0.421171  0.352511
+    b    one  -0.566405  1.491486
+         two   2.147993 -0.948390
+
+In the single key example the `key2` column is not shown, because it is not numeric data it is known as a _nuisance column_ which is therefore excluded from the result
+
+By default only numeric columns are aggregated.
+
+A general useful method is `size()` which returns the size of each group
+
+    In [30]: df.groupby(['key1', 'key2']).size()
+    Out[30]:
+    key1  key2
+    a     one     2
+        two     1
+    b     one     1
+        two     1
+    dtype: int64
+
+> All missing values are excluded from the result
+
+### Iterating over groups
+
+The `GroupBy` objext supports iteration, generating a sequence of tuples of the group name along with a chunk of data.
+
+    In [31]: for name, group in df.groupby('key1'):
+        ...:     print(name)
+    a
+    b
+
+In the case of multiple keys, he first element in the tuple will be a tuple of key values:
+
+    In [32]: for (k1, k2), group in df.groupby(['key1', 'key2']):
+        ...:     print((k1, k2))
+    ('a', 'one')
+    ('a', 'two')
+    ('b', 'one')
+    ('b', 'two')
+
+Of course you can cast the groups to a dict:
+
+    In [36]: dict(list(df.groupby('key1')))
+    Out[36]:
+    {'a':   key1 key2     data1     data2
+    0    a  one  0.148874  0.617623
+    1    a  two  0.421171  0.352511
+    4    a  one  0.423003 -1.586536, 'b':   key1 key2     data1     data2
+    2    b  one -0.566405  1.491486
+    3    b  two  2.147993 -0.948390}
+
+By default, `groupby` groups on `axis=0` (rows)
+
+You could however group on columns (`axis=1`):
+
+    In [38]: grouped = df.groupby(df.dtypes, axis=1)
+
+    In [39]: dict(list(grouped))
+    Out[39]:
+    {dtype('float64'):       data1     data2
+    0  0.148874  0.617623
+    1  0.421171  0.352511
+    2 -0.566405  1.491486
+    3  2.147993 -0.948390
+    4  0.423003 -1.586536, dtype('O'):   key1 key2
+    0    a  one
+    1    a  two
+    2    b  one
+    3    b  two
+    4    a  one}
+
+### Selecting a Column or Subset of Columns
+
+Indexing a GroupBy object created from a DataFrame with a column name or array of column names has the effect of selecting those columns for aggregation:
+
+    df.groupby('key1')['data1']
+
+is the same as:
+
+    df['data1'].groupby('key1')
+
+For large datasets it my be desirable to aggregate only a few columns.
+
+To compute `mean`s for just the `data2` column and get the result as a dataframe we could write:
+
+    In [40]: df.groupby(['key1', 'key2'])[['data2']].mean()
+    Out[40]:
+                data2
+    key1 key2
+    a    one  -0.484456
+         two   0.352511
+    b    one   1.491486
+         two  -0.948390
+
+The object returned is a grouped DataFrame if a list or array is passed and a grouped series if only the single column is passed as a scalar.
+
+    In [44]: type(df.groupby(['key1', 'key2'])['data2'])
+    Out[44]: pandas.core.groupby.groupby.SeriesGroupBy
+
+    In [45]: type(df.groupby(['key1', 'key2'])[['data2']])
+    Out[45]: pandas.core.groupby.groupby.DataFrameGroupBy
+
+### Grouping with Dicts and Series
+
+Grouping information may exist in a form other than an array
+
+    In [46]: people = pd.DataFrame(np.random.randn(5, 5), columns=['a', 'b', 'c', 'd', 'e'], index=['Joe', 'Steve', 'Wes', 'Jim', 'Travis'],)
+
+    In [49]: people.iloc[2:3, [1, 2]] = np.NaN
+
+    In [50]: people
+    Out[50]:
+                a         b         c         d         e
+    Joe    -0.997165  0.194776 -0.565123  0.848180 -1.277432
+    Steve  -0.719995  1.353184 -1.120488  0.772741 -0.919065
+    Wes     1.513412       NaN       NaN -0.212853 -0.219539
+    Jim    -1.605091  0.283836  0.600302  1.887151  0.083196
+    Travis -0.915961 -0.331931 -1.177884  1.064124  1.125694
+
+Now we have a mapping of columns to groups:
+
+    In [51]: mapping = {'a': 'red', 'b': 'red', 'c': 'blue', 'd': 'blue', 'e': 'red', 'f': 'orange'}
+
+You can simply pass that to `groupby`:
+
+    In [52]: by_column = people.groupby(mapping, axis=1)
+
+    In [54]: by_column.sum()
+    Out[54]:
+                blue       red
+    Joe     0.283057 -2.079821
+    Steve  -0.347747 -0.285876
+    Wes    -0.212853  1.293874
+    Jim     2.487453 -1.238059
+    Travis -0.113760 -0.122198
+
+The same holds true for series
+
+    In [55]: map_series = pd.Series(mapping)
+
+    In [56]: map_series
+    Out[56]:
+    a       red
+    b       red
+    c      blue
+    d      blue
+    e       red
+    f    orange
+    dtype: object
+
+    In [57]: people.groupby(map_series, axis=1).count()
+    Out[57]:
+            blue  red
+    Joe        2    3
+    Steve      2    3
+    Wes        1    2
+    Jim        2    3
+    Travis     2    3
+
+### Grouping with Functions
+
+A function passed as the group key will be called once per index, the return value will be the group names.
+
+Suppose you wanted to group people by the length of their name:
+
+    In [58]: people.groupby(len).sum()
+    Out[58]:
+            a         b         c         d         e
+    3 -1.088844  0.478612  0.035179  2.522479 -1.413775
+    5 -0.719995  1.353184 -1.120488  0.772741 -0.919065
+    6 -0.915961 -0.331931 -1.177884  1.064124  1.125694
+
+Mixing functions with arrays, dicts or series is not a problem as everything is turned into an array internally.
+
+    In [59]: key_list = ['one', 'one', 'one', 'two', 'two']
+
+    In [60]: people.groupby([len, key_list]).min()
+    Out[60]:
+                a         b         c         d         e
+    3 one -0.997165  0.194776 -0.565123 -0.212853 -1.277432
+      two -1.605091  0.283836  0.600302  1.887151  0.083196
+    5 one -0.719995  1.353184 -1.120488  0.772741 -0.919065
+    6 two -0.915961 -0.331931 -1.177884  1.064124  1.125694
+
+### Grouping by Index Levels
+
+For hierachically-indexed data you can aggregate using one of the levels of an axis's index.
+To do that apss the `level` keyword:
+
+    In [63]: columns = pd.MultiIndex.from_arrays([['US', 'US', 'US', 'JP', 'JP'], [1, 3, 5, 1, 3]], names=['country', 'tenor'])
+
+    In [64]: hier_df = pd.DataFrame(np.random.randn(4, 5), columns=columns)
+
+    In [65]: hier_df
+    Out[65]:
+    country        US                            JP
+    tenor           1         3         5         1         3
+    0        0.751653  0.196602  0.112632 -1.101248 -0.337879
+    1        0.040296 -0.983856 -0.300156  1.766771  0.637154
+    2       -0.949319 -0.454868 -0.202546 -0.003234 -0.700482
+    3        1.334632  1.579028  1.965208  0.671107 -0.627314
+
+    In [66]: hier_df.groupby(level='country', axis=1).count()
+    Out[66]:
+    country  JP  US
+    0         2   3
+    1         2   3
+    2         2   3
+    3         2   3
+
+### Data Aggregation
+
+Any data transformation that produces scalar values from arrays, like `sum`, `count`, `min` and `mean`.
+You can have transformations of your own making.
+
+For example `quantile` computes sample quantiles of a series or dataframes columns:
+
+    In [67]: df
+    Out[67]:
+        key1 key2     data1     data2
+    0    a  one  0.148874  0.617623
+    1    a  two  0.421171  0.352511
+    2    b  one -0.566405  1.491486
+    3    b  two  2.147993 -0.948390
+    4    a  one  0.423003 -1.586536
+
+    In [68]: grouped = df.groupby('key1')
+
+    In [69]: grouped['data1'].quantile(0.9)
+    Out[69]:
+    key1
+    a    0.422637
+    b    1.876553
+    Name: data1, dtype: float64
+
+> Quantile is a series method and is thus available on groupnby objects.
+
+Groupby efficiently slices the data and calls the method on each piece
+
+To use your own aggregation function, pass any function that aggregates an array to the `agg` or `aggregate` method:
+
+    In [71]: grouped.agg(peak_to_peak)
+    Out[71]:
+            data1     data2
+    key1
+    a     0.274130  2.204160
+    b     2.714398  2.439876
+
+`describe` works on grouped data:
+
+    In [72]: grouped.describe()
+    Out[72]:
+        data1                                                      ...        data2
+        count      mean       std       min       25%       50%    ...          std       min       25%       50%       75%       max
+    key1                                                            ...
+    a      3.0  0.331016  0.157743  0.148874  0.285022  0.421171    ...     1.203364 -1.586536 -0.617013  0.352511      0.485067  0.617623
+    b      2.0  0.790794  1.919369 -0.566405  0.112195  0.790794    ...     1.725253 -0.948390 -0.338421  0.271548  0.881517  1.491486
+
+    [2 rows x 16 columns]
+
+> Custom aggregation functions are generally much slower than the optimized functions:
+
+    count, sum, mean, median, std, var, min, max, prod, first, last
+
+Using tip data:
+
+    In [75]: tips = pd.read_csv('tips.csv')
+
+    In [76]: tips.head()
+    Out[76]:
+    total_bill   tip smoker  day    time  size
+    0       16.99  1.01     No  Sun  Dinner     2
+    1       10.34  1.66     No  Sun  Dinner     3
+    2       21.01  3.50     No  Sun  Dinner     3
+    3       23.68  3.31     No  Sun  Dinner     2
+    4       24.59  3.61     No  Sun  Dinner     4
+
+We create the `tip_pct` column:
+
+    In [78]: tips['tip_pct'] = tips['tip'] / tips['total_bill']
+
+### Column-wise nd multi-function application
+
+Group by `sex` and `smoker`:
+
+    In [90]: grouped = tips.groupby(['sex', 'smoker'])
+
+    In [91]: grouped_pct = grouped['tip_pct']
+
+    In [92]: grouped_pct.agg('mean')
+    Out[92]:
+    sex     smoker
+    Female  No        0.156921
+            Yes       0.182150
+    Male    No        0.160669
+            Yes       0.152771
+    Name: tip_pct, dtype: float64
+
+You can pass a list of functions you get a dataframe with column names taken from functions:
+
+    In [94]: grouped_pct.agg(['mean', 'std', peak_to_peak])
+    Out[94]:
+                    mean       std  peak_to_peak
+    sex    smoker
+    Female  No      0.156921  0.036421      0.195876
+            Yes     0.182150  0.071595      0.360233
+    Male    No      0.160669  0.041849      0.220186
+            Yes     0.152771  0.090588      0.674707
+
+You don't have to accept those column names, lambda functions will have a name `<lambda>` which makes them hard to identify.
+You can pass a list of `(name, function)` tuples where the first element of each tuple is used as the column name
+
+    In [96]: grouped_pct.agg([('foo', 'mean'), ('bar', np.std)])
+    Out[96]:
+                        foo       bar
+    sex    smoker
+    Female  No      0.156921  0.036421
+            Yes     0.182150  0.071595
+    Male    No      0.160669  0.041849
+            Yes     0.152771  0.090588
+
+With a dataframe you have more columns to apply functions to:
+
+    In [97]: functions = ['count', 'mean', 'max']
+
+    In [98]: result = grouped['tip_pct', 'total_bill'].agg(functions)
+
+    In [99]: result
+    Out[99]:
+                tip_pct                     total_bill
+                    count      mean       max      count       mean    max
+    sex    smoker
+    Female  No          54  0.156921  0.252672         54  18.105185  35.83
+            Yes         33  0.182150  0.416667         33  17.977879  44.30
+    Male    No          97  0.160669  0.291990         97  19.791237  48.33
+            Yes         60  0.152771  0.710345         60  22.284500  50.81
+
+It gives a result with hierachical columns, which you can view:
+
+    In [100]: result['tip_pct']
+    Out[100]:
+                count      mean       max
+    sex    smoker
+    Female No         54  0.156921  0.252672
+           Yes        33  0.182150  0.416667
+    Male   No         97  0.160669  0.291990
+           Yes        60  0.152771  0.710345
+
+Suppose you want to apply different functions to one or more columns:
+
+    In [101]: grouped.agg({'tip': np.max, 'size': sum})
+    Out[101]:
+                    tip  size
+    sex    smoker
+    Female  No       5.2   140
+            Yes      6.5    74
+    Male    No       9.0   263
+            Yes     10.0   150
+
+    In [102]: grouped.agg({'tip': ['min', 'max', 'mean', 'std'], 'size': 'sum'})
+    Out[102]:
+                    tip                           size
+                    min   max      mean       std  sum
+    sex    smoker
+    Female  No      1.00   5.2  2.773519  1.128425  140
+            Yes     1.00   6.5  2.931515  1.219916   74
+    Male    No      1.25   9.0  3.113402  1.489559  263
+            Yes     1.00  10.0  3.051167  1.500120  150
+
+### Returning Aggregated Data without ow Indexes
+
+Sometimes you don't want an index coming back with results.
+You can disable this behaviour by passing `as_index=False` to `groupby`.
+
+    In [107]: tips.groupby(['sex', 'smoker'], as_index=False).mean()
+    Out[107]:
+        sex smoker  total_bill       tip      size   tip_pct
+    0  Female     No   18.105185  2.773519  2.592593  0.156921
+    1  Female    Yes   17.977879  2.931515  2.242424  0.182150
+    2    Male     No   19.791237  3.113402  2.711340  0.160669
+    3    Male    Yes   22.284500  3.051167  2.500000  0.152771
+
+> You can of course use `reset_index()` to achieve the same result
+
+## Apply: General split-apply-combine
+
+The most general purpose `GroupBy` method is `apply()`.
+`apply` splits the object into pieces, invokes the functions and then attempts to piece it back together.
+
+Suppose you wantted to select the top 5 `tip_pct` values by group. First write a function that selects the rows with the largest values in a particular function:
+
+    In [110]: def top(df, n=5, column='tip_pct'):
+        ...:     return df.sort_values(by=column)[-n:]
+
+    In [111]: top(tips, n=6)
+    Out[111]:
+            total_bill   tip     sex smoker  day    time  size   tip_pct
+    109       14.31      4.00  Female    Yes  Sat  Dinner     2  0.279525
+    183       23.17      6.50    Male    Yes  Sun  Dinner     4  0.280535
+    232       11.61      3.39    Male     No  Sat  Dinner     2  0.291990
+    67         3.07      1.00  Female    Yes  Sat  Dinner     1  0.325733
+    178        9.60      4.00  Female    Yes  Sun  Dinner     2  0.416667
+    172        7.25      5.15    Male    Yes  Sun  Dinner     2  0.710345
+
+So this returns the top 6 biggest tips. Now if we group by Smoker:
+
+    In [116]: tips.groupby('smoker').apply(top)
+    Out[116]:
+                total_bill   tip     sex smoker   day    time  size   tip_pct
+    smoker
+    No  88        24.71  5.85    Male     No  Thur   Lunch     2  0.236746
+        185       20.69  5.00    Male     No   Sun  Dinner     5  0.241663
+        51        10.29  2.60  Female     No   Sun  Dinner     2  0.252672
+        149        7.51  2.00    Male     No  Thur   Lunch     2  0.266312
+        232       11.61  3.39    Male     No   Sat  Dinner     2  0.291990
+    Yes 109       14.31  4.00  Female    Yes   Sat  Dinner     2  0.279525
+        183       23.17  6.50    Male    Yes   Sun  Dinner     4  0.280535
+        67         3.07  1.00  Female    Yes   Sat  Dinner     1  0.325733
+        178        9.60  4.00  Female    Yes   Sun  Dinner     2  0.416667
+        172        7.25  5.15    Male    Yes   Sun  Dinner     2  0.710345
+
+The `top` function is called on each piece of the dataframe, then the results are glued together using `pandas.concat`.
+The result contains a hierachical index whose inner level contains index values from the origianl dataframe.
+
+If you pass a function that takes other arguments to the apply function you can pass those after the function.
+
+    In [118]: tips.groupby('smoker').apply(top, n=1, column='total_bill')
+    Out[118]:
+                total_bill   tip   sex smoker  day    time  size   tip_pct
+    smoker
+    No     212       48.33   9.0  Male     No  Sat  Dinner     4  0.186220
+    Yes    170       50.81  10.0  Male    Yes  Sat  Dinner     3  0.196812
+
+The function only needs to return a scalar value or a pandas object. The function will require some creativity.
+
+Remember the describe function on a groupby object:
+
+    In [120]: result = tips.groupby('smoker')['tip_pct'].describe()
+
+    In [121]: result
+    Out[121]:
+            count      mean       std       min       25%       50%       75%       max
+    smoker
+    No      151.0  0.159328  0.039910  0.056797  0.136906  0.155625  0.185014  0.291990
+    Yes      93.0  0.163196  0.085119  0.035638  0.106771  0.153846  0.195059  0.710345
+
+The `describe()` function is really just an alias for:
+
+    f = lambda x: x.describe()
+    grouped.apply(f)
+
+### Suppressing the group keys
+
+Use `group_keys=False`:
+
+    In [124]: tips.groupby('smoker').apply(top)
+    Out[124]:
+                total_bill   tip     sex smoker   day    time  size   tip_pct
+    smoker
+    No     88        24.71  5.85    Male     No  Thur   Lunch     2  0.236746
+        185       20.69  5.00    Male     No   Sun  Dinner     5  0.241663
+        51        10.29  2.60  Female     No   Sun  Dinner     2  0.252672
+        149        7.51  2.00    Male     No  Thur   Lunch     2  0.266312
+        232       11.61  3.39    Male     No   Sat  Dinner     2  0.291990
+    Yes    109       14.31  4.00  Female    Yes   Sat  Dinner     2  0.279525
+        183       23.17  6.50    Male    Yes   Sun  Dinner     4  0.280535
+        67         3.07  1.00  Female    Yes   Sat  Dinner     1  0.325733
+        178        9.60  4.00  Female    Yes   Sun  Dinner     2  0.416667
+        172        7.25  5.15    Male    Yes   Sun  Dinner     2  0.710345
+
+    In [125]: tips.groupby('smoker', group_keys=False).apply(top)
+    Out[125]:
+        total_bill   tip     sex smoker   day    time  size   tip_pct
+    88        24.71  5.85    Male     No  Thur   Lunch     2  0.236746
+    185       20.69  5.00    Male     No   Sun  Dinner     5  0.241663
+    51        10.29  2.60  Female     No   Sun  Dinner     2  0.252672
+    149        7.51  2.00    Male     No  Thur   Lunch     2  0.266312
+    232       11.61  3.39    Male     No   Sat  Dinner     2  0.291990
+    109       14.31  4.00  Female    Yes   Sat  Dinner     2  0.279525
+    183       23.17  6.50    Male    Yes   Sun  Dinner     4  0.280535
+    67         3.07  1.00  Female    Yes   Sat  Dinner     1  0.325733
+    178        9.60  4.00  Female    Yes   Sun  Dinner     2  0.416667
+    172        7.25  5.15    Male    Yes   Sun  Dinner     2  0.710345
+
+### Quantile and bucket analysis
+
+Pandas has `cut` and `qcut`  for slicing data into buckets. These functions can be combined with `groupby`.
+
+    In [126]: frame = pd.DataFrame({'data1': np.random.randn(1000), 'data2': np.random.randn(1000)})
+
+    In [127]: quartiles = pd.cut(frame.data1, 4)
+
+    In [128]: quartiles[:10]
+    Out[128]:
+    0    (-1.654, -0.189]
+    1     (-0.189, 1.275]
+    2     (-0.189, 1.275]
+    3     (-0.189, 1.275]
+    4     (-0.189, 1.275]
+    5     (-0.189, 1.275]
+    6     (-0.189, 1.275]
+    7     (-0.189, 1.275]
+    8       (1.275, 2.74]
+    9     (-0.189, 1.275]
+    Name: data1, dtype: category
+    Categories (4, interval[float64]): [(-3.125, -1.654] < (-1.654, -0.189] < (-0.189, 1.275] <
+                                        (1.275, 2.74]]
+
+The categorical object returned can be passed directly to `groupby`:
+
+    In [129]: def get_stats(group):
+        ...:     return {'min': group.min(), 'max': group.max(), 'count': group.count(), 'mean': group.mean()}
+
+    In [130]: grouped = frame.data2.groupby(quartiles)
+
+    In [132]: grouped.apply(get_stats).unstack()
+    Out[132]:
+                    count       max      mean       min
+    data1
+    (-3.125, -1.654]   52.0  2.299146  0.177311 -1.974142
+    (-1.654, -0.189]  396.0  2.713077  0.171591 -3.334721
+    (-0.189, 1.275]   452.0  3.190075 -0.093762 -2.807887
+    (1.275, 2.74]     100.0  2.637351  0.004744 -2.028048
+
+These were equal length buckets
+
+To computer equal size buckets, use `qcut`
+
+    In [133]: grouping = pd.qcut(frame.data1, 10, labels=False)
+
+    In [134]: grouped = frame.data2.groupby(grouping)
+
+    In [135]: grouped.apply(get_stats).unstack()
+    Out[135]:
+            count       max      mean       min
+    data1
+    0      100.0  2.299146  0.170813 -3.334721
+    1      100.0  2.713077  0.083603 -2.528098
+    2      100.0  2.238571  0.178352 -1.928308
+    3      100.0  2.669556  0.258033 -2.031216
+    4      100.0  3.085353  0.031921 -2.807887
+    5      100.0  3.190075 -0.107540 -2.686559
+    6      100.0  2.122244 -0.050376 -2.385933
+    7      100.0  2.099441 -0.167291 -2.330819
+    8      100.0  2.417712 -0.049621 -2.789057
+    9      100.0  2.637351  0.004744 -2.028048
+
+Check the book for examples of:
+
+* Filling missing values with group-specific values
+* Random smapling and permutation
+* Group Weighted Average and Correlation
+* Group-wise Linear Regression
+
+## Pivot Tables and Cross Tabulation
+
+A pivot table is a data summarisation tool. It aggregates table data by one or more keys.
+
+Made possible in pandas by `groupby` combined with `reshape` utilising hierachical indexing.
+DataFrame has a `pivot_table` method along with the top-level `pd.pivot_table`.
+
+Pivot tables can add partial totals known as _margins_
+
+Suppose you want grouped means (the default for pivotal table)
+
+    In [8]: tips.pivot_table(index=['sex', 'smoker'])
+    Out[8]:
+                    size       tip   tip_pct  total_bill
+    sex    smoker
+    Female No      2.592593  2.773519  0.156921   18.105185
+           Yes     2.242424  2.931515  0.182150   17.977879
+    Male   No      2.711340  3.113402  0.160669   19.791237
+           Yes     2.500000  3.051167  0.152771   22.284500
+
+Now suppose we want to aggregate only `tip_pct` and `size` and additionally group by day.
+We put `smoker` in the columns and `day` in the rows.
+
+    In [10]: tips.pivot_table(['tip_pct', 'size'], index=['sex', 'day'], columns=['smoker'])
+    Out[10]:
+                    size             tip_pct
+    smoker             No       Yes        No       Yes
+    sex    day
+    Female  Fri   2.500000  2.000000  0.165296  0.209129
+            Sat   2.307692  2.200000  0.147993  0.163817
+            Sun   3.071429  2.500000  0.165710  0.237075
+            Thur  2.480000  2.428571  0.155971  0.163073
+    Male    Fri   2.000000  2.125000  0.138005  0.144730
+            Sat   2.656250  2.629630  0.162132  0.139067
+            Sun   2.883721  2.600000  0.158291  0.173964
+            Thur  2.500000  2.300000  0.165706  0.164417
+
+You can add total with `margins=True`
+This adds `All` column and row labels.
+
+    In [11]: tips.pivot_table(['tip_pct', 'size'], index=['sex', 'day'], columns=['smoker'], margins=True)
+    Out[11]:
+                    size                       tip_pct
+    smoker             No       Yes       All        No       Yes       All
+    sex    day
+    Female  Fri   2.500000  2.000000  2.111111  0.165296  0.209129  0.199388
+            Sat   2.307692  2.200000  2.250000  0.147993  0.163817  0.156470
+            Sun   3.071429  2.500000  2.944444  0.165710  0.237075  0.181569
+            Thur  2.480000  2.428571  2.468750  0.155971  0.163073  0.157525
+    Male    Fri   2.000000  2.125000  2.100000  0.138005  0.144730  0.143385
+            Sat   2.656250  2.629630  2.644068  0.162132  0.139067  0.151577
+            Sun   2.883721  2.600000  2.810345  0.158291  0.173964  0.162344
+            Thur  2.500000  2.300000  2.433333  0.165706  0.164417  0.165276
+    All           2.668874  2.408602  2.569672  0.159328  0.163196  0.160803
+
+To use a different aggregation function
+
+    In [12]: tips.pivot_table(['tip_pct', 'size'], index=['sex', 'day'], columns=['smoker'], margins=True, aggfunc=len)
+    Out[12]:
+                size          tip_pct
+    smoker        No Yes  All      No   Yes    All
+    sex     day
+    Female  Fri     2   7    9     2.0   7.0    9.0
+            Sat    13  15   28    13.0  15.0   28.0
+            Sun    14   4   18    14.0   4.0   18.0
+            Thur   25   7   32    25.0   7.0   32.0
+    Male    Fri     2   8   10     2.0   8.0   10.0
+            Sat    32  27   59    32.0  27.0   59.0
+            Sun    43  15   58    43.0  15.0   58.0
+            Thur   20  10   30    20.0  10.0   30.0
+    All           151  93  244   151.0  93.0  244.0
+
+So with `aggfunc=len` we can get the frequency. Or use `aggfunc='count'`.
+If some combinations are empty you may want to add a fill value with `fill_value=0`
+
+    In [21]: tips.pivot_table(['size'], index=['time', 'sex', 'smoker'], columns=['day'], margins=True, aggfunc='sum', fill_value=0)
+    Out[21]:
+                        size
+    day                       Fri  Sat  Sun  Thur  All
+    time    sex     smoker
+    Dinner  Female  No        2   30   43    2   77
+                    Yes       8   33   10    0   51
+            Male    No        4   85  124    0  213
+                    Yes      12   71   39    0  122
+    Lunch   Female  No        3    0    0   60   63
+                    Yes       6    0    0   17   23
+            Male    No        0    0    0   50   50
+                    Yes       5    0    0   23   28
+    All                       40  219  216  152  627
+
+### CrossTabulations: Crosstab
+
+A special case of pivot table that computers group frequency.
+
+    pd.crosstab(data.x, data.y, margins=True)
+
+The first 2 arguments to cross tab can be an array, Series or list of arrays.
+
+    In [5]: pd.crosstab(tips.sex, tips.smoker, margins=True)
+    Out[5]:
+    smoker   No  Yes  All
+    sex
+    Female   54   33   87
+    Male     97   60  157
+    All     151   93  244
+
+    In [6]: pd.crosstab([tips.time, tips.day], tips.smoker, margins=True)
+    Out[6]:
+    smoker        No  Yes  All
+    time    day
+    Dinner  Fri     3    9   12
+            Sat    45   42   87
+            Sun    57   19   76
+            Thur    1    0    1
+    Lunch   Fri     1    6    7
+            Thur   44   17   61
+    All           151   93  244
+
+# Chapter 11: Time Series
+
+
 
 Source: [O'reilly Python for Data Analysis](http://shop.oreilly.com/product/0636920050896.do)
