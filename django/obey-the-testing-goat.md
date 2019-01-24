@@ -1114,7 +1114,7 @@ First import it:
         from unittest.mock import patch
 
 Add a decorator to the test, specifying which dot-notated fucntion to patch.
-THe mocked object is then injected as an argument to the test
+The mocked object is then injected as an argument to the test
 
         @patch('accounts.views.send_mail')
         def test_sends_mail_to_address_from_post(self, mock_send_mail):

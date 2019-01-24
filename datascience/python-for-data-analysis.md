@@ -6424,8 +6424,4 @@ Some more hectic stuff in the book
 I skipped this chapter because it is probably a bit chunky and I'm not in the mood
 
 
-
-
-
-
 Source: [O'reilly Python for Data Analysis](http://shop.oreilly.com/product/0636920050896.do)
