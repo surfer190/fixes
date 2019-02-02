@@ -48,7 +48,7 @@ Then add the following configuration (`sudo vim /etc/apache2/sites-available/app
 
     <VirtualHost *:80>
 
-        ServerName app.synergysystems.co.za
+        ServerName app.example_site.co.za
         DocumentRoot /var/www/app
 
         WSGIScriptAlias / /var/www/app/site.wsgi
@@ -57,7 +57,7 @@ Then add the following configuration (`sudo vim /etc/apache2/sites-available/app
 
 Now enable the site `sudo a2ensite app.conf` and reload apache `service apache reload`
 
-Visit the website at `app.synergysystems.co.za` or whereever you pointed it and see `Hello World!`
+Visit the website at `app.example_site.co.za` or whereever you pointed it and see `Hello World!`
 
 > Loading it to the root above would mean that requests to static files for example: `favicon.ico` would be processed by the wsgi application.
 
@@ -87,12 +87,12 @@ Changing our existing embedded method:
 
     <VirtualHost *:80>
 
-        ServerName app.synergysystems.co.za
+        ServerName app.example_site.co.za
         DocumentRoot /var/www/app
 
 
-        WSGIDaemonProcess app.synergysystems.co.za processes=2 threads=15 display-name=%{GROUP}
-        WSGIProcessGroup app.synergysystems.co.za
+        WSGIDaemonProcess app.example_site.co.za processes=2 threads=15 display-name=%{GROUP}
+        WSGIProcessGroup app.example_site.co.za
 
         WSGIScriptAlias / /var/www/app/site.wsgi
 
