@@ -1,6 +1,8 @@
 # Mod WSGI
 
-**TL;DR - I decided not to use Apache and `mod_wsgi` because it is too difficult to setup and maintain. Simple is better than complex**
+**TL;DR - If you have the choice I found it simpler to use `nginx` and `gunicorn` for your prod server. Simple is better than complex**
+
+## What is ModWSGI?
 
 An apache module which can host any python application supporting the WSGI spec - the python web server gateway.
 A WSGI is a specification of a generic API for mapping between an underlying web server and a Python web application [PEP3333](http://www.python.org/dev/peps/pep-3333/)
@@ -106,11 +108,20 @@ The default Apache LogLevel be increased from `warn` to `info` is also a good id
 
 ### Virtual Environments
 
+You use the `python-home` argument to specify the virtual environment folder from which to run your application.
+You can also use `python-path` to specify colon seperated values to add to your search path.
+
+Eg.
+
+    WSGIDaemonProcess example.co.za python-home=/var/www/example_site/env python-path=/var/www/example_site
+
 > When using a Python virtual environment with mod_wsgi, it is very important that it has been created using the same Python installation that mod_wsgi was originally compiled for
 
 **You cannot for example force mod_wsgi to use a Python virtual environment created using Python 3.5 when mod_wsgi was originally compiled for Python 2.7**
 
-So I tried to install mod_wsgi with python 3.6, which means I needed to download the release and compile it from source with:
+### Compiling mod_wsgi from source to match your virtual env you use to run your application
+
+So I tried to install `mod_wsgi` with `python 3.6`, which means I needed to download the release and compile it from source with:
 
     cd /opt/mod_wsgi-4.6.5
     sudo ./configure --with-python=/usr/local/bin/python3.6
