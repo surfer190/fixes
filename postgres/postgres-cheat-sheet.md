@@ -42,3 +42,9 @@ In psql:
 In psql:
 
     \du 
+
+[View the scemas in a postgres database](https://dba.stackexchange.com/questions/40045/how-do-i-list-all-schemas-in-postgresql/40051)
+
+In psql:
+
+    \dn
