@@ -2189,9 +2189,762 @@ Measurements about the state and performance of the economy - done by StatsSA an
 * GNI = GDP - primary income payments + primary income receipts
 * GNI = GDP - Net primary income
 
+### Balance of Payments
+
+* Record of transactions between residents of the reporting country and the rest of the world
+* Any period of sustained economic growth leads to an increased demand for imports - causing the balance of accounts going into deficit
+* If inflow of foreign money does not come, interest rates have to rise to attract foreign money to balance the account.
+* Which could increase foreign portfolio inflows causing the rand to appreciate - higher demand for curreny
+* In turn, lowering the level of economic activity in the domestic economy
+* In the 1990's South Africa was banned from imports from certain countries and therefore ran at a trade surplus. Which hampered the economy. Rapidly growing economies have a negative trade balance - which increases demand for capital goods and imports
+* Insufficient inflow of foreign currency to meet demand for imports accompanies a decline in the value of the currency of the importing country.
+* Foreign direct investment (into plant and machinery) is low compared to foreign financial market investment - which can be moved out on the short term.
+* Withdrawal of short term capital -> leads to a run on a country's currency -> defending the rand with higher interest rates as opposed to stingent exchange controls making it harder to repatriate money.
+* 5 accounts:
+    * current account: exports - imports
+    * capital transfer account: 
+    * financial account: Internation transfers in assets and liabilities
+    * unrecorded transactions
+    * official reserves account
+
+### Supply and Demand
+
+* Supply - how much the market can offer. Quantity supplied is what producers will supply at a certain price.
+* Demand - how much is desired by buyers. Quantity desired by buyers at a particular price.
+
+#### Supply
+
+* Higher price of a good, the more supply by producers.
+* Leads to more revenue and profit.
+
+#### Demand
+
+* We are talking about intention and means to buy items, people must be willing and able to buy.
+* Higher the price of a good, the lower the demand by buyers.
+
+#### Equilibrium
+
+* Supply and demand are equal
+* Allocation of goods is at its most efficient
+* Amount of goods supplied is the same as the amount of goods being demanded
+* Real market equilibrium can only ever be reached in theory
+
+__excess supply__ - price is set too high, demanded quantity is much lower so excess supply.
+__excess demand__ - price is set too low (below equilibrium), too many consumers want the good but producers are not producing the amount demanded. So there is excess demand.
+
+## The Business Cycle
+
+### Expansion phase
+
+1. economic activity low - current account surplus - demand for imports low
+2. domestic companies export more
+3. domestic money supply increases
+4. increased money supply - interest rates decline
+5. more consumer spending
+6. demand increases producers expand production
+7. higher wages and salaries
+8. increased imports
+9. Increase in prices (inflation) due to increased demand
+
+### Contractionary phase
+
+1. price of goods less competitive, less demand from abroad
+2. imports rise, exports decrease
+3. balance of payments deficit
+4. money leave the country - supply of money declines
+5. value of rand weakens - imports become more expensive
+6. interest rates rise to attract more foreign money
+7. consumers demand less - prices (inlfation) decreases
+
+### Revival phase
+
+1. Prices are declining or stable
+2. Weak rand makes S exports attractive
+3. Declining imports and rising exports - trade balance moves to surplus
+4. Increase in supply of money
+5. Reduces interest rates
+6. demand for goods increase
+7. More people employed - wages increase
+8. Inflation begins
+
+### Investing in the Business Cycle
+
+1. Producers experience strong demand - investors unaware of the potential invest in cash and interest bearing investments which offer attractive yields instead of shares
+2. Strong expansion is taking place - investors react enthusiastically
+3. New entries and expansion causes overcapcity, prices and profits decline - investors become disenchanted - investor's portfolios are biased to shares and underweight in bonds
+4. No new entries, demand catches up with supply - shares are completely out of favour, investors are underweight shares and overwight bonds and fixed
+5. demand exceeds supply, profits increase - some investors go back into shares others continue to hold cash
+6. Prices rise, increases in profits are reported - invesotrs once again get enthusiastic, unit trust sales boom and interest bearing investments fall out of favour.
+
+> Investors that can predit the turning points in business cycle can increase their returns. Predicting such turning points is not easy.
+
+#### Leading Indicators of Business Cycle
+
+* Volume of orders in manufacturing (opinion survey)
+* stocks in relation to demand (opinion survey)
+* Business confidence (opinion survey)
+* leading business cycle indicators of trade partners over 12 months
+* commodity prices in USD for a basket of SA commodities
+* Real M1 money supply (deflated with CPI)
+* Prices of all classes of shares (6 month smoother rate)
+* Residential building plans passed
+* interest rate spread
+* gross operating surplus as percentage of GDP
+* labour productivity
+* job advertisements
+* average hours worked for factory workers (opinion survey)
+
+#### Coincident indicators
+
+* Gross value added at constant prices
+* Vehicle sales at constant prices
+* Production capacity
+* formal non-agricultural employment
+* industrial production index
+
+#### Lagging Indicators
+
+* Unemplyment
+* value of non-residential buildings completed
+* nominal labour cost per unit or production in manufacturing sector
+* cement sales in tons
+* ratio of households use of instalment sales credit
+* prime rate
+
+## Fiscal and Monetary Policy
+
+### Fiscal Policy
+
+* Government policy on spending and taxation
+* Main instrument is the **budget** - spending plans and how this spending will be funded
+
+### Monetary policy
+
+* Measures taken to adjust money supply and the rate of interest in an economy to maintain stable prices, full employment and economic growth
+
+Some economists think:
+1. money supply increases -> interest rates will fall
+2. lower interest rates -> more investment projects become profitable
+3. investment increases
+4. increase in GDP
+
+> Why observers say a decrease in interest rates is an attempt to increase GDP. Some say that this increases inflation though.
+
+Instruments of monetary policy: **repo rate** and **open market policy** - sale or purchase of domestic financial assets (treasury bills and government securities). When it wants to increase money supply it buys government securities on the open market, to persuade market to sell securities the price of bonds have to be raised. To reduce money supply it sells bonds at a cheaper rate than the ruling price - therebuy raising effecive interest rates? How?
+
+#### Inflation targetting
+
+Between 3% AND 6%, arguments for:
+* keeping public informed
+* provide an anchor for inflation expectations
+* increased transparency
+* increased accountability
+* increased stability in nominal rates
+* reducing inflation expectatoins
+* reducing degree of money illusion
+* stability in the value of money
+
+#### Interest Rates
+
+* The amount a borrower pays to a lender for the use of the funds borrowed
+* A real interest rate = Nominal interest rate - inflation rate
+* Eg. 15% mortgage rate - 8% annual inflation rate = 7% real interest rate for sake of comparing
+
+Prospects for lower interest rates depend on:
+* maintenance or tightening of discipline in public sector finances
+* slower growth in bank credit extension
+* a stronger national savings effort
+* improvement in current account balance of payments and level of foreign reserves
+* relative strength of the currency compared to other currencies
+* decline in inflation
+* level of inflation and interest rates in other parts of the world
+
+#### Interest Rate Patterns
+
+* Vary based on the riskiness of the investment
+* If demand exceeds supply, interest rates will rise. If supply exceeds demand, interest rates will decline.
+* If government expenditure exceeds revenue, it has to borrow from the private sector to make up the shortfall. The higher the deficit, the greater the borrowings, the greater the interest rate.
+* More investment in equipment and plant will increase demand for long term capital, increasing its interest rate.
+* If interest rates overseas are high, interest rates locally need to be high to attract foreign money.
+
+> South African investors may be prepared to hold money overseas at low interest rates if they believe that the value of the rand will decline against that currency.
+
+Investors need to be rewarded for holding investments with different maturity dates. This is the _liquidity preference theory_
+
+## Inflation
+
+> Too much money chasing too few goods
+
+* Continuous increase in prices
+
+deflation - reduction in supply of credit and decrease in government, personal and investment spending - regarded as negative state of economy.
+
+disinflation - slowing of the rate at which prices increase
+
+### Effects of inflation
+
+* Distributions effect - redistribute income and wealth from creditors (lenders) to debtors (borrowers), if the real interest rate is negative (inflation > interest rate)
+* Economic effects - encourages speculative activity, discourage saving. Balance of payment problems - SA inflation greater than trading partners
+* Social and political effects - price rises make people unhappy, causes tension and conflict.
+
+### Causes of Inflation
+
+* Cost-push - A cost of production increase without a corresponding increase in output
+* Demand-pull - Increase in demand for goods and services accomadated by an increased supply of money to buy. Self-perpetuating (increased prices -> increase demand for wages -> increased demand for goods and services -> increased prices)
+
+#### Measurement
+
+Consumer price inflation - a basket of consumer goods and services
+Producer price inflation - measures cost of production. Includes capital and intermediate goods, excludes VAT (included in CPI) and excludes services (45% of CPI)
+
+### Why is Inflation Bad?
+
+* Losses to savers (interest not enough to compensate for inflation)
+* Losses to people with fixed incomes - purchasing power diminishes over time
+* Losses to tax payers - if slary increases inline with inflation, the higher tax rate means a larger share is taken of your slary.
+* Confusing price signals
+* Reduced attention to productivity - wage negotiations are more focused on compensation for inflation instead of increased productivity and employment.
+* Wastage of time and resources - Prices change very often then people have to focus on changing prices and watching news etc than doing their actual job
+* Heightened tension and docial disruptions
+
+> Ill-informed people claim that inflation is not bad. They argue that higher inflation will stimulate economic growth. These claims are false. It is easy and inexpensive to print more money, thereby boosting inflation; even the poorest countries do that. If this were a way to achieve economic prosperity no poor countries would remain on earth.
+
+### How to Stop Inflation?
+
+Freeze all prices - controls symptoms not cause
+
+If inflation too high:
+1. SARB raises repo rate
+2. Banks raise lending and deposit rates
+3. People buy fewer goods on credit
+4. less money with shopkeepers
+5. less money harder to increase wages
+6. Inflation is reduced
+
+> Lending rates must be significantly higher than the inflation rate if excessive credit growth is to be prevented
+
+SARB can also use open market operations - buying and selling financial assets on the open market
+
+### Exchange Rates
+
+Exchange rate - price of one currency in terms of another currency
+
+Direct method - amount of local currency to buy a foreign currency
+Indirect method - amount of foreign currency to but 1 unit of a local currency
+
+There is a selling rate (rate dealer will sell to you) and a buying rate (rate a dealer will buy from you)
+The difference between these rates is the spread
+
+#### Determination
+
+* Determined by market forces - supply and demand
+* SARB can intervene in the forex market by supplying dollars when large demand for foreign exchange threatens to disrupt the market
+* The balnce-of-payments is the biggest determinant
+* Non economic factors: political developments and rumours also affect the exchange rate
+
+#### Spot and Future exchange rates
+
+* Spot rate - rate for immediate delivery
+* Forward rate - rate for delivery at a future date
+* The forward price is usually higher or lower than spot
+* Lets importers and exporters cover themselves against the risk of future changes in the spot exchange rate
+
+The effective exchange rate is the weighted average
+
+## Unemployment
+
+* A person is unemployed if he or she desires employment but cannot find a job.
+* Unemployed persons as a percentage of a total number of people willing and able to work
+* Expanded definition includes everyone who desires employment irrespective of whether they are trying or not.
+
+### Types
+
+* Frictional - Workers moving from one job to another
+* Structural - A mismatch between offered jobs and potential worker's education, skills, expertise and geographic location. 
+* Seasonal - farming and tourism may change with the seasons
+* Cyclical - Not enough aggregate demand from the business cycle
+
+## Role of Gold
+
+* Gold was internationally accepted as the preferred metal to back various currencies
+* On 15 August 1971, Nixon announced the end of the gold standard.
+
+## The great recession financial crisis (2008-2009)
+
+1. Extension of credit to homeowners that could not affort the credit
+2. Packaged debt sold to other investors
+3. Combining poor investments into a single vehicle made it less risky
+4. Individual defaulted to instituiotions, insittions defaulted to one another
+
+> Instituitions no longer trusted individuals and each othe. leading to a liquidity crisis.
+
+Governments and central banks became major shareholders in the big financial instituitions.
+
+Usually the injection of liquidity into the world economies would have caused inflation. Not in this case.
+
+Warning signs of crisis:
+* Asset price inflation
+* Rising leverage and indebtedness
+* Sustained current account deficits
+* Slowing down in the rate of economic growth
+
+# Yield
+
+This is not in the book but it is an important term...**yield**
+
+* Yield is the earnings (or cash flow) generated from an investment over time
+* It is expressed in terms of a percentage of the invested amount / market value of the security
+
+# The Money Market
+
+* Short-term funds to borrowers from the government and the corporate sector. (short term == not eceeding 12 months)
+* High liquidity, low risk
+
+## Participants
+
+* SARB - South African Reserve Bank
+* Corporation for public deposits
+* PIC - Public Investment Corporation
+* IDC - Industrial Development Corporation
+* Land and Agricultural Bank
+
+## Money Market Instruments
+
+* Treasury Bills - Short term debt issued by government, benchmark indicator of market conditions, used as liquid assets
+* Call deposits - Called back on demand, Interest calculated on a daily balance and paid monthly
+* Notice deposits - Period of notice must be given prior to withdrawal of funds
+* Banker's acceptance
+* Promissory notes
+* Negotiable certificate of Deposit
+
+## Money Market yields
+
+* Money market for debt instruments is up to one year
+* Discount instrument - sell at a discount to their face value, make a single payment on maturity and make no interest payments before maturity. The yield percentage is always higher than the discount because yield is a percentage of the purchase value (which is lower than the redemption value)
+* Interest bearing instruments - quoted in nominal terms. In comparing the yield of money market instruments, always convert the yield into an effective annual rate (EAR)
+
+### Discount Instruments
+
+1. Calculate the yield:
+
+    amount discounted = ( face_value * days_to_maturity * discount_rate ) / 365
+
+2. Determine the nominal annual yield:
+
+    NAY = ( discounted_amount / purchase_price ) * (365 / days_to_maturity )
+
+3. Use a financial calcualtor to get the EAR. Assume the investment is continously rolled over for 1 year, the rate stays unchanged.
+
+#### Example
+
+Treasury bill has a face value of R1000000 with 91 days until maturity at a discount rate of 6%. What is teh Effective Annual Rate.
+
+    amount_discounted = (1000000 * 91 * 0.06) / 365
+    amount_discounted = 14958.90410958904
+
+This is R60000 annual interest apportioned to 91 of 365 days.
+
+The purchase price of the treasury bill is: 
+
+    purchase_price = 1000000 - amount_discounted
+    purchase_price = 985041.095890411
+
+The nominal annual yield:
+
+    nay = (amount_discounted / purchase_price ) * (365 / 91)
+    nay = 0.06091116426545029
+    nay = 6.0911%
+
+The effective annual rate would be compounding over 1 year:
+
+    rate = 6.2316%
+
+### Interest Bearing Intrument
+
+Use a financial calculator: nominal to effective
+
+#### Conclusion
+
+* Low risk, lower returns
+* Unlikely place for individual participation due to minimum investment criteria
+* Through money market funds investors can invest in codt-effective and convenient way
+
+# The Bond Market
+
+* Issued by governments, public corporations and companies
+* From 2 to 20 years
+* Offer investor a series of fixed interest payments during its life along with repayment of principal
+
+## Capital Market
+
+The bond market (or capital market) can be issued by the borrower directly to the lender but there is also a secondary market.
+
+### Issuers in the Capital Markets
+
+* Private sector - companies need funds for long-term investments (issuing shares, corporate bonds, debentures and rights issues)
+* Central Government - Issue long term bonds, considered the safest investment as government can pay off loan with tax it takes from evryone else. 
+* Municipalites and public corporations - (Eksdom, public utilities - Rand Water) Finance for long term expansion projects
+
+### Role Players
+
+* Banks - deposit takers who offer mortgage finance for housing
+* Insurance companies - personal savings as insurance premiums can be used to source funds from the public sector
+* stock exchange - lists new bonds
+
+## Types of Bonds
+
+### Coupon Bonds
+
+* Issuer to pay the bondholder a fixed sum of money on the maturity of the bond along with constant periodic interest payments
+* Convertible bonds - can convert bonds into shares of teh issuing company
+* Callable bond - Grants issuer the right to repurchase the bond if interest rates decreae
+* Bond with put option grants bondholders the right to sell their bonds back to the issuer at a special put price
+
+### Zero-coupon Bonds
+
+Discount bonds that do not pay periodic interest. Initially sold at a price below par value.
+
+### Inflation linked bonds
+
+* Pay interest rate that adjusts to keep track with inflation
+* Contracted to vanilla bonds which pay a fixed rate for the lifetime of the bond
+* Yields usually lower compared to vanilla bonds
+
+#### Tax on inflation linked bonds
+
+* Changes in the rate are taxable
+* Coupon payments and the difference between the acquisition cost and the nominal value of a bond is defined as intrest and is taxable for income tax purposes
+
+## Risk of Bonds
+
+* Interest rate risk - changes in interest rates (interest rates rise, bond values fall)
+* Yield curve risk - yield change by different amounts for bonds with different maturities
+* Call risk - callable bond's investors may need to reinvest at lower rates (reinvestment risk)
+* Credit risk - creditworthiness of a bon's issuer will deteriorate, increasing the required return and decreasing the bond's value
+* Liquidity risk - sell bond lower than market value because of lack of liquidity
+* Inflation risk - increases more than expected
+* Volatility risk - interest rate volatility
+* Sovereign risk - Changes in government attitudes and policies towards payment and serviving of debt
+
+## Attributes of a Bond
+
+* Principal value (face value, future value, redemption value, nominal value or par value) - Paid to the holder on the maturity date
+* Market value (present value) - present value of all future cash flows of the bond, discounted at the current market rate
+* Coupon rate (coupon yield, nominal yield) - fixed rate of interest the holder will receive each year
+* Term to maturity - period of time until the maturity of bond
+
+## Bond Pricing and Yields
+
+### Calcualting the present value of a bond
+
+* Determined by current interest rate in  country at the time
+* Interest rates may vary above and below the fixed rate of the bond's lifetime
+* A bond giving 15% coupon rate and current rates decrease to 13% will increase the value of the bond
+* The price of a bond rises as the current market interest rate falls
+
+#### Example
+
+An investor invests in an Eksdom bond. Par value: R1000000. Coupon rate of 8.5% with a maturity of 5 years.
+Coupon payments take place at the end of every 6 month period.
+
+1. Work out the monthly payments:
+
+    1000000 * 8.5% = 85000
+    85000 / 2 = 42500 (biannual payments)
+
+2. The rate (discount rate) is 8% / periods: 0.08/2 = 0.04
+
+The future value is 1000000
+
+    In [2]: np.pv(0.08/2, 10, 42500, 1000000, 0)                                    
+    Out[2]: -1020277.2394483876
+
+The investor will therefore pay R1020277 today for an investment with the above amounts
+
+If interest rates went to 9% the value of the bond would be:
+
+    In [3]: np.pv(0.09/2, 10, 42500, 1000000, 0)                                    
+    Out[3]: -980218.2045572248
+
+### Bond Yields
+
+* price of a bond = expected cash flow and required yield
+* yield of a bond = coupon payments, income from reinvestment of coupons received, capital gains/losses on the market value of the bond
+
+* Nominal yield - coupon rate
+
+#### Current yield
+
+    current_yield = annual_yield / market_price
+
+The current yield for a 15 year, 7% coupon bond with a par value of R1000 selling for R769.4:
+
+    annual_yield = R1000 * 0.07 = 70
+
+    current_yield = 70 / 769.4
+    current_yield = 9.1%
+
+> Only the coupon interest rate is taken into account. Capital gain, loss and time value of money is ignored
+
+#### Yield to Maturity
+
+**Interest rate that will make the present value of a bond's remaining cash flows equal to the price**
+
+Eg. A 15 year bond with a 7% coupon bond with a maturity value of R1000 and a current value of R769.4
+
+Future value = R1000
+Periods = 15 * 2 = 30
+Present value = - R769.4
+Payment = 7% * R1000 = R70 / 2 = R35
+
+yield to maturity (rate) = ?
+
+    In [10]: np.rate(30, 35, -769.4, 1000, 0)
+    Out[10]: 0.05000103851314496
 
 
+* A bond selling at **par** has a `current yield == yield to maturity`
+* A bond selling at **discount** has `current yield < yield to maturity`
+* A bond selling at a **premium** has `current yield > yield to maturity`
 
+### Yield Curves
+
+A plot of yields to maturity
+
+#### Pure Expectations Theory
+
+* Average of short term rates that are expected in the future
+* If short term rates are expected to rise, interest rate yields on longer maturities will be higher than those on short maturities. Yield curve is upward sloping. 
+* If short term rates are expected to fall, the longer maturity bonds will offer lower yields. Downward sloping.
+
+#### Liquidity Preference Theory
+
+* Investors require a risk premium for holding longer-term bonds
+* Interest rate risk is greater for longer maturity bonds
+
+#### Market Segmentation Theory
+
+* Investors and borrowers have different preferences for maturity ranges.
+* Supply and demand for different maturity ages affect yield
+* Age of Investor
+* Regulations and policy restrictions
+
+### Yield Curve Shapes
+
+* Rising yield curve - longer maturities flatten out
+* Declining yield curve - longer maturities flatten out
+* Flat yield curve - equal
+* Humped yield curve - yield on intermediate-term issues are above short-term
+
+### Duration
+
+* Term to maturity is the number of years until redmeption
+* Longer the maturity of the bond, the more sensitive it is tochanges in interest rate
+* Duration of a bond compares bonds by measuring their cash flows over a weighted period of time
+* Duration and volatility of a bond increases as teh term to maturity increases
+* A longer term bond will be affected more by an increase in interest rate as the loss of potential income on the ten-year bond will be greater than on the fice year bond.
+
+### Convexity
+
+* Amount of a bonds price change when interest rates change
+* Sensitivity to change in interest rate
+
+    bond_volatility = percentage_change_price / change_current_interest_rates
+
+Say interest rates go from 10% to 12%. The bond price goes down 20%. Bond volatility = 10.
+
+### Bond Price Quotations
+
+* The R186 bond was issued at an initial yield of 10.5%.
+* If interest rates are lower than 10.5% in 2026, the government is likely to redeem the bonds and issue stock at a lower rate.
+* Bonds are not quoted in rands and cents, but in terms of intrest rates.
+* The current spot price is `8.74` or `8.74%`
+* If yield goes up, price or value of the bond will decline
+* If yield comes down, price or value of the bond will increase.
+* The are not user friendly
+* You need to calculate:
+    * yield to maturity
+    * clean price - excluding accrued interest
+    * interest accrued
+    * total price
+    * running yield - interest paid on the bonds dividend by the clean price
+    * duration of the bond
+
+## Securitisation
+
+* Converting illiquid financial assets (mortages and debtor's accounts) into negotiable transfer instruments
+* Cash flow is redirected into a negotiable debt instrument
+* Corporate liquidity is usually enhanced and the assets remain on the balance sheet
+* Lending risks: investment, interest rate, liquidity and credit risk are allocated to parties best able to absorb them
+
+> Always take tax into account when calculating income from bonds
+
+# The Property Market
+
+* Property is valuable because it can be used and is relatively scarce
+* They are heterogeneous - differ from each other
+* Not easy to convert into use as a different purpose
+* Illiquid investment
+
+## Factord affecting value
+
+* Political, social and economic
+* Interest rates - buyers need to raise a mortgage to buy a house
+* Costs involved - transfer duty, conveyancing costs, bond registration costs, estate agent's commissions
+
+## Returns from property
+
+* Rental income
+* Increase in capital
+
+If interest rates rise, the property owner can find themselves in a situation where the cost of borrowing rises faster than the rental income received. 
+
+> A change in yield can have a considerable impact on the value of a property
+
+    capitalisation_rate = 100 / rate_of_return
+
+    property_value = rental_return_per_annum * capitalisation_rate
+
+Eg. Income from a property per annum is R120000, the rate of return is 10%.
+
+    property_value = 120000 * (100/10)
+    R1,200,000
+
+If the rate of return goes to 12%
+
+    property_value = 120000 * (100/12)
+    R1,000,000
+
+Therefore capital growth is achieved when current market yield decreases or if the rental income increases.
+
+* The interest rates affect the market yield
+* If interest rates decline, the value of the property is likely to increase
+
+    capitalisation_rate = (first_year_net_operating_income / purchase_price) * 100
+
+* The first year's net operating income is the initial yield
+* If a building is rented below market rentals, the initial yield will be below the capitalisation rate
+* The capitalisation rate is a good tool in comparing properties
+
+## Direct Property Investment
+
+Factors affecting property value:
+* Price relative to similar properties
+* Reputable area - stability
+* developments near property
+* condition - hints at future maintenance costs
+* crime rate
+
+#### Mortgaging a property
+
+* High interest rates dictate that the best investment an individual can make would be to repay the mortgage if they cannot claim mortgage interest as a deduction.
+* Tex deductible is for commercial and industrial buildings
+* Investor may want to maximise borrowing if it is tax deductible but must ensure the outstanding value of the loan does not exceed the value of the property
+
+> Individuals who own their own homes should pay off their mortgage over a shorter time
+
+* Paying off the mortgage is a low risk investment strategy
+* Contrasting that to a bond rate of 10.5% and a marginal tax rate of 35%, paying off a bond is a much better investment.
+* There are no additional fees and VAT on the payments
+
+* If the increase in housing prices lag behind inflation then it makes a house (and mortgage for it) a bad investment
+* Sometimes the return from rented property may not cover the cost of owning the property
+* Then it is whether rentals will rise or capital gains will compensate for the loss on rentals
+
+#### Costs of Purchasing Property
+
+* Transfer duty is payable unless the property is bought directly from the developer or builder. In that case VAT is charged.
+ * Conveyancing fees - 1 to 2% to the price
+
+ Getting a bond for R1600000 on a R2000000 house would have the following costs:
+ * Bond registration costs including VAT: R22686
+ * Bank initiation fee including VAT: R5985
+ * Post, Petties and FICA: R1200
+ * Property Transfer Costs: R25650
+ * Transfer Duty: R60500
+
+ You can expect to pay: R117221 in costs
+
+ Then to rent the property out there are a few costs:
+ * Estate agent to find tenant: 5%
+ * Management: 10%
+ * Money spent on repairs, rates, levies and insurance
+
+The investment return is calculated by subtracting expenses from total income.
+
+Expenses:
+* Loan Repayment
+* Sectional Title Levy
+* Freehold property Rates
+* Insurance Premiums
+* Allowances for repairs and maintenance (12.5% of monthly rental)
+
+Income:
+* Rental of lease agreement
+* Less agent's colelction fee
+
+Eg. The rental of a R400000 property would need:
+
+Bond repayment: R4128
+Levy: R600
+Rates: R400
+Insurance: R55
+Maintenance: R400
+
+Total: R5583
+
+The rent needs to be more than that
+
+#### Sectional Title
+
+* Part owner of the land and common property
+* Complex is controlled by a body corporate
+* Owner of any section of the building is a member of the body corporate
+
+#### Time Share
+
+* Holdiay accomdation
+* Ownership of sectional title units for 1 week of the 52 in a year
+* Demand for particular weeks differ, making some hard to sell.
+* Levies must be adequate to cover costs and major repairs
+* More of a saving on future costs than an investment
+
+#### Share Block Schemes
+
+* Right of occupancy in a specific section of a building in which the invetor owns shares
+* As shares are being purchased the investor would be required to take out a personal loan which may result in higher interest rates
+
+#### Retirement Villages
+
+* Only sell if 75% of holders agree.
+* Income tax exemption for the company involved in residential accomadation
+
+#### Property Syndications
+
+**TL;DR Stay away**
+
+* Group of investors who pool funds in order to purchase commercial or industrial property
+* Units are sold for R10000
+* A single investor cannot control more than 25%
+* Income is received quarterly
+* Paid out as percentage of rental income based on shareholding
+* Not very liquid investments
+* Large instituitional investors are usually the first to take up desired projects
+* South Africa has been plagued with distrous property syndication schemes
+* Experience has shown that one cannot rely on the opinions of the promoters when assessing the investment of a particular proposal.
+
+Keep in mind:
+* Track record of people
+* who are tenants when are the leases in place
+* actual rentals compared to market
+* location; is it desirable?
+* cash reserves to cover major refurbishment
+* design of building
+* access services and building services are adequate
+* company's constitution
+* restrictions on transferability
+* who will manage the company
+* Will income cover the cost of borrowing
 
 
 
