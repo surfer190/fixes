@@ -2,38 +2,32 @@
 
 ### Using Handlers
 
-```
-handlers:
-    - name: restart apache
-      service: name=apache2 state=restarted
+  handlers:
+      - name: restart apache
+        service: name=apache2 state=restarted
 
-tasks:
-    - name: Enable Apacherewrite module
-      apache2_module: name=rewrite state=present
-      notify: restart apache
-```
+  tasks:
+      - name: Enable Apacherewrite module
+        apache2_module: name=rewrite state=present
+        notify: restart apache
 
 ##### Notify Multiple Handlers
 
-```
-- name: Rebuild application configuration.
-  command: /opt/app/rebuild.sh
-  notify:
-    - restart apache
-    - restart memcached
-```
+  - name: Rebuild application configuration.
+    command: /opt/app/rebuild.sh
+    notify:
+      - restart apache
+      - restart memcached
 
 ##### Have one Notifier Notify Another
 
-```
-handlers:
-  - name: restart apache
-    service: name=apache2 state=restarted
-    notify: restart memcached
+  handlers:
+    - name: restart apache
+      service: name=apache2 state=restarted
+      notify: restart memcached
 
-    - name: restart memcached
-      service: name=memcached state=restarted
-```
+      - name: restart memcached
+        service: name=memcached state=restarted
 
 ##### Considerations
 
@@ -45,87 +39,74 @@ handlers:
 
 Adding line to remote user account in `.bash_profile`:
 
-```
-- name: Add an environment variable to the remote user's shell.
-  lineinfile: dest=~/.bash_profile regexp=^ENV_VAR= line=ENV_VAR=value
-```
+  - name: Add an environment variable to the remote user's shell.
+    lineinfile: dest=~/.bash_profile regexp=^ENV_VAR= line=ENV_VAR=value
 
 _Only available to the shell command_
 
 ##### Using the `register`
 
-```
-- name: Add an environment variable to the remote user's shell.
-  lineinfile: dest=~/.bash_profile regexp=^ENV_VAR= line=ENV_VAR=value
+  - name: Add an environment variable to the remote user's shell.
+    lineinfile: dest=~/.bash_profile regexp=^ENV_VAR= line=ENV_VAR=value
 
-- name: Get the value of the environment variable we just added.
-  shell: 'source ~/.bash_profile && echo $ENV_VAR'
-  register: foo
+  - name: Get the value of the environment variable we just added.
+    shell: 'source ~/.bash_profile && echo $ENV_VAR'
+    register: foo
 
-- name: Print the value of the environment variable.
-  debug: msg="The variable is {{ foo.stdout }}"
-```
+  - name: Print the value of the environment variable.
+    debug: msg="The variable is {{ foo.stdout }}"
 
 ##### Adding to Linux Environment Variables
 
-```
-- name: Add a global environment variable.
-  lineinfile: dest=/etc/environment regexp=^ENV_VAR= line=ENV_VAR=value
-  sudo: yes
-```
+  - name: Add a global environment variable.
+    lineinfile: dest=/etc/environment regexp=^ENV_VAR= line=ENV_VAR=value
+    sudo: yes
 
 ##### Per Play Environment Variables
 
 Use the `environment` option for a file download url for example.
 
-```
-- name: Download a file, using example-proxy as a proxy.
-  get_url: url=http://www.example.com/file.tar.gz dest=~/Downloads/
-  environment:
-    http_proxy: http://example-proxy:80/
-```
+  - name: Download a file, using example-proxy as a proxy.
+    get_url: url=http://www.example.com/file.tar.gz dest=~/Downloads/
+    environment:
+      http_proxy: http://example-proxy:80/
 
 That can become quite cumbersome so sometimes it is better to use a `vars` section
 
 ##### `vars` Section
 
-```
-vars:
-  var_proxy:
-    http_proxy: http://example-proxy:80/
-    https_proxy: https://example-proxy:443/
-    [etc...]
-  tasks:
-  - name: Download a file, using example-proxy as a proxy.
-    get_url: url=http://www.example.com/file.tar.gz dest=~/Downloads/
-    environment: var_proxy
-```
+  vars:
+    var_proxy:
+      http_proxy: http://example-proxy:80/
+      https_proxy: https://example-proxy:443/
+      [etc...]
+    tasks:
+    - name: Download a file, using example-proxy as a proxy.
+      get_url: url=http://www.example.com/file.tar.gz dest=~/Downloads/
+      environment: var_proxy
 
 ##### Set a System wide Proxy (For Corporate Firewalls)
 
 in `/etc/environment`:
 
-```
 # In the 'vars' section of the playbook (set to 'absent' to disable proxy):
-proxy_state: present
-  # In the 'tasks' section of the playbook:
-  - name: Configure the proxy.
-    lineinfile:
-    dest: /etc/environment
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    state: "{{ proxy_state }}"
-  with_items:
-    - { regexp: "^http_proxy=", line: "http_proxy=http://example-proxy:80/" }
-    - { regexp: "^https_proxy=", line: "https_proxy=https://example-proxy:443/" }
-    - { regexp: "^ftp_proxy=", line: "ftp_proxy=http://example-proxy:80/" }
-```
+
+  proxy_state: present
+    # In the 'tasks' section of the playbook:
+    - name: Configure the proxy.
+      lineinfile:
+      dest: /etc/environment
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      state: "{{ proxy_state }}"
+    with_items:
+      - { regexp: "^http_proxy=", line: "http_proxy=http://example-proxy:80/" }
+      - { regexp: "^https_proxy=", line: "https_proxy=https://example-proxy:443/" }
+      - { regexp: "^ftp_proxy=", line: "ftp_proxy=http://example-proxy:80/" }
 
 ####### Testing a Remote Variable
 
-```
-ansible test -m shell -a 'echo $TEST'
-```
+  ansible test -m shell -a 'echo $TEST'
 
 ### Variables
 
@@ -135,60 +116,47 @@ variables same as `python` but better to use jsut smalls and avoid numbers.
 
 In an **inventory** file:
 
-```
-foo=bar
-```
+  foo=bar
 
 In a **playbook**:
 
-```
-foo: bar
-```
+  foo: bar
+
 ##### Playbook Variables
 
 Passing in with command line:
 
-```
-ansible-playbook example.yml --extra-vars "foo=bar"
-```
+  ansible-playbook example.yml --extra-vars "foo=bar"
 
 Pass in a `json` or `yaml` file:
 
-```
 -extra-vars "@even_more_vars.json"
-```
 
 In Playbook:
 
-```
----
-- hosts: example
-  vars:
-    foo: bar
-  tasks:
-    # Prints "Variable 'foo' is set to bar".
-    - debug: msg="Variable 'foo' is set to {{ foo }}"
-```
+  ---
+  - hosts: example
+    vars:
+      foo: bar
+    tasks:
+      # Prints "Variable 'foo' is set to bar".
+      - debug: msg="Variable 'foo' is set to {{ foo }}"
 
 Or with a file `vars_files`:
 
-```
----
-# Main playbook file.
-- hosts: example
-  vars_files:
-    - vars.yml
-  tasks:
-    - debug: msg="Variable 'foo' is set to {{ foo }}"
-```
+  ---
+  # Main playbook file.
+  - hosts: example
+    vars_files:
+      - vars.yml
+    tasks:
+      - debug: msg="Variable 'foo' is set to {{ foo }}"
 
 Variables in `vars.yml`:
 
-```
----
-# Variables file 'vars.yml' in the same folder as the playbook.
-foo: bar
-```
+    ---
+    # Variables file 'vars.yml' in the same folder as the playbook.
+    foo: bar
 
 ##### Conditionally importing a vars file
 
@@ -198,30 +166,26 @@ Say you have `centOS` which uses `httpd` and `debian` that uses `apache2`:
 
 `apache_-default.yml`
 
-```
----
-  - hosts: example
-    vars_files:
-      - [ "apache_{{ ansible_os_family }}.yml", "apache_default.yml" ]
-    tasks:
-      - service: name={{ apache }} state=running
-```
+    ---
+      - hosts: example
+        vars_files:
+          - [ "apache_{{ ansible_os_family }}.yml", "apache_default.yml" ]
+        tasks:
+          - service: name={{ apache }} state=running
 
 ##### Inventory Variables
 
 Example of entire setting variables inline and for a group:
 
-```
-# Host-specific variables (defined inline).
-[washington]
-app1.example.com proxy_state=present
-app2.example.com proxy_state=absent
-# Variables defined for the entire group.
+    # Host-specific variables (defined inline).
+    [washington]
+    app1.example.com proxy_state=present
+    app2.example.com proxy_state=absent
+    # Variables defined for the entire group.
 
-[washington:vars]
-cdn_host=washington.static.example.com
-api_version=3.0.1
-```
+    [washington:vars]
+    cdn_host=washington.static.example.com
+    api_version=3.0.1
 
 ####### Best Practice
 
