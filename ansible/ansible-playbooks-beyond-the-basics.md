@@ -2,14 +2,14 @@
 
 ### Using Handlers
 
-  handlers:
-      - name: restart apache
-        service: name=apache2 state=restarted
+    handlers:
+        - name: restart apache
+          service: name=apache2 state=restarted
 
-  tasks:
-      - name: Enable Apacherewrite module
-        apache2_module: name=rewrite state=present
-        notify: restart apache
+    tasks:
+        - name: Enable Apacherewrite module
+          apache2_module: name=rewrite state=present
+          notify: restart apache
 
 ##### Notify Multiple Handlers
 
@@ -177,15 +177,15 @@ Say you have `centOS` which uses `httpd` and `debian` that uses `apache2`:
 
 Example of entire setting variables inline and for a group:
 
-    # Host-specific variables (defined inline).
-    [washington]
-    app1.example.com proxy_state=present
-    app2.example.com proxy_state=absent
-    # Variables defined for the entire group.
+  # Host-specific variables (defined inline).
+  [washington]
+  app1.example.com proxy_state=present
+  app2.example.com proxy_state=absent
+  # Variables defined for the entire group.
 
-    [washington:vars]
-    cdn_host=washington.static.example.com
-    api_version=3.0.1
+  [washington:vars]
+  cdn_host=washington.static.example.com
+  api_version=3.0.1
 
 ####### Best Practice
 
