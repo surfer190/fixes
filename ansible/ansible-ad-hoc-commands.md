@@ -28,7 +28,7 @@ To check the host name
 
     ansible multi -a "hostname"
 
-###### To Run Commands in sequence (A single process fork)
+#### To Run Commands in sequence (A single process fork)
 
     ansible multi -a "hostname" -f 1
 
