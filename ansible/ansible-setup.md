@@ -8,7 +8,7 @@
 
 #### Inventory File
 
-just like a `hosts` file, inventory file matches ip ipaddresses/domain groups to groups
+just like a `hosts` file the inventory file matches ip addresses and domain names to groups
 
 Default place is:
 
