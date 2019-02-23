@@ -1,4 +1,4 @@
-# Network Automation
+# Intro to Ansible Network Automation
 
 > Network infrastructure is still managed today the same way it was many years ago
 
@@ -41,7 +41,6 @@ Eliminate configuration drift
 
 1. playbooks can be scheduled to run
 2. it will find network devices that are out of compliance
-
 
 #### Source
 
