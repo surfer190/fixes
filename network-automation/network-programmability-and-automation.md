@@ -285,6 +285,108 @@ It is always best to start simple with automation
 
 ### Reporting
 
+* Custom and Dynamic Reports
+* Data being returned becomes input to other configuration management tasks
+* Reports can be produced in any format
+
+## Troubleshooting
+
+* Automated troubleshooting becmoing a reality
+* Troubleshooting interrupts learning and improving work
+
+The trick is how troubleshooting is done:
+* Do you have a personal methodology?
+* Is the method consistent with al members of the team?
+* Does everyone check Layer 2 before troubleshooting Layer 3?
+* What steps are taken?
+
+Eg. Troubleshooting OSPF (A routing protocol used to connect with other routers)
+* What does it take to form an OSPF adjecency between 2 devices?
+* Can you say the same answer at 2 in the morning?
+* Do you rmember that some devices need to be on the same subnet, have the same MTU and have consistent times and same OSPF network type?
+
+Other examples:
+* Can particular log messages correlate to known conditions on the network?
+* BGP neightbour adjacencies, how is a neighbour formed?
+* Are you seeing all the routes you think should be in the routing table?
+* What about VPC and MLAG configurations?
+* What about port-channels? Are there any inconsistencies?
+* Do neighbours match the port-channel configuratoin (going down to the vSwitch)?
+* Cabling - are cables plugged in correctly?
+
+## Evolving the Management PLane from SNMP to Device API's
+
+### API's (Application Programming Interfaces)
+
+#### SNMP
+
+* A protocol used to poll network devices for information about status, CPU, memory and interface utilisation
+* There must be an SNMP agent on a managed device and a network managment station (NMS) - which acts as the server for managed devices.
+* This SNMP data is described and modelled in MIB (Management Information bases)
+* SNMP supports both Get Requests and Set Requests (PATCH/POST)
+* Not many vendors offer full support for the configuration management via SNMP - they often used custom MIB's
+* Some vendors are claiming the gradual death of SNMP - although it does exist on nearly every network device
+* There are python libraries for SNMP
+
+#### SSH/Telnet and the CLI
+
+* The CLI was built for humans - not meant for machine-to-machine comms
+* Raw text returned from a `show` command is not formatted or structured
+* SSH/CLI makes automation extremely error prone and tedious
+
+#### NETCONF
+
+* A network management layer protocol - like SNMP to retrieve and change configuration
+* Leverages SSH
+* Data sent between a NETCONF client and NETCONF server is encoded in XML
+* RPC's (Remote Procedure Calls) are encoded in the XML document using the `<rpc>` element
+* RPC's map directly to NETCONF operations and capabilities on the device
+* Supports transaction based exchanges - if any single change fails everything is rolled back
+
+#### Restful API's
+
+* Representational State Transfer
+* Network controllers
+* The web server is the network device or SDN controller
+* You then send requests to that server with a client
+
+### Impact of Open Networking
+
+All things open:
+* Open source
+* Open networking
+* Open API's
+* OpenFlow
+* Open Computer
+* Open vSwitch
+* OpenDaylight
+* OpenConfig
+
+* It improves consistency and automation
+* Many devices support python on-box
+* Meaning you can go into the python interpreter and run python scripts locally on the device
+* More robust API's are supported (Netconf and REST instead of SNMP and SSH)
+* Network devices are exposing more of the Linux Internals - use `ifconfig`, `apt` or `yum`
+
+Network device API's that exist now that didn;t a few years ago:
+* Cisco NX-API
+* Arista eAPI
+* Cisco IOS-XE
+* RESTCONF/NETCONF
+
+### Network Automatino in the SDN Era
+
+* Even with controllers network automation is imortant
+* Cisco, Juniper, VmWare, Big Switch, Plexxi, Nuage, Viptela offer controller platforms. Not to mention OpenDaylight and OpenContrail
+* Important to avoid making error-prone changues with the GUI
+
+# 3. Linux
+
+
+
+
+
+
 
 
 
