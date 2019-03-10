@@ -382,15 +382,865 @@ Network device API's that exist now that didn;t a few years ago:
 
 # 3. Linux
 
+## Linux in the Network Automation Context
+
+* Several network operating systems are based on Linux
+* Some are bringing full Linux distributions targeted at network equipment
+* Open Network Linux - Big Switch's Switch Light is an example built on Open Network Linux
+* Many tools have origins in Linux
+* You will often use anisble from a computer using Linux
+
+## Brief History of Linux
+
+* 1980's Richard Stallman launched the GNU Project to provide a free Unix-like operating system - GNU
+* A wide collection of Unix utilities and applications were created but the kernel "GNU Hurd" never gained momentum
+* Linus Torvald tried to create a MINIX clone in 1991 - the start of Linux
+* GNU/Linux is the OS utilities and the kernel
+
+## Linux Distributions
+
+### Red Hat, Defora and CentOS
+
+* Red Hat offered Red Hat Enterprise Linux (RHEL) along with technical support
+* The fast pace of Linux development is often at odds with slowed and more methodical pace required for stability and reliability by the Red Hat paltform
+* Fedora is the upstream distribution of RHEL - so Fedora has all the stuff new
+* To avoid the RHEL costs, an open source clone was made called CentOS (Community Enterprise Linux)
+* These distributions share a common _package format_ - RPM
+
+Many distributions replaced the `rpm` package manager with `yum` (Yellowdog updater) and are now moving to a tool called `dnf` (Dandified YUM)
+
+Other distributions also use the RPM format: `Oracle Linux`, `Scientific Linux` and `Suse derivatives`
+
+### Debian, Ubuntu and others
+
+* Debian GNU/Linux is a distribution produced and maintained by the Debian project
+* Founded in 1993 by Ian Murdock
+* Three branchesL stable, testing and unstable
+* Ubuntu Linux started in 2004 - funded by canonical by Mark Shuttleworth
+* Has desktop, server and mobile focused versions
+* Stick to LTS (Long term support) releases for best practice
+* They use teh `.deb` package and use the `dpkg` tool
+* Recently `apt`, `apt-get` and `aptitude` are used
+
+## Interacting with Linux
+
+* Receive IP addresses via a Linux based DHCP server
+* Access a linux powered web server like apache
+* Utilise DNS to resolve domain names to IP addresses
+* The most common shell is `bash` - bourne again shell
+
+### Navigating the File System
+
+* A single-root filessytem - all drives and directories fall into a single namespace
+* Linux treats everything as a file - even storage devices, ports, IO
+* Every file has a unique path to its location
 
 
+`ping` is found in `/bin/ping`
+
+`arp` is found in `/usr/sbin/arp`
+
+`~` is a shortcut to a user's home directory
+
+The prompt: `ubuntu@backup:~$`
+
+Denotes ubuntu user on the jessie hostname currently in the home directory.
+The `$` at the end means that the currect user does not have root permissions
+
+* `pwd` - print working directory - prints the full path of the directory you are in
+* `cd x` - change directory. A leading slash indicated from teh root, otherwise it is relative to the current location. Use `cd ..` to move up one directory in the hierachy.
+* `.` - the currect directory
+
+> Top tip: `cd -` tells bash to switch back to the last directory you were.
+
+> Top tip: `cd` shortcuts to the home directory
+
+The _search path_ are places linux automatically searches when you type a command. Typical locations inlcude `/bin`, `/usr/bin` and `/sbin`. Being specific about which file to run using the absolute path `./myfile.sh` is important.
+
+### Manipulating Files and Directories
+
+* `touch x` - create files
+* `mkdir x` - make directory
+* `rm x` - remove a file
+* `rm -R x` - remove a directory
+* `cp x y` - copy file
+* `cp -R x y` - copy a directory
+
+> There is no recycle bin or trash can. Be vary careful with `rm`, `cp` and `mv`. Overwritten files are gone.
+
+> You can always get your own help using man pages: eg. `man cp`
+
+### Permissions
+
+* permissions are assigned based on the user, group and others
+* permissions are based on action (read, write, execute)
+
+Each action has a value:
+* `4` is read
+* `2` is write
+* `1` is execture
+
+To allow for multiple actions add the underlying values
+
+The values are assigned to user, group and others.
+
+* `644`: user read and write, group read, others read
+* `755`: user read, write and execute; group read and execute; others read and execute
+* `620`: user read and write, group write, others none
+
+A line like `rxwr-xr-x` breaks down `read`, `write` and `execute` into `user`, `group` and `other`
+
+* `ls -l` - view files and permissions in a directory
+* `chmod` - change permissions
+* `chown` - change ownership of a file
+
+Eg:
+
+    chmod 755 bin # sets bin directory to 755
+    chmod u+rw config.txt # adds read and write permission to the user that owns the file
+    chmod u+rw, g-w /opt/share/config.txt # adds read and write for the user, remove write for the group
+
+### Running Programs
+
+What makes an executable file? It could be binary, compiled from C or C++
+It could also be an executable text file, such as a bash shell script or a python script
+
+The `file` utility can help to tell you what file of file it is
+
+    ubuntu@backup:~$ file backup.log 
+    backup.log: UTF-8 Unicode text
+    ubuntu@backup:~$ file remove_old.sh 
+    remove_old.sh: Bourne-Again shell script, ASCII text executable
+
+> The shebang - the first line in a text-based script and starts with `!followed by the path to the interpreter`. Eg. `!/usr/bin/python` - tells bash which program to use
+
+You can view your _search path_ with:
+
+    echo $PATH
+    
+> The search path is controlled by the environment variable: `PATH`
+
+To find where to absolute path to an executable is:
+
+    which uptime
+
+### Working with Daemons
+
+* In the linux world the term `daemon` refers to a process that runs in the background. Also sometimes called a `service`
+* Daemons are most often encountered when dealing with network related services
+* Working with daemons used to vary depending on the distribution
+* Startup scripts callen `init scripts` were used to start, stop and restart a daemon.
+
+On some systems the `service` utility is used - behind the scenes this utility is calling distributino specific command - `initctl` on ubuntu and `systemctl` on centOS
+
+In recent years major linux distro's have converged on the use of `systemd` as teh init system.
+
+Prior to debian 8, it used `System V init`
+
+#### Working with Daemons on Debian 8
+
+* Using the `systemctl` utility
+* Debian does not provide a user friendly wrapper
+
+Start a service:
+
+    systemctl start service-name
+    
+Stop a service:
+
+    systemctl stop service-name
+
+Restart:
+
+    systemctl restart service-name
+
+Reload (config) - less disruptive than restarting:
+
+    systemctl reload service-name
+
+View status of daemon:
+
+    systemctl status service-name
+
+View all the services:
+
+    systemctl list-units
+
+#### On Ubuntu
+
+Similar to the above except using `initctl`
+
+#### Background services on CentOS 7.1
+
+* Same as debian core `systemctl` commands
+* `centOS` includes the `service` wrapper script
+
+#### Other daemon-related commands
+
+Show the network connections to a daemon, use `ss`. To **show listening network sockets** to ensure that **network configuration is working properly**
+
+    ss -lnt # tcp sockets
+    ss -lnu # udp sockets
+
+Information about currently running proccesses:
+
+    ps
+    
+## Networking in Linux
+
+### Working with Interfaces
+
+* Physical interfaces
+* VLAN interfaces
+* Bridge interfaces
+
+Configured using the CLI or config files
+
+#### Interface configuration via command line
+
+Most linux distributions have configured on a single set of command line utilities for working with network interfaces
+
+Part of the `iproute2` set of utilities (On centos it is known as `iproute`)
+These utilities use `ip` to replace the functionality of the deprecated `ifconfig` and `route`
+
+For interface config 2 sub commands to the `ip` command will be used:
+* `ip link` - view or set interface link status`
+* `ip addr` - view or set ip addressing configuration on interfaces
+
+Listing interfaces:
+
+    ip link list
+    ip addr
+    id link
+
+Eg.
+
+    stephen@web:~$ ip addr
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default 
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host 
+        valid_lft forever preferred_lft forever
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 04:01:29:7e:44:01 brd ff:ff:ff:ff:ff:ff
+        inet 37.139.28.74/24 brd 37.139.28.255 scope global eth0
+        valid_lft forever preferred_lft forever
+        inet6 fe80::601:29ff:fe7e:4401/64 scope link 
+        valid_lft forever preferred_lft forever
+        
+Output shows:
+* the current list of interfaces
+* the current maximum transmission unit (MTU)
+* the current administrative state (UP)
+* ethernet media access control (MAC) address
+
+The `status` in the angled brackets `<>` can be:
+* `UP` - Indicates the interface is enabled
+* `LOWER_UP` - Indiciates the interface link is up
+* `NO_CARRIER` - The interface is enabled but there is no link (THe interface is "down")
+* `DOWN` - THe interface is administratively down
+
+To filter for a specific interface:
+
+    ip link list interface
+    
+eg.
+
+    stephen@web:~$ ip link list eth0
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+    link/ether 04:01:29:7e:44:01 brd ff:ff:ff:ff:ff:ff
+    
+> Listing is the default. Ie. `ip route` will list all the routes
+
+> CentOS assigns different names to the interfaces than Debian and Ubuntu
+
+Disabling an interface:
+
+    ip link set <interface> down
+
+    [vagrant@centos ~]$ ip link set ens33 down
+    [vagrant@centos ~]$ ip link list ens33
+    3: ens33: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT
+        qlen 1000
+        link/ether 00:0c:29:d7:28:21 brd ff:ff:ff:ff:ff:ff
+    
+The `state DOWN` and lack of `NO_CARRIER`, tells you the interface is administratively down and not just down used to a link failure
+
+Enabling an interface
+
+    ip link set <interface> up
+
+Eg.
+
+    [vagrant@centos ~]$ ip link set ens33 down
+    [vagrant@centos ~]$ ip link list ens33
+    3: ens33: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT
+    qlen 1000
+    link/ether 00:0c:29:d7:28:21 brd ff:ff:ff:ff:ff:ff
+
+Setting the MTU of an interface
+
+    ip link set mtu <number> <interface>
+
+Eg.
+
+    [vagrant@centos ~]$ ip link set mtu 9000 ens33
+    
+> This change is immediate but not persistent
+
+Assigning an IP address to an interface
+
+    ip addr add address dev interface
+
+Eg.
+
+    vagrant@jessie:~$ ip addr add 172.31.254.100/24 dev eth1
+
+> If an interface already has an IP address assigned, the ip addr add command simply adds the new address, leaving the original address intact.
+
+Remove an ip address:
+
+    ip addr del address dev interface
+
+    vagrant@jessie:~$ ip addr del 172.31.254.100/24 dev eth1
+
+> We have been modifying the running configuration we haven’t made these configuration changes permanent. In other words, we haven’t changed the startup configuration. To do that, we’ll need to look at how Linux uses interface configuration files.
+
+#### Interface configuration via configuration files
+
+> interface configuration files across different Linux distributions can be quite different
+
+On RHEL, CentOS and Fedora configuration filess are found at: `/etc/sysconfig/network-scripts`
+
+The configuration files are named: `ifcfg-<interface>`
+
+An example may look like this:
+
+    NAME="ens33"
+    DEVICE="ens33"
+    ONBOOT=yes
+    NETBOOT=yes
+    IPV6INIT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+
+* NAME: A friendly name for users
+* DEVICE: Name of physical device being configured
+* IPADDR: Ip address to be assigned (if not using DHCP or BootP)
+* PREFIX: Network prefix for the assigned IP addres (an use `NETMASK`)
+* BOOTPROTO: How the ip address will be assigned, a value of `dhcp` can be used. `none` means statically defined.
+* ONBOOT: `yes` will activate the device at boot time. Setting `no` will not.
+* MTU: Specifies default MTU for the interface
+* GATEWAY: Specifies gateway to be used
+
+For full detauls you can check: `/usr/share/doc/initscripts-<version>/sysconfig.txt` on a CentOS system.
+
+On debian and derivatives, interface configuration is handled at `/etc/network/interfaces`
+
+We can use `cat` to show the contents on the screen:
+
+    cat /etc/network/interfaces
+    
+Eg.
+
+    stephen@web:~$ cat /etc/network/interfaces
+    # This file describes the network interfaces available on your system
+    # and how to activate them. For more information, see interfaces(5).
+
+    # The loopback network interface
+    auto lo
+    iface lo inet loopback
+
+    # The primary network interface
+    auto eth0
+    iface eth0 inet static
+            address 37.139.28.74
+            netmask 255.255.255.0
+            gateway 37.139.28.1
+            dns-nameservers 8.8.4.4 8.8.8.8 209.244.0.3
+
+> Debian and Ubuntu use a single file to configure all the network interfaces
+
+For more info run: `man 5 interfaces`
+
+You can also break configuration into seperate files with:
+
+    source /etc/network/interfaces.d/*
+    
+Per interface configuration files give additional flexibility when using Chef, Puppet, Ansible or Salt
+
+To put the configuration changes into effect you need to restart the network interface
+
+Restarting the network interface:
+* ubuntu: `initctl restart network-interface INTERFACE=interface`
+* CentOS: `systemctl restart network`
+* Debian: `systemctl restart networking`
+
+> The same way linux treats many things as files, lnux treats many things as interfaces. 
+
+### Using VLANS
+
+The interface is the basic building block of Linux Networking
+
+> VLAN interfaces are logical interfaces that allow an instance of Linux to communicate on multiple virtual local area networks (VLANs) simultaneously without having to have a dedicated physical interface for each VLAN
+
+Create a VLAN (an extension of the `ip link` command):
+
+    ip link add link parent-device vlan-device type vlan id vlan-id
+
+* `parent-device` - physical adapter the logical VLAN interface is associated eg. `eth1`
+* `vlan-device` - name to be given to the logical VLAN interface (`name of the parent device`, `a dot` and then the `VLAN ID` eg. `eth1.100`
+* `vlan-id` - the 802.1Q VLAN ID value assigned to this logical interface
+
+eg. This logical interface is to be associated with the physical interface named eth2 and should use 802.1Q VLAN ID 150
+
+    vagrant@jessie:~$ ip link add link eth2 eth2.150 type vlan id 150
+
+ Verify that the logical VLAN interface was added using `ip link list`.
+ To verify (aside from the name) that the interface is a VLAN interface, add the `-d` parameter
+ 
+    vagrant@jessie:~$ ip -d link list eth2.150
+    7: eth2.150@eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noqueue state DOWN
+       mode DEFAULT group default
+       link/ether 00:0c:29:5f:d2:15 brd ff:ff:ff:ff:ff:ff
+       vlan protocol 802.1Q id 150 <REORDER_HDR>
+
+Finally the VLAN must be enabled:
+
+    ip link set eth2.150 up
+    ip addr add 192.168.150.10/24 dev eth2.150
+
+> Just like physical interfaces, a logical VLAN interface that is enabled and has an IP address assigned will add a route to the host’s routing table
+
+    vagrant@jessie:~$ ip route list
+    default via 192.168.70.2 dev eth0
+    192.168.70.0/24 dev eth0  proto kernel  scope link  src 192.168.70.243
+    192.168.100.0/24 dev eth1  proto kernel  scope link  src 192.168.100.10
+    192.168.150.0/24 dev eth2.150  proto kernel  scope link  src 192.168.150.10
+
+To delete a VLAN interface
+
+First disable the interface then remove the interface:
+
+    vagrant@jessie:~$ ip link set eth2.150 down
+    vagrant@jessie:~$ ip link delete eth2.150
+
+> VLAN interfaces will be tremendously useful anytime you have a Linux host that needs to communicate on multiple VLANs at the same time and you wish to minimize the number of switch ports and physical interfaces required
+
+### Routing as an End Host
+
+A whole lot more stuff...
+
+# 4. Learning Python in a Network Context
+
+The network industry is fundamentally changing, there has never been a better time to learn to automate and write code
+
+> Things are starting to move in the right direction and the barrier to entry for network automation is more accessible than ever before
+
+* network device APIs
+* vendor- and community-supported Python libraries
+* freely available open source tools
+
+Meaning less code, faster development and fewer bugs
+
+### Why Python?
+
+* Dynamically typed - create and use variables where needed where and when needed, no need to specify the data type.
+* It reads like a book
+* Many open source libraries and projects
+
+## Python
+
+In the book, the essentials of working with python is looked at.
+Most of this will be common to you if you have read any python tutorials or books.
+
+One topic I needed a refresher on was: Passing Arguments to a Python Script
+
+### Passing Arguments to a Python Script
+
+There is a module in python's standard library to pass arguments from the command line into a python script.
+The module is called `sys`.
+Specifically we are using an attribute of the module called `argv`.
+
+    $ python send-command.py 
+    ['send-command.py']
+
+`sys.argv` is a list of strings passed in from the Linux command line.
+
+Contents of `send-command.py`:
+
+    #!/usr/bin/env python
+    import sys
+    if __name__ == '__main__':
+        print(sys.argv)
+
+Using `argv` we need to implement error handling. Additionally the user needs to know the precise order of inputs.
+
+> Python's `argparse` module provides a way for user's to enter arguments with flags.
+
+### Tips and Tricks
+
+You should read through the tips and tricks available to you
+
+One good one was `python -i send-command.py`. Which runs the script but then lets you interact with variable.
+Although `import pdb; pdb.set_trace()` was not discussed.
+
+# 5. Data Formats and Data Models
+
+> In the same way that routers and switches require standardized protocols in order to communicate, applications need to be able to agree on some kind of syntax in order to exchange data between them...for this standard data formats are used like XML and JSON
+
+Data models define how data in a format is structured
+
+> The goal of this chapter is to help you understand the value of standardized and simplified formats
+
+XML: Not easy on the eye, but programmatically it is perfect
+
+## Types of Data
+
+* String - sequence of letter, numbers and symbols
+* Integer - a whole number (positive or negative)
+* Boolean - True or False
+* Advanced Data Structures - array, list, dicitonary.
+
+## YAML
+
+* Human Friendly
+* Represents data similar to XML and JSON but in a human readable way
+
+Example: Represent a list of network vendors
+
+    ---
+    - Cisco
+    - Juniper
+    - Brocade
+    - VMware
+
+The `---` at the top is a `.yml` convention indicating that the file is `yaml`.
+
+In yaml you usually don't need single quotes or double quotes to indicate a string.
+It is usually automatically discovered by the YAML parser (`PyYaml`)
+
+Each item having a `-` in front of it. Meaning it is a list of 4 elements (as they do not have any under it)
+
+YAML very closely mimics python data structures. A good example is mixing data types in a list:
+
+    ---
+    - CoreSwitch
+    - 7700
+    - False
+    - ['switchport', 'mode', 'access']
+
+In this example the the first item in the list is a string, the second is an integer, the third is a boolean and the fourth is a list.
+The first nested data structure!
+
+Enclosing the `7700` in quotes: `"7700"` helps the parser figure out the data type. It is important to also enclose in quotes if the string contains a yaml special character like a `:`
+
+Key value pairs:
+
+    ---
+    Juniper: Also a plant
+    Cisco: 6500
+    Brocade: True
+    VMware:
+      - esxi
+      - vcenter
+      - nsx
+
+`Keys` are the short strings to the left of the colons, the `value` is on the right.
+
+YAML dictionaries can also be written in python like ways:
+
+    ---
+    {Juniper: Also a plant, Cisco: 6500, Brocase: True, VMware: ['esxi', 'vcenter', 'nsx']}
+
+Most parsers will see the above 2 as the same, yer the first one is much more readable
+
+If you want it more human readable, use the more verbose options.
+With an API reabability is irrelevant so JSON or XML is preferred.
+
+**Comments**
+
+A `#` hash sign indicates a comment
+
+    ---
+    - Cisco    # ocsiC
+    - Juniper  # repinuJ
+    - Brocade  # edacorB
+    - VMware   # erawMV
+
+#### Reading Yaml with python
+
+Install `pyyaml`:
+
+    pip install pyyaml
+
+For example we create a file with the previous yaml content: `example.yml`:
+
+    import yaml
+
+    with open('example.yml', 'r') as file_:
+        result = yaml.load(file_)
+        print(result)
+        print(type(result))
+        
+The output will be:
+
+    {'Juniper': 'Also a plant', 'Cisco': 6500, 'Brocase': True, 'VMWare': ['esxi', 'vcenter', 'nsx']}
+    <class 'dict'>
+
+> The `with` part is a contezt manager, that ensures the file is closed after use and it only available for the part of the program you need to use it for
+
+#### Data Models in Yaml
+
+The data model is the type of data expected, the blueprint for the data types.
+
+Say we expected a key-value of manufacturer and device as strings:
+
+    ---
+    Juniper: vSRX
+    Cisco: Nexus
+    Brocade: VDX
+    VMWare: NSX
+
+However, we got a different data model:
+
+    ---
+    Juniper: Also a plant
+    Cisco: 6500
+    Brocade: True
+    VMware:
+      - esxi
+      - vcenter
+      - nsx
+
+> Valid Yaml, but invalid Data
+
+* Yaml does not have a built in data model description or validation mechanism
+* A reason why `yaml` is good for human to machine communication but not machine-to-machine
+
+## XML
+
+Comes with schema enforcement, transformations and advanced queries
+
+[lxml](https://github.com/lxml/lxml) is the library of choice for dealing with xml with python
+
+### XML Basics
+
+* Hierachical by nature
+
+    <device>
+        <vendor>Cisco</vendor>
+        <model>Nexus 7700</model>
+        <osver>NXOS 6.1</osver>
+    </device>
+
+* `<device>` is called the root node
+* spacing and indentatino do not matter
+* children of `<device>` are `<vendor>`, `<model>`, `<osver>`
+
+XML elements or nodes can also have attributes
+
+    <device type="datecenter-switch">
+
+Namespaces can be used in xml to designate noes of the same name with different content and purpose
+
+The `xmlns` designation is used for this:
+
+    <root>
+        <e:device xmlns:c="http://example.org/enduserdevices">Palm Pilot</e:device>
+        <n:device xmlns:m="http://example.org/networkdevices">
+            <n:vendor>Cisco</n:vendor>
+            <n:model>Nexus 7700</n:model>
+            <n:osver>NXOS 6.1</n:osver>
+        </n:device>
+    </root>
+
+### Using XML Schema Definition(XSD) for Data models
+
+The XML Schema definition ensures the right kind of data is in a specific element
+
+For the following example:
+
+    <device>
+        <vendor>Cisco</vendor>
+        <model>Nexus 7700</model>
+        <osver>NXOS 6.1</osver>
+    </device>
+
+We would write a schema to define what was expected:
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/
+    XMLSchema">
+        <xs:element name="device">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vendor" type="xs:string"/>
+                <xs:element name="model" type="xs:string"/>
+                <xs:element name="osver" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+        </xs:element>
+    </xs:schema>
+
+* We define that each `<device>` element can have 3 children and each of these must contain a string
+* Some elements can be set as required
+
+A python package called `pyxb` can be used to create a python file to represent this schema:
+
+    pip install PyXB
+
+    pyxbgen -u schema.xsd -m schema
+    
+* pyxb still uses sourceforge for issues which is horrendous
+
+I got this message, but the `schema.py` was created:
+
+    Python for AbsentNamespace0 requires 1 modules
+
+`schema.py` is an unreadable mess, but I think the point is how to use it (not how to read it):
+
+    In [1]: import schema
+    In [2]: device = schema.device()
+    In [3]: device.vendor = 'Cisco'
+    In [4]: device.model = 'Nexus'
+    In [5]: device.osver = '6.1'
+    In [10]: device.toxml(encoding='utf-8')
+    Out[10]: b'<?xml version="1.0" encoding="utf-8"?><device><vendor>Cisco</vendor><model>Nexus</model><osver>6.1</osver></device>'
+
+More [Info from w3c on schema defition](https://www.w3.org/standards/xml/schema)
+
+You can also use [generateDS](https://pypi.org/project/generateDS/) instead of pyxb
+
+### Tranforming XML with XSLT
+
+> Extensible Stylesheet Language Transformations (XSLT)
+
+* A template format.
+* A language for applying transformations to XML data
+
+[More info on XSLT from w3c](https://www.w3.org/TR/xslt-30/)
+
+It is primarily used to convert XML into XHTML
+
+Given this xml:
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <authors>
+        <author>
+            <firstName>Jason</firstName>
+            <lastName>Edelman</lastName>
+        </author>
+        <author>
+            <firstName>Scott</firstName>
+            <lastName>Lowe</lastName>
+        </author>
+        <author>
+            <firstName>Matt</firstName>
+            <lastName>Oswalt</lastName>
+        </author>
+    </authors>
+
+we want to create an `html` table with the data, this is done with an XSLT document
+
+    <?xml version="1.0" encoding="UTF-8"?>
+
+    <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+    <xsl:output indent="yes"/>
+    <xsl:template match="/">
+    <html>
+    <body>
+    <h2>Authors</h2>
+        <table border="1">
+        <tr bgcolor="#9acd32">
+            <th style="text-align:left">First Name</th>
+            <th style="text-align:left">Last Name</th>
+        </tr>
+        <xsl:for-each select="authors/author">
+        <tr>
+            <td><xsl:value-of select="firstName"/></td>
+            <td><xsl:value-of select="lastName"/></td>
+        </tr>
+        </xsl:for-each>
+        </table>
+    </body>
+    </html>
+    </xsl:template>
+    </xsl:stylesheet>
 
 
+* There is a `for-each` loop
+* The loop specifies the coordinate: `authors/author` of the XML document (called the `xpath`)
+* The `value-of` statement to dynamically insert a value as text from our xml data
 
+So how do we get the HTML output:
 
+    In [1]: from lxml import etree
+    In [4]: xsl_root = etree.fromstring(open('table.xsl', 'rb').read())
+    In [5]: transform = etree.XSLT(xsl_root)
+    In [6]: xml_root = etree.fromstring(open('authors.xml', 'rb').read())
+    In [7]: trans_root = transform(xml_root)
+    In [9]: print(etree.tostring(trans_root))
+    b'<html><body><h2>Authors</h2><table border="1"><tr bgcolor="#9acd32"><th style="text-align:left">First Name</th><th style="text-align:left">Last Name</th></tr><tr><td>Jason</td><td>Edelman</td></tr><tr><td>Scott</td><td>Lowe</td></tr><tr><td>Matt</td><td>Oswalt</td></tr></table></body></html>'
 
+### Additional XSLT logic statements
 
+* `<if>` - only output if condition is met
+* `<sort>` - sorts before writing
+* `<choose>` - Advanced if statement (allows else if)
 
+### Network Configuration Example
+
+XML data of interface data:
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <interfaces>
+        <interface>
+            <name>GigabitEthernet0/0</name>
+            <ipv4addr>192.168.0.1 255.255.255.0</ipv4addr>
+        </interface>
+        <interface>
+            <name>GigabitEthernet0/1</name>
+            <ipv4addr>172.16.31.1 255.255.255.0</ipv4addr>
+        </interface>
+        <interface>
+            <name>GigabitEthernet0/2</name>
+            <ipv4addr>10.3.2.1 255.255.254.0</ipv4addr>
+        </interface>
+    </interfaces>
+
+XSLT for the router configuration:
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.example.org/routerconfig">
+
+    <xsl:template match="/">
+        <xsl:for-each select="interfaces/interface">
+        interface <xsl:value-of select="name"/><br />
+            ip address <xsl:value-of select="ipv4addr"/><br />
+        </xsl:for-each>
+        </xsl:template>
+    </xsl:stylesheet>
+
+Generates:
+
+    interface GigabitEthernet0/0
+    ip address 192.168.0.1 255.255.255.0
+    interface GigabitEthernet0/1
+    ip address 172.16.31.1 255.255.255.0
+    interface GigabitEthernet0/2
+    ip address 10.3.2.1 255.255.254.0
+
+It is good but also a bit **cumbersome**
+
+#### Searching XML with XQuery
+
+XQuery helps extract data from an XML document
+
+[Further reading on XQuery can be found on w3c](https://www.w3.org/TR/xquery-31/)
+
+## JSON
 
 
 ## Source
