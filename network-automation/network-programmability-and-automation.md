@@ -1242,6 +1242,415 @@ XQuery helps extract data from an XML document
 
 ## JSON
 
+* Combines the strengths of XML and YAML...apparently
+* Importing a Yaml document is effortless (with PyYAML) however with XML there are a few more steps
+* JSON (Javascript Object Notation) introduced in 2000, tried to be a lightweight XML
+
+XML:
+
+    <authors>
+        <author>
+            <firstName>Jason</firstName>
+            <lastName>Edelman</lastName>
+        </author>
+        <author>
+            <firstName>Scott</firstName>
+            <lastName>Lowe</lastName>
+        </author>
+        <author>
+            <firstName>Matt</firstName>
+            <lastName>Oswalt</lastName>
+        </author>
+    </authors>
+    
+JSON:
+
+    {
+        "authors": [
+            {
+                "firstName": "Jason",
+                "lastName": "Edelman"
+            },
+            {
+                "firstName": "Scott",
+                "lastName": "Lowe"
+            },
+            {
+                "firstName": "Matt",
+                "lastName": "Oswalt"
+            }
+        ]
+    }
+
+* Contained in `{}` - braces
+* keys are always `string`s
+* A list of zero or more values is indicated by `[]` - brackets
+
+Data types:
+* number
+* string
+* boolean
+* Array
+* object (In `{}`)
+* Null - `null`
+
+> Ensure that you don't have extra commas after elements
+
+    {
+        "hostname": "CORESW01",
+        "vendor": "Cisco",
+        "isAlive": true,
+        "uptime": 123456,
+        "users": {
+            "admin": 15,
+            "storage": 10
+        },
+        "vlans": [
+            {
+                "vlan_name": "VLAN30",
+                "vlan_id": 30
+            },
+            {
+                "vlan_name": "VLAN20",
+                "vlan_id": 20
+            }
+        ]
+    }
+    
+### Using JSON with Python
+
+    In [1]: import json
+    In [2]: with open('json-example.json') as f: 
+    ...:     data = f.read()
+    In [7]: json_dict = json.loads(data)
+    In [8]: type(json_dict)
+    Out[8]: dict
+    In [9]: for k, v in json_dict.items(): 
+    ...:     print(f'{ k } contains a { type(v) } value') 
+    ...:                                                                                                                               
+    hostname contains a <class 'str'> value
+    vendor contains a <class 'str'> value
+    isAlive contains a <class 'bool'> value
+    uptime contains a <class 'int'> value
+    users contains a <class 'dict'> value
+    vlans contains a <class 'list'> value
+
+
+### Using JSON Schema for Data Models
+
+* JSON has a mechanism for schema enforcement called `JSON schema`
+* It is available at [json-schema.org](http://json-schema.org/specification.html)
+* A python implementation of json schema exists called [jsonschema](https://github.com/Julian/jsonschema)
+
+> Is there a way to describe a data model that can be used with both XML and JSON?
+
+Yes, it is called `YANG`
+
+## YANG
+
+Data models:
+* Describe a constrained set of data in a schema language
+* Use well defined types and parameters
+* Do not transport data and don't care about the underlying transport protocol
+
+### Yang Overview
+
+* focussed specifically on network constructs
+* models configuration, operational state data and generic RPC data
+* Can enforce more specific values
+
+The are vendor and platform neutral models for YANG from: IETF and OpenConfig
+
+There are also vendor specific models as every vendor has their own solution for multi-chassis link aggregation (VSS, VPC, MC-LAG, Virtual Chassis)
+
+### Deep Dive
+
+Yang includes a `leaf` statement which allows you to define an object that is a single intance, has a single value and no children
+
+    leaf hostname {
+        type string;
+        mandatory true;
+        config true;
+        description "Hostname for the network device";
+    }
+
+* The `leaf` statement is defining the construct to hold the value of the hostname on the network.
+* `hostname` is a required, configurable string.
+
+This leaf can be represented in XML with:
+
+    <hostname>NYC-R1</hostname>
+
+or in JSON with:
+
+    {
+        "hostname": "NYC-R1"
+    }
+
+#### Leaflist
+
+Multiple instances
+
+    leaf-list name-server {
+        type string;
+        ordered-by user;
+        description “List of DNS servers to query";
+    }
+
+represented with XML:
+
+    <name-server>8.8.8.8</name-server>
+    <name-server>4.4.4.4</name-server>
+
+with JSON:
+
+    {
+        "name-server": [
+            "8.8.8.8",
+            "4.4.4.4"
+        ]
+    }
+
+#### List
+
+Allows you to create a list of leafs or leaf-lists
+
+    list vlan {
+        key "id";
+        leaf id {
+            type int;
+            range 1..4094;
+        }
+        leaf name {
+            type string;
+        }
+    }
+
+IN XML:
+
+    <vlan>
+        <id>100</id>
+        <name>web_vlan></name>
+    </vlan>
+    <vlan>
+        <id>200</id>
+        <name>app_vlan></name>
+    </vlan>
+
+In JSON:
+
+    {
+        "vlan": [
+            {
+                "id": "100",
+                "name": "web_vlan"
+            },
+            {
+                "id": "200",
+                "name": "app_vlan"
+            }
+        ]
+    }
+
+#### Container
+
+A container for elements
+
+    container vlans {
+        list vlan {
+            key "id";
+            leaf id {
+                type int;
+                range 1..4094;
+            }
+            leaf name {
+                type string;
+            }
+        }
+    }
+
+IN XML:
+
+    <vlans>
+        <vlan>
+            <id>100</id>
+            <name>web_vlan></name>
+        </vlan>
+        <vlan>
+            <id>200</id>
+            <name>app_vlan></name>
+        </vlan>
+    </vlans>
+
+In JSON:
+
+    {
+        "vlans": {
+            "vlan": [
+                {
+                    "id": "100",
+                    "name": "web_vlan"
+                },
+                {
+                    "id": "200",
+                    "name": "app_vlan"
+                }
+            ]
+        }
+    }
+
+* `XSD`'s are not network smart
+
+# 6. Network Configuration Templates
+
+* Much of a network engineers job involves the cli and entering specific phrases
+* It becomes ineffcient and error prone
+
+Network automation bring consistency, predictability and repeatability
+The best way to do this is by creating templates for all automated interation with the network
+You can standardise those configurations for the standard of your network
+Allowing network engineers and consumers (Help Desk, NOC, IT engineers) to dynamically fill in values where needed
+
+## Rise of Modern Templating Languages
+
+Templating languages are perfect for dynamic content
+
+Example using Django:
+
+    <h1>{{ title }}</h1>
+
+    {% for article in article_list %}
+    <h2>
+    <a href="{{ article.get_absolute_url }}">
+        {{ article.headline|upper }}
+    </a>
+    </h2>
+    {% endfor %}
+
+The `title` and `article_list` contains data that will populate real data
+
+Python has some templating languages:
+* Django templating language
+* [Jinja](http://jinja.pocoo.org/)
+* [Genshi](https://genshi.edgewall.org/)
+* [Mako](https://www.makotemplates.org/)
+
+### Use of Templating in Network Automation
+
+Say a new data center is created and you are in charge or rolling out configurations. Each switch will have its own unique configuration but a large portion of the config will be similar between devices.
+Eg. SNMP community strings, admin password, VLAN configuration
+
+* Templates allow us to standardise the base configuration and make it less error prone
+* Saves a lot of time
+
+## Jinja for Network Configuration
+
+Jinja is closely aligned with python, it is also heavily aligned with ansible and salt
+
+Example of single switch interface
+
+interface GigabitEthernet0/1
+ description Server Port
+ switchport access vlan 10
+ switchport mode access
+ 
+Choose which content is dynamic and which is static, in this case the dynamic part is `GigabitEthernet0/1`
+
+interface {{ interface_name }}
+ description Server Port
+ switchport access vlan 10
+ switchport mode access
+
+This can be further simplified as a file: _template.j2_:
+
+interface {{ interface.name }}
+ description {{ interface.description }}
+ switchport access vlan {{ interface.vlan }}
+ switchport mode access
+
+The actual package is called `jinja2`
+
+Using `jinja2`:
+
+    from jinja2 import Environment, FileSystemLoader
+
+    ENV = Environment(loader=FileSystemLoader('.'))
+    template = ENV.get_template("template.j2")
+
+    interface_dict = {
+        "name": "GigabitEthernet0/1",
+        "description": "Server Port",
+        "vlan": 10,
+        "uplink": False
+    }
+
+    print(template.render(interface=interface_dict))
+
+> interface needn't be a dict, it can be a python object
+
+### Conditionals 
+
+Use:
+
+    {% if ... %}
+    {% else %}
+    {% endif %}
+
+> some switchport interfaces will be VLAN trunks, and others will be in “mode access.
+
+    interface {{ interface.name }}
+    description {{ interface.description }}
+    {% if interface.uplink %}
+    switchport mode trunk
+    {% else %}
+    switchport access vlan {{ interface.vlan }}
+    switchport mode access
+    {% endif %}
+
+You can use any of the following to get a variable:
+
+    {{ interface['vlan'] }}
+    {{ interface.vlan }}
+    {{ interface.get('vlan') }}
+
+With jinja, filters can be used to transform the data: 
+
+    {{ interface.desc|upper|reverse }}
+
+You can also create your own custom filters...which are available in the book
+
+Templates can be included from other files:
+
+    {% include 'vlans.j2' %}
+
+    {% for name, desc in interface_dict.items() %}
+        interface {{ name }}
+        description {{ desc }}
+    {% endfor %}
+
+And inherit from one another:
+
+    {% extends "no-http.j2" %}
+    {% block http %}
+        ip http server
+        ip http secure-server
+    {% endblock %}
+
+Variable creation in jinja:
+
+    {% set int_desc = switch01.config.interfaces['GigabitEthernet0/1']['description'] %}
+    {{ int_desc }}
+    
+### Parting Thoughts on Templates
+
+* Keep templates simple
+* Leverage inheritance
+* Syntax and data should be handled seperately
+* Use version control to store templates
+
+# 7. Working with Network API's
+
+
 
 ## Source
 
