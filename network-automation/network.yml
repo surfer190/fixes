@@ -1,0 +1,25 @@
+---
+
+- name: PLAY 1 - issue snmp commands
+  host: iosxe
+  connection: local
+  gather_facts: no
+  
+  tasks:
+  - name: TASK 1 - deploy snmp commands
+    ios_command:
+      commands:
+        - show run | inc snmp
+      provider:
+        username: ntc
+        password: ntc123
+        host: "{{ inventory_hostname }}"
+
+  - name: TASK 2 - deploy snmp commands
+    ios_config:
+      commands:
+        - snmp-server community public RO
+      provider:
+        username: ntc
+        password: ntc123
+        host: "{{ inventory_hostname }}"

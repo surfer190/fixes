@@ -65,7 +65,7 @@ Can also add multiple paths
 
 Library for working with paths
 
-Here are sone docs for (`pathlib`)[https://docs.python.org/3/library/pathlib.html], (`pure paths`)[https://docs.python.org/3/library/pathlib.html#pure-paths] and (`concrete paths`)[https://docs.python.org/3/library/pathlib.html#concrete-paths] 
+Here are sone docs for [`pathlib`](https://docs.python.org/3/library/pathlib.html), [`pure paths`](https://docs.python.org/3/library/pathlib.html#pure-paths) and [`concrete paths`](https://docs.python.org/3/library/pathlib.html#concrete-paths)
 
         >>> import pathlib
         >>> path = pathlib.PurePath(os.getcwd())

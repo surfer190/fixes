@@ -1650,6 +1650,752 @@ Variable creation in jinja:
 
 # 7. Working with Network API's
 
+## Understanding Network API's
+
+2 most common types:
+* HTTP based API's
+* NETCONF based API's
+
+### HTTP based API's
+
+* Client (python script) - service (network device or controller)
+* Receive data back as XML or JSON, as opposed to HTML
+
+[RESTFul API's architectural constraints](https://restfulapi.net/rest-architectural-constraints/):
+* Client - server
+* Stateless - all data required is in a single request (in contrast to a persistent connection)
+* Uniform interface - individal resource scope, resources should be mapped consistently and have create, modify and delete actions
+* Cacheable - caching should be applied to resources
+* Layered system - Not sure why this is a requirement
+* Code on demand - free to return executable code (optionally)
+
+I also thought to be called restful you need hypermedia (ie. browsable)
+
+### HTTP request types
+
+* GET - retrieve a resource
+* PUT - create or replace a resource
+* PATCH - create or update a resource object
+* POST - create a resource object
+* DELETE - delete a resource
+
+### HTTP Response Codes
+
+* 2XX - Successful
+* 3XX - Redirection
+* 4XX - Client error
+* 5XX - Server error
+
+### Non-restful API's over HTTP
+
+* Most commonly sit above CLI's
+* In a REST based system a change would never be made when doing a `GET` however no-restful API's could use the same verb for every API call
+* URL's will change
+* Not as flexible as REST api's
+
+## NETCONF API
+
+* A network management protocol
+* for config management, retrieving config state and operational state from network devices
+
+> Netconf is not new, it was written in 2005
+
+* Utilises different configuration data stores
+* running, startup and candidate configurations
+* candidate configurations are only applied on a commit
+
+Full implementations:
+* Juniper Junos
+* Cisco IOS-XR
+
+> Different vendors suport different things
+
+* All config changes are commited as a transaction - all commands must succeed or they are not applied
+
+### NetConf Protocol Stack
+
+* Transport - SSHv2, SOAP, TLS
+* Messages - `<rpc>`, `<rpc-relay>`
+* Operations - `<get-config>`, `<get>`, `<copy-config>`, `<lock>`, `<unlock>`, `<edit-config>`, `<delete-config>`, `<kill-session>`, `<close-session`
+* Content - `XML` representation of data models (YANG, XSD)
+
+> Netconf only supports XML
+
+#### Messages
+
+Messages are made by RPC (Remote Procedure Call)
+
+    <rpc message-id="101">
+        <!-- rest of request as XML... -->
+    </rpc>
+
+Every `<rpc>` includes a `message-id`, the server reuses this in the response
+
+An `rpc-reply`:
+
+    <rpc-reply message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <data>
+        <!-- XML content/response... -->
+        </data>
+    </rpc-reply>
+
+#### Operations
+
+Two primary operations: `<get>` and `<edit-config>`
+
+`<get>` - retrieves running configuration and device state information
+
+    <rpc message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <get>
+            <!-- XML content/response... -->
+        </get>
+    </rpc>
+
+There are optional filters: `subtree` and `xpath` to get certain parts of the config
+
+    <rpc message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <get>
+            <filter type="subtree">
+                <native xmlns="http://cisco.com/ns/yang/ned/ios">
+                    <interface>
+                    </interface>
+                </native>
+            </filter>
+        </get>
+    </rpc>
+
+We can narrow it down further:
+
+    <rpc message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <get>
+            <filter type="subtree">
+                <native xmlns="http://cisco.com/ns/yang/ned/ios">
+                    <interface>
+                        <GigabitEthernet>
+                            <name>1</name>
+                        </GigabitEthernet>
+                    </interface>
+                </native>
+            </filter>
+        </get>
+    </rpc>
+
+`<edit-config>` loads configuration into a specific data store: running, startup or candidate
+
+The target datastore is set with `<target>`, if not specified it defaults to the _running_configuration
+
+They are usually enclosed in a `<config>` element
+
+    <rpc message-id="101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <edit-config>
+            <target>
+            <running/>
+            </target>
+            <config>
+            <configuration>
+                <routing-options>
+                <static>
+                    <route>
+                    <name>0.0.0.0/0</name>
+                    <next-hop>10.1.0.1</next-hop>
+                    </route>
+                </static>
+                </routing-options>
+            </configuration>
+            </config>
+        </edit-config>
+    </rpc>
+
+edit-config Operations:
+* merge - default, as create will raise an error if it already exists
+* replace
+* create
+* delete
+* remove
+
+NETCONF Operations:
+* `<get-config>` - retrieve all or part of a configuration
+* `<copy-config>` - Create or replace contents of one datastore with another
+* `<delete-config>` - delete a datastore (running config cannot be deleted)
+* `<lock>` - lock to ensure no other systems can make a change
+* `<unlock>` - unlock previous locked datastore
+* `<close-session>` - Request a graceful termination of a NETCONF session
+* `<kill-session>` - Forcefully terminate a NETCONF session
+
+NETCONF servers may also allow `<commit>` and `<validate>` options.
+
+### Exploring API's
+
+Alot of info here on exploring REST API's and NETCONF API's
+
+**tl;dr: Use curl and postman to explore API's, use python's request library to consume API's**
+
+Alot more stuff on vendor specific API's
+
+Also info on `netmiko` in the book
+
+# 8. Git Version Control
+
+If you are not well versed in version control, best to go through this chapter
+
+Some tips I found:
+
+## Terms
+
+* index - directory structure and content at a point in time
+* working directory - where files will be modified in the repository
+* repository - database containing project information and history
+* blobs - contents of files in the repo
+* trees - file and directory structure in the repo
+* commits - point in time snapshot of the repo, its structure and contents
+* HEAD - pointer pointing to the last commit
+
+## Branching
+
+* Branch - pointer to a commit (referenced by their SHA-1 hash)
+* HEAD
+
+## Examining the difference between commits
+
+    git diff 9547063..679c41c sw1.txt
+
+For all files
+
+    git diff 9547063..679c41c
+
+Viewing difference between the working tree and the index
+
+    git diff
+    
+View the difference between the index and the last commit (HEAD)
+
+    git diff --cached
+
+## Delete remote branches that no longer exist
+
+    git fetch --prune
+
+...Lots of info in the book
+
+# 9. Automation Tools
+
+Traditionally ansible, chef, puppet, stackstorm and salt have been more focused on the server automation space.
+As these tools had their roots in automating server operating systems and applicatin configuration.
+Companies have now started enchancing the network automation ability of their products.
+
+## Major Architectural Differences
+
+#### Agent based vs agentless
+
+* Some tools require an agent to run on the device being managed. Not every NOS (network operating system) supports running agents on  network device.
+* Agentless tools are more applicable in the network automation case
+
+#### Centralised vs Dentralised
+
+* Agent-based architectures often require a master server
+
+#### Custom Protocol vs Standard Protocol
+
+* Some tools use custom protocols
+* Tools leveraging SSH may be better suited due to their ubiquity
+
+#### Language Extensibility
+
+#### Push versus Pull vs Event Driven
+
+* push - information is pushed from one place to the device being managed
+* pull - pulling configuration information and instructions
+* event-driven - Perform an action in response to an event or trigger
+
+## The tools
+
+### Ansible
+
+* decentralised
+* agentless
+* Push mode
+* leverages python and jinja templating
+* Originally used for ad-hoc commands but has since been used in playbooks written with yaml
+
+### Salt
+
+* Can run agentless (ssh) or agent-based (message bus)
+* Uses python and jinja
+* Salt states written in yaml
+* a platform for event driven automation
+
+### Stackstorm
+
+* Focusses solely on event driven automation
+* tasks are performed in response to events
+* Uses python to build sensors that emit events to start tasks
+* Uses yaml to provide meta data and define a workflow
+
+## Ansible
+
+* Open source platform by Red Hat
+* Red Hat sells Ansible Tower that sits on Ansible core has role based access controls, ecure storage of credentials and a restful API
+
+### How Ansible Works
+
+Automating linux servers - operates in a distributed fashion - the control host (local machine) connects to all other machines via ssh - copies python code and executes.
+
+Automating network devices - operates in a local centralised fashion - the control host runs in `local` mode...connecting and running the python code locally. It might connect via SSH, API , Telnet or SNMP.
+CLI commands are simply sent over the network.
+
+> For network devices to support non-local mode - evice must permit SSH, copy python files to a temp directory and then execute those files with python. Cumulus Linux, Cisco IOS-XR and Arista EOS support this
+
+### Constructing an Inventory File
+
+    10.1.100.10
+    10.5.10.10
+    nyc-lf01
+
+You can use hostname (fully qualified) or ip addresses
+The inventory file can be more complex with different parts of the network (data center, DMZ, WAN or access)
+
+> 2 regions: AMERS region has Cisco routers being used as CPE edge devices and Nexus switches. The EMEA region has Juniper routers as edge devices and Arista switches.
+
+Start by splitting into groups of devices, the AMERS region has 2 `amers-dc` and `amers-cpe`, each group has 2 devices:
+
+    [amers-cpe]
+    csr1
+    csr2
+    
+    [amers-dc]
+    nxos-spine1
+    nxos-spine2
+
+The `[]` brackets create `groups`
+
+You can created nested groups:
+
+    [amers:children]
+    mers-cpe
+    amers-dc
+
+    [amers-cpe]
+    csr1
+    csr2
+
+    [amers-dc]
+    nxos-spine1
+    nxos-spine2
+
+You need to use the `:children` keyword for nested groups. There are now 3 clear groups: `amers`, `amers-cpe` and `amers-dc`
+
+For the `EMEA` region
+
+    [emea:children]
+    emea-cpe
+    emea-dc
+
+    [emea-cpe]
+    vmx1
+    vmx2
+
+    [emea-dc]
+    eos-spine1
+    eos-spine2
+
+You can then create a group for all cpe devices of all dc devices:
+
+    [all-cpe:children]
+    amers-cpe
+    emea-cpe
+
+    [all-dc:children]
+    amers-dc
+    amers-cpe
+
+> You can define variables in your inventory file
+
+### Using Variables in Ansible
+
+#### Group Variables
+
+Assigned at group level, for example the NTP server IP for different regions:
+
+[amers:vars]
+ntp_server=10.1.200.1
+
+[emea:vars]
+ntp_server=10.10.200.1
+
+Group variables can be created from a new section in the inventory file with keyword `:vars`
+
+when referencing `{{ ntp_server }}` the devices in teh `emea` region will use a different value to those in the `amers` region
+
+> No requirement for ordering of groups and variables in ansible
+
+#### Host Variables
+
+Put the variable on the same line as the host
+
+For example the `nxos-spine1` host must have a specific `ntp_server`:
+
+    [amers-dc]
+    nxos-spine1  ntp_server=10.1.200.200
+    nxos-spine2
+
+
+Adding `variable=value` on the same line as the host
+
+You can add multiple values on the same line:
+
+    [amers-dc]
+    nxos-spine1  ntp_server=10.1.200.200  syslog_server=10.1.200.201
+    nxos-spine2
+
+> More specific variables are given priority
+
+**all**
+
+There is an implicit group called `all`
+
+This keyword is used to automated all devices in an inventory file.
+
+YOu can define group variables for `all`:
+
+    [all:vars]
+    ntp_server=10.1.200.199
+    syslog_server=10.1.200.201
+
+Variables in the `all` group end up being defaults
+
+> The inventory is not the proper place for variables, there are specific files for that
+
+It is important to specify the `os` of a given device:
+
+    [nxos]
+    nxos-spine1
+    nxos-spine2
+
+    [nxos:vars]
+    os=nxos
+
+    [eos]
+    eos-spine1
+    eos-spine2
+
+    [eos:vars]
+    os=eos
+
+    [iosxe]
+    csr1
+    csr2
+
+    [iosxe:vars]
+    os=ios
+
+    [junos]
+    vmx1
+    vmx2
+
+    [junos:vars]
+    os=junos
+
+> The inventory file is the simplist way to get started however if you have an existing CMDB or large network management system ansible can integrate with that. **Ansible supports dynamic inventory scripts**. The script queries your CMDB, normalises the data, returns valid JSON (as per the docs) 
+
+### Ansible Playbook
+
+* Contains automation instructions
+* Tasks and workflows to automate your network
+* Written in `yaml`
+
+Eg.
+
+```
+---
+
+- name: PLAY 1 - issue snmp commands
+  host: iosxe
+  connection: local
+  gather_facts: no
+  
+  tasks:
+  - name: TASK 1 - deploy snmp commands
+    ios_command:
+      commands:
+        - show run | inc snmp
+      provider:
+        username: ntc
+        password: ntc123
+        host: "{{ inventory_hostname }}"
+
+  - name: TASK 2 - deploy snmp commands
+    ios_config:
+      commands:
+        - snmp-server community public RO
+      provider:
+        username: ntc
+        password: ntc123
+        host: "{{ inventory_hostname }}"
+```
+
+* A single play with 2 tasks
+
+**playbook:**
+
+* `name` - names the play
+* `hosts` - the device to automate. Can be a host, group or a combination (seperated by a comma)
+* `connection` - defines the connection type a play uses. Most networking devices require this to be `local`
+* `gather_facts` - since we are running in local mode, we are telling ansible not to collect facts on the local machine
+
+**tasks**
+
+* Each task runs an ansible module
+* `name` - names the tasks, to better identify tasks
+* `ios_command` and `ios_config` are ansible modules - in this case they issue exec level and configuration-level commands to Cisco IOS devices
+
+> Ansible has over 700 modules
+
+```
+  - name: TASK 1 - deploy snmp commands
+    ios_command:
+      commands:
+        - show run | inc snmp
+      provider:
+        username: ntc
+        password: ntc123
+        host: "{{ inventory_hostname }}"
+```
+
+* Under `ios_command` are the words `commands` and `provider`, these are parameters passed to the module.
+* `commands` accepts a list, `provider` accepts a dictionary
+* The jinja variable is referenced as `{{ inventory_hostname}}`
+* Variable referenced must be enclosed in quotes
+
+To execute a playbook you need an inventory file so you can call this playbook with:
+
+    ansible-playbook -i inventory snmp-intro.yml
+
+### Using Variable Files
+
+* Inventory files is not the correct place for variables, you should use variable files (when not using a CMDB)
+* Stored in yaml files
+
+#### Group Based Variable Files
+
+* Must be stored in a folder called `group_vars`
+* `yaml` files within this directory must have the same name as those that appear in the inventory
+* For groups: `emea`, `amers`, `iosxe` and `all`....files will be called `emea.yml`, `amers.yml`, `iosxe.yml` and `all.yml`
+
+Eg. `group_vars/amers.yml` can contain:
+
+```
+snmp:
+  contact: Joe Smith
+  location: AMERICAS-NJ
+  communities:
+    - community: public
+      type: ro
+    - community: public123
+      type: ro
+    - community: private
+      type: rw
+    - community: secure
+      type: rw”
+```
+
+Sometimes you want to split up variables into seperate files, in which case a directory is created with the group name and files within are all variable files that relate to that group:
+
+
+```
+ntc@ntc:~/testing/group_vars$ tree
+.
+├── all.yml
+├── amers.yml
+├── apac
+│   ├── aaa.yml
+│   ├── interfaces.yml
+│   └── ntp.yml
+└── emea.yml
+
+1 directory, 6 files”
+```
+
+> Cool linux command for a tree view of a directory: `tree`
+
+#### Host based variable files
+
+Exactly like using group variables except the folder is called `host_vars` and files and directories need to match the device names in the inventory file
+
+### Ansible for Network Automation
+
+* Creating multi-vendor configuration templates and autogenerating configurations
+* Deploying configurations and ensuring they exist
+* Gathering data from network devices
+* Performing compliance checks
+* Generating Reports
+
+#### Core Network Modules
+
+* `command` - send exec level commands to network devices (eg. `xos_command`, `ios_command`, `junos_command`)
+* `config` - send configuration commands to network devices (eg. `ios_config`, `nxos_config`, `junos_config`)
+* `facts` - Gather information such as OS version, hardware platform, serial number, hostname, neighbours(eg. `ios_facts`, `xos_facts`)
+
+> To see parameters of a given module use: `ansible-doc <module_name>`
+
+### Idempotency
+
+* Only make the change if it is needed
+* Commands are only sent when it is needed to get to a desired state
+
+**Check Mode**
+
+Ability to run playbooks in a dry run mode - to know if changes will occur.
+It does everything except make the given change.
+Use the `--check` flag when executing the playbook
+
+**Verbosity**
+
+* Every module returns json data - containing meta data about the task at hand.
+* You can use the `-v` command (up to 4: `-vvvv`)
+
+**Limit**
+
+Use `--limit` to set the hosts to run on (a single device or multiple). The device must be in the groups on the original `hosts` key.
+
+    ansible-playbook -i inventory snmp.yml --limit eos-spine1 --check -v
+
+> If you are running a fully idempotent playbook for the second or more time, you’ll always have changed=0 as no changes would occur.
+
+### Gathering and Viewing Network Data
+
+* Automate collection of data from network devices
+* Methods: Using the `facts` module and issuing arbitrary `show` commands
+
+#### Core facts module
+
+Returns the following as json:
+
+* `ansible_net_model` - The model name returned from the device
+* `ansible_net_serialnum` - Serial number of the remote device
+* `ansible_net_version` - Operating system running on the remote device
+* `ansible_net_hostname` - The configured hostname of the device
+* `ansible_net_image` - The image file the device is running
+* `ansible_net_filesystems` - Filesystems on the device
+* `ansible_net_memfree_mb` - Free memory on the remote device
+* `ansible_net_memtotal_mb` - Total memory on the remote device
+* `ansible_net_config` - Current active config
+* `ansible_net_all_ipv4_addresses` - All IPV4 addresses on the device
+* `ansible_net_all_ipv6_addresses` - All IPV6 addresses on the device
+* `ansible_net_interfaces` - A hash of all interfaces
+* `ansible_net_neighbors` - List of LLDP neighbors
+
+These facts can be accessed in a playbook or jinja template just like another other variable
+
+**Using debug mode**
+
+Run in `debug` mode with the `var` parameter
+
+Eg.
+
+```
+tasks:
+    - name: COLLECT FACTS FOR IOS
+      ios_facts:
+        provider: "{{ base_provider }}"
+
+
+    - name: DEBUG OS VERSION
+      debug:
+        var: ansible_net_version
+
+    - name: DEBUG HOSTNAME
+      debug:
+        var: ansible_net_hostname
+```
+
+> Using the debug module with `var` parameter is one of the few times you do not use brace notation `{{`
+
+**Saving JSON Output**
+
+To save json output from an ansible module you use the `register` task attribute.
+The `register` key is used on the same indent level as the module name.
+The json object returned is stored in that registered variable
+
+```
+- name: ISSUE SHOW COMMAND
+  ios_command:
+    commands:
+      - show run | inc snmp-server community
+    provider: "{{ base_provider }}"
+  register: snmp_data
+```
+
+Using `register` along with `debug` can be powerful
+
+If you want to debug the actual string (not the dict) you would use:
+
+    - name: DEBUG COMMAND STRING RESPONSE WITH JINJA SHORTHAND SYNTAX
+      debug:
+        var: snmp_data.stdout.0
+
+    - name: DEBUG COMMAND STRING RESPONSE WITH STANDARD PYTHON SYNTAX
+      debug:
+        var: snmp_data['stdout'][0]
+
+Or for use in a template:
+
+    {{ snmp_data['stdout'][0] }}
+
+> Every module returns json
+
+### Performing Compliance Checks
+
+Compliance checks are often done manually (SSH) in order to satisfy a network or security requirement
+Automating this process is good.
+
+Lets cover 2 more things:
+* `set_fact` - a module that create an ad hoc variable out of some other complex set of data. Set fact lets you worry about a single key-value.
+* `assert` - Use assert to test whether a given condition is `True` or `False`
+
+1. Gather VLAN data.
+2. Save VLAN data as vlan_data.
+3. Print (debug) all VLAN data to see what’s being returned.
+4. Extract just the VLAN IDs from the full response.
+5. Print just the VLAN IDs (validate that the extraction worked as expected).
+6. Finally, perform the assertion that VLAN 20 is in the list of VLANs.
+
+Can be done with:
+
+```
+---
+
+  - name: PLAY 1 - ISSUE SHOW COMMANDS
+    hosts: eos
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - name: RETRIEVE VLANS JSON RESPONSE
+        eos_command:
+          commands:
+            - show vlan brief | json
+          provider: "{{ base_provider }}"
+        register: vlan_data
+
+      - name: DEBUG VLANS AS JSON
+        debug:
+          var: vlan_data
+
+      - name: CREATE EXISTING_VLANS FACT TO SIMPLIFY ACCESSING VLANS
+        set_fact:
+          existing_vlan_ids: "{{ vlan_data.stdout.0.vlans.keys() }}"
+
+      - name: DEBUG EXISTING VLAN IDs
+        debug:
+          var: existing_vlan_ids
+
+      - name: PERFORM COMPLIANCE CHECKS
+        assert:
+          that:
+            - "'20' in existing_vlan_ids"
+```
+
 
 
 ## Source
