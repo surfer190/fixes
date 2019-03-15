@@ -2396,6 +2396,311 @@ Can be done with:
             - "'20' in existing_vlan_ids"
 ```
 
+#### Generating Reports with Ansible
+
+...A nice example in the book
+
+### Third Party Ansible Scripts
+
+[Network to Code Modules](https://github.com/networktocode/ntc-ansible) are used for:
+* Parsing of raw text output from legacy devices - `ntc_show_command` that is a wrapper for netmiko and [TextFSM](https://github.com/google/textfsm).
+* Issuing commands on devices not yet supported to ansible core.
+* Handling device OS management
+
+NAPALM Modules (Network Automation and Programmability Abstraction Layer with Multi-vendor support):
+* Declarative configuration management
+* Obtaining configuration and operational state from devices
+
+> There is no module per OS like in ansible core.
+
+## Salt
+
+A lot of information is available on salt in the book.
+
+## Event Driven Network Automation with Stackstorm
+
+* Stackstorm is an open source software project for providing flexible event driven automation
+* It was not built to replace existing configuration management tools
+* Many popular workflows in StackStorm tually leverage tools like Ansible for performing configuration mangement tasks
+* It sits in the sweetspot between configuration managment (automation) and monitoring
+* It aims to provide a set of primitives for for allowing the user to describe the tasks that should take place in response to certain events
+* It is the IFTTT (If-this-then-that) of IT Infrastructure
+
+Auto-remediation - attempting to resolve issues without human intervention
+* There is no magic button
+* After fixing a problem manually you should commit the same procedure as an automated workflow
+* Reducing the number of manual tasks over time
+
+> Nearly everything is described in `yaml` files - and should be managed in the same way developers manage source code
+
+### StackStorm Concepts
+
+* Actions - Bits of code that perform tasks - like making API calls and executing scripts - the building blocks of automation
+* Workflows - Way to stitch actions together coherently according to business logic (Done via ActionChains or Mistrel)
+* Sensors and Triggers - bits of python code to gether information about your infrastructure - not agents deployed to endpoints they connect from StackStorm itself 
+* Rules - connecting trigger to actions
+
+> These concepts are delivered via _packs_
+
+Eg. The `napalm.LLDPNeighborDecrease` trigger notifies StackStorm when a given network device experiences  reduction in LLDP neighbours
+
+This alert comes from the napalm pack, installed via:
+
+    st2 pack install napalm
+
+### StackStorm Architecture
+
+Serveral microservices
+Each component can scale independently and is resilient
+
+* If an event needs a lot of horse power but there aren't many events you would use: `st2actionrunner`
+* If you wanted to handle a large number of events you would scale the `st2sensorcontainer` component
+* `st2web` is the web UI that comes with Stackstorm
+
+### Actions and Workflows
+
+> For detailed examples view the [StackStorm docs](https://docs.stackstorm.com/)
+
+You can follow along with using vagrant and the [st2vagrant repo](https://github.com/StackStorm/st2vagrant)
+
+Example: Run a single `echo` command to print 'Hello World'
+
+* For this we use the `core.local` - which lets us run any command that would be run in bash
+
+Stackstorm comes with it's own command line interface: `st2`
+
+* `st2 run` - run actions without having to mess with sensors or rules
+
+View parameters:
+
+    st2 run core.local -h
+    
+gives:
+
+    vagrant@st2vagrant:~$ st2 run core.local -h
+
+    Action that executes an arbitrary Linux command on the localhost.
+
+    Required Parameters:
+        cmd
+            Arbitrary Linux command to be executed on the local host.
+            Type: string
+
+    Optional Parameters:
+        cwd
+            Working directory where the command will be executed in
+            Type: string
+
+        env
+            Environment variables which will be available to the command(e.g.
+            key1=val1,key2=val2)
+            Type: object
+
+        kwarg_op
+            Operator to use in front of keyword args i.e. "--" or "-".
+            Type: string
+            Default: --
+
+        sudo_password
+            Sudo password. To be used when paswordless sudo is not allowed.
+            Type: string
+
+        timeout
+            Action timeout in seconds. Action will get killed if it doesn't finish
+            in timeout seconds.
+            Type: integer
+            Default: 60
+
+Run the command locally:
+
+    vagrant@st2vagrant:~$ st2 run core.local echo "Hello world!"
+    .
+    id: 5c8b8cb3a08f813efd005024
+    status: succeeded
+    parameters: 
+    cmd: echo Hello world!
+    result: 
+    failed: false
+    return_code: 0
+    stderr: ''
+    stdout: Hello world!
+    succeeded: true
+
+Install the napalm pack:
+
+    st2 pack install napalm
+
+Show the action list for napalm:
+
+    st2 action list --pack=napalm
+    
+In order to use a pack it needs to know how to reach and authenticate on our network device
+
+All packs are configured with `YAML files` at `/opt/stackstorm/configs/`
+
+So for `napalm` it will be at `/opt/stackstorm/configs/napalm.yaml`
+
+Changes to the config should be reloaded:
+
+    st2ctl reload --register-configs
+
+Actions by design are rarely intended to do a single task usually several discrete tasks are done along with some decision making.
+
+For instance, if a router goes offline
+* Gather information from it's peers
+* Perform cable checks
+
+### Mistral
+
+* Standardised YAML for defining workflows
+* Software for receiving and processing workflow execution requests
+
+```
+---
+version: '2.0'
+
+examples.mistral-basic:
+    description: A basic workflow that runs an arbitrary linux command.
+    type: direct
+    input:
+        - cmd
+    output:
+        stddout: "{{ _.cmd }}"
+    tasks:
+        task1:
+            action: core.local cmd="{{ _.cmd }}"
+            publish:
+                stdout: "{{ task('task1').result.stdout }}
+```
+
+* `input` is where we declare parameters for the workflow
+* `output` controls which values are published from workflow when it finishes
+* `tasks` contain a list of tasks
+
+```
+---
+version: '2.0'
+
+napalm.interface_down_workflow:
+
+  input:
+    - hostname
+    - interface
+    - skip_show_interface
+
+  type: direct
+
+  tasks:
+
+    decide_task:
+      action: "core.noop"
+      on-success:
+      - show_interface: "{{ _.skip_show_interface != True }}"
+      - show_interface_counters: "{{ _.skip_show_interface == True }}"
+
+    show_interface:
+      action: "napalm.get_interfaces"
+      input:
+        hostname: "{{ _.hostname }}"
+        interface: "{{ _.interface }}"
+      on-success: "show_interface_counters"
+
+    show_interface_counters:
+      action: "napalm.get_interfaces"
+      input:
+        hostname: "{{ _.hostname }}"
+        interface: "{{ _.interface }}"
+        counters: true
+      on-success: "show_log"
+
+    show_log:
+      action: "napalm.get_log"
+      input:
+        hostname: "{{ _.hostname }}"
+        lastlines: 10
+```
+
+* The `core.noop` action essentially does nothing.
+* A list can be used `on_success`
+
+### Sensors and Triggers
+
+In order to enable event driven automation we need to gather information about our infrastructure and recognise when actionable events happen.
+
+Sensors bring external data into StackStorm by periodically polling a REST API or subscribing to message queues.
+
+> You can configure web hooks allowing external systems to push events to StackStorm.
+
+Sensors are preffered as they offer more granular and tighter integration.
+
+    vagrant@st2vagrant:~$ st2 sensor list --pack=napalm
+    +----------------------+--------+----------------------+---------+
+    | ref                  | pack   | description          | enabled |
+    +----------------------+--------+----------------------+---------+
+    | napalm.NapalmLLDPSen | napalm | Sensor that uses     | False   |
+    | sor                  |        | NAPALM to retrieve   |         |
+    |                      |        | LLDP information     |         |
+    |                      |        | from network devices |         |
+    +----------------------+--------+----------------------+---------+
+
+This sensor periodically queries each of the devices in our configuration file for the LLDP neightbour table - it keeps track of the number of active neighbours
+
+Geez it gets deep...more in the book...
+
+# 11. Culture
+
+> You can’t get anyone to do anything they don’t want to do. So you have to make them want to do it.
+
+Things need to be done slowly, building good and lasting engineering habits.
+It is about getting the fundamentals right
+
+> automation is incremental
+
+A "dev-ops" or "automation team" is doomed to failure, automation needs buyin across silos and must grow organically over time.
+
+> Some organizations have had success with a temporary “virtual” team assembled from members of various IT disciplines, who are tasked with bringing automation into the organization. This can be helpful to get started, but don’t lose sight of the fact that the ultimate goal is to improve operations across the entire organization, not to have a team dedicated to automation so the rest of the organization doesn’t have to worry about it.
+
+**Start small and automate simple stuff**
+
+> Learning from mistakes is important
+
+### Build vs Buy
+
+A compromise is made between _buy_ and _build_
+
+Build:
+* Supported by internal teams
+* Assembled from small components
+* Open source
+
+Buy:
+* Support contracts
+* Pre-built, vendor validated solutions
+* Commercial / closed source
+
+Embracing failure is finding new ways to fail and preventing them from happeneing again.
+Finding a bug would allow you to write a new test case.
+
+> Failure happens with or without automation, it is about how your organisation reacts to it
+
+The real test of automation is what the business does after a failure in an automation context
+
+> Learn what you don't know, you can't stay in a bubble
+
+> Things don’t change that much in Enterprise IT, because our culture is very focused on and attached to IT vendors
+
+> Enterprise IT, the technology stack can lag 5, 10, or maybe even more years behind what’s considered the cutting-edge stuff
+
+> In general terms, infrastructure professionals don’t “build” as much as they “operate,” whereas software developers are accustomed to thinking like builders
+
+Automation is not night and day, it is an incremental process that is imperfect at every layer
+
+It opens up new challenges...
+
+**Solve the easiest problems first**
+
+All three must work together: technology, culture and process
+
 
 
 ## Source
