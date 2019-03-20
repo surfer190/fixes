@@ -16,7 +16,7 @@ Add into `INSTALLED_APPS` in `settings.py`
 
         INSTALLED_APPS = [
             '...',
-            'rest_frameowork',
+            'rest_framework',
             '...',
         ]
 
@@ -30,8 +30,10 @@ Some basic settings to start with are:
                 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
             )
         }
+        
+> You can set them as empty lists for no authentication and permission required
 
-Then you need a URL so you can authentication in `urls.py` add:
+Then you need a URL so you can authenticate in `urls.py` add:
 
         urlpatterns = [
             ...,
