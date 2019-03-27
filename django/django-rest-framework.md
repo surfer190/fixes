@@ -115,7 +115,7 @@ Try this in the shell: `./manage.py shell`
 
 DRF provides `APIView`
 
-The `request` sent to the `APIView` will be DRF request objects and not djangos
+The `request` sent to the `APIView` will be a DRF request object and not django request.
 The DRF request object extends djangos and adds request parsing and authentication
 
 In `views.py` you can remove `from django.shortcuts import render` as there won't be views that **render** templates
