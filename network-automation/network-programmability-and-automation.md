@@ -1517,6 +1517,7 @@ Templating languages are perfect for dynamic content
 
 Example using Django:
 
+    {% raw %}
     <h1>{{ title }}</h1>
 
     {% for article in article_list %}
@@ -1526,6 +1527,7 @@ Example using Django:
     </a>
     </h2>
     {% endfor %}
+    {% endraw %}
 
 The `title` and `article_list` contains data that will populate real data
 
@@ -1549,24 +1551,28 @@ Jinja is closely aligned with python, it is also heavily aligned with ansible an
 
 Example of single switch interface
 
-interface GigabitEthernet0/1
- description Server Port
- switchport access vlan 10
- switchport mode access
+    interface GigabitEthernet0/1
+    description Server Port
+    switchport access vlan 10
+    switchport mode access
  
 Choose which content is dynamic and which is static, in this case the dynamic part is `GigabitEthernet0/1`
 
-interface {{ interface_name }}
- description Server Port
- switchport access vlan 10
- switchport mode access
+    {% raw %}
+    interface {{ interface_name }}
+    description Server Port
+    switchport access vlan 10
+    switchport mode access
+    {% endraw %}
 
 This can be further simplified as a file: _template.j2_:
 
-interface {{ interface.name }}
- description {{ interface.description }}
- switchport access vlan {{ interface.vlan }}
- switchport mode access
+    {% raw %}
+    interface {{ interface.name }}
+    description {{ interface.description }}
+    switchport access vlan {{ interface.vlan }}
+    switchport mode access
+    {% endraw %}
 
 The actual package is called `jinja2`
 
@@ -1592,12 +1598,15 @@ Using `jinja2`:
 
 Use:
 
+    {% raw %}
     {% if ... %}
     {% else %}
     {% endif %}
+    {% endraw %}
 
 > some switchport interfaces will be VLAN trunks, and others will be in “mode access.
 
+    {% raw %}
     interface {{ interface.name }}
     description {{ interface.description }}
     {% if interface.uplink %}
@@ -1606,40 +1615,51 @@ Use:
     switchport access vlan {{ interface.vlan }}
     switchport mode access
     {% endif %}
+    {% endraw %}
 
 You can use any of the following to get a variable:
 
+    {% raw %}
     {{ interface['vlan'] }}
     {{ interface.vlan }}
     {{ interface.get('vlan') }}
+    {% endraw %}
 
 With jinja, filters can be used to transform the data: 
 
+    {% raw %}
     {{ interface.desc|upper|reverse }}
+    {% endraw %}
 
 You can also create your own custom filters...which are available in the book
 
 Templates can be included from other files:
 
+    {% raw %}
     {% include 'vlans.j2' %}
 
     {% for name, desc in interface_dict.items() %}
         interface {{ name }}
         description {{ desc }}
     {% endfor %}
+    {% endraw %}
 
 And inherit from one another:
 
+    {% raw %}
     {% extends "no-http.j2" %}
     {% block http %}
         ip http server
         ip http secure-server
     {% endblock %}
+    {% endraw %}
 
 Variable creation in jinja:
 
+    {% raw %}
     {% set int_desc = switch01.config.interfaces['GigabitEthernet0/1']['description'] %}
     {{ int_desc }}
+    {% endraw %}
     
 ### Parting Thoughts on Templates
 
@@ -2024,7 +2044,9 @@ ntp_server=10.10.200.1
 
 Group variables can be created from a new section in the inventory file with keyword `:vars`
 
+{% raw %}
 when referencing `{{ ntp_server }}` the devices in teh `emea` region will use a different value to those in the `amers` region
+{% endraw %}
 
 > No requirement for ordering of groups and variables in ansible
 
@@ -2106,6 +2128,7 @@ It is important to specify the `os` of a given device:
 Eg.
 
 ```
+{% raw %}
 ---
 
 - name: PLAY 1 - issue snmp commands
@@ -2131,6 +2154,7 @@ Eg.
         username: ntc
         password: ntc123
         host: "{{ inventory_hostname }}"
+{% endraw %}
 ```
 
 * A single play with 2 tasks
@@ -2151,6 +2175,7 @@ Eg.
 > Ansible has over 700 modules
 
 ```
+{% raw %}
   - name: TASK 1 - deploy snmp commands
     ios_command:
       commands:
@@ -2159,11 +2184,12 @@ Eg.
         username: ntc
         password: ntc123
         host: "{{ inventory_hostname }}"
+{% endraw %}
 ```
 
 * Under `ios_command` are the words `commands` and `provider`, these are parameters passed to the module.
 * `commands` accepts a list, `provider` accepts a dictionary
-* The jinja variable is referenced as `{{ inventory_hostname}}`
+* The jinja variable is referenced as {% raw %}`{{ inventory_hostname}}`{% endraw %}
 * Variable referenced must be enclosed in quotes
 
 To execute a playbook you need an inventory file so you can call this playbook with:
@@ -2293,6 +2319,7 @@ Run in `debug` mode with the `var` parameter
 Eg.
 
 ```
+{% raw %}
 tasks:
     - name: COLLECT FACTS FOR IOS
       ios_facts:
@@ -2306,9 +2333,10 @@ tasks:
     - name: DEBUG HOSTNAME
       debug:
         var: ansible_net_hostname
+{% endraw %}
 ```
 
-> Using the debug module with `var` parameter is one of the few times you do not use brace notation `{{`
+> Using the debug module with `var` parameter is one of the few times you do not use brace notation {% raw %}`{{`{% endraw %}
 
 **Saving JSON Output**
 
@@ -2317,12 +2345,14 @@ The `register` key is used on the same indent level as the module name.
 The json object returned is stored in that registered variable
 
 ```
+{% raw %}
 - name: ISSUE SHOW COMMAND
   ios_command:
     commands:
       - show run | inc snmp-server community
     provider: "{{ base_provider }}"
   register: snmp_data
+{% endraw %}
 ```
 
 Using `register` along with `debug` can be powerful
@@ -2339,7 +2369,9 @@ If you want to debug the actual string (not the dict) you would use:
 
 Or for use in a template:
 
+    {% raw %}
     {{ snmp_data['stdout'][0] }}
+    {% endraw %}
 
 > Every module returns json
 
@@ -2362,6 +2394,7 @@ Lets cover 2 more things:
 Can be done with:
 
 ```
+{% raw %}
 ---
 
   - name: PLAY 1 - ISSUE SHOW COMMANDS
@@ -2394,6 +2427,7 @@ Can be done with:
         assert:
           that:
             - "'20' in existing_vlan_ids"
+{% endraw %}
 ```
 
 #### Generating Reports with Ansible
@@ -2556,6 +2590,7 @@ For instance, if a router goes offline
 * Software for receiving and processing workflow execution requests
 
 ```
+{% raw %}
 ---
 version: '2.0'
 
@@ -2571,6 +2606,7 @@ examples.mistral-basic:
             action: core.local cmd="{{ _.cmd }}"
             publish:
                 stdout: "{{ task('task1').result.stdout }}
+{% endraw %}
 ```
 
 * `input` is where we declare parameters for the workflow
@@ -2578,6 +2614,7 @@ examples.mistral-basic:
 * `tasks` contain a list of tasks
 
 ```
+{% raw %}
 ---
 version: '2.0'
 
@@ -2618,6 +2655,7 @@ napalm.interface_down_workflow:
       input:
         hostname: "{{ _.hostname }}"
         lastlines: 10
+{% endraw %}
 ```
 
 * The `core.noop` action essentially does nothing.
