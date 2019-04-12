@@ -1,6 +1,6 @@
 # Good API Resources
 
-### Don't Version you API;s
+### Don't Version you API's
 
 * [Roy Fielding on Versioning, Hypermedia, and REST](https://www.infoq.com/articles/roy-fielding-on-versioning)
 
