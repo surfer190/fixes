@@ -48,3 +48,11 @@ In psql:
 In psql:
 
     \dn
+
+[Reset a postgres user password](https://stackoverflow.com/questions/12720967/how-to-change-postgresql-user-password)
+
+In psql:
+
+    ALTER USER user_name WITH PASSWORD 'new_password';
+
+[Postgres connection strings](https://stackoverflow.com/questions/3582552/postgresql-connection-url)

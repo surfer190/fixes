@@ -126,7 +126,7 @@ But to do it in many locations use a little repeatable class: `Mixins`
 
 To enforce authentication use the [loginRequiredMixin](https://ccbv.co.uk/projects/Django/1.11/django.contrib.auth.mixins/LoginRequiredMixin/)
 
-        from django.contrib.auth.mixins import LoginRequiredMixin
+        from django.contrib.auth. import LoginRequiredMixin
 
 Then inherit from in a class based view on the left:
 
