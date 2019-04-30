@@ -577,4 +577,269 @@ The log locations for kong are: `cd /usr/local/kong/logs`
 
 ## 4. Kong Architecture
 
+Black box - takes requests as input, routes them to the right service and gives you a response back.
+Kong gets full access and control over the request: transforming and analysing its attributes.
+
+Common features can be refactored into one seperate and single layer.
+No need to reimplement your Json Web Tokens in python on your paymetn API and in scala on your JWT server.
+Remove duplicate boilerplate.
+No more rate limiting.
+
+Kong is 99.8% Lua scripts
+
+### HTTP Server Blocks
+
+Kong sits on Open Resty which sits on Nginx, on the shoulders of giants.
+
+Nginx is one of the most popular event-based web servers and load balancers. Its behavior is defined by a configuration-based construct, which means it doesn’t support dynamically programmable configurations
+
+OpenResty enables this feature with the lua-nginx-module. This module enables developers to extend their Nginx with custom behavior written in Lua. Openresty wraps Nginx and lua-nginx-module into one package.
+
+### Database blocks
+
+Scenarios where data is stored in dbs:
+* API's managed through the admin interface
+* Kong internals and clustering
+* Custom plugin behaviour
+
+> When Kong is used in a multi-region, multi data-center, high-availability environment, Cassandra is usually the preferred choice, because a distribute setup is built into its core
+
+### Request / response path
+
+> Kong uses a cache in memory to minimise access to the database
+
+> All the entities such as APIs, Plugins or Consumers are cached in memory
+
+> Now, Kong uses a completely different strategy. All nodes perform a periodic background job to check if configuration changes have been received and processed by other Kong nodes.
+
+## 5. Meet the Kong
+
+### Customize Nginx
+
+Can tweak or extend nginx by adding a new `server_block`
+
+When `kong start` 's it creates a runtime nginx configuration: `/usr/local/kong/nginx-kong.conf`
+
+Which can be copies and changed to run your own configuration with:
+
+    kong start -c kong.conf --nginx-conf custom_nginx.template
+
+### Play with Kong
+
+* Kong as a proxy - passes requests to backend services
+* kong as a middleware - extends services with transformations, rate-limiting
+* kong as a resource manager - manage users and services with authentication
+
+### Kong Load Balancing
+
+1. DNS Based load balancing
+
+* No kong based settings
+* Upstream services are registered with a DNS service provider, kong only receives results 
+* Mutliple A records for different IP addresses (with a straight round robin)
+* SRV records cantain weight and port information
+
+2. Dynamic ring-balancer based load balancing
+
+* Managed by kong as a service registry
+* `upstream` and `target` entities are used for configuring the ring balancer
+    * `upstream`: virtual hostname in an upstream url
+    * `target`: IP or hostname with a port that directs service
+
+More in the book
+
+#### Health Check your API
+
+* Active Health Check: Periodically request a specific HTTP endpoing
+* Passive Health Check (Circuit breaker): Monitor the ongoing traffic to each service and determine a healthy response of traffic
+
+Load balancers are able to keep traffic stable without any errors
+
+#### Clustering
+
+To handle much more traffic you need more instances - kong nodes pointing to the same database and sharing configurations. TO make it work you need lots of kong nodes and a load balancer in front.
+
+#### Caching
+
+Cached data are APIs, Consumers, Plugins, Credentials
+Kong avoids database calls.
+In a cluster the config changes need to be propagated
+
+## 6. Extending Kong
+
+You can extend it with:
+
+* Lua Language
+* Open Resty
+* Lapis Framework
+* Kong DAO Factory
+
+If you want to learn lua and extend kong read this section
+
+## 7. Integrating with Others
+
+* Kong excels at managing API's but can't cover all of DevOps by itself
+
+### Docker
+
+* Linux container based on an open source virtualization platform
+* Make more efficient use of resources compared to VM's
+* Isolated from the host OS - more portable
+* Shares the linux kernel
+* Easy to build, run and ship distributed applications
+
+### Kubernetes
+
+* A container orchestration tool for automating deployments, scaling and management of containerized applications
+* Grouping containers into logical units - managing containers becomes easier
+* Container deployment with multiple hosts by decoupling resources and networking from the user
+* Auto places containers in a suitable host, auto restarts the container in an unstable situation
+* Scaling, replication, rolling update, rollback
+
+> A Kubernetes cluster is constructed with multiple nodes, which is another host, and nodes are constructed with lots of `pods`, which is a logical group of container applications. `pods` are deployed through `deployment`, and these deployed containers are accessible through `service`, which helps the container to be exposed publicly
+
+The book shows you how to deploy your services and kong with docker and kubernetes...
+
+### Monitoring and Analysis
+
+Without kong, you have to add a logging module to each service
+
+#### Datadog
+
+A monitoring and analytics service for cloud applications
+
+Details on how to set it up are in the book...
+
+#### ELK stack
+
+* Elasticseach - Open source, distributed, RESTful JSON-based search engine
+* Logstash - Data processing pipeline that ingests data from multiple sources and sends to elasticsearch
+* Kibana - Visualise data with charts and graphs
+
+Workflow:
+
+    Log -> Logstash (Collect and Transofrm) -> Elasticsearch (Search and Analyse) -> Kibana (Visualise and Manage)
+
+There is info in the book on how to set this up
+
+#### Konga
+
+A GUI for the Kong Admin API
+
+* Backup, restore and migrate kong nodes using snapshots
+* Monitor node and API states with health checks
+* Email/Application notifications
+* Multiple users
+
+Lots of info in the book about setting up
+
+## 8. API Gateway Techniques
+
+API Gateway is more like an API interface or middleware.
+API Management has a bigger scope - process of generating and publishing API's.
+
+### Multi Consumer Management
+
+How many consumers and how many requests per consumer
+Differentiating between which consumers can access (authentication), and what consumers can access (authorization).
+
+### Versioning Management
+
+* The consumers of an API will invest a significant amount of time and resources building client applications
+* Must guarantee that an API will be in service for a long period of time
+* Differentiating consumers can then let you point old consumers to an old api version
+
+#### Changes that break backward compatibility
+
+* Removing resources (paths) or verbs (methods)
+* Add mandatory input fields
+* Convert input fields from optional to mandatory
+* Modify the name or type of a parameter
+* Adding pagination
+
+### Features
+
+* Logging for failure or error
+* lear data origin
+* Notification for failure or errors
+* Caching Criteria
+* Rate limiting
+* Limit the amount of requests consumers may have
+* Allocate more for higher priority requests
+*
+
+### HTTP CORS Issue
+
+* If your API Gateway makes an HTTP request to a different domain, it needs to be CORS-friendly
+* If you use cross domain requests, you need to add the Access-Control-Allow-Origin header to your responses in your handlers
+
+Kong has a CORS plugin to do this for you
+
+#### HTTP Methods
+
+* GET — For returning resources
+* POST — For creating a new resource
+* PUT — For replacing a resource
+* PATCH — For updating a resource with versions
+* DELETE — For deleting a resource
+
+#### Business Authorization in the API gateway
+
+The API gateway may authenticate users but does not mean it can always authorize users.
+What if a user can view movies but not book one...should this authoization logic sit on the gateway level.
+A user's scope can be very specific and it can change the core of the system.
+It is better to put the user's authorization, espescially business authorization for a user in the level of service.
+
+### Composing Data in an API gateway
+
+To make responses more consumer focused **transformers** are used.
+
+1. Collaborating 2 or more services to respond to a single request
+2. Remove, rename, replace, add, or even append a request and/or response
+
+Combining requests can be done at gateway level
+
+### Transforming API requests and responses
+
+The book does not tell you how to do this...
+
+### Doing Workflow in the API gateway
+
+Say for example you have a flow:
+
+1. Customer books 2 tickets for watching a movie in a booking service
+2. Service generates an invoice in the booking service
+3. System sends an invoice to email using a 3rd party service
+
+These relationships are common, but important not to have them at the gateway level (or service level for that matter).
+Apart from the high memory usage issue, it causes high dependences between services at the gateway level.
+Which is like doing it like a monolith.
+
+> There are options to do event driven processes in a microservices way that use a message broker.
+
+## 9. API Security
+
+In a Microservices architecture the API gateway acts as the security endpoint
+
+It is crucial to protect the access to those microservices so only authorized applications (clients) can interact with those services.
+It is required to provide end users, or resource owners, a mechanism to protect their data from unwanted access.
+
+### Key Authentication
+
+Usually there is an onboarding proces to sign contracts with the users of the API. Then the third party will be given a secret token to interact with the api.
+That token will only identify the client application, not the resource owner.
+
+A resource owner - an entity capable of granting access to a protected resource. When the resource owner is a person, it is referred to as an end-user.
+
+To protect the resource owner, a different method called Oauth2 is used.
+
+You can create reports that track each consumer.
+So you can bill and see if a consumer is using the API.
+
+### Creating Consumers
+
+The company wanting access to the api will be added as a consumer on kong.
+
+After creating the consumer we will need to install the `key-auth` plugin
+
 
