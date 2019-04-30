@@ -9,6 +9,7 @@
 * Continuous deployment
 
 Compose these rules and workflows as code.
+StackStorm integrates with other systems through something called packs
 
 ## How it Works
 
@@ -27,8 +28,6 @@ Terms:
 * Workflows - Stitch actions together, define order, transitions and passing data.
 * Packs - units of content deployment (plugins) found on [stackstorm exchange](https://exchange.stackstorm.org/)
 * Audit trail - actions are recorded and stored. 
-
-## Reference Deployment
 
 ### ST2 Services
 
@@ -61,6 +60,8 @@ List all the triggers:
 List rules:
 
     st2 rule list
+
+### Actions
 
 Run a local shell command:
 
@@ -101,6 +102,8 @@ For `core.local` and `core.remote` use `--` to seperate the command run on the h
     st2 run core.local -- ls -al
     st2 run core.local cmd="ls -al"
 
+### Executions
+
 Get a list of executions:
 
     st2 execution list
@@ -113,5 +116,263 @@ Get the last 5 executions:
 
     st2 execution list -n 5
 
+### Creating a Rule
+
+* StackStorm uses rules to run actions or workflows when events happen.
+* Events are typically monitored by sensors.
+* When a sensor catches an event, it fires a trigger.
+* Trigger trips the rule, the rule checks the criteria and if it matches, it runs an action.
+
+A rule definition is a `yaml` file with 3 sections: trigger, criteria and action.
+
+Define a rule, based on the [rule structure](https://docs.stackstorm.com/rules.html):
+
+    ---
+        name: "sample_rule_with_webhook"
+        pack: "examples"
+        description: "Sample rule dumping webhook payload to a file."
+        enabled: true
+
+        trigger:
+            type: "core.st2.webhook"
+            parameters:
+                url: "sample"
+
+        criteria:
+            trigger.body.name:
+                pattern: "st2"
+                type: "equals"
+
+        action:
+            ref: "core.local"
+            parameters:
+                cmd: "echo \"{{trigger.body}}\" >> ~/st2.webhook_sample.out ; sync"
+
+* The `trigger` is a webhook...so going to `https://your-server/api/v1/webhooks/sample` trips the rule.
+* The `criteria` will check that the body name contains the pattern `st2`
+* The `action` will append the payload to that file on the stackstorm local host node
+
+The payload of a trigger is reffered to with `{{ trigger }}`, if it is a valid json object it can be accessed with `{{trigger.path.to.parameter}}`
+
+Remember to check available triggers:
+
+    # View a list of triggers
+    st2 trigger list
+
+    # Check details of a trigger
+    st2 trigger get core.st2.webhook
+
+You can do alot more with [criteria comparisons](https://docs.stackstorm.com/rules.html#critera-comparison)
+
+### Deploy a Rule
+
+Stackstorm can autoload rules, or can be deployed with API or CLI
+
+### Create a rule from CLI
+
+    st2 rule create /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
+    
+    # List the rules
+    st2 rule list --pack=examples
+    
+    # Get the rule you just created
+    st2 rule get examples.sample_rule_with_webhook
+
+### Executing the action that triggers that rule
+
+Check your `apikey`:
+
+    st2 apikey list
+
+Make the call to the webhook endpoint:
+
+Install httpie:
+
+    sudo apt update
+    sudo apt install httpie
+
+Make the request to the `/sample` endpoint:
+
+__I got the auth token using the `--debug` command__
+
+    http --verify=no https://10.10.10.10/api/v1/webhooks/sample foo=bar bill=baz name=st2 X-Auth-Token:cc29ec9adca840eeb44734cdbeaa8a4f
+    
+Check if the action was executed:
+
+    st2 execution list -n 1
+
+Verify it actually worked:
+
+    sudo tail /home/stanley/st2.webhook_sample.out 
+    {u'foo': u'bar', u'bill': u'baz', u'name': u'st2'}
+
+> By default st2 runs as the stanley user
+
+You can even run an action from stackstorm:
+
+    st2 run core.http method=POST body='{"you": "too", "name": "st2"}' url=https://10.10.10.10/api/v1/webhooks/sample headers='x-auth-token=cc29ec9adca840eeb44734cdbeaa8a4f,content-type=application/json' verify_ssl_cert=False
+
+You will get a `202` accepted response...it did not give me the execution id
+
+> It is best to store your custom packs (of custom actions, rules, sensors and triggers) as code in a repo as `.yml` files
+
+To deploy them, copy them to: `/opt/stackstorm/packs/`
+
+    # Copy examples to st2 content directory and set permissions
+    sudo cp -r /usr/share/doc/st2/examples/ /opt/stackstorm/packs/
+    sudo chown -R root:st2packs /opt/stackstorm/packs/examples
+    sudo chmod -R g+w /opt/stackstorm/packs/examples
+
+    # Run setup
+    st2 run packs.setup_virtualenv packs=examples
+
+    # Reload stackstorm context
+    st2ctl reload --register-all
+
+### Datastore
+
+To store and share common variables you can use stackstorm's datastore, which can be referenced in rules and workflows with: `{{st2kv.system.my_parameter}}`
+
+Create a key value:
+
+    st2 key set user stanley
+
+View a list of key value stores:
+
+    st2 key list
 
 
+
+## StackStorm API Docs
+
+[View the Stackstorm API docs](https://api.stackstorm.com/)
+
+# Actions
+
+In StackStorm, we can accomplish such things through actions
+
+Eg.
+
+* Push a config change to a network device
+* Restart a service on a server
+* Retrieve information about a virtual machine
+* Bounce a switchport
+* Send a message to slack
+
+> They accept input, do work, and usually provide some output
+
+Run a hello world on the local machine
+
+    st2 run core.local "echo Hello World!"
+
+Get help about an action
+
+    st2 run core.local -h
+
+Run an action in the background (sometimes you don't want to have to wait for an action to complete)
+
+    st2 run -a core.local "sleep 300"
+
+Get the result of an action
+
+    st2 execution get 5cc81e6e6cb8de0867e220ca
+
+    id: 5cc81e6e6cb8de0867e220ca
+    status: running (27s elapsed)
+    parameters: 
+    cmd: sleep 300
+    result: None
+
+> The execution describes an instance of a running action
+
+See a list of recent executions
+
+    st2 execution list
+
+## Using a pack
+
+View the actions in a pack
+
+    st2 action list --pack=napalm
+
+Credentials are stored in pack configurations
+
+    cat /opt/stackstorm/configs/napalm.yaml
+
+## Stackstorm Help
+
+    CLI for StackStorm event-driven automation platform. https://stackstorm.com
+
+    positional arguments:
+    {run,action,action-alias,auth,login,whoami,apikey,execution,inquiry,key,pack,policy,policy-type,rule,webhook,timer,runner,sensor,trace,trigger,trigger-instance,rule-enforcement,workflow,service-registry,role,role-assignment}
+        run                 Invoke an action manually.
+        action              An activity that happens as a response to the external
+                            event.
+        action-alias        Action aliases.
+        auth                Authenticate user and acquire access token.
+        login               Authenticate user, acquire access token, and update
+                            CLI config directory
+        whoami              Display the currently authenticated user
+        apikey              API Keys.
+        execution           An invocation of an action.
+        inquiry             Inquiries provide an opportunity to ask a question and
+                            wait for a response in a workflow.
+        key                 Key value pair is used to store commonly used
+                            configuration for reuse in sensors, actions, and
+                            rules.
+        pack                A group of related integration resources: actions,
+                            rules, and sensors.
+        policy              Policy that is enforced on a resource.
+        policy-type         Type of policy that can be applied to resources.
+        rule                A specification to invoke an "action" on a "trigger"
+                            selectively based on some criteria.
+        webhook             Webhooks.
+        timer               Timers.
+        runner              Runner is a type of handler for a specific class of
+                            actions.
+        sensor              An adapter which allows you to integrate StackStorm
+                            with external system.
+        trace               A group of executions, rules and triggerinstances that
+                            are related.
+        trigger             An external event that is mapped to a st2 input. It is
+                            the st2 invocation point.
+        trigger-instance    Actual instances of triggers received by st2.
+        rule-enforcement    Models that represent enforcement of rules.
+        workflow            Commands for workflow authoring related operations.
+                            Only orquesta workflows are supported.
+        service-registry    Service registry group and membership related
+                            commands.
+        role                RBAC roles.
+        role-assignment     RBAC role assignments.
+
+### Debugging commands
+
+Using the `--debug` flag you can see all the requests being made to the stackstorm api.
+
+**The `--debug` flag must be just after `st2`
+
+Eg.
+
+    st2 --debug run core.local date
+
+### Stackstorm packs
+
+Stackstorm is highly extensible
+It focuses on the primitives necessary to enable event-driven automation
+
+Anytime you want to integrate with a third party system or upload some custom rules or workflows, you do this through a pack.
+
+Install a pack
+
+    st2 pack install napalm
+
+Packs can also be installed directly from a git repo:
+
+    st2 pack install https://github.com/emedvedev/chatops_tutorial
+
+
+    
+
+### Sources
+
+* [Stackstorm Docs](https://docs.stackstorm.com/)
