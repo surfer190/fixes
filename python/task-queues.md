@@ -150,13 +150,11 @@ Celery has 3 components:
 Check out the docs...start with [First steps with Celery](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html).
 Then you might run into an error: 
 
-```
-Received unregistered task of type 'waiting.tasks.waste_time'.
-The message has been ignored and discarded.
+    Received unregistered task of type 'waiting.tasks.waste_time'.
+    The message has been ignored and discarded.
 
-Did you remember to import the module containing this task?
-Or maybe you're using relative imports?
-```
+    Did you remember to import the module containing this task?
+    Or maybe you're using relative imports?
 
 Then move on to use [Using celery with django](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html)
 
