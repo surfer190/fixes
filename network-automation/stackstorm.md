@@ -242,7 +242,6 @@ View a list of key value stores:
     st2 key list
 
 
-
 ## StackStorm API Docs
 
 [View the Stackstorm API docs](https://api.stackstorm.com/)
@@ -370,8 +369,545 @@ Packs can also be installed directly from a git repo:
 
     st2 pack install https://github.com/emedvedev/chatops_tutorial
 
+## Actions
 
-    
+pieces of code that can perform arbitrary automation or remediation tasks
+
+Examples:
+* Restart a service on a server
+* Create a cloud server
+* Acknowledge a nagios, or pagerduty alert
+* Send a notification via email or sms
+* Send a message to slack
+* Snapshot a vm
+* Run a nagios check
+
+Executed when a rule is triggered.
+Multiple actions can be strung together in a workflow.
+
+### CLI
+
+View all actions
+
+    st2 action list
+
+List all actions in linux packs
+
+    st2 action list -p linux
+
+Get info of a particular action
+
+    st2 action get linux.check_loadavg
+
+To execute an action manually
+
+    st2 action execute <action with parameters>
+
+Eg.
+
+    st2 action execute core.http url="http://httpbin.org/get"
+
+### Action Runners
+
+An execution environment for user-implemented actions to be run remotely via ssh (or locally).
+
+Available runners:
+* `local-shell-cmd` - Executes linux commands on the host of Stackstorm
+* `local-shell-script` - Executes scipts on the host of Stackstorm
+* `remote-shell-cmd` - Executes linux command on one or more remote hosts provided by the user
+* `remote-shell-script` - Remote runner for scripts
+* `python-script` - Python runner, implemented as a `run()` method on python classes.
+* `http-request` - HTTP client
+* `action-chain` - Executes simple linear workflows
+* `mistral-v2` - Executes complex Mistral Openstack workflows
+* `cloudslang` - Complex workflows, built on top of CloudSlang
+* `inquirer` - Implements core logic of `inquiries`
+* `winrm-cmd` - Run CLI on windows hosts
+* `winrm-ps-cmd` - Run powershell on windows hosts
+* `winrm-ps-script` - Run powershell scripts on hosts
+
+Actions inherit the runner's parameters.
+
+### Writing Custom Actions
+
+An action is composed of:
+1. A Yaml metadata file describing the aciton and inputs
+2. A script that implements the logic
+
+Can use any programming language as long as it exits with `0` on success and `1` on error.
+All log messages should be printed to `stderr`
+
+#### Action Metadata
+
+Describes the action. 
+
+* `name` - Name of the action
+* `runner_type` - Type of runner
+* `enabled`
+* `entry_point` - Location of the action launch script relative to: `/opt/stackstorm/packs/${pack_name}/actions/`
+* `parameters` - dictionary of parameters for the action
+* `tags` - Supplemental information
+
+Eg.
+
+    ---
+    name: "send_sms"
+    runner_type: "python-script"
+    description: "This sends an SMS using twilio."
+    enabled: true
+    entry_point: "send_sms.py"
+    parameters:
+        from_number:
+            type: "string"
+            description: "Your twilio 'from' number in E.164 format. Example +14151234567."
+            required: true
+            position: 0
+        to_number:
+            type: "string"
+            description: "Recipient number in E.164 format. Example +14151234567."
+            required: true
+            position: 1
+            secret: true
+        body:
+            type: "string"
+            description: "Body of the message."
+            required: true
+            position: 2
+            default: "Hello {% if system.user %} {{ st2kv.system.user }} {% else %} dude {% endif %}!"
+
+#### Output Schema
+
+Disabled by default.
+To enable it set: `validate_output_schema = True` in `/etc/st2/st2.conf [system]`
+
+Modelling the output of an action. This aids in workflow development and error handling.
+
+For example a python action outputs a tuple:
+
+```
+---
+...
+output_schema:
+    errors:
+       type: array
+       items:
+           type: string
+   output:
+       required: true
+       type: array
+       items:
+           type: number
+   status_code:
+       required: true
+       type: integer
+```
+
+If the action does not return the correct fields it will fail validation and the action itself will fail.
+This prevents propagating corrupt data to other actions in a workflow that could lead to unpredictable results.
+
+#### Paramters in Action
+
+You can access variable from the key-value store at `st2kv.system`. YOu can get access to action context variable with:
+
+    parameters:
+      user:
+        type: "string"
+        description: "User of this action."
+        required: true
+        default: "{{action_context.api_user}}"
+
+The prefix `action_context` is used.
+
+You can also access `config_context` which contains key-value contents of your pack configuration
+
+In actionchains and workflows, every task can access the parent's `execution_id`
+
+#### Action Registration
+
+To register a new action:
+
+1. Place it into the content location
+2. Tell the system the action is available
+
+Actions are grouped in packs and located at: `/opt/stackstorm/packs`
+
+For hacking one off actions create you action in `/opt/stackstorm/packs/default/actions`, once tested add it to a dedicated pack.
+
+Register an action with:
+
+    st2 action create my_action_metadata.yaml
+
+Reload all actions:
+
+    st2ctl reload --register-actions
+
+#### Built-in Parameters
+
+* `args`
+* `cmd`
+* `cwd`
+* `env`
+* `dir`
+
+#### Overriding Runner Parameters
+
+The `linux.rsync` action overrides the `cmd` in the `remote-shell-cmd` runner, with `rsync`:
+
+    ---
+        name: 'rsync'
+        runner_type: 'remote-shell-cmd'
+        description: 'Copy file(s) from one place to another w/ rsync'
+        enabled: true
+        entry_point: ''
+        parameters:
+            source:
+                type: 'string'
+                description: 'List of files/directories to to be copied'
+                required: true
+            dest_server:
+                type: 'string'
+                description: "Destination server for rsync'd files"
+                required: true
+            destination:
+                type: 'string'
+                description: 'Destination of files/directories on target server'
+                required: true
+            cmd:
+                immutable: true
+                default: 'rsync {{args}} {{source}} {{dest_server}}:{{destination}}'
+            connect_timeout:
+                type: 'integer'
+                description: 'SSH connect timeout in seconds'
+                default: 30
+            args:
+                description: 'Command line arguments passed to rysnc'
+                default: '-avz -e "ssh -o ConnectTimeout={{connect_timeout}}"'
+
+#### Environment variables for actions
+
+Runners make the following environment variables available:
+
+* `ST2_ACTION_PACK_NAME` - name of pack the current action belongs to
+* `ST2_ACTION_EXECUTION_ID` - Execution id of the action being executed
+* `ST2_ACTION_API_URL` - Full URL to the public API endpoint
+* `ST2_ACTION_AUTH_TOKEN` - Auth token which is available to the action until it completes
+
+You can use these in a shell script:
+
+    #!/usr/bin/env bash
+
+    # Retrieve a list of actions by hitting the API using cURL and the information provided
+    # via environment variables
+
+    RESULT=$(curl -H "X-Auth-Token: ${ST2_ACTION_AUTH_TOKEN}" ${ST2_ACTION_API_URL}/actions)
+    echo ${RESULT}
+
+#### Converting Existing Scripts into Actions
+
+Converting an existing script
+
+1. Make sure script conforms to conventions
+
+Make sure it exits on 0 for success, non-zero for error
+
+2. Create a metadata file
+
+You will probably use: `remote-shell-script`
+
+3. Update argument parsing in the script
+
+* `named` - parameters that do not include the position attribute
+* `positional` - include a position attribute
+
+    script.sh --param1=value --param2=value --param3=value
+
+types of arguments:
+* `string`, `integer` and `float` - serialized as a string
+* `boolean` - serialized as a string 1 (true) or 0 (false)
+* `array` - serialized as a comma delimited string
+* `object` - serialized as json
+
+Alot more info in the docs...
+
+## Sensors and Triggers
+
+### Sensors
+
+Python that periodically poll external events or passively wait for inbound events. They inject triggers, which can be matched by rules for potencial action execution.
+
+### Triggers
+
+Identify the incoming events to StackStorm
+A trigger is a tuple of type (string) and optional parameters (object).
+
+Info on [creating sensors and triggers in the docs](https://docs.stackstorm.com/sensors.html)
+
+## Rules
+
+Capture operational patterns as automations
+
+> Rules map triggers to actions (or workflows), apply matching criteria and map trigger payloads to action inputs
+
+Example:
+
+    ---
+        name: "rule_name"                      # required
+        pack: "examples"                       # optional
+        description: "Rule description."       # optional
+        enabled: true                          # required
+
+        trigger:                               # required
+            type: "trigger_type_ref"
+
+        criteria:                              # optional
+            trigger.payload_parameter_name1:
+                type: "regex"
+                pattern : "^value$"
+            trigger.payload_parameter_name2:
+                type: "iequals"
+                pattern : "watchevent"
+
+        action:                                # required
+            ref: "action_ref"
+            parameters:                        # optional
+                foo: "bar"
+                baz: "{{ trigger.payload_parameter_1 }}"
+
+* `name` - name of the rule
+* `pack` - the pack a rule belongs to, `default` is assumed
+* `description`
+* `enabled`
+* `trigger` - type of trigger emitted (get with `st2 trigger list`)
+* `criteria` - optional, type of comparison and a pattern to match against.
+* `action` - the action to execute
+
+> Each rule can only have a single action, for multiple actions you need to create a workflow
+
+### Criteria
+
+Rules needed to be matched against
+
+Eg.
+
+    criteria:
+        trigger.payload_parameter_name1:
+            type: "regex"
+            pattern : "^value$"
+        trigger.payload_parameter_name2:
+            type: "iequals"
+            pattern : "watchevent"
+
+The above criteria are `AND`
+
+If you want `OR` criteria, have multiple `criteria` sections
+
+#### Criteria Types
+
+* `equals` - Values are equal
+* `nequals` - Values not equal
+* `lessthan` - trigger value is less than provided value
+* `greaterthan`
+* `matchwildcard` - simple grok style linux matching
+* `regex` - regular expression - `re.search('pattern', trigger_value)`
+* `iregex` - case insensitive regex
+* `iequals` - case insensitve string match
+* `contains` - contains string case sensitive
+* `ncontains` - does not contain the provided value
+* `icontains` - contains string case insensitive
+* `startswith` - beginning matches a string
+* `endswith` - ends with a given string
+* `iendswith` - ends with, case insensitivity
+* `timediff_lt` - time difference between trigger time and current time less than
+* `timediff_gt` - time difference between trigger time and current time greater than
+* `inside` - checking if trigger.payload is within provided value (opposite of contains)
+* `ninside` - not inside
+* `search` - way to match json with `any` or `all`
+
+### Action
+
+Sets the action or workflow to be executed on successful match of a trigger and an optional set of criteria.
+A rule can also specify parameters.
+
+Example
+
+    action:                                # required
+        ref: "action_ref"
+        parameters:                        # optional
+            foo: "bar"
+            baz: 1
+
+To pass along the context of a trigger to an action, you can interpolate variable with Jinja templating syntax.
+
+    action:
+        ref: "action_ref"
+        parameters:
+            foo: "bar"
+            baz: "{{ trigger.payload_parameter_1 }}"
+
+> Both `null` and `None` can be a trigger variable so use the following filter: `{{ trigger.payload_parameter_1 | use_none }}`
+
+### Managing Rules
+
+To deploy a rule:
+
+    st2 rule create ${PATH_TO_RULE}
+
+Eg.
+
+    st2 rule create /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
+
+You can update a rule with:
+
+    st2 rule update /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
+
+Reload all rules with
+
+    st2ctl reload --register-rules
+
+List all rules
+
+    st2 rule list
+
+View a single rule
+
+    st2 rule get examples.sample_rule_with_webhook
+
+Delete a rule
+
+    st2 rule delete ${RULE_NAME_OR_ID}
+
+### Rule Location
+
+Rules are located at: `/opt/stackstorm/packs/<pack_name>/rules`
+
+### Testing Rules
+
+A `st2-rule-tester` is provided to evaluate rules against trigger instances without running any of the stackstorm components.
+
+    st2-rule-tester --rule=${RULE_FILE} --trigger-instance=${TRIGGER_INSTANCE_DEFINITION} --config-file=/etc/st2/st2.conf
+    echo $?
+
+* `RULE_FILE` - yaml rule file
+* `TRIGGER_INSTANCE_DEFINITION` - specification of the trigger with accompanying payload
+
+Example:
+
+    ---
+        trigger: "irc.pubmsg"
+        payload:
+        source:
+            nick: "Kami_"
+            host: "gateway/web/irccloud.com/x-uvv"
+        channel: "#stackstorm"
+        timestamp: 1419166748,
+        message: "stackstorm is cool!"
+
+#### Timers
+
+Allow running a particular action repeatedly based on a defined time interval, or at a specific point in time.
+Like cron jobs.
+
+Trigger types:
+* `core.st2.IntervalTimer` - run at specific intervals
+* `core.st2.DateTimer` - run an action at the specified date and time
+* `core.st2.CronTimer` - Run an action when current time matches the time constraint defined in UNIX cron format
+
+#### core.st2.IntervalTimer
+
+Eg.
+
+    trigger:
+      type: "core.st2.IntervalTimer"
+      parameters:
+          unit: "seconds"
+          delta: 30
+
+#### core.st2.CronTimer
+
+    trigger:
+      type: "core.st2.CronTimer"
+      parameters:
+          timezone: "UTC"
+          day_of_week: 6 # or day_of_week: "sun"
+          hour: 0
+          minute: 0
+          second: 0
+
+## Workflows
+
+Multiple actions across various systems. Strings atomic actions into higher level automation, orchestrates their executions and inputs, it maintains state between actions and provides reliability and transparency to the execution.
+
+Workflows can be called by other workflows
+
+### Workflow runners
+
+* Orquesta - New workflow engine, replaces both ActionChains and Mistral
+* ActionChain - Legacy no frills workflow runner. No complex logic.
+* Mistral - orignated in Openstack: complex, nested, error handling, forks, joins etc.
+
+### Orquestra
+
+Runs natively on stackstorm.
+Defined in `yaml`, does not require a seperate authentication system and database like Mistral.
+
+* A graph based workflow engine
+
+#### Getting Started
+
+Requires an action metadata file: `/opt/stackstorm/packs/<mypack>/actions`
+
+Basic example: `examples.orquesta-basic`
+
+Save in `/opt/stackstorm/packs/examples/actions/workflows/orquesta-basic.yaml`:
+
+    version: 1.0
+
+    description: A basic workflow that runs an arbitrary linux command.
+
+    input:
+    - cmd
+    - timeout
+
+    tasks:
+    task1:
+        action: core.local cmd=<% ctx(cmd) %> timeout=<% ctx(timeout) %>
+        next:
+        - when: <% succeeded() %>
+            publish:
+            - stdout: <% result().stdout %>
+            - stderr: <% result().stderr %>
+
+    output:
+    - stdout: <% ctx(stdout) %>
+
+Define the workflow in `/opt/stackstorm/packs/examples/actions/orquesta-basic.yaml`:
+
+    ---
+    name: orquesta-basic
+    pack: examples
+    description: Run a local linux command
+    runner_type: orquesta
+    entry_point: workflows/orquesta-basic.yaml
+    enabled: true
+    parameters:
+    cmd:
+        required: true
+        type: string
+    timeout:
+        type: integer
+        default: 60
+
+Then create the action:
+
+    st2 action create /opt/stackstorm/packs/examples/actions/orquesta-basic.yaml
+
+Run the workflow:
+
+    st2 run examples.orquesta-basic cmd=date -a
+
+##### Inspection
+
+The workflow is inspected before execution
 
 ### Sources
 

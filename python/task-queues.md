@@ -50,12 +50,17 @@ Ask yourself:
 
 Are you sending messages to communicate between different services in your application or want to process simple background jobs. For simple background jobs the most powerful or flexible message queue is not required.
 
-
-
 ## Message Queues with Django
 
-* Celery
-* Kombu
+* [Celery](www.celeryproject.org)
+* [Kombu](https://github.com/celery/kombu)
+
+## Message queues with Python
+
+Apart from the above
+
+* [huey](https://huey.readthedocs.io/en/latest/guide.html)
+* [tasktiger](https://github.com/closeio/tasktiger)
 
 ## Benefits
 
@@ -133,7 +138,29 @@ Use asynchronous workers
 
 > The default synchronous workers assume that your application is resource-bound in terms of CPU and network bandwidth. Generally this means that your application shouldn’t do anything that takes an undefined amount of time. An example of something that takes an undefined amount of time is a request to the internet. At some point the external network will fail in such a way that clients will pile up on your servers. So, in this sense, any web application which makes outgoing requests to APIs will benefit from an asynchronous worker.
 
+## In Practice
 
+Celery has 3 components:
+* `celery client` - interacts with the application
+* `celery workers` - run long-running tasks asynchronously
+* `message broker` - keeps track of tasks and queue, so celery workers can consumer them
+
+> Optionally celery also provides the option of result back-end to keep track of the status and result of the tasks but in a lot of the cases this feature is not needed.
+
+Check out the docs...start with [First steps with Celery](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html).
+Then you might run into an error: 
+
+```
+Received unregistered task of type 'waiting.tasks.waste_time'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you're using relative imports?
+```
+
+Then move on to use [Using celery with django](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html)
+
+![celery rabbitmq architecture](http://number1.co.za/wp-content/uploads/2019/05/Celery-RabbitMQ.png)
 
 ## Source
 
@@ -143,3 +170,4 @@ Use asynchronous workers
 * [Celert Dev Checklist](https://devchecklists.com/celery-tasks-checklist/)
 * [Quick Tips working 2 years with celery](https://medium.com/@taylorhughes/three-quick-tips-from-two-years-with-celery-c05ff9d7f9eb)
 * [Long computations with rest over http in python](https://medium.com/@grzegorzolechwierowicz/long-computations-over-rest-http-in-python-4569b1187e80)
+* [Using Celery to perform long-running tasks in a web application](https://medium.com/@prabhakarparam/using-celery-to-perform-long-running-tasks-in-a-web-application-31da725833cc)
