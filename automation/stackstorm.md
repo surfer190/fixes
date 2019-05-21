@@ -907,8 +907,70 @@ Run the workflow:
 
 ##### Inspection
 
-The workflow is inspected before execution
+The workflow is inspected before execution.
+
+## Other Stackstorm stuff
+
+* It has a powerful workflow engine, where a shell script is linear satackstorm can branch and do various actions.
+* You can use `core.ask` for asking a question to a user - continue or abort
+
+## Storing secrets
+
+It is recommended to [store encrypted values](https://docs.stackstorm.com/datastore.html#storing-secrets) for passwords and private keys.
+
+To store a secret:
+
+    st2 key set api_token SECRET_TOKEN --encrypt
+
+To get the key as plain text use:
+
+    st2 key get api_token --decrypt
+
+To use variables stored in jinja use `decrypt_kv`:
+
+    aws_key: "{{st2kv.system.aws_key | decrypt_kv}}"
+
+To store [dictionaries or lists](https://docs.stackstorm.com/reference/jinja.html#referencing-datastore-keys-in-jinja):
+
+```
+# Pass the result of this expression to the action st2.kv.set
+{{ {'complex': 'structure', 'foo': ['x', True]} | to_json_string }}
+
+# Or set it on the CLI
+st2 key set foo '{"complex": "structure", "foo": ["x", True]}'
+
+# Read the data back in using the st2kv and from_json_string filters
+{{ st2kv.system.foo | from_json_string }}
+```
+
+In these cases it is very important to check the examples in the repo: `st2/contrib/examples/actions/workflows`
+
+From the examples there are various ways to intepolate the key value variable:
+
+With `yaql`:
+
+        password: <% st2kv('system.my_password', decrypt => true) %>
+
+with `yaml`:
+
+        cmd: 'echo "{{ st2kv.system.foobar }}"'
+
+or:
+
+        cmd: echo "{{ st2kv('system.foobar', decrypt=True) }}"
+
+for some reason this does not work:
+
+        password: "{{ st2kv.system.password | decrypt_kv }}"
+
+
+## Troubleshooting a Rule
+
+Excellent post on [troubleshooting a rule with stackstorm](https://stackstorm.com/2016/09/20/troubleshoot_a_rule/)
+
 
 ### Sources
 
 * [Stackstorm Docs](https://docs.stackstorm.com/)
+* [Shu Sugimoto on Stackstorm](https://www.slideshare.net/shusugimoto1986/practical-operation-automation-with-stackstorm)
+* [Troubleshooting a rule](https://stackstorm.com/2016/09/20/troubleshoot_a_rule/)
