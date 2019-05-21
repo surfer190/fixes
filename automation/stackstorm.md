@@ -933,6 +933,7 @@ To use variables stored in jinja use `decrypt_kv`:
 To store [dictionaries or lists](https://docs.stackstorm.com/reference/jinja.html#referencing-datastore-keys-in-jinja):
 
 ```
+{% raw %}
 # Pass the result of this expression to the action st2.kv.set
 {{ {'complex': 'structure', 'foo': ['x', True]} | to_json_string }}
 
@@ -941,6 +942,7 @@ st2 key set foo '{"complex": "structure", "foo": ["x", True]}'
 
 # Read the data back in using the st2kv and from_json_string filters
 {{ st2kv.system.foo | from_json_string }}
+{% endraw %}
 ```
 
 In these cases it is very important to check the examples in the repo: `st2/contrib/examples/actions/workflows`
