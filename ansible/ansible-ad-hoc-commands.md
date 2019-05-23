@@ -319,4 +319,4 @@ Another improvement sends commands directly over ssh, only available in `ansible
 
 ##### Source
 
-* [Ansible docs - Gathering facts](http://docs.ansible.com/ansible/intro_adhoc.html#gathering-facts)
+* [Ansible docs: Gathering facts](http://docs.ansible.com/ansible/intro_adhoc.html#gathering-facts)
