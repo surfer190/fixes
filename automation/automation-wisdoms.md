@@ -12,3 +12,13 @@
 * Reduce mean time to resolution (MTR)
 * Avoid human error
 * Positive team impact - avoid pager fatigue, captue operational knowledge as code, turn from reacvtive to proactive
+
+## Small Wins
+
+* Do what you do everyday
+* Improve one thing a time
+* Don’t try to learn more than one thing at a time
+* Start simple use cases
+
+**Keep it simple**
+
