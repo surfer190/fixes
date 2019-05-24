@@ -14,21 +14,19 @@ ansible-playbook playbook.yml
 
 Eg.
 
-```
----
-- hosts: all
-tasks:
-- name: Install Apache.
-command: yum install --quiet -y httpd httpd-devel
-- name: Copy configuration files.
-command: >
-cp /path/to/config/httpd.conf /etc/httpd/conf/httpd.conf
-- command: >
-cp /path/to/config/httpd-vhosts.conf /etc/httpd/conf/httpd-vhosts.conf
-- name: Start Apache and configure it to run at boot.
-command: service httpd start
-- command: chkconfig httpd on
-```
+    ---
+    - hosts: all
+      tasks:
+        - name: Install Apache.
+          command: yum install --quiet -y httpd httpd-devel
+        - name: Copy configuration files.
+          command: >
+            cp /path/to/config/httpd.conf /etc/httpd/conf/httpd.conf
+        - command: >
+            cp /path/to/config/httpd-vhosts.conf /etc/httpd/conf/httpd-vhosts.conf
+        - name: Start Apache and configure it to run at boot.
+          command: service httpd start
+        - command: chkconfig httpd on
 
 `>` sign following the `command:` tells YAML to quote the next set of indented lines as a single string.
 

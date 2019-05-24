@@ -71,6 +71,25 @@ Which you can change to your own with the `inventory_ignore_extensions` entry in
 
 More info on using [multiple inventory sources](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#using-multiple-inventory-sources)
 
+## Building a Dynamic Inventory
+
+> In previous versions you had to create a script or program that can output JSON in the correct format when invoked with the proper arguments
+
+### Inventory Sources
+
+> What you pass to `-i`, which can represent a path to a file, script or be the raw data for the plugin to use. 
+
+* `host list` - comma separated list of hosts
+* `yaml` - path to yaml format data file
+* `constructed` - path to yaml config file
+* `ini` - path to ini formatted data file
+* `virtualbox` - path to yaml config file
+* `script plugin` - path to executable outputting json
+
+[More on developing plugins](https://docs.ansible.com/ansible/latest/dev_guide/developing_plugins.html#developing-plugins)
+
+Inventory plugins normally only execute at the start of a run, before playbooks/plays and roles are loaded, but they can be ‘re-executed’ via the `meta: refresh_inventory` task, which will clear out the existing inventory and rebuild it.
+
 
 
 ## Source
