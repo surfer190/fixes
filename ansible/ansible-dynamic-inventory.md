@@ -90,8 +90,6 @@ More info on using [multiple inventory sources](https://docs.ansible.com/ansible
 
 Inventory plugins normally only execute at the start of a run, before playbooks/plays and roles are loaded, but they can be ‘re-executed’ via the `meta: refresh_inventory` task, which will clear out the existing inventory and rebuild it.
 
-
-
 ## Source
 
 * [Intro to dynamic inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html)
