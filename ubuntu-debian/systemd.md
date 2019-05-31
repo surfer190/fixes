@@ -90,9 +90,37 @@ If it does daemonise itself, then you should use `forking`
 
 If a service just does one thing, then `oneshot` is the right choice.
 
+## Using a Python Virtualenv
+
+> The virtualenv is "baked into the Python interpreter in the virtualenv"
+
+For example an elastalert systemd service (Remember `ExecStart` needs an absolute path):
+
+    [Unit]
+    Description=elastalert
+    After=elasticsearch.service
+
+    [Service]
+    Type=simple
+    WorkingDirectory=/home/cent/elastalert/
+    User=cent
+    Group=cent
+    Restart=on-failure
+    ExecStart=env/bin/python -m elastalert.elastalert --config config.yaml --verbose
+
+    [Install]
+    WantedBy=multi-user.target
+
+Enable and start it:
+
+    systemctl daemon-reload
+    systemctl enable elastalert.service
+    systemctl start elastalert.service
+    systemctl status elastalert.service
+
 
 
 ## Source
 
 * [SystemD Debian Wiki](https://wiki.debian.org/systemd)
-
+* [Virtualenv in SystemD](https://stackoverflow.com/questions/37211115/how-to-enable-a-virtualenv-in-a-systemd-service-unit)
