@@ -41,6 +41,65 @@ Ensure that jenkins is started:
 
     ansible -i "root@10.10.10.94," all -m service -a "name=jenkins state=started"
 
+To use an inventory script with an adhoc command:
+
+    ansible -i digital_ocean.py all -a 'uptime'
+
+You can use the `ansible-inventory` utility to check the hosts visually
+
+    ansible-inventory -i digital_ocean.py --list
+
+> Remember to ensure the inventory script is executable with `chmod +x inventory_file.py`
+
+# What output of a dynamic inventory should look like
+
+We want this inventory to know how to connect so we need to set the following variables
+
+    ansible_connection=ssh
+    ansible_user=vagrant
+    ansible_host=10.0.0.1
+
+We need to ensure that the [`_meta` variable is set](https://docs.ansible.com/ansible/latest/dev_guide/developing_inventory.html?highlight=_meta#tuning-the-external-inventory-script)
+
+It should look like this:
+
+    {
+        # results of inventory script as above go here
+        # ...
+
+        "_meta": {
+            "hostvars": {
+                "host001": {
+                    "var001" : "value"
+                },
+                "host002": {
+                    "var002": "value"
+                }
+            }
+        }
+    }
+
+> If you intend to replace an existing static inventory file with an inventory script, it must return a JSON object which contains an ‘all’ group that includes every host in the inventory as a member and every group in the inventory as a child
+
+    {
+        "_meta": {
+            "hostvars": {}
+        },
+        "all": {
+            "children": [
+                "ungrouped"
+            ]
+        },
+        "ungrouped": {
+            "children": [
+            ]
+        }
+    }
+
+Other variables we might want are:
+* guest os / distribution
+* name
+* networks []
 
 ## Inventory scripts
 
@@ -94,3 +153,5 @@ Inventory plugins normally only execute at the start of a run, before playbooks/
 
 * [Intro to dynamic inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html)
 * [Ansible adhoc inventories](https://gist.github.com/alces/f7e3de25d98a19550a4e4f97cabc2cf4)
+* [Writing Custom Ansible Dynamic Inventory Scipts](https://adamj.eu/tech/2016/12/04/writing-a-custom-ansible-dynamic-inventory-script/)
+
