@@ -46,3 +46,13 @@ Someone has to create the initial environment, there is a learning curve.
 You need the `docker toolbox`
 
 It uses `virtualbox`
+
+## Getting into a docker container
+
+Getting in and running commands on the container means getting into it's shell with:
+
+    docker exec -it <container_id> /bin/bash
+
+or 
+
+    docker exec -it <container_id> sh
