@@ -23,7 +23,7 @@ Books: Design Patterns - Elements of Reusable object-oriented software
 
 > Favour object composition over class inheritance (at the beginning)
 
-Class inheritance - white-box resuse
+Class inheritance - white-box reuse
 Object composition - black-box reuse
 
 ### Inheritance Advantages
@@ -33,7 +33,7 @@ Object composition - black-box reuse
 
 ### Inheritance Disadvantages
 
-1. Relationship between a base class and derived class is staticlly fixed
+1. Relationship between a base class and derived class is statically fixed
 2. Inheritance supports weak encapsulation and fragile structures
 3. A derived class inherits everything, even things it doesn't need or want
 4. Changes in the base class interface breaks all derived classes
