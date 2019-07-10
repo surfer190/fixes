@@ -15,4 +15,3 @@ Patch the object with the method name. In this case `VeeamClient` is my class an
 ## Source
 
 * [Mock a single instance method](https://stackoverflow.com/questions/8469680/using-mock-patch-to-mock-an-instance-method)
-

@@ -77,7 +77,7 @@ It allows communication via a common communication bus of point to point connect
 
 An ESB promotes agility and flexibility
 
-AN ESB routes essages between services, monitor and control routing, control versioning, data transformation and security
+An ESB routes messages between services, monitor and control routing, control versioning, data transformation and security
 
 ### What is an API gateway?
 
