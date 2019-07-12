@@ -81,7 +81,7 @@ re.search(r'\(?\d{3}\)?')
 
 Email address example:
 
-`print(re.findall(r'[-\w\d+.]+@[-\w\d.]*, data))
+    print(re.findall(r'[-\w\d+.]+@[-\w\d.]*, data))
 
 ## Flags
 
@@ -144,3 +144,29 @@ Allows returning an iterable of Matches
         for match in line.finditer(data):
             print('{first} {last} <{email}>'.format(**match.groupdict()))
 
+## String Interpolation into a Regex
+
+You can format a regular expression string the same way you do any other string interpolation:
+
+    pattern = r'^set groups {group} interfaces (?P<line>.[^\n]+)$'.format(
+        group=group
+    )
+    lines_regex = re.compile(pattern, re.MULTILINE)
+    matches = lines_regex.findall(file_contents)
+
+## Findall with groupdicts
+
+You can't get `groupdicts` if you use `findall()`.
+
+However there is a way to still get the `groupdicts` using a `finditer`:
+
+    [m.groupdict() for m in regex.finditer(search_string)]
+
+## Get anything that is not a newline
+
+    re.findall(r'^(?P<line>.[^\n]+)$, words, re.MULTILINE)
+
+### Sources
+
+* [Stackoverflow: Findall with groupdicts](https://stackoverflow.com/questions/255332/python-re-findall-with-groupdicts)
+* [Stackoverflow: Match anything except newline](https://stackoverflow.com/questions/23235200/how-to-matches-anything-except-space-and-new-line)
