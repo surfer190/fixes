@@ -1830,6 +1830,7 @@ eg: We are specifically catching the `my_module.Error`
         logging.error('Unexpected error: %s', e)
 
 These root exceptions:
+
 * Let callers know there is a problem with the usage of the API
 * If an exception is not caught properly it will propagate all the way up to an `except` - bringing attention to the consumer (Catching the Python `Exception` base class can help you find bugs)
 * They help find bugs in your API code - so other exeptions (non-root) are one's you did not intend to raise
@@ -1838,7 +1839,7 @@ These root exceptions:
     class NegativeDensityError(InvalidDensityError):
         """A provided density value was negative.
 
-The calling code will still work as it catches the parent `INvalidDensityError`
+The calling code will still work as it catches the parent `InvalidDensityError`
 
 
 ### Know How to Break Circular Dependencies
