@@ -93,6 +93,22 @@ It is better to print a more user-friendly version of the error
         sys.stderr.write('ERROR: {}'.format(str(err)))
         return 1
 
+## Catching multiple exceptions
+
+You can catch multiple exception types with:
+
+    except (RuntimeError, TypeError, NameError):
+        pass
+
+> If your code only deliberately raises exceptions that you define within your module’s hierarchy, then all other types of exceptions raised by your module must be the ones that you didn’t intend to raise. These are bugs in your API’s code.
+
+## Having a root exception for your package
+
+> The string printed as the exception type is the name of the built-in exception that occurred. This is true for all built-in exceptions, but need not be true for user-defined exceptions (although it is a useful convention)
+
+From the [Python docs on Exceptions](https://docs.python.org/3/tutorial/errors.html#exceptions)
+
+
 ## Sources
 
 * [Cleaner python with exceptions](https://jeffknupp.com/blog/2013/02/06/write-cleaner-python-use-exceptions/)
