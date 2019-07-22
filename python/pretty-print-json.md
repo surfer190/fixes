@@ -1,5 +1,7 @@
 # How to Pretty Print JSON
 
+**Update: This might be bad advice, when you `json.dump()` you print actually json (ie. with the javascript true, false and null values)**
+
 Say you have:
 
     MY_JSON = {'Hello': [{'World': 'Coruscant'}, {'World': 'Tatooine', 'People': 'Humans'}]}

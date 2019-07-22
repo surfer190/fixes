@@ -970,6 +970,32 @@ for some reason this does not work:
 
 Excellent post on [troubleshooting a rule with stackstorm](https://stackstorm.com/2016/09/20/troubleshoot_a_rule/)
 
+## Your don't need a pack for everything
+
+> why can't you just install the Packer CLI on your StackStorm box? FYI that's exactly how we use it. Same with Terraform, we install the Terraform CLI on the StackStorm host - NMaludy (stackstorm slack 2019)
+
+If there is a command line tool you want to use, you can use it simply with using a `core.local` action.
+
+If the tool is sitting on another server, then you could also use `core.remote`
+
+## Installing packs from private repos
+
+Sometimes you will have your own private repo to deploy on a stackstorm instance.
+
+You can view this link on [installing packs from private repos](https://docs.stackstorm.com/packs.html?highlight=git%20ssh#installing-packs-from-private-repositories)
+
+Which comes down to doing:
+
+    st2 pack install https://<user>:<token>@github.com/username/repo.git
+
+## st2 variable
+
+Apparently you can use the `st2` variable in a workflow: `ctx(st2)`
+    
+    vars:
+    - username: {{ ctx(st2).api_user }}
+
+
 
 ### Sources
 
