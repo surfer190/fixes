@@ -82,7 +82,6 @@ Get more detail about the tasks run in a workflow, eg:
     | 5cdd39d752364c04a73de24c | succeeded (1s elapsed) | task1 | core.local | Thu, 16 May 2019 10:22:15 UTC |
     +--------------------------+------------------------+-------+------------+-------------------------------+
 
-
 ## The Workflow Model
 
 > A task can reference any registered StackStorm action directly.
@@ -446,13 +445,6 @@ Rerun a workflow:
 
     st2 execution re-run <execution-id>
 
+## Sources
 
-
-
-
-
-
-
-
-
-
+* [Stackstorm Docs on Orquesta](https://docs.stackstorm.com/orquesta/)
