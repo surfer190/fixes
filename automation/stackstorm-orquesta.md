@@ -1,4 +1,4 @@
-# Orquesta
+# All about Orquesta Workflows: How to create them, inputs, outputs and control
 
 ## Creating a Stackstorm Orquesta Workflow
 
