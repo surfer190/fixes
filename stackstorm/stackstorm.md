@@ -85,7 +85,7 @@ Get action metadata:
 
     st2 action get core.http
 
-Get details and paramters for an action:
+Get details and parameters for an action:
 
     st2 run core.http --help
 

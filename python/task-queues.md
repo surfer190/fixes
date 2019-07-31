@@ -158,7 +158,7 @@ Then you might run into an error:
 
 Then move on to use [Using celery with django](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html)
 
-![celery rabbitmq architecture](/images/Celery-RabbitMQ.png)
+![celery rabbitmq architecture](http://number1.co.za/wp-content/uploads/2019/05/Celery-RabbitMQ.png)
 
 ## Source
 

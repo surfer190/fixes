@@ -1,15 +1,21 @@
 # LXD
 
+> The lightervisor
+
 A System container manager, offering a similar user experience to virtual machines but using linux containers instead.
 
 * Image based with pre-made images for a wide number of linux distributions
 * Built around a REST API
+* Designed to run full machine containers - as opposed to docker and rocket that run process based containers
+* High density - number of containers you can run
+* Feels the same as a full machine
+* Security focus - all processes not run as root
 
 ## Commands
 
 View loaded images
 
-    lxc iamge list
+    lxc image list
 
 There are 3 default image servers:
 
@@ -24,6 +30,10 @@ List stable ubuntu images
 Launch an image
 
     lxc launch ubuntu:18.04 first
+
+View current server configuration
+
+    lxc config show
 
 The new image will be visible in the list now
 
@@ -144,8 +154,60 @@ Move it back to our local lxd
 
     lxc move tryit:fifth sixth
 
+## NC-LXD
+
+Drop in replacement for libVirt KVM driver - to manage LXD containers in an Openstack cloud.
+
+## LXD vs KVM
+
+In KVM the virtual machine has all the same things as bare metal - bios, bootloader, linux kernel, host OS then can you only run your workload.
+In LXD there is none of that, containers run as processes directly on the host - no bios, no device drivers.
+
+### Density
+
+Intel server 4 core, 16 Gb and setup ubuntu on it.
+Launch KVM instances with an ubuntu image until we run out of hypervisor resources and do the same thing with LXD.
+
+The VM's were 512mb.
+
+KVM launched 36.
+LXD launched over 600, of the same image. A much lower memory footprint.
+
+> LXD is frugal with memory
+
+### Startup Time
+
+How fast the instances are created
+
+LXD - 1.5 seconds
+KVM - 25 seconds
+
+* 37 KVM instances launched in 943 seconds
+* 536 LXD guests in 828 seconds
+
+### Network Latency
+
+KVM packet through networking layer into host, to bridge and wake up other host etc.
+With LXD with the same test, there is not as much to go through so apps communicate 50% faster
+
+Even local latency with 2 threads needing to be scheduled and context switched between, LXD was 50% faster.
+
+### OS Limitations
+
+You can run a windows or mac VM on a KVM instance. Only something that runs on a linux container will work on LXD.
+You could run centOS but you will get the ubuntu kernel.
+
+### Limitations
+
+On LXD cannot `mount` within a guest instances, you have to ask `lxd` to mount it.
+
+
+
+Fits with OpenStack to provide the networking and storage components
+
 
 ## Source
 
 * [LXD Tutorial](https://linuxcontainers.org/lxd/try-it/?id=308fdf4e-1c85-4918-9064-e119cc3b62c5#first-container)
-
+* [LXD vs KVM](https://www.youtube.com/watch?v=90oxad2r8_E)
+* [LXD Readthedocs](https://lxd.readthedocs.io/en/latest/)
