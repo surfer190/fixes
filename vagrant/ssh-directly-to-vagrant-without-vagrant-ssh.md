@@ -24,7 +24,7 @@ Now we know the user and the private key used to connect
     UserKnownHostsFile /dev/null
     StrictHostKeyChecking no
     PasswordAuthentication no
-    IdentityFile /Users/stephen/vox/lxd-terraform/.vagrant/machines/default/virtualbox/private_key
+    IdentityFile /Users/stephen/lxd-terraform/.vagrant/machines/default/virtualbox/private_key
     IdentitiesOnly yes
     LogLevel FATAL
 
@@ -35,6 +35,8 @@ So we can create the following ssh connection:
     ssh vagrant@192.168.33.10 -i .vagrant/machines/default/virtualbox/private_key
 
 This will hopefully connect you to your host
+
+> This won't work if you are tunneling via another connection as you box is not connected to the internet
 
 ## Sources
 

@@ -10,7 +10,7 @@ When running a workflow I get:
 [test@st2 workflows]$ st2 run example.my_check
 .
 id: 5ce24f5152364c6d5cb1d957
-action.ref: vox.vdc_check
+action.ref: example.my_check
 parameters: None
 status: failed
 start_timestamp: Mon, 20 May 2019 06:55:13 UTC

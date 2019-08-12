@@ -1,4 +1,7 @@
-# LXD
+# LXD and LXC
+
+LXC - Linux Containers, a userspace interface using the host's kernel
+LXD - An extension to LXC adding a Rest API - an alternative to LXC's tools
 
 > The lightervisor
 
@@ -16,6 +19,8 @@ A System container manager, offering a similar user experience to virtual machin
 View loaded images
 
     lxc image list
+
+You can also view [available images on their website](https://us.images.linuxcontainers.org/)
 
 There are 3 default image servers:
 
@@ -201,13 +206,25 @@ You could run centOS but you will get the ubuntu kernel.
 
 On LXD cannot `mount` within a guest instances, you have to ask `lxd` to mount it.
 
-
-
 Fits with OpenStack to provide the networking and storage components
 
+### Security
+
+If you are not in a privileged container you won't be able to create another `lxc` instance inside that container.
+
+    lxc config set myvm2 security.privileged true
+    lxc config set myvm2 security.nesting true
+
+or with profile:
+
+    lxc profile edit customer
+
+* security.nesting - 
+* security.privileged - 
 
 ## Source
 
 * [LXD Tutorial](https://linuxcontainers.org/lxd/try-it/?id=308fdf4e-1c85-4918-9064-e119cc3b62c5#first-container)
 * [LXD vs KVM](https://www.youtube.com/watch?v=90oxad2r8_E)
 * [LXD Readthedocs](https://lxd.readthedocs.io/en/latest/)
+* [LXD Five Easy Pieces](https://ubuntu.com/blog/lxd-5-easy-pieces)

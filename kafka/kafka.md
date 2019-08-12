@@ -82,11 +82,6 @@ Kafka is a good storage system
 * Event Sourcing
 * Commit Log
 
-
-
-
-
-
 Usually queues allow for some transaction, to ensure a desired action was executed before the message gets removed.
 Once a message has been processed it is removed from the queue.
 
@@ -97,4 +92,10 @@ This means messages in the queue are actually commands, suited towards imperitiv
 Kafka, on the other hand, publish messages to topics and they get persisted.
 They don't get removed when consumers receive them.
 Allowing you to replay messages and many consumers to process logic.
+
+## Kafka Commands
+
+View (consume) messages from the beginning
+
+    ./bin/kafka-console-consumer --topic veeam --from-beginning --bootstrap-server localhost:9092
 

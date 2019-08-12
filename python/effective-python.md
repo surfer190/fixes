@@ -1836,8 +1836,9 @@ These root exceptions:
 * They help find bugs in your API code - so other exeptions (non-root) are one's you did not intend to raise
 * Futureproof's API when expanding
 
-    class NegativeDensityError(InvalidDensityError):
-        """A provided density value was negative.
+        class NegativeDensityError(InvalidDensityError):
+            """A provided density value was negative."""
+            ...
 
 The calling code will still work as it catches the parent `InvalidDensityError`
 
