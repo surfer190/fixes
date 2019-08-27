@@ -58,6 +58,30 @@ should return something like:
     Cluster ID      bc72be78-a52b-715f-f875-4da507be1018
     HA Enabled      false
 
+### Note on Existing Server
+
+Sometimes an existing server has already been initialised. In this case trying to start the server gives:
+
+    $ vault server -dev
+    Error initializing listener of type tcp: listen tcp 127.0.0.1:8200: bind: address already in use
+
+In that case double check vault is listening:
+
+    $ lsof -i :8200
+    COMMAND   PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+    vault   13459 stephen    5u  IPv4 0xe0d88d9fe57581cf      0t0  TCP localhost:trivnet1 (LISTEN)
+
+But vault status might fail:
+
+    $ vault status
+    Error checking seal status: Get https://127.0.0.1:8200/v1/sys/seal-status: http: server gave HTTP response to HTTPS client
+
+This is because your environment variables are not set, you need to set `VAULT_ADDR`:
+
+    export VAULT_ADDR='http://127.0.0.1:8200'
+
+Now Everything should work...anyway moving on...
+
 ## Our First Secret
 
 > One of the core features of Vault is the ability to read and write arbitrary secrets securely
@@ -514,3 +538,169 @@ In github mapping is done per team:
 
 ## Deploying Vault
 
+They want you to use `consul` as a storage backend...yet another hashicorp thing to learn.
+
+Install consul and start it with:
+
+    consul agent -dev
+
+Then create the server config file:
+
+    storage "consul" {
+      address = "127.0.0.1:8500"
+      path    = "vault/"
+    }
+
+    listener "tcp" {
+      address     = "127.0.0.1:8200"
+      tls_disable = 1
+    }
+
+Start the server:
+
+    vault server -config=config.hcl
+
+The vault server will start:
+
+    ==> Vault server configuration:
+
+                Api Address: http://127.0.0.1:8200
+                        Cgo: disabled
+            Cluster Address: https://127.0.0.1:8201
+                Listener 1: tcp (addr: "127.0.0.1:8200", cluster address: "127.0.0.1:8201", max_request_duration: "1m30s", max_request_size: "33554432", tls: "disabled")
+                Log Level: info
+                    Mlock: supported: false, enabled: false
+                    Storage: consul (HA available)
+                    Version: Vault v1.1.3
+                Version Sha: 9bc820f700f83a7c4bcab54c5323735a581b34eb
+
+    ==> Vault server started! Log data will stream in below
+
+The vault needs to be initialised once per cluster
+
+    vault operator init
+
+which gives:
+
+    $ vault operator init
+    Unseal Key 1: LpW6ZhghyvqCkTaX6GwUsjsnP216K7xcePNSGC+LIHjZ
+    Unseal Key 2: 0BcUxMP7hxRdpG69XNpjF622RuQYdCRlkTJVucPAwJ66
+    Unseal Key 3: M/H2/HpKavzVOSYucG99ua/qSZXAVnCdM2ECzqQE8iXc
+    Unseal Key 4: ArwW1NgYpiv3ppD0jDsGsDnv8sL6prNgVHE3A9QDbXIa
+    Unseal Key 5: 6+TT1ZlPf/8pYPBm3ThYVHNjmGfVBtgi7XkN9sGJiumf
+
+    Initial Root Token: s.yEhk9w1zGQRaOK0z9E1l9HzK
+
+> This is the only time the unseal keys should be this close together
+
+### Seal / Unseal
+
+> Every initialized Vault server starts in the sealed state
+
+Vault can access the storage but does not know how to decrypt the data.
+The process of teaching vault how to decrypt the data is called `unsealing`.
+
+Unsealing has to happen every time vault starts.
+
+It can be done via API or via Command line.
+
+> To unseal the Vault, you must have the threshold number of unseal keys
+
+Unseal the vault:
+
+    vault operator unseal
+
+It will ask for an unseal key:
+
+    Unseal Key (will be hidden): 
+    Key                Value
+    ---                -----
+    Seal Type          shamir
+    Initialized        true
+    Sealed             true
+    Total Shares       5
+    Threshold          3
+    Unseal Progress    1/3
+    Unseal Nonce       b8703efc-04d8-9efa-a178-10fa4f3140f2
+    Version            1.1.3
+    HA Enabled         true
+
+It is still sealed but progress has been made.
+
+> Multiple people with multiple keys are required to unseal the Vault,so it is good that the unseal process is stateful
+
+> A single malicious operator does not have enough keys to be malicious
+
+Run the unseal command 2 more times
+
+It then becomes unsealed:
+
+    Unseal Key (will be hidden): 
+    Key                    Value
+    ---                    -----
+    Seal Type              shamir
+    Initialized            true
+    Sealed                 false
+    Total Shares           5
+    Threshold              3
+    Version                1.1.3
+    Cluster Name           vault-cluster-8e4c5106
+    Cluster ID             be380232-0d5a-571c-b6bd-07b715feb1a9
+    HA Enabled             true
+    HA Cluster             n/a
+    HA Mode                standby
+    Active Node Address    <none>
+
+Authenticate with the initial root token:
+
+    vault login s.yEhk9w1zGQRaOK0z9E1l9HzK
+
+As a root user you can reseal the vault with:
+
+    vault operator seal
+
+> A single operator is allowed to do this. This lets a single operator lock down the Vault in an emergency without consulting other operators.
+
+> When the Vault is sealed again, it clears all of its state (including the encryption key) from memory. The Vault is secure and locked down from access.
+
+## Using HTTP Apis
+
+Validate the initialisation status:
+
+    $ http :8200/v1/sys/init
+    HTTP/1.1 200 OK
+    Cache-Control: no-store
+    Content-Length: 21
+    Content-Type: application/json
+    Date: Mon, 26 Aug 2019 08:06:21 GMT
+
+    {
+        "initialized": true
+    }
+
+...More stuff in the [docs on the HTTP Api](https://learn.hashicorp.com/vault/getting-started/apis)
+
+## Using the Web UI
+
+On the dev server you cna access the web ui at:
+
+    http://127.0.0.1:8200/ui
+
+You can use the intial dev token to sign in
+
+On non-dev servers you must explicitly enable the `ui` with:
+
+    ui = true
+
+in the `config.hcl`
+
+It runs on the same port as the vault listener
+
+
+
+
+
+
+### Source
+
+* [Hashicorp Vault Learn](https://learn.hashicorp.com/vault#getting-started)
