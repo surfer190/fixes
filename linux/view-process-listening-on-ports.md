@@ -17,6 +17,10 @@ Check applications and what ports they are listening on
 
 ## LSOF
 
+Install:
+
+    sudo apt install lsof
+
 Use `lsof`:
 
 For example check the port `8200`:
