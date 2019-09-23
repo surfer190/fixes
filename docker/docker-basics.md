@@ -22,7 +22,7 @@ Docker (In between): Offers most isolation benefits of traditional virtual machi
 
 Traditional VM: Very portable, lots of overhead
 
-Docker has no guest OD, the docker engine leverages host OS to provide virtual environment.
+Docker has no guest OS, the docker engine leverages the host OS to provide virtual environment.
 Binaries and libraries can be shared across applications.
 
 ## Running Containers
@@ -30,7 +30,7 @@ Binaries and libraries can be shared across applications.
 Rule of thumb: 1 docker container for each process in your stack
 
 - Single image for load balancer
-- Single images for applications
+- Single image for applications
 - Single image for database
 
 ## Benefits of Docker

@@ -12,11 +12,15 @@ Run an image:
 
     docker run <image_name>:<tag>
 
-If you want to run it in the background use `id`
+If you want to run it in the background use `-d`
 
     docker run elastalert:latest -d
 
 If you want to publish a containers ports to the host use `-p`:
+
+    docker run <image>:<version> -d -p <port on host>:<port on container> -p <port on host>:<port on container> --net="host"
+
+Eg.
 
     docker run elastalert:latest -d -p 3030:3030 -p 3333:3333 --net="host"
     
@@ -48,7 +52,6 @@ Ensure a container is removed when it exits or stops, use `--rm`:
 
     docker run --rm -d --network host --name my_nginx nginx
 
-
 # Key Concepts
 
 You got Images and Containers, and you need to know what state you are at:
@@ -56,8 +59,7 @@ You got Images and Containers, and you need to know what state you are at:
 * Does the docker **container** exist?
 * Is the docker container **running**?
 
-Then you will snow how your command should look.
-if we are talking containers your command will look like:
+If we are talking containers your command will look like:
 
     docker container <command>
 
@@ -106,7 +108,7 @@ Start an existing container
 
     docker container start my_container
 
-> A container can be reffered to by its id or name
+> A container can be refered to by its id or name
 
 Run combines both create and start:
 
@@ -176,11 +178,16 @@ Remove an image
 
 ## Admin
 
+Get docker system info
+
+    docker system info
+
 Delete unused containers, unused networks and dangling images
 
     docker system prune
 
+Show docker disk usage
 
-
+    docker system df
 
 
