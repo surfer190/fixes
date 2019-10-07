@@ -10,7 +10,7 @@ Then copy the `oc` binary to your path:
 
 Login with:
 
-    oc login https://openshift.voxcore.co.za:8443 --token=xxYY
+    oc login https://openshift.example.co.za:8443 --token=xxYY
 
 Create a new project:
 
