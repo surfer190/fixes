@@ -37,6 +37,10 @@ Choose from available sessions
 
     C-b s
 
+Close all tmux sessions
+
+    tmux kill-server
+
 ## Windows
 
 Tmux has tabs, but it calls them windows.
@@ -144,8 +148,15 @@ One pane will view `/var/log/syslog` the other will write a message to it.
 
 You should see the message pop up on the other pane
 
+## A note on Restarts
+
+The tmux server persists on the server, so when you ssh in again the session will be available.
+These sessions do not persist over system restarts.
+
 ### Source
 
 * [A Tmux Crash Course](https://thoughtbot.com/blog/a-tmux-crash-course)
 * [Tmux Cheatsheet](https://gist.github.com/andreyvit/2921703)
 * [Write to Syslog](https://www.cyberciti.biz/tips/howto-linux-unix-write-to-syslog.html)
+* [Toa of Tmux](https://leanpub.com/the-tao-of-tmux/read)
+* [Kill all tmux sessions](https://askubuntu.com/questions/868186/how-to-kill-all-tmux-sessions-or-at-least-multiple-sessions-from-the-cli)

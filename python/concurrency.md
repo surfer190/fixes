@@ -13,6 +13,8 @@ With `asyncio` the task must announce when it is ready to be switched out - call
 
 With `multiprocessing` python creates new processes - different processes can run on different cores.
 
+> Side note: Threads of the same process run in a shared memory environment, while processes run in a seperate memory space and have at least 1 thread.
+
 ## When is concurrency useful
 
 * I/O-bound problems - cause your program to slow down because it frequently must wait for input/output (I/O) from some external resource (file system and network connections). Speeding them up involves overlapping the times spent waiting for these devices

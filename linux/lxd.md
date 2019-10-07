@@ -14,6 +14,8 @@ A System container manager, offering a similar user experience to virtual machin
 * Feels the same as a full machine
 * Security focus - all processes not run as root
 
+> The LXD daemon only works on Linux but the client tool (lxc) is available on most platforms
+
 ## Commands
 
 View loaded images
