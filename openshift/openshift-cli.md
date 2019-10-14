@@ -23,4 +23,3 @@ Create a new project:
     oc new-app --name=ghost ALLOW_EMPTY_PASSWORD=yes --docker-image=bitnami/ghost 
 
     oc expose svc/ghost
-
