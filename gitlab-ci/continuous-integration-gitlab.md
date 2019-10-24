@@ -1,5 +1,9 @@
 # Continuous Integration with Gitlab
 
+It is important to understand that this is understood:
+
+> GitLab has built-in continuous integration
+
 * Continuous Integration - Pushing small chunks of code and on every push, run a pipeline of scripts to build, test, and validate the code changes before merging them into the main branch
 * Continuous Delivery/Deployment - Deploying your application to production at every push
 
