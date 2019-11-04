@@ -13,6 +13,7 @@ Treats a cluster of machines as a single deployment and manages containers
 * Marathon + DC/OS - uses Apache Mesos (Can manage a kubernetes cluster)
 * Openshift - uses Kubernetes
 * Rancher - uses Kubernetes
+* Kubernetes "vanilla" - installed from the official repos is also a platform
 
 > Why are people doing Openshift OKD vs Kubernetes. Kubernetes is an upstream to OKD.
 
@@ -30,3 +31,4 @@ There are alot of articles and information overlaod but what you really want is 
 
 * [Container Orchestration Explained](https://blog.newrelic.com/engineering/container-orchestration-explained/)
 * [Awesome Linux Containers](https://github.com/Friz-zy/awesome-linux-containers#readme)
+* [A Comparison of Kubernetes Distributions](https://dzone.com/articles/kubernetes-distributions-how-do-i-choose-one)

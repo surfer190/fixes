@@ -62,6 +62,32 @@ Run a single command against another project
 
     oc get templates --namespace openshift
 
+### Registry
+
+Get registry info
+
+    oc registry info
+
+### Scaling
+
+Scale
+
+    oc scale --replicas=3 dc/<my-project>
+
+### Expose and get route info
+
+Get the route
+
+    oc get svc
+
+Expose the route
+
+    oc expose svc/<name>
+
+Get the route info
+
+    oc get routes/<name>
+
 ### Security
 
 SCC - Security Context Constraints
@@ -184,10 +210,22 @@ Get options
 
 > Most commands will accept `--dry-run`
 
+## SSH Into a POD
 
+Get the pods
 
+    oc get pods
 
+RSH into a pod
 
+    oc rsh <pod-name>
+
+Check the user it is running as:
+
+    id
+    uid=1020810000(1020810000) gid=0(root) groups=1020810000
+
+## Create a new project
 
 Create a new project:
 
@@ -200,3 +238,4 @@ Create a new project:
 ## Sources
 
 * [Basic CLI Operations](https://docs.okd.io/latest/cli_reference/basic_cli_operations.html#new-project)
+* [OC Commandline for Newbies](https://blog.openshift.com/oc-command-newbies/)

@@ -18,6 +18,13 @@ The open source project got a alot of popularity.
 A monolithic web app would have a username and password, it would verify credential against a table. A security context is then associated with the HTTP session. The session would then be used for further HTTP requests.
 If you wanted to log the person out you need to invlaidate the HTTP session.
 
+## Main Features
+
+* Authentication for the web and applications
+* SSO - connect many applications to keycloak server - automatically logged in
+* Single sign-out
+* Import and Export from a JSON file
+
 ## The Problem
 
 * Have many different applications
@@ -75,6 +82,22 @@ Also vulnerabilities
 
 > You don't want to build this yourself - it is too complex and is very risky
 
+### Delegate your Security
+
+* Stay DRY (Don't repeat yourself)
+* You are not a security expert
+
+[Researchers asked 43 developers to code a user registration for their web app - 26 devs chose to leave the password as plain text](https://www.reddit.com/r/programming/comments/ayoo0q/researchers_asked_43_freelance_developers_to_code/)
+
+You need to create a login screen, you need to manage users - if you do it yourself there are a lot of thing to do:
+* New login form
+* let user manage profile
+* Backend way to check credentials
+* Store passwords securely
+* Have to manage authorization flows
+
+and you have to do that all over again with a different project - so can't even reuse code for a different programming language
+
 ### The Solutions
 
 Use an IAM (Identity and Access Management)
@@ -99,7 +122,7 @@ Services can include this token in any request it makes - so services can aggreg
 
 Keycloak is based on:
 
-* OpenID Connect
+* OpenID Connect (Heavy)
 * SAML 2.0
 
 #### OpenID Connect
@@ -219,16 +242,7 @@ You set up an identity provider on another realm or another server - when you cl
 * Can remove fields if your application doesn't need it
 * Can map attributes from LDAP
 
-
-
-
-
-
-
-
-
-
-## Questions and Answers
+# Questions and Answers
 
 **Question**: Can I use keycloak to offer sign in using google?
 
@@ -291,16 +305,132 @@ There is not enough money in it to get value back.
 
 Yes. We decide how you store your password. Secure hashing is done by keycloak.
 
-
-
-
-
-
 ## Architecture
 
 You have the keycloak server then for each application you secure you have to install a small library - called an adapter to speak to the leycloak server.
 
 Common use case is using it to redirect to the keycloak login screen, you then login and get a token and redirect back to the app. You can then use this token for any service secured with keycloak.
+
+# Tutorial
+
+## Create a Client
+
+A client is created to allow that application to authenticate with keycloak.
+
+You can't log in, if there are no users in your realm
+
+You can add a new user as an admin, but we can also let users self register to the application.
+
+You can allow user registrations in the realm settings
+
+We want them to verify their email
+
+You can create additional attributes on the user but it needs to be mapped to the token.
+We do that by creating a client scope.
+A client scope lets you create elements to your token shared between multiple clients.
+
+Create the scope then click `Mappers` at the top.
+Create a protocol mapper that lets you map things into the token.
+
+Can choose to add it just to the access token or just to the id token
+
+You can then go to the `Client` and choose the `Client scopes` available to that client.
+
+> You should limit the number of client scopes in a token
+
+Tokens might become very large and token contains more claims than application can see - compromised client.
+
+The application can take the avatar url out of the token and display it on the page
+
+You can require consent from the user to access certain scopes
+
+Roles: simple and composite roles
+
+A default role added to all registered users you can then add other roles to this composite role for all users.
+
+Can map the role to the user
+
+On the client we don't want `Full scoped allowed` - meaning client has access to all the roles a user has.
+No knowledge of roles in the token.
+Frontend service will invoke backend services to check.
+
+Groups - allows to add attributes and roles to users. Can also use groups directly.
+
+Can assign roles - so all users part of a group get a specific role.
+
+Also all users part of that group have specific attributes.
+Ensure the user is part of that group.
+Keycloak is aware but it must also be mapped into the token.
+
+Add a group membership protocol mapper - to map group memberships to the token.
+
+## How to Get Users in from another source
+
+Use an `ldap` or `kerberos` server.
+
+Edit mode: `WRITABLE` edit the users and have it written back to the LDAP server.
+Could also choose `READ_ONLY`.
+`UNSYNCED` - keycloak keeps the changes but does not write them back to LDAP.
+
+Vendor: `other` - prefills alot of settings
+
+Set and Test the connection url
+Tell keycloak where in the diretory to find users
+Tell keycloak how to authenticate - Test that authentication works
+Save it.
+
+You can have users loaded on demand or you can synchronize it all in one go.
+You can also synchronize only the changed users.
+
+Users will now be in the system and the federation link will point to LDAP.
+
+## Identity Brokering
+
+Keycloak allows authentication via an external SAML v2.0 or OpenID Connect provider (as well as social networks)
+
+There is now an option to log in via one of those options
+
+Identity Provider Mappers lets you map an attribute from github into the user on keycloak
+
+## Login Screen
+
+It is styled to match the keycloak styling, you want to change it to match your corporate branding.
+Go to `Realm Settings -> Theme`
+
+## Token Signature Algorithm
+
+You can change the client signature algorithm on a per client basis.
+
+## Session
+
+Each token issued by keycloak are associated with an SSO session.
+You can logout a logged in user.
+
+## Events
+
+Auditing events.
+Can create your custom event listeners.
+
+# Keycloak and webservice security
+
+Logging in to keycloak server you get 3 tokens:
+
+* ID Token
+* Access Token - lasts 5 minutes
+* Refresh Token - used to obtain a fresh access token
+
+User logs into application and now has JwT access token.
+JWT - token contains payload
+With that token he can call any token and service will verify the token
+
+Keycloak has a private key that it uses to sign your token
+Your service has access to the public. With the public key it can verify the token.
+
+It can verify offline or in a less trusted environment you can always ask keycloak to verify the token. Many requests to keycloak verification.
+
+Microservices - when your service needs to call another service 
+
+
 
 ## Sources
 

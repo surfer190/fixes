@@ -570,7 +570,7 @@ The builder will take your application code and build it (if necessary) and inte
 
 To deploy from source:
 
-    oc new-app --name blog python:3.5~https://github.com/openshift-katacoda/blog-django-py
+    oc new-app --name blog python:3.6~https://github.com/openshift-katacoda/blog-django-py
     oc new-app --name <name> <s2i builder name>~<git repo url>
 
 An additional resource will be created a `buildconfig`
@@ -588,6 +588,96 @@ get the route of the application
     oc get routes
 
 ### Creating a seperate build
+
+The source build strategy does 2 things:
+
+* Run the build using S2I, source to image
+* Deploy the image and start the web app
+
+You can do the build step seperately with:
+
+    oc new-build --name <name> python:3.6~https://github.com/openshift-katacoda/blog-django-py
+
+The output is similar but the `deployment-config` and `service` resource objects are not created
+
+When the build is complete the image is saved as an `imagestream <name>`
+
+You can then deploy the app with `oc new-app <name>`
+
+### Trigger a New Build
+
+If the source code files change, you can trigger a new build by getting the build config and using `oc start-build`
+
+    oc get bc
+    oc start-build bc/<name>
+
+### Building from a local Store
+
+Once off builds can bypass the repo and use source from a local system - bypassing the repo and using source files from the local source directory
+
+    oc start-build bc/blog --from-dir=.
+
+To revert to using the hosted code repo:
+
+    oc start-build bc/blog
+
+> Useful to develop and not have to push them to a repository
+
+### Binary Input Builds
+
+All builds triggered manually and source files supplied - can iterate without needing to to commit and push.
+
+You supply the `--binary` option
+
+    oc new-build --name blog --binary --strategy=source --image-stream python:3.6
+
+Initial and subsequent builds are triggered with:
+
+    oc start-build blog --from-dir=.
+
+The build config is not linked to a source code repo, so `oc start-build` must be manually run each time.
+
+### Testing the Container Image
+
+If you want to run unit tests on the application source code to verify the image before pushing to the internal image registry - you can use a `post-commit` hook on the build.
+
+> The test is run by launching a new container with the recently built image and running the post-commit hook command inside the container. If the command run by the build hook returns a nonzero exit code, the resulting image will not be pushed to the registry and the build will be marked as having failed.
+
+To specify the command to run:
+
+    oc set build-hook bc/blog --post-commit --script "powershift image verify"
+
+The `--script` option specifies the command without changing the image `entrypoint`.
+The `--command` options overwrites the image `entrypoint`.
+
+To remove a build hook use `--remove`
+
+Avoid contacting other services as the container will be run in the same project as your deployed application. This is to avoid accidentally running tests against production services.
+
+> If a database is required for tests - run a local SQlite instance.
+
+### Build and Runtime Configuration
+
+Environment variables can be set with `--env`
+
+    oc new-app --env
+
+If you need to set environment variables for the build step and deploying from source code, use `--build-env`:
+
+    oc new-app --name blog --build-env UPGRADE_PIP_TO_LATEST=1 python:3.5~https://github.com/openshift-katacoda/blog-django-py
+
+with the 2 step approach: build then deploy.
+
+    oc new-build --name blog --env UPGRADE_PIP_TO_LATEST=1 python:3.5~https://github.com/openshift-katacoda/blog-django-py
+
+if environment variables need to be added after the build config has been created:
+
+    oc set env bc/blog UPGRADE_PIP_TO_LATEST=1
+
+## 7. Building an Image from a Dockerfile
+
+
+
 
 
 
