@@ -430,6 +430,43 @@ It can verify offline or in a less trusted environment you can always ask keyclo
 
 Microservices - when your service needs to call another service 
 
+## Use Cases
+
+### Give the user an image
+
+On keycloak add a new attribute to the `user`:
+
+    avatar_url=https://my-image.org
+
+Now keycloak knows the `avatar_url` but the client does not. You can let the client know with a client scope.
+
+1. Create a new client scope
+
+2. Create a mapper to map keycloak attributes into the token
+
+`Mapper Type` is `User Attribute`
+
+It also lets you decide where to put the token - in access or id.
+
+3. Give the client scope access to the new mapper
+
+> You can also add attribute to groups
+
+### Only Allow users to login with an email link
+
+1. On the authentication page remove the Username and password form
+
+2. Add a new method `Magic Link` and mark it as required
+
+3. Set the new approach as the one for browser logins
+
+### Authorization
+
+You want to allow a user to authenticate, but not to do admin tasks.
+
+1. Do not grant that user the admin role
+
+
 
 
 ## Sources
