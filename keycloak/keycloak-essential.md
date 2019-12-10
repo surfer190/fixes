@@ -420,7 +420,7 @@ Logging in to keycloak server you get 3 tokens:
 * Refresh Token - used to obtain a fresh access token
 
 User logs into application and now has JwT access token.
-JWT - token contains payload
+JWT - token contains payload (Json Web Tokens)
 With that token he can call any token and service will verify the token
 
 Keycloak has a private key that it uses to sign your token
@@ -429,6 +429,10 @@ Your service has access to the public. With the public key it can verify the tok
 It can verify offline or in a less trusted environment you can always ask keycloak to verify the token. Many requests to keycloak verification.
 
 Microservices - when your service needs to call another service 
+
+## Keycloak Gatekeeper
+
+Not all applications support OpenID Connect, gatekeeper is a OIDC compatible reverse proxy.
 
 ## Use Cases
 
@@ -465,8 +469,6 @@ It also lets you decide where to put the token - in access or id.
 You want to allow a user to authenticate, but not to do admin tasks.
 
 1. Do not grant that user the admin role
-
-
 
 
 ## Sources

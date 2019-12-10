@@ -132,6 +132,8 @@ There are various flows:
 * Resource owner password credentials (back channel only) - make older applications work correctly
 * Client credentials (back channel only) - service communication
 
+> Take not that [Resource owner credential grants does not support SSO](https://keycloak.discourse.group/t/one-client-always-prompts-for-username-and-password-oidc/249)
+
 Implicit flow:
 
 Set `response_type=token`
