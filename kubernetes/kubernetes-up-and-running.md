@@ -1341,5 +1341,3822 @@ A full example: `kuard-pod-full.yaml`
             periodSeconds: 10
             failureThreshold: 3
 
-6. Labels and Annotations
+# 6. Labels and Annotations
+
+Kubernetes was made to grow as your application grows in scale and complexity
+
+Labels and annotation lets you work  in they way _you_ built the app - assuming the dev knows best? But google decided on this.
+
+Labels are key-value pairs that can be attached to kubernetes objects, they are important in grouping objects.
+Annotations are key-value pairs designed to hold non-identifying info that can be leveraged by tools and libraries.
+
+## Labels
+
+* keys: an optional prefix and a name, separated by a slash, prefix must be a DNS subdomain.
+* values: strings with max of 63 characters
+
+Example:
+
+    acme.com/app-version => 1.0.0
+    appVersion => 1.0.0
+    app.version => 1.0.0
+    kubernetes.io/cluster-service => true
+
+### Applying Labels
+
+Create deployments (array of pods)
+
+Run kuard version 1 in a production environment (2 replicas):
+
+    kubectl run alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:blue --replicas=2 --labels="ver=1,app=alpaca,env=prod"
+
+Run kuard version 2 in a test environment:
+
+    kubectl run alpaca-test --image=gcr.io/kuar-demo/kuard-amd64:green --replicas=1 --labels="ver=2,app=alpaca,env=test"
+
+Run bandicoot version 2 in production environment (2 replicas):
+
+    kubectl run bandicoot-prod --image=gcr.io/kuar-demo/kuard-amd64:green --replicas=2 --labels="ver=2,app=bandicoot,env=prod"
+
+Run bandicoot version 2 in a staging environment:
+
+    kubectl run bandicoot-staging --image=gcr.io/kuar-demo/kuard-amd64:green --replicas=1 --labels="ver=2,app=bandicoot,env=staging"
+
+If we get deployments:
+
+    kubectl get deployments --show-labels
+    NAME                READY   UP-TO-DATE   AVAILABLE   AGE     LABELS
+    alpaca-prod         2/2     2            2           5m26s   app=alpaca,env=prod,ver=1
+    alpaca-test         1/1     1            1           3m49s   app=alpaca,env=test,ver=2
+    bandicoot-prod      2/2     2            2           66s     app=bandicoot,env=prod,ver=2
+    bandicoot-staging   1/1     1            1           62s     app=bandicoot,env=staging,ver=2
+
+### Modifying Labels
+
+    kubectl label deployments alpaca-test "canary=true"
+
+> This will only change the label on the deployment, not the `replicaSet` or `pods`
+
+    kubectl get pods --show-labels
+    NAME                                 READY   STATUS    RESTARTS   AGE     LABELS
+    alpaca-prod-85cdbc664-gkq5j          1/1     Running   0          8m50s   app=alpaca,env=prod,pod-template-hash=85cdbc664,ver=1
+    alpaca-prod-85cdbc664-gs4t5          1/1     Running   0          8m50s   app=alpaca,env=prod,pod-template-hash=85cdbc664,ver=1
+    alpaca-test-776d476d-khv6p           1/1     Running   0          7m13s   app=alpaca,env=test,pod-template-hash=776d476d,ver=2
+    bandicoot-prod-589dc468c6-5ssc6      1/1     Running   0          4m30s   app=bandicoot,env=prod,pod-template-hash=589dc468c6,ver=2
+    bandicoot-prod-589dc468c6-8vm2x      1/1     Running   0          4m30s   app=bandicoot,env=prod,pod-template-hash=589dc468c6,ver=2
+    bandicoot-staging-77f4467bb8-5w9xz   1/1     Running   0          4m26s   app=bandicoot,env=staging,pod-template-hash=77f4467bb8,ver=2
+
+To show a label value as a column
+
+    kubectl get deployments -L canary
+
+Remove a label with
+
+    kubectl label deployments alpaca-test "canary-"
+
+### Label Selectors
+
+> Each deployment (via a ReplicaSet) creates a set of Pods using the labels specified in the template embedded in the deployment
+
+What was that?
+
+`pod-template-hash` is a label applied by the deployment so it can keep track of which pods were generated from which template version
+
+Select pods that are only version 2:
+
+    kubectl get pods --selector="ver=2"
+
+A logical `AND` with multiple selectors:
+
+    kubectl get pods --selector="app=bandicoot,ver=2"
+
+One of (`IN` operator):
+
+    kubectl get pods --selector="app in (alpaca,bandicoot)"
+
+Get where a key is set:
+
+    kubectl get deployments --selector="canary"
+
+There are negatives of the above too:
+
+* `key=value`
+* `key!=value`
+* `key in (value1, value2)`
+* `key notin (value1, value2)`
+* `key` - key is set
+* `!key` - key is not set
+
+`-l` is the short flag of `--selector`:
+
+    kubectl get pods -l 'ver=2,!canary'
+
+### Label Selectors in API Objects
+
+Selector of: `“app=alpaca,ver in (1, 2)”`
+
+Would be converted to:
+
+    selector:
+      matchLabels:
+        app: alpaca
+      matchExpressions:
+        - {key: ver, operator: In, values: [1, 2]}
+        
+Seelctor: `app=alpaca,ver=1`
+
+Would be converted to:
+
+    selector:
+        app: alpaca
+        ver: 1
+
+### Labels in Kubernetes Architecture
+
+Labels link related kubernetes objects
+
+> Kubernetes is a purposely decoupled system - there is no hierachy and all components operate independently
+
+Labels are the powerful and ubiquitous glue that holds Kubernetes together.
+
+## Annotations
+
+Metadata with the sole purpose of assisting tools and libraries
+They are a way for other tools driving kubernetes by API to store data
+
+There is overlap of annotations and labels - when in doubt use annotations and promote to labels.
+
+Annotations are used to:
+* Keep track of a reason for the latest update on an object
+* Communicate a specialised scheduling policy
+* Extend data about the last tool and date of an update
+* Attach build, release or image information (git hash, timestamp, PR number )
+* Enable the deployment object to keep track of replicaSets
+* Data to enhance the UI - base64 encoded image or logo
+
+The primary use case is **rolling deployments** - so rollbacks to previous state can happen.
+
+### Defining Annotations
+
+Annotations are defined in the same way as labels.
+The `namespace` part of the annotation is more important.
+
+> It is not uncommon for a JSON document to be encoded as a string and stored in an annotation
+
+kubernetes has no knowledge of the format of an annotation and no validation
+
+Annotations are defined in the `metadata` section in every Kubernetes object:
+
+    metadata:
+      annotations:
+        example.com/icon-url: "https://example.com/icon.png"
+
+## Cleanup
+
+Lets remove the deployments we created
+
+    kubectl delete deployments --all
+
+# 7. Service Discovery
+
+Kubernetes is very dynamic - pods and nodes are scheduled and autoscaled.
+
+> The API-driven nature of the system encourages others to create higher and higher levels of automation
+
+The problem is _finding all the things_
+
+## What is Service Discovery
+
+What processes are listening at which address for which service.
+Good service discovery ensures low latency and reliable info.
+
+DNS - Domain Name System - is the traditional system of service discovery on the internet.
+
+> DNS is designed for relatively stable name resolution with wide and efficient caching
+
+It is a great system for the internet but Kubernetes is too dynamic
+
+Unfortunately many systems (like java) look up a name in DNS directly and never re-resolve.
+Leading to stale mappings - even with short TTL's and well behaved clients.
+There are limits to the amount and type of information that can be returned by a DNS query.
+Things start to break past 20-30 A records on a DNS query of a single name.
+
+`SRV` records solve that issue but are hard to use.
+
+Usually client's handle multiple IP's by just taking the first IP address and rely on the DNS server to randomise or round-robin the order of results.
+
+## The Service Object
+
+Service discovery in k8s starts with the service object
+
+We use `kubectl expose` to create a service.
+
+    kubectl run alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:blue --replicas=3 --port=8080 --labels="ver=1,app=alpaca,env=prod"
+
+    kubectl expose deployment alpaca-prod
+
+    kubectl run bandicoot-prod --image=gcr.io/kuar-demo/kuard-amd64:green --replicas=2 --port=8080 --labels="ver=2,app=bandicoot,env=prod"
+    
+    kubectl expose deployment bandicoot-prod
+    
+    $ kubectl get services -o wide
+    NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+    alpaca-prod      ClusterIP   10.102.127.103   <none>        8080/TCP   88s   app=alpaca,env=prod,ver=1
+    bandicoot-prod   ClusterIP   10.108.246.138   <none>        8080/TCP   4s    app=bandicoot,env=prod,ver=2
+    kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP    8d    <none>
+
+The `kubernetes` service is created automatically so you can speak to the kubernetes API from within the app
+
+`kubectl expose` will pull the label selector and the relevant ports from the deployment definition
+
+The service is also assigned a virtual IP called the _cluster IP_ - a special ip that will load balance across all the pods
+
+To interact with a service we need to port forward to a pod:
+
+    ALPACA_POD=$(kubectl get pods -l app=alpaca -o jsonpath='{.items[0].metadata.name}')
+    kubectl port-forward $ALPACA_POD 48858:8080
+
+### Service DNS
+
+The cluster ip is virtual - and therefore stable - so it is appropriate to give it a DNS address.
+Issues around clients caching DNS results will no longer apply.
+
+Kubernetes provides a DNS service exposed to pods running in the cluster.
+The DNS service is installed as a system component when the cluster is created.
+It is k8s building on k8s.
+
+If you query `alpaca-prod` from within a container, you get:
+
+    ;; ANSWER SECTION:
+    alpaca-prod.default.svc.cluster.local.	30	IN	A	10.102.127.103
+
+* `alpaca-prod` - name of the service
+* `default` - namespace of the service
+* `svc` - recognise as service
+* `cluster.local.` - base domain name for the cluster
+
+In it's own namespace you can refer to just the name of the service `alpaca-prod`
+
+### Readiness Checks
+
+Lets add a readiness check:
+
+    kubectl edit deployment/alpaca-prod
+
+add a readiness probe:
+
+    name: alpaca-prod
+      readinessProbe:
+        httpGet:
+           path: /ready
+           port: 8080
+        periodSeconds: 2
+        initialDelaySeconds: 0
+        failureThreshold: 3
+        successThreshold: 1
+
+This will delete and recreate the pods
+
+But we need to restart the port forwarder
+
+    kubectl port-forward $ALPACA_POD 48858:8080
+
+You can now use a `watch` command to find what service are sending traffic to a service
+
+    kubectl get endpoints alpaca-prod --watch
+
+## Looking Beyond the Cluster
+
+At some point you want the pod reachable outside the cluster.
+
+The most portable way of doing this is with `NodePorts`
+
+In addition to the cluster IP the system picks a port and every node in the cluster forwards traffic from that port to the service.
+
+If you can reach any node, you can reach the service.
+
+    kubectl edit service alpaca-prod
+
+Change `spec.type` to `NodePort` (from `ClusterIp`)
+
+or you can specify this when creating the service
+
+    kubectl expose --type=NodePort
+
+> This can be intergrated with hardware or software load balancers
+
+View the port assigned to the pod:
+
+    $ kubectl describe service alpaca-prod
+    Name:                     alpaca-prod
+    Namespace:                default
+    Labels:                   app=alpaca
+                            env=prod
+                            ver=1
+    Annotations:              <none>
+    Selector:                 app=alpaca,env=prod,ver=1
+    Type:                     NodePort
+    IP:                       10.102.127.103
+    Port:                     <unset>  8080/TCP
+    TargetPort:               8080/TCP
+    NodePort:                 <unset>  30442/TCP
+    Endpoints:                172.17.0.11:8080,172.17.0.7:8080,172.17.0.8:8080
+    Session Affinity:         None
+    External Traffic Policy:  Cluster
+    Events:                   <none>
+
+In this case `30442` was assigned. 
+
+    ssh <node> -L 8080:localhost:32711
+
+Apparently locally you can access it directly
+
+## Cloud Integration
+
+You can set the `spec.type` as `LoadBalancer`
+
+A public address will be assigned by your public cloud.
+
+Describe the service to find the ip:
+
+    kubectl describe service alpaca-prod
+
+> The way a load balancer is configured is specific to each cloud
+
+## Advanced Details
+
+### Endpoints
+
+Some applications want to access services without using the cluster IP
+
+For this we use `endpoints`
+
+    $ kubectl describe endpoints alpaca-prod
+    Name:         alpaca-prod
+    Namespace:    default
+    Labels:       app=alpaca
+                env=prod
+                ver=1
+    Annotations:  endpoints.kubernetes.io/last-change-trigger-time: 2019-12-12T16:44:01Z
+    Subsets:
+    Addresses:          172.17.0.11,172.17.0.7,172.17.0.8
+    NotReadyAddresses:  <none>
+    Ports:
+        Name     Port  Protocol
+        ----     ----  --------
+        <unset>  8080  TCP
+
+    Events:  <none>
+
+we can watch the endpoint:
+
+    kubectl get endpoints alpaca-prod --watch
+
+now lets delete and recreate:
+
+    kubectl delete deployment alpaca-prod
+    kubectl run alpaca-prod --image=gcr.io/kuar-demo/kuard-amd64:blue --replicas=3 --port=8080 --labels="ver=1,app=alpaca,env=prod"
+
+as you do this:
+
+    alpaca-prod   172.17.0.11:8080,172.17.0.7:8080,172.17.0.8:8080   153m
+    alpaca-prod   172.17.0.8:8080                                    154m
+    alpaca-prod   <none>                                             154m
+    alpaca-prod   172.17.0.8:8080                                    154m
+    alpaca-prod   172.17.0.6:8080,172.17.0.8:8080                    154m
+    alpaca-prod   172.17.0.6:8080,172.17.0.7:8080,172.17.0.8:8080    154m
+
+that happens
+
+> However many old services expect a plain old ip address
+
+### Manual Service Discovery
+
+You can use the kubernetes API for rudimentary service discovery
+
+    $ kubectl get pods -o wide --selector=app=alpaca,env=prod
+    NAME                           READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+    alpaca-prod-65bf8ccb57-5vdcl   1/1     Running   0          3m57s   172.17.0.8   minikube   <none>           <none>
+    alpaca-prod-65bf8ccb57-fhds9   1/1     Running   0          3m57s   172.17.0.7   minikube   <none>           <none>
+    alpaca-prod-65bf8ccb57-nf8pv   1/1     Running   0          3m57s   172.17.0.6   minikube   <none>           <none>
+
+that is the basics of service discovery
+
+### kube-proxy and ClusterIPs
+
+Cluster IPs are stable virtual IPs that load-balance traffic across all of the endpoints in a service.
+It is done by a component running on every node in a cluster called `kube-proxy`.
+
+`kube-proxy` is updating `iptables` to redirect traffic.
+
+### Cluster IP Environment Variables
+
+You should use DNS to find cluster ips, however you can also use environment variables.
+
+    ALPACA_PROD_SERVICE_HOST	10.102.127.103
+    ALPACA_PROD_SERVICE_PORT	8080
+
+The environment variables approach requires resources to be created in a specific order.
+
+Connecting external resources to kubernetes is difficult, you could create an internal load balancer in your VPN.
+That delivers traffic from a fixed ip into the cluster. Then use traditional DNS.
+
+Or run `kube-proxy` on the external resource - difficult to setup only for on-premise.
+
+> cleanup the containers with `kubectl delete services,deployments -l app`
+
+# 8. HTTP Load Balancing with Ingress
+
+Getting network traffic to and from an application is critical
+
+The `service` operates at layer 4 (according to the OSI model) - the transport layer - it only forwards TCP and UDP and does not look inside those connections.
+
+That is why applications on a cluster use many different exposed service. In this case they are of `type: NodePort`.
+You have to have clients connecting to a unique port per service.
+
+If the services are of `type: LoadBalancer` you allocate expensive cloud resources for each service.
+
+For HTTP (layer 7) based services, we can do better.
+
+Solving this problem in non-Kubernetes situations - users often turn to _virtual hosting_.
+A mechanism to host many HTTP sites on a single IP.
+
+Typically the user uses a load balancer to accept connections on port 80 and 443.
+The program parses the HTTP connection based on the `Host` header and the URL path. It then proxies the HTTP call to some other program.
+
+The load balancer or reverse proxy plays traffic cop for directing the incoming connection to the right upstream server.
+
+Kubernetes calls its HTTP-based load-balancing system _Ingress_.
+
+> Ingress is kubernetes native virtual-hosting
+
+A complex part of the pattern is the user must manage the load balancer configuration file - a dynamic environment with many virtual hosts.
+
+Kubernetes simplifies this by:
+* standardizing the configuration
+* moving to a standard kubernetes object
+* merging multiple ingress objects into a single config for the load balancer
+
+## Ingress Spec vs Ingress Controllers
+
+Ingress differs from every other kubernetes resource.
+
+There is no "standard" ingress controller built into kubernetes.
+
+There is no code to act on the objects, the user (or distribution) must install and manage the outside controller.
+The controller is _pluggable_.
+
+* there is no single http load balancer that can be universally used
+* there are also cloud provided load balancers and hardware load balancers
+* ingress was added before common extensability was added
+
+## Installing Contour
+
+Contour is a controller used to configure the open source load balancer called Envoy.
+Envoy is built to be configured via API.
+Contour translates ingress objects into something envoy can understand.
+
+[Coutours Github Page](https://github.com/projectcontour/contour)
+
+    kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+
+It creates all this shit:
+
+    namespace/projectcontour created
+    serviceaccount/contour created
+    configmap/contour created
+    customresourcedefinition.apiextensions.k8s.io/ingressroutes.contour.heptio.com created
+    customresourcedefinition.apiextensions.k8s.io/tlscertificatedelegations.contour.heptio.com created
+    customresourcedefinition.apiextensions.k8s.io/httpproxies.projectcontour.io created
+    customresourcedefinition.apiextensions.k8s.io/tlscertificatedelegations.projectcontour.io created
+    serviceaccount/contour-certgen created
+    rolebinding.rbac.authorization.k8s.io/contour created
+    role.rbac.authorization.k8s.io/contour-certgen created
+    job.batch/contour-certgen created
+    clusterrolebinding.rbac.authorization.k8s.io/contour created
+    clusterrole.rbac.authorization.k8s.io/contour created
+    role.rbac.authorization.k8s.io/contour-leaderelection created
+    rolebinding.rbac.authorization.k8s.io/contour-leaderelection created
+    service/contour created
+    service/envoy created
+    deployment.apps/contour created
+    daemonset.apps/envoy created
+
+You can get the external address of contour with:
+
+    $ kubectl get -n projectcontour service contour -o wide
+    NAME      TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE    SELECTOR
+    contour   ClusterIP   10.103.81.4   <none>        8001/TCP   100s   app=contour
+
+> With minikube `EXTERNAL-IP` will be `<none>`, you need to assign ips to each service of `type: LoadBalacer` with `minikube tunnel` (It takes a while)
+
+**The above did not work**
+
+### Configuring DNS
+
+Configure DNS entries to the external address of your load balancer
+
+You can map multiple hostnames to a single external endpoint.
+For an ip address use `A records` for a hsotname use `CNAME records`.
+
+## Configurating local DNS
+
+Using `/etc/hosts`.
+
+On mac you might need to `sudo killall -HUP mDNSResponder` after changing the file.
+
+Eg.
+
+    192.168.0.101 alpaca.example.com bandicoot.example.com
+
+## Using Ingress
+
+    kubectl run be-default --image=gcr.io/kuar-demo/kuard-amd64:blue --replicas=3 --port=8080
+    kubectl expose deployment be-default
+    kubectl run alpaca --image=gcr.io/kuar-demo/kuard-amd64:green --replicas=3 --port=8080
+    kubectl expose deployment alpaca
+    kubectl run bandicoot --image=gcr.io/kuar-demo/kuard-amd64:purple --replicas=3 --port=8080
+    kubectl expose deployment bandicoot
+
+View the services
+
+    $ kubectl get services -o wide
+    NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE     SELECTOR
+    alpaca       ClusterIP   10.109.108.131   <none>        8080/TCP   2m48s   run=alpaca
+    bandicoot    ClusterIP   10.111.63.119    <none>        8080/TCP   18s     run=bandicoot
+    be-default   ClusterIP   10.103.30.58     <none>        8080/TCP   4m3s    run=be-default
+    kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP    8d      <none>
+
+### Simplest Usage
+
+Pass everything it sees to the upstream service.
+
+`simple-ingress.yml`:
+
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: simple-ingress
+    spec:
+      backend:
+        serviceName: alpaca
+        servicePort: 8080
+
+    kubectl apply -f simple-ingress.yaml
+    
+Verify it was setup correctly with:
+
+    $ kubectl get ingress
+    NAME             HOSTS   ADDRESS   PORTS   AGE
+    simple-ingress   *                 80      27s
+
+and
+
+    $ kubectl describe ingress simple-ingress
+    Name:             simple-ingress
+    Namespace:        default
+    Address:          
+    Default backend:  alpaca:8080 (172.17.0.12:8080,172.17.0.13:8080,172.17.0.14:8080)
+    Rules:
+    Host  Path  Backends
+    ----  ----  --------
+    *     *     alpaca:8080 (172.17.0.12:8080,172.17.0.13:8080,172.17.0.14:8080)
+    Annotations:
+    kubectl.kubernetes.io/last-applied-configuration:  {"apiVersion":"extensions/v1beta1","kind":"Ingress","metadata":{"annotations":{},"name":"simple-ingress","namespace":"default"},"spec":{"backend":{"serviceName":"alpaca","servicePort":8080}}}
+
+    Events:  <none>
+
+**This ensures anything hitting the Ingress controller is forwarded to the `alpaca` service**
+
+### Using Hostnames
+
+**host-ingress.yml**
+
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: host-ingress
+    spec:
+      rules:
+      - host: alpaca.example.com
+        http:
+          paths:
+          - backend:
+              serviceName: alpaca
+              servicePort: 8080
+      - host: bandicoot.example.com
+        http:
+          paths:
+            - backend:
+                serviceName: bandicoot
+                servicePort: 8080
+
+Directing traffic based on the properties of the request.
+
+    $ kubectl get ingress
+    NAME             HOSTS                                      ADDRESS   PORTS   AGE
+    host-ingress     alpaca.example.com,bandicoot.example.com             80      4m22s
+    simple-ingress   *                                                    80      4d11h
+
+    $ kubectl describe ingress host-ingress
+    Name:             host-ingress
+    Namespace:        default
+    Address:          
+    Default backend:  default-http-backend:80 (<none>)
+    Rules:
+    Host                   Path  Backends
+    ----                   ----  --------
+    alpaca.example.com     
+                                alpaca:8080 (172.17.0.5:8080,172.17.0.6:8080,172.17.0.7:8080)
+    bandicoot.example.com  
+                                bandicoot:8080 (172.17.0.10:8080,172.17.0.2:8080,172.17.0.9:8080)
+    Annotations:
+    kubectl.kubernetes.io/last-applied-configuration:  {"apiVersion":"extensions/v1beta1","kind":"Ingress","metadata":{"annotations":{},"name":"host-ingress","namespace":"default"},"spec":{"rules":[{"host":"alpaca.example.com","http":{"paths":[{"backend":{"serviceName":"alpaca","servicePort":8080}}]}},{"host":"bandicoot.example.com","http":{"paths":[{"backend":{"serviceName":"bandicoot","servicePort":8080}}]}}]}}
+
+    Events:  <none>
+
+There is a reference to the `default-http-backend:80` - some ingress controllers 
+
+You can then go to `alpaca.example.com` or `bandicoot.example.com`
+
+### Using Paths
+
+Directing traffic based on path, you can set in the `paths` entry.
+
+**path-ingress.yml**:
+
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: path-ingress
+    spec:
+      rules:
+      - host: bandicoot.example.com
+        http:
+          paths:
+          - path: "/"
+            backend:
+              serviceName: bandicoot
+              servicePort: 8080
+          - path: "/a/"
+            backend:
+              serviceName: alpaca
+              servicePort: 8080
+
+Now `bandicoot.example.com` goes to bandicoot and `bandicoot.example.com/a/` goes to `alpaca`.
+
+### Clean Up
+
+    kubectl delete ingress host-ingress path-ingress simple-ingress
+    kubectl delete service alpaca bandicoot be-default
+    kubectl delete deployment alpaca bandicoot be-default
+
+## Advanced Ingress Topics and Gotchas
+
+Features supported depend on the Ingress Controller implementations.
+
+### Running Multiple Ingress Controllers
+
+* Specify which ingress object is meant for which ingress controller with: `kubernetes.io/ingress.class` annotation
+* If it is not set - multiple controllers will fight to satisfy the ingress and write to the `status` field
+
+### Multiple Ingress Objects
+
+* Ingress controllers should read them all and try merge them
+
+### Ingress and Namespaces
+
+* An ingress object can only refer to an upstream service in the same namespace - security reasons
+* However, multiple Ingress objects in different namespaces can specify subpaths for the same host - they are merged.
+* No restrictions on Ingress controller access to host and path
+
+### Path Rewriting
+
+* Some ingress controllers support this.
+* This modifies the HTTP request as it is processed
+
+With an `nginx ingress controller`: the annotation `nginx.ingress.kubernetes.io/rewrite-target: /` can reqrite path and supports regex.
+
+> Path rewriting isn’t a silver bullet, though, and can often lead to bugs
+
+> Better to avoid subpaths
+
+### Serving TLS
+
+Ingress and INgress controllers (what is the difference?) support this.
+
+Create a secret with kubectl:
+
+    kubectl create secret tls <secret-name> --cert <certificate-pem-file> --key <private-key-pem-file>
+
+**tls-secret.yml**:
+
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      creationTimestamp: null
+      name: tls-secret-name
+    type: kubernetes.io/tls
+    data:
+      tls.crt: <base64 encoded certificate>
+      tls.key: <base64 encoded private key>
+
+Once the certificate is uploaded you can reference an Ingress Object.
+
+**tls-ingress.yml**
+
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: tls-ingress
+    spec:
+      tls:
+      - hosts:
+        - alpaca.example.com
+        secretName: tls-secret-name
+      rules:
+      - host: alpaca.example.com
+        http:
+          paths:
+          - backend:
+              serviceName: alpaca
+              servicePort: 8080
+
+> Uploading and managing TLS secrets can be difficult
+
+It is recommended to use [`cert-manager`](https://github.com/jetstack/cert-manager) that links up directly with `lets-encrypt` 
+
+## Alternate Ingress Implementations
+
+Each cloud provider has an Ingress implementation that exposes the layer 7 load balancer.
+Instead of configuring a software load balancer running in a pod, these controllers take ingresses and use them to configure the cloud based load balancers.
+
+The most popular ingress is the [Nginx Ingress Controller](https://github.com/kubernetes/ingress-nginx/)
+The open source version reads ingress objects and merges them into an Nginx config file.
+
+Other options:
+* [Ambassador](https://github.com/datawire/ambassador)
+* [Gloo](https://github.com/solo-io/gloo)
+* [Traefik](https://containo.us/traefik/) - go reverse=proxy that also acts as an ingress
+
+## The Future of Ingress
+
+The ingress object provides a useful abstraction for configuring L7 load balancers
+
+> It is easy to misconfigure ingress
+
+Ingress was created before the idea of service mesh - the intersection of ingress and service mesh is still being defined.
+
+* Istio has a gateway that overlaps with an ingress
+* Contour introduced an `IngressRoute` 
+
+## Summary
+
+* Ingress is unique to Kubernetes
+* Critical for exposing services in a practical and cost-effective way
+
+# 9. ReplicaSets
+
+Pods are essentially one-off singletons. More often than not you want multiple replicas of a container running at a time.
+
+* Redundancy - multiple instances mean a failure can be tolerated
+* Scale - more requests can be handled
+* Sharding - different parts of computation can be handled in parrallel
+
+A user defines a replicated set of pods as a single entity - a replica set.
+
+A replicaset is a cluster wide pod manager - ensuring the right types and number of pods are running.
+
+Building blocks of common application deployment and unerpin self healing infrastructure.
+
+It is a cookie cutter and a desired number of cookies.
+Managing replicated pods is an example of a reconciliation loop.
+
+> The decision to embed a pod in a replicaset, should rather have been a reference to a pod.
+
+## Reconcilliation Loops
+
+* Desired state vs observed/current state
+* reconcilliation loop is constantly running
+* goal-driven, slef-healing system
+
+## Relating Pods and ReplicaSets
+
+* Kubernetes is built decoupled - modular - swappable and replacable.
+* ReplicaSets that create pods and services that load balance them are totally seperate API objects.
+
+Reasons:
+* ReplicaSets can adopt existing pods
+* Leave the pod alive for debugging purposes but remove from replica set and service
+
+## Designing with ReplicaSets
+
+Replicasets are designed to be a single, scalable microservice
+Everypod created from a replicaset is the same
+A k8s service load balancer spreads teh traffic across the pods
+Designed for stateless services
+
+## ReplicaSet Spec
+
+Like all objects in `k8s` they are defined by a spec.
+All replicasets must have a unique name: `metadata.name`, the number of replicas to run and a pod template.
+
+**kuard-rs.yaml**
+
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    metadata:
+      name: kuard
+      labels:
+        app: kuard
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: kuard
+      template:
+        metadata:
+          labels:
+            app: kuard
+            version: "2"
+        spec:
+          containers:
+            - name: kuard
+              image: "gcr.io/kuar-demo/kuard-amd64:green"
+
+### Pod Templates
+
+The pods created by the replciate set are created using the api.
+
+The reconcilliation loop discovers pods with **labels**
+
+    template:
+      metadata:
+        labels:
+          app: helloworld
+          version: v1
+      spec:
+        containers:
+          - name: helloworld
+            image: kelseyhightower/helloworld:v1
+            ports:
+              - containerPort: 80
+
+## Creating a ReplicaSet
+
+    kubectl apply -f kuard-rs.yml
+
+the replicaset will see no pod and request it is created:
+
+    $ kubectl get pods
+    NAME          READY   STATUS    RESTARTS   AGE
+    kuard-2qmn2   1/1     Running   0          2m22s
+
+## Inspecting a ReplicaSet
+
+    $ kubectl get rs
+    NAME    DESIRED   CURRENT   READY   AGE
+    kuard   1         1         1       3m21s
+
+inspect the rs:
+
+    $ kubectl describe rs kuard
+    Name:         kuard
+    Namespace:    default
+    Selector:     app=kuard
+    Labels:       app=kuard
+    Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"apps/v1","kind":"ReplicaSet","metadata":{"annotations":{},"labels":{"app":"kuard"},"name":"kuard","namespace":"default"},"s...
+    Replicas:     1 current / 1 desired
+    Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+    Pod Template:
+    Labels:  app=kuard
+            version=2
+    Containers:
+    kuard:
+        Image:        gcr.io/kuar-demo/kuard-amd64:green
+        Port:         <none>
+        Host Port:    <none>
+        Environment:  <none>
+        Mounts:       <none>
+    Volumes:        <none>
+    Events:
+    Type    Reason            Age    From                   Message
+    ----    ------            ----   ----                   -------
+    Normal  SuccessfulCreate  3m46s  replicaset-controller  Created pod: kuard-2qmn2
+
+### Finding a Replicaset from a pod
+
+Sometimes you want to find if a pod is being managed by a replicaset
+
+The key is to check the `kubernetes.io/created-by` annotation.
+
+    $ kubectl get pods kuard-2qmn2 -o yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+    creationTimestamp: "2019-12-17T13:58:41Z"
+    generateName: kuard-
+    labels:
+        app: kuard
+        version: "2"
+    name: kuard-2qmn2
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+        blockOwnerDeletion: true
+        controller: true
+        kind: ReplicaSet
+        name: kuard
+        uid: 00d2a2f5-5d3e-4260-bae7-4e19aa5df6df
+    resourceVersion: "292844"
+    selfLink: /api/v1/namespaces/default/pods/kuard-2qmn2
+    uid: a89f3fc9-e5f0-46dc-beea-40872120d42a
+    spec:
+    containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:green
+        imagePullPolicy: IfNotPresent
+        name: kuard
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-mbn5b
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+        tolerationSeconds: 300
+    - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+        tolerationSeconds: 300
+    volumes:
+    - name: default-token-mbn5b
+        secret:
+        defaultMode: 420
+        secretName: default-token-mbn5b
+    status:
+    conditions:
+    - lastProbeTime: null
+        lastTransitionTime: "2019-12-17T13:58:41Z"
+        status: "True"
+        type: Initialized
+    - lastProbeTime: null
+        lastTransitionTime: "2019-12-17T13:58:44Z"
+        status: "True"
+        type: Ready
+    - lastProbeTime: null
+        lastTransitionTime: "2019-12-17T13:58:44Z"
+        status: "True"
+        type: ContainersReady
+    - lastProbeTime: null
+        lastTransitionTime: "2019-12-17T13:58:41Z"
+        status: "True"
+        type: PodScheduled
+    containerStatuses:
+    - containerID: docker://ea0a3131df253e9f1edc0a81018631e8ba0028c1d398cabd08932b4a4ab1bbd5
+        image: gcr.io/kuar-demo/kuard-amd64:green
+        imageID: docker-pullable://gcr.io/kuar-demo/kuard-amd64@sha256:b45e6382fef12c72da3abbf226cb339438810aae18928bd2a811134b50398141
+        lastState: {}
+        name: kuard
+        ready: true
+        restartCount: 0
+        started: true
+        state:
+        running:
+            startedAt: "2019-12-17T13:58:43Z"
+    hostIP: 192.168.64.3
+    phase: Running
+    podIP: 172.17.0.18
+    podIPs:
+    - ip: 172.17.0.18
+    qosClass: BestEffort
+    startTime: "2019-12-17T13:58:41Z"
+
+> Yet again the book fails as with minikube this doesn't show anything for `created-by`
+
+### Finding a Set of Pods for the ReplicaSet
+
+    $ kubectl get pods -l app=kuard,version=2
+    NAME          READY   STATUS    RESTARTS   AGE
+    kuard-2qmn2   1/1     Running   0          19m
+
+## Scaling Replicasets
+
+Replicasets are scaled up or down with `spec.replicas`
+
+### imperitive Scaling
+
+    kubectl scale replicasets kuard --replicas=4
+
+> Remmeber to also update the tet files replicas
+
+there needs to be a declarative change for the imperitive change
+
+### Declaratively scaling out kubectl apply
+
+    spec:
+        replicas: 5
+
+then:
+
+    kubectl apply -f kuard-rs.yml
+
+### Autoscaling a Replicaset
+
+Sometimes you just want enough.
+
+A webserver like nginx you may want to scale for CPU usage.
+For an in-memory cache like redis, you may want to scale for memory usage.
+In some cases you may want to scale on custom app metrics.
+
+The HPA (Horizontal Pod Autoscaler) handles these scenarios.
+
+> HPA requires the presence of the heapster Pod on your cluster. heapster keeps track of metrics and provides an API for consuming metrics that HPA uses when making scaling decisions
+
+To check if `heapster` exists, use (and check for heapster):
+
+    kubectl get pods --namespace=kube-system
+
+It is horizontal scaling - adding more replicas of a pod.
+Vertical scaling is adding more CPU and RAM to the pod.
+
+There is also `cluster autoscaling` - the number of machines in a cluster are scaled in response to resource needs.
+
+### Autoscaling based on CPU
+
+Useful for request based system - that consume CPU proportionally to requests with relatively static memory usage.
+
+    kubectl autoscale rs kuard --min=2 --max=5 --cpu-percent=80
+
+This creates an autoscaler that scales from 2 to 5 pods with a CPU threshold of 80%
+
+Get autoscalers with:
+
+    kubectl get hpa
+
+> Be careful of imperitive declarations of replicas - manually setting the number of replicas when there is a autoscaler present.
+
+## Deleting ReplicaSets
+
+Delete a replicaSet with:
+
+    kubectl delete rs kuard
+
+Delete a replicaset without deleting the pods:
+
+    kubectl delete rs kuard --cascade=false
+
+# 10. Deployments
+
+* The Deployment object exists to manage the release of new versions.
+* They represent deployed applications (transcending version)
+* Enable easy movement from one version to the next
+
+It uses health checks and stops deployment if there are issues.
+
+> You can simply and reliably roll out new software versions without downtime or errors
+
+The deployment controller - controls the deployment.
+
+> Another key win for kubernetes is the ability to do a rolling update - without downtime or losing a single request.
+
+## First Deployment
+
+`kuard-deployment.yml`:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: kuard
+    spec:
+      selector:
+        matchLabels:
+          run: kuard
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            run: kuard
+        spec:
+          containers:
+          - name: kuard
+            image: gcr.io/kuar-demo/kuard-amd64:blue
+
+Create the deployment:
+
+    kubectl create -f kuard-deployment.yaml
+
+### Deployment Internals
+
+Deployments manage ReplicaSets, as ReplicaSets manage Pods.
+View the label selector of the deployment:
+
+    kubectl get deployments kuard -o jsonpath --template {.spec.selector.matchLabels}
+    map[run:kuard]
+
+Get all replicasets
+
+    kubectl get replicasets --selector=run=kuard
+
+Resize the deployment
+
+    kubectl scale deployments kuard --replicas=2
+    
+    $ kubectl get replicasets --selector=run=kuard
+    NAME              DESIRED   CURRENT   READY   AGE
+    kuard-5897df564   2         2         1       7m25s
+
+Scale back
+
+    kubectl scale rs kuard-5897df564 --replicas=1
+
+Yet it still has 2 desired:
+
+    $ kubectl get replicasets --selector=run=kuard
+    NAME              DESIRED   CURRENT   READY   AGE
+    kuard-5897df564   2         2         2       13m
+
+Remember adjusting the number of replicas with the replicaset won't work as it is the deployment that manages the number of replicas and will reset that replicaset to 2.
+
+## Creating Deployments
+
+Get the deployment as a yaml file
+
+    kubectl get deployments kuard --export -o yaml > kuard-deployment.yml
+    kubectl replace -f kuard-deployment.yaml --save-config
+
+The `--save-config` part ensures k8s will remember the history of the deployment
+
+The deployment also has a strategy object:
+
+    strategy:
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 1
+      type: RollingUpdate”
+
+There are 2 types `Recreate` and `RollingUpdate`
+
+## Managing Deployments
+
+    $ kubectl describe deployments kuard
+    Name:                   kuard
+    Namespace:              default
+    CreationTimestamp:      Tue, 17 Dec 2019 18:49:33 +0200
+    Labels:                 <none>
+    Annotations:            deployment.kubernetes.io/revision: 1
+                            kubectl.kubernetes.io/last-applied-configuration:
+                            {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":null,"...
+    Selector:               run=kuard
+    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+    StrategyType:           RollingUpdate
+    MinReadySeconds:        0
+    RollingUpdateStrategy:  25% max unavailable, 25% max surge
+    Pod Template:
+    Labels:  run=kuard
+    Containers:
+    kuard:
+        Image:        gcr.io/kuar-demo/kuard-amd64:blue
+        Port:         <none>
+        Host Port:    <none>
+        Environment:  <none>
+        Mounts:       <none>
+    Volumes:        <none>
+    Conditions:
+    Type           Status  Reason
+    ----           ------  ------
+    Progressing    True    NewReplicaSetAvailable
+    Available      True    MinimumReplicasAvailable
+    OldReplicaSets:  <none>
+    NewReplicaSet:   kuard-5897df564 (2/2 replicas created)
+    Events:
+    Type    Reason             Age                From                   Message
+    ----    ------             ----               ----                   -------
+    Normal  ScalingReplicaSet  15h                deployment-controller  Scaled up replica set kuard-5897df564 to 1
+    Normal  ScalingReplicaSet  15h (x3 over 15h)  deployment-controller  Scaled up replica set kuard-5897df564 to 2
+
+* `OldReplicaSets` and `NewReplicaSet` are important, they point to the replicaset the deployment is currently managing. If in the middle of a rollout, both fields will be set. If rollout is complete `OldReplicaSet` will be set to `<none>`
+
+* `kubectl rollout history` - gets the history of a rollout
+* `kubectl rollout status` - gets the status of a rollout
+
+## Updating Deployments
+
+### Scaling a Deployment
+
+Increase number of replicas in the `yaml` and apply:
+
+    kubectl apply -f kuard-deployment.yaml
+
+### Updating a Container Image
+
+Edit the deployment yaml
+
+    containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:green
+      imagePullPolicy: Always
+
+You can also annotate to give info about the deployment:
+
+    spec:
+      ...
+      template:
+        metadata:
+          annotations:
+            kubernetes.io/change-cause: "Update to green kuard"
+
+> Remember to annotate the template and not the deployment. ONly use it for significant updates.
+
+    kubectl apply -f kuard-deployment.yaml
+
+That will trigger a rollout
+
+    kubectl rollout status deployments kuard
+
+Both old and new replicasets are kept, incase you want to rollback:
+
+    kubectl get replicasets -o wide
+    
+    NAME               DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES                               SELECTOR
+    kuard              3         3         3       3h51m   kuard        gcr.io/kuar-demo/kuard-amd64:green   app=kuard
+    kuard-5897df564    0         0         0       60m     kuard        gcr.io/kuar-demo/kuard-amd64:blue    pod-template-hash=5897df564,run=kuard
+    kuard-6dd979cc6f   2         2         2       31s     kuard        gcr.io/kuar-demo/kuard-amd64:green   pod-template-hash=6dd979cc6f,run=kuard
+
+You can pause a deployment
+
+    kubectl rollout pause deployments kuard
+
+and resume
+
+    kubectl rollout resume deployments kuard
+
+### Rollout History
+
+See deployment history with:
+
+    $ kubectl rollout history deployment kuard
+    deployment.apps/kuard 
+    REVISION  CHANGE-CAUSE
+    1         <none>
+    2         Update to green kuard
+
+Get more details of the revision
+
+    $ kubectl rollout history deployment kuard --revision=2
+    deployment.apps/kuard with revision #2
+    Pod Template:
+    Labels:       pod-template-hash=6dd979cc6f
+            run=kuard
+    Annotations:  kubernetes.io/change-cause: Update to green kuard
+    Containers:
+    kuard:
+        Image:      gcr.io/kuar-demo/kuard-amd64:green
+        Port:       <none>
+        Host Port:  <none>
+        Environment:        <none>
+        Mounts:     <none>
+    Volumes:      <none>
+
+Change the version and annotation back to blue and apply.
+
+    $ kubectl rollout history deployment kuard
+    deployment.apps/kuard 
+    REVISION  CHANGE-CAUSE
+    1         <none>
+    2         Update to green kuard
+    3         Update to blue kuard
+
+To rollback to the green kuard:
+
+    kubectl rollout undo deployments kuard
+
+    $ kubectl get rs -o wide
+    NAME               DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES                               SELECTOR
+    kuard              3         3         3       3h57m   kuard        gcr.io/kuar-demo/kuard-amd64:green   app=kuard
+    kuard-5897df564    0         0         0       66m     kuard        gcr.io/kuar-demo/kuard-amd64:blue    pod-template-hash=5897df564,run=kuard
+    kuard-65c78f8d5f   0         0         0       3m41s   kuard        gcr.io/kuar-demo/kuard-amd64:blue    pod-template-hash=65c78f8d5f,run=kuard
+    kuard-6dd979cc6f   2         2         2       6m37s   kuard        gcr.io/kuar-demo/kuard-amd64:green   pod-template-hash=6dd979cc6f,run=kuard
+
+> Ensure that delcarative files match what is running in production 
+
+Running `kubectl rollout undo` does not change source code, the better way to revert is with yaml.
+
+Rollback to a specific version in history
+
+    kubectl rollout undo deployments kuard --to-revision=3
+
+It creates a new revision `5`:
+
+    kubectl rollout history deployment kuard
+
+The history can build up so might be wise to only keep a few revisions, use `revisionHistoryLimit`:
+
+    ...
+    spec:
+    # We do daily rollouts, limit the revision history to two weeks of
+    # releases as we don't expect to roll back beyond that.
+    revisionHistoryLimit: 14
+    ...
+
+## Delpoyment Strategies
+
+### Recreate Strategy
+
+* simpler and faster
+* terminates all pods and then re-creates all pods
+* certainly results in downtime
+* test deployment for non-user facing applications
+
+### RollingUpdate Strategy
+
+* preferred for user-facing applications
+* Incrementally updates pods
+* No downtime
+
+### Managing Multiple Versions of your Service
+
+> What about the scenario that during a deployment rollout a javascript asset is downloaded from the old replicaset that has been changed in the new replicaset. It now calls the old api which has subsequently dissapeared.
+
+You always had this problem though, it is all about maintaining forward and backward compatability.
+
+
+> You need to decouple your service from applications that depend on your service
+
+Like a frontend decoupled from a backend via an API contract and a load balancer.
+
+#### Configuring a Rolling Update
+
+A `RollingUpdate` has:
+* `maxUnavailable` - max number of pods that can be unavailable during a rolling update (can be number or percentage). Affects speed of update and availability. Used in cases where you can drop apacity like websites at night.
+* `maxSurge` - Used when you don't want to drop below 100% capacity. Can be a number or percentage - defines how many extra resources can be applied during a rollout.
+
+Set `maxUnavailable` to `0` and `maxSurge` to `20%` - ith a service with 10 replicas.
+2 new Replica are created, then the oldReplica set is dropped to 8/10 - this continues to gaurentee at least 100% usage.
+
+> Setting `maxSurge` to 100% is equivalent to blue/green deployment.
+
+### Slowing Rollouts to ensure Service Health
+
+The deployment controller relies on a pod's readiness check - without the checks your deployment controller is blind.
+You can use `minReadySeconds` to specify seconds before updating the next pod.
+
+    spec:
+      minReadySeconds: 60
+
+Sometimes the pod may never become healthy in that case you should set a `progressDeadlineSeconds` (actually in all cases) so that you are notifed when a pod is stuck:
+
+    spec:
+      progressDeadlineSeconds: 600
+
+This sets it to 10 minutes - then the deployment is marked as failed.
+
+## Deleting a Deployment
+
+    kubectl delete deployments kuard
+
+or using the declarative yaml file we created earlier:
+
+    kubectl delete -f kuard-deployment.yaml
+
+Deleting the deployment deletes all replicasets and pods.
+
+## Monitoring a Deployment
+
+When a deployment fails to make progress for some time, the deployment will timeout.
+The state will turn to `failed`
+
+    status.conditions
+    Condition: Progressing
+    Status: False
+
+# 11. DaemonSets
+
+Deployments and replicasets are generally about creating a service.
+But that is not the only reason for replicating a set of pods, another reason is to schedule a pod per node in a cluster.
+
+The kubernetes resource responsible for this is a `DaemonSet`
+
+They are used to deploy system daemons such as log aggregators and monitoring agents.
+
+Daemonsets share functionality with Replicasets - they create pods for long running services and ensure that current state matches the desired state.
+
+ReplicaSets should be used when the **application is completely decoupled from the node**
+
+DaemonSets should be used when a **single copy of your applications should run on every node in a cluster**.
+
+You may want to run intrusion detection on nodes exposed to the edge network.
+
+They are needed for he requirements of an enterprise IT department requirements.
+
+## Daemonset Scheduler
+
+A daemonset will create a pod on every node unless a node selector is used.
+They are ignored by the kubernetes scheduler, the daemonset controller is in charge of state management.
+
+THe decoupled nature mean that pods in a daemonset or a replicaset can be inspected the same way.
+
+    kubectl logs <pod-name>
+
+## Creating DaemonSets
+
+Lets create a `fluentd` logging agent on every node in a cluster.
+
+`fluentd.yaml`:
+
+    apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      name: fluentd
+      labels:
+        app: fluentd
+    spec:
+      selector:
+        matchLabels:
+          app: fluentd
+      template:
+        metadata:
+          labels:
+            app: fluentd
+        spec:
+          containers:
+          - name: fluentd
+            image: fluent/fluentd:v0.14.10
+            resources:
+              limits:
+                memory: 200Mi
+              requests:
+                cpu: 100m
+                memory: 200Mi
+            volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+            - name: varlibdockercontainers
+              mountPath: /var/lib/docker/containers
+              readOnly: true
+          terminationGracePeriodSeconds: 30
+          volumes:
+          - name: varlog
+            hostPath:
+              path: /var/log
+          - name: varlibdockercontainers
+            hostPath:
+              path: /var/lib/docker/containers
+
+Daemonsets require a unique name across all daemonsets in a k8s namespace.
+
+Get daemonsets
+
+    $ kubectl get daemonset
+    NAME      DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+    fluentd   1         1         1       1            1           <none>          109s
+
+Describe daemonset
+
+    $ kubectl describe ds fluentd
+    Name:           fluentd
+    Selector:       app=fluentd
+    Node-Selector:  <none>
+    Labels:         app=fluentd
+    Annotations:    deprecated.daemonset.template.generation: 1
+                    kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"fluentd"},"name":"fluentd","namespace":"default"}...
+    Desired Number of Nodes Scheduled: 1
+    Current Number of Nodes Scheduled: 1
+    Number of Nodes Scheduled with Up-to-date Pods: 1
+    Number of Nodes Scheduled with Available Pods: 1
+    Number of Nodes Misscheduled: 0
+    Pods Status:  1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+    Pod Template:
+    Labels:  app=fluentd
+    Containers:
+    fluentd:
+        Image:      fluent/fluentd:v0.14.10
+        Port:       <none>
+        Host Port:  <none>
+        Limits:
+        memory:  200Mi
+        Requests:
+        cpu:        100m
+        memory:     200Mi
+        Environment:  <none>
+        Mounts:
+        /var/lib/docker/containers from varlibdockercontainers (ro)
+        /var/log from varlog (rw)
+    Volumes:
+    varlog:
+        Type:          HostPath (bare host directory volume)
+        Path:          /var/log
+        HostPathType:  
+    varlibdockercontainers:
+        Type:          HostPath (bare host directory volume)
+        Path:          /var/lib/docker/containers
+        HostPathType:  
+    Events:
+    Type    Reason            Age   From                  Message
+    ----    ------            ----  ----                  -------
+    Normal  SuccessfulCreate  15h   daemonset-controller  Created pod: fluentd-wxpx6
+
+Showing it was deployed to the single node of `minikube`
+
+Get the relevant pods:
+
+    $ kubectl get pods -o wide --selector="app=fluentd"
+    NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+    fluentd-wxpx6   1/1     Running   0          3m50s   172.17.0.6   minikube   <none>           <none>
+
+Adding a new node will automatically add the pod to that node.
+
+## Limiting DaemonSets to a Specific Node
+
+Suppose you want to deploy a pod to a subset of notes - ones that have a GPU or faster access to storage.
+In this case node labels can tag specific nodes that meet the workload requirements.
+
+### Adding Labels to Nodes
+
+For example add a `ssd=true` to a single node
+
+    $ kubectl get nodes
+    NAME       STATUS   ROLES    AGE   VERSION
+    minikube   Ready    <none>   13d   v1.16.2
+
+    kubectl label nodes minikube ssd=true
+
+Select the nodes matching that label
+
+    $ kubectl get nodes --selector ssd=true
+    NAME       STATUS   ROLES    AGE   VERSION
+    minikube   Ready    <none>   13d   v1.16.2
+
+### Node Selectors
+
+Node selectors can be used to limit what nodes a pod can run on a given k8s cluster
+
+For example a DaemonSet configuration to limit nginx to running only on nodes with `ssd=true`
+
+**nginx-fast-storage.yaml**
+
+    apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      labels:
+        app: nginx
+        ssd: "true"
+      name: nginx-fast-storage
+    spec:
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+          labels:
+            app: nginx
+            ssd: "true"
+        spec:
+          nodeSelector:
+            ssd: "true"
+          containers:
+            - name: nginx
+              image: nginx:1.10.0
+
+Adding the `ssd=true` label to a node means that the daemonset will automatically deploy to that node.
+The inverse is also true, if a label is deleted.
+
+## Updating a DaemonSet
+
+Prior to k8s 1.6, the only way to update pods managed by the daemonset was to update the daemonset and manually delete each pod so the daemonset recreates it.
+
+In 1.6, Daemonsets gained the equivalent of a deployment object.
+
+### Rolling Update of a Daemonset
+
+The `RollingUpdate` strategy can be used.
+
+* `spec.updateStrategy.type: RollingUpdate`
+* Any change to `spec.template` will initiate a rolling update
+
+2 parameters control the rolling update:
+* `spec.minReadySeconds` - how long a pod must be ready before rolling update proceeds
+* `spec.updateStrategy.rollingUpdate.maxUnavailable` - how many pods can be simultaneously updated
+
+Likely want to set `spec.minReadySeconds` to `30-60 seconds`
+
+`spec.updateStrategy.rollingUpdate.maxUnavailable` is application dependant - setting to 1 increases the time of rollout. Increasing this increases the speed of rollout but increases the blast radius.
+
+Check status with:
+
+    kubectl rollout status daemonSets my-daemon-set
+
+## Deleting a Daemonset
+
+Use:
+
+    kubectl delete -f fluentd.yaml
+
+> Deleting the daemonset will delete all the pods, set `--cascade=False` to ensure only the daemonset is deleted and not the pods
+
+# 12. Jobs
+
+So far we have looked at long running processes such as db's or web applications.
+These workloads run until they are upgraded or the service is no longer needed.
+
+There is often a need for short-lived one-off tasks - the `Job` object is made for handling these types of tasks.
+
+A job creates a pod that runs until successful termination (exit with 0).
+Whereas a regular pod will continually restart regardless of the exit code.
+
+Jobs are useful for things you only want to do once - like a db migration or batch job.
+
+## The Job Object
+
+Responsible for creating and managing pods defined in a template in a job spec.
+These pods generally run until completion.
+
+There is a chance your job will not execute if the required resources are not found by the scheduler.
+Also a small chance that duplicate podswill be created.
+
+## Job Patterns
+
+Jobs are designed to manage batch-like workloads where work items are processed by one or more pods.
+Each job runs a single pod until successful termination.
+
+* One shot: Run once until completion (database migration) - `completions=1`, `parrallelism=1`
+* One or more pods running one or more times until a completion point - `completions=+1`, `parrallelism=1+`
+* One or more pods running until successful termination - `completitions=1`, `parrallelism=2+`
+
+A pod template must be defined in the job configuration. Once a job is up and running - the pod backing the job must be monitored for successful termination.
+The job controller is responsible for recreating a pod until successful termination.
+
+    kubectl run -i oneshot --image=gcr.io/kuar-demo/kuard-amd64:blue --restart=OnFailure -- --keygen-enable --keygen-exit-on-complete --keygen-num-to-gen 10
+
+* `-i` indicates an interactive command so it waits until the job is running and then shows the log output
+* `--restart=OnFailure` tells kubectl to create a job object
+* All options after `--` are command-line arguments to the container image.
+
+I think the job failed for me:
+
+    $ kubectl get jobs
+    NAME      COMPLETIONS   DURATION   AGE
+    oneshot   0/1           24m        24m
+
+> After the job has completed, the Job object and related Pod are still around. This is so that you can inspect the log output.
+
+    kubectl delete jobs oneshot
+
+**job-oneshot.yaml**:
+
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: oneshot
+    spec:
+      template:
+        spec:
+          containers:
+          - name: kuard
+            image: gcr.io/kuar-demo/kuard-amd64:blue
+            imagePullPolicy: Always
+            args:
+            - "--keygen-enable"
+            - "--keygen-exit-on-complete"
+            - "--keygen-num-to-gen=10"
+          restartPolicy: OnFailure
+
+Create with:
+
+    kubectl apply -f job-oneshot.yaml
+
+Describe the job with:
+
+    $ kubectl describe jobs/oneshot
+    Name:           oneshot
+    Namespace:      default
+    Selector:       controller-uid=3f05b1a2-39ae-4fef-98ed-f53b193aef75
+    Labels:         controller-uid=3f05b1a2-39ae-4fef-98ed-f53b193aef75
+                    job-name=oneshot
+    Annotations:    kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"oneshot","namespace":"default"},"spec":{"template":{"spec":{"co...
+    Parallelism:    1
+    Completions:    1
+    Start Time:     Wed, 18 Dec 2019 03:12:37 +0200
+    Pods Statuses:  0 Running / 0 Succeeded / 1 Failed
+    Pod Template:
+    Labels:  controller-uid=3f05b1a2-39ae-4fef-98ed-f53b193aef75
+            job-name=oneshot
+    Containers:
+    kuard:
+        Image:      gcr.io/kuar-demo/kuard-amd64:blue
+        Port:       <none>
+        Host Port:  <none>
+        Args:
+        --keygen-enable
+        --keygen-exit-on-complete
+        --keygen-num-to-gen=10
+        Environment:  <none>
+        Mounts:       <none>
+    Volumes:        <none>
+    Events:
+    Type     Reason                Age   From            Message
+    ----     ------                ----  ----            -------
+    Normal   SuccessfulCreate      31h   job-controller  Created pod: oneshot-6f9bx
+    Normal   SuccessfulDelete      31h   job-controller  Deleted pod: oneshot-6f9bx
+    Warning  BackoffLimitExceeded  31h   job-controller  Job has reached the specified backoff limit
+
+**It failed!**
+
+> Jobs have a finite beginning and end - users create many of them. That is why labels are automatically assigned to pods. 
+
+### Pod Failure
+
+Sometimes a pod has a bug in the code and the pod enters a `CrashLoopBackOff`.
+
+K8s will wait a bit before restarting the pod, to prevent excess resource usage on the node.
+
+If you set `restartPolicy: Never` you are telling k8s to not restart the pod on failure, but rather declare the pod as failed. This creates alot of junk.
+
+Delete the jobs with:
+
+    kubectl delete jobs oneshot
+
+You can use liveness probes with jobs, if a liveness policy determines a pod is dead it'll be restarted and replaced for you.
+
+### Parallelism
+
+Generating keys can be slow.
+
+Set `completions=10` and `paralelism=5`
+
+**job-parallel.yaml**
+
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: parallel
+      labels:
+        chapter: jobs
+    spec:
+      parallelism: 5
+      completions: 10
+      template:
+        metadata:
+          labels:
+            chapter: jobs
+        spec:
+          containers:
+          - name: kuard
+            image: gcr.io/kuar-demo/kuard-amd64:blue
+            imagePullPolicy: Always
+            command: ["/kuard"]
+            args:
+            - "--keygen-enable"
+            - "--keygen-exit-on-complete"
+            - "--keygen-num-to-gen=10"
+          restartPolicy: OnFailure
+
+It did not work out as expected for me, I watched the pods:
+
+    $ kubectl get pods -w
+    NAME                       READY   STATUS              RESTARTS   AGE
+    nginx-fast-storage-wknfz   1/1     Running             0          128m
+    parallel-kcvxt             0/1     ContainerCreating   0          10s
+    parallel-lpttv             0/1     ContainerCreating   0          10s
+    parallel-ng5xd             0/1     RunContainerError   0          10s
+    parallel-pjwdz             0/1     ContainerCreating   0          10s
+    parallel-vnskl             0/1     ContainerCreating   0          10s
+    parallel-pjwdz             0/1     RunContainerError   0          11s
+    parallel-lpttv             0/1     RunContainerError   0          13s
+    parallel-vnskl             0/1     RunContainerError   0          16s
+    parallel-kcvxt             0/1     RunContainerError   0          19s
+    parallel-ng5xd             0/1     RunContainerError   1          22s
+    parallel-pjwdz             0/1     RunContainerError   1          25s
+    parallel-lpttv             0/1     RunContainerError   1          28s
+    parallel-vnskl             0/1     RunContainerError   1          31s
+    parallel-kcvxt             0/1     RunContainerError   1          35s
+    parallel-ng5xd             0/1     CrashLoopBackOff    1          36s
+    parallel-pjwdz             0/1     CrashLoopBackOff    1          38s
+    parallel-vnskl             0/1     CrashLoopBackOff    1          43s
+    parallel-lpttv             0/1     CrashLoopBackOff    1          43s
+    parallel-pjwdz             0/1     RunContainerError   2          45s
+    parallel-kcvxt             0/1     Terminating         1          45s
+    parallel-vnskl             0/1     Terminating         1          45s
+    parallel-lpttv             0/1     Terminating         1          45s
+    parallel-pjwdz             0/1     Terminating         2          45s
+    parallel-ng5xd             0/1     Terminating         1          45s
+    parallel-kcvxt             0/1     Terminating         1          45s
+    parallel-vnskl             0/1     Terminating         1          45s
+    parallel-ng5xd             0/1     Terminating         2          45s
+    parallel-lpttv             0/1     Terminating         1          45s
+    parallel-pjwdz             0/1     Terminating         2          45s
+    parallel-ng5xd             0/1     Terminating         2          46s
+    parallel-kcvxt             0/1     Terminating         1          48s
+    parallel-kcvxt             0/1     Terminating         1          48s
+    parallel-pjwdz             0/1     Terminating         2          48s
+    parallel-pjwdz             0/1     Terminating         2          48s
+    parallel-vnskl             0/1     Terminating         1          49s
+    parallel-vnskl             0/1     Terminating         1          49s
+    parallel-ng5xd             0/1     Terminating         2          50s
+    parallel-ng5xd             0/1     Terminating         2          50s
+    parallel-lpttv             0/1     Terminating         1          50s
+    parallel-lpttv             0/1     Terminating         1          50s
+
+You can get the events causing the error:
+
+    kubectl get events --sort-by=.metadata.creationTimestamp
+
+That said the error:
+
+    41m         Normal    Created                pod/parallel-ng5xd   Created container kuard
+    41m         Warning   Failed                 pod/parallel-ng5xd   Error: failed to start container "kuard": Error response from daemon: OCI runtime create failed: container_linux.go:345: starting container process caused "exec: \"--keygen-enable\": executable file not found in $PATH": unknown
+
+[Source of the above answer](https://stackoverflow.com/questions/41604499/my-kubernetes-pods-keep-crashing-with-crashloopbackoff-but-i-cant-find-any-lo)
+
+The problem was no command: `command: ["/kuard"]` which I added to the container spec.
+
+    $ kubectl get pods -w
+    NAME                       READY   STATUS              RESTARTS   AGE
+    nginx-fast-storage-wknfz   1/1     Running             0          157m
+    parallel-gfb4m             0/1     ContainerCreating   0          2s
+    parallel-ll5fz             0/1     ContainerCreating   0          2s
+    parallel-qjtgd             0/1     ContainerCreating   0          2s
+    parallel-qlwbs             0/1     ContainerCreating   0          2s
+    parallel-srq8z             0/1     ContainerCreating   0          2s
+    parallel-qlwbs             1/1     Running             0          5s
+    parallel-srq8z             1/1     Running             0          8s
+    parallel-qjtgd             1/1     Running             0          11s
+    parallel-ll5fz             1/1     Running             0          15s
+    parallel-gfb4m             1/1     Running             0          18s
+    parallel-qlwbs             0/1     Completed           0          102s
+    parallel-ltbvb             0/1     Pending             0          0s
+    parallel-ltbvb             0/1     Pending             0          0s
+    parallel-ltbvb             0/1     ContainerCreating   0          0s
+    parallel-ltbvb             1/1     Running             0          7s
+    parallel-srq8z             0/1     Completed           0          112s
+    parallel-k725g             0/1     Pending             0          0s
+    parallel-k725g             0/1     Pending             0          0s
+    parallel-k725g             0/1     ContainerCreating   0          0s
+    parallel-qjtgd             0/1     Completed           0          115s
+    parallel-xt5tk             0/1     Pending             0          0s
+    parallel-xt5tk             0/1     Pending             0          0s
+    parallel-xt5tk             0/1     ContainerCreating   0          0s
+    parallel-ll5fz             0/1     Completed           0          118s
+    parallel-zw49p             0/1     Pending             0          0s
+    parallel-zw49p             0/1     Pending             0          0s
+    parallel-k725g             1/1     Running             0          6s
+    parallel-zw49p             0/1     ContainerCreating   0          0s
+    parallel-xt5tk             1/1     Running             0          6s
+    parallel-zw49p             1/1     Running             0          6s
+    parallel-gfb4m             0/1     Completed           0          2m48s
+    parallel-92fw6             0/1     Pending             0          0s
+    parallel-92fw6             0/1     Pending             0          0s
+    parallel-92fw6             0/1     ContainerCreating   0          0s
+    parallel-92fw6             1/1     Running             0          6s
+    parallel-zw49p             0/1     Completed           0          66s
+    parallel-ltbvb             0/1     Completed           0          83s
+    parallel-xt5tk             0/1     Completed           0          104s
+    parallel-k725g             0/1     Completed           0          110s
+
+To view the keys, check the job:
+
+    $ kubectl describe job parallel
+    Name:           parallel
+    Namespace:      default
+    Selector:       controller-uid=967166ca-3480-4e7c-88d7-87dcfff0507c
+    Labels:         chapter=jobs
+    Annotations:    kubectl.kubernetes.io/last-applied-configuration:
+                    {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"labels":{"chapter":"jobs"},"name":"parallel","namespace":"default"},"s...
+    Parallelism:    5
+    Completions:    10
+    Start Time:     Wed, 18 Dec 2019 04:39:11 +0200
+    Completed At:   Wed, 18 Dec 2019 04:43:04 +0200
+    Duration:       3m53s
+    Pods Statuses:  0 Running / 10 Succeeded / 0 Failed
+    Pod Template:
+    Labels:  chapter=jobs
+            controller-uid=967166ca-3480-4e7c-88d7-87dcfff0507c
+            job-name=parallel
+    Containers:
+    kuard:
+        Image:      gcr.io/kuar-demo/kuard-amd64:blue
+        Port:       <none>
+        Host Port:  <none>
+        Command:
+        /kuard
+        --keygen-enable
+        --keygen-exit-on-complete
+        --keygen-num-to-gen=10
+        Environment:  <none>
+        Mounts:       <none>
+    Volumes:        <none>
+    Events:
+    Type    Reason            Age   From            Message
+    ----    ------            ----  ----            -------
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-qlwbs
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-srq8z
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-qjtgd
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-gfb4m
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-ll5fz
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-ltbvb
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-k725g
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-xt5tk
+    Normal  SuccessfulCreate  31h   job-controller  Created pod: parallel-zw49p
+    Normal  SuccessfulCreate  31h   job-controller  (combined from similar events): Created pod: parallel-92fw6
+
+Then get the logs of the pod to view the keys generated:
+
+    kubectl logs parallel-qlwbs
+
+    ...
+    2019/12/18 02:39:16 Serving on HTTP on :8080
+    2019/12/18 02:39:27 (ID 0 1/10) Item done: SHA256:1s0bwfuxiEmal1NoYVSlYgoyz3V3I9hjO0dHJ/YD0UM
+    2019/12/18 02:39:29 (ID 0 2/10) Item done: SHA256:NgjpYmiHa5/V+Zme+bcAM0tWZsEJbkXxpgHzdY0BNmQ
+    2019/12/18 02:39:37 (ID 0 3/10) Item done: SHA256:h0eZaM5Cq7Pxs6Rj9CbLFCadyN1JOiNu4p4MbIq2JpY
+    2019/12/18 02:39:37 (ID 0 4/10) Item done: SHA256:4CMGwCKTCxvTxK5cVQ69Bm0S4XpjdfbKJ8AW5zYJbhs
+    2019/12/18 02:39:54 (ID 0 5/10) Item done: SHA256:1ZgtS+9Wnw9qVCPOtpuvWw7/egpOyMupW3lTe//q/oA
+    2019/12/18 02:40:10 (ID 0 6/10) Item done: SHA256:YmAIHf55NNh/wk1kIzueqFbc0o/qLj2g4gsEQiWU468
+    2019/12/18 02:40:17 (ID 0 7/10) Item done: SHA256:1BeE92jMTr6p9Y7lh2hRytU/Fv5myxQmcr/5kSL22zU
+    2019/12/18 02:40:27 (ID 0 8/10) Item done: SHA256:40b+yqosWRV1SlP4JvT/k6IaLeusBuRe7P7HYdjrIAc
+    2019/12/18 02:40:32 (ID 0 9/10) Item done: SHA256:reu+UWnFO+GNCll8O/xNf8JEV/pZivImUYLKdzUixS0
+    2019/12/18 02:40:52 (ID 0 10/10) Item done: SHA256:GfLpuGv696ce3fboMyHHWlcdAbeXSFX4jXzO0WnB8dY
+    2019/12/18 02:40:52 (ID 0) Workload exiting
+    ...
+
+### Work Queues
+
+A common case is for jobs to process work from a work queue.
+1 task creates a number of work items and publishes them to a work queue.
+A worker job can be run to process each work item until the work queue is empty.
+
+    Producer -> Work Queue -> Consumer
+
+We start by launching a centralised work queue service.
+
+> we create a simple ReplicaSet to manage a singleton work queue daemon
+
+`rs-queue.yaml`:
+
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    metadata:
+      labels:
+        app: work-queue
+        component: queue
+        chapter: jobs
+      name: queue
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: work-queue
+      template:
+        metadata:
+          labels:
+            app: work-queue
+            component: queue
+            chapter: jobs
+        spec:
+          containers:
+          - name: queue
+            image: "gcr.io/kuar-demo/kuard-amd64:blue"
+            imagePullPolicy: Always
+
+Set the queue pod:
+
+    QUEUE_POD=$(kubectl get pods -l app=work-queue,component=queue -o jsonpath='{.items[0].metadata.name}')
+
+Forward to the port:
+
+    kubectl port-forward $QUEUE_POD 8080:8080
+
+Let us expose it as a service to make it easy for producers and consumers to locate the work queue via DNS.
+
+**service-queue.yaml**
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: work-queue
+        component: queue
+        chapter: jobs
+      name: queue
+    spec:
+      ports:
+      - port: 8080
+        protocol: TCP
+        targetPort: 8080
+      selector:
+        app: work-queue
+        component: queue
+
+Create a queue:
+
+    http PUT localhost:8080/memq/server/queues/keygen
+
+put this in `load-queue.sh`:
+
+    for i in work-item-{0..99}; do
+    curl -X POST localhost:8080/memq/server/queues/keygen/enqueue \
+        -d "$i"
+    done
+
+### Now the Consumer
+
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      labels:
+        app: message-queue
+        component: consumer
+        chapter: jobs
+      name: consumers
+    spec:
+      parallelism: 5
+      template:
+        metadata:
+          labels:
+            app: message-queue
+            component: consumer
+            chapter: jobs
+        spec:
+          containers:
+          - name: worker
+            image: "gcr.io/kuar-demo/kuard-amd64:blue"
+            imagePullPolicy: Always
+            command: ["/kuard"]
+            args:
+            - "--keygen-enable"
+            - "--keygen-exit-on-complete"
+            - "--keygen-memq-server=http://queue:8080/memq/server"
+            - "--keygen-memq-queue=keygen"
+          restartPolicy: OnFailure
+
+There are now 5 pods:
+
+    $ kubectl get pods -w
+    NAME                       READY   STATUS      RESTARTS   AGE
+    consumers-2schk            1/1     Running     0          21s
+    consumers-5ktf8            1/1     Running     0          21s
+    consumers-fh8m7            1/1     Running     0          21s
+    consumers-jlwsn            1/1     Running     0          21s
+    consumers-qcvwz            1/1     Running     0          21s
+
+these will continue to work until the queue is empty
+
+### Cleanup
+
+    kubectl delete rs,svc,job -l chapter=jobs
+
+### Cron Jobs
+
+Sheduling a job. A `Cronjob` is responsible for creating a new Job object at particular intervals.
+
+    apiVersion: batch/v1beta1
+    kind: CronJob
+    metadata:
+      name: example-cron
+    spec:
+      # Run every fifth hour
+      schedule: "0 */5 * * *"
+      jobTemplate:
+        spec:
+          template:
+            spec:
+              containers:
+              - name: batch-job
+                image: my-batch-image
+              restartPolicy: OnFailure
+
+* `spec.schedule` is the standard cron format
+
+Get details with:
+
+    $ kubectl describe cronjob.batch/example-cron
+    Name:                          example-cron
+    Namespace:                     default
+    Labels:                        <none>
+    Annotations:                   kubectl.kubernetes.io/last-applied-configuration:
+                                    {"apiVersion":"batch/v1beta1","kind":"CronJob","metadata":{"annotations":{},"name":"example-cron","namespace":"default"},"spec":{"jobTempl...
+    Schedule:                      0 */5 * * *
+    Concurrency Policy:            Allow
+    Suspend:                       False
+    Successful Job History Limit:  3
+    Failed Job History Limit:      1
+    Starting Deadline Seconds:     <unset>
+    Selector:                      <unset>
+    Parallelism:                   <unset>
+    Completions:                   <unset>
+    Pod Template:
+      Labels:  <none>
+      Containers:
+      batch-job:
+        Image:           my-batch-image
+        Port:            <none>
+        Host Port:       <none>
+        Environment:     <none>
+        Mounts:          <none>
+      Volumes:           <none>
+    Last Schedule Time:  <unset>
+    Active Jobs:         <none>
+    Events:              <none>
+
+# 13. ConfigMaps and Secrets
+
+> It is good practice to make container images as reusable as possible
+
+The same image should be used for development, staging and production
+
+Testing and versioning gets difficult if the image needs to be recreated for each environment
+
+How do we specialise he use of the image t runtime?
+
+We use `ConfigMap` and `secrets`
+
+ConfigMaps - provide config information for workloads
+Secrets - provide config information of a sensitive nature (crednetials or TLS certificates)
+
+## ConfigMaps
+
+* Think of it as a small filesystem
+* They are used to define the environment
+
+The ConfigMap is combined with the pod right before it is run.
+This means the container image and pod defintion can be reused across apps by just changing the `ConfigMap` used
+
+### Creating ConfigMaps
+
+You can create these imperitively or declaratively.
+
+Create a config file: `my-config.txt`
+
+    parameter1 = value1
+    parameter2 = value2
+
+then create a `ConfigMap` from it:
+
+    kubectl create configmap my-config --from-file=my-config.txt --from-literal=extra-param=extra-value --from-literal=another-param=another-value
+
+the equivalent yaml is:
+
+    $ kubectl get configmaps my-config -o yaml
+    apiVersion: v1
+    data:
+      exta-param: extra-value
+      my-config.txt: |
+        parameter1 = value1
+        parameter2 = value2
+    kind: ConfigMap
+    metadata:
+      creationTimestamp: "2019-12-18T08:31:03Z"
+      name: my-config
+      namespace: default
+      resourceVersion: "408037"
+      selfLink: /api/v1/namespaces/default/configmaps/my-config
+      uid: c8d227af-1932-424d-acd4-88bff381d26b
+
+A configMap is basically key-value pairs stored, the interesting happens when you try use a ConfigMap.
+
+## Using a ConfigMap
+
+3 ways:
+* filesystem - mount a configmap into a pod - a file is created for each entry
+* environment variable - dynamically set the value of an environment variable
+* command-line argument - k8s supports dynamically creating the command line for a container from ConfigMap values
+
+For filesystem we create a new volume and give it the name `config-volume`. 
+We define this volume to be a `ConfigMap` volume and point at the `ConfigMap` to mount.
+We specify where this is mounted in the container with a `volumeMount` - most cases we mount at `/config`
+
+Environment variables are specified with the `valueFrom` member - that refernces the configmap with `configMapKeyRef`
+
+Commandline arguments build on environment variables with the special `$(env-var-name)` syntax - as a command in the yaml.
+
+Eg. `kuard-config.yaml`
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: kuard-config
+    spec:
+      containers:
+        - name: test-container
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+          imagePullPolicy: Always
+          command:
+            - "/kuard"
+            - "$(EXTRA_PARAM)"
+          env:
+            - name: ANOTHER_PARAM
+              valueFrom:
+                configMapKeyRef:
+                  name: my-config
+                  key: another-param
+            - name: EXTRA_PARAM
+              valueFrom:
+                configMapKeyRef:
+                  name: my-config
+                  key: extra-param
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: my-config
+      restartPolicy: Never
+
+In my case I get a `CreateContainerConfigError` on the pod, because I didn't specify `another-param`. I got this error with `kubectl get events`:
+
+    $ kubectl get events
+    LAST SEEN   TYPE      REASON      OBJECT             MESSAGE
+    <unknown>   Normal    Scheduled   pod/kuard-config   Successfully assigned default/kuard-config to minikube
+    41s         Normal    Pulling     pod/kuard-config   Pulling image "gcr.io/kuar-demo/kuard-amd64:blue"
+    52s         Normal    Pulled      pod/kuard-config   Successfully pulled image "gcr.io/kuar-demo/kuard-amd64:blue"
+    52s         Warning   Failed      pod/kuard-config   Error: couldn't find key another-param in ConfigMap default/my-config
+
+Something was up and I changed something.
+
+If we port forward to that container we can view the server env:
+
+    kubectl port-forward kuard-config 8080
+
+In the filesystem browser - you can see the config files and values in `/config` and the config file `my-config.txt`
+
+## Secrets
+
+Certain data is sensitive - password, security tokens or other types of private keys
+
+Secrets enable contianer images to be created without bundling sensitive data.
+Allowing containers to be portable across environments.
+
+> By default kubernetes secrets are stored in plain text in `etcd` storage. Anyone who has cluster admin can read all the secrets in a cluster. Most cloud key stores have integration with Kubernetes flexible volumes, enabling you to skip Kubernetes secrets entirely
+
+### Creating Secrets
+
+> Container images should not bundle TLS ceritficates or keys so they can remain portable and distributable through public docker registries
+
+Obtain the rax data we want to store
+
+    curl -o kuard.crt  https://storage.googleapis.com/kuar-demo/kuard.crt
+    curl -o kuard.key https://storage.googleapis.com/kuar-demo/kuard.key
+
+Create the secret with:
+
+    kubectl create secret generic kuard-tls --from-file=kuard.crt --from-file=kuard.key
+
+The secret was created with two data elements.
+Get the details with:
+
+    $ kubectl describe secrets kuard-tls
+    Name:         kuard-tls
+    Namespace:    default
+    Labels:       <none>
+    Annotations:  <none>
+
+    Type:  Opaque
+
+    Data
+    ====
+    kuard.crt:  1050 bytes
+    kuard.key:  1679 bytes
+
+We consume the secrets with a secrets volume.
+
+### Consuming Secrets
+
+They can be consumed using the k8s rest api
+
+However to keep the pplicaiton protable - ie. requiring no modification to acquire the secrets we use a secrets volume.
+
+#### Secrets Volume
+
+Secrets are exposed to pods using the secrets volume type.
+Secrets volumes are managed by the `kubelet` and are created at pod creation time.
+Secrets are stored on `tmpfs` volumes and are not written to disk on nodes.
+
+Each data element of a secret is stored in a seperate file under the target mount point.
+The `kuard-tls` secret container `kuard.crt` and `kuard.key`
+
+Mounting the `kuard-tls` secrets to `/tls` results in:
+
+    /tls/kuard.crt
+    /tls/kuard.key
+
+Delcare a secret with
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: kuard-tls
+    spec:
+      containers:
+        - name: kuard-tls
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: tls-certs
+            mountPath: "/tls"
+            readOnly: true
+      volumes:
+        - name: tls-certs
+          secret:
+            secretName: kuard-tls
+
+After apply, port forward to https port and check it out:
+
+    kubectl port-forward kuard-tls 8443:8443
+
+then go to: https://localhost:8443/
+
+## Private Docker Registries
+
+A special use case is to store access credentials to private docker registries.
+
+`Image pull secrets` leverage the secrets API to automate the ditribution of private registry credentials.
+
+They are just like regular secrets but except they are consumed through `spec.imagePullSecrets`
+
+Create an image pull secret:
+
+    kubectl create secret docker-registry my-image-pull-secret --docker-username=<docker-username> --docker-password=<password> --docker-email=<email-address>
+
+You then give access to the pod (for the imagepull secret) with:
+
+`kuard-registry.yaml`:
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: kuard-tls
+    spec:
+      containers:
+        - name: kuard-tls
+          image: gcr.io/kuar-demo/kuard-amd64:blue
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: tls-certs
+            mountPath: "/tls"
+            readOnly: true
+      imagePullSecrets:
+      - name:  my-image-pull-secret
+      volumes:
+        - name: tls-certs
+          secret:
+            secretName: kuard-tls
+
+> If you are repeatedly pulling from the same registry, you can add the secrets to the default service account associated with each Pod to avoid having to specify the secrets in every Pod you create
+
+## Naming Constraints
+
+Valid key names:
+* `.auth_token`
+* `Key.pem`
+* `config_file`
+
+Invalid key names:
+* `Token..properties`
+* `auth file.json`
+* `_password.txt`
+
+Configmaps are `UTF-8` text. They are unable to store binary but can store base64.
+THe maximum size of a ConfigMap or Secret is 1MB.
+
+## Managing ConfigMaps and Secrets
+
+The usual `create`, `delete`, `get` and `decscribe` commands work.
+
+### Listing
+
+    kubectl get secrets
+
+    kubectl get configmaps
+
+    $ kubectl describe cm my-config
+    Name:         my-config
+    Namespace:    default
+    Labels:       <none>
+    Annotations:  <none>
+
+    Data
+    ====
+    another-param:
+    ----
+    another-value
+    extra-param:
+    ----
+    extra-value
+    my-config.txt:
+    ----
+    parameter1 = value1
+    parameter2 = value2
+
+    Events:  <none>
+
+You can view raw data with:
+
+    $ kubectl get cm my-config -o yaml
+    apiVersion: v1
+    data:
+      another-param: another-value
+      extra-param: extra-value
+      my-config.txt: |
+        parameter1 = value1
+        parameter2 = value2
+    kind: ConfigMap
+    metadata:
+      creationTimestamp: "2019-12-18T08:55:40Z"
+      name: my-config
+      namespace: default
+      resourceVersion: "410659"
+      selfLink: /api/v1/namespaces/default/configmaps/my-config
+      uid: a21d5265-e699-40a6-b351-0d18945a0bef
+
+or get a secret with:
+
+    kubectl get secret kuard-tls -o yaml
+
+### Creating
+
+    kubectl create secret generic
+
+or
+
+    kubectl create configmap
+
+with:
+* `--from-file=<filename>`
+* `--from-file=<key>=<filename>`
+* `--from-file=<directory>`
+* `--from-literal=<key>=<value>`
+
+### Updating
+
+#### Update from file
+
+Just update the ConfigMap or secret and run:
+
+    kubectl replace -f <filename>
+
+or
+
+    kubectl apply -f <filename>
+
+> Oftentimes the manifests are checked into source control
+
+**It is a bad idea to check secret yaml files into source control**
+
+#### Recreate and Update
+
+If you store the inputs as seperate files on the disk you can use:
+
+    kubectl create secret generic kuard-tls \
+    --from-file=kuard.crt --from-file=kuard.key \
+    --dry-run -o yaml | kubectl replace -f -
+
+Here to tell kubectl to just dump the `yaml` it would send to the API server and pipe that to `kubectl replace ...`
+
+#### Edit Current Version
+
+    kubectl edit configmap my-config
+
+#### Live Updates
+
+When a configmap or secret is updated via API, it is automatically pushed to the volumes.
+So you can update the config of applications without restarting them. 
+It is up to the applcation to update to new settings.
+
+# 14. RBAC (Role Based Access Control) for k8s
+
+Introduced in version 1.5 and becoming generally available in 1.8.
+
+RBAC restricts access to actions on the kubernetes API.
+It is critical to hardening access to a k8s cluster, to prevent one person in a namespace taking out a production cluster.
+
+Multitenant security is complex and multifaceted.
+
+> In a hostile security environment do not beleive that RBAC by itself is enough to protect you. In this case isolation should be done with a hypervisor.
+
+Authentication - Getting the identity, it should integrate with a pluggable identity provider - k8s does not have a built in identity store.
+Authorization - Once identified, authorization determines whether the identity is allowed to perform an action of access a resource.
+
+## RBAC
+
+Every request in k8s is associated with an identity. Even a request with no identity is associated with `system:unauthenticated`. 
+
+k8s uses a generic interface for authentication provider - each provider supplies a username and set of groups a user belongs to.
+
+K8s supports:
+* HTTP basic auth (deprecated)
+* x509 client certificates
+* Static token files on the host
+* Cloud auth providers (Azure active directory or AWS IAM) - or Open Source Single-sign On Identity providers (like keycloak)
+* Authentication webhooks
+
+### Understanding Roles and Role Bindings
+
+To determine authorization roles and role bindings are used.
+
+* `role` - set of abstract capabilities. Eg. `appdev` can create pods and services.
+* `role binding` - assignment of one or more roles to an identity. Eg. binding `appdev` role to the `alice` user.
+
+### Roles and Role Bindings in K8s
+
+Two types:
+* Namespaces - `Role` and `RoleBinding`
+* Across cluster - `ClusterRole` and `ClusterRoleBinding`
+
+`Role` and `RoleBinding` only work within a specific namespace
+
+This role gives ability to create pods and services
+
+    kind: Role
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      namespace: default
+      name: pod-and-services
+    rules:
+    - apiGroups: [""]
+      resources: ["pods", "services"]
+      verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
+
+To bind this role to `alice` we create a `RoleBinding`
+
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      namespace: default
+      name: pods-and-services
+    subjects:
+    - apiGroup: rbac.authorization.k8s.io
+      kind: User
+      name: alice
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: mydevs
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: pod-and-services
+
+For limiting access to cluster level resources use `ClusterRole` and `ClusterRoleBinding`
+
+### K8s Verbs
+
+* `create`
+* `delete`
+* `get`
+* `list`
+* `patch`
+* `update`
+* `watch`
+* `proxy`
+
+### Built-in Roles
+
+    kubectl get clusterroles
+
+Most of the roles are for system utilities: `system`
+
+There are 4 types of user roles:
+* `cluster-admin` - complete access to the entire cluster
+* `admin` - access to the complete namespace
+* `edit` - allow you to modify a namespace
+* `view` - read only access to a namespace
+
+> Any built-in cluster role, those modifications are transient. Whenever the API server is restarted (e.g., for an upgrade) your changes will be overwritten.
+
+To preventt this you need to set gthe annotation:
+
+    rbac.authorization.kubernetes.io/autoupdate: False
+
+> By default k8s allows `system:unauthenticated` to the API discovery endpoint - in hostile environments (zero trust) you should ensure `--anonymous-auth=false`
+
+## Techniques for managing RBAC
+
+### Can-I Tool
+
+    kubectl auth can-i create pods
+
+Can also test subresources
+
+    kubectl auth can-i get pods --subresource=logs
+
+### Managing RBAC in Source COntrol
+
+Like everything in k9s there is a `json` or `yaml` representation
+
+To reconcile roles and role bindings to the current state of the cluster use:
+
+    kubectl auth reconcile -f some-rbac-config.yaml
+
+Add `--dry-run` to print out but not run the changes
+
+## Advanced Topics
+
+### Aggregating Cluster Roles
+
+Cloning clusterroles to others is error prone and time consuming.
+
+> Kubernetes RBAC supports the usage of an aggregation rule to combine multiple roles together in a new role
+
+Some more info in the book...
+
+
+# 15. Intergrating Storage Solutions and Kubernetes
+
+Decoupling state from applications and building your microservices to be as statless as possible result in maximally reliable, manageable systems.
+
+Integrating data with containers and container orchestrators is often the most complicated aspect of building a complex system.
+
+The move also involves:
+* decoupling
+* immutable architecture
+* declarative application development
+
+Cloud native storage like cassandra or mongodb involve some imperitive steps.
+
+Eg. Setting up a `ReplicaSet` in Mongodb involves deploying the the Mondo daemon and identifying the leader.
+
+Most containerized systems are usually adapted from existing systems deployed into vm's - where data needs to be imported or migrated.
+
+Storage is often an externalised cloud service - it can never really exist inside of the k8s cluster.
+
+Variety of approaches of intergrating storage:
+* Importing External services (cloud or vm)
+* Reliable singletons running in k8s
+* StatefulSets in k8s
+
+## Importing External Services
+
+An existing machine in your network running a database.
+In this case you don't want to immediately move the data to k8s.
+It could be run by a different team, a gradual move or moving it is just more trouble than it is worth.
+
+**This db will never be in k8s**
+
+It is still worthwhile to represent the server in k8s - to get built in naming, service discovery primitives and makes it look like the database is a k8s service.
+
+Making it easy to replace the service.
+
+Eg. You rely on db in production running on a machine but for testing you deploy the db to transient containers.
+Data persistence is not important in this case.
+
+Representing both db's as a k8s service enables you yo maintain the same config  - maintaining high fidelity.
+So a service will look the same but the namespace will differ:
+
+    kind: Service
+    metadata:
+      name: my-database
+      namespace: test
+
+in production:
+
+    kind: Service
+    metadata:
+      name: my-database
+      namespace: prod
+
+When deploying a pod in `test` namespace and look for a pod called `my-database`, it receives a pointer to `my-database.test.svc.cluster.internal` which points to the test db.
+When a pod in `prod` looks up `my-database` it will point to the prod db.
+
+### Services without Selectors
+
+With external services there are no labels - instead you have a DNS name to point to the specific server running the database.
+Let's say the db is called `database.company.com`
+
+To import this database into k8s, we create a service without a pod selector that references the DNS name of the server:
+
+`dns-service.yaml`
+
+    kind: Service
+    apiVersion: v1
+    metadata:
+      name: external-database
+    spec:
+      type: ExternalName
+      externalName: database.company.com
+
+When a typical k8s service is created - an ip address and DNS record is created.
+When you create a service of type `ExternalName`, the k8s dns is populated with a `CNAME` record that points to the external name.
+
+When a lookup is done to `external-database.svc.default.cluster` by a k8s pod, DNS aliases that to `database.company.com`
+
+Cloud providers would also provide you a hostname eg. `my-database.databases.cloudprovider.com`
+
+Sometimes you don't have a DNS address, just an `ip`, in this case it is a bit diffferent.
+1. Create a service without a label selector but also with the `ExternalName`
+2. Create an endpoint
+
+**external-ip-service.yaml**
+
+    kind: Service
+    apiVersion: v1
+    metadata:
+      name: external-ip-database
+
+K8s will allocate a virtual ip for the service and populate an `A` record for it.
+
+Because there is no selector for the service, there will be no endpoints populated for the load balancer to redirect traffic to.
+
+The user is responsible for populating the endpoints manually:
+
+**external-ip-endpoints.yaml**
+
+    kind: Endpoints
+    apiVersion: v1
+    metadata:
+      name: external-ip-database
+    subsets:
+      - addresses:
+        - ip: 192.168.0.1
+        ports:
+        - port: 3306
+
+### Limitations of External Services: Health Checking
+
+External services in k8s do not perform health checking - the user is responsible for the realiability of the service.
+
+## Running Reliable Singletons
+
+Challenge of running storage in K8s is that often primitives like `replicaSet` expect every container to be identical and replacable - for most storage solutions that is not the case.
+
+One solution is running a single pod that runs the database or other storage solution.
+There is no replication.
+
+> This may seem counter to the principles of reliable distributed systems but it is no more unreliable than running your own database or storage on a single vm.
+
+For smaller systems the downtime tradeoff for upgrades might be worth it.
+
+### Running a MySQL Singleton
+
+You need 3 basic objects:
+* A `persistent volume` to manage the lifespan of the disk storage independently from the lifespan of the MySQL application
+* A MySQL `pod` that will run the MySQL application
+* A `service` that will expose this pod to other containers
+
+Persistent volumes independence is important - should the container database application crash the storage will persist.
+
+We use `NFS` for maximum portability - but you can use something else:
+Instead of using `nfs` use `azure`, `awsElasticBlockStore` or `gcePersistentDisk`
+
+**nfs-volume.yaml**
+
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: database
+      labels:
+        volume: my-volume
+    spec:
+      accessModes:
+      - ReadWriteMany
+      capacity:
+        storage: 1Gi
+      nfs:
+        server: 192.168.0.1
+        path: "/exports"
+
+This defines an NFS `PersistentVolume` object with 1GB of storage.
+
+Once the persisten volume has been created we need to claim the persistent volume for our pod:
+
+**nfs-volume-claim.yaml**
+
+    kind: PersistentVolumeClaim
+    apiVersion: v1
+    metadata:
+      name: database
+    spec:
+      accessModes:
+      - ReadWriteMany
+      resources:
+        requests:
+          storage: 1Gi
+      selector:
+        matchLabels:
+          volume: my-volume
+
+The reason for this indirection is to isolate the pod defintion from the storage definition.
+
+You can declare a volume in a pod specification, but that locks the pod to a particular volume provider.
+
+A volume claim keeps your pod spec cloud agnostic.
+
+> Furthermore, in many cases, the persistent volume controller will actually automatically create a volume for you
+
+Now we claimed the persistent volume, we can use a `ReplicaSet` to construct our singleton pod.
+
+May be weird to use a `ReplicaSet` to manage a single pod, but it is necessary for reliablity.
+Once scheduled to a machine, a bare pod is bound to that machine forever.
+If the machine fails, any pods associated to that machine fail as well - and are not rescheduled elsewhere.
+If we use a `ReplicaSet` they will be rescheduled.
+
+**mysql-replicaset.yaml**
+
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    metadata:
+      name: mysql
+      # labels so that we can bind a Service to this Pod
+      labels:
+        app: mysql
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: mysql
+      template:
+        metadata:
+          labels:
+            app: mysql
+        spec:
+          containers:
+          - name: database
+            image: mysql
+            resources:
+              requests:
+                cpu: 1
+                memory: 2Gi
+            env:
+            # Environment variables are not a best practice for security,
+            # but we're using them here for brevity in the example.
+            # See Chapter 11 for better options.
+            - name: MYSQL_ROOT_PASSWORD
+              value: some-password-here
+            livenessProbe:
+              tcpSocket:
+                port: 3306
+            ports:
+            - containerPort: 3306
+            volumeMounts:
+              - name: database
+                # /var/lib/mysql is where MySQL stores its databases
+                mountPath: "/var/lib/mysql"
+          volumes:
+          - name: database
+            persistentVolumeClaim:
+              claimName: database
+
+The replicaset creates a pod running MySQL using the persistent disk we just created.
+
+Now expose as a service:
+
+**mysql-service.yaml**
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: mysql
+    spec:
+      ports:
+      - port: 3306
+        protocol: TCP
+      selector:
+        app: mysql
+
+We now have a reliable singleton MySQL instance running and exposed as `mysql`
+Which we can access with `mysql.svc.default.cluster`
+
+### Dynamic Volume Provisioning
+
+Cluster operator creates one or more `StorageClass` objects - for example on Azure:
+
+**storageclass.yaml**
+
+    apiVersion: storage.k8s.io/v1
+    kind: StorageClass
+    metadata:
+      name: default
+      annotations:
+        storageclass.beta.kubernetes.io/is-default-class: "true"
+      labels:
+        kubernetes.io/cluster-service: "true"
+    provisioner: kubernetes.io/azure-disk
+
+Once the storage class is created you can refer to it in your persistent volume claim.
+
+When the dynamic provisioner sees the storage claim - it uses the appropriate volume driver.
+
+**dynamic-volume-claim.yaml**
+
+    kind: PersistentVolumeClaim
+    apiVersion: v1
+    metadata:
+      name: my-claim
+      annotations:
+        volume.beta.kubernetes.io/storage-class: default
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+
+The `volume.beta.kubernetes.io/storage-class: default` is what links the claim to the storage class
+
+> Automatic provisioning of a persistent volume is a great feature that makes it significantly easier to build and manage stateful applications in Kubernetes - however the lifespan of the persistent volume is determined by the reclaimation policy - which is usually bound to the pod by default. So if you delete the pod the data is deleted.
+
+Persistent volumes are great for traditional applications that require storage.
+For highly available scalable storage - you need `StatefulSets`
+
+## Kubernetes-Native Storage with StatefulSets
+
+When k8s started there has an emphasis for replicas being exactly the same in a replicaset.
+
+No replica had an individual identity or configurtion - this approach was good for isolation required for orchestration - it made developing stateful applications difficult.
+
+### Properties of Stateful Sets
+
+They are replicated groups of pods similar to ReplicaSets, with a few differences:
+
+* Each replica gets a persistent hostname with a unique index (`database-0`, `database-1`)
+* Each replica is created from lowest to highest index, creation will block until the previous index is healthy and available
+* When deleted, each pod is deleted from highest to lowest
+
+This simple solution makes it much easier to deploy storage apps on k8s
+
+The stable hostnames means all replicas (other than the first) can reference the first one reliably - `database-0`
+
+### Manually Replicated MongoDB with StatefulSets
+
+A 3 replica stateful set of Mongo db:
+
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: mongo
+    spec:
+      serviceName: "mongo"
+      replicas: 3
+      selector:
+        matchLabels:
+          app: mongo
+      template:
+        metadata:
+          labels:
+            app: mongo
+        spec:
+          containers:
+          - name: mongodb
+            image: mongo:3.4.1
+            command:
+            - mongod
+            - --replSet
+            - rs0
+            ports:
+            - containerPort: 27017
+              name: peer
+
+Getting the pods:
+
+    $ kubectl get pods
+    NAME          READY   STATUS    RESTARTS   AGE
+    mongo-0       1/1     Running   0          109s
+    mongo-1       1/1     Running   0          15s
+    mongo-2       1/1     Running   0          12s
+
+Each pod has a numeric index as a suffix
+
+Now we need a headless service to manage the DNS entries for the stateful set
+
+A service is `headless` if it doesn't have a cluster virtual ip
+
+Since in stateful sets each pod has a unique identity it doesn't make sense to have a load-balancing ip address.
+You create headless with `clusterIP: None`
+
+**mongo-service.yaml**
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: mongo
+    spec:
+      ports:
+      - port: 27017
+        name: peer
+      clusterIP: None
+      selector:
+        app: mongo
+
+There are usually 4 dns entries populated:
+
+    mongo.default.svc.cluster.local
+    0⁠.mongo⁠.default⁠.svc⁠.cluster​.local
+    mongo-1.mongo 
+    mongo-2.mongo
+
+Thus you get well defined stateful names.
+You can test out the dns resolution with:
+
+    kubectl run -it --rm --image busybox busybox ping mongo-1.mongo
+
+Now we need to manually setup pod replication
+
+    kubectl exec -it mongo-0 mongo
+    > rs.initiate({_id:"rs0", members: [{_id:0, host:"mongo-0.mongo:27017"}]});
+    { "ok" : 1 }
+
+This tells `mongodb` to intiate the ReplicaSet `rs0` with `mongo-0.mongo`
+
+> The `rs0` name is arbitrary
+
+Add the other replicas
+
+    rs0:OTHER> rs.add("mongo-1.mongo:27017")
+    { "ok" : 1 }
+    rs0:PRIMARY> rs.add("mongo-2.mongo:27017")
+    { "ok" : 1 }
+
+Now we have a replicated Mongo db instance
+
+### Automating Mongo DB Cluster Creations
+
+More in the book for this - makes use of an `init` script
+
+### Persistent Volumes and Stateful Sets
+
+> because the StatefulSet replicates more than one Pod you cannot simply reference a persistent volume claim. Instead, you need to add a persistent volume claim template
+
+### StateFul Set
+
+Get Stateful sets
+
+    $ kubectl get sts
+    NAME    READY   AGE
+    mongo   3/3     38m
+
+Delete a stateful set
+
+    $ kubectl delete sts mongo
+    statefulset.apps "mongo" deleted
+
+# 16. Extending Kubernetes
+
+More info in the book, seems a deep topic that I will look at later...I also want to learn `go` a bit before
+
+# 17. Deploying Real-World Applications
+
+Using k8s in the real world
+
+## Jupyter
+
+Jupyter is a web0based interactive scientific notebook for explorationa dn experimentation
+
+1. Create a namespace for the application
+
+    kubectl create namespace jupyter
+
+2. Create a deployment
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        run: jupyter
+      name: jupyter
+      namespace: jupyter
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          run: jupyter
+      template:
+        metadata:
+          labels:
+            run: jupyter
+        spec:
+          containers:
+          - image: jupyter/scipy-notebook:abdb27a6dfbb
+            name: jupyter
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+
+3. Watch the pod (it takes a while to create)
+
+    watch kubectl get pods -n jupyter
+    
+    NAME                       READY   STATUS    RESTARTS   AGE
+    jupyter-5bf5d6c5bd-txdmf   1/1     Running   0          14m
+
+4. Get the intial login token
+
+    pod_name=$(kubectl get pods --namespace jupyter --no-headers | awk '{print $1}')
+    kubectl logs --namespace jupyter ${pod_name}
+
+5. Port forward
+
+    kubectl port-forward ${pod_name} 8888:8888 -n jupyter
+    
+6. Visit the site
+
+    http://localhost:8888/login?token=xxx
+
+## Parse
+
+Parse server is a cloud API dedicated to providing easy-to-use storage for mobile applications.
+Facebook bought it in 2013 and shut it down.
+
+Parse uses Mongo Db for storage - so we assume you have that 3 node statefulset up.
+
+The open source `parse-server` comes with a `Dcokerfile` for easy containerisation.
+
+If you want to build your own image:
+
+    git clone git@github.com:parse-community/parse-server.git
+    cd parse
+    docker build -t ${DOCKER_USER}/parse-server .
+    # Push to dockerhub
+    docker push ${DOCKER_USER}/parse-server
+
+### Deploying Parse
+
+You need:
+
+* `PARSE_SERVER_APPLICATION_ID` - identifier for your app
+* `PARSE_SERVER_MASTER_KEY` - an identifier that authorizes the master user
+* `PARSE_SERVER_DATABASE_URI` - URI for your mongodb cluster
+
+Lets use the existing image on dockerhub:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: parse-server
+      namespace: default
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          run: parse-server
+      template:
+        metadata:
+          labels:
+            run: parse-server
+        spec:
+          containers:
+          - name: parse-server
+            image: parseplatform/parse-server
+            env:
+            - name: PARSE_SERVER_DATABASE_URI
+              value: "mongodb://mongo-0.mongo:27017,\
+                mongo-1.mongo:27017,mongo-2.mongo\
+                :27017/dev?replicaSet=rs0"
+            - name: PARSE_SERVER_APP_ID
+              value: my-app-id
+            - name: PARSE_SERVER_MASTER_KEY
+              value: my-master-key
+
+I was getting an issue:
+
+    $ kubectl get pods
+    NAME                            READY   STATUS             RESTARTS   AGE
+    mongo-0                         1/1     Running            0          14m
+    mongo-1                         1/1     Running            0          14m
+    mongo-2                         1/1     Running            0          14m
+    parse-server-555dcf844c-2f8x5   0/1     CrashLoopBackOff   3          3m3s
+
+so I got the logs for it:
+
+    kubectl logs parse-server-555dcf844c-2f8x5
+
+in the logs I moticed in red:
+
+    ERROR: appId and masterKey are required
+
+Apparently the environment variable needed now is `PARSE_SERVER_APPLICATION_ID` and not `PARSE_SERVER_APP_ID`
+
+Create the service to test parse:
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: parse-server
+      namespace: default
+    spec:
+      ports:
+      - port: 1337
+        protocol: TCP
+        targetPort: 1337
+      selector:
+        run: parse-server
+
+Now all is working:
+
+    $ kubectl get pods
+    NAME                           READY   STATUS    RESTARTS   AGE
+    mongo-0                        1/1     Running   0          21m
+    mongo-1                        1/1     Running   0          21m
+    mongo-2                        1/1     Running   0          21m
+    parse-server-fff856db6-mbt95   1/1     Running   0          98s
+
+To access the api do you need to port formard?
+
+    $ kubectl get svc
+    NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+    parse-server   ClusterIP   10.103.26.80    <none>        1337/TCP    2m46s
+
+    kubectl port-forward parse-server-fff856db6-mbt95 1337:1337
+
+Add some data to parse:
+
+    $ http post localhost:1337/parse/classes/scores X-Parse-Application-Id:my-app-id score=1337 player_name:stephen
+    HTTP/1.1 201 Created
+    Access-Control-Allow-Headers: X-Parse-Master-Key, X-Parse-REST-API-Key, X-Parse-Javascript-Key, X-Parse-Application-Id, X-Parse-Client-Version, X-Parse-Session-Token, X-Requested-With, X-Parse-Revocable-Session, Content-Type, Pragma, Cache-Control
+    Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+    Access-Control-Allow-Origin: *
+    Access-Control-Expose-Headers: X-Parse-Job-Status-Id, X-Parse-Push-Status-Id
+    Connection: keep-alive
+    Content-Length: 64
+    Content-Type: application/json; charset=utf-8
+    Date: Wed, 18 Dec 2019 20:42:16 GMT
+    ETag: W/"40-eOAuPeKPi5lRZ/W6/wevSA0q/tk"
+    Location: http://localhost:1337/parse/classes/scores/U93JjLNaQp
+    X-Powered-By: Express
+
+    {
+        "createdAt": "2019-12-18T20:42:16.122Z",
+        "objectId": "U93JjLNaQp"
+    }
+
+Get all scores with:
+
+    $ http localhost:1337/parse/classes/scores X-Parse-Application-Id:my-app-id
+    HTTP/1.1 200 OK
+    Access-Control-Allow-Headers: X-Parse-Master-Key, X-Parse-REST-API-Key, X-Parse-Javascript-Key, X-Parse-Application-Id, X-Parse-Client-Version, X-Parse-Session-Token, X-Requested-With, X-Parse-Revocable-Session, Content-Type, Pragma, Cache-Control
+    Access-Control-Allow-Methods: GET,PUT,POST,DELETE,OPTIONS
+    Access-Control-Allow-Origin: *
+    Access-Control-Expose-Headers: X-Parse-Job-Status-Id, X-Parse-Push-Status-Id
+    Connection: keep-alive
+    Content-Length: 132
+    Content-Type: application/json; charset=utf-8
+    Date: Wed, 18 Dec 2019 20:44:13 GMT
+    ETag: W/"84-8vrU48X7zjC1oY6AE8rxZ+EiksM"
+    X-Powered-By: Express
+
+    {
+        "results": [
+            {
+                "createdAt": "2019-12-18T20:42:16.122Z",
+                "objectId": "U93JjLNaQp",
+                "score": "1337",
+                "updatedAt": "2019-12-18T20:42:16.122Z"
+            }
+        ]
+    }
+
+## Ghost
+
+A popular blogging engine with a clean interface written in javascript - can use SQLite or MySQL.
+
+### Configuring Ghost
+
+Configured with `js`
+
+**ghost-config.js**
+
+    var path = require('path'),
+        config;
+
+    config = {
+        development: {
+            url: 'http://localhost:2368',
+            database: {
+                client: 'sqlite3',
+                connection: {
+                    filename: path.join(process.env.GHOST_CONTENT,
+                                        '/data/ghost-dev.db')
+                },
+                debug: false
+            },
+            server: {
+                host: '0.0.0.0',
+                port: '2368'
+            },
+            paths: {
+                contentPath: path.join(process.env.GHOST_CONTENT, '/')
+            }
+        }
+    };
+
+    module.exports = config;
+
+Now create a k8s configmap
+
+    kubectl create cm --from-file ghost-config.js ghost-config
+
+Creating a config called `ghost-config`, we mount this config as a volume in our container.
+
+**ghost.yaml**:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: ghost
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          run: ghost
+      template:
+        metadata:
+          labels:
+            run: ghost
+        spec:
+          containers:
+          - image: ghost
+            name: ghost
+            command:
+            - sh
+            - -c
+            - cp /ghost-config/ghost-config.js /var/lib/ghost/config.js && /usr/local/bin/docker-entrypoint.sh node current/index.js
+            volumeMounts:
+            - mountPath: /ghost-config
+              name: config
+          volumes:
+          - name: config
+            configMap:
+              defaultMode: 420
+              name: ghost-config
+
+We copy `config.js` to a place where ghost expects it. ConfigMap can only mount directories - not individual files
+We can't just mount to `/var/lib/ghost` as ghost expects other files.
+
+Expose it as a service with:
+
+    kubectl expose deployments ghost --port=2368
+
+Now it is a service:
+
+    $ kubectl get svc
+    NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)     AGE
+    ghost          ClusterIP   10.110.230.119   <none>        2368/TCP    78s
+
+View ghost with:
+
+    kubectl proxy
+    
+    Go to: http://localhost:8001/api/v1/namespaces/default/services/ghost/proxy/
+
+#### Ghost and MySQL
+
+A more scalable way of deploying the app is to use MySQL
+
+Update config.js:
+
+        database: {
+            client: 'mysql',
+            connection: {
+                host     : 'mysql',
+                user     : 'root',
+                password : 'root',
+                database : 'ghost_db',
+                charset  : 'utf8'
+            }
+        },
+
+Create the new configmap:
+
+    kubectl create configmap ghost-config-mysql --from-file ghost-config.js
+
+Update the deployment configMap to point to `ghost-config-mysql`
+
+Deploy a MySQL cluster like we did with mongodb previously.
+Create the database with MySQL:
+
+    kubectl exec -it mysql-xyz -- mysql -u root -p 
+
+    create database ghost_db;
+
+Apply:
+
+    kubectl apply -f ghost.yaml
+
+Now you can scale up cause your applciation is decoupled from the data.
+
+## Redis
+
+Redis is a popular in memory key/value store. A reliable redis instance is made of 2 parts: `redis-server` and `redis-sentinel` - which implements health checking and failover.
+
+In a replicated way there is a single master used for both reads and writes.
+There are replicas that duplicate data and are used for load balancing.
+Any replica can failover to become a master.
+
+The failover is performed by the `redis-failover`
+
+### Configuring Redis
+
+We are going to use configmaps to configure redis
+
+It needs seperate configurations for master and slave replicas.
+
+**master.conf**
+
+    bind 0.0.0.0
+    port 6379
+
+    dir /redis-data
+
+**slave.conf**
+
+    bind 0.0.0.0
+    port 6379
+
+    dir .
+
+    slaveof redis-0.redis 6379
+
+**sentinel.conf**
+
+    bind 0.0.0.0
+    port 26379
+
+    sentinel monitor redis redis-0.redis 6379 2
+    sentinel parallel-syncs redis 1
+    sentinel down-after-milliseconds redis 10000
+    sentinel failover-timeout redis 20000
+
+We need a few wrapper scripts for our stateful set:
+
+The first one checks if it is a master or slave - based on the hostname - and starts it up:
+
+**init.sh**
+
+    #!/bin/bash
+    if [[ ${HOSTNAME} == 'redis-0' ]]; then
+      redis-server /redis-config/master.conf
+    else
+      redis-server /redis-config/slave.conf
+    fi
+
+**sentinel.sh**
+
+    #!/bin/bash
+    cp /redis-config-src/*.* /redis-config
+
+    while ! ping -c 1 redis-0.redis; do
+      echo 'Waiting for server'
+      sleep 1
+    done
+
+    redis-sentinel /redis-config/sentinel.conf
+
+Now we pack all this up into a configmap:
+
+    kubectl create configmap \
+    --from-file=slave.conf=./slave.conf \
+    --from-file=master.conf=./master.conf \
+    --from-file=sentinel.conf=./sentinel.conf \
+    --from-file=init.sh=./init.sh \
+    --from-file=sentinel.sh=./sentinel.sh \
+    redis-config
+
+### Creating a Redis Service
+
+Create a k8s service that provides naming and discovery for redis replicas `redis-0.redis`
+
+**redis-service.yaml**
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: redis
+    spec:
+      ports:
+      - port: 6379
+        name: peer
+      clusterIP: None
+      selector:
+        app: redis
+
+> Kubernetes doesn't care that the pods are not created yet - it will add the right names when the pods are created
+
+### Deploying Redis
+
+We are going to deploy with a stateful set:
+
+**redis.yaml**
+
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: redis
+    spec:
+      replicas: 3
+      serviceName: redis
+      selector:
+        matchLabels:
+          app: redis
+      template:
+        metadata:
+          labels:
+            app: redis
+        spec:
+          containers:
+          - command: [sh, -c, source /redis-config/init.sh ]
+            image: redis:3.2.7-alpine
+            name: redis
+            ports:
+            - containerPort: 6379
+              name: redis
+            volumeMounts:
+            - mountPath: /redis-config
+              name: config
+            - mountPath: /redis-data
+              name: data
+          - command: [sh, -c, source /redis-config/sentinel.sh]
+            image: redis:3.2.7-alpine
+            name: sentinel
+            volumeMounts:
+            - mountPath: /redis-config
+              name: config
+          volumes:
+          - configMap:
+              defaultMode: 420
+              name: redis-config
+            name: config
+          - emptyDir:
+            name: data
+
+There are 2 containers, one runs `init.sh` the other runs `sentinel.sh`
+
+There are also 2 volumes: 1 for our ConfigMap the other is `emptyDir` to hold data that survives a restart.
+For more reliable installation - this could be a network attached disk.
+
+To get logs from a specific container within a pod use:
+
+    kubectl logs redis-0 redis
+    kubectl logs redis-0 sentinel
+
+There was an error in sentinel:
+
+    *** FATAL CONFIG FILE ERROR ***
+    Reading the configuration file, at line 4
+    >>> 'sentinel monitor redis redis-0.redis 6379 2'
+    Can't resolve master instance hostname.
+
+Eventually it sorted itself out
+
+### Playing with redis
+
+We can check which sentinel believes it is the master
+
+    $ kubectl exec redis-2 -c redis -- redis-cli -p 26379
+    Could not connect to Redis at 127.0.0.1:26379: Connection refused
+    Could not connect to Redis at 127.0.0.1:26379: Connection refused
+
+Get the value `foo`:
+
+    kubectl exec redis-2 -c redis -- redis-cli -p 6379 get foo
+
+Write to from slave:
+
+    kubectl exec redis-2 -c redis -- redis-cli -p 6379 set foo 10
+
+Try from a master:
+
+    kubectl exec redis-0 -c redis -- redis-cli -p 6379 set foo 10
+
+Now read again:
+
+    kubectl exec redis-2 -c redis -- redis-cli -p 6379 get foo
+
+**Something sketchy is happeneing**
+
+    redis-0                        1/2     CrashLoopBackOff   5          11m
+    redis-1                        1/2     CrashLoopBackOff   5          11m
+    redis-2                        2/2     Running            4          9m16s
+
+# 18. Organising your Application
+
+How to layout, manage, share and update various configurations that make up your applciation.
+
+## Principles
+
+* Filesystems as source of truth
+* Code reviews to ensure the quality of the changes
+* Feature flags for staged roll forward and roll back
+
+### Filesystems as source of truth
+
+In a true productionised application the data in `etcd` is the source of truth.
+The `yaml` or `json`.
+
+It allows you to treat your cluster as `immutable infrastructure`
+
+> If your cluster is a snowflake made up by the ad-hoc application of various random YAML files downloaded from the internet, it is as dangerous as a virtual machine that has been built from imperative bash scripts
+
+Managing via filesystems also makes it more collaborative with the aid of source control
+
+### The role of code review
+
+Code review and config review.
+A few people should look at the configuration of a critical deployment.
+
+> In our experience, most service outages are self-inflicted via unexpected consequences, typos, or other simple mistakes
+
+### Feature Gates and Guards
+
+> Should you use the same repository for application source code as well as configuration? This can work for small projects, but in larger projects it often makes sense to separate the source code from the configuration to provide for a separation of concerns
+
+So development is done behind a feature flag or gate that can be turned on or off
+
+> There are a variety of benefits to this approach. First, it enables the committing of code to the production branch long before the feature is ready to ship
+
+So development is much closer to the `HEAD` of a repo
+
+Enabling or disabling a feature becaome a much simpler task.
+
+## Managing your Application in Source Control
+
+### Filesystem Layout
+
+First cardinality: `frontend`, `backend` or `queue` - this sets the stage for team scaling.
+
+For an application using 2 services:
+* `/frontend`
+* `/service-1`
+* `/service-2`
+
+Within each directory the config for the application is stored - yaml files represent the state of the cluster.
+
+Include both the `service name` and `object type` within the same file.
+
+> It is an antipattern to create multiple objects in the same file
+
+    /frontend
+        frontend-deployment.yaml
+        frontend-service.yaml
+        frontend-ingress.yaml
+    /service-1
+        service-1-deployment.yaml
+        service-1-service.yaml
+        service-1-ingress.yaml
+    /service-2
+        service-2-deployment.yaml
+        service-2-service.yaml
+        service-2-ingress.yaml
+
+### Managing Periodic Versions
+
+Use `tags, branches, and source-control features` or `clone into different directories for different versions`
+
+#### Versioning with Branches and Tags
+
+Tag a release `git tag v1.0`
+
+#### Versioning with Directories
+
+    /frontend
+        /v1
+            frontend-deployment.yaml
+            frontend-service.yaml
+            frontend-ingress.yaml
+        /current
+            frontend-deployment.yaml
+            frontend-service.yaml
+            frontend-ingress.yaml
+    ...
+
+New configurations are added to the `current` directory
+Old configs are copied to their versioned directory `/v1`
+
+## Securing your Application for Development, Testing and Deployment
+
+In addition to release cadence you want to strucutre your app for:
+* agile development
+* quality testing
+* safe deployment
+
+Each developer should be able to develop new features of the application
+In a microservices archiecture that feature might be dependent on many others - it is essential developers can work in their own environment.
+
+Important to test your application as well.
+
+### Progression of a Release
+
+* `HEAD` - Bleeding edge - latest changes
+* `Development` - Largely stable but not ready for deployment
+* `Staging` - Unlikely to change unless problems found
+* `Canary` - First release to users for real-world problem
+* `Release` - Current Production release
+
+#### Mapping of Revision and Stages
+
+    frontend/
+        canary/ -> v2/
+        release/ -> v1/
+        v1/
+            frontend-deployment.yaml
+
+You can use symbolic links to map a stage name to a release, or an additional tag in the source control management
+
+## Parametering your Application with Templates
+
+> Variance and drift between different environments produces snowflakes and systems that are hard to reason about
+
+### Parameterizing with Helm and Templates
+
+There are different languages for creating parameterised configurations - they all divide the files into a `template` file - containing the bulk of the configuration and the `parameters` file - combined with the template to create the complete config.
+
+Most languages allow default values if none are set
+
+Helm is a package manager for kubernetes.
+
+> Despite what devotees of various languages may say, all parameterization languages are largely equivalent, and as with programming langauges, which one you prefer is largely a matter of personal or team style
+
+Helm uses mustache syntax
+
+    metadata:
+      name: {{ .Release.Name }}-deployment
+
+`Release.Name` should be interpolated into the deployment
+
+To pass a parameter to a deployment:
+
+`values.yaml`:
+
+    Release:
+      Name: my-release
+
+### Filesystem Layout for Paramterisation
+
+    frontend/
+        staging/
+            templates -> ../v2
+            staging-parameters.yaml
+        production/
+            templates -> ../v1
+            production-parameters.yaml
+        v1/
+            frontend-deployment.yaml
+            frontend-service.yaml
+        v2/
+            frontend-deployment.yaml
+            frontend-service.yaml
+
+In a source controlled version:
+
+    frontend/
+        staging-parameters.yaml
+        templates/
+            frontend-deployment.YAML
+
+## Deploying your Application around the World
+
+> In the world of the cloud, where an entire region can fail, deploying to multiple regions (and managing that deployment) is the only way to achieve sufficient uptime for demanding users
+
+### Architectures for World-wide Deployment
+
+Each k8s cluster is intended to run in a single region
+Each k8s cluster is expected to contain a single complete deployment of your application
+
+A regions configuration is conceptually equivalent to the deployment lifecycle:
+
+Production is just split into `East US`, `West US`, `UK`, `Asia`
+
+    frontend/
+        staging/
+            templates -> ../v3/
+            parameters.yaml
+        eastus/
+            templates -> ../v1/
+            parameters.yaml
+        westus/
+            templates -> ../v2/
+            parameters.yaml
+
+or:
+
+    frontend/
+        staging-parameters.yaml
+        eastus-parameters.yaml
+        westus-parameters.yaml
+        templates/
+            frontend-deployment.yaml
+
+### implementing Worldwide Deployment
+
+* Ensure very high reliability and uptime
+* Key is to limit the `blast radius`
+* Begin rollout to low traffic regions
+* Once validated on low-traffic, deploy to high traffic regions
+
+
+### Dashboard and Monitoring Worldwide
+
+* Different versions of an app in different regions
+* It is essential to develop a dashboard which tell you at first glance and alerting that fires when too many of the same app is deployed
+* Best practice to limit the number of active versions to 3 - one testing, one rolling out and one being replaced
 
