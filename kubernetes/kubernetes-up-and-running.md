@@ -5160,3 +5160,79 @@ or:
 * It is essential to develop a dashboard which tell you at first glance and alerting that fires when too many of the same app is deployed
 * Best practice to limit the number of active versions to 3 - one testing, one rolling out and one being replaced
 
+# Appendix A. Building a Raspberry Pi k8s Cluster
+
+* A rewarding experience
+* See how k8s automatically reacts to removing a node
+
+## Parts List
+
+* 4 Raspberry Pi Boards
+* 4 SDHC Memory Cards
+* 4 x 12 inch Cat 6 Ethernet Cables
+* 4 x 12 Inch USB A Micro USB
+* 1 x 5 port 10/100 Fast Ethernet Switch
+* 1 x 5 Port USB Charger
+* 1 x Raspberry Pi stackable case
+* 1 x USB-to-barrel plug
+
+## Flashing the Images
+
+Raspbian supports docker, but [Hypriot](https://blog.hypriot.com/downloads/) comes with docker pre-installed.
+It also has good instructions on how to flash the card.
+
+## First Boot: Master
+
+Insert memory card, HDMI cable and plug in a keyboard, attach power and boot up.
+
+> Change the default password
+
+### Setting Up Networking
+
+Edit `/boot/user-data` - add the SSID and password.
+Reboot with `sudo reboot`
+
+Next step is to setup a static IP for your cluster's internal network, edit `/etc/network/interfaces.d/etho0`:
+
+    allow-hotplug eth0
+    iface eth0 inet static
+        address 10.0.0.1
+        netmask 255.255.255.0
+        broadcast 10.0.0.255
+        gateway 10.0.0.1
+
+This sets the main ethernet interface to be allocated to `10.0.0.1`
+
+Reboot the machine.
+
+Next we need to install DHCP on the master, so it allocates addresses to the worker nodes.
+
+    sudo apt-get install isc-dhcp-server
+
+Then set `/etc/dhcp/dhcpd.conf` to be:
+
+    # Set a domain name, can basically be anything
+    option domain-name "cluster.home";
+
+    # Use Google DNS by default, you can substitute ISP-supplied values here
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+
+    # We'll use 10.0.0.X for our subnet
+    subnet 10.0.0.0 netmask 255.255.255.0 {
+        range 10.0.0.1 10.0.0.10;
+
+        option subnet-mask 255.255.255.0;
+        option broadcast-address 10.0.0.255;
+        option routers 10.0.0.1;
+    }
+    default-lease-time 600;
+    max-lease-time 7200;
+    authoritative;
+
+You might also need to edit `/etc/defaults/isc-dhcp-server` to set `INTERFACES` to `eth0`
+
+More info in the book
+
+## Source
+
+Brendan Burns, Joe Beda & Kelsey Hightower “Kubernetes: Up and Running.”
