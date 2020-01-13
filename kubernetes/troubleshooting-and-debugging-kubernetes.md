@@ -1,4 +1,4 @@
-## Common Issues in K8S - finding the reasons and Fixing Them
+## Troubleshooting K8s - Common Issues in K8S - finding the reasons and Fixing Them
 
 ### A Pod is stuck in Pending State
 
@@ -90,4 +90,23 @@ That said the error:
 ## View DNS Records
 
     kubectl get pods -n kube-system
+
+## Pod in CrashLoopBackoff shows secrets error in logs
+
+Check pod status
+
+    $ kubectl get po
+    NAME                                                   READY   STATUS             RESTARTS   AGE
+    dashboard-demo-kubernetes-dashboard-59db4d65dc-dnbx8   0/1     CrashLoopBackOff   6          8m11s
+
+Check the logs:
+
+    kubectl logs dashboard-demo-kubernetes-dashboard-59db4d65dc-dnbx8
+    ...
+    Storing encryption key in a secret
+    panic: secrets is forbidden: User "system:serviceaccount:default:dashboard-demo-kubernetes-dashboard" cannot create resource "secrets" in API group "" in the namespace "kube-system"
+
+**Solution**:
+
+?
 

@@ -18,6 +18,7 @@ To set the default namespace when using kubectl:
 
     kubectl config set-context --current --namespace=ingress-nginx
 
+
 ### Sources
 
-* [Switch namepsace in k8s](https://stackoverflow.com/questions/55373686/how-to-switch-namespace-in-kubernetes)
+* [Switch namespace in k8s](https://stackoverflow.com/questions/55373686/how-to-switch-namespace-in-kubernetes)

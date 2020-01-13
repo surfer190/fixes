@@ -3981,6 +3981,7 @@ Decoupling state from applications and building your microservices to be as stat
 Integrating data with containers and container orchestrators is often the most complicated aspect of building a complex system.
 
 The move also involves:
+
 * decoupling
 * immutable architecture
 * declarative application development
@@ -3994,6 +3995,7 @@ Most containerized systems are usually adapted from existing systems deployed in
 Storage is often an externalised cloud service - it can never really exist inside of the k8s cluster.
 
 Variety of approaches of intergrating storage:
+
 * Importing External services (cloud or vm)
 * Reliable singletons running in k8s
 * StatefulSets in k8s
@@ -4013,8 +4015,8 @@ Making it easy to replace the service.
 Eg. You rely on db in production running on a machine but for testing you deploy the db to transient containers.
 Data persistence is not important in this case.
 
-Representing both db's as a k8s service enables you yo maintain the same config  - maintaining high fidelity.
-So a service will look the same but the namespace will differ:
+Representing both db's as a k8s service enables you to maintain the same config  - maintaining high fidelity.
+So a service will look the same but the `namespace` will differ:
 
     kind: Service
     metadata:
@@ -4102,6 +4104,7 @@ For smaller systems the downtime tradeoff for upgrades might be worth it.
 ### Running a MySQL Singleton
 
 You need 3 basic objects:
+
 * A `persistent volume` to manage the lifespan of the disk storage independently from the lifespan of the MySQL application
 * A MySQL `pod` that will run the MySQL application
 * A `service` that will expose this pod to other containers
@@ -5233,6 +5236,19 @@ You might also need to edit `/etc/defaults/isc-dhcp-server` to set `INTERFACES` 
 
 More info in the book
 
+#### Enhancing Pod Functionality by Bundling Supporting Containers
+
+What types of containers should be bundled in a single pod?
+
+* The primary container fulfils the core function of the pod
+
+3 design patterns for packaging containers into a pod
+
+* sidecar - secondary container enhances and extend's primary containers core functionality
+* ambassador - supplemental container to abstract remote resources from the main container - primary container does not need to know the actual deployment environment
+* adaptor - translate the primary containers data, protocols and interfaces to align with those expected by outside parties.
+
 ## Source
 
-Brendan Burns, Joe Beda & Kelsey Hightower “Kubernetes: Up and Running.”
+* Brendan Burns, Joe Beda & Kelsey Hightower “Kubernetes: Up and Running.”
+* [Patterns of architecting kubernetes](https://www.digitalocean.com/community/tutorials/architecting-applications-for-kubernetes)
