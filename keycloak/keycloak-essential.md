@@ -2,6 +2,9 @@
 
 > Make security easy for application developers
 
+* Open source
+* Identity and Access Management
+
 2 options for securing you applications:
 * heavyweight idp solutions
 * build your own using frameworks and libraries
@@ -26,6 +29,8 @@ If you wanted to log the person out you need to invlaidate the HTTP session.
 * Import and Export from a JSON file
 
 ## The Problem
+
+> You wouldn't implement a database would you. So why are you implementing your own IAM.
 
 * Have many different applications
 * Many versions of systems
@@ -214,6 +219,20 @@ Single-sign on demo - opening 2 applications - logging into 1 automatically logs
 * Built-in Internationalisation
 * Required actions - ensure users do certain things for first login - like accepting terms and conditions
 * Set password policies
+
+### Verfication
+
+With a request we send the access token
+
+* Online Verficcation - the keycloak server is called to check the token and say yes or no
+* Offline verification with signature - service retrieves the public key from keycloak (in cache) and use this to verify that the token is valid by checking the signature with the public key.
+
+Offline has a window of being disabled or logged out - it does not take immediate effect.
+
+OpenID connect has an access token and a refresh token - usually just a few minutes until the tokens become invalid.
+Online approach takes immediate effect but that adds more load on the keycloak and applciation server.
+
+
 
 ### User Federation
 
