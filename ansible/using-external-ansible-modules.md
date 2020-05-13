@@ -52,6 +52,13 @@ You can also add a `ansible.cfg` to your directory (or in the `/etc/ansible` or 
     [defaults]
     library = ./<my-module-folder>
 
+You can also put the modules in your project folder (like you would when running on something like AWX) and then put an `ansible.cfg` into that folder specifying the module name:
+
+    [defaults]
+    library = modules
+    module_utils = module_utils
+
+
 
 ### Sources
 

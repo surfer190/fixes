@@ -4058,7 +4058,8 @@ When a lookup is done to `external-database.svc.default.cluster` by a k8s pod, D
 Cloud providers would also provide you a hostname eg. `my-database.databases.cloudprovider.com`
 
 Sometimes you don't have a DNS address, just an `ip`, in this case it is a bit diffferent.
-1. Create a service without a label selector but also with the `ExternalName`
+
+1. Create a service without a label selector but also without the `ExternalName`
 2. Create an endpoint
 
 **external-ip-service.yaml**

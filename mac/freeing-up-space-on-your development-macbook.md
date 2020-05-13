@@ -38,8 +38,18 @@ Remove all `node_modules` older than 4 months
 
 Remove unused docker volumes
 
-    docker volume prune
+    docker volume prune 
+    docker image prune (clean up unused images)
+    docker image prunt -a (clean up used images of existing containers)
+    
+    docker container prune
+    docker network prune
+
+Prune everything
+
+    docker system prune
 
 #### Sources
 
 * [Freeing Up Macbook Space](https://www.freecodecamp.org/news/how-to-free-up-space-on-your-developer-mac-f542f66ddfb/)
+* [Pruning Docker](https://docs.docker.com/config/pruning/)

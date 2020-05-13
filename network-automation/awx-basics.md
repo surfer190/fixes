@@ -5,6 +5,7 @@ Ansible AWX is basically the open source version of Ansible tower.
 It is a web console and REST API for operating ansible across your team, organisation and enterprise.
 
 Some features:
+
 * Role basec access control (RBAC) and auditing
 * Sync inventories with the cloud
 * Powerful multi playbook workflows
@@ -28,8 +29,6 @@ Basic Flow
 
 * You can't put vault encrypted variables into an inventory on AWX - it must be JSON or YAML
 
-
-
 ## User Guide
 
 View the activity stream in the top right -> you can expand the actvity stream object and see more info.
@@ -52,6 +51,7 @@ Remember system administrators have access to all organisations
 ### Users
 
 Types of Users:
+
 * Normal User - read and write access to limited resources - inventory, projects, job templates that they have permission for
 * System Auditor - Read only capability for all objects
 * System Administrator - Super user, has full read and write privileges over entire tower install.
@@ -74,7 +74,7 @@ They allow for role based access control within an orgnanization.
 
 ### Credentials
 
-Credentials are used by tower to authenticate against machines, synchronize ith inventory sources and import projet content from git - fuck scm. SCM is GIT.
+Credentials are used by tower to authenticate against machines, synchronize ith inventory sources and import project content from git - fuck scm. SCM is GIT.
 
 > tower encrypts passwords and key info and never makes it available via the API
 
@@ -123,6 +123,7 @@ You can create a [custom credential types](https://docs.ansible.com/ansible-towe
 You can use your own secrets management system and let ansible tower  use it.
 
 Supported secrete management systems:
+
 * CyberArk Application Identity Manager
 * CyberArk Conjur
 * HashiCorp Vault Key-Value Store (KV)
@@ -150,11 +151,13 @@ You can either place them manually under the Project Base Path on your Tower ser
 By default the project base path is `/var/lib/awx/projects`
 
 For each project you can:
+
 * Get the latest SCM revision
 * Copy project attributes
 * Delete the project
 
 Status :
+
 * `Pending` - source control update has been created but not queued or started
 * `Waiting` - source code update is queued
 * `Running` - source code update is in progress
@@ -185,6 +188,7 @@ Ansible Tower has a system-wide setting that allows roles to be dynamically down
 You can set permissions on the proejct level
 
 Roles:
+
 * `Admin` -  allows read, run, and edit privileges (applies to all resources)
 * `Use` -  allows use of a resource in a job template (applies all resources except job templates)
 * `Update` -  allows updating of project via the SCM Update (applies to projects and inventories)
@@ -228,6 +232,7 @@ To update smart inventories more often you can set `AWX_REBUILD_SMART_MEMBERSHIP
 #### Adding an Inventory
 
 Enter:
+
 * Name
 * Description
 * Organization

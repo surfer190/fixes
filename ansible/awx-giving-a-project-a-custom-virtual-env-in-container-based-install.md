@@ -105,6 +105,24 @@ Now you are done
 
 Ideally the custom venv setup should be part of the deployment process
 
+## Update: Use the custom_venv_dir Variable
 
-    
-    
+In your awx deployment inventory there is a variable called: `custom_venv_dir`
+
+If you set that (only works on a local install)...the custom venv directory will be created on the host and bind mounted into the relevant docker containers:
+
+Eg.
+
+    custom_venv_dir: '/opt/awx-custom-venvs/'
+
+Now you can createa an manage your venv on the host and it will be mirrored into the containers.
+
+You still need to [assign the virtualenv to the org](https://github.com/ansible/awx/blob/devel/docs/custom_virtualenvs.md#assigning-custom-virtualenvs)
+
+Easiest to do form the browsable API:
+
+Go to `v2/settings/system/` and patch:
+
+    {"CUSTOM_VENV_PATH":["/opt/awx_venvs"]}
+
+Actually the easiest is to jsut go to Setting -> System on the frontend and set it.
