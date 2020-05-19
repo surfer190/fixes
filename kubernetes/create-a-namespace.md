@@ -1,8 +1,8 @@
 
 
-kubectl create -f namespace-dev.json
+    kubectl create -f namespace-dev.json
 
-kubectl create namespace <namespace>
+    kubectl create namespace <namespace>
 
 Create a project
 

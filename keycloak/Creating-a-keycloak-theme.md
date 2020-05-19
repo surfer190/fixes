@@ -61,7 +61,7 @@
 
     > This removes overrides all the styles of the parent. So you can add them again with: `node_modules/patternfly/dist/css/patternfly.css node_modules/patternfly/dist/css/patternfly-additions.css lib/zocial/zocial.css css/login.css css/styles.css`
 
-5. Add IMages
+5. Add Images
 
     Add to `themes/mytheme/login/resources/img`
 
