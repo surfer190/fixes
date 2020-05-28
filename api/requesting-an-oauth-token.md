@@ -13,7 +13,7 @@ Yet you are sending `password` as the auth type?
         verify=False
     )
 
-THe problem is: **It is part of the oauth spec that you use `application/x-www-form-urlencoded` as the content type of your token request**
+The problem is: **It is part of the oauth spec that you use `application/x-www-form-urlencoded` as the content type of your token request**
 
 Here is a link to a [draft oauth spec](https://tools.ietf.org/id/draft-ietf-oauth-v2-12.xml)
 
