@@ -4,7 +4,7 @@
 
     brew cleanup
 
-of
+or
 
     brew update && brew upgrade && brew cleanup
 
@@ -28,8 +28,6 @@ Remove all `node_modules` older than 4 months
 
     find . -name "node_modules" -type d -mtime +120 | xargs rm -rf
 
-> I get permission denied for this crap
-
 ### Ruby
 
     gem cleanup
@@ -45,9 +43,13 @@ Remove unused docker volumes
     docker container prune
     docker network prune
 
-Prune everything
+Prune everything (dangling images, etc)
 
     docker system prune
+
+Prune everything (all unused, not just dangling)
+
+    docker system prune -a
 
 #### Sources
 
