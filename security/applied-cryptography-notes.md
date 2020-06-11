@@ -103,7 +103,54 @@ Complexity measurement:
 
 ### Steganography
 
-Hiding secret messages in other messages - like invisible ink, pin puntures. MOre recently messages are hidden in graphic images. Replacing the least significant bit of each byte with bits of a message.
+Hiding secret messages in other messages - like invisible ink, pin puntures. More recently messages are hidden in graphic images. Replacing the least significant bit of each byte with bits of a message. You can store a 64 kilobyte message in a 1024 x 1024 grayscale image.
+
+### Substitution and Transposition Ciphers
+
+Before computers - character based algorithms were used. Subsituting or transposing (changing the order) characters.
+These days the philosphy remains the same just that work is done on bits instead of characters - a change in the alphabet size from 26 to 2.
+
+Types of Substitution Ciphers:
+
+* simple substitution (monoalphabetic) - each character is recplaced with a corresponding ciphertext character
+* homophonic substitution - single character can map to one of several ciphertext characters
+* polygram subsititution - blocks of characters are encrypted in groups
+* polyalphabetic substitution - multiple simple substitution ciphers
+
+Caesar cipher - each plaintext character is subsituted with that 3 to the right - modulo 26.
+
+In transposition ciphers the plaintext remains the same but the order of characters is shuffled around.
+
+Simple columnar transposition is writing the horizontal plaintext as ciphertext vertically.
+
+Transposition is troublesome as it uses lots of memory and requires messages to be shorter than a certain length.
+
+#### Rotor Machines
+
+Mechanical automation of encryption. A 4-rotor machine takses substitution from the output of one rotar as input to the next.
+The combination of rotors and gearing makes it secure.
+
+Best example is the German Engima from World War 2.
+The German Enigma had three rotors, chosen from a set of five, a plugboard that slightly permuted the plaintext, and a reflecting rotor that caused each rotor to oper­ ate on each plaintext letter twice
+
+### Simple XOR
+
+Exclusive OR.
+A standard operation on bits.
+
+
+
+...a lot of good info in this book...just it goes a bit too deep on certain subjects and fundamentals are not concisely explained. It is a tad long winded for someone not wanting to study cryptography.
+
+
+
+## Source
+
+* Applied Cryptography Protocols, Algorithms and Source Code in C - Bruce Schneier
+
+
+
+
 
 
 

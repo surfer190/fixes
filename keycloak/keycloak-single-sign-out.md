@@ -14,6 +14,21 @@ However the flow would work something like this:
 4. Keycloak terminates all open sessions
 5. You are now logged out on all clients
 
+### How the signout happens on the client
+
+In the docs on [admin url configuration](https://www.keycloak.org/docs/latest/securing_apps/#admin-url-configuration).
+This url is where keycloak sends backchannel requests to achieve certain things like logout.
+
+The steps for logout are:
+
+1. User sends logout request from one application
+2. The application sends logout request to Keycloak
+3. The Keycloak server invalidates the user session
+4. The Keycloak server then **sends a backchannel request to application with an admin url that are associated with the session**
+5. When an application receives the logout request it invalidates the corresponding HTTP session
+
+> This process is done for all the linked clients with an admin url - I believe.
+
 ### Sending the Logout Request on Keycloak
 
 The [keycloak documentation on logout](https://www.keycloak.org/docs/latest/securing_apps/index.html#logout) says you must should redirect the browser to:
