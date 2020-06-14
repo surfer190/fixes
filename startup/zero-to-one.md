@@ -42,7 +42,7 @@ Creating value is not good enough, you need to capture some of the value you cre
 
 Economically there is _perfect competition_ and _monopoly_:
 
-\* [Perfect competition](https://simple.wikipedia.org/wiki/Perfect_competition) - `In the long run no company makes an economic profits`
+* [Perfect competition](https://simple.wikipedia.org/wiki/Perfect_competition) - `In the long run no company makes an economic profits`
 * [Monopoly](https://simple.wikipedia.org/wiki/Monopoly) - To an economist they all look the same but **innovating its way to the top** is the method we are looking at not eliminating competition or state license acquisitions. - `if you want to create and capture lasting value, don’t build an undifferentiated commodity business.`
 
 The lies of the monopoly company: These companies tend to exaggerate the power of their non-existent competition and they expand in to different sectors just to distract from the market the they dominate. They seek to avoid attention. There is an incentive to hide their monopoly lest they get investigated. Described as a __union of markets__.
@@ -162,7 +162,7 @@ That is what school does, it teaches you not to believe in the power law. Everyo
 
 If you do start your own comapny:
 
-\* 1 market will probably be better than all the others
+* 1 market will probably be better than all the others
 * One distribution strategy will trump the others
 * Time and decision making follow the power law, some matter far more than others
 
@@ -184,7 +184,7 @@ All fundementalists allow no middle ground
 
 Social trends that have conspired to root out belief in secrets:
 
-\* incrementalism - one step at a time, over achievement is not credited
+* incrementalism - one step at a time, over achievement is not credited
 * risk aversion - people are scared of being wrong. If your goal is to never make a mistake then you should not look for secrets.
 * complacency - social elites have the most freedom and ability to explore new thinking but seem to believe in secrets less. Thinking everyhting is set and made for you in life.
 * flatness - the huge pool of competition, smarter or more creative people out there. Too big to contribute something unique.
@@ -242,7 +242,7 @@ You also need a structure to keep everyone aligned long term
 
 Need to distinguish:
 
-\* Ownership - Who legally owns a company's equity?
+* Ownership - Who legally owns a company's equity?
 * Possession - Who runs day-to-day tasks?
 * Control - Who governs company affairs?
 
@@ -259,7 +259,7 @@ Most conflict arises between ownership and control, between founders and the boa
 
 In the boardroom, less is more:
 
-\* easier communication
+* easier communication
 * reach consensus
 * effective oversight
 
@@ -311,7 +311,7 @@ Recruiting is a core competency for any company, it should never be outsourced
 
 Attracting the best must include:
 
-\* why your mission is compelling - why you are doing something important that no-one else will get done
+* why your mission is compelling - why you are doing something important that no-one else will get done
 * Why is the people a unique match for him/her personally?
 
 **You can't fight the perk war**
@@ -358,7 +358,7 @@ Superior sales and distribution can create a monopoly, even with no product diff
 
 Two metrics set the limit for effective distribution:
 
-\* CLV (Customer Lifetime Value) the total net profit that you earn on average over the course of the relationship with the customer must exceed the amount you spend to acquire the customer CAC (Customer Acquisition Cost)
+* CLV (Customer Lifetime Value) the total net profit that you earn on average over the course of the relationship with the customer must exceed the amount you spend to acquire the customer CAC (Customer Acquisition Cost)
 >The higher price of the product, the more you have to spend to make the sale and you should spend it
 
 

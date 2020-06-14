@@ -39,7 +39,7 @@ The _modern_ workplace is sick, it is infested with chaos. _Chaos should not be 
 
 Calm is:
 
-\* Protecting people's time and attention
+* Protecting people's time and attention
 * 40 hours or less a week
 * Reasonable expectations
 * Ample time off
@@ -61,7 +61,7 @@ You need to iterate and tweak this product. Not get stuck in policy mud.
 
 Ask questions about the company:
 
-\* Do people know how to use the company?
+* Do people know how to use the company?
 * Is it simple, is it complex?
 * How fast is it?
 * Are there bugs?
@@ -98,7 +98,7 @@ This is not _love and war_, this is business.
 
 It is important to work for:
 
-\* A business that covers costs and makes a _profit_
+* A business that covers costs and makes a _profit_
 * A business that has a _profit) that grows year on year
 
 Lots of companies and people are driven by _comparison_
@@ -114,7 +114,7 @@ It is not about squeezing every single drop out of a lemon and leaving no money 
 
 It is important to be interested in the right things:
 
-\* Making products easier, faster and more useful
+* Making products easier, faster and more useful
 * Making employees and customers happier
 * Iterating and improving
 * Increasing profits
@@ -237,7 +237,7 @@ A good person.
 
 Why do people make it then:
 
-\* hey're talented
+* hey're talented
 * lucky
 * know how to work with others
 * know how to sell an idea

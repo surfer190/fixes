@@ -7,7 +7,7 @@
 
 2 options for securing you applications:
 
-\* heavyweight idp solutions
+* heavyweight idp solutions
 * build your own using frameworks and libraries
 
 ## How did it Start
@@ -64,7 +64,7 @@ With so many different applications you need **single-sign on**
 
 Things to manage:
 
-\* Apps
+* Apps
 * Services
 * Users
 * Devices
@@ -73,7 +73,7 @@ Things to manage:
 
 Allow for self-service:
 
-\* Users can manage their own accounts
+* Users can manage their own accounts
 * Recover password
 * Update profile
 * Enable 2-factor auth
@@ -82,7 +82,7 @@ Allow for self-service:
 
 Integration with:
 
-\* Third party apps - LDAP, database
+* Third party apps - LDAP, database
 * Existing Infrastructure (or new users after an acquisition)
 * External Users- give access to users at a partner company
 * Social Networks
@@ -100,7 +100,7 @@ Also vulnerabilities
 
 You need to create a login screen, you need to manage users - if you do it yourself there are a lot of thing to do:
 
-\* New login form
+* New login form
 * let user manage profile
 * Backend way to check credentials
 * Store passwords securely

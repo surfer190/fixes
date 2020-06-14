@@ -9,7 +9,7 @@
 
 Templates:
 
-\* simple
+* simple
 * webpack-simple
 * webpack
 * browserify/browserify-simple

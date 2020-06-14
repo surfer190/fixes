@@ -903,7 +903,7 @@ You will have to deal with both AWS and terraform quirks.
 
 AWS has global and regional resources:
 
-\* EC2 is regional, an auto-scaling group in Virginia has nothing to do with one in Sao Paulo - they can have the same name (asg)
+* EC2 is regional, an auto-scaling group in Virginia has nothing to do with one in Sao Paulo - they can have the same name (asg)
 * `IAM` is global - meaning a role can be used anywhere.
 * `S3` is hybrid - it has regional scope but a global namespace - meaning no buckets with the same name across regions
 

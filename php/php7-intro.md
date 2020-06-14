@@ -16,7 +16,7 @@ PHP 5 you were limited to `class` and `array`. It would not allow scalar types.
 
 in PHP 7 scalar types were allowed:
 
-\* int
+* int
 * float
 * string
 * bool

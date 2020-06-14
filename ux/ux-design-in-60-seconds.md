@@ -51,7 +51,7 @@ sitemap can sometimes be placed in the footer of every page instead of a seperat
 
 search result item:
 
-\**Link text...description...url**
+**Link text...description...url**
 
 Add images for share
 

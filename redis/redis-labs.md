@@ -12,7 +12,7 @@ Redis is for ephemeral data
 
 Data structures:
 
-\* Strings
+* Strings
 * Bitmaps
 * Hashes
 * Lists
@@ -107,7 +107,7 @@ You cannot nest values
 
 Problem:
 
-\* Maintain session state across multiple sessions
+* Maintain session state across multiple sessions
 * Mulitple session variables
 * Want sticky state
 * High speed and low latency
@@ -181,7 +181,7 @@ Example:
 
 Problem:
 
-\* Tasks need to be worked on asynchronously to reduce block/wait times
+* Tasks need to be worked on asynchronously to reduce block/wait times
 * Lots of times to be worked on
 * Assign items to worker process and remove from queue at the same time
 * Buffering high speed data-ingestion
@@ -272,7 +272,7 @@ Also can get the union with:
 
 Problem:
 
-\* Many users playing a game collect points
+* Many users playing a game collect points
 * Display a real-time leaderboard
 * Who is your nearest competition
 * Dask-based bd is too slow
@@ -347,7 +347,7 @@ Extensions to redis
 
 2 persistence mechanism, which aare the same as most other database:
 
-\* Snapshots - whole dataset persisted periodically
+* Snapshots - whole dataset persisted periodically
 * Writeahead log - Append only file
 
 You can turn persistence mechanisms off - eg. cache

@@ -38,7 +38,7 @@ Data is typically stored in your persistence layer
 
 The microservice is an abstraction - containing all these things:
 
-\* Service client
+* Service client
 * Persistence
 * Cache client
 
@@ -62,7 +62,7 @@ It is not just the stateless application
 
 To prevent this netflix created hysterix:
 
-\* structured way for handling timeouts and retries
+* structured way for handling timeouts and retries
 * fallback to show some data
 * isolated thread pools
 
@@ -72,7 +72,7 @@ Service should function even when dependencies go away
 
 [CAP Theorem](https://en.wikipedia.org/wiki/CAP_theorem) says it is impossible for a distributed datastore to simultaneously provide 2 of these:
 
-\* Consistency - every read receives the most recent write or error
+* Consistency - every read receives the most recent write or error
 * Availability - every read receives a response
 * Partition Tolerance - System continues to operate despite arbitrary number of dropped messages
 
@@ -99,7 +99,7 @@ Autoscaling: Min, max and metric to use when scaling your group
 
 Advantages of autoscaling:
 
-\* compute efficiency (using on-demand capacity)
+* compute efficiency (using on-demand capacity)
 * Node failures are not big deals
 * Traffic spikes, DDOS or performance bug allows you to absord that change and figure out what happened
 
@@ -124,7 +124,7 @@ The more variance you have the greater your challenges - increases complexity
 
 Unintentional:
 
-\* Alert thresholds
+* Alert thresholds
 * timeouts, retries and fallbacks
 * throughput (RPS)
 
@@ -137,7 +137,7 @@ Use continuous learning and automation - this is how knowledge becomes code.
 
 Production ready checklist (automation and continuous improvement behind it):
 
-\* Alerts
+* Alerts
 * autoscaling
 * chaos
 * consistent naming
@@ -156,7 +156,7 @@ Then there was the rocky road new tech and docker.
 
 Cost of variance:
 
-\* productivity tooling
+* productivity tooling
 * different tooling for memory and cpu on containers
 * Base image fragmentation - more specialised
 * learning curve - things break in interesting and new ways
@@ -164,13 +164,13 @@ Cost of variance:
 
 Key points:
 
-\* Raise the awareness of costs
+* Raise the awareness of costs
 * prioritise by impact
 * seek reusable solutions
 
 Integrated delivery:
 
-\* Test out the code changes with some real traffic and determine if the code is better
+* Test out the code changes with some real traffic and determine if the code is better
 * Staged deployments - 1 region at a time
 
 

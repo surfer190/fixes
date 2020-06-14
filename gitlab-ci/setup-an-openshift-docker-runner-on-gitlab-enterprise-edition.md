@@ -13,7 +13,7 @@ There was a semi-decent video on [Deploying from gitlab to Openshift OKD](https:
 
 So what is the current status of your infrastructure:
 
-\* A gitlab enterprise edition 
+* A gitlab enterprise edition 
 * An Openshift OKD cluster
 
 Usually if you have added a `.gitlab-ci.yml` to your project and there are no gitlab runners configured it will be in a paused state for an hour with a message like:

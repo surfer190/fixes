@@ -97,7 +97,7 @@ A block employs templates into a page.
 
 Examples of page layouts:
 
-\* `2 columns left`
+* `2 columns left`
 * `2 columns right`
 * `3 columns`
 * `1 column`
@@ -172,7 +172,7 @@ Remove all other nodes except the one you want to change.
 
 Place component in:
 
-\* `app/design/frontend/<Vendor>/<theme>/web/js`
+* `app/design/frontend/<Vendor>/<theme>/web/js`
 * `app/code/<Namespace>/<Module>/view/frontend/web/js`
 
 Create a `requirejs-config.js` file in:
@@ -236,7 +236,7 @@ Eg. `$this->getCssClass()`
 
 `class` attribute specifies class location for a block:
 
-\* `app/code`
+* `app/code`
 * `lib/internal`
 * `vendor/`
 

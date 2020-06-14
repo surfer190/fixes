@@ -4,7 +4,7 @@
 
 There are built in adapters for:
 
-\* Client side javascript (with cordova)
+* Client side javascript (with cordova)
 * Wildfly / Jetty / Tomcat
 * Fuse
 * Node.js

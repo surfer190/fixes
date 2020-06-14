@@ -6,7 +6,7 @@ ORM - Object-relational mapping, technique to access a relational database from 
 
 Magento ORM:
 
-\* models - data + behaviour / entities
+* models - data + behaviour / entities
 * resoure models - Data mappers for storage structure
 * collections - model sets and related functionality (soring, paging)
 * Resources - database connectors via adapters
@@ -21,7 +21,7 @@ Resource models - storage related logic. Uses db adapter.
 
 Advantages:
 
-\* decouple business logic from the storage layer
+* decouple business logic from the storage layer
 * Decouple storage schema from DB driver implementation (Data mapper)
 
 Resource collctions - list of models of a specific type
@@ -73,7 +73,7 @@ Close to the DB layer
 
 Main issues it solves:
 
-\* Container for storing collections of objects
+* Container for storing collections of objects
 * Prevents unnecessary data loading
 * Stores all objects during a session
 * Provides an interface for filtering and sorting entities
@@ -182,7 +182,7 @@ EAV entity is an entity type that is persisted using the EAV database schema via
 
 Additional methods:
 
-\* `getAttribute()`: `$product->getResource()->getAttribute('color')`
+* `getAttribute()`: `$product->getResource()->getAttribute('color')`
 * `saveAttribute()`: `$product->setWeight(1.99)->getResource()->saveAttribute($product, 'weight');`
 * `getWriteConnection()`: Interface to write adapter, read connection
 * `getEntityTable()`: Contract to `getMainTable()`, EAV models implement `getEntityTable()`
@@ -197,7 +197,7 @@ Any additional data is read from `eav_entity_type` table
 
 2 aspects:
 
-\* Managing relationships
+* Managing relationships
 * Managing content
 
 1. Loads meta of the EAV
@@ -218,7 +218,7 @@ Similar to flat table except one additional layer `beforeSave()` and `afterSave(
 
 **Backend Type***:
 
-\* static: `entity`
+* static: `entity`
 * varchar: `entity_varchar`
 * int: `entity_int`
 * decimal: `entity_decimal`

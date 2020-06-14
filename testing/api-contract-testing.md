@@ -26,7 +26,7 @@ Simulated consumer or provider is created from the spec
 
 Provider's contract should include:
 
-\* Available endpoints
+* Available endpoints
 * Possible responses
 * Expected inputs
 
@@ -36,7 +36,7 @@ Provider's contract should include:
 
 A Consumer's contract should include:
 
-\* What endpoints it needs
+* What endpoints it needs
 * The type of data it can send
 * The responses it can accept
 

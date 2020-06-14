@@ -35,7 +35,7 @@ Minimum: 512Mb RAM, 1 CPU and SSD is recommended
 
 Networking:
 
-\* 6443 (api-server)
+* 6443 (api-server)
 * 8472 UDP (flannel - CNI?)
 * 10250 (metrics-server)
 

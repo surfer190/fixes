@@ -9,7 +9,7 @@ Setting up a single application involves creating multiple interdependent k8s re
 
 Helm can:
 
-\* Install software
+* Install software
 * install dependencies
 * Upgrade software
 * Configure software deployments

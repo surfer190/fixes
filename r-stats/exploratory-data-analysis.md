@@ -199,7 +199,7 @@ After done you have to close it with:
 
 There are two basic types of file devices, vector and bitmap devices:
 
-\* `Vector` formats are good for line drawings and plots with solid colors using a modest number of points
+* `Vector` formats are good for line drawings and plots with solid colors using a modest number of points
 * `Bitmap` formats are good for plots with a large number of points, natural scenes or web-based plots
 
 #### Vector Formats
@@ -353,7 +353,7 @@ Must be loaded: `library('lattice')`
 
 Lattice is implemented using 2 packages:
 
-\* `lattice` contains code for producing trellis graphics. These include `xyplot`, `bwplot`, and `levelplot`
+* `lattice` contains code for producing trellis graphics. These include `xyplot`, `bwplot`, and `levelplot`
 * `grid` system: low level functions
 
 * `xyplot` produces a scatterplot
@@ -517,7 +517,7 @@ In the above `.3` is the density
 
 Three types:
 
-\* `sequential` - light to dark
+* `sequential` - light to dark
 * `divergent` - divergent (neutral colour white is centre)
 * `qualitative` - random colours used to distinguish data
 
@@ -542,7 +542,7 @@ Grammar of Graphics
 
 2 workhorse functions:
 
-\* qplot - Less flexible
+* qplot - Less flexible
 * ggplot - More flexible
 
 Basic plot:

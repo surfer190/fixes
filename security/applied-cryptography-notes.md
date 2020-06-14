@@ -6,7 +6,7 @@ This is about stopping major governments from reading your files
 
 types or encryption:
 
-\* file
+* file
 * email
 * digital signatures
 * digital certified mail

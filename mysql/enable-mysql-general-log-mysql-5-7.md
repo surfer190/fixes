@@ -17,4 +17,4 @@ Restart MySql
 
 Source:
 
-\* [AskUbuntu MySQL](https://askubuntu.com/questions/699964/how-to-activate-mysql-general-log-in-version-5-6)
+* [AskUbuntu MySQL](https://askubuntu.com/questions/699964/how-to-activate-mysql-general-log-in-version-5-6)

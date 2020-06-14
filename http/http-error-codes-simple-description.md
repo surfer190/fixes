@@ -33,7 +33,7 @@ Putting that response into cache, means that the next few lookups won't need to 
 
 Available caching:
 
-\* [Varnish](https://varnish-cache.org/)
+* [Varnish](https://varnish-cache.org/)
 * [Hazel](https://hazelcast.org/)
 * [Memcached](http://www.memcached.org/)
 
