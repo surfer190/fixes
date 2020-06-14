@@ -5,6 +5,7 @@
 It is an open platform to build, ship and run distributed applications. It was introduced in 2013 by Soloman Hykes. However Linux containers have been around since 2008.
 
 How does Docker help:
+
 * Packaging software in a way the leverages skills developers have
 * A way to bundle dependencies
 * Using some artifact to test and deliver - accelerates development cycles
@@ -25,6 +26,7 @@ Nature of throw-away containers prevent relying on old artifacts.
 Also allows for better reliability and scalability.
 
 Many Parts:
+
 * Docker engine: powers docker locally - a portable, lightweight runtime and packaging tool
 * Docker hub: cloud service to share images 
 * docker compose: mechanism to define and run multi-container applications
@@ -105,6 +107,7 @@ Red Hat’s CoreOS, which is built entirely on top of Docker containers, either 
 > In the first years after Docker’s release, a set of competitors and service providers voiced concerns about Docker’s proprietary image format. Containers on Linux did not have a standard image format, so Docker, Inc., created their own according to the needs of their business.
 
 The OCI (Open Container Initiative) is a spec for images/runtimes, these claim to implement:
+
 * `runc`- part of docker
 * `railcar` - oracle
 * `kata containers` - intel and openstack
@@ -117,6 +120,7 @@ Its fundamental user-facing structure is indeed a simple client/server model via
 > The docker command-line tool and `dockerd` daemon talk to each other over network sockets
 
 Ports:
+
 * `TCP 2375` for unencrypted
 * `TCP 2376` for encrypted
 
@@ -273,6 +277,7 @@ If you ever have a need to access the underlying VM:
 * Every Docker image consists of one or more filesystem layers that generally have a direct one-to-one mapping to each individual build step used to create that image
 
 Images make up everything you do with docker:
+
 * building images
 * uploading (pushing) images to an image registry
 * Downloading (pulling) images to an image registry
@@ -1053,6 +1058,7 @@ If you want to pause and unpause a container:
     docker unpause b8990dd4b1b0
 
 Reasons for pausing:
+
 * leave resources allocated
 * leave entries in the process table
 * Taking a snapshot
@@ -1372,6 +1378,7 @@ Get logs with: `docker logs <container_id>`
 Nice because you get logs remotely and on demand.
 
 Options for logging:
+
 * `docker logs 422ed51e84fc --tail 50`
 * `docker logs 422ed51e84fc -f`
 * `docker logs 422ed51e84fc --since 2002-10-02`
@@ -1379,6 +1386,7 @@ Options for logging:
 The actual files with the logs in are at: `/var/lib/docker/containers/<container_id>/`
 
 Downsides to this form of logging:
+
 * log rotation
 * access to logs after rotation
 * disk space usage for high-volume logging
@@ -1941,6 +1949,7 @@ As your workflow evolves, you will eventually collapse those steps into a single
 **Orchestrate the deployment of images and the creation of containers on production servers**
 
 A production story must be:
+
 * Repeatable
 * It must handle config for you
 * It must deliver an executable artifact
@@ -1984,6 +1993,7 @@ Docker provides lots of configuration. YOu should decide on one mechanism to use
 #### Configuration
 
 2 levels:
+
 * Linux environment - we do this with a `Dockerfile` for a repeatable environment. More traditionally ansible, puppet or chef was used to supply the dependencies.
 * Application configuration - Native mechanism is using environment variables.
 
@@ -2069,6 +2079,7 @@ In traditional systems, load balancers were one of the primary means for service
 > For the vast majority of systems, service discovery is left to the platform
 
 Existing service discovery methods:
+
 * Load-balancers with well-known addresses
 * DNS SRV records
 * Round robin DNS
@@ -2083,6 +2094,7 @@ Existing service discovery methods:
 > Often the best initial system (though not necessarily longer-term) is a system where you present dynamically configured load balancers that are easily reachable by systems in your older environment
 
 Examples of the above (oh god what the hell is all this):
+
 * Mesos backend for the Traefik load balancer
 * Nixy for nginx and Mesos
 * Kubernetes’s ingress controllers
@@ -2096,6 +2108,7 @@ Examples of the above (oh god what the hell is all this):
 > One of the key promises of Docker is the ability to test your application and all of its dependencies in exactly the operating environment it would have in production
 
 What it can't do:
+
 * It can’t guarantee that you have properly tested external dependencies like databases
 * it does not provide any magical test framework
 
@@ -2161,6 +2174,7 @@ You can scale not only horizontally but also across cloud providers.
 A container on one cloud looks like a container on another.
 
 The biggest efforts to implement docker in the public cloud is:
+
 * ECS Amazon Elastic Container Service
 * Google Kubernetes Engine
 * Azure Container Service
@@ -2242,6 +2256,7 @@ It runs on a virtual machine and has the same tooling as a production system.
 It's a bit like `docker compose` - but it has all the production API's.
 
 You need 2 tools:
+
 * `minikube` - 
 * `kubectl` - 
 
@@ -2407,6 +2422,7 @@ then all that is left is:
 * `cache-data` will be the persistent volume
 
 Kubernetes has a huge vocabulary some terms:
+
 * `PersistentVolume` - physical resource that we provision inside the cluster, supports many kinds of volumes from local storage on a node to EBS volumes on AWS. Lifecycle is independent from our application.
 * `PersistenVolumeClaim` - link between physical resource of `PersistentVolume` and the application that needs to consume it.
 
@@ -2682,6 +2698,7 @@ _Developers gain more ownership of their complete application stack_
 In Dockerland, there are images and there are containers.
 
 Images:
+
 * Inert, immutable, file that's essentially a snapshot of a container
 * Created with the `build` command
 * Produce a container when started with `run`
@@ -2695,6 +2712,7 @@ View images with `docker image list`
     <none>                  <none>              94fccc848ad4        4 days ago          919MB
 
 Container:
+
 * Instances of the image
 * Lightweight and portable encapsulations of an environment in which to run applications
 

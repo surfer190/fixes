@@ -11,7 +11,8 @@ It also has a CIM API for system analytics
 
 The vSphere Management SDK's were in Perl and Java.
 Eventually the vmware team realeased open source SDK's for other languages:
-* python (pyvmomi)
+
+\* python (pyvmomi)
 * ruby (rbvmomi)
 * go (govmomi)
 
@@ -20,7 +21,8 @@ vSphere automation SDK's use the REST API were brought in with various languages
 There is also the vRealise Orchestrator, PowerCLI, vCLI which talk to all the API's
 
 So together all the ways to speak to vCenter is:
-* vSphere Management SDKS (Perl, .net, Java) - Talks to Web Service API (SOAP)
+
+\* vSphere Management SDKS (Perl, .net, Java) - Talks to Web Service API (SOAP)
 * Open Source SDK's (pyvmomi, rbvmomi, govmomi) - Talks to the Web Service API (SOAP)
 * vSphere Automation SDK (Perl, .Net, Java, Ruby, Python) - Talks to the REST API
 * Automation operation Interfaces (PowerCLI, vCLI and vRealiseOrchestrator) - Talks to SOAP, REST and CIM API
@@ -65,7 +67,8 @@ They were hard to use and the learning curve was steep - that is the reason for 
 On your vCenter instance fo to `/apiexplorer` that shows a swagger UI.
 
 The API's:
-* `appliance` - Won't show on windows
+
+\* `appliance` - Won't show on windows
 * `cis` - tagging
 * `content` - content library
 * `vapi` - talk to vapi - services, status

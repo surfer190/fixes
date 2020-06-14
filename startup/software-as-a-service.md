@@ -64,7 +64,8 @@ You want your customers to know about your product and find value in it, here ar
 **Focus on success** and learn some [good saas onboarding tips from Successful entrepreneurs](https://www.chargify.com/blog/13-tips-to-improve-user-onboarding-from-saas-leaders/)
 
 The most important ones for me were:
-* Determine the quickest way to value and prioritize those goals for your users
+
+\* Determine the quickest way to value and prioritize those goals for your users
 * Get into your customer's heads, don't overwhelm them and make them do things they don't want to. Onboard the way they want to be onboarded.
 * Anthing that doesn't make the customer say _Aha!_ should be removed
 * Onboard based on **behaviour**, if a customer is making great use of the product features then they are more liekly to commit.
@@ -116,7 +117,8 @@ Figure out what the major road block is to that activation method. You can then 
 > For example, you might try sending a triggered email to users who’ve created lists and haven’t customized that list for 24 hours or product walkthrough or popup to make process easier.
 
 Other ideas:
-* Have amazing support
+
+\* Have amazing support
 * Automated Welcome email - sending a personalized email from the founder within an hour of a user signing up
 * On-boarding flow - Creating a first-time-user onboarding tutorial or flow can be critical in including your activation rate
 * Lifecycle emails - Expose new features based on behaviour of user in the app

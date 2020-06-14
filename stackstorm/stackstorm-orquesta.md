@@ -308,7 +308,8 @@ I wanted to debug what the value of the result of an action was
 * Jinja: `{{ Jinja expression }}`
 
 Accept expressions:
-* workflow model: `input`, `output` and `vars`
+
+\* workflow model: `input`, `output` and `vars`
 * task model: `delay`, `with`, `action`, `input`
 * with items: `items`, `concurrency`
 * task transistion: `when` and `publish`

@@ -24,7 +24,8 @@ Junos OS: 17.4R1 and later can use **Junos PyEZ 2.1.4**
 The `jnpr.junos.device.Device` class provides access to the device over serial, telnet or SSH.
 
 All connection methods support:
-* retrieving device facts
+
+\* retrieving device facts
 * performing operations
 * executing RPCs on demand
 
@@ -50,7 +51,8 @@ PyEz uses `NETCONF` and the `Junos XML APIs`
     user@host# set netconf ssh
     
 These requirements must be met:
-* The NETCONF service over SSH is enabled on each device where a NETCONF session will be established.
+
+\* The NETCONF service over SSH is enabled on each device where a NETCONF session will be established.
 * The client application has a user account and can log in to each device where a NETCONF session will be established.
 * The login account used by the client application has an SSH public/private key pair or a text-based password configured.
 * The client application can access the public/private keys or text-based password.

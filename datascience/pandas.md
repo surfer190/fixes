@@ -335,6 +335,7 @@ _The `color` parameter for pie charts does not exist_
 Visualisation library based on `matplotlib`
 
 Why:
+
 * Attractive statistical plots
 * A complement and not a substitute to matplotlib
 * Integrates well with pandas

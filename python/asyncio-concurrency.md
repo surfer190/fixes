@@ -14,7 +14,8 @@ For once off tasks that is fine but for 10000 URL's it becmes difficult.
 Large scale concurrency is a big reason to to learn and use `asyncio`, it is also much safer than _premeptive threading_
 
 Goals for the book:
-* compare `asyncio` and `threading`
+
+\* compare `asyncio` and `threading`
 * An udnerstanding of the `async` and `await` keywords
 * A general overview of `asyncio`
 * Examples and case studies
@@ -43,7 +44,8 @@ Using async based concurrency over thread based concurrency
 There is too much waiting in network programming.
 
 Event based programming models - asyncio:
-* Will not make your code faster - if you want that use `cython` instead
+
+\* Will not make your code faster - if you want that use `cython` instead
 * does not make threading redundant - True value of threading lies in multi-CPU applciations where tasks share memory.
 * does not remove problems with the GIL (Global Interpreter Lock) - locks your interpreter to a single CPU to maintain thread safety. It prevents true _parrallelism_. Asyncio is single-threaded so it is not affected by the GIl - but is therefore locked to a single CPU.
 * does not prevent all race conditions - asyncio can elimate `intra-process shared memory access` but other race conditions still happen.
@@ -107,7 +109,8 @@ How to Test out resource usage by creating do-nothing threads:
 Great quotes in the book about threading
 
 Main points:
-* Threading makes coding hard
+
+\* Threading makes coding hard
 * Threading is an inefficient model for large scale concurrency
 
 **Some complex threading example with code is in the book...**
@@ -171,7 +174,8 @@ There are 2 target audiences for `asyncio`:
 > You only need to know about seven functions to use Asyncio - Yury Selivanov ([PEP492](https://www.python.org/dev/peps/pep-0492/)) which added `async` and `await` keywords to python
 
 The main features an end user should care about:
-* Starting the `syncio` event loop
+
+\* Starting the `syncio` event loop
 * Calling `async/await` functions
 * Waiting for multiple tasks to complete
 * Closing the loop after all concurrent tasks have completed

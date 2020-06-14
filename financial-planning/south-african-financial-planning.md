@@ -10,6 +10,7 @@
 Intangible - cannot be seen, felt or touched - making it harder to make a decision.
 
 Issues faced in the industry:
+
 * Financial literacy
 * Lack of confidence in finance industry
 * Information difficult to understand and not highly accessible
@@ -83,6 +84,7 @@ Competence - capabilities, skills, results
 Personal values, ethics and honesty. Good interpersonal skills.
 
 Key principles:
+
 * Go first - Make the first investment in the relationship
 * Show, don't tell - demonstrate value
 * Listen for what's different, not familiar
@@ -131,7 +133,8 @@ Use official websites: SARS, FSCA, Prudential Authority, SARB, National treasury
 ### Professional Membership
 
 To use the CFP mark:
-* Education - Approved courses
+
+\* Education - Approved courses
 * Examination 
 * Experience - 3 Years minimum
 * Ethics - COde of Conduct
@@ -283,7 +286,8 @@ Contents of a Financial Plan
 * Review and re-evaluate the client's situation
 
 Circumstances to review a financial plan:
-* Change in marital status
+
+\* Change in marital status
 * New child
 * Loss or change in job
 * an inheritance
@@ -339,7 +343,8 @@ Right or wrong based on your own principles using approprate self-interest.
 ### Professional Ethics
 
 According to the FPSB (Financial planning standards board) these are 4 major trends:
-* Consumer demand
+
+\* Consumer demand
 * Focusing on relationship rather than transactions
 * Regulatory changes
 * Globalisation
@@ -407,7 +412,8 @@ A strong ehtical culture is required.
 * Honesty, fairness, due skill, care, diligence, interests of clients, integrity
 
 Ethical obligations:
-* Trust
+
+\* Trust
 * Confidentiality
 * Adequate disclosure
 * Respect of client
@@ -417,7 +423,8 @@ Ethical obligations:
 **FPI Code of Ethics and Practice Standards**
 
 Eight principles:
-* Client First - Did I act in the ebst interest of the client?
+
+\* Client First - Did I act in the ebst interest of the client?
 * Integrity - Am I prepared to read about my actions in tomorrow's newspaper?
 * Objectivity - Did I not allow emotins to cloud my judgement?
 * Fairness - Have I done what a reasonable person would ahve done? Would I do the same in the future.
@@ -476,13 +483,15 @@ Regulation to prevent dangers than arise from financial institutions that are un
 ## Twin Peaks Model of Regulation
 
 National treasury policy to address:
-* A stronger regulatory framework
+
+\* A stronger regulatory framework
 * Effective supervision
 * Crisis resolution and systemic institutions
 * International assessment and peer review
 
 4 Priorities:
-* Financial stability
+
+\* Financial stability
 * Consumer protection and market conduct
 * Expanding access through financial inclusion
 * Combatting financial crime
@@ -567,7 +576,8 @@ Monitoring and enforcement is done by the FCSA (Financial Sector Condict Authori
     * Must be related to a financial product
 
 Financial product:
-* Shares
+
+\* Shares
 * Debentures and securitised debt
 * Money-market instruments
 * Collective Investment schemes
@@ -585,7 +595,8 @@ Financial Service Provider (FSP) - any person who furnishes advice and/or render
 No one can act as an FSP unless licensed by the Authority (Financial Sectore Conduct Authority)
 
 Categories:
-* I - FSP
+
+\* I - FSP
 * II - Discretinary - Investment decisions on behalf of client
 * IIA - Hedge Fund FSP
 * III - Administrative FSP - Renders on instruction of client
@@ -596,7 +607,8 @@ Categories:
 ### Record Keeping
 
 Records to be kept for minimum 5 years:
-* cancellationfs of transactions
+
+\* cancellationfs of transactions
 * complaints received
 * cases of non-compliance
 * record of all verbal and written communication relating to the financial service
@@ -823,7 +835,8 @@ Over-indebtedness - Unable to pay credit obligations on time
 Important to know if client has unexpected short term debt or it is chronic long-term debt
 
 Reasons for getting into debt:
-* mismanagement of finances
+
+\* mismanagement of finances
 * undisciplined buying habits
 * poor advice
 * loss of income
@@ -833,7 +846,8 @@ Reasons for getting into debt:
 * unexpected medical expenses
 
 Recommendations and strategies:
-* reduce spending on unnecessary items
+
+\* reduce spending on unnecessary items
 * pay off debt with highest interest rate first
 * transfer expensive debt to lower interest rate
 * debt consolidation - consolidate smaller loans into one large one
@@ -928,7 +942,8 @@ Certain policies like endowments allow clients to borrow against them. This shou
 * Maximum of 60 months
 
 For client deriving income from vehicle:
-* Not required to pay deposit
+
+\* Not required to pay deposit
 * Asset regarded as belonging to the client, tax dedcuations are based on actual costs (if you use the vehicle for business)
 * Can choose to structure with a residual (balloon) amount of 0 to 40%.
 * Higher residual or more steeply structured the repayments - higher the interestd charges
@@ -937,7 +952,8 @@ For client deriving income from vehicle:
 * Another option is financial rental: finance company agrees to buy vehicle back at certain time and price. Benefit is that VAT is charge on repayment not on total value of vehicle.
 
 For client that is not self employed and does not derive income from the vehicle:
-* Required to pay a deposit (Usually 10%)
+
+\* Required to pay a deposit (Usually 10%)
 * Monthly installments can't differ by more than 10% one month to next
 
 **Settling a finance agreement**
@@ -954,24 +970,28 @@ The largest purchases usually
 **Costs**
 
 Property transfer costs:
-* Transfer duty - transfer of title depends on value of property
+
+\* Transfer duty - transfer of title depends on value of property
 * Conveyancer's fees
 * Deeds office registry fee
 * Sundries
 
 Bond registration costs:
-* Conveyancer's fees - get cond registered
+
+\* Conveyancer's fees - get cond registered
 * Deeds office registry fee - registration of mortgage bond
 * Sundries
 
 Mortgage bond costs:
-* Mortgage bond initiation fee
+
+\* Mortgage bond initiation fee
 * Admin fee
 * Homeowners insurance
 * Additional life insurance - a life policy to cover the bond amount
 
 Other costs:
-* Municipal rates and taxes
+
+\* Municipal rates and taxes
 * Sectional title levies - levy instead of rates. Cover rates, maintenance costs and upkeep of common areas
 * Service connections - Charge for new connections
 * Service deposits - 3 month depsots for water, electricity and telephones
@@ -990,7 +1010,8 @@ Other costs:
 **Guidelines**
 
 What info is needed:
-* Size of the bond qualified for
+
+\* Size of the bond qualified for
 * Amount of deposit required
 * Best interest rates must be established
 * Establish what costs can be included in bond - bond registration or transfer fees
@@ -1319,7 +1340,8 @@ Risk - A conidtion where a possibility of adverse deviation from a desired outco
 Important to adress all risks appropriately by minimising and mitigating in a financially viable way
 
 Risks:
-* Family risk - loss of income, assets through illness, injury, premature death, loss or damage to property
+
+\* Family risk - loss of income, assets through illness, injury, premature death, loss or damage to property
 * Loss of income - most common finnancial risk
 * Business risks - death of key employee
 * Property risk - fire, theft and mischief
@@ -1334,13 +1356,15 @@ Risks:
 ## Developing a Risk Management Plan
 
 Methods:
-* Risk avoidance - do not participate in the activity (avoid rugby injury by not playing rugby)
+
+\* Risk avoidance - do not participate in the activity (avoid rugby injury by not playing rugby)
 * Risk reduction - decrease chance of risk. Regular exercise and not smoking for health risks. Installation of an alarm and burgalar bars to reduce theft.
 * Risk transfer - Death or loss of an asset can ruin a client or their family financially. Entering into an insurance contract is risk transfer.
 * Risk retention - Choice to carry the risk - accept it and be responsible for it. "Self-insurance" and usually applies to smaller risks.
 
 Types of insurance contracts:
-* Life insurance (long term)
+
+\* Life insurance (long term)
 * disability insurance
 * medical aid / scheme (insurance)
 * motor car insurance (shrot term)
@@ -1472,7 +1496,8 @@ _Cessation, beneficiaries, revocation of nomination is all in the book_
 ## Long-Term Insurance
 
 Types of policies:
-* Assistance policy - life policy where benefit / amount of premum in return for an annuity does not exceed R10000 (or R30000)
+
+\* Assistance policy - life policy where benefit / amount of premum in return for an annuity does not exceed R10000 (or R30000)
 * Disability policy - contract where benefits are paid on a disability event
 * Fund Policy - contract for the purpose of funding (a medical scheme, provident fund or retirement annuity)
 * Health policy - benefits on a health event
@@ -1490,7 +1515,8 @@ _alot more policy related stuff in the book_
 ## Short-Term Insurance
 
 Typres of policies:
-* Engineering policy - relating to vehicles, erection of buildings and installation of machinery
+
+\* Engineering policy - relating to vehicles, erection of buildings and installation of machinery
 * Gaurantee policy - failure of person to discharge an obligation
 * Liability policy
 * Miscellaneous policy
@@ -1521,7 +1547,8 @@ _More in the book_
 * NHI (National Helath Insurance) - universal healthcare cover providing the same quality of healthcare regardless of income, social status or residency.
 
 Terms:
-* National Health Insurance (NHI) - Universal healthcare to both contributors and those who cannot afford to
+
+\* National Health Insurance (NHI) - Universal healthcare to both contributors and those who cannot afford to
 * Social Health Insurance (SHI) - Healthcare only to those who can afford to contribute. Private sector provides for contributors, public sector for those that cannot.
 * National Health Service (NHS) - Certain standard of healthcare funded by tax payers at the point of service. State is both purchaser and provider.
 
@@ -1559,11 +1586,13 @@ Terms:
 * Insurance policies make more money available to healthcare suppliers and therefore can sustain higher charges having a negative impact on medical schemes.
 
 Guidelines on key differences:
-* Medical scheme pays a member's actual medical expenses, Insurance policy pays a benefit that can be unrelated to medical cost
+
+\* Medical scheme pays a member's actual medical expenses, Insurance policy pays a benefit that can be unrelated to medical cost
 * Benefit pay out must be inline with sum for policyholder is insured
 
 Policy Benefit provided by medical insurance:
-* premiums according to fiancial risk
+
+\* premiums according to fiancial risk
 * Discriminate (good discrimination) based on age, sex, health, medical history and smoking status
 * Refuse cover to those they consider too high risk
 * Not bound by minimum benefits
@@ -1634,7 +1663,8 @@ Important to evaluate investment decisions, investment performance and investmen
 Investment - current commitment of money for a period of time to derive future benefits.
 
 Compensate fot:
-* postponed consumption - time value of money
+
+\* postponed consumption - time value of money
 * rate of inflation - maintain purchasing power
 * Unvertainty - risk (higher risk should be given a higher reward)
 
@@ -1661,7 +1691,8 @@ Group of securities that exhibit similar characteristics
 * Top down portfolio construction - starts with asset allocation
 
 Since 1900:
-* South African equity has returned better than 12% per year
+
+\* South African equity has returned better than 12% per year
 * South African bonds 6.8%
 * Cash has returned 6%
 
@@ -1695,7 +1726,8 @@ It is now called **wealth management** where both tasks are undertaken together.
 > Beware of conflict of interest, espescially if the owner of the asset management company is given you financial planning advice. They will usually put you in funds and positions that make them the most profit.
 
 Wealth management process:
-* client goals
+
+\* client goals
 * risk tolerance
 * behavioural biases
 * client constraints
@@ -1850,7 +1882,8 @@ How far from the expected return the realised return falls under normal circumst
 * Volatility - amount of uncertainty about the size of changes in a securities value. The price of a securtity with high volatility can change in a relatively short period in either direction.
 
 A standard deviation of 20% around a mean return of 12% essentially means:
-* out of a number of years - About 68% of years, the return will fall within 12% + 1 standard deviation and 12% - 1 standard deviation
+
+\* out of a number of years - About 68% of years, the return will fall within 12% + 1 standard deviation and 12% - 1 standard deviation
 
 The formula is the sum of the difference between the expected return and actual squared, multipled by the probability of that occuring. All of that square rooted.
 
@@ -1949,7 +1982,8 @@ Investor constraints are very important and impact the risk or return objectives
 * Risk measurment - Standard deviation or Beta
 
 Risk tolerance is not quantifiable but risk objective's are:
-* A "Lower than average risk tolernce" may mean a loss of total value not to exceed x% or annual volatility to not exceed y%
+
+\* A "Lower than average risk tolernce" may mean a loss of total value not to exceed x% or annual volatility to not exceed y%
 * absolute risk objectives - relating to total returns - at least a real return of 1% over inflation
 * relative risk objectives - not be less than the JSE All Share Index over a 12 month period
 
@@ -2031,7 +2065,8 @@ If you believe in the Efficient market hypothesis:
 * Research suggests that most investment managers do not beat the averages and those who do, tend to do so on an inconsistent basis.
 
 If you don't belive it:
-* Active managers believe their ability to recognise mispricings give them an advantage
+
+\* Active managers believe their ability to recognise mispricings give them an advantage
 * Make various kinds of bets
 * Claim better sources of information
 
@@ -2335,7 +2370,8 @@ Instruments of monetary policy: **repo rate** and **open market policy** - sale 
 #### Inflation targetting
 
 Between 3% AND 6%, arguments for:
-* keeping public informed
+
+\* keeping public informed
 * provide an anchor for inflation expectations
 * increased transparency
 * increased accountability
@@ -2351,7 +2387,8 @@ Between 3% AND 6%, arguments for:
 * Eg. 15% mortgage rate - 8% annual inflation rate = 7% real interest rate for sake of comparing
 
 Prospects for lower interest rates depend on:
-* maintenance or tightening of discipline in public sector finances
+
+\* maintenance or tightening of discipline in public sector finances
 * slower growth in bank credit extension
 * a stronger national savings effort
 * improvement in current account balance of payments and level of foreign reserves
@@ -2483,7 +2520,8 @@ Governments and central banks became major shareholders in the big financial ins
 Usually the injection of liquidity into the world economies would have caused inflation. Not in this case.
 
 Warning signs of crisis:
-* Asset price inflation
+
+\* Asset price inflation
 * Rising leverage and indebtedness
 * Sustained current account deficits
 * Slowing down in the rate of economic growth
@@ -2829,7 +2867,8 @@ Therefore capital growth is achieved when current market yield decreases or if t
 ## Direct Property Investment
 
 Factors affecting property value:
-* Price relative to similar properties
+
+\* Price relative to similar properties
 * Reputable area - stability
 * developments near property
 * condition - hints at future maintenance costs
@@ -2873,14 +2912,16 @@ Factors affecting property value:
 The investment return is calculated by subtracting expenses from total income.
 
 Expenses:
-* Loan Repayment
+
+\* Loan Repayment
 * Sectional Title Levy
 * Freehold property Rates
 * Insurance Premiums
 * Allowances for repairs and maintenance (12.5% of monthly rental)
 
 Income:
-* Rental of lease agreement
+
+\* Rental of lease agreement
 * Less agent's colelction fee
 
 Eg. The rental of a R400000 property would need:
@@ -2934,7 +2975,8 @@ The rent needs to be more than that
 * Experience has shown that one cannot rely on the opinions of the promoters when assessing the investment of a particular proposal.
 
 Keep in mind:
-* Track record of people
+
+\* Track record of people
 * who are tenants when are the leases in place
 * actual rentals compared to market
 * location; is it desirable?

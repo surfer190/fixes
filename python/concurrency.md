@@ -195,7 +195,8 @@ For more details check this [stackoverflow question on asyncio](https://stackove
 In python3.7 you can do `asyncio.run()` instead of `asyncio.get_event_loop().run_until_complete()`
 
 Problems with `asyncio`:
-* You need special sync versions of libraries to gain the full advantage of `asyncio`
+
+\* You need special sync versions of libraries to gain the full advantage of `asyncio`
 * `requests` is not designed to notify the event loop that it is blocked
 * If one task does not cooperate, the advantages of cooperative multitasking get thrown out the window.
 * A minor mistake in code can cause a task to run off and hold the processor for a long time, starving other tasks that need running. There is no way for the event loop to break in if a task does not hand control back to it.
@@ -248,10 +249,12 @@ The `initializer` function is used to create one `Session` per process.
         print(f"Downloaded {len(sites)} in {duration} seconds")
 
 Advantages:
-* Takes full advantage of the CPU power of your computer
+
+\* Takes full advantage of the CPU power of your computer
 
 Problems:
-* Have to spend time thinking which variables will be accessed in which process
+
+\* Have to spend time thinking which variables will be accessed in which process
 * Slower than threading
 
 First run:
@@ -338,11 +341,13 @@ Results for multiprocessing:
 * `Duration 5.983830690383911 seconds`
 
 Advantages of multiprocessing:
-* Easy to setup and requires little extra code
+
+\* Easy to setup and requires little extra code
 * Takes full advantage of CPU power - faster with CPU load
 
 Disadvantages:
-* Splitting up processes can be difficult
+
+\* Splitting up processes can be difficult
 * Many solutions require communication between processes - adding complexity
 
 ## When to Use Concurrency

@@ -87,6 +87,7 @@ Focus on how an API will be used, rather than how it is built
 Developers don't have access to your source code.
 
 Great documentation:
+
 * format - professional and current documentation - not pdf, hosted on website available at all times (swagger)
 * completeness - A contract with developers, need to be trusted. 
 * discoverability - interactive and discoverable - using browser to interact with API (swagger)
@@ -104,6 +105,7 @@ Great documentation:
 * Offer only 1 way to accomplish a task
 
 Naming should be consistent:
+
 * avoid abbreviations
 * be consistent with resource names
 * refrain from referencing internal systems - requiring insider knowledge
@@ -179,6 +181,7 @@ They require collaboration.
 They only have the API design and documenation to guide them.
 
 Goals for API design:
+
 * Simplicity
 * Clarity
 
@@ -217,12 +220,14 @@ URLS - Uniform Resource Locators - provide the address of where to lcoate a reso
 * Query string - (`page=1&per_page=10`”
 
 HTTP verbs:
+
 * `GET` - Retrieve a collection or individual resource
 * `POST` - Create a new resource or request a custom action
 * `PUT` - Update existing resource
 * `DELETE` - Delete existing resource or collection
 
 HTTP request contains:
+
 * VERB
 * URL
 * Request Header
@@ -240,6 +245,7 @@ HTTP request contains:
     Accept-Charset: iso-8859-1, *, utf-8
 
 HTTP Responses:
+
 * Server response code (status code)
 * Response header
 * Response body
@@ -255,6 +261,7 @@ HTTP Responses:
     <html>...</html>
 
 HTTP Response codes:
+
 * 200 OK - Request succeeded
 * 201 Created - Request fulfilled, a new resource has been created
 * 202 Accepted - Request accepted for processing, but processing is no complete
@@ -270,6 +277,7 @@ Add your resource ontology to the top of your url structure
 ### Defining URL's through relationships
 
 Relationships:
+
 * Independent - standalone, usually top level
 * Dependent - Cannot exist without a parent.
 * Associative - Relationship contains additional properties to describe it, either nested or dependent
@@ -312,12 +320,14 @@ For each API endpoint you will need to consider the response code to return for 
 > It will also encourage validation through feedback from internal or external developers by sharing your API design with them early rather than waiting until launch.
 
 You can document with these API definition formats:
+
 * Swagger
 * RAML
 * Blueprint
 * IO Docs
 
 Prototyping:
+
 * static prototype - method of returning resource representations in one or more formats, such as XML or JSON - on local file system or served via a webserver
 * working prototype - allow for more functionality - to simplify more complex interactions like third party integrations, connecting to existing SOAP services or legacy systems - can take shortcuts and flatten data structures
 

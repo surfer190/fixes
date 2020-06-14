@@ -31,6 +31,7 @@ Low margins to discourage competitors and lock-in users
 ## On premise Datacentre
 
 Costs:
+
 * Security
 * Cabling
 * Networking hardware

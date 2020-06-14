@@ -28,7 +28,8 @@ Consistent look and feel
 Used to override module layouts and templates
 
 Themes control:
-* Visual aspects: fonts, css, js, images
+
+\* Visual aspects: fonts, css, js, images
 * Functional aspects: blocks, templates and data shown in blocks
 
 ## File Structure
@@ -43,7 +44,8 @@ Themes control:
 * `var` - Temporary items: reports, cache, sessions and import/export files
 
 Changes:
-* Composer support
+
+\* Composer support
 * Magento UI library
 * Less compilation
 * theme.xml
@@ -55,7 +57,8 @@ Easier to upgrade, better modularity, better organisation and improved security
 `app/design/frontend/<Vendor>/<theme>`
 
 Contents of theme dir:
-* `<Vendor>_<Module>/`
+
+\* `<Vendor>_<Module>/`
   * `web/`
     * `css/`
       * `source/`
@@ -124,7 +127,8 @@ Responsive web design
 4. Make new directories and customisations here (`i18n`, `layout`, `templates`, `media`, `web`)
 
 NB! Never edit files directly in:
-* `app/code/Magento`
+
+\* `app/code/Magento`
 * `app/design/frontend/Magento`
 * `lib`
 

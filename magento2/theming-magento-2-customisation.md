@@ -34,7 +34,8 @@ Module specific styles:
 `app/design/frontend/<vendor>/<theme>/<Namespace>_<Module>/web/css`
 
 `/web/css/`:
-* `print.less` - printed versions
+
+\* `print.less` - printed versions
 * `_styles.less` - included file
 * `styles-m.less` - mobile specific styles
 * `styles-l.less` - Desktop specific styles
@@ -106,7 +107,8 @@ Note: It overrides that of parent theme, to inherit you must copy parent `_theme
 ### Extending
 
 Best practises:
-* Use a new theme for customisation, don't use existing Blank or Luma themes (Use parent mechanism)
+
+\* Use a new theme for customisation, don't use existing Blank or Luma themes (Use parent mechanism)
 * Use grunt for processing
 * Reuse the UI library
 
@@ -119,7 +121,8 @@ Eg. To extend `Magento_Catalog` add:
 ## Compiling / Processing
 
 Three ways to compile LESS:
-* Server-side compilation with PHP
+
+\* Server-side compilation with PHP
 * Client-side compilation with JS
 * Local compilation with Grunt
 

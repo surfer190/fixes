@@ -38,7 +38,8 @@ Stressful moments should be the exception.
 The _modern_ workplace is sick, it is infested with chaos. _Chaos should not be the natural state_.
 
 Calm is:
-* Protecting people's time and attention
+
+\* Protecting people's time and attention
 * 40 hours or less a week
 * Reasonable expectations
 * Ample time off
@@ -59,7 +60,8 @@ You might provide services or build products, but the company is the provider of
 You need to iterate and tweak this product. Not get stuck in policy mud.
 
 Ask questions about the company:
-* Do people know how to use the company?
+
+\* Do people know how to use the company?
 * Is it simple, is it complex?
 * How fast is it?
 * Are there bugs?
@@ -95,7 +97,8 @@ When you now think of yourself in a was scenario, of life or death it is easier 
 This is not _love and war_, this is business.
 
 It is important to work for:
-* A business that covers costs and makes a _profit_
+
+\* A business that covers costs and makes a _profit_
 * A business that has a _profit) that grows year on year
 
 Lots of companies and people are driven by _comparison_
@@ -110,7 +113,8 @@ No customer count goals no sales goal, no retention goal, no revenue goal.
 It is not about squeezing every single drop out of a lemon and leaving no money on the table.
 
 It is important to be interested in the right things:
-* Making products easier, faster and more useful
+
+\* Making products easier, faster and more useful
 * Making employees and customers happier
 * Iterating and improving
 * Increasing profits
@@ -232,7 +236,8 @@ a fair day of work, respecting work, respecting co-workers, not creating unneces
 A good person.
 
 Why do people make it then:
-* hey're talented
+
+\* hey're talented
 * lucky
 * know how to work with others
 * know how to sell an idea

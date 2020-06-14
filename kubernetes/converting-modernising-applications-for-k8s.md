@@ -94,7 +94,8 @@ Use prometheus and the prometheus client to get performance logs.
 Ensure that your logs settings send out to `STDOUT` and `STDERR`
 
 Use the RED method:
-* R - Rate - number of requests received
+
+\* R - Rate - number of requests received
 * E - Errors
 * D - Duration - time to respond
 
@@ -192,7 +193,8 @@ You can also use the `--from-file` flag
 > a stable IP address that load balances requests across its containers
 
 4 types:
-* `ClusterIP` - grants the Service a stable internal IP accessible from anywhere inside of the cluster
+
+\* `ClusterIP` - grants the Service a stable internal IP accessible from anywhere inside of the cluster
 * `NodePort` - expose your Service on each Node at a static port, between 30000-32767 by default. When a request hits a Node at its Node IP address and the NodePort for your service, the request will be load balanced and routed to the application containers for your service.
 * `LoadBalancer` - Using cloud provider’s load balancing product
 * `ExternalName` - map a Kubernetes Service to a DNS record

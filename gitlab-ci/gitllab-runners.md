@@ -7,16 +7,19 @@ Let's try and simplify the concept.
 ## Disambiguation
 
 Terms:
-* gitlab instance - this is where you host your projects and version control history
+
+\* gitlab instance - this is where you host your projects and version control history
 * gitlab groups - like github organisations, groups can own projects, userc can be members of groups.
 
 Gitlab runner:
-* A worker machine that executes your project's GitLab CI jobs
+
+\* A worker machine that executes your project's GitLab CI jobs
 * Different runners have different capabilities
 * Tag runners and give jobs tags to match them up
 
 A runner can be:
-* `specific` - to a chosen project
+
+\* `specific` - to a chosen project
 * `group` - available to all projects in a group
 * `shared` - available to every project
 
@@ -40,7 +43,8 @@ There is a registration process for runners.
 > Runners must be added incrementally with gitlab-runner register, which takes a registration token and exchanges it with the GitLab instance for a runner token that is stored in the configuration file
 
 The registration token:
-* tells your GitLab Runner which GitLab instance to ask for jobs
+
+\* tells your GitLab Runner which GitLab instance to ask for jobs
 * tells your GitLab instance that it is allowed to assign your jobs to your GitLab Runner
 
 > Where to find the token you need depends on the type of Runner you want to register: shared, specific (project), or group

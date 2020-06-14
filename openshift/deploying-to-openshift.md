@@ -38,7 +38,8 @@ _Openshift has other security related requirements_
 Openshift is *Paas*
 
 In 2013 DotCloud announced the docker tool, it addressed 2 issues:
-* a common packaging format for an image
+
+\* a common packaging format for an image
 * tooling for building the image
 
 This made it possible to create applications that could be easily moved between systems, to be run in a container with a higher confidence that it would work.
@@ -95,7 +96,8 @@ So you can deploy your own bespoke applications or third party applications and 
 ## 2. Running an Openshift Cluster
 
 Various options for using openshift:
-* Openshift Online by Redhat (public cloud)
+
+\* Openshift Online by Redhat (public cloud)
 * Run on your own Infrastructure (Openshift OKD)
 
 ### Using Openshift Online
@@ -212,7 +214,8 @@ Main methods for deploying an application:
 * From image source code pushed to openshift using `oc`, using the `Dockerfile`
 
 So essentially:
-* An existing container image (docker image)
+
+\* An existing container image (docker image)
 * Application code
 * Image source code
 
@@ -549,7 +552,8 @@ This can be overriden by an admin with:
 Openshift provides the image building functionality for you.
 
 You would use this when you want ot automate the complete workflow:
-* building of the image
+
+\* building of the image
 * testing of the image
 * deployment
 

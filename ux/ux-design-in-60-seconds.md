@@ -50,7 +50,8 @@ sitemap can sometimes be placed in the footer of every page instead of a seperat
 - Search results page should repeat search term: 'Search Results for "<<Search Term>>"'
 
 search result item:
-**Link text...description...url**
+
+\**Link text...description...url**
 
 Add images for share
 

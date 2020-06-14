@@ -14,7 +14,8 @@
 * More portable, cannot contain `.pyc` files
 
 3 types of wheels:
-* Pure wheels - just python code, can target a specific version of python.
+
+\* Pure wheels - just python code, can target a specific version of python.
 * universal wheels - python 2 and 3 compatible
 * extension wheels - contains a python extension
 

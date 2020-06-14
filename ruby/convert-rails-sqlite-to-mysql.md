@@ -33,6 +33,7 @@ GRANT ALL PRIVILEGES ON dbTest.* To
 ```
 
 Source:
-* [Check Mysql Socket](http://stackoverflow.com/questions/25171327/mysql2error-cant-connect-to-local-mysql-server-through-socket-tmp-mysql-so)
+
+\* [Check Mysql Socket](http://stackoverflow.com/questions/25171327/mysql2error-cant-connect-to-local-mysql-server-through-socket-tmp-mysql-so)
 * [MySQL Permissions](http://stackoverflow.com/questions/1720244/create-new-user-in-mysql-and-give-it-full-access-to-one-database)
 * [Convert Rails to use SQLLite to MySQL](https://teamtreehouse.com/forum/how-to-let-ruby-app-know-to-use-mysql-instead-of-sqlite3)

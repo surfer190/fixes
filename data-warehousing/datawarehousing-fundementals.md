@@ -28,6 +28,7 @@ Single source of truth
 KPI: COst of Capital, Headcount, Earnings per share, Cost per Unit
 
 Users in BI:
+
 * Strategic - Executive make more decisions
 * Tactical - Data scienctists, make some decisions.
 * Operational - Little to no decision.

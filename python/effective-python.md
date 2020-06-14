@@ -700,7 +700,8 @@ Extending tuples is also an issue, as associating more data now cause an issue w
 A `namedtuple` in the `collections` module does exactly what you need...defining a tiny immutable data class.
 
 Limitations of `namedtuple`:
-* You cannot specify default argument values. With a handful of optional values a class is a better choice.
+
+\* You cannot specify default argument values. With a handful of optional values a class is a better choice.
 * Attributes are still accessible by numerical indices and iteration
 
 A complete example:
@@ -1095,7 +1096,8 @@ Remember to follow the rule of **least surprise**
 ### Use Plain attributes instead of Get and Set Methods
 
 These can be done in python and may be seen as good to:
-* encapsulate functionality
+
+\* encapsulate functionality
 * validate usage
 * define boundaries
 
@@ -1678,7 +1680,8 @@ You can retrive the docstring with:
     print(repr(palindrom.__doc__))
 
 Consequences:
-* Makes interactive development easier with `ipython` and using the `help` function
+
+\* Makes interactive development easier with `ipython` and using the `help` function
 * A standard way of defining documentation makes it easier to build tools to convert it into more appealing formats like `html`: Like [sphinx](http://www.sphinx-doc.org/en/master/) or [readthedocs](https://readthedocs.org/)
 * First class, accessible and good looking documentation encourages people to write it
 
@@ -2105,12 +2108,14 @@ As soon as the statement runs, execution is paused and you can inspect local var
 You can use `locals`, `help` and `import`.
 
 inspecting current state:
-* `bt` - Print the traceback of the current execution stack
+
+\* `bt` - Print the traceback of the current execution stack
 * `up` - Move the scope up, to caller of current function
 * `down` - Move scope down one level on function call
 
 Resuming execution:
-* `step` - Run the program till the next line stopping in next function called
+
+\* `step` - Run the program till the next line stopping in next function called
 * `next` - Run the next line, do not stop when the next function is called
 * `return` - Run the program until the current function returns
 * `continue` - continue running until the next breakpoint.

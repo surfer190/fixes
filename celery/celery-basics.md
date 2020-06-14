@@ -68,6 +68,7 @@ This can be used to check the state of the task, wait for the task to finish, or
 If you want to keep track of the tasks’ states, Celery needs to store or send the states somewhere
 
 Backends:
+
 * Django / SQLAlchemy ORM
 * Memcached
 * Redis

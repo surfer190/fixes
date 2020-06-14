@@ -217,6 +217,7 @@ A collection of hosts defined by a stored search.
 `kind` is set to `smart` and `host_filter` is set
 
 To update smart inventories more often you can set `AWX_REBUILD_SMART_MEMBERSHIP` to `True`, which will update membership when:
+
 * a new host is added
 * an existing host is modified (updated or deleted)
 * a new Smart Inventory is added
@@ -333,6 +334,7 @@ You can reorder the questions in the survey
 You can just push a button to launch the job
 
 You may be prompted for:
+
 * Credentials
 * A survey
 * Extra Variables
@@ -399,6 +401,7 @@ More info on [provisioning callbacks](https://docs.ansible.com/ansible-tower/lat
 ### Extra Variables
 
 `extra_vars` passed to the job launch API are only honored if one of the following is true:
+
 * They correspond to variables in an enabled survey
 * `ask_variables_on_launch` is set to True
 
@@ -543,10 +546,12 @@ It is important to take note of certain [security implications with AWX](https:/
 * In awx `3.1` and later: bubblewrap is used to isolate jobs - by default job isolation is enabled
 
 Process Isolation is used for the following job types:
+
 * Job Templates
 * Ad-hoc Commands
 
 By default process isolation hides:
+
 * `/etc/tower` - to prevent exposing Tower configuration
 * `/var/lib/awx` - with the exception of the current project being used (for regular job templates)
 * `/var/log`
@@ -582,6 +587,7 @@ It is an upstream project for tower, a commercial derivative of AWX.
 * [molecule](https://molecule.readthedocs.io/en/latest/) can be used for testing of ansible roles
 
 Pointers:
+
 * Never manually edit stuff in docker containers
 * Playbooks should reference tested roles
 * Playbooks and roles should be stored in git

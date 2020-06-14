@@ -285,6 +285,7 @@ Example:
 > The point of TDD is to allow you to do one thing at a time
 
 What if a functional test fails with a cryptic message:
+
 * Add `print` statements, to show, for example, what the current page text is.
 * Improve the error message to show more info about the current state.
 * Manually visit the site yourself.

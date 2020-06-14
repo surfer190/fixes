@@ -55,6 +55,7 @@ Ensure a container is removed when it exits or stops, use `--rm`:
 # Key Concepts
 
 You got Images and Containers, and you need to know what state you are at:
+
 * Does the docker **image** exist?
 * Does the docker **container** exist?
 * Is the docker container **running**?

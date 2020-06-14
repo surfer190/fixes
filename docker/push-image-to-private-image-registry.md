@@ -4,6 +4,7 @@ Many docker scheduler and orchestrator platforms provide an internal private reg
 This means that you do not use the default and public `index.docker.io` image registry.
 
 I know that the following platforms let you create an internal registry:
+
 * portainer
 * Openshift: OKD
 

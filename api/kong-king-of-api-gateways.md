@@ -34,6 +34,7 @@ Example: Movie Cinema
 * User service - Information about users - employee, customer, name etc.
 
 Characteristics:
+
 * Small in size
 * Various platforms
 * Y Axis scaling
@@ -83,6 +84,7 @@ An ESB routes messages between services, monitor and control routing, control ve
 
 A glorified reverse proxy
 An API frontend that:
+
 * orchestrates requests
 * enforces traffic policies (caching, throttling)
 * security (authorization, authentication)
@@ -100,12 +102,14 @@ It provides alot of the functionality but it does it in an orchestrated way and 
     A reverse proxy is a type of proxy server that retrieves resources on behalf of a client from one or more servers. These resources are then returned to the client, appearing as if they originated from the proxy server itself
 
 Evolution:
+
 * Houses - HTTP Servers
 * Tribes - Reverse Proxies
 * Villages - ESB's
 * Towns - API Gateways
 
 API Gateways:
+
 * Kong
 * APIGEE
 * KrakenD
@@ -155,6 +159,7 @@ Openresty is a set of libraries to extend nginx.
 > Seperation of concerns
 
 It is:
+
 * scalable - scales horizontally
 * modular - extended by adding new modules
 * any infrastructure - runs anywhere
@@ -170,6 +175,7 @@ It decouples some concerns away - eg. service discovery is already coupled with 
 So many things itnegrate well with kong, like konga (frontend) and plugins.
 
 Service discovery:
+
 * etcd
 * isitio
 * linkerd
@@ -182,6 +188,7 @@ It is _free as in kittens_ not _free as in beer_....it requires maintenance, con
 Configurable as it is using nginx, so existing nginx conf can be used
 
 Plugins out the box:
+
 * Basic auth
 * Key uthentication
 * OAuth2.0 authentication
@@ -214,6 +221,7 @@ Plugins out the box:
 * Loggly
 
 What Kong EE (Enterprise Edition) has:
+
 * OpenID Connect
 * OAuth 2.0 Introspection
 * Canary releases - slowly rollout to a subset of users
@@ -598,6 +606,7 @@ OpenResty enables this feature with the lua-nginx-module. This module enables de
 ### Database blocks
 
 Scenarios where data is stored in dbs:
+
 * API's managed through the admin interface
 * Kong internals and clustering
 * Custom plugin behaviour

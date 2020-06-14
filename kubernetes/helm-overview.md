@@ -8,7 +8,8 @@ Setting up a single application involves creating multiple interdependent k8s re
 > Most every programming language and operating system has its own package manager to help with the installation and maintenance of software - Helm has similar features.
 
 Helm can:
-* Install software
+
+\* Install software
 * install dependencies
 * Upgrade software
 * Configure software deployments

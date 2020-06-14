@@ -16,7 +16,8 @@ GitLab CI/CD is configured by a file called `.gitlab-ci.yml` placed at the repos
 The scripts in that file are executed by the gitlab runner - an open source project used to  run your jobs and send the results back to GitLab.
 
 In this file you can specify(basically everything):
-* what you want to run
+
+\* what you want to run
 * define include and cache dependencies
 * choose commands you want to run in sequence and those you want to run in parallel
 * define where you want to deploy your app

@@ -1,12 +1,14 @@
 # Ansible Dynamic Inventory
 
 When is this needed:
+
 * Inventory fluctuates over time starting up and shutting down
 * Tracking hosts from different sources
 
 Then you most probably have a dynamic external inventory system
 
 The way ansible integrates with them in 2 ways:
+
 * inventory plugins
 * inventory scripts
 
@@ -97,6 +99,7 @@ It should look like this:
     }
 
 Other variables we might want are:
+
 * guest os / distribution
 * name
 * networks []
@@ -111,6 +114,7 @@ If you want to do this implictly - _Explicit is better than implicit._
 You can place the script at `/etc/ansible/hosts`
 
 There are existing integrations to [checkout as scripts](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html) for:
+
 * [Cobbler](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-cobbler)
 * [AWS EC2](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-aws-ec2)
 * [OpenStack](https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#inventory-script-example-openstack)

@@ -18,6 +18,7 @@
   Ensure `underscore` as it is a module name
 
 The `learning_site` folder:
+
 * is not an `app` but a `stub`
 * holds the `settings.py`
 * holds the `urls.py` = base urls
