@@ -37,6 +37,7 @@ ELB (Elastic Load Balancer) -> Zuul Proxy layer (dynamic routing) -> Core API
 Data is typically stored in your persistence layer
 
 The microservice is an abstraction - containing all these things:
+
 * Service client
 * Persistence
 * Cache client
@@ -60,6 +61,7 @@ It is not just the stateless application
 > A single service failing could cascade issues
 
 To prevent this netflix created hysterix:
+
 * structured way for handling timeouts and retries
 * fallback to show some data
 * isolated thread pools
@@ -69,6 +71,7 @@ Service should function even when dependencies go away
 ### Persistence
 
 [CAP Theorem](https://en.wikipedia.org/wiki/CAP_theorem) says it is impossible for a distributed datastore to simultaneously provide 2 of these:
+
 * Consistency - every read receives the most recent write or error
 * Availability - every read receives a response
 * Partition Tolerance - System continues to operate despite arbitrary number of dropped messages
@@ -95,6 +98,7 @@ Stateless service
 Autoscaling: Min, max and metric to use when scaling your group
 
 Advantages of autoscaling:
+
 * compute efficiency (using on-demand capacity)
 * Node failures are not big deals
 * Traffic spikes, DDOS or performance bug allows you to absord that change and figure out what happened
@@ -119,6 +123,7 @@ The more variance you have the greater your challenges - increases complexity
 ### Operational Drift
 
 Unintentional:
+
 * Alert thresholds
 * timeouts, retries and fallbacks
 * throughput (RPS)
@@ -131,6 +136,7 @@ Use continuous learning and automation - this is how knowledge becomes code.
     Incident -> Resolution -> Review -> Remediation -> Analysis -> Best Practice -> Automation -> Adoption
 
 Production ready checklist (automation and continuous improvement behind it):
+
 * Alerts
 * autoscaling
 * chaos
@@ -149,6 +155,7 @@ The paved road (best of breed tech that worked best) - automation and integratio
 Then there was the rocky road new tech and docker.
 
 Cost of variance:
+
 * productivity tooling
 * different tooling for memory and cpu on containers
 * Base image fragmentation - more specialised
@@ -156,11 +163,13 @@ Cost of variance:
 
 
 Key points:
+
 * Raise the awareness of costs
 * prioritise by impact
 * seek reusable solutions
 
 Integrated delivery:
+
 * Test out the code changes with some real traffic and determine if the code is better
 * Staged deployments - 1 region at a time
 

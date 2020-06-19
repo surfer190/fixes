@@ -5,6 +5,7 @@
 ORM - Object-relational mapping, technique to access a relational database from an oo language
 
 Magento ORM:
+
 * models - data + behaviour / entities
 * resoure models - Data mappers for storage structure
 * collections - model sets and related functionality (soring, paging)
@@ -19,6 +20,7 @@ Model cannot access db directly.
 Resource models - storage related logic. Uses db adapter.
 
 Advantages:
+
 * decouple business logic from the storage layer
 * Decouple storage schema from DB driver implementation (Data mapper)
 
@@ -70,6 +72,7 @@ Collections have sorting etc and Lazy load
 Close to the DB layer
 
 Main issues it solves:
+
 * Container for storing collections of objects
 * Prevents unnecessary data loading
 * Stores all objects during a session
@@ -178,6 +181,7 @@ EAV entity is an entity type that is persisted using the EAV database schema via
 ### Resource methods
 
 Additional methods:
+
 * `getAttribute()`: `$product->getResource()->getAttribute('color')`
 * `saveAttribute()`: `$product->setWeight(1.99)->getResource()->saveAttribute($product, 'weight');`
 * `getWriteConnection()`: Interface to write adapter, read connection
@@ -192,6 +196,7 @@ Any additional data is read from `eav_entity_type` table
 #### EAV load process
 
 2 aspects:
+
 * Managing relationships
 * Managing content
 
@@ -212,6 +217,7 @@ Loaded from `eav_attribute_option` and `eav_attribute_option_value`
 Similar to flat table except one additional layer `beforeSave()` and `afterSave()` calls the attrbiute backend model.
 
 **Backend Type***:
+
 * static: `entity`
 * varchar: `entity_varchar`
 * int: `entity_int`

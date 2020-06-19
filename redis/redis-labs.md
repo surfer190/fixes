@@ -11,6 +11,7 @@ Redis Enterprise is the product - backups, replication and clustering.
 Redis is for ephemeral data 
 
 Data structures:
+
 * Strings
 * Bitmaps
 * Hashes
@@ -105,6 +106,7 @@ Hashes - hash maps. Essentially dictionaries.
 You cannot nest values
 
 Problem:
+
 * Maintain session state across multiple sessions
 * Mulitple session variables
 * Want sticky state
@@ -178,6 +180,7 @@ Example:
 ### Lists: Message Queues
 
 Problem:
+
 * Tasks need to be worked on asynchronously to reduce block/wait times
 * Lots of times to be worked on
 * Assign items to worker process and remove from queue at the same time
@@ -268,6 +271,7 @@ Also can get the union with:
 ### Sorted Sets: Game Leaderboards
 
 Problem:
+
 * Many users playing a game collect points
 * Display a real-time leaderboard
 * Who is your nearest competition
@@ -342,6 +346,7 @@ Extensions to redis
 ### Persistance
 
 2 persistence mechanism, which aare the same as most other database:
+
 * Snapshots - whole dataset persisted periodically
 * Writeahead log - Append only file
 

@@ -8,6 +8,7 @@
 * VueJS project templates
 
 Templates:
+
 * simple
 * webpack-simple
 * webpack

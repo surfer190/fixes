@@ -1,6 +1,7 @@
 ## Deploying Django to Openshift
 
 There are a few key things to understand about docker images on openshift:
+
 * Don’t run as root (you can build as root)
 * Don’t listen port < 1024
 * Openshift starts the image with a random UID but **always with root GID**. So if the container need to write a directory. Set the directory group as root with rwx permission to make openshift happy!

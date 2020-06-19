@@ -17,6 +17,7 @@ They should be highly available even during software rollout and maintenance.
 They should also scale rapidly as more devices are connected.
 
 The benfits of kubernetes:
+
 * Velocity
 * Scaling
 * Abstracting your Infrastructure
@@ -106,6 +107,7 @@ Teams can also share the underlying machines.
     * Infighting
 
 Kubernetes provides the abstractions to build these microservice architecture:
+
 * Pods - groups of containers
 * Services - Load balancing and discovery isolating microservices from eachother
 * Namespaces - isolation and access control
@@ -139,6 +141,7 @@ This also lets us move to different providers as the api is common.
 You also use `PersistentVolumes` and `PersistentVolumeClaims` to abstract yourself from certain storage implementations.
 
 To achieve this portability you need to **avoid** cloud managed services:
+
 * Amazons DynamoDB
 * Azure's CosmosDB
 * Google Cloud Spanner
@@ -169,6 +172,7 @@ The applications that kuberentes manages ultimately accept input, manipulate dat
 We must first consider how to build the _container images_ that contain these programs.
 
 Applications are made up of:
+
 * language runtime
 * libraries
 * source code
@@ -209,6 +213,7 @@ Docker began standardising the image format with the OCI (Open Container Initiat
 Container images are combined with a container configuration file - containing the instructions to set up the container and the application entry point
 
 The container configuration contains:
+
 * information on networking setup
 * namespace isolation
 * resource constraints (cgroups)
@@ -217,6 +222,7 @@ The container configuration contains:
 The container root file system and configuration file are bundled using the Docker Image format.
 
 There are 2 types of containers:
+
 * System Containers
 * Application containers
 
@@ -398,6 +404,7 @@ Total size: _500MB_
 
 This dockerfile produces 2 images. The first is the build image containing go compiler, react.js and source code. The second is the deployment image containing the compiled binary.
 Multistage builds:
+
 * decrease container side
 * speed up deployments
 
@@ -639,6 +646,7 @@ Get info about a specific node:
     kubectl describe nodes minikube
 
 Get the:
+
 * Operations
 * Disk and Memory Space
 * Software info: Docker, kubernetes and Linux Kernel versions
@@ -777,6 +785,7 @@ You can do interactive edits (not infrastructure as code) with:
     kubectl edit <resource-name> <object-name>
 
 The `apply` command records history:
+
 * edit-last-applied
 * set-last-applied
 * view-last-applied
@@ -877,6 +886,7 @@ Colocate multiple applications into a single atomic unit on a single machine.
 An example is 2 pods - 1 web server and 1 git sync using the same filesystem
 
 It first it might seem tempting to wrap everything in a single container - but that would be a bad choice:
+
 * they have different requirements for resource usage - web server is user facing, git synchronizer is not.
 * Isolation: if git synchronizer has a memory leak
 
@@ -894,6 +904,7 @@ All the containers in a pod always land on the same machine.
 Each container has its own `cgroup` but share a number of linux namespaces.
 
 Applications in the same pod:
+
 * share the same ip address and port space
 * have the same hostname
 * can communicate over native interprocess communication - system V IPC or posix message queues
@@ -1145,6 +1156,7 @@ Liveness healthchecks are defined in your pod manifest.
               protocol: TCP
 
 An `httpGet` probe is used to do a `HTTP GET` to `/healthy` on port `8080`:
+
 * `initialDelaySeconds: 5` - starts 5 seconds after the container starts
 * `timeoutSeconds: 1` - probe must respond within 1 second
 * `periodSeconds: 10` - test is performed every 10 seconds
@@ -1487,6 +1499,7 @@ They are a way for other tools driving kubernetes by API to store data
 There is overlap of annotations and labels - when in doubt use annotations and promote to labels.
 
 Annotations are used to:
+
 * Keep track of a reason for the latest update on an object
 * Communicate a specialised scheduling policy
 * Extend data about the last tool and date of an update
@@ -1793,6 +1806,7 @@ Kubernetes calls its HTTP-based load-balancing system _Ingress_.
 A complex part of the pattern is the user must manage the load balancer configuration file - a dynamic environment with many virtual hosts.
 
 Kubernetes simplifies this by:
+
 * standardizing the configuration
 * moving to a standard kubernetes object
 * merging multiple ingress objects into a single config for the load balancer
@@ -2095,6 +2109,7 @@ The most popular ingress is the [Nginx Ingress Controller](https://github.com/ku
 The open source version reads ingress objects and merges them into an Nginx config file.
 
 Other options:
+
 * [Ambassador](https://github.com/datawire/ambassador)
 * [Gloo](https://github.com/solo-io/gloo)
 * [Traefik](https://containo.us/traefik/) - go reverse=proxy that also acts as an ingress
@@ -2146,6 +2161,7 @@ Managing replicated pods is an example of a reconciliation loop.
 * ReplicaSets that create pods and services that load balance them are totally seperate API objects.
 
 Reasons:
+
 * ReplicaSets can adopt existing pods
 * Leave the pod alive for debugging purposes but remove from replica set and service
 
@@ -2701,6 +2717,7 @@ Like a frontend decoupled from a backend via an API contract and a load balancer
 #### Configuring a Rolling Update
 
 A `RollingUpdate` has:
+
 * `maxUnavailable` - max number of pods that can be unavailable during a rolling update (can be number or percentage). Affects speed of update and availability. Used in cases where you can drop apacity like websites at night.
 * `maxSurge` - Used when you don't want to drop below 100% capacity. Can be a number or percentage - defines how many extra resources can be applied during a rollout.
 
@@ -2949,6 +2966,7 @@ The `RollingUpdate` strategy can be used.
 * Any change to `spec.template` will initiate a rolling update
 
 2 parameters control the rolling update:
+
 * `spec.minReadySeconds` - how long a pod must be ready before rolling update proceeds
 * `spec.updateStrategy.rollingUpdate.maxUnavailable` - how many pods can be simultaneously updated
 
@@ -3531,6 +3549,7 @@ A configMap is basically key-value pairs stored, the interesting happens when yo
 ## Using a ConfigMap
 
 3 ways:
+
 * filesystem - mount a configmap into a pod - a file is created for each entry
 * environment variable - dynamically set the value of an environment variable
 * command-line argument - k8s supports dynamically creating the command line for a container from ConfigMap values
@@ -3721,11 +3740,13 @@ You then give access to the pod (for the imagepull secret) with:
 ## Naming Constraints
 
 Valid key names:
+
 * `.auth_token`
 * `Key.pem`
 * `config_file`
 
 Invalid key names:
+
 * `Token..properties`
 * `auth file.json`
 * `_password.txt`
@@ -3796,6 +3817,7 @@ or
     kubectl create configmap
 
 with:
+
 * `--from-file=<filename>`
 * `--from-file=<key>=<filename>`
 * `--from-file=<directory>`
@@ -3858,6 +3880,7 @@ Every request in k8s is associated with an identity. Even a request with no iden
 k8s uses a generic interface for authentication provider - each provider supplies a username and set of groups a user belongs to.
 
 K8s supports:
+
 * HTTP basic auth (deprecated)
 * x509 client certificates
 * Static token files on the host
@@ -3874,6 +3897,7 @@ To determine authorization roles and role bindings are used.
 ### Roles and Role Bindings in K8s
 
 Two types:
+
 * Namespaces - `Role` and `RoleBinding`
 * Across cluster - `ClusterRole` and `ClusterRoleBinding`
 
@@ -3930,6 +3954,7 @@ For limiting access to cluster level resources use `ClusterRole` and `ClusterRol
 Most of the roles are for system utilities: `system`
 
 There are 4 types of user roles:
+
 * `cluster-admin` - complete access to the entire cluster
 * `admin` - access to the complete namespace
 * `edit` - allow you to modify a namespace
@@ -4989,6 +5014,7 @@ Enabling or disabling a feature becaome a much simpler task.
 First cardinality: `frontend`, `backend` or `queue` - this sets the stage for team scaling.
 
 For an application using 2 services:
+
 * `/frontend`
 * `/service-1`
 * `/service-2`
@@ -5039,6 +5065,7 @@ Old configs are copied to their versioned directory `/v1`
 ## Securing your Application for Development, Testing and Deployment
 
 In addition to release cadence you want to strucutre your app for:
+
 * agile development
 * quality testing
 * safe deployment

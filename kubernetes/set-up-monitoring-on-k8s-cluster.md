@@ -1,16 +1,19 @@
 # Set Up Monitoring on your k8s cluster with the Helm and Prometheus Operator
 
 A monitoring system usually consists of:
+
 * a time-series database holding metrics
 * a visualization layer
 * an alerting layer
 
 One popular monitoring solutions is:
+
 * Prometheus - A time series database and monitoring tool that works by polling metrics endpoints and processing the data from them
 * Grafana - A data analytics and visualisation tool to build dashboards for your metrics
 * AlertManager - Usually deployed alongside Prometheus - deduplicating, grouping, and routing alerts
 
 On the kubernetes side - these expose cluster and machine level metrics:
+
 * [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
 * [node_exporter](https://github.com/prometheus/node_exporter)
 

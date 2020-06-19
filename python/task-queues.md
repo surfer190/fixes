@@ -126,6 +126,7 @@ Use something like [`supervisord`](http://supervisord.org/running.html) or `god`
 
 Nice to play with but don't reinvent the wheel.
 Existing task queues:
+
 * Store return results
 * Handle Errors
 * Route Tasks
@@ -141,6 +142,7 @@ Use asynchronous workers
 ## In Practice
 
 Celery has 3 components:
+
 * `celery client` - interacts with the application
 * `celery workers` - run long-running tasks asynchronously
 * `message broker` - keeps track of tasks and queue, so celery workers can consumer them

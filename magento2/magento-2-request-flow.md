@@ -21,6 +21,7 @@ Cron calls go through: `ub/cron.php`
 Calls to satic files go through: `pub/static.php`
 
 There are 2 `index.php` files:
+
 * `<root>/index.php`
 * `<root>/pub/index.php`
 
@@ -39,6 +40,7 @@ create the application
 routing - converts a request URL into a style magento can handle and finds class to process it
 
 Goals:
+
 * Defining all avialable routers
 * Converting a URL to Magento style
 * Parsing request parameters
@@ -81,6 +83,7 @@ There are multiple result objects that a controller can return.
 front controlers are used to efficiently handle requests and direct work flows across all pages
 
 responsibilities:
+
 * gathering all routers
 * finding matching controller/router
 * obtaining generated HTML to the response object
@@ -100,6 +103,7 @@ disPatch:
 `Router::match()` most useful when looking for the list of routers.
 
 Available routers:
+
 * Base router: `Magento\Framework\App\Router\Base`
 * Default router: `Magento\Framework\App\Router\DefaultRouter`
 * CMS router: `Magento\Cms\Controller\Router`
@@ -167,6 +171,7 @@ Eg. `Magento\Catalog\Controller\Product\View`
 ### Action classes / Controllers
 
 Action classes include:
+
 * execute() method
 * Constructor (dependencies injected using DI)
 * Extra methods and variables
@@ -216,6 +221,7 @@ If controller does not extend `Action/Action` but directly implements `ActionInt
 `routerConfig` is injected with `DI`
 
 `matchAction()` will perform 2 calls:
+
 * `Router\Base::matchModuleFrontName()`
 * `Router\Config::getModulesByFrontName()`
 

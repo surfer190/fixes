@@ -5,6 +5,7 @@
 This is about stopping major governments from reading your files
 
 types or encryption:
+
 * file
 * email
 * digital signatures

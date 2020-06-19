@@ -96,6 +96,7 @@ A block employs templates into a page.
 `base` layouts are layout files provided by modules
 
 Examples of page layouts:
+
 * `2 columns left`
 * `2 columns right`
 * `3 columns`
@@ -170,6 +171,7 @@ Remove all other nodes except the one you want to change.
 ### Include custom js (or css)
 
 Place component in:
+
 * `app/design/frontend/<Vendor>/<theme>/web/js`
 * `app/code/<Namespace>/<Module>/view/frontend/web/js`
 
@@ -233,6 +235,7 @@ Argument values in block can be accessed in template wit:
 Eg. `$this->getCssClass()`
 
 `class` attribute specifies class location for a block:
+
 * `app/code`
 * `lib/internal`
 * `vendor/`

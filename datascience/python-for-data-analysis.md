@@ -1063,6 +1063,7 @@ Go to another location with `seek`:
 Numerical Python. Most important foundational packages for numerical computing.
 
 Features:
+
 * `ndarray` - An efficient multi-dimensional array providing fast array-oriented and flexible broadcasting
 * Mathemtical functions on all elements, no loops
 * Tools for reading and writing to disc and working with memory mapped files
@@ -1072,6 +1073,7 @@ Features:
 Knowing `numpy` will help you use `pandas` more effectiely.
 
 For datascience:
+
 * Fast vectorised array operations
 * Effecient descriptive statistics (aggregate and summary)
 * Data alignment and relational DB manipulation
@@ -1622,6 +1624,7 @@ Sum is often used to count `True` values
     Out[28]: 48
 
 Other methods:
+
 * `any()` checks if any are True
 * `all()` checks if all are true
 
@@ -2121,6 +2124,7 @@ Index objects are immutable so they cannot be changed by the user
 Immutability makes it easier to share index objects among data structures.
 
 Types of Indexes:
+
 * `Index` - array of python objects
 * `Int64Index` - integer values
 * `Float64Index` - float values for hierachical indexes
@@ -2640,6 +2644,7 @@ Membership check with `isin()`:
 ## Reading and writing data in text formats
 
 Python is good for working with text and file mungingdue to its:
+
 * simple syntax for interacting with files
 * lightweight built-in datastructures
 * convenient language features (tuple packing and unpacking)
@@ -3703,6 +3708,7 @@ Remove with an empty string:
 A way to search or match string patterns in text. Python's `re` module is responsible for applying regilar expressions to strings.
 
 3 categories:
+
 * pattern matching
 * substitution
 * splitting
@@ -4195,6 +4201,7 @@ Use `loc` for label selection and `iloc` for integer selection
 ## Combining and Merging Datasets
 
 The following ways:
+
 * `pandas.merge` - connects rows based on keys, similar to a db `join`
 * `pandas.concat` - concatenates or stacks objects together along an axis
 * `combine_first` - instance method that enables splicing together ovverlapping data to fill in missing data in one obejct with values in another
@@ -4460,6 +4467,7 @@ Concatenating, binging or stacking
         [ 8,  9, 10, 11,  8,  9, 10, 11]])
 
 In a dataframe context:
+
 * Should we combine or use shared values on an index?
 * Do concatenated chunks of data need to be identifiable in the resulting object?
 * Does the concatenation axis contain data that needs to be preserved? In many cases the integer integer labels should be discarded.
@@ -4706,6 +4714,7 @@ SQL can be limited in this regard, you will learn:
 For example summing the total spend at different shops (as the key) in a dataset
 
 The keys do not need to be of the same type, it can be:
+
 * A list of array values the same length as teh axis being grouped
 * a column name in a dataframe
 * a dict or series corresponding to values on an axis
@@ -5477,6 +5486,7 @@ Anything observed or measured in many points in time is a _time series_
 * Irregular frequency: No fixed time between data points
 
 How you mark time sreies data:
+
 * timestamps - instants in time
 * Fixed _periods_ - A month or year 2008
 * _Intervals_ - A start and end timestamp

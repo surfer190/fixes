@@ -1,6 +1,7 @@
 ## What are the small k8s distributions?
 
 There are 3:
+
 * k3s
 * microk8s
 * minikube

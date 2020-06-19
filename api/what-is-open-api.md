@@ -27,6 +27,7 @@ The concept that an API should be composed primarily of open source modules, ope
 * Language Agnostic
 
 Swagger provides:
+
 * Swagger Editor
 * Swagger UI
 * Swagger Codegen

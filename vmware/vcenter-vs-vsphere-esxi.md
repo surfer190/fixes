@@ -32,6 +32,7 @@
 
 
 Minimum specs:
+
 * 2 CPU Cores
 * 4GB RAM
 * 64-bit

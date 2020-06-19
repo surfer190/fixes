@@ -72,6 +72,7 @@ Martin Casado - influencing large network incumbents that operations, agility an
 * Time needed to rack, stack, cable and integrate hardware is eliminated, it becomes as fast as deploying a virtual machine and an inherent advantage is being able to clone and backup environments.
 
 Why hasn't NFV taken over:
+
 * Requires a rethink on how the network is operated - for example a single big firewall as oppsed to many multi-tenant firewalls
 * Or a single CLI or GUI, making the failure domain immense but streamlines tha administration.
 * In modern network automation, it matters less what architecture is chosen as management of devices is becoming easier
@@ -80,6 +81,7 @@ Why hasn't NFV taken over:
 #### Virtual Switching
 
 Common virtual switches:
+
 * VMWare standard switch (VSS)
 * VMWare distributed switch (VDS)
 * Cisco Nexus 1000V
@@ -89,6 +91,7 @@ Common virtual switches:
 Software based switches that reside in the hypervisor kernel providing local network connectivity between virtual machines and containers.
 
 Features:
+
 * MAC Learning
 * link aggregation
 * SPAN
@@ -104,6 +107,7 @@ Makes it easier to distribute policy throughout the network
 Software-only overlay-based solutions
 
 solutions:
+
 * VMWare's NSX
 * Nuage's Virtual Service Platform (VSP)
 * Juniper's Contrail
@@ -136,6 +140,7 @@ The most popular API is by `Arista Networks` called `eAPI` - a JSON over HTTP Ap
 #### Network Automation
 
 Not just about automating the configuration of network devices but also acessing data in network devices:
+
 * Flow level data
 * routing tables
 * FIB tables
@@ -157,11 +162,13 @@ Network devices were always bought as a physical device - as hardware appliances
 With white-box or bare metal network devices the device looks more like a x86 server - allowing you to pick and choose the vendor you want to use.
 
 Companies solely focused on white box switching - software:
+
 * Big Switch Networks
 * Cumulus Networks
 * Pica8
 
 Whitebox hardware platforms:
+
 * Quanta
 * Super Micro
 * Accton
@@ -180,11 +187,13 @@ Changes the mindset of network operators from managing individual boxes one at a
 An upgrade is a migration from system to system, or fabric to fabric.
 
 Examples:
+
 * Cisco's Application Centric Infrastructure (ACI)
 * Big Switch's Big Cloud Fabric (BCF)
 * Plexxi's Fabric and Hyperconverged network
 
 Attributes of data centre networking fabrics:
+
 * A single interface to manage or configure the fabric - including policy management
 * Distributed default gateways across the fabric
 * Multi-pathing capabilities
@@ -195,6 +204,7 @@ Attributes of data centre networking fabrics:
 Software Defined Wide Area Networking
 
 Vendors:
+
 * Viptela
 * CloudGenix
 * VeloCloud
@@ -295,6 +305,7 @@ It is always best to start simple with automation
 * Troubleshooting interrupts learning and improving work
 
 The trick is how troubleshooting is done:
+
 * Do you have a personal methodology?
 * Is the method consistent with al members of the team?
 * Does everyone check Layer 2 before troubleshooting Layer 3?
@@ -306,6 +317,7 @@ Eg. Troubleshooting OSPF (A routing protocol used to connect with other routers)
 * Do you rmember that some devices need to be on the same subnet, have the same MTU and have consistent times and same OSPF network type?
 
 Other examples:
+
 * Can particular log messages correlate to known conditions on the network?
 * BGP neightbour adjacencies, how is a neighbour formed?
 * Are you seeing all the routes you think should be in the routing table?
@@ -353,6 +365,7 @@ Other examples:
 ### Impact of Open Networking
 
 All things open:
+
 * Open source
 * Open networking
 * Open API's
@@ -369,6 +382,7 @@ All things open:
 * Network devices are exposing more of the Linux Internals - use `ifconfig`, `apt` or `yum`
 
 Network device API's that exist now that didn;t a few years ago:
+
 * Cisco NX-API
 * Arista eAPI
 * Cisco IOS-XE
@@ -476,6 +490,7 @@ The _search path_ are places linux automatically searches when you type a comman
 * permissions are based on action (read, write, execute)
 
 Each action has a value:
+
 * `4` is read
 * `2` is write
 * `1` is execture
@@ -604,6 +619,7 @@ Part of the `iproute2` set of utilities (On centos it is known as `iproute`)
 These utilities use `ip` to replace the functionality of the deprecated `ifconfig` and `route`
 
 For interface config 2 sub commands to the `ip` command will be used:
+
 * `ip link` - view or set interface link status`
 * `ip addr` - view or set ip addressing configuration on interfaces
 
@@ -630,12 +646,14 @@ Eg.
         valid_lft forever preferred_lft forever
         
 Output shows:
+
 * the current list of interfaces
 * the current maximum transmission unit (MTU)
 * the current administrative state (UP)
 * ethernet media access control (MAC) address
 
 The `status` in the angled brackets `<>` can be:
+
 * `UP` - Indicates the interface is enabled
 * `LOWER_UP` - Indiciates the interface link is up
 * `NO_CARRIER` - The interface is enabled but there is no link (THe interface is "down")
@@ -773,6 +791,7 @@ Per interface configuration files give additional flexibility when using Chef, P
 To put the configuration changes into effect you need to restart the network interface
 
 Restarting the network interface:
+
 * ubuntu: `initctl restart network-interface INTERFACE=interface`
 * CentOS: `systemctl restart network`
 * Debian: `systemctl restart networking`
@@ -1287,6 +1306,7 @@ JSON:
 * A list of zero or more values is indicated by `[]` - brackets
 
 Data types:
+
 * number
 * string
 * boolean
@@ -1349,6 +1369,7 @@ Yes, it is called `YANG`
 ## YANG
 
 Data models:
+
 * Describe a constrained set of data in a schema language
 * Use well defined types and parameters
 * Do not transport data and don't care about the underlying transport protocol
@@ -1532,6 +1553,7 @@ Example using Django:
 The `title` and `article_list` contains data that will populate real data
 
 Python has some templating languages:
+
 * Django templating language
 * [Jinja](http://jinja.pocoo.org/)
 * [Genshi](https://genshi.edgewall.org/)
@@ -1673,6 +1695,7 @@ Variable creation in jinja:
 ## Understanding Network API's
 
 2 most common types:
+
 * HTTP based API's
 * NETCONF based API's
 
@@ -1682,6 +1705,7 @@ Variable creation in jinja:
 * Receive data back as XML or JSON, as opposed to HTML
 
 [RESTFul API's architectural constraints](https://restfulapi.net/rest-architectural-constraints/):
+
 * Client - server
 * Stateless - all data required is in a single request (in contrast to a persistent connection)
 * Uniform interface - individal resource scope, resources should be mapped consistently and have create, modify and delete actions
@@ -1725,6 +1749,7 @@ I also thought to be called restful you need hypermedia (ie. browsable)
 * candidate configurations are only applied on a commit
 
 Full implementations:
+
 * Juniper Junos
 * Cisco IOS-XR
 
@@ -1827,6 +1852,7 @@ They are usually enclosed in a `<config>` element
     </rpc>
 
 edit-config Operations:
+
 * merge - default, as create will raise an error if it already exists
 * replace
 * create
@@ -1834,6 +1860,7 @@ edit-config Operations:
 * remove
 
 NETCONF Operations:
+
 * `<get-config>` - retrieve all or part of a configuration
 * `<copy-config>` - Create or replace contents of one datastore with another
 * `<delete-config>` - delete a datastore (running config cannot be deleted)
@@ -2381,6 +2408,7 @@ Compliance checks are often done manually (SSH) in order to satisfy a network or
 Automating this process is good.
 
 Lets cover 2 more things:
+
 * `set_fact` - a module that create an ad hoc variable out of some other complex set of data. Set fact lets you worry about a single key-value.
 * `assert` - Use assert to test whether a given condition is `True` or `False`
 
@@ -2437,11 +2465,13 @@ Can be done with:
 ### Third Party Ansible Scripts
 
 [Network to Code Modules](https://github.com/networktocode/ntc-ansible) are used for:
+
 * Parsing of raw text output from legacy devices - `ntc_show_command` that is a wrapper for netmiko and [TextFSM](https://github.com/google/textfsm).
 * Issuing commands on devices not yet supported to ansible core.
 * Handling device OS management
 
 NAPALM Modules (Network Automation and Programmability Abstraction Layer with Multi-vendor support):
+
 * Declarative configuration management
 * Obtaining configuration and operational state from devices
 
@@ -2707,11 +2737,13 @@ A "dev-ops" or "automation team" is doomed to failure, automation needs buyin ac
 A compromise is made between _buy_ and _build_
 
 Build:
+
 * Supported by internal teams
 * Assembled from small components
 * Open source
 
 Buy:
+
 * Support contracts
 * Pre-built, vendor validated solutions
 * Commercial / closed source

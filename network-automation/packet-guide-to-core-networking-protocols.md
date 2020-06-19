@@ -11,6 +11,7 @@
 Architectures are based on a model showing how protocols and functions fit together
 
 Historical models:
+
 * Systems Network Architecture (SNA-IBM)
 * Appletalk
 * Novell Netware (IPX/SPX)
@@ -59,6 +60,7 @@ ISO/SEC 7498:
 ### The Basic Model
 
 Has seven Layers:
+
 * Application
 * Presentation
 * Session
@@ -296,6 +298,7 @@ It is ubiquitous and has forced desktop and laptop products to include ethernet 
 ## Structure
 
 An ethernet frame contains:
+
 * Preamble (8 bytes) - provide timing (invisible to packet analysers)
 * Destination MAC Address (6 bytes) - when transmitting outside the local network the default gateway is placed in the destination field
 * Source MAC Address (6 bytes)
@@ -314,6 +317,7 @@ More on 802.3 frame in the book
 ## Mac Addresses
 
 Mac Addresses:
+
 * three-byte vendor code
 * three-byte host id
 
@@ -331,6 +335,7 @@ Eg. 00:09:11:2a:b8:00
 ## Ethernet Operations
 
 How do you know:
+
 * What is the correct destination for the transmission?
 * How fast or slow you were supposed to send the data
 * How would you decide which computers had permission to speak / transmit?
@@ -416,6 +421,7 @@ Other types of signaling and topologies are discussed in the book...
 * Ethernet header -> IP header -> IP packet payload
 
 IP Packet:
+
 * Version - IPv4 or IPv6
 * Header Length - Number of 4 byte words at the beginning of the IP packet
 * ToS (Type of Service) - indicates priority, delay, throughput, reliability
@@ -438,6 +444,7 @@ IP Packet:
 The network ID must be calculated because it makes forwarding decisions for hosts and routers based on the network ID
 
 Reserved IP addresses:
+
 * 0.0.0.0 : All zeroes, used for DHCP to obtain a working IP address
 * 129.21.0.0: Network portion all zeroes, specifies a particular network
 * 129.21.255.255: Network portio all ones, broadcast packet to a particular network
@@ -451,6 +458,7 @@ Also: 169.254.0.0 - 169.254.255.255: IETF Zero confirugation standard, used for 
 ## Sample Host Configuration
 
 Requied numbers:
+
 * IP Address
 * mask
 * default gateway (router)
@@ -486,6 +494,7 @@ The router's routing table contains information about other networks (not the lo
 ## Assigning Names and Addresses
 
 IANA (Internet Assigned Numbers Authority):
+
 * Responsible for DNS - root zone, .int and .arpa
 * IP addreses
 * maintaining codes and numbers
@@ -503,6 +512,7 @@ IANA is operated by ICANN (Inernet Corporation for Assigned Names and Numbers) -
 ## Techniques
 
 Methods for destination MAC address:
+
 * table lookup
 * closed-form computation
 * message exchange
@@ -533,6 +543,7 @@ Methods for destination MAC address:
 ## Structure
 
 ARP request:
+
 * Hardware type - type of MAC address sought
 * Protocol type - Layer-3 protocol in use
 * Hardware size - Length of the MAC address
@@ -692,6 +703,7 @@ This is why hubs have been replaced with switches
 
 
 Features of switches (that hubs and early bridges do not possess):
+
 * Changes to forwarding behaviour
 * Support for Virtual LAN's (VLAN's)
 * Basic port security
@@ -702,6 +714,7 @@ To do this a switch consults a SAT - Source address table - before sending a fra
 A significant portion of traffic only goes to the proper destination
 
 How do switches work:
+
 * receive a frame, read addresses, error check and forward to the correct port
 * Switches keep track of nodes with a SAT - source address table
 * Each node in a network has a unique MAC address and each ethernet frame has a source and destination MAC address
@@ -726,6 +739,7 @@ Often called wireless hubs, because the medium is shared.
 Ap's broadcast traddic to anyone capable of hearing it (just like hubs)
 
 What is an Access Point supposed to do:
+
 * Notify network users of its presence and negotiate connections
 * Forward traffic between wired and wireless sections of the network
 * Handling traffic for all of the wireless nodes currently connected
@@ -764,6 +778,7 @@ Routers will forward traffic between IP based networks after ecaming the layer-3
 * Routers change Layer-2 frames
 
 Operations on a router:
+
 * Routing process - movement of IP packets from one port to another
 * Routing protocols - RIP / OSPF are used to communicate with other routers
 * Routing table - holds information used by the routing process
@@ -782,6 +797,7 @@ Single use switches and routers are also fading away
 A topolgy can be built with less network devices, less power outets, less network ports and use less cooling
 
 A home gateway consists of:
+
 * four switch ports
 * a wireless interface
 * DHCP server
@@ -904,6 +920,7 @@ The operating system with a default gateway set but host can't be found:
 * IP _next header_ changes from a value of 1 to a value of 58
 
 Types:
+
 * Type 1 - Destinatino unreachable
 * Type 2 - packet too big
 * Type 3 - Time exceeded
@@ -917,6 +934,7 @@ Types:
 ## Summary
 
 Most common:
+
 * Echo request and reply
 * Time exceeded
 * Destination unreachable

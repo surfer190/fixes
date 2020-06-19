@@ -105,6 +105,7 @@ Model inheritance that does not create a new table
 We call models without a db `abstract models
 
 Django has 2 types of inheritance:
+
 * Abstract - Won't actually have a database and you can't query. It is used as a starter for other models. Other models can extend from it.
 * Multi-table - 2 tables even for models that inherit. No need to specify a foreign key as django will know that if parent model is not abstract
 

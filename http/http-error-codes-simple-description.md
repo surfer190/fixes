@@ -32,6 +32,7 @@ Sometimes a response takes a long time with multiple calls to multiple databases
 Putting that response into cache, means that the next few lookups won't need to do the heavy lifting again.
 
 Available caching:
+
 * [Varnish](https://varnish-cache.org/)
 * [Hazel](https://hazelcast.org/)
 * [Memcached](http://www.memcached.org/)

@@ -36,6 +36,7 @@ A Vm within a VM with containers in it
 ## Architeture and Integrations
 
 Components:
+
 * QEMU - KVM
 * Runtime (Kata Runtime)
 * Kernel - to sit inside VM
@@ -58,6 +59,7 @@ Fairly seemless
 Containers run at layer 3 but vm's run at layer 2
 
 Storage:
+
 * 9pfs (overlay) - easy to use network based file system with plan9 (just works) - default. Not a full POSIX unix filesystem.
 * Block devices (device mapper) - vm can find block device , map and mount to virtual machine (not going over network connection)
 * Network (ceph, gluster) - Network storage works as you expect

@@ -12,6 +12,7 @@ There was a semi-decent video on [Deploying from gitlab to Openshift OKD](https:
 ## Current Status
 
 So what is the current status of your infrastructure:
+
 * A gitlab enterprise edition 
 * An Openshift OKD cluster
 

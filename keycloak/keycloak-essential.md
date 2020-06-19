@@ -6,6 +6,7 @@
 * Identity and Access Management
 
 2 options for securing you applications:
+
 * heavyweight idp solutions
 * build your own using frameworks and libraries
 
@@ -62,6 +63,7 @@ With so many different applications you need **single-sign on**
 * Also allow remotely sign out - ie. lost phone
 
 Things to manage:
+
 * Apps
 * Services
 * Users
@@ -70,6 +72,7 @@ Things to manage:
 * Session and Logs
 
 Allow for self-service:
+
 * Users can manage their own accounts
 * Recover password
 * Update profile
@@ -78,6 +81,7 @@ Allow for self-service:
 * Account history
 
 Integration with:
+
 * Third party apps - LDAP, database
 * Existing Infrastructure (or new users after an acquisition)
 * External Users- give access to users at a partner company
@@ -95,6 +99,7 @@ Also vulnerabilities
 [Researchers asked 43 developers to code a user registration for their web app - 26 devs chose to leave the password as plain text](https://www.reddit.com/r/programming/comments/ayoo0q/researchers_asked_43_freelance_developers_to_code/)
 
 You need to create a login screen, you need to manage users - if you do it yourself there are a lot of thing to do:
+
 * New login form
 * let user manage profile
 * Backend way to check credentials

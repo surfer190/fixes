@@ -53,6 +53,7 @@ contains:
             info: "Test Succeeded! BGP group configured peer count is <{{post['down-peer-count']}}>"
 
 Three checks are being performed:
+
 * The must be one BGP group configured
 * There must be two BGP peers configured
 * There must not be any "down" BGP Peers

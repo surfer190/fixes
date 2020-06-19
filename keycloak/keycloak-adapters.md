@@ -3,6 +3,7 @@
 ## Built-ins (mostly EE)
 
 There are built in adapters for:
+
 * Client side javascript (with cordova)
 * Wildfly / Jetty / Tomcat
 * Fuse

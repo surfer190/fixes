@@ -178,6 +178,7 @@ ComponentRegistrar::register(ComponentRegistrar::MODULE, '<VendorName_ModuleName
 * disabling or removing a module does not remove others
 
 Modules can be dependent on:
+
 * Other modules
 * PHP extensions
 * Libraries
@@ -340,6 +341,7 @@ The **factor class may not exist**, when the DI mechanism identifies a class end
 ### Object Manager
 
 A class that:
+
 * Creates objects
 * Implements singleton pattern
 * Manages dependencies
@@ -352,6 +354,7 @@ Has replaced the `Mage` class.
 
 Magento 1 instantiation was centralised most classes created through `Mage` class and a config file.
 4 Generic patterns:
+
 * Abstract Factory
 * Factory Method
 * Singleton
@@ -682,6 +685,7 @@ All config files are processed by `Magento\Framework\Config`. Loan, merge, valid
 #### Creating a custom config file
 
 Requires:
+
 * XML file
 * XSD schema
 * Config PHP file

@@ -35,12 +35,14 @@ Had to read core code first and then make changes
 Customise a module using an API interface that communicates with the model without interacting directly with the core
 
 Pros:
+
 * Customise based on documentation, not module internals
 * Better decoupling
 * Minimisng conflicts
 * Ability to rely on interface not implmentation
 
 Drawbacks:
+
 * More difficult to perform low-level customisation
 * Implementation method can sometimes matter
 * Can be difficult to debug
@@ -51,11 +53,13 @@ Drawbacks:
 API provides structured form of communication between modules
 
 Describe the sturcutre of API components:
+
 * Repository - equivalent service-level collections (typically using `getList()`)
 * Business API - actual business operations
 * Data API - May extend `AbstractExtensibleObject` (Does not extend of use any framework components)
 
 These tasks use an API instead of a mageto 1 type object (collection):
+
 * Fetch a list of objects from a database
 * To save or delete an object
 
@@ -118,6 +122,7 @@ There is an area for each web api: `webapi_rest` and `webapi_soap`
 ACL options: `self` (customer data), `anonymous` (anyone) and `Magento acl`
 
 3 types of authentication:
+
 * OAuth (SOAP)
 * Token-based (REST)
 * Session based

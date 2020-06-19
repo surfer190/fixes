@@ -3,20 +3,24 @@
 A distributed streaming platform.
 
 what is does:
+
 * publish and subscribe to streams of records - similar to a message queue
 * store streams of records in a fault tolerant way
 * Process streams of records as they occur
 
 Used for:
+
 * real-time streaming data pipelines
 * real-time applications to transform or react to streams of data
 
 Concepts:
+
 * Run as a cluster of one or more servers
 * Stores streams of records in categories called topics
 * Each record consists of a key, value and timestamp
 
 Four core API's:
+
 * Producer API - publish a stream of records
 * Consumer API - allows application to subscribe to one or more topics to process
 * Streams API - allows application to act as a stream processor - taking input streams and producting output streams
@@ -57,6 +61,7 @@ Label themselves with a consumer group name, each record published to a topic is
 ## Kafka as a Messaging System
 
 Messaging has 2 models:
+
 * queuing: pool of consumers read from a server and each record goes to one of them. They are not multisubscriber, once a process reads the data - it is gone. It lets you scale processing.
 * publish-subscribe: allows you to broadcast data to multiple subscribers, but does not scale processing as every message goes to every subscriber.
 

@@ -5,6 +5,7 @@
 Rancher sells support to enterprises, all of Cloud Native Foundation is covered.
 
 Challenges that Rancher tries to fix:
+
 * Deploying consistently across different infrastructure
 * Implement and manage access control across clusters and namespaces
 * Integrating with a central authentication system
@@ -15,6 +16,7 @@ Challenges that Rancher tries to fix:
 * Monitoring
 
 Kubernetes wants to _maintain flexibiility_ it cannot do certain things like:
+
 * tell you how to authenticate with an identity provider
 * tell you how to do backups
 * how to do cluster replication
@@ -96,6 +98,7 @@ A single unit of functionality - pods are the things that scale when you need mo
 The `containers` part is important - you tell it the name, the image to run and the command to override the default.
 
 Creating with `kubectl` you can use:
+
 * `kubectl create`
 * `kubectl apply`
 
@@ -318,6 +321,7 @@ You can use Some nodes as Layer 7 load balancer
 An Ingress controller is a software based load balancer like Nginx, HAProxy, Kong, GLuu or Istio.
 
 For example you have a microservices architecture and the following go to different places:
+
 * `/products`
 * `/store`
 * `/profile`
@@ -410,10 +414,12 @@ then scale the deployment:
     kubectl scale deploy/nginx --replicas=7
 
 That is the basics of kubernetes:
+
 * deployments that create pods
 * Services and ingresses 
 
 Other things sit on the perifery of that:
+
 * config maps
 * secrets
 * volumes

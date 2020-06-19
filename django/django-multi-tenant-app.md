@@ -11,6 +11,7 @@ A single application that serves multiple customers, each customer's data is com
 A single schema in a single db, the `ForeignKey` identifies the tenant.
 
 Negatives:
+
 * Weak seperation of tenant data
 * Tenant isolation code is intermixed with app code
 
