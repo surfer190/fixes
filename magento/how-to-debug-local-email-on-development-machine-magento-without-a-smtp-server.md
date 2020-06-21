@@ -6,7 +6,7 @@ Also you will have to find multiple email addresses to use for debugging account
 
 The best way to debug is to catch the mails on your local machine, before they are sent out.
 
-The best thing to use is a ruby gem called (MailCatcher)[http://mailcatcher.me/].
+The best thing to use is a ruby gem called [MailCatcher](http://mailcatcher.me/).
 
 Steps to Install:
 

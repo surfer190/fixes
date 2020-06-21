@@ -303,5 +303,5 @@ We want to maintain the code, as it works but there are no tests for it. So we n
 
 ## Source
 
-* (Brett Slatkin talk on Refactoring Python)[https://www.youtube.com/watch?v=D_6ybDcU5gc]
+* [Brett Slatkin talk on Refactoring Python](https://www.youtube.com/watch?v=D_6ybDcU5gc)
 

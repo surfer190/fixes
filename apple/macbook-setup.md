@@ -22,7 +22,7 @@ sudo easy_install pip
 sudo pip install ansible
 ```
 
-* Clone (Geerling Guy's macbook setup git repo)[https://github.com/geerlingguy/mac-dev-playbook]:
+* Clone [Geerling Guy's macbook setup git repo](https://github.com/geerlingguy/mac-dev-playbook):
 
 ```
 https://github.com/geerlingguy/mac-dev-playbook.git

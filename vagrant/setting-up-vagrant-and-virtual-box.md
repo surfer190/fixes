@@ -1,10 +1,10 @@
-#Setting up Vagrant and Virtual Box
+# Setting up Vagrant and Virtual Box
 
 1. Download Vagrant and Virtuals box
 
-(Virtualbox)[https://www.virtualbox.org/wiki/Linux_Downloads]
-(Vagrant)[http://www.vagrantup.com/downloads]
-*Make sure to install command line tools*
+* [Virtualbox](https://www.virtualbox.org/wiki/Linux_Downloads)
+* [Vagrant](http://www.vagrantup.com/downloads)
+* Make sure to install command line tools
 
 2. Make a directory for vagrantfile and instructions
 
@@ -14,12 +14,11 @@ mkdir ~/vagrant
 
 3. Find a virtual box you want
 
+* [puppetlabs boxes](http://puppet-vagrant-boxes.puppetlabs.com/)
+* [vagrant ubuntu boxes](https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Boxes)
+* [atlas](https://atlas.hashicorp.com/boxes/search)
 
-(puppetlabs boxes)[http://puppet-vagrant-boxes.puppetlabs.com/]
-(vagrant ubuntu boxes)[https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Boxes]
-(atlas)[https://atlas.hashicorp.com/boxes/search]
-
-*Pick debian*
+**Pick debian**
 
 4. Add using `vagrant box add`
 
@@ -78,5 +77,7 @@ May need to acvtivate in bios `AMD-V/VT-x`
  Settings -> System -> Acceleration" and make sure that "Enable VT-x/AMD-V" is activated
  ```
 
-(vagrant docs)[https://docs.vagrantup.com/v2/virtualbox/configuration.html]
-(run 64bit guest virtualbox)[http://askubuntu.com/questions/41550/how-do-i-run-a-64-bit-guest-in-virtualbox]
+### Source
+
+* [vagrant docs](https://docs.vagrantup.com/v2/virtualbox/configuration.html)
+* [run 64bit guest virtualbox](http://askubuntu.com/questions/41550/how-do-i-run-a-64-bit-guest-in-virtualbox)

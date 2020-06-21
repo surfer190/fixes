@@ -27,4 +27,7 @@ Change Android name to Application node:
 ```
 
 
-Source: (androids application class)[http://www.intertech.com/Blog/androids-application-class/#ixzz3bQEKgI5N]
+### Source 
+
+* [androids application class](http://www.intertech.com/Blog/androids-application-class/#ixzz3bQEKgI5N)
+

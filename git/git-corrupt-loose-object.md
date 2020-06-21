@@ -23,4 +23,6 @@ move the newly cloned .git subdirectory into foo: mv foo-newclone/.git foo
 delete the rest of the temporary new clone: rm -rf foo-newclone
 ```
 
-(source)[http://stackoverflow.com/questions/11597003/how-to-remove-fatal-loose-object]
+### Source
+
+[how-to-remove-fatal-loose-object](http://stackoverflow.com/questions/11597003/how-to-remove-fatal-loose-object)

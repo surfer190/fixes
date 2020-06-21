@@ -77,7 +77,7 @@ Instead of the intuitive
 
         reviews = models.Review.objects.filter(rating >= 3)
 
-More Info on (field lookups)[https://docs.djangoproject.com/en/1.11/ref/models/querysets/#field-lookups]
+More Info on [field lookups](https://docs.djangoproject.com/en/1.11/ref/models/querysets/#field-lookups)
 
 ## Blunk Create
 

@@ -32,8 +32,8 @@ A lot of this stuff needs to be done as root so you might as well log in as root
     ln -s /lib/systemd/mailcatcher.service /etc/systemd/system/mailcatcher.service
     ```
 
-### Source:
+### Source
 
-(DigitalOcean configure linux services)[https://www.digitalocean.com/community/tutorials/how-to-configure-a-linux-service-to-start-automatically-after-a-crash-or-reboot-part-1-practical-examples]
-(Start on boot)[http://www.dynacont.net/documentation/linux/Useful_SystemD_commands/]
-(Github gist)[https://gist.github.com/tstellanova/7323116]
+* [DigitalOcean configure linux services](https://www.digitalocean.com/community/tutorials/how-to-configure-a-linux-service-to-start-automatically-after-a-crash-or-reboot-part-1-practical-examples)
+* [Start on boot](http://www.dynacont.net/documentation/linux/Useful_SystemD_commands/)
+* [Github gist](https://gist.github.com/tstellanova/7323116)

@@ -51,7 +51,7 @@ To check if a path is absolute use `os.paths.isabs(<path>)`
 
 Path does not actually have to exist
 
-Link to (`os` documentation)[https://docs.python.org/3/library/os.html]
+Link to [`os` documentation](https://docs.python.org/3/library/os.html)
 
 When joining paths python will know what seperator to use with:
 
