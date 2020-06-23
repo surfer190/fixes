@@ -2,7 +2,7 @@
 
 ##Manual Installation or update:
 
-1. Securely download (get-pip.py)[https://bootstrap.pypa.io/get-pip.py]
+1. Securely download [get-pip.py](https://bootstrap.pypa.io/get-pip.py)
 
 ```
 wget https://bootstrap.pypa.io/get-pip.py

@@ -17,14 +17,14 @@ Ionic is built on top of **Apache Cordova**, an open source framework allowing d
 
 ## Setting up Environment
 
-- (Install node js)[https://nodejs.org/en/download/]
-- (Install git)[https://git-scm.com/]
+- [Install node js](https://nodejs.org/en/download/)
+- [Install git](https://git-scm.com/)
 - Install Cordova
 
-  ```
-  sudo npm install -g cordova
-  cordova -v
-  ```
+```
+sudo npm install -g cordova
+cordova -v
+```
 
 - Install Ionic
 

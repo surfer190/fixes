@@ -4,4 +4,5 @@
 
 ### Source
 
-(Magento log files)[https://witsgroup.wordpress.com/2012/02/28/creation-of-magento-log-files-with-magelog/]
+* [Magento log files](https://witsgroup.wordpress.com/2012/02/28/creation-of-magento-log-files-with-magelog/)
+

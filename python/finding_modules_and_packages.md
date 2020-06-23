@@ -80,6 +80,6 @@ and add:
 
 ### Sources
 
-* (How to add a Python module to syspath?)[https://askubuntu.com/questions/470982/how-to-add-a-python-module-to-syspath/471168]
+* [How to add a Python module to syspath?](https://askubuntu.com/questions/470982/how-to-add-a-python-module-to-syspath/471168)
 * [The module `__file__` directory](https://leemendelowitz.github.io/blog/how-does-python-find-packages.html)
 * [Definitive guide on python imports](https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html)
