@@ -86,7 +86,8 @@ Grinding and burying yourself doesn't necessarily mean progress and output is in
 
 The business world is obsessed with fighting, winning, dominating and destroying.
 
-Companies live in this zero-sum game world: 
+Companies live in this zero-sum game world:
+
 * They don't earn market share they **conquer** the market.
 * They don't serve customers, they **capture** them.
 * They **target** customers

@@ -15,7 +15,8 @@ Helm can:
 * Configure software deployments
 * Fetch software packages from repos
 
-It has the following components: 
+It has the following components:
+
 * CLI tool
 * Tiller (not a thing since 3.0.0) a server component listening for changes from helm
 * Charts - the helm packaging format

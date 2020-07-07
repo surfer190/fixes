@@ -489,7 +489,8 @@ Add column names
 
 The basic of logic will not be mentioned here.
 
-In `R`: 
+In `R`:
+
 * `&` evalautes to `AND` for the entire vector
 * `&&` evaluates to `AND` just for the first element for vector
 

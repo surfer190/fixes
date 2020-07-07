@@ -168,7 +168,7 @@ Give a 6 second timeout:
     junos_password = getpass("Junos OS password: ")
 
     try:
-        with Device(host=hostname, user=junos_username, passwd=junos_password, 
+        with Device(host=hostname, user=junos_username,             passwd=junos_password, 
                 cs_user=cs_username, cs_passwd=cs_password, timeout=6) as dev:   
             print (dev.facts)
     except ConnectError as err:

@@ -247,7 +247,8 @@ Example:
             [ 0.,  0.,  0.,  0.,  5.,  0.],
             [ 0.,  0.,  0.,  0.,  0.,  6.]])
 
-And you want the entire rows of 3 to 5 diagonally: 
+And you want the entire rows of 3 to 5 diagonally:
+
 * y: starting at 2 ending at 4 inclusive (5) = `2:5`
 * x: starting at 0 and ending at index 4 inclusive (5) = `0:5`
 

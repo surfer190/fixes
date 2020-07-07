@@ -944,7 +944,8 @@ Most common:
 
 * A network is a group of nodes that all share the same IP addressing scheme
 
-A device requires the following for connectivity: 
+A device requires the following for connectivity:
+
 * IP address - logical location
 * network mask - determines the network
 * gateway - router providing a pathway off the current network

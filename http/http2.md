@@ -320,6 +320,412 @@ Client caching can be set through the `Cache control`, `max-age` and `Expires` h
 
 ## 4. Transition to HTTP/2
 
+> in order to support HTTP/2 all you need to do is upgrade to a web server that speaks h2
+
+Considerations:
+
+* browser support for `h2`
+* Move to serving over TLS
+* Tuning your website for h2
+* Third parties on your site
+
+### Browser Support
+
+Any browser not supporting H2 will just fall back
+
+### Moving to TLS
+
+* Most browsers only access H2 over TLS
+* TLS 1.2 is required
+
+### Undoing H1.1 and tuning for H2
+
+* concatenation - request overhead is not much in bytes and time is not much bigger.
+* minification - keep doing in `h2`
+* sharding - HTTP/2 uses a single socket - sharding breaks that goal
+* cookie-less domains - seperate domains should be avoided
+
+### third Parties
+
+* Can be a major drag on the performance gains of http2
+
+## 5. The HTTP/2 Protocol
+
+### Layers of HTTP/2
+
+* Framing layer - core to multiplexing
+* Data/HTTP layer - traditional HTTP
+
+Aspects of the protocol:
+
+* Binary protocol - Binary protocol - 1's and 0's are transmitted over the wire
+* Header compression - headers are compressed (less bytes over the wire)
+* Multiplexed - requests and responses are interwoven within a single TCP connection
+* Encrypted - Data on the wire is encrypted
+
+#### Connection
+
+* The base element of the HTTP/2 session is the TCP/IP socket connection
+* `h1.1` is stateless, `h2` has connection level settings and a header table.
+
+#### Frames
+
+HTTP/2 is framed, HTTP/1.1 is text delimited
+
+Parsing HTTP/1.1 is slow and error prone.
+
+HTTP/2 frame headers:
+
+* `Length` (3 bytes) Length of the frame payload
+* `Type` (1 byte) Type of Frame
+* `Flags` (1 byte) Flags specific to frame type
+* `R` (1 bit) A reserved bit
+* `Stream Identifier` (31 bits) A unique identifier of teh stream
+* `Frame Payload` (variable) The actual frame content
+
+Everything is deterministic, so parsing it is easier than non-deterministic text
+
+Because of framing h2's requests can be interwover / multiplexed - no waiting for to send or receive the full request / response before sending another. No head of line blocking.
+
+HTTP/2 Frame types:
+
+* `DATA` - Core content
+* `HEADERS` - HTTP headers and priorities
+* `PRIORITY` - Priority (changes / stream priority)
+* `RST_STREAM` - Allows endpoint to end a stream
+* `SETTINGS` - Communicates connection level parameters
+* `PUSH_PROMISE` - Indicates a server is about to send something
+* `PING` - Tests connectivity and measures RTT (Round Trip Time)
+* `GOAWAY` - Tells an endpoint a peer is done accepting new streams
+* `WINDOW_UPDATE` - Communicates how many bytes an endpoing is willing to receive
+* `CONTINUATION` - Used to extend header blocks
+
+#### Streams
+
+Stream - Independent, bidirection sequence of frames exchanged between the client and server within an HTTP/2 connection.
+
+Requests and responses happen on the same stream.
+
+#### Messages
+
+Message - Generic term for an HTTP request or response
+
+A stream transmits a pair of request/response messages.
+
+At a minimum a message consists of a:
+
+* `HEADERS` frame
+
+H1 headers and responses are split into message headers and the message body.
+An H2 request/response is split into HEADERS and DATA frames.
+
+Differences between H1 and H2 messages:
+
+**Everything in H2 is a header**
+
+H1 request and response:
+
+    GET / HTTP/1.1
+    Host: www.example.com
+    User-agent: Next-Great-h2-browser-1.0.0
+    Accept-Encoding: compress, gzip
+
+    HTTP/1.1 200 OK
+    Content-type: text/plain
+    Content-length: 2
+
+H2 request and response:
+
+    :scheme: https
+    :method: GET
+    :path: /
+    :authority: www.example.com
+    User-agent: Next-Great-h2-browser-1.0.0
+    Accept-Encoding: compress, gzip
+
+    :status: 200
+    content-type: text/plain
+
+> This h2 representation is not what goes over the wire
+
+**No chunked encoding**
+
+Since we know the length of the frame ahead of time - using frames there is no need for chunking.
+
+**No more 101 responses**
+
+Switching protocols response is for upgrading a websockets connection.
+ALPN provides more explicit protocol negotiation paths with less round trip overhead.
+
+#### Flow Control
+
+The client or server can pace the delivery of data.
+Reason for slowing the stream is to ensure it does not choke out others.
+Client might also have bandwidth and memory issues.
+
+Setting the maximum value of `2^31-1` effectively disables it.
+
+Flow control information is indicated in `WINDOW_UPDATE` frames.
+
+#### Priority
+
+Once the browser has the HTML - it needs other things like CSS and JS to render the page.
+Without multiplexing it needs to wait for a response before asking for a new one.
+
+With h2 the browser can send all resource requests at the same time.
+The problem is that priority is lost.
+
+Using `HEADERS` and `PRIORITY` the client can communicate the order that the responses are needed.
+
+A depenecy tree is built with prorities and weights (by the browser)
+
+### Server Push
+
+The best way to improve performance for a particular object - it to have it in the browsers cache before it is even asked for.
+
+This is H2's **server push** feature - sending an object to a client because it knows the client will need it in the future.
+
+**More info in the book**
+
+### Header Compression (HPACK)
+
+The average webpage requires 140 requests
+The median size of requests is 460 bytes
+
+On a congested network the crime is the very few unique bytes
+
+> Why not just use GZIP for header compression instead of HPACK? It would be a lot less work, for certain. Unfortunately the CRIME attack showed that it would also be vulnerable leakage of encrypted information. CRIME works by the attackers adding data to a request and then observing whether the resultant compressed and encrypted payload is smaller. If it is smaller they know that their inserted text overlaps with something else in the request such as a secret session cookie. In a relatively small amount of time the entire secret payload can be extracted in this manner. Thus, off-the-shelf compression schemes were out, and HPACK was invented.
+
+For example:
+
+request 1:
+
+    :authority: www.akamai.com
+    :method: GET
+    :path: /
+    :scheme: https
+    accept: text/html,application/xhtml+xml
+    accept-language: en-US,en;q=0.8
+    cookie: last_page=286A7F3DE
+    upgrade-insecure-requests: 1
+    user-agent: Awesome H2/1.0
+
+request 2:
+
+    :authority: www.akamai.com
+    :method: GET
+    :path: /style.css
+    :scheme: https
+    accept: text/html,application/xhtml+xml
+    accept-language: en-US,en;q=0.8
+    cookie: last_page=*398AB8E8F
+    upgrade-insecure-requests: 1
+    user-agent: Awesome H2/1.0
+
+The first request is 220bytes and the second is 230 bytes.
+But only 36 bytes are unique. Only sending the 36 unique bytes will mean an **85%** saving.
+
+**More info in the book**
+
+### On the Wire
+
+h2 on the wire in in binary and compressed
+
+HTTP/2 GET Request
+
+    :authority: www.akamai.com
+    :method: GET
+    :path: /
+    :scheme: https
+    accept: text/html,application/xhtml+xml,...
+    accept-language: en-US,en;q=0.8
+    cookie: sidebar_collapsed=0; _mkto_trk=...
+    upgrade-insecure-requests: 1
+    user-agent: Mozilla/5.0 (Macintosh;...
+
+HTTP/2 GET Response (Headers)
+
+    :status: 200
+    cache-control: max-age=600
+    content-encoding: gzip
+    content-type: text/html;charset=UTF-8
+    date: Tue, 31 May 2016 23:38:47 GMT
+    etag: "08c024491eb772547850bf157abb6c430-gzip"
+    expires: Tue, 31 May 2016 23:48:47 GMT
+    link: <https://c.go-mpulse.net>;rel=preconnect
+    set-cookie: ak_bmsc=8DEA673F92AC...
+    vary: Accept-Encoding, User-Agent
+    x-akamai-transformed: 9c 237807 0 pmb=mRUM,1
+    x-frame-options: SAMEORIGIN
+
+    <DATA Frames follow here>
+
+* Status code: 200 (Success)
+* a cookie is set
+* Content is gzipped (content-encoding)
+
+To see what actually happens over the wire use [nghttp](https://github.com/nghttp2/nghttp2/)
+
+## 6. HTTP/2 Performance
+
+> Browsers all have different implementations - so there can be considerable differences between them
+
+Looking at single requests means the only improvements can be:
+
+* header compression
+* connection reuse
+* avoidance of head of line blocking
+
+Not measuring:
+
+* multiplexing
+* server push
+
+### Latency
+
+* Time it takes for a packet of data to get from one point to another
+* The Round trip time measured in `ms`
+
+2 main factors are:
+
+1. distance between 2 points
+2. speed of the transmission medium (radio waves, vd fibre vs copper)
+
+The speed of light in optical fiber is about 2/3 the speed of light in a vacuum or around 200,000,000 meters per second
+
+However this is theoretical as fibre is never laid in a straight line and gateway, routers, switches and the server itself can hinder this.
+
+> Mike Belshe wrote a paper called “More Bandwidth Doesn’t Matter (Much)” - saying that once you his 5 - 8Mbps in bandwidth a webpage speed hits a limit. On the other hand Page load time goes down exponentially with latency. Hence using fibre is more important than a high bandwidth copper line.
+
+> Decreasing latency always makes websites faster
+
+You can use `ping` to measure latency
+
+    $ ping -c 4 fixes.co.za
+    PING fixes.co.za (37.139.28.74): 56 data bytes
+    64 bytes from 37.139.28.74: icmp_seq=0 ttl=50 time=249.768 ms
+    64 bytes from 37.139.28.74: icmp_seq=1 ttl=50 time=271.186 ms
+    64 bytes from 37.139.28.74: icmp_seq=2 ttl=50 time=294.646 ms
+    64 bytes from 37.139.28.74: icmp_seq=3 ttl=50 time=332.131 ms
+
+### Packet Loss
+
+* When packets travelling across a computer network fail to reach their destination.
+* Usually caused by network congestion
+* Determental to h2 as it opens a single TCP connection and reduces the TCP window size when there is congestion
+
+### Server Push
+
+**More in the book**
+
+### Time to First Byte (TTFB)
+
+Measurement of the responsiveness of a web server
+
+Contains:
+* socket connection time
+* time taken to send the HTTP request
+* time taken to get the first byte of the page
+
+HTTP/2 does a lot more work teh H1:
+
+* Adjusting window sizes
+* Building the dependency tree
+* Maintaining static and dynamic tables of header info
+* Compressing and decompressing headers
+* Adjusting priorities
+* Pushing streams not yet requested (server push)
+
+### Third Parties
+
+Analytics, tracking, social and advertising
+These can slow down your site and even make it fail
+
+Affects h2 because:
+
+* a third party request is delivered over a different hostname
+* a different hostname means cannot beneifit from: server push, dependencies and priorities
+* Can't control the third party (unless you use self hosted analytics like matomo)
+
+You can clearly see that opening multiple connections on H1 added significant connection time and SSL handshake time
+On h2, only the first connection does this. The rest are sent over the same connection.
+
+### HTTP/2 Antipatterns
+
+* Domain sharding - many small objects on different domains to trick into sending in parrallel (6 TCP connections per hostname - therefor 30 over 5 hostnames)
+* Inlining - inline style and JS into HTML with the aim of saving connections and round trips. With this you lose valuable features like caching.
+* Concatenating - consolidating many small files into a big one
+* Cookie-less domains - some servers use cookies that exceed the size of a TCP packet. In h2 headers are compressed using HPACK. they also use additional host names.
+* Spriting - a matrix of smaller images
+* Prefetch - hints to the browser to fetch a cacheable item. H2 has _server push_
+
+Prefetch example:
+
+    <link rel="prefetch" href="/important.css">
+
+#### Studies in the book
+
+* Facebook improved perceived performance by `33%`, `1.5s` earlier than h1
+* Yahoo.com: h1 displays in `5.5s`, h2 displays in `4s`
+
+## 7. HTTP/2 Implementations
+
+Read the book for support among desktop and mobile browsers...
+
+## 8. Debugging H2
+
+* Chrome developer tools
+* `chrome://net-internals`
+* Firefox developer tools
+* [WebPageTest](https://www.webpagetest.org/)
+* openssl
+* [nghttp2](https://nghttp2.org)
+* `curl`
+
+    curl -v --http2 https://fixes.co.za/vim/undo-and-redo-in-vim/
+
+* h2i
+* wireshark
+
+## 9. What is Next?
+
+### TCP vs UDP
+
+TCP is an IP datagram–based protocol that provides an agreed concept of a connection, reliability, and congestion control.
+
+UDP (User Datagram Protocol), on the other hand, is much more basic. In this protocol datagrams (packets) are individual with no relation to any other UDP packet. There is no “connection,” no guarantee of delivery, and no ability to adapt to different network conditions
+
+UDP is perfect for small individual queries - DNS.
+
+Moving TCP out of kernel space into userspace for control
+
+### QUIC
+
+> TCP connections are stuck in the cage of TCP slow start, congestion avoidance, and irrational reaction to missing packets
+
+* QUIC - Quick UDP Internet Connection - developed by Google.
+* Takes HTTP/2 and places it atop a user space resident UDP-based transport protocol
+
+Potencial Features:
+
+* Out of order packet processing - in h2 if one packet is lost the entire connection stalls
+* Flexible congestion control
+* Low connection estbalishment overhead - goal is for 0-RTT - todays tech TCP and tLS1.2 has 3 round trips minimum
+* Authentication of transport details - QUIC will authenticate the packet header
+* Connection migration - IP Addresses may change in long lived connections
+
+### TLS 1.3
+
+* 1-RTT for new connections as opposed to 3 for TLS1.2
+
+
+
+
+
+
+
+
+Excerpt From: Stephen Ludin. “Learning HTTP/2: A Practical Guide for Beginners.” iBooks. 
 
 
 
