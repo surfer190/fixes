@@ -719,16 +719,6 @@ Potencial Features:
 * 1-RTT for new connections as opposed to 3 for TLS1.2
 
 
-
-
-
-
-
-
-Excerpt From: Stephen Ludin. “Learning HTTP/2: A Practical Guide for Beginners.” iBooks. 
-
-
-
 ### Sources
 
 * [Learning HTTP/2 - Stephen Ludin and Javier Garza](https://www.oreilly.com/library/view/learning-http2/9781491962435/)
