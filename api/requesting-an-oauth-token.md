@@ -1,4 +1,6 @@
-## Requesting an Oauth token for API calls
+## Requesting an Oauth token for API calls 
+
+> This is specifically for the Oauth 2.0 client credentials flow and resource owner password flow
 
 Ever tried to request an oauth token and receive this error
 
@@ -17,7 +19,10 @@ The problem is: **It is part of the oauth spec that you use `application/x-www-f
 
 Here is a link to a [draft oauth spec](https://tools.ietf.org/id/draft-ietf-oauth-v2-12.xml)
 
-So if we change the above request from using `json` to `application/x-www-form-urlencoded`:
+So we need change the above request:
+
+* from using `json` to `application/x-www-form-urlencoded`
+* use `data=..` instead of `json=...` for the requests library
 
     response = requests.post(
         'https://{base_url}/token',
