@@ -196,5 +196,3 @@ Put now out application needs a persistent volume claim - it is what the app or 
 It will figure out which persistent volume to us.
 
 One `PersistentVolume` will be bound to one claim
-
-    

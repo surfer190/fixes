@@ -56,3 +56,33 @@ In psql:
     ALTER USER user_name WITH PASSWORD 'new_password';
 
 [Postgres connection strings](https://stackoverflow.com/questions/3582552/postgresql-connection-url)
+
+## Dump (Backup) and Restore
+
+Dump a remote database
+
+    pg_dump -U <username> -h <ip> -p 5432 <database_name> > <backup_name>.bak
+
+Create a database and user for access to it:
+
+    sudo -u postgres psql
+    create database <db_name>;
+    create user <username> with encrypted password '<password>';
+    grant all privileges on database <db_name> to <username>;
+
+Restore the database:
+
+    sudo -u postgres psql <db_name> < <backup_name>.bak
+
+## PSQL Cheatsheet
+
+Select a database
+
+    \c <db_name>
+
+list tables
+
+    \dt
+
+
+
