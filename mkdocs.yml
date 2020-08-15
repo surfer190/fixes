@@ -1,0 +1,25 @@
+site_name: Fixes.co.za
+site_url: https://fixes.co.za
+repo_url: https://github.com/surfer190/fixes
+site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixes and solutions on software development and related topics
+site_author: surfer190
+theme:
+  name: mkdocs
+  highlightjs: true
+  hljs_style: github
+  nav_style: dark
+  prev_next_buttons_location: none
+  sticky_navigation: false
+  collapse_navigation: false
+markdown_extensions:
+  - sane_lists
+  - toc:
+      permalink: "#"
+  - smarty
+plugins:
+  - search:
+      min_search_length: 2
+      prebuild_index: python
+nav:
+  - index.md
+  - about.md
