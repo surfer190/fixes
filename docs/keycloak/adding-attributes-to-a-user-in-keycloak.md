@@ -19,7 +19,7 @@ You do this by adding user attributes.
 3. Click the `Attributes` tab
 4. Add a ket value pair.
 
-![Adding User Attributes to Keycloak User](/assets/keycloak/user-attributes.png)
+![Adding User Attributes to Keycloak User](/img/keycloak/user-attributes.png)
 
 ## Client Scopes
 

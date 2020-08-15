@@ -80,6 +80,8 @@ if __name__ == '__main__':
         main_topics = []
 
         for key in category_keys:
+            if key == 'img':
+                continue
             records = categories[key]
 
             # sort records by date

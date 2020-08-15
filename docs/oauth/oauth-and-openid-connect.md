@@ -51,7 +51,7 @@ Identity UseCases pre-2010:
 
 SAML has a bad reputation as being even more dense and obscure than OAuth.
 
-![Yelp Infamous OAuth Fail](/assets/yelp-infamous-oauth-fail.png)
+![Yelp Infamous OAuth Fail](/img/yelp-infamous-oauth-fail.png)
 
 This is the OAuth Use Case - the problem.
 

@@ -66,7 +66,7 @@ Kubernetes 1.0 was released in July 2015, it has since become the de facto stand
 Kubernetes does not fit existing service models (Saas, Paas and Iaas). So it is called Caas - Container as a service.
 Similar to Iaas but instead of getting a VM you get a Container.
 
-![Service Levels in the CLoud](/assets/deploying-to-openshift/caas.png)
+![Service Levels in the Cloud](/img/deploying-to-openshift/caas.png)
 
 > To run your application in a CaaS, you need to provide the application image you have built, which contains your application and any operating system libraries and programs you require. Although an application image contains a copy of these operating system libraries and programs, it is only your application process that is run.
 
