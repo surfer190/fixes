@@ -4,33 +4,22 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-08-13: _Oauth_ [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
+- 2020-08-13: _Postgres_ [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
+- 2020-08-13: _Kubernetes_ [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
+- 2020-08-13: _Kubernetes_ [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
+- 2020-07-29: _Http_ [Http2](http/http2.md)
+- 2020-07-29: _Api_ [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
+- 2020-07-29: _Api_ [Api Security](api/api-security.md)
+- 2020-07-29: _Couch-Db_ [Getting Started With Couchdb](couch-db/getting-started-with-couchdb.md)
+- 2020-07-29: _Couch-Db_ [Quickstart Couch Db](couch-db/quickstart-couch-db.md)
+- 2020-07-07: _Network-Automation_ [Pyez Dev Guide](network-automation/pyez-dev-guide.md)
 
-- 2020-08-13: Oauth [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
-- 2020-08-13: Postgres [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
-- 2020-08-13: Kubernetes [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
-- 2020-08-13: Kubernetes [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
-- 2020-07-29: Http [Http2](http/http2.md)
-- 2020-07-29: Api [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
-- 2020-07-29: Api [Api Security](api/api-security.md)
-- 2020-07-29: Couch-Db [Getting Started With Couchdb](couch-db/getting-started-with-couchdb.md)
-- 2020-07-29: Couch-Db [Quickstart Couch Db](couch-db/quickstart-couch-db.md)
-- 2020-07-07: Network-Automation [Pyez Dev Guide](network-automation/pyez-dev-guide.md)
-- 2020-07-07: Network-Automation [Packet Guide To Core Networking Protocols](network-automation/packet-guide-to-core-networking-protocols.md)
-- 2020-07-07: R-Stats [R Stats Basics](r-stats/r-stats-basics.md)
-- 2020-07-07: Kubernetes [Helm Overview](kubernetes/helm-overview.md)
-- 2020-07-07: Startup [It Doesnt Have To Be Crazy At Work](startup/it-doesnt-have-to-be-crazy-at-work.md)
-- 2020-07-07: Keycloak [Keycloak Single Sign Out](keycloak/keycloak-single-sign-out.md)
-- 2020-07-07: Datascience [Numpy](datascience/numpy.md)
-- 2020-06-23: Security [Openssl Cookbook](security/openssl-cookbook.md)
-- 2020-06-21: Apple [Macbook Setup](apple/macbook-setup.md)
-- 2020-06-21: Vim [Undo And Redo In Vim](vim/undo-and-redo-in-vim.md)
-- 2020-06-21: Ionic [Hybrib Mobile Apps With Ionic](ionic/hybrib-mobile-apps-with-ionic.md)
 ## Table of Contents
 
 [TOC]
 
 ## Android
-
 - 2020-06-21: [Bootstrapping An Android Project](android/bootstrapping-an-android-project.md)
 - 2016-05-24: [Unable To Import Library Via Gradle](android/Unable-to-import-library-via-Gradle.md)
 - 2016-05-13: [Android Could Not Resolve Error](android/android-could-not-resolve-error.md)
@@ -50,11 +39,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-02-13: [View All Methods Local To A Class Android Studio](android/view-all-methods-local-to-a-class-android-studio.md)
 
 ## Angular-Js
-
 - 2016-05-13: [Key Knowledge Angular Js](angular-js/Key-knowledge-angular-js.md)
 
 ## Ansible
-
 - 2020-06-14: [Ansible Dynamic Inventory](ansible/ansible-dynamic-inventory.md)
 - 2020-06-14: [Awx Basics](ansible/awx-basics.md)
 - 2020-05-28: [Awx Rest Api](ansible/awx-rest-api.md)
@@ -72,12 +59,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-25: [Install Ansible Ubuntu](ansible/install-ansible-ubuntu.md)
 
 ## Apache
-
 - 2015-01-18: [Htaccess Not Recognised Ubuntu](apache/htaccess-not-recognised-ubuntu.md)
 - 2015-01-18: [Add Existing Ubuntu User To Www Data Group](apache/add-existing-ubuntu-user-to-www-data-group.md)
 
 ## Api
-
 - 2020-07-29: [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 - 2020-07-29: [Api Security](api/api-security.md)
 - 2020-06-14: [What Is Open Api](api/what-is-open-api.md)
@@ -87,7 +72,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-04-12: [Good Api Resources](api/good-api-resources.md)
 
 ## Apple
-
 - 2020-06-21: [Macbook Setup](apple/macbook-setup.md)
 - 2015-09-20: [Mac Php Caveats](apple/mac-php-caveats.md)
 - 2015-09-20: [Mac Osx Change Hostname](apple/mac-osx-change-hostname.md)
@@ -95,85 +79,69 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Mac Osx Homebrew](apple/mac-osx-homebrew.md)
 
 ## Astronomy
-
 - 2017-02-16: [The Sun](astronomy/the-sun.md)
 - 2017-02-16: [Asteroids](astronomy/asteroids.md)
 - 2017-01-23: [Black Hole](astronomy/black-hole.md)
 
 ## Atom
-
 - 2020-06-21: [Install Atom Packages Behind A Proxy](atom/install-atom-packages-behind-a-proxy.md)
 - 2016-04-02: [Set The Pylint Executor Atom Editor](atom/set-the-pylint-executor-atom-editor.md)
 
 ## Automation
-
 - 2019-05-30: [Automation Wisdoms](automation/automation-wisdoms.md)
 - 2019-05-14: [Chatops](automation/chatops.md)
 
 ## Aws
-
 - 2020-06-14: [Amazon Web Services Fundementals](aws/amazon-web-services-fundementals.md)
 - 2016-05-07: [Certifications](aws/certifications.md)
 - 2016-05-07: [Amazon Web Services Certification](aws/amazon-web-services-certification.md)
 
 ## Azure
-
 - 2020-04-20: [Certification Developer Associatiate](azure/certification-developer-associatiate.md)
 - 2017-06-13: [Azure Fundementals](azure/azure-fundementals.md)
 
 ## Azure-Machine-Learning
-
 - 2017-06-13: [Basics Microsoft Machine Learning](azure-machine-learning/basics-microsoft-machine-learning.md)
 - 2016-08-21: [R Programming Lanurage Integration](azure-machine-learning/r-programming-lanurage-integration.md)
 
 ## Azure-Vm
-
 - 2016-09-27: [Azure Linux Vm Active Directory](azure-vm/azure-linux-vm-active-directory.md)
 - 2016-09-27: [Azure Command Line](azure-vm/azure-command-line.md)
 
 ## C
-
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
 
 ## Celery
-
 - 2020-06-14: [Celery Basics](celery/celery-basics.md)
 - 2019-12-24: [Adding Tasks To A Celery Queue On An Infinite Loop](celery/adding-tasks-to-a-celery-queue-on-an-infinite-loop.md)
 
 ## Centos
-
 - 2019-05-30: [Firewall Cmd](centos/firewall-cmd.md)
 
 ## Composer
-
 - 2016-09-26: [Bus Error Core Dumped](composer/bus-error-core-dumped.md)
 
 ## Containers
-
 - 2020-06-14: [Kata Containers](containers/kata-containers.md)
 - 2020-03-24: [Presentation On Containerisation](containers/presentation-on-containerisation.md)
 - 2020-02-14: [Tungsten Fabric](containers/tungsten-fabric.md)
 - 2020-02-14: [Firecracker Microvm](containers/firecracker-microvm.md)
 
 ## Couch-Db
-
 - 2020-07-29: [Getting Started With Couchdb](couch-db/getting-started-with-couchdb.md)
 - 2020-07-29: [Quickstart Couch Db](couch-db/quickstart-couch-db.md)
 - 2020-02-14: [Couch Db Gui](couch-db/couch-db-gui.md)
 
 ## Css
-
 - 2018-11-18: [Bootstrap 4 Good Bits](css/bootstrap-4-good-bits.md)
 - 2017-06-13: [How To Maintain Line Breaks And Newline Formatting](css/how-to-maintain-line-breaks-and-newline-formatting.md)
 - 2016-02-22: [Circular Profile Image](css/circular-profile-image.md)
 - 2015-01-18: [Css Mistakes](css/css-mistakes.md)
 
 ## Data-Warehousing
-
 - 2020-06-14: [Datawarehousing Fundementals](data-warehousing/datawarehousing-fundementals.md)
 
 ## Datascience
-
 - 2020-07-07: [Numpy](datascience/numpy.md)
 - 2020-06-14: [Python For Data Analysis](datascience/python-for-data-analysis.md)
 - 2020-06-14: [Pandas](datascience/pandas.md)
@@ -188,12 +156,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-10-23: [Backtesting Algorithmic Trading With Python](datascience/backtesting-algorithmic-trading-with-python.md)
 
 ## Devops
-
 - 2019-09-23: [Deploying Vault](devops/deploying-vault.md)
 - 2019-08-27: [Stored Secrets Vault Project](devops/stored-secrets-vault-project.md)
 
 ## Django
-
 - 2020-06-21: [Django Orm](django/django-orm.md)
 - 2020-06-14: [Django Forms](django/django-forms.md)
 - 2020-06-14: [Getting Started](django/getting-started.md)
@@ -226,7 +192,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-03-21: [Django Shell](django/django-shell.md)
 
 ## Docker
-
 - 2020-06-14: [Push Image To Private Image Registry](docker/push-image-to-private-image-registry.md)
 - 2020-06-14: [Docker Basics](docker/docker-basics.md)
 - 2020-06-14: [Docker Commands Quick Start](docker/docker-commands-quick-start.md)
@@ -243,12 +208,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
 
 ## Elasticsearch
-
 - 2019-05-30: [Logstash](elasticsearch/logstash.md)
 - 2016-09-26: [Elastic Search Basics](elasticsearch/elastic-search-basics.md)
 
 ## Es
-
 - 2020-03-05: [Queries](es/queries.md)
 - 2019-12-10: [Elasticsearch And Python](es/elasticsearch-and-python.md)
 - 2016-02-10: [Check If Using Jquery Or Prototype](es/check-if-using-jquery-or-prototype.md)
@@ -256,16 +219,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-02-10: [Es Basics](es/es-basics.md)
 
 ## Financial-Planning
-
 - 2020-06-14: [South African Financial Planning](financial-planning/south-african-financial-planning.md)
 - 2020-06-14: [Excel Financial Planning](financial-planning/excel-financial-planning.md)
 
 ## Flask
-
 - 2017-12-19: [Flask Basics](flask/flask-basics.md)
 
 ## Git
-
 - 2020-06-21: [Git Corrupt Loose Object](git/git-corrupt-loose-object.md)
 - 2019-07-22: [Fetch And Track All Remote Branches](git/fetch-and-track-all-remote-branches.md)
 - 2019-07-22: [Sync Pull From Upstream In Your Fork](git/sync-pull-from-upstream-in-your-fork.md)
@@ -275,26 +235,21 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Install Latest Git On Ubuntu](git/install-latest-git-on-ubuntu.md)
 
 ## Gitlab-Ci
-
 - 2020-06-14: [Setup An Openshift Docker Runner On Gitlab Enterprise Edition](gitlab-ci/setup-an-openshift-docker-runner-on-gitlab-enterprise-edition.md)
 - 2020-06-14: [Continuous Integration Gitlab](gitlab-ci/continuous-integration-gitlab.md)
 - 2020-06-14: [Gitllab Runners](gitlab-ci/gitllab-runners.md)
 
 ## Golang
-
 - 2015-06-07: [Install Golang On Ubuntu](golang/install-golang-on-ubuntu.md)
 - 2015-06-07: [Getting Started With Golang](golang/getting-started-with-golang.md)
 
 ## Grunt
-
 - 2015-01-18: [Grunt Setup](grunt/grunt-setup.md)
 
 ## Homebrew
-
 - 2015-10-09: [How To Update And Upgrade All Packages](homebrew/how-to-update-and-upgrade-all-packages.md)
 
 ## Http
-
 - 2020-07-29: [Http2](http/http2.md)
 - 2020-06-14: [Http Error Codes Simple Description](http/http-error-codes-simple-description.md)
 - 2020-03-05: [Debug Http Webhooks](http/debug-http-webhooks.md)
@@ -302,28 +257,22 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-07-14: [Introduction To Http](http/introduction-to-http.md)
 
 ## Ionic
-
 - 2020-06-21: [Hybrib Mobile Apps With Ionic](ionic/hybrib-mobile-apps-with-ionic.md)
 - 2016-05-24: [Ionic 2 Tutorial](ionic/ionic-2-tutorial.md)
 
 ## Java
-
 - 2019-08-16: [Find Java Home On Mac](java/find-java-home-on-mac.md)
 
 ## Javscript
-
 - 2016-10-19: [Working With Xpath And Google Chrome Developer Tools](javscript/working-with-xpath-and-google-chrome-developer-tools.md)
 
 ## Jenkins
-
 - 2015-10-28: [Jenkins Host Key Verification Failed When Testing Ssh](jenkins/jenkins-host-key-verification-failed-when-testing-ssh.md)
 
 ## Kafka
-
 - 2020-06-14: [Kafka](kafka/kafka.md)
 
 ## Keycloak
-
 - 2020-07-07: [Keycloak Single Sign Out](keycloak/keycloak-single-sign-out.md)
 - 2020-06-14: [Keycloak Essential](keycloak/keycloak-essential.md)
 - 2020-06-14: [Keycloak Adapters](keycloak/keycloak-adapters.md)
@@ -339,7 +288,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-02-14: [Identity Brokering](keycloak/identity-brokering.md)
 
 ## Kubernetes
-
 - 2020-08-13: [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
 - 2020-08-13: [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
 - 2020-07-07: [Helm Overview](kubernetes/helm-overview.md)
@@ -362,7 +310,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-11-04: [Shooting Yourself In The Foot With Kubernetes](kubernetes/shooting-yourself-in-the-foot-with-kubernetes.md)
 
 ## Laravel
-
 - 2016-06-18: [Laravel 5.2 Changlelog Whats New](laravel/laravel-5.2-changlelog-whats-new.md)
 - 2015-12-24: [Debugging Db Queries](laravel/debugging-db-queries.md)
 - 2015-10-28: [Laravel 5 Models](laravel/laravel-5-models.md)
@@ -376,11 +323,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-24: [Laravel 5 Setup](laravel/laravel-5-setup.md)
 
 ## Less
-
 - 2015-01-18: [Less Syntax](less/less-syntax.md)
 
 ## Linux
-
 - 2020-05-12: [Set Timezone On Linux Server](linux/set-timezone-on-linux-server.md)
 - 2020-05-12: [View Banned Ips From Iptables In Fail2ban](linux/view-banned-ips-from-iptables-in-fail2ban.md)
 - 2019-10-07: [Lxd](linux/lxd.md)
@@ -395,13 +340,11 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-06-13: [Python Linux Exit Codes](linux/python-linux-exit-codes.md)
 
 ## Mac
-
 - 2020-06-03: [Freeing Up Space On Your Development Macbook](mac/freeing-up-space-on-your development-macbook.md)
 - 2019-10-24: [How To Stop Mysql On Mac Os](mac/how-to-stop-mysql-on-mac-os.md)
 - 2019-07-22: [Where Binaries Should Stay](mac/where-binaries-should-stay.md)
 
 ## Magento
-
 - 2020-06-21: [How To Debug Local Email On Development Machine Magento Without A Smtp Server](magento/how-to-debug-local-email-on-development-machine-magento-without-a-smtp-server.md)
 - 2020-06-21: [Log To A File](magento/log-to-a-file.md)
 - 2017-01-14: [Magento 1 Link](magento/magento-1-link.md)
@@ -415,7 +358,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Permissions Mcrypt Gd Must  Be Loaded](magento/permissions-mcrypt-gd-must -be-loaded.md)
 
 ## Magento2
-
 - 2020-06-14: [Magento 2 Fundementals Of Development](magento2/magento-2-fundementals-of-development.md)
 - 2020-06-14: [Theming Magento 2 Layout Basics](magento2/theming-magento-2-layout-basics.md)
 - 2020-06-14: [Magento 2 Api](magento2/magento-2-api.md)
@@ -443,26 +385,21 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-07-28: [Magento 2 Intial Admin Configuration](magento2/magento-2-intial-admin-configuration.md)
 
 ## Metatrader-Mql5
-
 - 2016-07-30: [Mql5 Primer](metatrader-mql5/mql5-primer.md)
 
 ## Meteorjs
-
 - 2015-09-20: [Meteorjs](meteorjs/meteorjs.md)
 
 ## Microservices
-
 - 2020-06-14: [Netflix Guide To Microservices](microservices/netflix-guide-to-microservices.md)
 - 2019-11-04: [Failing At Microservices](microservices/failing-at-microservices.md)
 
 ## Mysql
-
 - 2020-06-14: [Enable Mysql General Log Mysql 5 7](mysql/enable-mysql-general-log-mysql-5-7.md)
 - 2019-10-24: [Groupwise Maximum](mysql/groupwise-maximum.md)
 - 2019-08-27: [Turn On Mysql General Log](mysql/turn-on-mysql-general-log.md)
 
 ## Network-Automation
-
 - 2020-07-07: [Pyez Dev Guide](network-automation/pyez-dev-guide.md)
 - 2020-07-07: [Packet Guide To Core Networking Protocols](network-automation/packet-guide-to-core-networking-protocols.md)
 - 2020-06-14: [Terraform Overview](network-automation/terraform-overview.md)
@@ -480,31 +417,26 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-23: [Intro Ansible Network Automation](network-automation/intro-ansible-network-automation.md)
 
 ## Networking
-
 - 2020-06-03: [Ipv6 And Never Going Sub Slash 64](networking/ipv6-and-never-going-sub-slash-64.md)
 - 2019-07-27: [Find Local Devices Dhcp](networking/find-local-devices-dhcp.md)
 - 2019-06-13: [Centos Routes](networking/centos-routes.md)
 
 ## Nginx
-
 - 2019-09-04: [SELinux And Nginx](nginx/SELinux-and-nginx.md)
 - 2019-05-30: [Nginx On Centos](nginx/nginx-on-centos.md)
 - 2016-12-14: [Enable A Site From Sites Available](nginx/enable-a-site-from-sites-available.md)
 
 ## Node
-
 - 2019-09-23: [Running A Production Node App](node/running-a-production-node-app.md)
 - 2019-03-15: [Update Npm](node/update-npm.md)
 - 2015-01-18: [Update Npm Packages Globally](node/update-npm-packages-globally.md)
 - 2015-01-18: [Update Node Js](node/update-node-js.md)
 
 ## Oauth
-
 - 2020-08-13: [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
 - 2020-05-28: [Oauth And Openid Connect](oauth/oauth-and-openid-connect.md)
 
 ## Openshift
-
 - 2020-06-14: [Django Openshift](openshift/django-openshift.md)
 - 2020-06-14: [Deploying To Openshift](openshift/deploying-to-openshift.md)
 - 2020-03-24: [Deploying Apps As Microservices On Openshift4](openshift/deploying-apps-as-microservices-on-openshift4.md)
@@ -518,29 +450,24 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-10-14: [Openshift Registry Setup](openshift/openshift-registry-setup.md)
 
 ## Php
-
 - 2020-06-14: [Php7 Intro](php/php7-intro.md)
 - 2017-08-02: [Php Testing](php/php-testing.md)
 - 2017-06-13: [Switch Php Version On Ubuntu 16](php/switch-php-version-on-ubuntu-16.md)
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
-
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 - 2017-10-02: [Postres Quick Start](postgres/postres-quick-start.md)
 
 ## Powershell
-
 - 2019-11-04: [Powershell Basics](powershell/powershell-basics.md)
 - 2019-03-20: [Installing Powershell Modules](powershell/installing-powershell-modules.md)
 
 ## Project-Management
-
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
-
 - 2020-06-21: [Refactoring Python](python/refactoring-python.md)
 - 2020-06-21: [File Systems](python/file-systems.md)
 - 2020-06-21: [Install Update Pip](python/install-update-pip.md)
@@ -623,32 +550,26 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-25: [Install Python On Ubuntu](python/install-python-on-ubuntu.md)
 
 ## Quotes
-
 - 2019-07-27: [Quotes](quotes/quotes.md)
 
 ## R-Stats
-
 - 2020-07-07: [R Stats Basics](r-stats/r-stats-basics.md)
 - 2020-06-14: [Exploratory Data Analysis](r-stats/exploratory-data-analysis.md)
 - 2018-05-23: [Regression Models](r-stats/regression-models.md)
 - 2018-03-19: [Setting Up R On Macos](r-stats/setting-up-r-on-macos.md)
 
 ## Rabbitmq
-
 - 2019-10-24: [Rabbit Mq Basics](rabbitmq/rabbit-mq-basics.md)
 - 2016-07-15: [Routing](rabbitmq/routing.md)
 
 ## Reactjs
-
 - 2015-12-03: [Reactjs](reactjs/reactjs.md)
 - 2015-12-02: [Make React Full Stack](reactjs/make-react-full-stack.md)
 
 ## Redis
-
 - 2020-06-14: [Redis Labs](redis/redis-labs.md)
 
 ## Ruby
-
 - 2020-06-14: [Convert Rails Sqlite To Mysql](ruby/convert-rails-sqlite-to-mysql.md)
 - 2019-09-23: [Ruby On Mac](ruby/ruby-on-mac.md)
 - 2015-11-03: [How To Add Gem To Gemfile With Commandline](ruby/how-to-add-gem-to-gemfile-with-commandline.md)
@@ -661,11 +582,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Initialise A Gemfile](ruby/initialise_a_gemfile.md)
 
 ## Secops
-
 - 2019-06-13: [Secops Tools](secops/secops-tools.md)
 
 ## Security
-
 - 2020-06-23: [Openssl Cookbook](security/openssl-cookbook.md)
 - 2020-06-14: [Applied Cryptography Notes](security/applied-cryptography-notes.md)
 - 2020-06-11: [Serious Cryptography](security/serious-cryptography.md)
@@ -674,13 +593,11 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-11-28: [Encryption Vs Cryptographic Hash](security/encryption-vs-cryptographic-hash.md)
 
 ## Servers
-
 - 2018-08-19: [Setup A Vps Quickly](servers/setup-a-vps-quickly.md)
 - 2016-08-12: [Copy Your Ssh Key To Clipboard Fast](servers/copy-your-ssh-key-to-clipboard-fast.md)
 - 2015-09-20: [Ssh Into An Aws Box](servers/ssh-into-an-aws-box.md)
 
 ## Stackstorm
-
 - 2020-06-14: [Stackstorm](stackstorm/stackstorm.md)
 - 2020-06-14: [Stackstorm Orquesta](stackstorm/stackstorm-orquesta.md)
 - 2019-09-23: [St2client Execute Action](stackstorm/st2client-execute-action.md)
@@ -688,7 +605,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-07-31: [Python Action Runner](stackstorm/python-action-runner.md)
 
 ## Startup
-
 - 2020-07-07: [It Doesnt Have To Be Crazy At Work](startup/it-doesnt-have-to-be-crazy-at-work.md)
 - 2020-06-14: [Zero To One](startup/zero-to-one.md)
 - 2020-06-14: [Software As A Service](startup/software-as-a-service.md)
@@ -696,28 +612,22 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-16: [Bad Blood](startup/bad-blood.md)
 
 ## Sublime-Text
-
 - 2015-01-18: [Increase Decrease Indentation](sublime-text/increase-decrease-indentation.md)
 
 ## System-Architecture
-
 - 2018-08-10: [Multi Tenancy](system-architecture/multi-tenancy.md)
 
 ## Systemd
-
 - 2020-06-21: [Create A Systemd Script For Mailcatcher](systemd/create-a-systemd-script-for-mailcatcher.md)
 
 ## Testing
-
 - 2020-06-14: [Api Contract Testing](testing/api-contract-testing.md)
 - 2018-09-12: [Fast Test Slow Test](testing/fast_test_slow_test.md)
 
 ## Tools
-
 - 2017-02-01: [Mailcatcher Setup](tools/mailcatcher-setup.md)
 
 ## Ubuntu-Debian
-
 - 2020-06-21: [Add Someone Elses Public Key To Remote Server](ubuntu-debian/add-someone-elses-public-key-to-remote-server.md)
 - 2020-06-21: [Search For Text In Multiple Pdf And Show Line Numbers](ubuntu-debian/search-for-text-in-multiple-pdf-and-show-line-numbers.md)
 - 2019-08-27: [How To Scp Files Between Machines](ubuntu-debian/how-to-scp-files-between-machines.md)
@@ -732,7 +642,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-08-25: [Setup Ssh Aliases](ubuntu-debian/setup-ssh-aliases.md)
 
 ## Utilities
-
 - 2019-11-18: [Free Html Single Size Simple Logos](utilities/free-html-single-size-simple-logos.md)
 - 2019-10-24: [Convert Mardown To Docs](utilities/convert-mardown-to-docs.md)
 - 2019-10-07: [Tmux](utilities/tmux.md)
@@ -741,15 +650,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-17: [Jq Json Processor](utilities/jq-json-processor.md)
 
 ## Utorrent
-
 - 2017-01-16: [Fix Utorrent Disconnecting The Internet](utorrent/fix-utorrent-disconnecting-the-internet.md)
 
 ## Ux
-
 - 2020-06-14: [Ux Design In 60 Seconds](ux/ux-design-in-60-seconds.md)
 
 ## Vagrant
-
 - 2020-06-21: [Setting Up Vagrant And Virtual Box](vagrant/setting-up-vagrant-and-virtual-box.md)
 - 2019-08-12: [Ssh Directly To Vagrant Without Vagrant Ssh](vagrant/ssh-directly-to-vagrant-without-vagrant-ssh.md)
 - 2015-09-25: [Vagrant How To Save And Store Images](vagrant/vagrant-how-to-save-and-store-images.md)
@@ -760,25 +666,21 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-03-23: [Vagrantfile Syntax](vagrant/Vagrantfile-syntax.md)
 
 ## Vim
-
 - 2020-06-21: [Undo And Redo In Vim](vim/undo-and-redo-in-vim.md)
 - 2016-07-28: [Vim Basics](vim/vim-basics.md)
 - 2015-09-20: [Setting Vim To Tab Space 2](vim/setting-vim-to-tab-space-2.md)
 - 2015-09-20: [Setting Vim To Show Colours](vim/Setting-vim-to-show-colours.md)
 
 ## Vmware
-
 - 2020-06-14: [Vcenter Vs Vsphere Esxi](vmware/vcenter-vs-vsphere-esxi.md)
 - 2020-06-14: [Cloud Marketplace](vmware/cloud-marketplace.md)
 - 2020-06-14: [Vsphere Rest Api](vmware/vsphere-rest-api.md)
 - 2020-05-28: [Vmware Remote](vmware/vmware-remote.md)
 
 ## Vscode
-
 - 2017-11-08: [Setting Python Path With Vscode](vscode/setting-python-path-with-vscode.md)
 
 ## Vuejs
-
 - 2020-06-14: [Vue Js Workflow](vuejs/vue-js-workflow.md)
 - 2017-06-22: [Vue Js 2](vuejs/vue-js-2.md)
 - 2017-06-22: [Vue Js Animations](vuejs/vue-js-animations.md)
@@ -787,9 +689,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-06-13: [Vue Js Forms](vuejs/vue-js-forms.md)
 
 ## Xamarin
-
 - 2016-10-27: [Xamarin Mvvm](xamarin/xamarin_mvvm.md)
 
 ## Yii
-
 - 2015-01-18: [Csqldataprovider Cgridview Cbuttoncolumn Trying To Set Property Of Undefined](yii/csqldataprovider-cgridview-cbuttoncolumn-trying-to-set-property-of-undefined.md)
+

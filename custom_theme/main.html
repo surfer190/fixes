@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block next_prev %}
+{% endblock %}
+
+{%- block content %}
+<div class="col-md-3">
+    {% include "side_banner.html" %}
+    {% include "toc.html" %}
+</div>
+<div class="col-md-9" role="main">{% include "content.html" %}</div>
+{%- endblock %}
+
+
+{%- block styles %}
+<link href="{{ 'css/bootstrap.min.css'|url }}" rel="stylesheet">
+<link href="{{ 'css/font-awesome.min.css'|url }}" rel="stylesheet">
+<link href="{{ 'css/base.css'|url }}" rel="stylesheet">
+{%- if config.theme.highlightjs %}
+<link rel="stylesheet" href="{{ 'css/github.min.css'|url }}">
+{%- endif %}
+{%- for path in config['extra_css'] %}
+<link href="{{ path|url }}" rel="stylesheet">
+{%- endfor %}
+{%- endblock %}
+
+
+{%- block libs %}
+<script src="{{ 'js/jquery-1.10.2.min.js'|url }}" defer></script>
+<script src="{{ 'js/bootstrap.min.js'|url }}" defer></script>
+{%- if config.theme.highlightjs %}
+<script src="{{ 'js/highlight.min.js'|url }}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{%- endif %}
+{%- endblock %}
+
+{%- block analytics %}
+<!-- Matomo -->
+<script type="text/javascript">
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://matomo.fixes.co.za/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '9']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+{%- endblock %}
