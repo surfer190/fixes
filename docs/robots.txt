@@ -1,0 +1,14 @@
+User-agent: *
+Allow: *
+Sitemap: https://fixes.co.za/sitemap.xml
+
+User-agent: Baiduspider
+Disallow: /
+User-agent: Yandex
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: turnitinbot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
