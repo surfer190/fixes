@@ -351,8 +351,7 @@ Then set the widget for your field
         <h2>Create Project</h2>
         <hr/>
 
-        {% raw %}
-        <form method='POST'>
+                <form method='POST'>
             {% csrf_token %}
             {% bootstrap_form form %}
             <div id="#inline">
@@ -360,8 +359,7 @@ Then set the widget for your field
             </div>
             <input type="submit" class="btn btn-primary btn-lg" values="Save">
         </form>
-        {% endraw %}
-    </div>
+            </div>
 
 4. Change the class-based view methods so that the formset is included and validated and data saved
 

@@ -32,16 +32,14 @@ Call the template `my_file.html`
 
 ## Template tags
 
-{% raw %}`{%` and `%}`{% endraw %} that allow you to write python within
+`{%` and `%}` that allow you to write python within
 
 Use `{{ var_name }}` to print out a variable
 
 ## Inheriting
 
 * Extending a parent template allows overridable `blocks`
-* Name a block {% raw %}`<title>{% block title %}{% endblock %}</title>`{% endraw %}
-* Extends: {% raw %}`{% extends "layout.html" %}`{% endraw %}
-* Then set block content
+* Name a block `<title>{% block title %}{% endblock %}</title>`* Extends: `{% extends "layout.html" %}`* Then set block content
 
 ## URLs
 
@@ -53,12 +51,10 @@ Give your url's in `urls.py` a name
 
 Setting parameters
 
-        {% raw %}<h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>{% endraw %}
-
+        <h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>
 ## Filters
 
-        {% raw %}{{ myVar | filter}{% endraw %}
-
+        {{ myVar | filter}
 * `linebreaks` - converting linebreaks into valid html
 * `join` - joins a list with a between
 
@@ -84,8 +80,7 @@ In settings add to INSTALLED_APPS
 
 at top of template load humanize
 
-        {% raw %}{% load humanize %}{% endraw %}
-
+        {% load humanize %}
 Good use case for custom filters:
 
 * Convert markdown to html
@@ -94,62 +89,49 @@ Good use case for custom filters:
 
 Arguments are seperated by a space
 
-        {% raw %}
-        {% is_conjugate test_var %}
-        {% endraw %}
-
+                {% is_conjugate test_var %}
+        
 ### Load multiple filters
 
-        {% raw %}
-        {% load humanize course_extras %}
-        {% endraw %}
-
+                {% load humanize course_extras %}
+        
 ### Chaining
 
 You can chain filters
 
-        {% raw %}{{ word|lower|capfirst }}{% endraw %}
-
+        {{ word|lower|capfirst }}
 Applied **in order**, applied to result of one before
 
 ## With
 
 Shorten a long variable
 
-        {% raw %}
-        {% with con=step.content %}
+                {% with con=step.content %}
                 {{ con|linebreaks }}
         {% endwith %}
-        {% endraw %}
-
+        
 ## If
 
 Conditionally show a template
 
-        {% raw %}
-        {% if course.description %}
+                {% if course.description %}
             {{ course.description }}
         {% endif %}
-        {% endraw %}
-
+        
 Can also use an else
 
-        {% raw %}
-        {% if course.description|wordcountt <= 5 %}
+                {% if course.description|wordcountt <= 5 %}
             {{ course.description }}
         {% else %}
             {{ course.description|truncatewords:5 }}
         {% endif %}
-        {% endraw %}
-
+        
 ## Static files
 
 Remember to let django know you will be using `static` with:
 
-        {% raw %}
-        {% load static from staticfiles %}
-        {% endraw %}
-
+                {% load static from staticfiles %}
+        
 ## Custom template tags
 
 Requires a folder called `templatetags` in the `app`

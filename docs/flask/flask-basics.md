@@ -139,17 +139,13 @@ Removes duplicate html and makes use of `blocks` that can be swapped out
 
 Create a `layout.html` file in `templates`, copy generic code and add blocks for changable context:
 
-        {% raw %}
-        {% block content %}
+                {% block content %}
         {% endblock %}
-        {% endraw %}
-
+        
 To use it in other template files you need to `extend`:
 
-        {% raw %}
-        {% extends 'layout.html' %}
-        {% endraw %}
-
+                {% extends 'layout.html' %}
+        
 To add the content from the parent block use the `super()` function in the block
 
 ## Static Files
@@ -220,8 +216,7 @@ Can set a category:
 
 Displaying messags in the template
 
-        {% raw %}
-        <div class="wrap no-bottom messages">
+                <div class="wrap no-bottom messages">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <ul class="flashes">
@@ -232,8 +227,7 @@ Displaying messags in the template
                 {% endif %}
             {% endwith %}
         </div>
-        {% endraw %}
-
+        
 > Remember flashes only happen once (persist till next time page is viewed)
 
 ## Database
@@ -377,8 +371,7 @@ Example form with validation
 
 ### Showing the view
 
-        {% raw %}
-        <form method="POST" action="" class="form">
+                <form method="POST" action="" class="form">
             {{ form.hidden_tag() }}
             {% for field in form %}
                 <div class="field">
@@ -390,16 +383,14 @@ Example form with validation
                     {{ field(placeholder=field.label.text) }}
                 </div>
         </form>
-        {% endraw %}
-
+        
 ### Macros
 
 Macros are pieces of reusabel tremplate code
 
 Create the macro in `templates/macros.html`:
 
-        {% raw %}
-        {% macro render_field(field) %}
+                {% macro render_field(field) %}
         <div class="field">
             {% if field.errors %}
                 {% for error in field.errors %}
@@ -409,12 +400,10 @@ Create the macro in `templates/macros.html`:
             {{ field(placeholder=field.label.text) }}
         </div>
         {% endmacro %}
-        {% endraw %}
-
+        
 Then use the macro with:
 
-        {% raw %}
-        {% from 'macros.html' import render_field %}
+                {% from 'macros.html' import render_field %}
 
         <form method="POST" action="" class="form">
         {{ form.hidden_tag() }}
@@ -423,34 +412,29 @@ Then use the macro with:
         {% endfor %}
         </form>
 
-        {% endraw %}
-
+        
 ## Template Layout
 
 Setting variables for flash messages:
 
-        {% raw %}
-        {% with messages = get_flashed_messages(with_categories=True) %}
+                {% with messages = get_flashed_messages(with_categories=True) %}
           {% if messages %}
             {% for category, message in messages %}
               <div class="notification {{ category }}">{{ message }}</div>
             {% endfor %}
           {% endif %}
         {% endwith %}
-        {% endraw %}
-
+        
 Checking logged in:
 
-        {% raw %}
-        <!-- Log in/Log out -->
+                <!-- Log in/Log out -->
         {% if current_user.is_authenticated() %}
         <a href="{{ url_for('logout') }}" class="icon-power" title="Log out"></a>
         {% else %}
         <a href="{{ url_for('login') }}" class="icon-power" title="Log in"></a>
         <a href="{{ url_for('register') }}" class="icon-profile" title="Register"></a>
         {% endif %}
-        {% endraw %}
-
+        
 ## Returning a 404
 
 To return a 404 we need `abort`

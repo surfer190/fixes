@@ -1,0 +1,20 @@
+{% if page.meta.source %}
+<div class="source-links">
+{% for filename in page.meta.source %}
+    <span class="label label-primary">{{ filename }}</span>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if page and page.meta.date and not page.is_homepage %}
+<div class="row">
+    <div class="col-md-6 text-left">
+        <p class="post-meta">{{ page.meta.date }}</p>
+    </div>
+    <div class="col-md-6 text-right">
+        <p class="post-meta">{{ page.meta.category }}</p>
+    </div>
+</div>
+{% endif %}
+
+{{ page.content }}

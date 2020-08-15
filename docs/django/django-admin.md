@@ -163,7 +163,7 @@ Do the same for `env/lib/python3.6/site-packages/django/contrib/admin/templates/
 
 In `change_form.html` change the path to the new fieldset
 
-To this: `{% raw %}{% include "admin/courses/course/includes/fieldset.html" %}{% endraw %}`
+To this: `{% include "admin/courses/course/includes/fieldset.html" %}`
 
 ## Custom Bulk Custom Admin Actions
 

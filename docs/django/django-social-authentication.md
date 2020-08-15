@@ -63,11 +63,11 @@ Add client is and client secret
 
 ## Tempalte
 
-Add tempalte tags: `{% raw %}{% import socialaccount %}{% endraw %}`
+Add tempalte tags: `{% import socialaccount %}`
 
 Add provider login: 
 
-        <li><a href="{% raw %}{% provider_login_url 'github' %}{% endraw %}" class="btn btn-simple">Your Account</a></li>
+        <li><a href="{% provider_login_url 'github' %}" class="btn btn-simple">Your Account</a></li>
 
 ## Ensure email is verified and given
 

@@ -16,11 +16,7 @@ title: Key Knowledge Angular Js
 - Templates are extended with angular elements
 - html elements with `ng-` attributes, these are called `angular directives`
 - A directive modifies the functionality
-
-{% raw %}
-`{{` **Double Curly Braces** indicate that data will be replaced with data binding
-{% endraw %}
-`{` **Single Curly Braces** replaces a reference with an object
+`{{` **Double Curly Braces** indicate that data will be replaced with data binding`{` **Single Curly Braces** replaces a reference with an object
 
 ##### Example Code
 

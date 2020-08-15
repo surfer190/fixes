@@ -16,13 +16,9 @@ In your file import required stuff
     from jinja2 import Environment, FileSystemLoader
 
 Create a folder called `templates` and add a file called `config.j2`
-
-{% raw %}
     {% for customer in customers %}
         set groups {{ customer['group'] }} interfaces {{ customer['interface'] }} unit {{ customer['unit'] }} {{ line }}
     {% endfor %}
-{% endraw %}
-
 Create the environment
 
     env = Environment(

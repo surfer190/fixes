@@ -4,11 +4,9 @@
 {% endblock %}
 
 {%- block content %}
-<div class="col-md-3">
-    {% include "side_banner.html" %}
-    {% include "toc.html" %}
-</div>
-<div class="col-md-9" role="main">{% include "content.html" %}</div>
+<div class="col-md-2"></div>
+<div class="col-md-8" role="main">{% include "content.html" %}</div>
+<div class="col-md-2"></div>
 {%- endblock %}
 
 
@@ -49,4 +47,13 @@
     })();
 </script>
 <!-- End Matomo Code -->
+{%- endblock %}
+
+{%- block footer %}
+<hr>
+{%- if config.copyright %}
+    <p>{{ config.copyright }}</p>
+{%- endif %}
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+<p>{% include "side_banner.html" %}</p>
 {%- endblock %}

@@ -129,25 +129,15 @@ This is something that can easily happen when defining models, forms and model f
 ### Internationalization: In template
 
 #### Trans template tag
-
-{% raw %}
     <title>{% trans "This is the title." %}</title>
     <title>{% trans myvar %}</title>
-{% endraw %}
-
 If the `noop` option is present, variable lookup still takes place but the translation is skipped. This is useful when “stubbing out” content that will require translation in the future:
-
-{% raw %}
     <title>{% trans "myvar" noop %}</title>
 It’s not possible to mix a template variable inside a string within `{% trans %}`
 In that case use `{% blocktrans %}`
 
     {% blocktrans %}Back to '{{ race }}' homepage{% endblocktrans %}
-{% endraw %}
-
 Blocktrans with objet attributes or template filters:
-
-{% raw %}
     {% blocktrans with amount=article.price %}
     That will cost $ {{ amount }}.
     {% endblocktrans %}
@@ -155,29 +145,15 @@ Blocktrans with objet attributes or template filters:
     {% blocktrans with myvar=value|filter %}
     This will have {{ myvar }} inside.
     {% endblocktrans %}
-{% endraw %}
-
 Multiple expressions
-
-{% raw %}
     {% blocktrans with book_t=book|title author_t=author|title %}
     This is {{ book_t }} by {{ author_t }}
-    {% endblocktrans %}
-{% endraw %}
-
-{% raw %}
-Other block tags (for example `{% for %}` or `{% if %}`) are not allowed inside a blocktrans tag.
-{% endraw %}
-
+    {% endblocktrans %}Other block tags (for example `{% for %}` or `{% if %}`) are not allowed inside a blocktrans tag.
 Retrieve translated string but do not display
-
-{% raw %}
     {% trans "This is the title" as the_title %}
 
     <title>{{ the_title }}</title>
     <meta name="description" content="{{ the_title }}">
-{% endraw %}
-
 [Much more info on translations](https://docs.djangoproject.com/en/2.0/topics/i18n/translation/)
 
 ## Format Localization
@@ -214,8 +190,6 @@ To enable a form fields input and output use **localize**:
 Django will try to use a locale specific format when outputting to a template. Sometimes you may want to send unlocalized values to the template (js).
 
 To control this we have some template tags:
-
-{% raw %}
         {% load l10n %}
 
         {% localize on %}
@@ -225,8 +199,6 @@ To control this we have some template tags:
         {% localize off %}
             {{ value }}
         {% endlocalize %}
-{% endraw %}
-
 Also per variable localization:
 
 Force no localization
@@ -342,8 +314,6 @@ When you enable time zone support, Django interprets datetimes entered in forms 
 When you enable time zone support, Django converts aware datetime objects to the current time zone when they’re rendered in templates.
 
 ### Controlling template localtime
-
-{% raw %}
     {% load tz %}
 
     {% localtime on %}
@@ -353,11 +323,7 @@ When you enable time zone support, Django converts aware datetime objects to the
     {% localtime off %}
         {{ value }}
     {% endlocaltime %}
-{% endraw %}
-
 Time zone setting
-
-{% raw %}
     {% timezone "Europe/Paris" %}
         Paris time: {{ value }}
     {% endtimezone %}
@@ -365,40 +331,22 @@ Time zone setting
     {% timezone None %}
         Server time: {{ value }}
     {% endtimezone %}
-{% endraw %}
-
 Get current timezone
-
-{% raw %}
     {% get_current_timezone as TIME_ZONE %}
-{% endraw %}
-
 ##### Template Filters
 
 Localtime
-
-{% raw %}
     {% load tz %}
 
     {{ value|localtime }}
-{% endraw %}
-
 UTC
-
-{% raw %}
     {% load tz %}
 
     {{ value|utc }}
-{% endraw %}
-
 timezone
-
-{% raw %}
     {% load tz %}
 
     {{ value|timezone:"Europe/Paris" }}
-{% endraw %}
-
 
 [Implementing selection of a user's timezone](https://docs.djangoproject.com/en/2.0/topics/i18n/timezones/#selecting-the-current-time-zone)
 

@@ -49,8 +49,6 @@ Great programmers spend more time refactoring, after it is functional to make it
 There are hidden variables that make code seem more complicated than it is, you should extract these variables.
 
 Bad Code:
-
-{% raw %}
     MONTHS = ('January', 'February', 'March', 
             'April', 'May', 'June', 'July',
             'August', 'September', 'October',
@@ -69,11 +67,7 @@ Bad Code:
         what_to_eat('January')
         what_to_eat('July')
         what_to_eat('May')
-{% endraw %}
-
 After extract variable:
-
-{% raw %}
     MONTHS = ('January', 'February', 'March', 
             'April', 'May', 'June', 'July',
             'August', 'September', 'October',
@@ -98,14 +92,10 @@ After extract variable:
         what_to_eat('January')
         what_to_eat('July')
         what_to_eat('May')
-{% endraw %}
-
 Making it more clear at each level and with python there is no performance hit so always favour clarity.
 
 We can take it a step further and extract a function.
 So we need a (boolean) function determining when tomatoes are good and when oysters are good.
-
-{% raw %}
     def what_to_eat(month):
         if oysters_good(month):
             print('{}: oysters'.format(month))
@@ -124,14 +114,10 @@ So we need a (boolean) function determining when tomatoes are good and when oyst
     def tomatoes_good(month):
         index = MONTHS.index(month)
         return 8 > index > 4
-{% endraw %}
-
 This makes it much easier to read.
 
 What if calling the method inline causes a performance problem?
 You can then extract the function call into a variable.
-
-{% raw %}
     def what_to_eat(month):
         time_for_oysters = oysters_good(month)
         time_for_tomatoes = tomatoes_good(month)
@@ -142,8 +128,6 @@ You can then extract the function call into a variable.
             print('{}: tomatoes'.format(month))
         else:
             print('{}: asparagus'.format(month))
-{% endraw %}
-
 So now we have a cached value so we don't have to do computation multiple times and clarity.
 
 Often conditions become more and more complex and dates and months may change based on certan criteria in which case it may be best to **extract variables into classes**
