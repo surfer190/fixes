@@ -463,7 +463,7 @@ It is widely used in production but ships with `/bin/sh` and not `/bin/bash`.
 #### Public Registries
 
 * [Docker hub](https://hub.docker.com/)
-* [quay.io](quay.io)
+* [quay.io](https://quay.io)
 
 This is probably the right first step if you’re getting serious about Docker but are not yet shipping enough code to need an internally hosted solution.
 One of the downsides is that every layer of every deployment might need to be dragged across the internet in order to deploy an application.

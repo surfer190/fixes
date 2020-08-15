@@ -620,7 +620,7 @@ Lets build a prototype:
 
 * Application layer: Add a ZeroMQ `transmitting` socket to each application to send metrics to a central server.
 * Collection layer: Central server exposes a 0MQ socket to collect the data from all running applcations - weill also show a graph of performance
-* Visualisation layer: Web page being served - charts must update in realtime. For simplicity using the [smoothiecharts](smoothiecharts.org) js library
+* Visualisation layer: Web page being served - charts must update in realtime. For simplicity using the [smoothiecharts](https://smoothiecharts.org) js library
 
 
 Server-Sent Events (SSE's) are often preferable over websockets - due to their simplicity.

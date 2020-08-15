@@ -100,7 +100,7 @@ Preview app in browser
 
 Free app on play store or app store to test apps
 
-Need an [ionic.io account](apps.ionic.io)
+Need an [ionic.io account](https://apps.ionic.io)
 
 ## Developing the ionic App
 

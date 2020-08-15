@@ -59,7 +59,7 @@ Are you sending messages to communicate between different services in your appli
 
 ## Message Queues with Django
 
-* [Celery](www.celeryproject.org)
+* [Celery](https://www.celeryproject.org)
 * [Kombu](https://github.com/celery/kombu)
 
 ## Message queues with Python
