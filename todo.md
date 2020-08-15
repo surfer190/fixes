@@ -1,8 +1,6 @@
-1. Get rid of {% raw %}
 2. Jenkins pipeline
 3. Deploy to trademate server
 5. Sitemap
-8. Move images into repo
 9. rss feed
 10. search box always visible
 17. Add pages for topics and breadcrumb the field
@@ -19,3 +17,5 @@
 4. add link to brave browser
 18. Add date and topic/category to page
 15. Ensure the sidebar does not float
+1. Get rid of {% raw %}
+8. Move images into repo
