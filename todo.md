@@ -1,6 +1,5 @@
 10. search box always visible
 17. Add pages for topics and breadcrumb the field
-18. Fix image sizing issues (and optimize images)
 
 ## DONE
 
@@ -21,3 +20,4 @@
 5. Sitemap
 9. rss feed
 19. Add robots.txt block petalbot (huaewei)
+18. Fix image sizing issues (and optimize images)
