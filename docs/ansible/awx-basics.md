@@ -30,11 +30,9 @@ Basic Flow
 1. Create a credentials for git (SCM)
 2. Create a project linked to a repo on git
 3. Create an inventory
-
-
-## Annoying things
-
-* You can't put vault encrypted variables into an inventory on AWX - it must be JSON or YAML
+4. Create credentials for the inventory you are connecting to
+5. Create a template
+6. Run the job
 
 ## User Guide
 
@@ -44,7 +42,7 @@ View the activity stream in the top right -> you can expand the actvity stream o
 
 `My View` is a certain users or teams to do specific tasks - `Pressing the launch button beside a job in My View launches it, potentially asking some survey questions if the job is configured to do so`
 
-### Organiszations
+### Organisations
 
 A logical collection of `Users`, `Teams`, `Projects` and `Inventories`
 
@@ -129,7 +127,7 @@ You can create a [custom credential types](https://docs.ansible.com/ansible-towe
 
 You can use your own secrets management system and let ansible tower  use it.
 
-Supported secrete management systems:
+Supported secret management systems:
 
 * CyberArk Application Identity Manager
 * CyberArk Conjur
@@ -147,7 +145,7 @@ Allow external integration into ansible tower like `jenkins` and `ServiceNow`
 
 Authorization Code grant type is the preferred way
 
-you have to setup all the details for the oauth flow
+You have to setup all the details for the oauth flow
 
 ### Project
 
