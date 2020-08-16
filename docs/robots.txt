@@ -4,8 +4,6 @@ Sitemap: https://fixes.co.za/sitemap.xml
 
 User-agent: Baiduspider
 Disallow: /
-User-agent: Yandex
-Disallow: /
 User-agent: MJ12bot
 Disallow: /
 User-agent: SemrushBot
@@ -13,4 +11,6 @@ Disallow: /
 User-agent: turnitinbot
 Disallow: /
 User-agent: PetalBot
+Disallow: /
+User-agent: AhrefsBot
 Disallow: /
