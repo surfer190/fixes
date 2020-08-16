@@ -13,7 +13,7 @@ Sometimes the data provider gets things wrong and returns data in ZAR (South Afr
 
 I then create charts with this data and the chart gets messed up:
 
-![Bad-stock-data-with-outliers](/img/datascience/incorrect-stock-data-outliers.png)
+![Bad-stock-data-with-outliers](/img/datascience/incorrect-stock-data-outliers.png){: class="img-fluid" }
 
 I wanted to fix this error over all stock tickers and stared reasearching ways to detect outliers.
 

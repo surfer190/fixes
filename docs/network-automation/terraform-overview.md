@@ -723,7 +723,7 @@ In this example we will use the Consul terraform module for AWS which will setup
 
 Ensure that you use the verified modules written by Hashicorp as the first port of call:
 
-![aws-consul-modules](/img/awx-consul-modules.png)
+![aws-consul-modules](/img/awx-consul-modules.png){: class="img-fluid" }
 
 View and use the module config given by the terraform registry page
 

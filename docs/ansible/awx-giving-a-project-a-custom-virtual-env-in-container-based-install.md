@@ -9,7 +9,7 @@ title: Awx Giving A Project A Custom Virtual Env In Container Based Install
 
 When you create a new project on AWX you get the following screen
 
-![AWX new project no custom environments](/img/awx/awx-new-project-no-custom-environment.png)
+![AWX new project no custom environments](/img/awx/awx-new-project-no-custom-environment.png){: class="img-fluid" }
 
 It does not have the `Ansible Environment` field as no custom environments are setup.
 

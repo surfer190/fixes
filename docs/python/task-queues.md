@@ -167,7 +167,7 @@ Then you might run into an error:
 
 Then move on to use [Using celery with django](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html)
 
-![celery rabbitmq architecture](/img/celery-rabbitmq.png)
+![celery rabbitmq architecture](/img/celery-rabbitmq.png){: class="img-fluid" }
 
 ## Source
 

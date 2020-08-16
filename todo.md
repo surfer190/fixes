@@ -1,12 +1,6 @@
-2. Jenkins pipeline
-3. Deploy to trademate server
-5. Sitemap
-9. rss feed
 10. search box always visible
 17. Add pages for topics and breadcrumb the field
 18. Fix image sizing issues (and optimize images)
-19. Add robots.txt block petalbot (huaewei)
-
 
 ## DONE
 
@@ -22,3 +16,8 @@
 15. Ensure the sidebar does not float
 1. Get rid of {% raw %}
 8. Move images into repo
+2. Jenkins pipeline
+3. Deploy to trademate server
+5. Sitemap
+9. rss feed
+19. Add robots.txt block petalbot (huaewei)

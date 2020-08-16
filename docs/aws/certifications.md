@@ -11,7 +11,7 @@ There are 2 tracks: **professional** and **associate**
 
 Then there are specialisations: **solutions architect**, **developer** and **sysops administrator**
 
-![aws certifiation image](/img/aws-certification-roadmap.png)
+![aws certifiation image](/img/aws-certification-roadmap.png){: class="img-fluid" }
 
 ### Solutions Architect
 

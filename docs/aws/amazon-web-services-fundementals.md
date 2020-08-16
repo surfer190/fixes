@@ -132,7 +132,7 @@ Amazon does its part but **you need to secure your environment**
 
 Can be found on the crazily complex console home screen
 
-![Amazon fundamentals IAM icon](/img/aws-iam.png)
+![Amazon fundamentals IAM icon](/img/aws-iam.png){: class="img-fluid" }
 
 [Brain numbing Amazon IAM shit](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
 
@@ -152,7 +152,7 @@ The amazon web services' screens on their website are very convoluted. Full of l
 
 Don't be **daunted** when you login, you will see the below screen when you first log in, full of services...just calm down eventually you might learn a few of them.
 
-![Complicated Management Console Screen Amazon Web Services](/img/aws-console-page.png)
+![Complicated Management Console Screen Amazon Web Services](/img/aws-console-page.png){: class="img-fluid" }
 
 # Amazon Web Services
 
