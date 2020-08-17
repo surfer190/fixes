@@ -21,6 +21,8 @@ markdown_extensions:
   - smarty
   - attr_list
 plugins:
+  - search:
+      min_search_length: 3
   - rss:
       length: 20
 nav:
