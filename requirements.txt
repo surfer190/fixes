@@ -1,0 +1,4 @@
+mkdocs==1.1.2
+ipdb==0.13.3
+PyYAML==5.3.1
+mkdocs-rss-plugin==0.4.0
