@@ -11,11 +11,23 @@ So you have a very large variable that you want to put into a file from ipython
 
 You can use `%store`
 
-    %store <my_var> >> <my_file>
-    
-Example:
+Then the variable and how to output:
 
-    In [15]: %store soup >> vcloud.txt                                                                          Writing 'soup' (BeautifulSoup) to file 'vcloud.txt'.
+* `>>`: append
+* `>`: wipe and write
+
+So either:
+
+    %store <my_var> >><my_file>
+
+or:
+
+    %store <my_var> ><my_file>
+    
+### Example
+
+    In [15]: %store soup >>vcloud.txt
+    Writing 'soup' (BeautifulSoup) to file 'vcloud.txt'.
 
 ### Source
 
