@@ -1639,34 +1639,126 @@ worker nodes in AWS don't know their external address - so tell kubernetes the i
     rke.cattle.io.externalip
     rke.cattle.io.inernalip
 
-You can set a default backend where traffic arriving doesnt have a destination
+You can set a default backend where traffic arriving doesnt have a destination - you can have a cuastom backend for customers.
+
+When creating an ingress - you can direct it to a service entry or directly to the workload.
+
+The later works for workloads that don't expose ports with a service entry
+Rancher labels the workload and creates a service that uses the label as the selector.
+
+Future versions of rancher will only use services - so recommended to expose your workload with service entries.
+
+If you have installed cert manager you can annotate your ingress to request a certificate from the issuer when you deploy the ingress - not integrated into th eui needs YAML direct edit.
+
+    kubectl get ingress 
+    
+    kubectl get ingress -o yaml
+
+You can add additional targets of an ingress based on the `/path`
+
+It also good for `www.domain.com` and `domain.com`
+
+By default an ingress controller runs as a `DaemonSet` and listens on every node in the cluster.
+
+Can also be configured as a deployment to work on selected nodes in the cluster.
+
+You need a dumb level 4 load balancer sending traffic for port 780 and 443 directly to the worker nodes.
+The will be no `X-forarded-for` http header
+
+### Summary
+
+* The `ClusterIP` for a Service does not change when the Workload is upgraded
+* You configure a kubernetes ingress to terminate SSL by uploading your certs as a Certificate and configuring the Ingress with a reference to that Certificate 
+* `ExternalName` mimics a `A` record or `CNAME` record
+* For loadbalancer services to provision - A Cloud provider configuration is needed
+
+Ingress:
+
+* Is generally used for HTTP/HTTPS traffic 
+* It can be powered by a number of popular open source load balancers 
+* You can only have one Ingress per cluster 
+
+## 5.5: Discovering the Rancher Application Catalog
+
+### How it Works
+
+Rancher application catalog integrates helm and rancher apps
+
+When an app is requested an ephemeral helm service is created - preventing a user getting higher privileges.
+
+After a helm repo - known as a catalog - is added to rancher the apps are available to install
+
+### Catalog Scope
+
+Catalogs are scoped at the global, cluster and project levels.
+
+### Included Global Catalogs
+
+* 3 default catalogs only 1 is active by default
+* `library` is a curated list of apps that rancher provides catalog entries
+* apps themselves are not supported by rancher
+* `helm-stable` and `helm-incubator` - global admins can activate these
+
+### Adding Custom Catalogs
+
+Can be a git repo or helm repository
+
+Add the catalog url or the helm repo
+
+### Using Catalog Apps
+
+* Helm app: view insntrucitons and manually enter key value pairs
+* Rancher app: form with same defaults
+
+A rancher app has a more comprehensive interface
+
+Rancher docs on how to build your own rancher app
+
+Same application can run in its own namespace - adding 5 characters to the default name
+
+You can clone an application - copying the keys and values
+
+When you delete a catalog app - the namespace is not deleted.
+Must be done manually.
+
+Always delete from the app page first.
+
+### Summary
+
+* The page of installed apps will show that the app has an upgrade available when there is a new helm chart available
+* Helm apps are installed through a Rancher service account - administrator privileges are not required.
+* Helm charts require you to enter key/value pairs for answers and Rancher apps use a form to configure the answers
+* A catalog that is enabled at the Global scope **cannot** be disabled at the Project scope.
+* who can add new catalogs - depends on the RBAC permissions for the account and the scope at which the catalog is being added 
+* You **cannot** clone an application into the same namespace.
 
 
+What can rancher use as a catalog repo:
 
+* A public git repo serving over HTTP 
+* A Helm repo serving over HTTP 
+* A private git repo that requires username or password 
 
+<!-- # Final Evaluation
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* The only supported Kubernetes distributions where Rancher can be installed are RKE and K3s (as of 2.4)
+* When communicating through Rancher, which party is responsible for the authorization component - the downstream cluster 
+* RKE deploys Kubernetes components as Docker containers
+* RKE can generate CSRs to use with an external CA to request certificates.
+* Upgrading Kubernetes involves changing the version in the system_images key and running `rke up`
+* Use a bind-mounted volume - for easier backups, upgrades, and rollbacks
+* You **cannot** roll back a failed Rancher upgrade with `helm rollback`
+* To use the Custom provider only requires that a supported version of Docker to be installed on the node
+* When deploying into a cloud provider, where do the options that Rancher presents to you come from? It's fetched in real time from the provider, using your cloud credentials correct 
+* Check logs for rancher api server: Using Kubectl with the logs subcommand for one of the pods in the cattle-system namespace
+* How do you find the logs for etcd in an RKE cluster - docker logs
+* Rancher acts as an authentication proxy when kubectl initiates a connection to a cluster
+* Metric expression - requires that advanced monitoring is enabled for the cluster
+* Even if the cluster has advanced monitoring enabled - project level adavanced monitoring still needs to be enabled
+* Only `Service Discovery records` can only be assigned to a namespace
+* Canal CNI supports project level isolation
+* Rancher will create services for ports that you configure in the Workload deployment screen.
+* You can designate a custom scheduler for Pod scheduling on nodes.
+* ConfigMaps can only be assigned to a namespace.
+* Secrets can be assigned to a project or namespace
+* the ClusterIP for a Service does not change whenever the Workload is upgraded. -->

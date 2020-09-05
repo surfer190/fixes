@@ -4,8 +4,7 @@ Summaries, Fixes, Solutions and Notes
 
 [fixes.co.za](http://fixes.co.za)
 
-[![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes)](http://37.139.28.74:8080/job/fixes/)
-[![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=doolan.pw)](http://37.139.28.74:8080/job/doolan.pw/)
+[![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes+mkdocs)](http://37.139.28.74:8080/job/fixes%20mkdocs/)
 
 Common problems and solutions, fixes and tips that I have gathered while trying to solve problems.
 
