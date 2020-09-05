@@ -19,17 +19,17 @@ When you deploy to production there is nothing to build only an image to pull an
 
 So I change the `docker-compose.yml` from:
 
-  web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
-    env_file:
-      - ./env.dev
-    depends_on:
-      - db
+    web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      env_file:
+        - ./env.dev
+      depends_on:
+        - db
 
 and added a `production.yml`:
 
