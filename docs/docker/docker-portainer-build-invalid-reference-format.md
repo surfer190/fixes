@@ -15,7 +15,7 @@ So my first thought was that the `docker-compose version` was too high `3.7`, bu
 
 The problem was that this docker compose was structured for development - ie. it relied on the code being local and building the image.
 
-When you deploy to production there is nothing to build only an image to pull and set commands or env variabled.
+When you deploy to production there is not a bound mount volume to build. There shoould only be an image that is already in your registry to pull and set commands or env variables.
 
 So I change the `docker-compose.yml` from:
 
@@ -35,7 +35,7 @@ and added a `production.yml`:
 
     web:
       command: /bin/bash run.sh
-      image: registry.example.com:5000/dyndns_api_web:0.1
+      image: registry.example.com:5000/my_image:0.1
       ports:
         - "8000:8000"
       env_file:
