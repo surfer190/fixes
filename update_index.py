@@ -34,6 +34,8 @@ if __name__ == '__main__':
     for root, dirs, files in os.walk(DOCS_DIR):
         for dir_ in dirs:
             categories[dir_] = []
+            if root == './docs/img':
+                continue
             with os.scandir(os.path.join(DOCS_DIR, dir_)) as it:
                 for entry in it:
                     if entry.name.endswith(".md") and entry.is_file():
