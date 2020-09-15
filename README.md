@@ -22,3 +22,13 @@ The site is built with [mkdocs](https://www.mkdocs.org/) and is updated on a pos
     source env/bin/activate
 
     python update_index.py
+
+Install a `pre-commit` hook:
+
+    vim ./fixes/.git/hooks/pre-commit
+
+and write:
+
+    #!/bin/sh
+    source ./env/bin/activate && python update_index.py
+
