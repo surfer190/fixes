@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-09-15: _Centos_ [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
 - 2020-08-13: _Oauth_ [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
 - 2020-08-13: _Postgres_ [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-07-29: _Api_ [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 - 2020-07-29: _Api_ [Api Security](api/api-security.md)
 - 2020-07-29: _Couch-Db_ [Getting Started With Couchdb](couch-db/getting-started-with-couchdb.md)
-- 2020-07-29: _Couch-Db_ [Quickstart Couch Db](couch-db/quickstart-couch-db.md)
 
 ## Table of Contents
 
@@ -96,8 +96,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-05-07: [Certifications](aws/certifications.md)
 - 2016-05-07: [Amazon Web Services Certification](aws/amazon-web-services-certification.md)
 
-## Awx
-
 ## Azure
 - 2020-04-20: [Certification Developer Associatiate](azure/certification-developer-associatiate.md)
 - 2017-06-13: [Azure Fundementals](azure/azure-fundementals.md)
@@ -145,8 +143,18 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Datawarehousing Fundementals](data-warehousing/datawarehousing-fundementals.md)
 
 ## Datascience
-
-## Deploying-To-Openshift
+- 2020-07-07: [Numpy](datascience/numpy.md)
+- 2020-06-14: [Python For Data Analysis](datascience/python-for-data-analysis.md)
+- 2020-06-14: [Pandas](datascience/pandas.md)
+- 2020-05-25: [Finding Outliers And Bad Data In Stock Data](datascience/finding-outliers-and-bad-data-in-stock-data.md)
+- 2019-01-24: [Statistics](datascience/statistics.md)
+- 2019-01-24: [You Are Not So Smart](datascience/you-are-not-so-smart.md)
+- 2018-11-18: [Pandas How To Make Column Values Into Column Index](datascience/pandas-how-to-make-column-values-into-column-index.md)
+- 2018-10-30: [Pandas Change Column Data Type To Float Thousands Seperator](datascience/pandas-change-column-data-type-to-float-thousands-seperator.md)
+- 2018-10-25: [Machine Learning In Financial Markets](datascience/machine-learning-in-financial-markets.md)
+- 2017-10-29: [Ipython](datascience/ipython.md)
+- 2017-10-29: [Datascience Getting Started](datascience/datascience-getting-started.md)
+- 2017-10-23: [Backtesting Algorithmic Trading With Python](datascience/backtesting-algorithmic-trading-with-python.md)
 
 ## Devops
 - 2019-09-23: [Deploying Vault](devops/deploying-vault.md)
@@ -266,6 +274,19 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Kafka](kafka/kafka.md)
 
 ## Keycloak
+- 2020-07-07: [Keycloak Single Sign Out](keycloak/keycloak-single-sign-out.md)
+- 2020-06-14: [Keycloak Essential](keycloak/keycloak-essential.md)
+- 2020-06-14: [Keycloak Adapters](keycloak/keycloak-adapters.md)
+- 2020-05-19: [Creating A Keycloak Theme](keycloak/Creating-a-keycloak-theme.md)
+- 2020-04-20: [Adding Attributes To A User In Keycloak](keycloak/adding-attributes-to-a-user-in-keycloak.md)
+- 2020-02-14: [Authentication Flow](keycloak/authentication-flow.md)
+- 2020-02-14: [Multitenancy](keycloak/multitenancy.md)
+- 2020-02-14: [Roles](keycloak/roles.md)
+- 2020-02-14: [Other Features](keycloak/other-features.md)
+- 2020-02-14: [Keycloak And Django](keycloak/keycloak-and-django.md)
+- 2020-02-14: [Groups](keycloak/groups.md)
+- 2020-02-14: [Events](keycloak/events.md)
+- 2020-02-14: [Identity Brokering](keycloak/identity-brokering.md)
 
 ## Kubernetes
 - 2020-08-13: [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
@@ -565,6 +586,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-06-13: [Secops Tools](secops/secops-tools.md)
 
 ## Security
+- 2020-09-20: [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-06-23: [Openssl Cookbook](security/openssl-cookbook.md)
 - 2020-06-14: [Applied Cryptography Notes](security/applied-cryptography-notes.md)
 - 2020-06-11: [Serious Cryptography](security/serious-cryptography.md)
