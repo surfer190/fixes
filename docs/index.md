@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-09-25: _Economics_ [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 - 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-09-15: _Centos_ [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
 - 2020-08-13: _Oauth_ [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-07-29: _Http_ [Http2](http/http2.md)
 - 2020-07-29: _Api_ [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 - 2020-07-29: _Api_ [Api Security](api/api-security.md)
-- 2020-07-29: _Couch-Db_ [Getting Started With Couchdb](couch-db/getting-started-with-couchdb.md)
 
 ## Table of Contents
 
@@ -207,6 +207,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-10-14: [Docker Portainer Build Invalid Reference Format](docker/docker-portainer-build-invalid-reference-format.md)
 - 2019-09-23: [Docker Systemd Script](docker/docker-systemd-script.md)
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
+
+## Economics
+- 2020-09-25: [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
 - 2019-05-30: [Logstash](elasticsearch/logstash.md)
