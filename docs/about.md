@@ -3,9 +3,9 @@
 This website is a repo of documentation, notes, summaries, fixes and solutions on software development and related topics.
 It mainly serves as a personal reference for my research, studies and findings.
 
-I primarily develop web related services and deliver cloud solutions. The fields of web development and cloud services is so wide and expansive. It touched on a multitude of topics across the entire technology spectrum.
+I primarily develop web related services and deliver cloud solutions. The fields of web development, automation and cloud services is so wide and expansive. These fields touch on a multitude of topics across the entire technology spectrum.
 
-> There is always new things to learn and you are free to choose what you learn and at what depth
+> There is always new and (great) old things to learn and the cool thing is you are free to choose what you learn and at what depth
 
 ### How to Contribute
 
