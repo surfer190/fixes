@@ -12,9 +12,12 @@ title: Quotes and Excerpts from Thomas Sowell
 
 > Nothing is easier than to have good intentions but, without an understanding of how an economy works, good intentions can lead to disastrous consequences for a whole nation
 
+
 > inefficiencies in turning inputs into outputs translated into a lower standard of living
 
+
 > But life does not ask us what we want. It presents us with options. Economics is one of the ways of trying to make the most of those options.
+
 
 > Without the role of prices, imagine what a monumental bureaucracy it would take to see to it that the city of London alone is supplied with the tons of food, of every variety, which it consumes every day
 
