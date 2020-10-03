@@ -7,6 +7,36 @@ title: Troubleshooting And Debugging Kubernetes
 ---
 ## Troubleshooting K8s - Common Issues in K8S - finding the reasons and Fixing Them
 
+## Pod in ImagePullBackOff
+
+With an error message like: `Back-off pulling image registry.co.za/repo/image_name:hash`
+
+A lot of tutorials say uou should use `describe` on the pod. This is **wrong**.
+You **cannot describe the pod if it is not running**.
+It will not be running as k8s cannot even get the image is should run.
+
+The best place to start is to look at the [`events` of a pod](https://stackoverflow.com/questions/51931113/kubectl-get-events-only-for-a-pod) with:
+
+    kubectl get event -n portal --field-selector involvedObject.name=my-pod-zl6m6
+
+You will get output like:
+
+    LAST SEEN   TYPE      REASON    OBJECT                                 MESSAGE
+    21m         Normal    BackOff   pod/my-pod-zl6m6   Back-off pulling image "registry.co.za/repo/image_name:hash"
+    71s         Warning   Failed    pod/my-pod-zl6m6   Error: ImagePullBackOff
+
+but that is telling us what we already know.
+
+If there is only 1 pod in the namespace it is easier to look at all events in the namespace:
+
+    kubectl get event -n portal
+
+But there is no clear indication except for in rancher on a rare occasion it will show the actual error from the registry:
+
+    ErrImagePull: rpc error: code = Unknown desc = Error response from daemon: Get https://registry.co.za/v2/repo/image_name/manifests/1c9d75694a5c7a016da73d851b44737eb5bff0b8: Get https://core.harbor.domain/service/token?scope=repository%3Acrepo%2Fimage_name%3Apull&service=harbor-registry: dial tcp: lookup core.harbor.domain: no such host
+
+In which case sometimes the registry gives errors...
+
 ### A Pod is stuck in Pending State
 
 Here a MySQL pod has been stuck for 48 minutes in a `Pending` state
@@ -63,7 +93,6 @@ Describe the pod:
     ----     ------            ----       ----               -------
     Warning  FailedScheduling  <unknown>  default-scheduler  0/1 nodes are available: 1 Insufficient memory.
     Warning  FailedScheduling  <unknown>  default-scheduler  0/1 nodes are available: 1 Insufficient memory.
-
 
 
 Source: [My pod stays pending](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-pod-replication-controller/#my-pod-stays-pending)

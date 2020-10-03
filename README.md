@@ -25,7 +25,7 @@ The site is built with [mkdocs](https://www.mkdocs.org/) and is updated on a pos
 
 Install a `pre-commit` hook:
 
-    vim ./fixes/.git/hooks/pre-commit
+    sudo vim ./fixes/.git/hooks/pre-commit
 
 and write:
 

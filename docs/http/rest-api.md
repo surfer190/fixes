@@ -25,7 +25,7 @@ Verbs - Actions taken on resources. Represented by the type of request:
 * GET - fetching a single or multple
 * POST - create a new resource
 * PUT - When updating a record
-* DELELTE - when deleting a record
+* DELETE - when deleting a record
 
 Endpoints - represent a single resources, or multiple of same resources
 

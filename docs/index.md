@@ -7,13 +7,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-09-25: _Economics_ [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 - 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-09-15: _Centos_ [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
+- 2020-09-03: _Emacs_ [Learning Emacs - Book Notes](emacs/learning-emacs-book-notes.md)
 - 2020-08-13: _Oauth_ [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
 - 2020-08-13: _Postgres_ [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
 - 2020-08-13: _Kubernetes_ [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
 - 2020-08-13: _Kubernetes_ [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
 - 2020-07-29: _Http_ [Http2](http/http2.md)
 - 2020-07-29: _Api_ [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
-- 2020-07-29: _Api_ [Api Security](api/api-security.md)
 
 ## Table of Contents
 
@@ -214,6 +214,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Elasticsearch
 - 2019-05-30: [Logstash](elasticsearch/logstash.md)
 - 2016-09-26: [Elastic Search Basics](elasticsearch/elastic-search-basics.md)
+
+## Emacs
+- 2020-09-03: [Learning Emacs - Book Notes](emacs/learning-emacs-book-notes.md)
 
 ## Es
 - 2020-03-05: [Queries](es/queries.md)
