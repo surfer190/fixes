@@ -697,6 +697,14 @@ If all goes well:
 
     sshd2: Certificate authentication for user pvj accepted.
 
+## Using Vault as a Certicate Authority and Secret Manager for SSH
+
+I used the following resources as guides:
+
+* https://www.vaultproject.io/docs/secrets/ssh/signed-ssh-certificates
+* https://abridge2devnull.com/posts/2018/05/leveraging-hashicorp-vaults-ssh-secrets-engine/
+* https://learn.hashicorp.com/tutorials/vault/ssh-otp
+* https://gist.github.com/kawsark/587f40541881cea58fbaaf07bb82b1be
 
 
 ## Source
