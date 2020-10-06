@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-10-05: _Networking_ [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-09-25: _Economics_ [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 - 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-09-15: _Centos_ [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-08-13: _Kubernetes_ [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
 - 2020-08-13: _Kubernetes_ [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
 - 2020-07-29: _Http_ [Http2](http/http2.md)
-- 2020-07-29: _Api_ [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 
 ## Table of Contents
 
@@ -424,6 +424,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-23: [Intro Ansible Network Automation](network-automation/intro-ansible-network-automation.md)
 
 ## Networking
+- 2020-10-05: [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-06-03: [Ipv6 And Never Going Sub Slash 64](networking/ipv6-and-never-going-sub-slash-64.md)
 - 2019-07-27: [Find Local Devices Dhcp](networking/find-local-devices-dhcp.md)
 - 2019-06-13: [Centos Routes](networking/centos-routes.md)

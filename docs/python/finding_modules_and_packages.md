@@ -45,7 +45,7 @@ One way is in your file:
     import sys
     sys.path.insert(0, "/path/to/your/package_or_module")
 
-Another way is to add it to your environemtn variables permanently:
+Another way is to add it to your environmetn variables permanently:
 
 Add the following line to your `~/.profile` or `~/.bashrc` file.
 
