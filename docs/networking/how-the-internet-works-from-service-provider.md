@@ -24,7 +24,7 @@ So let us go through what the above are:
 * Radius - Speaks to the BNG to authenticate subscribers
 * BNG (Broadband Network Gateway) - the access point for customers to connect to the broadband network
 * PACKET INTROSPECTION - Inspects all traffic and stores amount of traffic used for subscribers
-* P ROUTER (Provider Router) - Provide reachability between PE devices
+* P ROUTER (Provider Router) - Provide reachability between Provider Edge devices
 * PEERING / IP TRANSIT - IP transit is when one entity pays another for the right to transit its upstream network (One entity is higher than the other on the chain). IP peering is a mutual exchange of data between two ISPs.
 
 
