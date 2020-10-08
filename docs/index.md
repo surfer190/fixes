@@ -4,6 +4,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-10-08: _Python_ [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
+- 2020-10-07: _Python_ [Convert XML to JSON](python/convert-xml-to-json.md)
 - 2020-10-05: _Networking_ [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-09-25: _Economics_ [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 - 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
@@ -12,8 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-08-13: _Oauth_ [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
 - 2020-08-13: _Postgres_ [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
 - 2020-08-13: _Kubernetes_ [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
-- 2020-08-13: _Kubernetes_ [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
-- 2020-07-29: _Http_ [Http2](http/http2.md)
 
 ## Table of Contents
 
@@ -476,6 +476,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2020-10-08: [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
+- 2020-10-07: [Convert XML to JSON](python/convert-xml-to-json.md)
 - 2020-06-21: [Refactoring Python](python/refactoring-python.md)
 - 2020-06-21: [File Systems](python/file-systems.md)
 - 2020-06-21: [Install Update Pip](python/install-update-pip.md)
