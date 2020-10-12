@@ -6,15 +6,13 @@ summary: ''
 title: How does a Subscriber's Internet travel from Service Provider Perspective
 ---
 
-# How does a Subscriber's Internet travel from Service Provider Perspective
-
-## How does a packet travel Through a Service Provider
+## How does a Subscriber's Internet travel from Service Provider Perspective
 
 As with everything it depends on the solution provided - Fibre, Adsl and Wireless technology like 3g, 4g and LTE
 
-Looking from a Fibre perspective the flow is bassically:
+Looking from a Fibre perspective the flow is:
 
-    ONT -> OLT -> ENNI -> RADIUS -> BNG -> PACKET INTROSPECTIN - P ROUTER - PEERING/IP TRANSIT
+    ONT -> OLT -> ENNI -> RADIUS -> BNG -> PACKET INTROSPECTION - P ROUTER - PEERING/IP TRANSIT
 
 So let us go through what the above are:
 
@@ -26,8 +24,6 @@ So let us go through what the above are:
 * PACKET INTROSPECTION - Inspects all traffic and stores amount of traffic used for subscribers
 * P ROUTER (Provider Router) - Provide reachability between Provider Edge devices
 * PEERING / IP TRANSIT - IP transit is when one entity pays another for the right to transit its upstream network (One entity is higher than the other on the chain). IP peering is a mutual exchange of data between two ISPs.
-
-
 
 ## Sources
 
