@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-10-27: _Kubernetes_ [Rancher RKE 413 Request Entity Too Large when uploading a file Nginx controller](kubernetes/rancher-413-request-entity-too-large-ingress-controller.md)
+- 2020-10-15: _Network-Automation_ [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
+- 2020-10-15: _Network-Automation_ [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 - 2020-10-08: _Python_ [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
 - 2020-10-07: _Python_ [Convert XML to JSON](python/convert-xml-to-json.md)
 - 2020-10-05: _Networking_ [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-09-15: _Centos_ [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
 - 2020-09-03: _Emacs_ [Learning Emacs - Book Notes](emacs/learning-emacs-book-notes.md)
-- 2020-08-13: _Oauth_ [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
-- 2020-08-13: _Postgres_ [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
-- 2020-08-13: _Kubernetes_ [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
 
 ## Table of Contents
 
@@ -295,6 +295,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-02-14: [Identity Brokering](keycloak/identity-brokering.md)
 
 ## Kubernetes
+- 2020-10-27: [Rancher RKE 413 Request Entity Too Large when uploading a file Nginx controller](kubernetes/rancher-413-request-entity-too-large-ingress-controller.md)
 - 2020-08-13: [Rancher Certified Operator](kubernetes/rancher-certified-operator.md)
 - 2020-08-13: [Create A Persistent Volume](kubernetes/create-a-persistent-volume.md)
 - 2020-07-07: [Helm Overview](kubernetes/helm-overview.md)
@@ -407,6 +408,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-27: [Turn On Mysql General Log](mysql/turn-on-mysql-general-log.md)
 
 ## Network-Automation
+- 2020-10-15: [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
+- 2020-10-15: [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 - 2020-07-07: [Pyez Dev Guide](network-automation/pyez-dev-guide.md)
 - 2020-07-07: [Packet Guide To Core Networking Protocols](network-automation/packet-guide-to-core-networking-protocols.md)
 - 2020-06-14: [Terraform Overview](network-automation/terraform-overview.md)

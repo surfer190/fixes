@@ -7,12 +7,53 @@ title: Enter Python Debugger From Running An Ansible Playbook
 ---
 # Enter the python debugger from Running an Ansible Playbook
 
-I don't think you can.
-I think ansible basically throws execution somewhere else so breakpoints aren't accessible to the caller.
+I have some other strategies below but when we really want to do it do get access to `pdb` or `ipdb` when running a play.
+The ansible [developer guide has a section on debugging](https://docs.ansible.com/ansible/latest/dev_guide/debugging.html).
 
-Actually you can but it depends on your play `strategy`.
+Ansible modules don't work like any other python files.
+They are wrapped up with a script and put into a zip file. _Why?_
+
+The article mentions [Simple Debugging using epdb](https://docs.ansible.com/ansible/latest/dev_guide/debugging.html#simple-debugging)
+
+**Simple is better than complex** so let us try it
+
+## Simple Debugging
+
+Apparently all you need to do is:
+
+    pip install epmd
+
+Into your virtual env.
+
+Then add this line anywhere in the module where you have an issue.
+
+    import epdb; epdb.serve()
+
+The line where you have the issue can usually be found by running your playbook in verbose mode `-vvvv`
+
+From the [epdb docs](https://pypi.org/project/epdb/):
+
+> To debug code that is either running on a remote system, or in a process that isn’t attached to your tty you can use epdb in server mode
+
+Now run your playbook and it should hang at a point. So now you can connect to the server with:
+
+    ipython
+    import epdb
+    epdb.connect()
+
+It worked for me but I couldn't control it...by stepping through. Ie `c`, `s` and `n` did not work.
+Not even `h` (help) so I don't think it ever got into `epdb`
+
+What you can do is debug by outputing to the terminal - but not `print()` statements do not work in modules so it is better to use:
+
+    raise Exception(some_value)
+
+
+
 
 ### Debug Strategy
+
+It depends on your play `strategy`.
 
 Set
 
@@ -74,3 +115,4 @@ Copy the files from module utils into your module library and then just update t
 * [Debug ansible playbooks](https://blog.codecentric.de/en/2017/06/debug-ansible-playbooks-like-pro/)
 * [Ansible Docs: Developing Module Utilities](https://docs.ansible.com/ansible/latest/dev_guide/developing_module_utilities.html)
 * [Writing an Ansible Module](https://dev.to/drewmullen/how-to-run-simple-tests-against-custom-ansible-modules-4875)
+* [Ansible developer guide: Debugging](https://docs.ansible.com/ansible/latest/dev_guide/debugging.html)
