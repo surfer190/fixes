@@ -4,6 +4,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-10-30: _Sports Betting_ [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
+- 2020-10-30: _English_ [Words and Definitions](english/words.md)
 - 2020-10-27: _Kubernetes_ [Rancher RKE 413 Request Entity Too Large when uploading a file Nginx controller](kubernetes/rancher-413-request-entity-too-large-ingress-controller.md)
 - 2020-10-15: _Network-Automation_ [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
 - 2020-10-15: _Network-Automation_ [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
@@ -12,8 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-05: _Networking_ [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-09-25: _Economics_ [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 - 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
-- 2020-09-15: _Centos_ [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
-- 2020-09-03: _Emacs_ [Learning Emacs - Book Notes](emacs/learning-emacs-book-notes.md)
 
 ## Table of Contents
 
@@ -107,6 +107,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Azure-Vm
 - 2016-09-27: [Azure Linux Vm Active Directory](azure-vm/azure-linux-vm-active-directory.md)
 - 2016-09-27: [Azure Command Line](azure-vm/azure-command-line.md)
+
+## Betting
+- 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## C
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
@@ -217,6 +220,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Emacs
 - 2020-09-03: [Learning Emacs - Book Notes](emacs/learning-emacs-book-notes.md)
+
+## English
+- 2020-10-30: [Words and Definitions](english/words.md)
 
 ## Es
 - 2020-03-05: [Queries](es/queries.md)
