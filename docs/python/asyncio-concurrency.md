@@ -16,7 +16,7 @@ Many however have experienced _blocking_
 
 Even when using `requests` your program pauses for a bit when it does a `requests.get(....)`
 
-For once off tasks that is fine but for 10000 URL's it becmes difficult.
+For once off tasks that is fine but for 10000 URL's it becomes difficult.
 
 Large scale concurrency is a big reason to to learn and use `asyncio`, it is also much safer than _premeptive threading_
 

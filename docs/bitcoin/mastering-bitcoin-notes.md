@@ -200,6 +200,303 @@ A small payment that a _miner_ receives.
 The transaction also contains a proof of ownership of the amount being spent in the form of a digital signature.
 Spending is _signing_ a transaction - from a previous owner to a specific bitcoin address.
 
+If you only had an existing 20 bitcoin tranasction, trying to buy an item costing 5 bitcoin.
+Then you would pay 20 bitcoin - 5 bitcoin to the store owner - 15 bitcoin back to yourself (less the transaction fee).
+
+This _change address_ does not have to be the same address as the input, for privacy reasons it is often a new address from the owner's wallet.
+
+Wallets create the aggregate amount in different ways - some take many small transactions to make the exact amount.
+The transaction will generate change - similar to how you get change at a shop.
+
+> Transactions move value from _transaction inputs_ to _transacton outputs_
+
+### Common Transactions
+
+A purchase with change.
+
+    Input 0 (from Alice signed by Alice) -> Output 0 (To bob) 
+                                         -> Output 1 (To alice - change)
+
+Aggregates many transactions into a single one - piling up coins.
+
+    Input 0 -> Output 0
+    Input 1 ->
+    Input 2 ->
+    Input 3 ->
+
+One input to multiple participants (payroll)
+
+    Input 0 -> Output 0
+               Output 1
+               Output 2
+               Output 3
+               ...
+               Output n
+
+## Constructing a Transaction
+
+Alice just sets a destination and an amount - the wallet does the rest.
+
+A wallet application can construct transactions even if it is completely offline.
+
+A transaction does not need to be constructed and signed while connected to the bitcoin network
+
+Most wallets keep track of available outputs belonging to addresses in the wallet.
+
+> A bitcoin wallet application that runs as a full-node client actually contains a copy of every unspent output from every transaction in the blockchain
+
+Lightweight clients only track the user's own unspect outputs.
+
+If a wallet does not keep the transactions - it can query the network
+
+Lets look up the inspent outputs from Alice's bitcoin address:
+
+    http https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK
+    
+    {
+        "notice": "",
+        "unspent_outputs":
+        [
+            {
+                "confirmations": 378773,
+                "script": "76a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac",
+                "tx_hash": "f2c245c38672a5d8fba5a5caa44dcef277a52e916a0603272f91286f2b052706",
+                "tx_hash_big_endian": "0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2",
+                "tx_index": 0,
+                "tx_output_n": 1,
+                "value": 8450000,
+                "value_hex": "0080efd0"
+            },
+            {
+                "confirmations": 323156,
+                "script": "76a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac",
+                "tx_hash": "0365fdc169b964ea5ad3219e12747e9478418fdc8abed2f5fe6d0205c96def29",
+                "tx_hash_big_endian": "29ef6dc905026dfef5d2be8adc8f4178947e74129e21d35aea64b969c1fd6503",
+                "tx_index": 0,
+                "tx_output_n": 0,
+                "value": 100000,
+                "value_hex": "0186a0"
+            },
+            {
+                "confirmations": 315315,
+                "script": "76a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac",
+                "tx_hash": "d9717f774daab8d3dd470853204394c82e3c01097479575d6d2ee97d7b3bdfa1",
+                "tx_hash_big_endian": "a1df3b7b7de92e6d5d57797409013c2ec8944320530847ddd3b8aa4d777f71d9",
+                "tx_index": 0,
+                "tx_output_n": 0,
+                "value": 1000000,
+                "value_hex": "0f4240"
+            },
+            ...
+        ]
+    }
+
+[View the transaction of Joe to Alice](https://www.blockchain.com/btc/tx/7957a35fe64f80d234d76d83a2a8f1a0d8149a41d81de548f0a65a8a999f6f18)
+
+### Creating Outputs
+
+Alice's transaction says: This output is payable to whoever can present a signature from the key corresponding to Bob’s public address.
+
+Only Bob has the corresponding keys for that address, only Bob's wallet can present a a signature to redeem it.
+
+Alice will _encumber_ the output value with a demand for a signature from Bob.
+
+Alice's change payment is created by her wallet.
+
+For a transaction to be processed in a timely fashion the wallet will add a small fee.
+The fee is not explicit - it is implied. It is the remainder of the outputs - the _transaction fee_
+
+The transaction from Alice to Bob's cafe can be seen [here](https://www.blockchain.com/btc/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2)
+
+### Adding the Transaction to the Ledger
+
+The transaction created is 258 bytes long.
+Now the transaction msut be transmitted to the bitcoin network.
+
+The transaction must become part of a block, the block must be mined and the new block must be added to the blockchain.
+
+The bitcoin network is peer-to-peer - so blocks are propagated to all participants.
+
+The transaction can be sent to any bitcoin node - a computer speaking the bitcoin protoocol.
+
+Any bitcoin node receiving a valid transaction it has not seen before will forward it to all other nodes it is connected to...called _flooding_. The transaction reaches a large percentage of nodes in a few seconds.
+
+Bob's wallet can confirm:
+
+* transaction is well formed
+* uses previously unspent inputs
+* contains sufficient transaction fees to be included in the next block
+
+> Bob can assume that the transaction will be inlcuded in the next block - you know what they say about _assumptions_
+
+A common misconception is that bitcon transactions must be confirmed by waiting 10 minutes for a new block or up to 60 minutes for 6 full confirmations.
+Confirmations ensure the transaction has been accepted by the whole network.
+This shouldn't be needed for small purchases - same as credit card these days.
+
+## Bitcoin Mining
+
+A transaction does not become part of the blockchain until it is verified and included in a block called: _mining_.
+
+Bitcoin trust is based on computation. Transactions are bundled into blocks - which require an enormous amount of computation to prove but a small amount to verify.
+
+Mining has 2 purposes:
+
+* Validate transactions by reference to bitoin's _concensus rules_
+* Mining creates new bitcoin in each block - dminishing amount of bitcoin
+
+> Mining achieves a fine balance between cost and reward. Mining uses electricity to solve a mathematical problem. A successful miner will collect a reward in the form of new bitcoin and transaction fees - only if validated based on a consensus.
+
+A good way to describe mining is like a giant competitive game of sudoku that resets every time someone finds a solution and whose difficulty automatically adjusts so that it takes approximately 10 minutes to find a solution.
+Sodoku can be verified quickly.
+
+The solutions to a block of transactions called _proof-of-work_.
+The algorithm involves repeatedly hashing the header of a block and a random number with `SHA256` hashing until a solution matching the pattern emerges.
+
+The first miner to find the solution wins and publishes it to the blockchain.
+
+It is profitable only to mine with application-specific integrated circuits (ASICs) - hundreds of mining algorithms, printed in hardware - running on a silicon chip. 
+
+### Mining transactions in Blocks
+
+Once a new block is published all work moves to the new block.
+Each miner adds unverified transactions to the block - along with the block reward and sum of the transaction fees for the block sent to his bitcoin address.
+If his solutions is accepted the payment to his bitcoin address is validated and added to the blockchain.
+
+A _candidate_ block is the enw block.
+
+The block containing a transaction is a single confirmation.
+Each block on top of Alice's transaction is another confirmation.
+Harder to reverse == more trusted.
+
+By conventino more than 6 confirmations is irrevocable.
+
+### Spending the Transaction
+
+Full node clients can track the moment of generation in a block until reaching a certain address.
+
+SPV (Simple payment verification) nodes check that a transaciton exists in the blockchain and has a few blocks added after it.
+
+> Transactions build a chain
+
+## 3. Bitcoin Core: The reference implementation
+
+Bitcoin is an open source proejct and is available under the [MIT license](https://opensource.org/licenses/MIT).
+
+The software was completed before the whitepaper was written.
+
+The _satoshi client_ has evolved into _bitcoin core_.
+Bitcoin core is the reference implementation of the bitcoin system.
+
+Bitcoin coin implements all aspects of bitcoin:
+
+* wallet
+* transaction and block validation engine
+* full network node in peer-to-peer network
+
+**Bitcoin core's wallet is not meant to be used as a production wallet**
+
+Application developers are advised to build wallets with modern standards such as BIP-39 and BIP-32.
+
+A `BIP` is a Bitcoin improvement proposal.
+
+![Bitcoin core architecture](/img/bitcoin-core-architecture.png){: class="img-fluid" }
+
+At time of writing (November 2020) most recent version was `v0.20.1`.
+
+### Running a Bitcoin core node
+
+> By running a node, you don’t have to rely on any third party to validate a transaction
+
+Bitcoin core keeps a full record of all transactions - the blockchain - since inception in 2009.
+
+Why would you want to run a node:
+
+* Developing - a node for API access to the network
+* Building applications that must validate transactions according to concensus rules
+* To support bitcoin - more robust network
+* If you do not want to rely on a third party to validate your transactions
+
+It starts getting deep...more reading in the book
+
+# 4. Keys and Addresses
+
+* Cryptography - secret writing
+* Digital signature - prove knowledge of a secret without revealing the secret
+* digital fingerprint - prive the authenticity of data
+
+Ironically, the communication and transaction data are not encrypted and do not need to be encrypted to protect funds.
+
+Ownership of bitcoin:
+
+* Keys are not stored in the network - they are created and stored by users in a file (wallet)
+* The keys are independent of the bitcon protocol - they can be generated and managed without being connected to the internet
+* Bitcoin transactions require a valid signature to be included in the block chain - signatures can only be created with a secret key
+* Keys come in pairs - a private and public key
+* The public key is the bank account number - the secret key is the PIN
+* The keys are rarely seen and are managed by the wallet software
+* In a transaction the recipients public key is presented by its digital signature - called a bitcoin address.
+* A _bitcoin address_ is generated from and corresponds to a public key
+* Not all bitcoin addresses represent public keys - they can represent scripts
+
+> Bitcoin addresses - abstract the recipient of funds
+
+## Public Key Cryptography and Cryptocurrency
+
+> Since the invention of public key cryptography, several suitable mathematical functions, such as prime number exponentiation and elliptic curve multiplication, have been discovered
+
+These mathematical functions are practically irreversible, meaning that they are easy to calculate in one direction and infeasible to calculate in the opposite direction
+
+Bitcoin uses elliptic curve multiplication as the basis for its cryptography
+
+> In bitcoin, we use **public key cryptography** to create a key pair that controls access to bitcoin
+
+* The public key is used to receive funds
+* The private key is used to sign transactions and spend funds
+
+The relationship between the private key and public key allows the private key to generate signatures on messages.
+The signature can be validated against a public key without revealing the private key.
+
+Spending bitcoin:
+
+* public key and signature is presented
+* the signature is different every time - but created from the same private key
+* Everyone can verify a transaction is valid with just those 2 items
+
+> In most wallet implementations, the private and public keys are stored together as a key pair for convenience. However, the public key can be calculated from the private key, so storing only the private key is also possible.
+
+## Private and Public Keys
+
+A bitcoin wallets consists of many key pairs.
+A private key (k) is a number -> picked at random. From the private key we use elliptical curve multiplication - a one way cryptographic function - to generate a public key (K).
+From the public key (K) we use a one way cryptographic function to generate a bitcoin address (A)
+
+Asymmetric cryptography - the digital signature can only be created by someone that knows the private key, anyone with access to the public key and transaction fingerprint can verify it.
+
+The private key is used to spend (and prove ownership) - it must be kept as secret and safe as possible.
+It must remain secret at all times - giving control to a third party gives them control over that bitcoin.
+
+> The private key must be backed up and protected from loss - a loss is a loss forever.
+
+A private key can be picked at random - 256 bit.
+
+Creating a bitcoin is essential pick a number from 1 to 2^256.
+It is important to have entropy - randomness - to generate a private key.
+
+More precisely a number:
+
+    between 1 and (1.158 * 10^77) - 1
+
+So produce a number from putting a string through `SHA256` hashing function and ensuring is it less than 1.158 * 10^77
+
+
+
+    
+
+
+
+
+
+
 
 
 

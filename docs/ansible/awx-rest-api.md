@@ -242,7 +242,7 @@ If another application is interfacing with Tower/AWX - but you want users in AWX
 
 To set that up look at the [admin docs on token based authnetication](https://docs.ansible.com/ansible-tower/latest/html/administration/oauth2_token_auth.html)
 
-#### An B2B application using Ansible
+#### A B2B application using Ansible
 
 Usually you would use the OAuth Client Credentials flow. However this flow is not Oauth.
 It is simple personal access Tokens - token auth. Or am I wrong?

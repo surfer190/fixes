@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2020-11-25: _Networking_ [BGP](networking/bgp.md)
+- 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
+- 2020-11-02: _Bitcoin_ [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 - 2020-10-30: _Sports Betting_ [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 - 2020-10-30: _English_ [Words and Definitions](english/words.md)
 - 2020-10-27: _Kubernetes_ [Rancher RKE 413 Request Entity Too Large when uploading a file Nginx controller](kubernetes/rancher-413-request-entity-too-large-ingress-controller.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-15: _Network-Automation_ [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 - 2020-10-08: _Python_ [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
 - 2020-10-07: _Python_ [Convert XML to JSON](python/convert-xml-to-json.md)
-- 2020-10-05: _Networking_ [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
-- 2020-09-25: _Economics_ [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
-- 2020-09-20: _Security_ [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 
 ## Table of Contents
 
@@ -110,6 +110,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Betting
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
+
+## Bitcoin
+- 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## C
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
@@ -433,6 +436,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-23: [Intro Ansible Network Automation](network-automation/intro-ansible-network-automation.md)
 
 ## Networking
+- 2020-11-25: [BGP](networking/bgp.md)
 - 2020-10-05: [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-06-03: [Ipv6 And Never Going Sub Slash 64](networking/ipv6-and-never-going-sub-slash-64.md)
 - 2019-07-27: [Find Local Devices Dhcp](networking/find-local-devices-dhcp.md)
@@ -641,6 +645,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-21: [Create A Systemd Script For Mailcatcher](systemd/create-a-systemd-script-for-mailcatcher.md)
 
 ## Testing
+- 2020-11-08: [Test Automation strategy Notes](testing/test-automation-strategy.md)
 - 2020-06-14: [Api Contract Testing](testing/api-contract-testing.md)
 - 2018-09-12: [Fast Test Slow Test](testing/fast_test_slow_test.md)
 
