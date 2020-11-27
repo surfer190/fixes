@@ -5,15 +5,15 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Most Recent Posts
 
 - 2020-11-25: _Networking_ [BGP](networking/bgp.md)
+- 2020-11-10: _Chess_ [Chess - Basics](chess/basics.md)
 - 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
+- 2020-11-07: _Bitcoin_ [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: _Bitcoin_ [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 - 2020-10-30: _Sports Betting_ [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 - 2020-10-30: _English_ [Words and Definitions](english/words.md)
 - 2020-10-27: _Kubernetes_ [Rancher RKE 413 Request Entity Too Large when uploading a file Nginx controller](kubernetes/rancher-413-request-entity-too-large-ingress-controller.md)
 - 2020-10-15: _Network-Automation_ [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
 - 2020-10-15: _Network-Automation_ [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
-- 2020-10-08: _Python_ [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
-- 2020-10-07: _Python_ [Convert XML to JSON](python/convert-xml-to-json.md)
 
 ## Table of Contents
 
@@ -112,6 +112,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Bitcoin
+- 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## C
@@ -124,6 +125,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Centos
 - 2020-09-15: [Installing Pandoc on CentOS](centos/installing-pandoc-on-centos.md)
 - 2019-05-30: [Firewall Cmd](centos/firewall-cmd.md)
+
+## Chess
+- 2020-11-10: [Chess - Basics](chess/basics.md)
 
 ## Composer
 - 2016-09-26: [Bus Error Core Dumped](composer/bus-error-core-dumped.md)

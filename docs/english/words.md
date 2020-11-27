@@ -20,3 +20,15 @@ title: Words and Definitions
 * surreptitiously - in a way that attempts to avoid attention or notice
 * mnemonic - system such as a pattern of letters or associations to assist in remembering something
 * Altruism - disinterested and selfless concern for the well-being of others
+* Amortize - gradually write off / reduce / pay off the intial cost of an asset with regular payments (intangible asset)
+* dogmatic - inclined to lay down principles as undeniably true
+* chicanery - the use of deception and subterfuge to achieve one's goal
+* nadir - the lowest or most unsuccessful point
+* parochialism - a limited or narrow outlook, focused on the local area
+* Laissez-faire - economic theory that opposes government involvement in business - a key part of freemarket capitalism.
+* pernicious - having a harmful effect in a subtle way
+* orthogonol - statisticly independent
+* repeal - revoke or annul
+* sophistry - clever but flase argument with the intent to deceive
+* ostensibly - appears or stated to be true, though not necessarily so
+* equanimity - calmness and composure
