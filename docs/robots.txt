@@ -14,3 +14,13 @@ User-agent: PetalBot
 Disallow: /
 User-agent: AhrefsBot
 Disallow: /
+User-agent: 360Spider
+Disallow: /
+User-agent: Yisouspider
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: Sogou web spider
+Disallow: /
+User-agent: Sogou inst spider
+Disallow: /
