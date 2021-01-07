@@ -32,3 +32,5 @@ title: Words and Definitions
 * sophistry - clever but flase argument with the intent to deceive
 * ostensibly - appears or stated to be true, though not necessarily so
 * equanimity - calmness and composure
+* acquiescence - reluctant acceptance without protest
+
