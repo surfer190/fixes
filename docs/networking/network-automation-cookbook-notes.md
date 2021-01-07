@@ -639,6 +639,27 @@ Get the book if you want more info on this, I might revisit it but I'm more inte
 
 ## 3. Automating Juniper Devices in Service Providers using Ansible
 
+First lets understand what a `P Router` and `PE router` is.
+
+A P (Provider) router doesn’t have Customer network routes. Does not require MP-iBGP. This router only functions within the service provider network.
+A PE (Provider Edge) Router does have Customer network routes. Requires MP-iBGP. The router between different service providers networks.
+A CE (Customer Edge) Router is a router at the customer premises, connecting to the PE. It exchanges routes with the corresponding VRF on the PE router.
+
+VRFs and VPNs are only relevant on PE routers.
+
+![Example Juniper Network we will use](img/juniper/ansible_juniper_example_network.png)
+
+The topology:
+
+|device|role|vendor|maangement_port|management_ip|
+|mxp01|P router|v14.1|fxp0|172.20.1.2|
+|mxp02|P router|v14.1|fxp0|172.20.1.3|
+|mxpe01|PE Router|v14.1|fxp0|172.20.1.4|
+|mxpe02|PE Router|v17.1|fxp0|172.20.1.5|
+
+We require a Juniper Virtual MX v14 and v17.
+
+
 
 
 
@@ -646,3 +667,4 @@ Get the book if you want more info on this, I might revisit it but I'm more inte
 ## Source
 
 * [Network Automation Cookbook - Karim Okasa](https://www.packtpub.com/product/network-automation-cookbook/9781789956481)
+* [Info on PE Routers](https://letsnetworkblog.wordpress.com/2016/05/12/mpls/)

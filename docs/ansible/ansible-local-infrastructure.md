@@ -3,7 +3,7 @@ author: ''
 category: Ansible
 date: '2015-09-20'
 summary: ''
-title: Ansible Local Inrastructure
+title: Ansible Local Infrastructure
 ---
 # ansible locally
 

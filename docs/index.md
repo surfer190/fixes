@@ -55,7 +55,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-05: [Quickly Check Server Status Memory Storage](ansible/quickly-check-server-status-memory-storage.md)
 - 2019-02-05: [Common Ansible Errors](ansible/common-ansible-errors.md)
 - 2019-02-05: [Ansible Playbooks Beyond The Basics](ansible/ansible-playbooks-beyond-the-basics.md)
-- 2015-09-20: [Ansible Local Inrastructure](ansible/ansible-local-inrastructure.md)
+- 2015-09-20: [Ansible Local Infrastructure](ansible/ansible-local-infrastructure.md)
 - 2015-01-25: [Install Ansible Ubuntu](ansible/install-ansible-ubuntu.md)
 
 ## Apache
