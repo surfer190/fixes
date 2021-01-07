@@ -346,27 +346,6 @@ Redirection hijack - implicit grant or authorization code. After successful auth
 
 Token binding
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Sources
 
 * [API Security Architect](https://apiacademy.learnupon.com/enrollments/55559074/details)

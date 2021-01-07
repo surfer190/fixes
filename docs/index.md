@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-01-07: _Networking_ [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
+- 2021-01-04: _Bitcoin_ [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
+- 2021-01-04: _Api_ [Api Product Manager](api/api-product-manager.md)
+- 2020-12-14: _BSD_ [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
 - 2020-11-25: _Networking_ [BGP](networking/bgp.md)
 - 2020-11-10: _Chess_ [Chess - Basics](chess/basics.md)
 - 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
 - 2020-11-07: _Bitcoin_ [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: _Bitcoin_ [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 - 2020-10-30: _Sports Betting_ [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
-- 2020-10-30: _English_ [Words and Definitions](english/words.md)
-- 2020-10-27: _Kubernetes_ [Rancher RKE 413 Request Entity Too Large when uploading a file Nginx controller](kubernetes/rancher-413-request-entity-too-large-ingress-controller.md)
-- 2020-10-15: _Network-Automation_ [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
-- 2020-10-15: _Network-Automation_ [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 
 ## Table of Contents
 
@@ -63,6 +63,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Add Existing Ubuntu User To Www Data Group](apache/add-existing-ubuntu-user-to-www-data-group.md)
 
 ## Api
+- 2021-01-04: [Api Product Manager](api/api-product-manager.md)
 - 2020-07-29: [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 - 2020-07-29: [Api Security](api/api-security.md)
 - 2020-06-14: [What Is Open Api](api/what-is-open-api.md)
@@ -112,8 +113,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Bitcoin
+- 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
+
+## Bsd
+- 2020-12-14: [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
 
 ## C
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
@@ -440,6 +445,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-23: [Intro Ansible Network Automation](network-automation/intro-ansible-network-automation.md)
 
 ## Networking
+- 2021-01-07: [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
 - 2020-11-25: [BGP](networking/bgp.md)
 - 2020-10-05: [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-06-03: [Ipv6 And Never Going Sub Slash 64](networking/ipv6-and-never-going-sub-slash-64.md)
