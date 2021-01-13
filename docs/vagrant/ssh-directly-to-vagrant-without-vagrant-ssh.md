@@ -45,18 +45,6 @@ This will hopefully connect you to your host
 
 > This won't work if you are tunneling via another connection as you box is not connected to the internet
 
-Ensure virtualbox and vagrant are installed folow [this guide](https://github.com/Juniper/vqfx10k-vagrant/blob/master/INSTALL.md)
-
-    vagrant box add juniper/vqfx10k-re 
-    vagrant box add juniper/vqfx10k-pfe
-
-    git clone https://github.com/Juniper/vqfx10k-vagrant.git
-    cd vqfx10k-vagrant/full-2qfx
-    vagrant up
-
-
-
-
 ## Sources
 
 * [How to ssh to vagrant without actually running “vagrant ssh”?](https://stackoverflow.com/questions/10864372/how-to-ssh-to-vagrant-without-actually-running-vagrant-ssh)
