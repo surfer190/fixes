@@ -2231,9 +2231,340 @@ Create a new user in netbox for automation activities, assign super user privile
 
 ### Populating Sites in Netbox
 
+Sites allow us to group infrastructure based on its physical location.
 
+    sites:
+      - name: DC1
+        description: "Main Data Center in Sydney"
+        location: Sydney
+      - name: DC2
+        description: "Main Data Center in KSA"
+        location: Riyadh
 
+Create a `roles` directory
 
+    mkdir roles
+    cd roles
+    ansible-galaxy init build_netbox_db
+
+In `tasks/main.yml`:
+
+    ---
+
+    - name: Create NetBox Sites
+      netbox_site:
+        netbox_token: "{{ netbox_token }}"
+        netbox_url: "{{ netbox_url }}"
+        data:
+          name: "{{ item.name | lower }}"
+          description: "{{ item.description | default(omit) }}"
+          physical_address: "{{ item.location | default(omit) }}"
+        state: "{{ netbox_state }}"
+      loop: "{{ sites }}"
+      run_once: yes
+      tags: netbox_sites
+
+In `roles/build_netbox_db/defaults/main.yml`:
+
+    netbox_state: present
+
+In a playbook `pb_build_netbox_db.yml`:
+
+```
+---
+- name: Populate NetBox DataBase
+  hosts: all
+  gather_facts: no
+  vars:
+    ansible_connection: local
+  tasks:
+    - import_role:
+        name: build_netbox_db
+```
+
+Run the play:
+
+    ansible-playbook pb_build_netbox_db.yml 
+
+> We are using the [`netbox_site` module](https://docs.ansible.com/ansible/latest/collections/netbox/netbox/netbox_site_module.html) which is in the ansible standard library.
+
+We loop over the `sites` variable and create the sites in netbox
+
+### Populating Devices in Netbox
+
+Creating devices with their model, manufacturer and role in the network.
+Which we will use later to build a dynamic inventory.
+
+Update `group_vars/all.yml` with the devices
+
+    devices:
+      - role: Leaf_Switch
+        type: 7020SR
+        vendor: Arista
+        color: 'f44336'  # red
+      - role: Spine_Switch
+        type: 7050CX3
+        ru: 2
+        vendor: Arista
+        color: '2196f3'  # blue
+
+Create `groups_vars/leaf.yml` and `group_vars/spine/yml`
+
+    ---
+    device_model: 7020SR
+    device_role: Leaf_Switch
+    vendor: Arista
+
+    ---
+    device_model: 7050CX3
+    device_role: Spine_Switch
+    vendor: Arista
+
+Create a new task in our role to `tasks/create_device_vendors.yml`
+
+    - name: NetBox Device  // Get Existing Vendors
+      uri:
+        url: "{{ netbox_url }}/api/dcim/manufacturers/?name={{ device }}"
+        method: GET
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        return_content: yes
+        body_format: json
+        status_code: [200, 201]
+      register: netbox_vendors
+      run_once: yes
+      tags: device_vendors
+
+    - name: NetBox Device  // Create Device Vendors
+      uri:
+        url: "{{ netbox_url }}/api/dcim/manufacturers/"
+        method: POST
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        return_content: yes
+        body_format: json
+        body:
+          name: "{{ device }}"
+          slug: "{{ device | lower }}"
+        status_code: [200, 201]
+      when:
+        - netbox_vendors.json.count == 0
+        - netbox_state == 'present'
+      run_once: yes
+      tags: device_vendors
+
+Update `tasks/main.yml` and include the tasks:
+
+    - name: Create NetBox Device Vendors
+      include_tasks: create_device_vendors.yml
+      loop: "{{ devices | map(attribute='vendor') | list | unique}}"
+      loop_control:
+        loop_var: device
+      run_once: yes
+      tags: device_vendors
+
+Create a task for creating device types `roles/build_netbox_db/tasks/create_device_types.yml`:
+
+    - name: NetBox Device  // Get Existing Device Types
+      uri:
+        url: "{{ netbox_url }}/api/dcim/device-types/?model={{ device.type }}"
+        method: GET
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        return_content: yes
+        body_format: json
+        status_code: [200, 201]
+      register: netbox_device_types
+      run_once: yes
+      tags: device_types
+    - name: NetBox Device  // Create New Device Types
+      uri:
+        url: "{{ netbox_url }}/api/dcim/device-types/"
+        method: POST
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        return_content: yes
+        body_format: json
+        body:
+          model: "{{ device.type }}"
+          manufacturer: { name: "{{ device.vendor }}"}
+          slug: "{{ device.type | regex_replace('-','_') | lower  }}"
+          u_height: "{{ device.ru | default(1) }}"
+        status_code: [200, 201]
+      when:
+        - netbox_device_types.json.count == 0
+        - netbox_state != 'absent'
+      register: netbox_device_types
+      run_once: yes
+      tags: device_types
+
+Include the task in `main.yml`:
+
+    - name: Create NetBox Device Types
+      include_tasks: create_device_types.yml
+      loop: "{{ devices }}"
+      loop_control:
+        loop_var: device
+      run_once: yes
+      tags: device_types
+
+Create the `tasks/create_device_roles.yml`:
+
+    - name: NetBox Device  // Get Existing Device Roles
+      uri:
+        url: "{{ netbox_url }}/api/dcim/device-roles/?name={{ device.role}}"
+        method: GET
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        return_content: yes
+        body_format: json
+        status_code: [200, 201]
+      register: netbox_device_role
+      tags: device_roles
+    - name: NetBox Device  // Create New Device Roles
+      uri:
+        url: "{{ netbox_url }}/api/dcim/device-roles/"
+        method: POST
+        headers:
+          Authorization: "Token {{ netbox_token }}"
+          Accept: 'application/json'
+        return_content: yes
+        body_format: json
+        body:
+          name: "{{ device.role }}"
+          slug: "{{ device.role | lower }}"
+          color: "{{ device.color }}"
+        status_code: [200, 201]
+      when:
+        - netbox_device_role.json.count == 0
+        - netbox_state != 'absent'
+      register: netbox_device_role
+      tags: device_roles
+
+Include it in the main tasks:
+
+    - name: Create NetBox Device Roles
+      include_tasks: create_device_roles.yml
+      loop: "{{ devices }}"
+      loop_control:
+        loop_var: device
+      run_once: yes
+      tags: device_roles
+
+Task to populate devices `tasks/create_device.yml`
+
+    ---
+    - name: Provision NetBox Devices
+      netbox_device:
+        data:
+          name: "{{ inventory_hostname }}"
+          device_role: "{{ device_role }}"
+          device_type: "{{ device_model }}"
+          status: Active
+          site: "{{ inventory_hostname.split('-')[0] }}"
+        netbox_token: "{{ netbox_token }}"
+        netbox_url: "{{ netbox_url }}"
+        state: "{{ netbox_state }}"
+      register: netbox_device
+      tags: netbox_devices
+
+Include it in the main:
+
+```
+- name: Create NetBox Device
+  include_tasks: create_device.yml
+  tags: netbox_devices
+```
+
+In order to create a device you need to:
+
+1. Create all the device manufacturers /vendors
+2. Create all the device models
+3. Create all the device roles
+
+There is no prebuilt module for this info - so we need to use the `uri` module to send HTTP requests
+First getting all existing devices vendors, models and roles and then adding new ones if they are not present
+
+Then we can use `netbox_device` build in module to popualte netbox
+
+More on the [Netbox API information](https://netbox.readthedocs.io/en/stable/api/overview/)
+
+### Populating Interfaces in Netbox
+
+Specify `group_vars/all.yml` with the point-to-point fabric:
+
+    p2p_ip:
+      dc1-leaf01:
+        - {port: Ethernet8, ip: 172.10.1.1/31 , peer: dc1-spine01, pport: Ethernet1, peer_ip: 172.10.1.0/31}
+        - {port: Ethernet9, ip: 172.10.1.5/31 , peer: dc1-spine02, pport: Ethernet1, peer_ip: 172.10.1.4/31}
+      dc1-leaf02:
+        - {port: Ethernet8, ip: 172.10.1.3/31 , peer: dc1-spine01, pport: Ethernet2, peer_ip: 172.10.1.2/31}
+        - {port: Ethernet9, ip: 172.10.1.7/31 , peer: dc1-spine02, pport: Ethernet2, peer_ip: 172.10.1.6/31}
+      dc1-spine01:
+        - {port: Ethernet1, ip: 172.10.1.0/31 , peer: dc1-leaf01, pport: Ethernet8, peer_ip: 172.10.1.1/31}
+        - {port: Ethernet2, ip: 172.10.1.2/31 , peer: dc1-leaf02, pport: Ethernet8, peer_ip: 172.10.1.3/31}
+        - {port: Ethernet6, ip: 172.10.1.8/31 , peer: dc1-spine02, pport: Ethernet6, peer_ip: 172.10.1.9/31}
+      dc1-spine02:
+        - {port: Ethernet1, ip: 172.10.1.4/31 , peer: dc1-leaf01, pport: Ethernet9, peer_ip: 172.10.1.5/31}
+        - {port: Ethernet2, ip: 172.10.1.6/31 , peer: dc1-leaf02, pport: Ethernet9, peer_ip: 172.10.1.7/31}
+        - {port: Ethernet6, ip: 172.10.1.9/31 , peer: dc1-spine01, pport: Ethernet6, peer_ip: 172.10.1.8/31}
+      dc2-leaf01:
+        - {port: Ethernet8, ip: 172.11.1.1/31 , peer: dc2-spine01, pport: Ethernet1, peer_ip: 172.11.1.0/31}
+        - {port: Ethernet9, ip: 172.11.1.5/31 , peer: dc2-spine02, pport: Ethernet1, peer_ip: 172.11.1.4/31}
+      dc2-leaf02:
+        - {port: Ethernet8, ip: 172.11.1.3/31 , peer: dc2-spine01, pport: Ethernet2, peer_ip: 172.11.1.2/31}
+        - {port: Ethernet9, ip: 172.11.1.7/31 , peer: dc2-spine02, pport: Ethernet2, peer_ip: 172.11.1.6/31}
+      dc2-spine01:
+        - {port: Ethernet1, ip: 172.11.1.0/31 , peer: dc2-leaf01, pport: Ethernet8, peer_ip: 172.11.1.1/31}
+        - {port: Ethernet2, ip: 172.11.1.2/31 , peer: dc2-leaf02, pport: Ethernet8, peer_ip: 172.11.1.3/31}
+        - {port: Ethernet6, ip: 172.11.1.8/31 , peer: dc2-spine02, pport: Ethernet6, peer_ip: 172.11.1.9/31}
+      dc2-spine02:
+        - {port: Ethernet1, ip: 172.11.1.4/31 , peer: dc2-leaf01, pport: Ethernet9, peer_ip: 172.11.1.5/31}
+        - {port: Ethernet2, ip: 172.11.1.6/31 , peer: dc2-leaf02, pport: Ethernet9, peer_ip: 172.11.1.7/31}
+        - {port: Ethernet6, ip: 172.11.1.9/31 , peer: dc2-spine01, pport: Ethernet6, peer_ip: 172.11.1.8/31}
+
+Create a task to create interfaces `tasks/create_device_intf.yml`
+
+    - name: Create Fabric Interfaces on Devices
+      netbox.netbox.netbox_device_interface:
+        netbox_token: "{{ netbox_token }}"
+        netbox_url: "{{ netbox_url }}"
+        data:
+          device: "{{ inventory_hostname }}"
+          name: "{{ item.port }}"
+          description: "{{ item.type | default('CORE') }} | {{ item.peer }}| {{ item.pport }}"
+          enabled: true
+          mode: Access
+          type: "1000Base-T (1GE)"
+        state: "{{ netbox_state }}"
+      loop: "{{ p2p_ip[inventory_hostname] }}"
+      when: p2p_ip is defined
+      tags: netbox_intfs
+
+Add to `main.yml`:
+
+    - name: Create NetBox Device Interfaces
+      include_tasks: create_device_intf.yml
+      tags: netbox_intfs
+
+> Ater creatingt the P2P links variables for the fabric, we use `netbox_interface` module to create all the links in Netbox. We can also manage the maangement and loopback interfaces
+
+In ansible `2.10` the netbox interface module changed to a collection `netbox_device_interface`
+
+    ansible-galaxy collection install netbox.netbox
+
+Then use this in the playbook: `netbox.netbox.netbox_device_interface`
+
+Check the [netbox_device_interface](https://docs.ansible.com/ansible/latest/collections/netbox/netbox/netbox_device_interface_module.html)
+
+> For some reason the `type` was required
+
+![Netbox device interfaces](img/netbox/netbox_device_interfaces.png)
 
 
 
