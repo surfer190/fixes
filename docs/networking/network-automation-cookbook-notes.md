@@ -647,7 +647,7 @@ A CE (Customer Edge) Router is a router at the customer premises, connecting to 
 
 VRFs and VPNs are only relevant on PE routers.
 
-![Example Juniper Network we will use](img/juniper/ansible_juniper_example_network.png)
+![Example Juniper Network we will use](/img/juniper/ansible_juniper_example_network.png){: class="img-fluid" }
 
 The topology:
 
@@ -2564,7 +2564,7 @@ Check the [netbox_device_interface](https://docs.ansible.com/ansible/latest/coll
 
 > For some reason the `type` was required
 
-![Netbox device interfaces](img/netbox/netbox_device_interfaces.png)
+![Netbox device interfaces](/img/netbox/netbox_device_interfaces.png){: class="img-fluid" }
 
 
 
