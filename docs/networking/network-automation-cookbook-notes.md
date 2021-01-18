@@ -2566,7 +2566,580 @@ Check the [netbox_device_interface](https://docs.ansible.com/ansible/latest/coll
 
 ![Netbox device interfaces](/img/netbox/netbox_device_interfaces.png){: class="img-fluid" }
 
+### Populating IP addresses in Netbox
 
+Create ip addresses and bind with interfaces.
+
+Create `create_device_intf_ip.yml`:
+
+    - name: Create Fabric IPs
+      netbox_ip_address:
+        netbox_token: "{{ netbox_token }}"
+        netbox_url: "{{ netbox_url }}"
+        data:
+          address: "{{ item.ip }}"
+          interface:
+            name: "{{ item.port }}"
+            device: "{{ inventory_hostname }}"
+        state: "{{ netbox_state }}"
+      loop: "{{ p2p_ip[inventory_hostname] }}"
+      tags: netbox_ip
+
+Add the role to `main.yml`:
+
+    - name: Create NetBox Device Interfaces IP Address
+      include_tasks: create_device_intf_ip.yml
+      tags: netbox_ip
+
+The `p2p_ip` data structure holds the ip addresses assigned on each interface - the same process for management and loopback ips.
+
+More on the [netbox ip address module](https://docs.ansible.com/ansible/latest/modules/netbox_ip_address_module.html#netbox-ip-address-module)
+
+![Netbox ip addresses](/img/netbox/netbox_ip_address.png){: class="img-fluid" }
+
+### Populating IP Prefixes in Netbox
+
+Using Netbox as IPAM (IP Address Management) in the network.
+
+Add the subnets to `group_vars/all.yml`:
+
+    subnets:
+      -   prefix: 172.10.1.0/24
+          role: p2p_subnet
+          # site: dc1
+      -   prefix: 172.11.1.0/24
+          role: p2p_subnet
+          # site: dc2
+      -   prefix: 10.100.1.0/24
+          role: loopback_subnet
+          site: dc1
+      -   prefix: 10.100.2.0/24
+          role: loopback_subnet
+          site: dc2
+      -   prefix: 172.20.1.0/24
+          role: oob_mgmt_subnet
+          site: dc1
+      -   prefix: 172.20.2.0/24
+          role: oob_mgmt_subnet
+          site: dc2
+
+Add to main tasks:
+
+    - name: Create IP Prefixes
+      netbox_prefix:
+        netbox_token: "{{ netbox_token }}"
+        netbox_url: "{{ netbox_url }}"
+        data:
+          prefix: "{{ item.prefix }}"
+          site: "{{ item.site | default(omit) }}"
+          status: Active
+        state: "{{ netbox_state }}"
+      loop: "{{ subnets }}"
+      loop_control:
+        label: "{{ item.prefix }}"
+      run_once: yes
+      tags: netbox_prefix
+
+> `netbox_prefix` is used to create subnets
+
+![Netbox prefixes](/img/netbox/netbox_prefixes.png){: class="img-fluid" }
+
+### Using Netbox as a dynamic inventory source
+
+Netbox acts as the inventory - together with that roles and sites - a dynamic inventory can be built
+
+Create a file `netbox_dynamic_inventory/netbox_inventory_source.yml`
+
+    ---
+    plugin: netbox
+    api_endpoint: http://172.20.100.111
+    token: 08be88e25b23ca40a9338d66518bd57de69d4305
+    group_by:
+      - device_roles
+      - sites
+
+Create a new playbook `netbox_dynamic_inventory/pb_create_report.yml`:
+
+    ---
+    - name: Create Report from Netbox Data
+      hosts: all
+      gather_facts: no
+      connection: local
+      tasks:
+      
+        - name: Debug the hostvars from the dynamic inventory
+          debug:
+            var: hostvars
+          run_once: yes
+      
+        - name: Build Report
+          blockinfile:
+            block: |
+                netbox_data:
+                {% for node in play_hosts %}
+                  - { node: {{ node }} , type: {{ hostvars[node].device_types[0] }} , mgmt_ip: {{ hostvars[node].inventory_hostname }} }
+                {% endfor %}
+            path: ./netbox_report.yaml
+            create: yes
+          delegate_to: localhost
+          run_once: yes
+
+In all previous examples we used a static `hosts` inventory.
+With a dynamic inventory it can be built on the fly.
+
+Ansible uses a **plugin** to speak to a dynamic inventory source.
+As of ansible 2.9, netbox was introduced as an inventory source.
+
+The **plugin** is defined in an inventory source yaml file with the:
+
+* Plugin name: `netbox`
+* api endpoint
+* token
+
+You can also specify a `group_by` to break the hosts into groups
+
+Testing the dynamic inventory:
+
+    ansible-inventory --list -i netbox_inventory_source.yml
+
+It pulls the host vars and hosts:
+
+The inventory part is:
+
+    "all": {
+        "children": [
+            "device_roles_leaf_switch",
+            "device_roles_spine_switch",
+            "sites_dc1",
+            "sites_dc2",
+            "ungrouped"
+        ]
+    },
+    "device_roles_leaf_switch": {
+        "hosts": [
+            "dc1-leaf01",
+            "dc1-leaf02",
+            "dc2-leaf01",
+            "dc2-leaf02"
+        ]
+    },
+
+To run the playbook report - we specify the dynamic inventory:
+
+    ansible-playbook pb_create_report.yml -i netbox_inventory_source.yml
+
+Check info about the [netbox ansible dynamic inventory](https://docs.ansible.com/ansible/latest/plugins/inventory/netbox.html)
+
+### Generating a Configuration using Netbox
+
+In `netbox_data.yml`:
+
+    ---
+    netbox_url: http://172.20.100.111
+    netbox_token: 08be88e25b23ca40a9338d66518bd57de69d4305
+
+In `pb_build_config.yml`:
+
+    ---
+    - name: Create Report from Netbox Data
+      hosts: all
+      gather_facts: no
+      connection: local
+      tasks:
+        - name: Read netbox Data
+          include_vars: netbox_data.yml
+          run_once: yes
+
+        - name: Get Data from Netbox
+          uri:
+            url: "{{ netbox_url }}/api/dcim/interfaces/?device={{ inventory_hostname }}"
+            method: GET
+            headers:
+            Authorization: "Token {{ netbox_token }}"
+            Accept: 'application/json'
+            return_content: yes
+            body_format: json
+            status_code: [200, 201]
+          register: netbox_interfaces
+          delegate_to: localhost
+          run_once: yes 
+        
+        - name: Push Config to device
+          eos_config:
+            lines:
+              - description {{ port.description }} 
+            parent: interface {{ port.name }}
+          loop: "{{ netbox_interfaces.json.results }}"
+          loop_control: 
+            loop_var: port
+          vars:
+            ansible_connection: network_cli
+            ansible_network_os: eos
+
+After getting the config from netbox
+
+## 12. Simplifying Automation with AWX
+
+More info in the book
+
+## 13. Advanced Techniques and Best Practices for Ansible
+
+### Installing Ansible in a Virtual Environment
+
+    python3 -m venv env
+    source env/bin/activate
+    
+    pip3 install ansible==2.9
+
+> This is good as we won't use and clog up the system level python and ansible, we can have a self-contained environment to run our playbooks
+
+We can also run seperate ansible versions in different projects
+
+By default ansible will try use the system level python in `/usr/bin/python`
+
+To override that we can use the `hosts` inventory:
+
+    [all:vars]
+    ansible_python_interpreter=/Users/stephen/projects/cookbook/env/bin/python
+
+It can also be set in `ansible.cfg`:
+
+    [defaults]
+    ...
+    interpreter_python=./env/bin/python
+
+### Validating YAML and Ansible Playbooks
+
+Install the required packages
+
+    pip3 install yamllint
+    pip3 install ansible-lint
+
+Run `yamllint` on all files in a folder
+
+    yamllint .
+
+Run `ansible-lint` on a specific playbook
+
+    ansible-lint pb.yml
+
+If there are no errors, just warning, the return code will be 0
+
+    echo $?
+    0
+
+If there are errors:
+
+    echo $?
+    1
+
+A `.yamllint` file can be created for setting rules for the linting
+
+    ---
+    extends: default
+    rules:
+      line-length:
+        level: warning
+
+In the above case, line length errors have changed to warnings.
+
+Ansible-lint tips:
+
+* `ansible-lint -L`: output all the rules and short description
+* `ansible-lint -T`: output all the rules and tags
+
+Check the [yamllint docs](https://yamllint.readthedocs.io/en/stable/) and the [ansible-lint docs](https://ansible-lint.readthedocs.io/en/latest/)
+
+### Calculating the execution time for Playbooks
+
+Add to `ansible.cfg`:
+
+    [defaults]
+    callback_whitelist=timer, profile_tasks, profile_roles
+
+List all the tasks in your playbook:
+
+    ansible-playbook pb_basic_config.yml --list-tasks
+
+Run the playbook:
+
+    ansible-playbook pb_basic_config.yml
+    
+    Playbook run took 0 days, 0 hours, 0 minutes, 21 seconds
+    Monday 18 January 2021  09:03:13 +0200 (0:00:01.516)       0:00:21.669 ******** 
+    =============================================================================== 
+    build_router_config : System Configuration ----------------------------------------------- 2.41s
+    build_router_config : Create Config Directory -------------------------------------------- 1.89s
+    build_router_config : BGP Configuration -------------------------------------------------- 1.84s
+    build_router_config : Interface Configuration -------------------------------------------- 1.75s
+    build_router_config : MPLS Configuration ------------------------------------------------- 1.73s
+    build_router_config : Build Final Device Configuration ----------------------------------- 1.73s
+    build_router_config : Ansible check fodlers ---------------------------------------------- 1.71s
+    build_router_config : Create Temp Directory per Node ------------------------------------- 1.62s
+    build_router_config : Remove Old Assembled Config ---------------------------------------- 1.54s
+    build_router_config : Remove Build Directory --------------------------------------------- 1.52s
+    build_router_config : SET FACT >> Build Directory ---------------------------------------- 1.35s
+    build_router_config : debug -------------------------------------------------------------- 1.27s
+    build_router_config : Debug the tmp directory -------------------------------------------- 1.27s
+    Monday 18 January 2021  09:03:13 +0200 (0:00:01.525)       0:00:21.676 ******** 
+    =============================================================================== 
+    build_router_config ---------------------------------------------------- 21.64s
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    total ------------------------------------------------------------------ 21.64s
+
+The plugins we enabled:
+
+* `timer`: This plugin provides a summary of the execution time for the playbook.
+* `profile_tasks`: This provides us with a summary of the execution time of each task within a playbook.
+* `profile_roles`: This provides us with a summary of the time taken for each role within a playbook.
+
+Check out [ansible callback plugins](https://docs.ansible.com/ansible/latest/plugins/callback.html)
+
+### Validating User Input with Ansible
+
+We rely heavily on `hosts` and `group_vars`. We should verify the integrity of this data before running playbooks.
+
+Create `acl.yml`:
+
+    ---
+    ACLs:
+      INFRA_ACL:
+        - src: 10.1.1.0/24
+          dst: any
+          dport: ssh
+          state: present
+        - src: 10.2.1.0/24
+          dst: any
+          app: udp
+          dport: snmp
+          state: present
+
+Create a `validate_acl.yml` file:
+
+    ---
+    - include_vars: ACLs.yml
+
+    - name: Validate ACL is Defined
+      assert:
+        that:
+          - ACLs is defined
+          - "'INFRA_ACL' in ACLs.keys()"
+          - ACLs.INFRA_ACL|length > 0
+
+    - name: Validate Rules are Valid
+      assert:
+        that:
+          - item.src is defined
+          - item.dst is defined
+          - item.src | ipaddr
+      loop: "{{ ACLs.INFRA_ACL }}"
+
+then ensure that you run the validation in your deploy playbook:
+
+    ---
+    - name: Configure ACL on IOS-XR
+      hosts: all
+      tasks:
+        - name: Validate Input Data
+          import_tasks: validate_acls.yml
+          run_once: yes
+          delegate_to: localhost
+          tags: validate
+        - name: Create ACL Config
+          template:
+            src: acl.j2
+            dest: acl_conf.cfg
+          delegate_to: localhost
+          run_once: yes
+        - name: Provision ACLs
+          iosxr_config:
+            src: acl_conf.cfg
+            match: line
+
+> This will save you from getting burned when variables are not what you expect them to be
+
+### Running Ansible in Check Mode
+
+`check` mode prevents any changes on remote managed nodes
+
+Add this extra ACL to `acl.yml`:
+
+    - src: 10.3.2.0/24
+      dst: 10.2.2.0/24
+      dport: dns
+      state: present
+
+Run the play in check mode
+
+    ansible-playbook deploy_acls.yml -l den-core01  --check
+
+To see what would have changed run:
+
+    ansible-playbook pb_push_acl.yml -l den-core01  --check --diff
+
+We can also use `check` mode in our playbook to decided when to run or skip tasks:
+
+    - name: Configure ACL on IOS-XR
+      hosts: all
+      serial: 1
+      tags: deploy
+      tasks:
+        - name: Backup Config
+          iosxr_config:
+            backup:
+          when: not ansible_check_mode
+        - name: Deploy ACLs
+          iosxr_config:
+            src: acl_conf.cfg
+            match: line
+          when: not ansible_check_mode
+
+> With the `ansible_check_mode` variable will only run those tasks when not in check mode
+
+More on [check mode](https://docs.ansible.com/ansible/latest/user_guide/playbooks_checkmode.html)
+
+### Controlling Paralellism and Rolling Updates
+
+In you `ansible.cfg`:
+
+    [defaults]
+    forks=2
+
+Update `pb_push_acl.yml`:
+
+    - name: Configure ACL on IOS-XR
+      hosts: all
+      serial: 1
+      tags: deploy
+      tasks:
+        - name: Backup Config
+          iosxr_config:
+            backup:
+        - name: Deploy ACLs
+          iosxr_config:
+            src: acl_conf.cfg
+            match: line
+
+> Ansible by default executes in parallel - forking 5 parallel threads
+
+Note: `local_action` and `deletegate_to` should be kept to a minimum as these tasks fork a python interpreter
+
+In order to execute one at a time we will use `serial: 1` - ie. Run all tasks on the first, then second etc.
+Rather than run first tasks for all hosts...
+
+[More on playbook delegation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html)
+
+### Configuring Fact Caching in Ansible
+
+Enable fact caching in `ansible.cfg`:
+
+    [defaults]
+    fact_caching=yaml
+    fact_caching_connection=./fact_cache
+
+Create `pb_get_facts.yml`:
+
+    ---
+    - name: Collect Network Facts
+      hosts: all
+      tasks:
+        - name: Collect Facts Using Built-in Fact Modules
+          iosxr_facts:
+            gather_subset:
+              - interfaces
+        - name: Collect Using NAPALM Facts
+          napalm_get_facts:
+            hostname: "{{ ansible_host }}"
+            username: "{{ ansible_user }}"
+            password: "{{ ansible_ssh_pass }}
+            dev_os: "{{ ansible_network_os }}"
+            filter:
+              - interfaces
+        - name: Set and Cache Custom Fact
+          set_fact:
+              site: Egypt
+              cacheable: yes
+
+Run the play on a single node:
+
+    ansible-playbook pb_validate_from_cache.yml -l den-core01
+
+The facts are cached on teh control node to speed up the playbook
+
+More in the book
+
+### Creating custom python filters for ansible
+
+Ansible provides the built-in and jinja2 filters to manipulate data.
+Soemtimes there is no better way but to create your own.
+
+Create a `filter_plugins` folder
+
+Create a file called `filter.py`
+
+    class FilterModule(object):
+        def filters(self):
+            return {
+                'acl_state': self.acl_state
+            }
+        def acl_state(self,acl_def):
+            for acl_name, acl_rules in acl_def.items():
+                for rule in acl_rules:
+                    rule['state'] = rule['state'].upper()
+            return acl_def
+
+Create `pb_test_custom_filter.yml`:
+
+    ---
+    - name: Test custom filter
+      hosts: all
+      vars:
+        ansible_connection: local
+      tasks:
+      - name: Read ACL data
+        include_vars: acl.yml
+        run_once: yes
+
+      - name: Apply our custom filter
+        set_fact:
+          standard_acl: "{{ ACLs | acl_state }}"
+        run_once: yes
+
+      - name: Display output after Filter
+        debug: var=standard_acl
+
+> Custom filters must be in a folder called `filter_plugins`
+
+The filter library is extended, the function `filters` must return a ditionary of all custom filters we define.
+
+We can also pass values to filters
+
+    class FilterModule(object):
+
+        ...
+
+        def custom_acl(self,acl_def,field=None):
+            for acl_name, acl_rules in acl_def.items():
+                for rule in acl_rules:
+                    if field and field in rule.keys():
+                        rule[field] = rule[field].upper()
+            return acl_def
+
+        def filters(self):
+            return {
+                'acl_state': self.acl_state,
+                'custom_acl': self.custom_acl
+            }
+
+Using the new custom filter:
+
+    - name: Apply Our Custom Filter
+            set_fact:
+              standard_acl: "{{ ACLs | acl_state }}"
+              final_acl: "{{ ACLs | custom_acl('dports') }}"
+            run_once: yes
+    - name: Display Output After Filter
+      debug: var=final_acl
 
 
 ## Source
