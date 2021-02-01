@@ -181,6 +181,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Getting Started](django/getting-started.md)
 - 2020-06-14: [Django Multi Tenant App](django/django-multi-tenant-app.md)
 - 2020-06-14: [Obey The Testing Goat](django/obey-the-testing-goat.md)
+- 2020-02-01: [Django How to get the Root Path](django/django-how-to-get-root-path.md)
 - 2019-09-23: [Django Permissions Without A Model](django/django-permissions-without-a-model.md)
 - 2019-06-21: [Django Rotating Log](django/django-rotating-log.md)
 - 2019-04-24: [Django Class Based Views](django/django-class-based-views.md)
