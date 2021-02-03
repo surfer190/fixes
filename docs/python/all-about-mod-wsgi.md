@@ -17,7 +17,7 @@ A WSGI is a specification of a generic API for mapping between an underlying web
 ## Installation
 
 * As an apache module
-* As a python package, which install `mod_wsgi` into your environment. THe binary program `mod_wsgi-express` then becomes available on the command line. - does not require any configuration of apache yourself
+* As a python package, which install `mod_wsgi` into your environment. The binary program `mod_wsgi-express` then becomes available on the command line. - does not require any configuration of apache yourself
 
 ## Getting Started
 

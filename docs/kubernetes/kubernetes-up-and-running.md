@@ -2791,7 +2791,7 @@ They are needed for he requirements of an enterprise IT department requirements.
 A daemonset will create a pod on every node unless a node selector is used.
 They are ignored by the kubernetes scheduler, the daemonset controller is in charge of state management.
 
-THe decoupled nature mean that pods in a daemonset or a replicaset can be inspected the same way.
+The decoupled nature mean that pods in a daemonset or a replicaset can be inspected the same way.
 
     kubectl logs <pod-name>
 
@@ -3759,7 +3759,7 @@ Invalid key names:
 * `_password.txt`
 
 Configmaps are `UTF-8` text. They are unable to store binary but can store base64.
-THe maximum size of a ConfigMap or Secret is 1MB.
+The maximum size of a ConfigMap or Secret is 1MB.
 
 ## Managing ConfigMaps and Secrets
 

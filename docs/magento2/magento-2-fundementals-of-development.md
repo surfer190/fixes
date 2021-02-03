@@ -324,7 +324,7 @@ Then using `di.xml` you have to define which class will be substituted for the i
 
 `di.xml` specifies the List or interfaces, classes and factories sent into `__construct()` method
 
-THe best candidate to use `di` is a singleton-type class - only single instance but used in multiple places. Eg. Cache, session, registry, helpers. Factory / API classes als match this definition.
+The best candidate to use `di` is a singleton-type class - only single instance but used in multiple places. Eg. Cache, session, registry, helpers. Factory / API classes als match this definition.
 
 Not every class has to be injected. Eg. an entity class like `product` depends on data from database. So a `factory` is recommended for injecting.
 

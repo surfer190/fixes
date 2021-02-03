@@ -7,7 +7,7 @@ title: Edit A File In Docker Container With No Editor
 ---
 ## How to Edit a File in a docker container with no Text Editor
 
-THe lightwight nature of docker images, means that often they do not have the standard utilities we expect on every standard linux machine.
+The lightwight nature of docker images, means that often they do not have the standard utilities we expect on every standard linux machine.
 
 Simply editing a file is an ordeal if you don't have `vim`, `vi` or `nano` available.
 

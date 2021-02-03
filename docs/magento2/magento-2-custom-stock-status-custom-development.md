@@ -45,7 +45,7 @@ The code for doing this in magento 1 is:
 
 First thing to do is check where in the template is the stock indicator by showing template hints.
 
-THe template is `/vendor/magento/module-catalog/view/frontend/templates/product/view/type/default.phtml`
+The template is `/vendor/magento/module-catalog/view/frontend/templates/product/view/type/default.phtml`
 
 and the block class is: `Magento\Catalog\Block\Product\View\Type\Simple\Interceptor` for simple products
 

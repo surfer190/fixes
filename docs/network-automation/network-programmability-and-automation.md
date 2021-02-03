@@ -663,8 +663,8 @@ The `status` in the angled brackets `<>` can be:
 
 * `UP` - Indicates the interface is enabled
 * `LOWER_UP` - Indiciates the interface link is up
-* `NO_CARRIER` - The interface is enabled but there is no link (THe interface is "down")
-* `DOWN` - THe interface is administratively down
+* `NO_CARRIER` - The interface is enabled but there is no link (The interface is "down")
+* `DOWN` - The interface is administratively down
 
 To filter for a specific interface:
 

@@ -267,7 +267,7 @@ A hash function is simply a mapping from a larger set of data values to a smalle
 
 > For instance, a hash function H might take an input bit string of any length up to 50,000 bits, and uniformly produce a 128-bit output
 
-THe idea is the hash is sent along with the mesage. The receiver calcualtes the hash from the message and compares it with the sent hash. If they differ - the integrity of the message is failed and has been changed in transit.
+The idea is the hash is sent along with the mesage. The receiver calcualtes the hash from the message and compares it with the sent hash. If they differ - the integrity of the message is failed and has been changed in transit.
 
 Uses:
 
@@ -308,7 +308,7 @@ Single secure full-duplex byte stream
 Then `SSH-AUTH` is used over `SSH-TRANS`. Then `SSH-CONN`.
 `SSH-CONN` and `SSH-AUTH` are at the same layer - insude `SSH-TRANS`.
 
-Protocol only mentions about _on the wire_ communication. Other conventions we think are part of the protocol like `authorized_keys` and `known_hosts` are not. THey are _implementation dependent_.
+Protocol only mentions about _on the wire_ communication. Other conventions we think are part of the protocol like `authorized_keys` and `known_hosts` are not. They are _implementation dependent_.
 
 #### SSH-TRANS
 

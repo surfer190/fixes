@@ -224,7 +224,7 @@ The [awx api reference](https://docs.ansible.com/ansible-tower/latest/html/tower
 
 ### Authenticating
 
-THere are various methods for [authenticating on ansible tower / awx](https://www.ansible.com/blog/summary-of-authentication-methods-in-red-hat-ansible-tower):
+There are various methods for [authenticating on ansible tower / awx](https://www.ansible.com/blog/summary-of-authentication-methods-in-red-hat-ansible-tower):
 
 1. Session Authentication
 2. Basic Authentication

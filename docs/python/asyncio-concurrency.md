@@ -124,7 +124,7 @@ Main points:
 
 ### Race Condition
 
-THe problem in the code was:
+The problem in the code was:
 
     def change(self, knives, forks):
         self.knives += knives

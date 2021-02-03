@@ -29,7 +29,7 @@ ssh user@hostname -v
 
 You will probably get something about no permission to `/dev/tty`
 
-THe only way to fix this I have found is to specifiy the shell to use when switching to the `jenkins` user:
+The only way to fix this I have found is to specifiy the shell to use when switching to the `jenkins` user:
 
 `sudo su -s /bin/bash jenkins`
 

@@ -33,4 +33,38 @@ title: Words and Definitions
 * ostensibly - appears or stated to be true, though not necessarily so
 * equanimity - calmness and composure
 * acquiescence - reluctant acceptance without protest
-
+* adroitly - in a clever skillful way
+* fidelity - faithfulness, support and loyalty to a cause, person or belief
+* perfunctory - action carried out with no real interest
+* dour - relentlessly severe, gloomy
+* sanguine - optimistic / positive in a bad situation
+* precocious - having developed skills at an early age
+* conspicuous - clearly visible
+* ignominy - public shame or disgrace
+* surfeit - excessive amount of (food or drink)
+* toerag - comtemptable, worthless person
+* volition - the faculty or power of using one's will
+* sanctimonious - making a show of being morally superior
+* predilection - a preference or special liking for something
+* disposition - a poersons quality of mind and character
+* recidivism - tendency of a convicted criminal to reoffend
+* imperious - arrogant, domineering
+* benevolent - well meaning and kindly
+* suffuse - gradually spread over
+* stoic - person who can endure pain and suffering without showing it
+* alacrity - brisk and ncheerful readiness
+* obliquely - in a slanted way, not direct
+* fastidious - concerned with accuracy and detail
+* indolence - laziness - avoidance of activity
+* chastised - reprimand severely
+* victuals - food or provisions
+* despot - a ruler holding absolute power - excercised in a cruel and oppressive way
+* glowered - scowl - have angry look
+* proclivities - inclination or predisposition towards doing something regularly
+* disquiet - a feeling of anxiety or worry
+* petulance - quality of being childishly sulky or bad tempered
+* beset - (of a problem) treatening peristently
+* vacillate - be indecisive - alternate between 2 decisions
+* consummate -complete or achieved
+* fop (dandy) - man who is concerned of his appearance excesively
+* ethereal - delicate and light

@@ -802,7 +802,7 @@ Say you want a common class to represent input data for a MapReduce function, yo
         def read(self):
             raise NotImplementedError
 
-THere is one version of a concrete subclass that reads from a file on disk:
+There is one version of a concrete subclass that reads from a file on disk:
 
     class PathInputData(InputData):
         def __init__(self, path):

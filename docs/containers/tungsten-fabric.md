@@ -9,7 +9,7 @@ title: Tungsten Fabric
 
 Open Source SDN
 
-THe open source version of juniper networks Contrail
+The open source version of juniper networks Contrail
 
 ### What can you do with it
 

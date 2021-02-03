@@ -1274,7 +1274,7 @@ year 6: 30
 
 #### Payments towards capital and interest
 
-My Viljoen buys a flat and gets a R50000 bond. THe bond repayments are R573.35 at the end of each month. The interest rate is 13.35% and the term is 25 years.
+My Viljoen buys a flat and gets a R50000 bond. The bond repayments are R573.35 at the end of each month. The interest rate is 13.35% and the term is 25 years.
 
 Calculate the interest and capital repayments during the first year of repayment:
 
@@ -1866,7 +1866,7 @@ One way to reduce risk is to diversify across asset classes. **This does not eli
 * A shortcut to calculate the time it takes for purchasing power to half is: 72 / (rate * 100)
 * At 12% inflation: 72/12 = 6 years for purchasing power of capital to half
 * At 6% inflation: 72/6 = 12 years for purchasing power of capital to half
-* Investors with a long-term view: inflation poses as great a threat as stock market volatility. THerefore the portfolio should be more heavily weighted towards equities - even for a more conservative risk profile.
+* Investors with a long-term view: inflation poses as great a threat as stock market volatility. Therefore the portfolio should be more heavily weighted towards equities - even for a more conservative risk profile.
 * Investors with a short-term view: share price volatility poses a greater threat than inflation, therefore a portfolio should be more heavily weighted towards cash and short-term deposits.
 
 * **Interest rate risk** - financial and real assets are affected by unexpected or expected changes in interest rate

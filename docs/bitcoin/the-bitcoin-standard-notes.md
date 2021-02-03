@@ -163,7 +163,7 @@ Silver became an industiral metal.
 
 Second place in monetary terms is equivlanet to nothing.
 
-The Hunt brothers triedbuying and monetising Sivler in 1970 but silver producers and holders and silver holders would sell it into the market.
+The Hunt brothers tried buying and monetising Silver in 1970 but silver producers and holders and silver holders would sell it into the market.
 
 Know about the _stock-to-flow_ ratio
 
@@ -622,7 +622,7 @@ Payment methods before bitcoin:
 1. Cash payments - in person, immediate and final, require no trust as there is no third party. Main drawback is the 2 partys need to be physically present.
 2. Intermediated payments - require a trusted third party, cheques, credit cards, debit cards, money transfer services - paypal. Allows payments where both parties need not be present and without having to carry cash. The main drawback is the need to trust the third party, the cost and time for the payment to be cleared.
 
-Third parties introduce risk and technical failure. They are also vulnerable to surveillance and bans by politicians. THey also have the risk of fraud.
+Third parties introduce risk and technical failure. They are also vulnerable to surveillance and bans by politicians. They also have the risk of fraud.
 
 Satoshi Nakamoto's motivation for Bitcoin was to create a “purely peer‐to‐peer form of electronic cash” that would not require trust in third parties for transactions and whose supply cannot be altered by any other party.
 
