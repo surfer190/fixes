@@ -1,7 +1,7 @@
 ---
 author: ''
 category: Juniper
-date: '2020-02-04'
+date: '2021-02-04'
 summary: ''
 title: Juniper associate JNCIA Learning Notes
 ---
@@ -1890,7 +1890,7 @@ Check reachability
 
     run ping 172.31.15.1 rapid count 25
 
-![juniper-static-routes-network-diargram](/img/juniper/juniper_static_routing_diagram.png)
+![juniper-static-routes-network-diargram](/img/juniper/juniper_static_routing_diagram.png){: class="img-fluid" }
 
 Add static route to loopback address
 

@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-02-04: _Juniper_ [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
 - 2021-01-07: _Networking_ [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
 - 2021-01-04: _Bitcoin_ [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2021-01-04: _Api_ [Api Product Manager](api/api-product-manager.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
 - 2020-11-07: _Bitcoin_ [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: _Bitcoin_ [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
-- 2020-10-30: _Sports Betting_ [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Table of Contents
 
@@ -296,7 +296,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-10-28: [Jenkins Host Key Verification Failed When Testing Ssh](jenkins/jenkins-host-key-verification-failed-when-testing-ssh.md)
 
 ## Juniper
-- 2020-02-04: [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
+- 2021-02-04: [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
 
 ## Kafka
 - 2020-06-14: [Kafka](kafka/kafka.md)
