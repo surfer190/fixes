@@ -295,6 +295,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Jenkins
 - 2015-10-28: [Jenkins Host Key Verification Failed When Testing Ssh](jenkins/jenkins-host-key-verification-failed-when-testing-ssh.md)
 
+## Juniper
+- 2020-02-04: [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
+
 ## Kafka
 - 2020-06-14: [Kafka](kafka/kafka.md)
 
