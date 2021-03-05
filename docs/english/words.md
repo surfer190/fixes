@@ -33,4 +33,13 @@ title: Words and Definitions
 * ostensibly - appears or stated to be true, though not necessarily so
 * equanimity - calmness and composure
 * acquiescence - reluctant acceptance without protest
-
+* parochial - having a narrow outlook or scope
+* salubrious - pleasant place (not run down)
+* gregarious - fond of company, sociable
+* despoliation - destruction, ravaging
+* unobtrusive - inconspicuous - not attrating attention
+* effluent - liquid waste discharged into a river or sea
+* imbued - inspire or permeate (feeling or quality)
+* nebulous - in the form of a cloud - hazy
+* wan - pale - impression of illness or fatigue
+ 
