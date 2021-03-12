@@ -42,4 +42,11 @@ title: Words and Definitions
 * imbued - inspire or permeate (feeling or quality)
 * nebulous - in the form of a cloud - hazy
 * wan - pale - impression of illness or fatigue
- 
+* lucre - money gained in a dishonourable way
+* carrion - decaying flesh of dead animals
+* paragon - perfect example of
+* unfettered - not restrained of conztricted
+* avaricious - having or showing extreme greed for money
+* lecerous - shwing excessive sexual desire
+* mollify - appease the anger of someone
+
