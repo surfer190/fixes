@@ -85,6 +85,7 @@ Gives preference to local and control traffic
 Built-in rate limiter is not configurable
 
 Simplified:
+
 * transit traffic - forwarded through PFE
 * exception traffic - processed locally by RE or PFE
 * protocol and management traffic - sent directly to the RE
@@ -750,7 +751,7 @@ Everything under the `interface-name` are the _physical properties_ of that inte
 
 > A single logical unit does support mulitple protocol families - such as `inet` and `inet6` - you cannot configure another protocol with the `ethernet-switching`family
 
-`preferred` is used when multiple ip addresses belonging to the same subnetonthe ame interface. this options lets you set which will be used as the source address.By default the numerically lowest address is chosen.
+`preferred` is used when multiple ip addresses belonging to the same subnet on the same interface. this options lets you set which will be used as the source address.By default the numerically lowest address is chosen.
 
     family inet {
         address 172.19.102.1/24
@@ -2491,6 +2492,7 @@ typically only the edge device will have `RPF checks` enabled - ie. the one conn
 * fails are discarded by default
 * `fail-filter` - packet will be processed before discarding (can do same things as other firewall fitlers)
 * `DHCP` and `BOOTP` (Bootstrap protocol) - fail the RPF checks you can enable them with the below:
+
 
     firewall {
         family inet {
