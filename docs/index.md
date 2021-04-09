@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-03-13: _Tools_ [TCPDump](tools/tcpdump.md)
 - 2021-02-04: _Juniper_ [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
 - 2021-01-07: _Networking_ [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
 - 2021-01-04: _Bitcoin_ [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-10: _Chess_ [Chess - Basics](chess/basics.md)
 - 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
 - 2020-11-07: _Bitcoin_ [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
-- 2020-11-02: _Bitcoin_ [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## Table of Contents
 
@@ -664,6 +664,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-12: [Fast Test Slow Test](testing/fast_test_slow_test.md)
 
 ## Tools
+- 2021-03-13: [TCPDump](tools/tcpdump.md)
 - 2017-02-01: [Mailcatcher Setup](tools/mailcatcher-setup.md)
 
 ## Ubuntu-Debian

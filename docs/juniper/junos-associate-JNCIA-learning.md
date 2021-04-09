@@ -1774,8 +1774,8 @@ Benefits:
 * increased network availability - reroute failure automatically
 * Greater network scalability - dynamically learning routes and best path
 
-IGP (interior Gateway Protocols) - operate within the same autonomous system. (RIP, ISIS and OSPF)
-EGP (Exterior gateway protocols) - current EGP used is BGP (operates among different AS's)
+* IGP (interior Gateway Protocols) - operate within the same autonomous system. (RIP, ISIS and OSPF)
+* EGP (Exterior gateway protocols) - current EGP used is BGP (operates among different AS's)
 
 ### OSPF Protocol
 

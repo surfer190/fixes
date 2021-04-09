@@ -520,6 +520,256 @@ It gets hectic...elliptic curve etc
 
 ## 5. Transactions
 
+Transactions must replace the email system - so anyone can view transactions and verify them.
+
+Lisa prevents cheatings by:
+
+* verifying digital signatures
+* checking public key hash balances before confirming a payment
+
+Problems:
+
+* Ledger is growing - each check becomes more time consuming
+* 2 seperate addresses must be combined to make bigger payments
+* Trust in Lisa is dropping
+
+### Minimise the Need for Trust
+
+Allow anyone to verify transactions.
+Wallets will now create transactions - instead of sending emails.
+
+John scans the payment QR code and the wallet creates the transaction.
+
+Transaction contains:
+
+* where to send the money
+* what money to spent (UTXO's) - unspent transaction outputs
+
+3 phases:
+
+1. Create
+2. Confirm
+3. Verify
+
+### Creating the Transaction
+
+John has 2 UTXO's with 8CT and 5CT.
+A transaction input referencing the 2 transactions - a _txid_.
+The txid - is it's double SHA256 hash - to apparently prevent a _length extension attack_.
+
+The 2 inputs:
+
+* txid of transaction 1, index of the output of transation 1 to spend, signature
+* txid of transaction 2, index of the output of transaction 2 to spend, signature
+
+The 2 output:
+
+* pays 10CT to PKH (of cookie shop)
+* pays 3 CT back to John (the change)
+
+Change is needed as you cannot partly spend a transaction output
+
+#### Transaction Fee
+
+Sum of the input must be greater or equal to the sum of the outputs - the difference is called a transactino fee.
+
+Anyone could have created this transaction - it is public information.
+But only john can sign the transaction as he has the private keys for the inputs.
+
+Signatures need to be made for the inputs - different keys must sign money sent to different addresses.
+
+The signature will hash the entire transaction - except the signatures.
+
+The public key must also be added to the transaction
+
+### Confirming the Transaction
+
+* Transaction spends outputs that actually exist - and aren't already spent
+* Total value of output does not exceed the inputs
+* The signatures are correct
+
+How do you know if the output has already been spent? **UTXO set**
+
+All nodes maintain a private UTXO set to speed up transaction verification
+
+A UTXO entry consists of: a txid, an index (indx) and the actual transaction output
+
+If the outputs do not exist - John is trying to spent money that never existed or is already spent.
+Double Spend - spending the same output twice.
+
+The confirmed transaction is added to the spreadsheet.
+The newly spent outputs are removed from the UTXO set.
+
+The UTXO set can be created from anyone with access to the spreadsheet.
+Start with an empty UTXO set and apply transactions one by one.
+
+### Verify the Transaction
+
+Anyone can verify that the transaction is legit and comply with the agreed upon rules.
+
+Full nodes == verifying node
+
+If Lisa tries to modify the transaction in the spreadsheet to sent the 10CT to Lisa instead of the cafe - the transaction signatures will no longer be valid.
+
+The public signatures mean anyone can verify the transaction.
+
+**The public key is revealed in the spending actions input when an output is spent**
+
+> Don't reuse addresses
+
+If John has other unspent outputs to PKH1 - they are now less secure. They are no longer protected by the cryptographic hash - only the public-key derivation.
+
+Most wallets will create unique addresses for all incoming payments.
+
+### Account-based System to a Value-based System
+
+An account based system keeps track of how much money each account has.
+A value based system keeps track of the currency instead.
+Specific unspent currency (UTXOs)
+
+A transaction output does not actually show the public key hash (PKH) - only a part of a program - a _pubkey script_.
+The input that spends the output contains the other part of the program - _signature script_
+
+Written in the `Script` programming language
+
+book goes into detail about the Script commands...
+
+Payment types:
+
+* p2pkh - pay to public key hash
+* pay-to-hash
+* multisignature - allow for multiple people to have a quorum on payment (charity and fundraising)
+* pay-to-script
+
+### More Transaction stuff
+
+* _version_ - Either 1 or 2
+* _sequence number_ - FFFFFFFF - old disabled feature
+* _lock time_ - a point in time before which the transaction cannot be added to spreadsheet
+
+### Rewards and Coin Creation
+
+A special transaction, a _coinbase_ transaction - coin creation reward.
+Index is `-1` and input is all zeroes.
+
+Rewards in bitcoin are paid every 10 minutes.
+
+**All transactions can be traced back to coinbase transactions** - by following the `txid` references in transaction inputs.
+
+Transaction to transactions - at agreed upon time. One huge transaction with the existing UTXO set as outputs.
+
+### Censoring and Reverting
+
+Lisa can still censor transactions from a specific person's UTXO set.
+Maining that person cannot spend their money.
+
+Lisa can also remove a transaction where the outputs are unspent.
+Verifiers starting after the reversion will not notice.
+
+It will be unnoticed until John tries to spend the output of John's transaction.
+Now if the Cafe accepts - Veras will reject the spreadsheet.
+
+However - it is one word against someone else's.
+
+## 6. The Blockchain
+
+The blockchain makes transactions secured from tampering through hasing and signing the set of transactions in a clever way.
+
+Cryptographic proof of fraud.
+
+All verifiers keep their own copy of the blockchain.
+
+We need to make it provable that the history has been changed.
+
+Blockchain - a chain of blocks that contain transactions and each block references its predecessor.
+
+The bitcoin clockchain contains many blocks. You can get the count with bitcoin-cli.
+
+    bitcoin-cli getblockcount
+    675769
+
+Each block references teh previous block and has an implicit height - distance from the first block (height 0).
+The _chain tip_ is the last block.
+
+Each block contains transactions but also contains a _block header_ - to protect the integirty of the contained transactions and the blockchain before it.
+
+block header consists of:
+
+* The double SHA256 hash of the previous block's header
+* combined hash of the transactions in the block - the _merkle root_
+* a timestamp of the block's creation time
+* Lisa's signature of the block header
+
+### Creating the Block
+
+Lisa creates the block every 10 minutes containing unconfirmed transactions.
+Lisa writes the file to a shared folder - everyone can creat and read but not change or delete.
+
+Bitcoin uses a peer-to-peer network instead of the shared folder
+
+An unsigned block template is created.
+
+#### Block Rewards
+
+The block reward contains newly created money and transaction fees.
+Newly created money in a block is called the _block subsidy_.
+
+Bitcoin blocks are signed with _proof of work_
+
+If anything in the previous block changes the new block will have to change - as it links to a hash of the previous block header.
+
+Once the block is signed it is made available to verifiers - the peer-to-peer network / shared folder.
+
+Any unconfirmed transactions can be selected - the transaction order isn't important - as long as all transactions spend outputs already present in the blockchain.
+
+Verifying a block:
+
+* block header signature is valid
+* the previous block id exists
+* all transactions in the block are valid, using the UTXO set
+* combined hash of all transactions match the merkle root
+* the timestamp is within reasonable limits
+
+2 different signed versions of a block exist - proving she cheated.
+
+Why use a blckchain at all? 
+why not just sign all transactions that have ever happened.
+
+- as the number of transactions grow - it will take longer to sign the transactions
+- time it takes to verify will increase
+- maintaining the utxo set is harder for verifiers - as it is hard to know what is new
+
+### Lightweight Wallets
+
+A full node knows about every transaction in history - since block 0 - the genesis block.
+No trust is needed with financial information - it is all in the blockchain.
+
+A lightwieght wallet is also known as a SPV - simplified payment verification.
+
+Full nodes let lightweight wallets get specific information from them over the internet (BIP37)
+
+More info in the book...
+
+### Markle Trees
+
+Intense...more in the book.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

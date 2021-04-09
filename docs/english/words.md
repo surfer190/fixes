@@ -49,4 +49,14 @@ title: Words and Definitions
 * avaricious - having or showing extreme greed for money
 * lecerous - shwing excessive sexual desire
 * mollify - appease the anger of someone
+* phalanx - body of troops in close formation
+* convalescing - recover health and strength over a period of time
+* revile - Criticise and abuse in an angry manner
+* soothsayer - a person supposed to be able to see the future
+* diffident - modest or shy because of a lack of self confidence
+* surreptitiously - in a way that avoids notice
+* countenance - face or facial expression
+* rictus - fixed grimace or grin
+* acerbic - sharp and forthright
+
 

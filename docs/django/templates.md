@@ -41,6 +41,15 @@ Use `{{ var_name }}` to print out a variable
 * Extending a parent template allows overridable `blocks`
 * Name a block `<title>{% block title %}{% endblock %}</title>`* Extends: `{% extends "layout.html" %}`* Then set block content
 
+### Displaying content from parent block
+
+Use `{{ block.super }}`
+
+    {% block content %}
+        {{ block.super }}
+        <p>The previous example text is replaced by this text.</p>
+    {% endblock %}
+
 ## URLs
 
 ### Named Url
@@ -52,6 +61,7 @@ Give your url's in `urls.py` a name
 Setting parameters
 
         <h3><a href="{% url 'step' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title}}</a></h3>
+
 ## Filters
 
         {{ myVar | filter}
@@ -161,3 +171,7 @@ best location: `project/assets/css/*.css`
 `project/app_name/static/app_name/js/*.js`
 
 App specific css should not be used on pages not within the app itself
+
+## Sources
+
+* [Teamtreehouse block super](https://teamtreehouse.com/community/what-is-the-purpose-of-blocksuper-in-django-template)
