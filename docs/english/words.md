@@ -58,5 +58,26 @@ title: Words and Definitions
 * countenance - face or facial expression
 * rictus - fixed grimace or grin
 * acerbic - sharp and forthright
-
-
+* stolid - calm, dependable and showing little emotion or animation
+* querulous - complaining in a petulant and whiny manner
+* diffident - modest or shy because of a lack of self confidence
+* shauvinism - aggressive patriotism
+* acquisitive - obsessively voncerned with acquiring money or material things
+* ostentacious - showy
+* senescence - deterioration with age
+* vaccilation - inability to decide between two options or actions
+* surrepticious - kept secret due to unknown approval
+* munificence - quality of being extremely generous
+* apocryphal - a story of doubtful authenticity
+* farinaceous - consisting of of containing only starch
+* paramour - lover of a married person
+* parochial - limited or narrow outlook or scope
+* emancipated - free from emotional, political and legal restrictions
+* bellicosity  - demonstrating aggression and willingnessto fight
+* incorrigable - not ableto be changed or reformed
+* interperance - lack of moderation and restraint
+* portents - sign or warning of momentous event or calamity
+* anachronism - old fashioned, a thing belonging in the particular period it exists
+* suffuse - gradually spread through or over
+* profane - secular - not relating to religion
+* preeminence - the fact of surpassing all others, superiority
