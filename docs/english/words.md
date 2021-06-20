@@ -68,3 +68,12 @@ title: Words and Definitions
 * consummate -complete or achieved
 * fop (dandy) - man who is concerned of his appearance excesively
 * ethereal - delicate and light
+* capricious - given to sudden changes of mood or behaviour
+* vignettes - brief evocative description or episode
+* recidivate - reoffend
+* levity - treatment of a serious matter with humour and a lack of respect
+* leering - look or gaze in unleaseant way (at nude painting)
+* carousing - drinking plenty of alcohol and making noise
+* succor - assistance and support in times of distress
+* acumen - ability to made good judgement and quick decisions
+* conveyance - 

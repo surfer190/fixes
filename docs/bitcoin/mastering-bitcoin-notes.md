@@ -488,16 +488,7 @@ More precisely a number:
 
 So produce a number from putting a string through `SHA256` hashing function and ensuring is it less than 1.158 * 10^77
 
-
-
-    
-
-
-
-
-
-
-
+I'm going to stop the notes here, as I have found a book that is a few less pages and will let me maybe get to my goal of learning the fudnementals faster [grokking bitcoin](https://www.manning.com/books/grokking-bitcoin)
 
 
 ## Source
