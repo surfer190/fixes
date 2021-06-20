@@ -127,7 +127,7 @@ Returns a `DirEntry`
         >>> file.is_file()
         True
 
-Get sats on a file
+Get stats on a file
 
         >>> file.stat()
         os.stat_result(st_mode=33188, st_ino=6361471, st_dev=16777220, st_nlink=1, st_uid=501, st_gid=20, st_size=3115, st_atime=1482839524, st_mtime=1452884872, st_ctime=1452884872)

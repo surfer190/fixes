@@ -33,6 +33,7 @@ title: Words and Definitions
 * ostensibly - appears or stated to be true, though not necessarily so
 * equanimity - calmness and composure
 * acquiescence - reluctant acceptance without protest
+<<<<<<< HEAD
 * adroitly - in a clever skillful way
 * fidelity - faithfulness, support and loyalty to a cause, person or belief
 * perfunctory - action carried out with no real interest
@@ -77,3 +78,51 @@ title: Words and Definitions
 * succor - assistance and support in times of distress
 * acumen - ability to made good judgement and quick decisions
 * conveyance - 
+* parochial - having a narrow outlook or scope
+* salubrious - pleasant place (not run down)
+* gregarious - fond of company, sociable
+* despoliation - destruction, ravaging
+* unobtrusive - inconspicuous - not attrating attention
+* effluent - liquid waste discharged into a river or sea
+* imbued - inspire or permeate (feeling or quality)
+* nebulous - in the form of a cloud - hazy
+* wan - pale - impression of illness or fatigue
+* lucre - money gained in a dishonourable way
+* carrion - decaying flesh of dead animals
+* paragon - perfect example of
+* unfettered - not restrained of conztricted
+* avaricious - having or showing extreme greed for money
+* lecerous - shwing excessive sexual desire
+* mollify - appease the anger of someone
+* phalanx - body of troops in close formation
+* convalescing - recover health and strength over a period of time
+* revile - Criticise and abuse in an angry manner
+* soothsayer - a person supposed to be able to see the future
+* diffident - modest or shy because of a lack of self confidence
+* surreptitiously - in a way that avoids notice
+* countenance - face or facial expression
+* rictus - fixed grimace or grin
+* acerbic - sharp and forthright
+* stolid - calm, dependable and showing little emotion or animation
+* querulous - complaining in a petulant and whiny manner
+* diffident - modest or shy because of a lack of self confidence
+* shauvinism - aggressive patriotism
+* acquisitive - obsessively voncerned with acquiring money or material things
+* ostentacious - showy
+* senescence - deterioration with age
+* vaccilation - inability to decide between two options or actions
+* surrepticious - kept secret due to unknown approval
+* munificence - quality of being extremely generous
+* apocryphal - a story of doubtful authenticity
+* farinaceous - consisting of of containing only starch
+* paramour - lover of a married person
+* parochial - limited or narrow outlook or scope
+* emancipated - free from emotional, political and legal restrictions
+* bellicosity  - demonstrating aggression and willingnessto fight
+* incorrigable - not ableto be changed or reformed
+* interperance - lack of moderation and restraint
+* portents - sign or warning of momentous event or calamity
+* anachronism - old fashioned, a thing belonging in the particular period it exists
+* suffuse - gradually spread through or over
+* profane - secular - not relating to religion
+* preeminence - the fact of surpassing all others, superiority
