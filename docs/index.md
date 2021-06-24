@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-06-24: _Clojure_ [Getting Started Clojure](clojure/getting-started-clojure.md)
 - 2021-03-13: _Tools_ [TCPDump](tools/tcpdump.md)
 - 2021-02-04: _Juniper_ [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
 - 2021-01-07: _Networking_ [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-25: _Networking_ [BGP](networking/bgp.md)
 - 2020-11-10: _Chess_ [Chess - Basics](chess/basics.md)
 - 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
-- 2020-11-07: _Bitcoin_ [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 
 ## Table of Contents
 
@@ -133,6 +133,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Chess
 - 2020-11-10: [Chess - Basics](chess/basics.md)
+
+## Clojure
+- 2021-06-24: [Getting Started Clojure](clojure/getting-started-clojure.md)
 
 ## Composer
 - 2016-09-26: [Bus Error Core Dumped](composer/bus-error-core-dumped.md)
