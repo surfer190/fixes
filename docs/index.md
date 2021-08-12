@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-08-12: _Bitcoin_ [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-08-05: _LDAP_ [LDAP System Administration](ldap/ldap-system-administration.md)
 - 2021-06-24: _Clojure_ [Getting Started Clojure](clojure/getting-started-clojure.md)
 - 2021-03-13: _Tools_ [TCPDump](tools/tcpdump.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-01-04: _Api_ [Api Product Manager](api/api-product-manager.md)
 - 2020-12-14: _BSD_ [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
 - 2020-11-25: _Networking_ [BGP](networking/bgp.md)
-- 2020-11-10: _Chess_ [Chess - Basics](chess/basics.md)
 
 ## Table of Contents
 
@@ -113,6 +113,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Bitcoin
+- 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
