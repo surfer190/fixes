@@ -11,7 +11,7 @@ I've been wanting to learn and improve my python so I read a book and took notes
 
 ## Pythonic Thinking
 
-### Know which python version you are using
+### 1. Know which python version you are using
 
 $ python --version
 
@@ -27,14 +27,14 @@ of
 * Prefer python 3 for new projects.
 * There are many runtimes: CPython, Jython, Itonpython, PyPy. Default is CPython.
 
-### Follow PEP8 Style Guide
+### 2. Follow PEP8 Style Guide
 
 Conistent style makes code more approachable and easy to read
 Facilitates collaboration
 
 [Read the pep8 style guide](https://www.python.org/dev/peps/pep-0008/)
 
-### Know the Differences Between bytes, str, and unicode
+### 3. Know the Differences Between bytes, str, and unicode
 
 In python 3 there is `bytes` and `str`.
 `str` contain unicode values
@@ -45,11 +45,131 @@ In python 3 there is `bytes` and `str`.
 * bytes and str instances are never equivalent (In python 3)
 * File handles (using `open`) default to UTF-8 encoding
 
-Ensure to use `wb` write-banary mode as opposed to `w` wrote character mode:
+Ensure to use `wb` write-banary mode as opposed to just `w` wrote character mode:
 
     with open('/tmp/random.bin', 'wb') as f:
 
-### Write helper functions, instead of complex expressions
+When reading a file you can specify the mode:
+
+    with open('data.bin', 'r', encoding='cp1252') as f:
+        ....
+
+Get the default encoding on your system:
+
+    python3 -c 'import locale; print(locale. getpreferredencoding())'
+    UTF-8
+
+### 4. Prefer Interpolated f-strings over C-style format and str.format
+
+C-style format:
+
+    a = 0b1011010
+    b = 0xc5f
+    print('Binary is %d, hex is %d' % (a,b))
+    
+    Binary is 187, hex is 3167
+
+Problems with C-style format:
+
+* Changing the order of the tuple makes the expression fail also changing the format and keeping the order, same error
+* Tuple and format becomes long forcing splitting across lines - hurting readability
+* Using the same value multiple times, must duplicate in tuple
+* redundancy in dictionaries
+
+Advanced string formatting:
+
+    a = 1234.5678
+    formatted = format(a, ',.2f')
+    print(formatted)
+    1,234.57
+
+Instead of c-style formatting you can use placeholders `{}`, which are replaced by positional arguments:
+
+    key = 'my_key'
+    value = 1244
+    '{} = {}'.format(key, value)
+    my_key = 1244
+
+You can optionally format the placeholder with a colon character:
+
+    formatted = '{:<10} = {:.2f}'.format(key, value)
+    print(formatted)
+    my_key     = 1244.00
+
+The formatting per class can be customised per class with `__format__`
+
+With C-style and formatting you need to double the special character to insure it is not interpreted.
+
+    print('%.2f%%' % 12.5)
+    12.50%
+    
+    print('{} replaces {{}}'.format(1.23))
+    1.23 replaces {}
+
+Positional index can be specified when formatted:
+
+    formatted = '{1} = {0}'.format(key, value) 
+    print(formatted)
+    1244 = my_key
+
+The same index can be used multiple times, not needing the value to be passed again.
+
+    formatted = '{0} loves food. {0} loves eating.'.format('john')
+    print(formatted)
+    john loves food. john loves eating.
+
+> Using `str.format` is not recommended
+
+#### Interpolated format strings
+
+Python 3.6 added interpolated format strings.
+
+You precede the string with `f`, like `b` for byte-strings and `r` for raw unescaped strings.
+
+f-strings remove the redundancy of declaring the strings to be formatted.
+
+    formatted = f'{key} = {value}'
+    my_key = 1244
+
+The format specifiers are still available
+
+    formatted = f'{key!r:<10} = {value:.2f}'
+    'my_key'   = 1244.00
+
+Comparison:
+
+    f_string = f'{key:<10} = {value:.2f}'
+    c_tuple = '%-10s = %.2f' % 0key, value)
+    str_args = '{:<10} = {:.2f}'.format(key, value)
+    str_kw = '{key:<10} = {value:.2f}'.format(key=key, value, value)
+    c_dict = '%(key)-10s = %(value).2f' % {'key': key, 'value': value}
+
+F-strings let you put a full python expression in 
+    
+    pantry = [('plums', 2), ('horse raddish', 1), ('corn', 4)]
+
+    for i, (item, count) in enumerate(pantry):
+        f_string = f'#{i+1}: {item.title():<15s} = {round(count)}'
+        print(f_string)
+    
+Results:
+
+    $ python f_string.py 
+    #1: Plums           = 2
+    #2: Horse Raddish   = 1
+    #3: Corn            = 4
+
+You can even use a parameterised format:
+
+    places = 3
+    number = 1.23456
+    print(f'My number is {number:.{places}f}')
+    My number is 1.235
+
+> Choose f-strings
+
+
+### 5. Write helper functions, instead of complex expressions
 
 Consider:
 
@@ -81,6 +201,56 @@ and calling:
 is much clearer.
 
 * Use complex expressions to a help function, espescially when logic is repeated
+
+### 6. Prefer Multiple Assignment Unpacking over Indexing
+
+Python uses `tuples` to create immutable, ordered sequences of values.
+
+    snack_calories = {
+        'chips': 140,
+        'popcorn': 80,
+        'nuts': 190,
+    }
+    items = tuple(snack_calories.items())
+    print(items)
+
+* You can access an item in a tuple with the index.
+* Once created, you cannot modify a tuple value
+
+#### Unpacking
+
+Python has syntax to let you unpack a tuple into variables.
+
+    item = ('Peanut butter', 'Jelly')
+    first, second = item # Unpacking
+    print(first, 'and', second)
+
+There is less noise in the code than using indexes
+
+> The same unpacking logic applies to more complex structures: unpacking lists of tuples
+
+You can also swap items in place:
+
+    a[i -1], a[i] = a[i], a[i - 1]
+
+> There is usually no need to access anything by indexes
+
+> Avoid indexing where possible
+
+### 7. Prefer Enumerate over Range
+
+If you need the index use `enumerate`, Python `enumerate` wraps any iterator with a lazy generator
+
+As opposed to:
+
+    for i in range(len(flavor_list)):
+        flavor = flavor_list[i]
+        print('{}: {}'.format(i + 1, flavor))
+
+consider (and setting where enumerate should being counting):
+
+    for i, flavor in enumerate(flavor_list, 1):
+        print('{}: {}'.format(i  , flavor))
 
 ### Know how to slice sequences
 
@@ -176,21 +346,6 @@ it = (len(x) for x in open('/tmp/my_file.txt'))
 
 gen = (print(i) for i in [9,1,2,3,3,])
 print(next(gen))
-
-### Prefer Enumerate over Range
-
-If you need the index use `enumerate`, Python `enumerate` wraps any iterator with a lazy generator
-
-As opposed to:
-
-    for i in range(len(flavor_list)):
-        flavor = flavor_list[i]
-        print('{}: {}'.format(i + 1, flavor))
-
-consider (and setting where enumerate should being counting):
-
-    for i, flavor in enumerate(flavor_list, 1):
-        print('{}: {}'.format(i  , flavor))
 
 ### Use zip to process iterators in parrallel
 

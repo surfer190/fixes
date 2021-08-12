@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-08-05: _LDAP_ [LDAP System Administration](ldap/ldap-system-administration.md)
 - 2021-06-24: _Clojure_ [Getting Started Clojure](clojure/getting-started-clojure.md)
 - 2021-03-13: _Tools_ [TCPDump](tools/tcpdump.md)
 - 2021-02-04: _Juniper_ [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-12-14: _BSD_ [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
 - 2020-11-25: _Networking_ [BGP](networking/bgp.md)
 - 2020-11-10: _Chess_ [Chess - Basics](chess/basics.md)
-- 2020-11-08: _Testing_ [Test Automation strategy Notes](testing/test-automation-strategy.md)
 
 ## Table of Contents
 
@@ -354,6 +354,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-10-09: [Laravel Blade Templating Engine](laravel/laravel-blade-templating-engine.md)
 - 2015-09-25: [Setting Up Homestead](laravel/Setting-up-Homestead.md)
 - 2015-09-24: [Laravel 5 Setup](laravel/laravel-5-setup.md)
+
+## Ldap
+- 2021-08-05: [LDAP System Administration](ldap/ldap-system-administration.md)
 
 ## Less
 - 2015-01-18: [Less Syntax](less/less-syntax.md)

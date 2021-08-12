@@ -131,6 +131,9 @@ the program has an entry function called `run` executed with:
     $ clj -X hello/run
     Hello world, the time is 01:23 PM
 
+## Local Libraries
+
+You can extract functionality into a library.
 
 
 

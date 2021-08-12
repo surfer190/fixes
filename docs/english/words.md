@@ -126,3 +126,4 @@ title: Words and Definitions
 * suffuse - gradually spread through or over
 * profane - secular - not relating to religion
 * preeminence - the fact of surpassing all others, superiority
+* vacillate - waver between different words
