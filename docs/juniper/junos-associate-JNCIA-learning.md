@@ -671,6 +671,10 @@ service interfaces:
 #### Interface Naming
 
 * Interface media type: `ge`, `so`, `at`
+    * `ge` is a physical interface which runs at 1gig speed
+    * `xe` is a physical interface which runs at 10gig speed
+    * `et` is a physical interface which runs at 40gig speed
+    * you can aggregate them into an ae interface - to get more capacity and more redundancy
 * Line card (FPC slot number)
 
 In typical port numbering the slot begins with 0 and increments based on the system hardare configuration.

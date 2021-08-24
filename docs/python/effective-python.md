@@ -245,14 +245,151 @@ As opposed to:
 
     for i in range(len(flavor_list)):
         flavor = flavor_list[i]
-        print('{}: {}'.format(i + 1, flavor))
+        print(f'{i + 1}: {flavour}')
 
-consider (and setting where enumerate should being counting):
+consider (and setting where enumerate should start counting from):
 
     for i, flavor in enumerate(flavor_list, 1):
-        print('{}: {}'.format(i  , flavor))
+        print(f'{i}: {flavour}')
 
-### Know how to slice sequences
+`enumerate`  yields pairs of the loop index and the next value from the given iterator.
+
+    flavour_list = ['chocolate', 'strawberry', 'bubblegum']
+    it = enumerate(flavour_list)
+    print(next(it))
+    (0, 'chocolate')
+    print(next(it))
+    (1, 'strawberry')
+    print(next(it)
+    (2, 'bubblegum')
+
+That is why unapacking works:
+
+    for index, value in enumerate(flavour_list):
+        ...
+
+### 8. Use zip to process iterators in parrallel
+
+    names = ['Cecilia', 'Lise', 'Marie']
+    letters = [len(n) for n in names]
+
+For processing a list and derived list simulateously you can use `enumerate` to get the index:
+
+    for i, name in enumerate(names):
+        count = letters[i]
+        if count > max_letters:
+            longest_name = name
+            max_letters = count
+
+But python provides `zip`, that wraps 2 or more iterators with a lazy generator.
+The zip generator yields tuples containing the next value from each iterator
+
+    for name, count in zip(names, letters):
+        if count > max_letters:
+            longest_name = name
+            max_letters = count
+
+    print(longest_name)
+
+* If the iterators supplied are not the same length, it keeps going until 1 is exhausted.
+* `zip` will truncate quietly
+
+You can use `itertools.zip_longest` to always extinguish the longest list and use fill values:
+
+    import itertools
+    for name, count in itertools.zip_longest(names, counts):
+        print(f'{name}: {count}')
+
+### 9. Avoid Else blocks after for and while
+
+    for i in range(3):
+        print('Loop {}'.format(i))
+    else:
+        print('Else block!')
+
+Python weirdly has an else after a `for` and that makes it difficult for new programmers.
+The reason is it works more like an `except` because the `else` part will run at the end of the loop.
+So it will execute regardless of whether the loop was entered or not.
+
+* A `break` statement in the `for` part will skip the `else` block
+* The behaviour is not **obvious** or **intuitive**
+
+This is also the case with a `while` loop:
+
+    while False:
+        print('Never Runs!')
+    else:
+        print('While Else block runs!')
+
+### 10. Prevent Repitition with Assignment Expressions
+
+> The infamous _walrus operator_
+
+Introduced in python 3.8. 
+
+    a := b
+
+pronounced, _a walrus b_
+
+They allow you to assign variabled in places where assignment is disallowed.
+
+For example, we want to make sure there is at least 1 lemon to squeeze for lemonade.
+
+    fresh_fruit = {
+        'apple': 10,
+        'banana': 8,
+        'lemon': 5,
+    }
+
+    def make_lemonade(count):
+        ...
+    def out_of_stock():
+        ...
+
+    count = fresh_fruit.get('lemon', 0)
+    if count:
+        make_lemonade(count)
+    else:
+        out_of_stock()
+
+The problem above is the `count` variable is only used in the `if` portion of the if statement.
+
+So we could rewrite the above as:
+
+    if count:= fresh_fruit.get('lemon', 0):
+        make_lemonade(count)
+    else:
+        out_of_stock()
+
+If I needed more than 4 apples for cider:
+
+    if (count := fresh_fruit.get('apple', 0)) >= 4:
+        make_cider(count)
+    else:
+        out_of_stock()
+
+> You need to surround the assignment with parenthesis for it to work
+
+Used to improve the imitation of the `switch/case` statements:
+
+    if (count := fresh_fruit.get('banana', 0)) >= 2:
+        pieces = slice_bananas(count)
+        to_enjoy = make_smoothies(pieces)
+    elif (count := fresh_fruit.get('apple', 0)) >= 4:
+        to_enjoy = make_cider(count)
+    elif count := fresh_fruit.get('lemon', 0):
+        to_enjoy = make_lemonade(count)
+    else:
+        to_enjoy = 'Nothing'
+
+> Improvements on readability and indentation
+
+* The `assignment` expression both assigns and evaluates
+* If it is a subexpression it needs parenthesis
+
+## Lists and Sequences
+
+### 11. Know how to slice sequences
 
 * `list`, `str` and `bytes` can be sliced
 * The result of a slice is a whole new list, the original is not changed
@@ -267,7 +404,7 @@ eg:
     a[:5]
     a[0:5]
 
-### Avoid Using start, end, and stride in a Single Slice
+### Avoid Striding and slicing in a single Expression
 
     somelist[start:end:stride]
 
@@ -346,44 +483,6 @@ it = (len(x) for x in open('/tmp/my_file.txt'))
 
 gen = (print(i) for i in [9,1,2,3,3,])
 print(next(gen))
-
-### Use zip to process iterators in parrallel
-
-names = ['Cecilia', 'Lise', 'Marie']
-letters = [len(n) for n in names]
-
-For processing a list and derived list simulateously you can use `enumerate` to get the index:
-
-for i, name in enumerate(names):
-    count = letters[i]
-    if count > max_letters:
-        longest_name = name
-        max_letters = count
-
-But python provides `zip`, that wraps 2 or more iterators with a lazy generator.
-The zip generator yields tuples containing the next value from each iterator
-
-for name, count in zip(names, letters):
-    if count > max_letters:
-        longest_name = name
-        max_letters = count
-
-* If the iterators supplied are not the same length, it keeps going until 1 is exhausted.
-* `zip` will truncate quietly
-
-### Avoid Else blocks after for and while
-
-    for i in range(3):
-        print('Loop {}'.format(i))
-    else:
-        print('Else block!')
-
-Python weirdly has an else after a `for` and that makes it difficult for new programmers.
-The reason is it works more like an `except` because the `else` part will run at the end of the loop.
-So it will execute regardless of whether the loop was entered or not.
-
-* A `break` statement in the `for` part will skip the `else` block
-* The behaviour is not *obvious** or **intuitive**
 
 ### Take Advantage of Each Block in try/except/else/finally
 
