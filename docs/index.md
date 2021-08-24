@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-08-24: _Ansible_ [Awx Moving Custom Venvs to Execution Environments](ansible/awx-moving-custom-venvs-to-execution-environments.md)
 - 2021-08-12: _Bitcoin_ [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-08-05: _LDAP_ [LDAP System Administration](ldap/ldap-system-administration.md)
 - 2021-06-24: _Clojure_ [Getting Started Clojure](clojure/getting-started-clojure.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-01-04: _Bitcoin_ [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2021-01-04: _Api_ [Api Product Manager](api/api-product-manager.md)
 - 2020-12-14: _BSD_ [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
-- 2020-11-25: _Networking_ [BGP](networking/bgp.md)
 
 ## Table of Contents
 
@@ -42,6 +42,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-05-13: [Key Knowledge Angular Js](angular-js/Key-knowledge-angular-js.md)
 
 ## Ansible
+- 2021-08-24: [Awx Moving Custom Venvs to Execution Environments](ansible/awx-moving-custom-venvs-to-execution-environments.md)
 - 2020-06-14: [Ansible Dynamic Inventory](ansible/ansible-dynamic-inventory.md)
 - 2020-06-14: [Awx Basics](ansible/awx-basics.md)
 - 2020-05-28: [Awx Rest Api](ansible/awx-rest-api.md)
