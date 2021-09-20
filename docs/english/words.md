@@ -33,7 +33,6 @@ title: Words and Definitions
 * ostensibly - appears or stated to be true, though not necessarily so
 * equanimity - calmness and composure
 * acquiescence - reluctant acceptance without protest
-<<<<<<< HEAD
 * adroitly - in a clever skillful way
 * fidelity - faithfulness, support and loyalty to a cause, person or belief
 * perfunctory - action carried out with no real interest
@@ -127,3 +126,16 @@ title: Words and Definitions
 * profane - secular - not relating to religion
 * preeminence - the fact of surpassing all others, superiority
 * vacillate - waver between different words
+* verdant - green with grass and vegetation
+* precipitous - dangerously high or steep
+* desultory - lacking a plan or enthusiasm
+* perturbation - anxiety, unease
+* inauspiciously - not conducive to success
+* lament - passionate display of grief or sorrow
+* supercilious - nehaving as if one is superior
+* borne - carried
+* censure - show severe dissaproval
+* portents - signs or warnings that a calamatious event is to occur
+* cogent - clear, logical and convincing
+* avail - take advantage of, make us of
+* askance - look of dissaproval

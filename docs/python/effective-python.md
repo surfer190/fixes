@@ -404,7 +404,7 @@ eg:
     a[:5]
     a[0:5]
 
-### Avoid Striding and slicing in a single Expression
+### 12. Avoid Striding and slicing in a single Expression
 
     somelist[start:end:stride]
 
@@ -417,6 +417,110 @@ The stride lets you take every `nth` item
 * Can be very confusing, espescially negative strides
 * Avoid `start` and `end` when doing a stride
 * Use `itertools` module `islice` function if necessary
+
+### 13. Prefer Catch all unpacking over Slicing
+
+A limitation of unpacking is you need to know the number of items in the list or sequence.
+
+    car_ages = [10, 0, 5, 6, 16, 21, 8]
+    car_ages_descending = sorted(car_ages, reverse=True)
+    oldest, second_oldest = car_ages_descending
+
+You get an error:
+
+    ValueError: too many values to unpack (expected 2)
+
+Newcomers will overcome this with indexing - which can become messy and noisy.
+Also error prone to the off by one error/
+
+The solution invovles python's **catch-all unpacking with a starred expressions**.
+If allows one part of the expression to match any other part of the matching pattern.
+
+    oldest, second_oldest, *others = car_ages_descending    
+    print(oldest, second_oldest, others)
+    21 16 [10, 8, 6, 5, 0]
+
+A starred expression can appear anywhere:
+
+    oldest, *others, youngest = car_ages_descending
+    print(oldest, others, youngest)
+    21 [16, 10, 8, 6, 5] 0
+
+* You cannot use a catch-all expression on its owns
+* You cannot use multiple catch-alls
+
+Catchalls become lists in all instances, if no items - it comes an empty list.
+
+The danger is if the catchall catches an iterator too large for memory - always know the size is smaller than memory.
+
+### 14. Sort by Complex Criteria using the key parameter
+
+The `list` built-in type provides a `sort` method for ordering items in a list based on criteria.
+
+By default `.sort()` will order in ascending order.
+
+    numbers = [55, 78, 13, 0, 12, -8]
+    numbers.sort()
+    print(numbers)
+    [-8, 0, 12, 13, 55, 78]
+
+It works for nearly all built-in types, but won't for your custom class if it the class cannot be compared.
+
+Example `Tool` class:
+
+    class Tool:
+        def __init__(self, name, weight):
+            self.name = name
+            self.weight = weight
+
+        def __repr__(self):
+            return f'Tool({self.name!r}, {self.weight}'
+
+
+    if __name__ == "__main__":
+        tools = [
+            Tool('level', 3.5),
+            Tool('hammer', 1.25),
+            Tool('screwdriver', 0.5),
+            Tool('chisel', 0.25),
+        ]
+
+        tools.sort()
+
+You will get an error:
+
+    TypeError: '<' not supported between instances of 'Tool' and 'Tool'
+
+Often there is an attribute of the class that can be used for ordering, for this `sort()` accepts a `key` parameter - that is expecter to be a function. In this case we will use the lambda keywork to represent the name.
+
+    tools.sort(key=lambda x: x.name)
+    print(tools)
+    [Tool('chisel', 0.25, Tool('hammer', 1.25, Tool('level', 3.5, Tool('screwdriver', 0.5]
+
+You can use any attribute that has a natural order.
+
+They can also be used to transform and sort in one, eg. for a string type `lambda x: x.lower()`
+
+What about sorting on more than 1 criteria:
+
+* Tuples are comparable by default and have a natural ordering, meaning that they implement all of the special methods, such as `__lt__`, that are required by the sort method.
+
+You can take advantage of this by sorting the tuple:
+
+    tools.sort(key=lambda x: (x.weight, x.name))
+    print(tools)
+    [Tool('chisel', 0.25, Tool('screwdriver', 0.5, Tool('hammer', 1.25, Tool('level', 3.5]
+
+One disadvantage is they must all be in ascedning order or descending (with the `reverse=True` paramter)
+
+    tools.sort(key=lambda x: (x.weight, x.name), reverse=True)
+    [Tool('level', 3.5, Tool('hammer', 1.25, Tool('screwdriver', 0.5, Tool('chisel', 0.25]
+
+More edge cases in the book...
+
+### 15. Be Cautious when Relying on Dict Insertion Ordering
+
+
 
 ### Use List Comprehensions Instead of map and filter
 

@@ -638,20 +638,478 @@ To the extent that the digital coins exist, they are simply entries on a ledger,
 
 What keeps Bitcoin nodes honest, individually, is that if they were dishonest, they would be discovered immediately, making dishonesty exactly as effective as doing nothing but involving a higher cost.
 
-    Bitcoin is the first example of a new form of life. It lives and breathes on the internet. It lives because it can pay people to keep it alive. It lives because it performs a useful service that people will pay it to perform. It lives because anyone, anywhere, can run a copy of its code. It lives because all the running copies are constantly talking to each other. It lives because if any one copy is corrupted it is discarded, quickly and without any fuss or muss. It lives because it is radically transparent: anyone can see its code and see exactly what it does.
+    Bitcoin is the first example of a new form of life.
+    It lives and breathes on the internet.
+    It lives because it can pay people to keep it alive.
+    It lives because it performs a useful service that people will pay it to perform.
+    It lives because anyone, anywhere, can run a copy of its code.
+    It lives because all the running copies are constantly talking to each other.
+    It lives because if any one copy is corrupted it is discarded, quickly and without any fuss or muss.
+    It lives because it is radically transparent: anyone can see its code and see exactly what it does.
 
-    It can't be changed. It can't be argued with. It can't be tampered with. It can't be corrupted. It can't be stopped. It can't even be interrupted.
+    It can't be changed.
+    It can't be argued with.
+    It can't be tampered with.
+    It can't be corrupted.
+    It can't be stopped.
+    It can't even be interrupted.
 
-    If nuclear war destroyed half of our planet, it would continue to live, uncorrupted. It would continue to offer its services. It would continue to pay people to keep it alive.
+    If nuclear war destroyed half of our planet, it would continue to live, uncorrupted.
+    It would continue to offer its services.
+    It would continue to pay people to keep it alive.
 
-    The only way to shut it down is to kill every server that hosts it. Which is hard, because a lot of servers host it, in a lot of countries, and a lot of people want to use it
+    The only way to shut it down is to kill every server that hosts it.
+    Which is hard, because a lot of servers host it, in a lot of countries, and a lot of people want to use it
 
-    Realistically, the only way to kill it is to make the service it offers so useless and obsolete that no one wants to use it. So obsolete that no one wants to pay for it. No one wants to host it. Then it will have no money to pay anyone. Then it will starve to death.
+    Realistically, the only way to kill it is to make the service it offers so useless and obsolete that no one wants to use it.
+    So obsolete that no one wants to pay for it.
+    No one wants to host it.
+    Then it will have no money to pay anyone.
+    Then it will starve to death.
 
     But as long as there are people who want to use it, it's very hard to kill, or corrupt, or stop, or interrupt.
 
     - Ralph Merkle
 
+> Nakamoto was able to invent digital scarcity
+
+While it is trivial to send a digital object from one location to another in a digital network, as is done with email, text messaging, or file downloads, it is more accurate to describe these processes as copying rather than sending, because the digital objects remain with the sender and can be reproduced infinitely
+
+> Bitcoin is also the first example of absolute scarcity, the only liquid commodity (digital or physical) with a set fixed quantity that cannot conceivably be increased
+
+#### Supply, Value and Transactions
+
+> Government would always want to monopolize money production and face too strong a temptation to engage in the increase of the money supply
+
+Money supply growth in bitcoin is programmed and adopted by the network.
+
+In the early stages the supply schedule was at risk of being changed.
+As time went on the supply rate dropped and the network gained reliability.
+The currency also gained credibility.
+
+A block is added to the chain roughly every 10 minutes.
+The reward started at 50 btc per block (coinbase transaction).
+
+Every 4 years or 210000 blocks - the reward halves.
+
+* 28 November 2012 - 25 BTC per block
+* 9 July 2016 - 12.5 BTC per block
+* May 2020 - 6.25 BTC per block
+
+It approached 21,000,000 in total supply.
+
+New coins are only produced with new blocks and new blocks require the proof of work - there is a real cost of production of new bitcoin.
+
+As the price rises - more nodes compete for the reward. Making hash rate higher and the problem more difficult.
+The cost to produce rises along with the market price.
+
+Each bitcoin is divided into 100,000,000 satoshis
+
+The smallest unit is: 0.00000001 BTC
+
+The growth rate of every other asset (and of course fiat) will increase faster than bitcoin.
+
+> Whereas traditional currencies are continuously increasing in supply and decreasing in purchasing power, bitcoin has so far witnessed a large increase in real purchasing power despite a moderate, but decreasing and capped, increase in its supply.
+
+The market demand for a bitcoin token comes from the fact that it is needed to operate the first (and so far, arguably only) functional and reliable digital cash system.
+
+Ludwig von Mises' Theory of Regression on the origins of money: a monetary good begins as a market good and is then used as a medium of exchange.
+
+Bitcoin started as a collectable among crytographers.
+
+When there is a spike in demand - miners cannot increase the supply schedule like copper miners can.
+No central bank can step in either - to flood the market - like gold.
+
+> The only way for the market to meet the growing demand is for the price to rise enough to incentivize the holders to sell some of their coins to the newcomers.
+
+Without a number of people willing to hold the currency for a significant period of time, continued selling of the currency will keep its price down and prevent it from appreciating.
+
+The expansionary monetary policies of modern fiat economies and economists have never won the market test of adoption freely, but have instead been imposed through government laws, as discussed earlier.
+
+Annual transactions and daily average transactions is going up.
+With bitcoin blocks being limited to 1MB - 500,000 transactions a day is the upper limit.
+
+> As long as Bitcoin is growing, its token price will behave like that of a stock of a start‐up achieving very fast growth. Should Bitcoin's growth stop and stabilize, it would stop attracting high‐risk investment flows, and become just a normal monetary asset expected to appreciate slightly every year.
+
+# 9. What is Bitcoin Good For?
+
+## Store of Value
+
+The absolute quantity of raw materials is too large for humans to comprehend.
+The more we search and dig the more resources we find.
+The only realistic limit is human time to produce the resource.
+
+The only scarce _resource_ is human time
+
+We have never run out of a resource and the resource is cheaper today most likely.
+Proven reserves have also increased over time.
+
+Rarer metals - are harder to find - requiring more time to get them and are therefore more expensive.
+
+The environment hysteria - scaremongering.
+
+The fundamental driver of human progress is technological advancement not raw material abundance.
+
+Technology is _non-excludable_ and _non-rival_, it can be copied by others to derive benefit and one person benefiting does not reduce the utility another derives.
+
+The wheel for example.
+
+Good inventions and ideas are rare. The more people that live the more technology and productive ideas.
+The more humans - the more tech and production - so more resources can be used and extracted. A larger population can be sustained.
+
+> The eternal dilemma humans face with their time concerns how to store the value they produce with their time through the future.
+
+As monetary inflation proceeds, the large number of bubbles can be understood as speculative bets for ways to find a useful store of value.
+
+> Only gold has come close to solving this problem, thanks to its chemistry making it impossible for anyone to inflate its supply, and that resulted in one of the most glorious eras of human history.
+
+> For the first time, humanity has recourse to a commodity whose supply is _strictly limited_
+
+Before bitcoin all forms of money were unlimited in quanity and therefore imperfect in their ability to store value across time.
+
+Bitcoin's immutable supply makes it the best medium to store value from limited human time.
+
+Bitcoin is the cheapest way to buy the future - because bitcoin is gauranteed not to be debased.
+
+> Bitcoin's stock‐to‐flow ratio will overtake that of gold, and by 2025
+
+> Around the year 2140 there will be no new supply of Bitcoin, and the stock‐to‐flow ratio becomes infinite, the first time any commodity or good has achieved this.
+
+As the block subsidy declines, the resources dedicated to mining bitcoins will be mainly rewarded for processing the transactions and thus securing the network, rather than for the creation of new coins.
+
+**Strict scarcity**
+
+Bitcoin allows humans to transport value digitally without any dependence on the physical world, which allows large transfers of sums across the world to be completed in minutes.
+
+The best savings technology ever invented?
+
+## Individual Sovereignty
+
+Anyone in the world has access to it.
+
+No permissions needs to be asked for.
+
+Bitcoin's value is not reliant on anything in the physical worlk (except nodes and the internet)
+
+It cannot be confiscated, destroyed or disabled
+
+Escaping the financial clout of governments - tax by the threat of violence.
+
+A book highlights this: _the sovereign individual_
+
+> New forms of organization will emerge from information technology, destroying the capacity of the state to force citizens to pay more for its services than they wish.
+
+> We can already see this process taking place thanks to the telecommunication revolution. Whereas the printing press allowed the poor of the world to access knowledge that was forbidden them and monopolized by the churches, it still had the limitation of producing physical books which could always be confiscated, banned, or burned.
+
+Productive capital becomes more embodied in the individuals themselves, making the threat of violently appropriating it increasingly hollow, as individuals' productivity becomes inextricably linked to their consent.
+
+> The historical version of sound money, gold, did not have these advantages. Gold's physicality made it vulnerable to government control. That gold could not be moved around easily meant that payments using it had to be centralized in banks and central banks, making confiscation easy.
+
+Bitcoin offers the modern individual the chance to opt out of the totalitarian, managerial, Keynesian, and socialist states. It is a simple technological fix to the modern pestilence of governments surviving by exploiting the productive individuals who happen to live on their soil.
+
+Government will be forced to become a voluntary organisation - offering services and surviving by people choosing to pay for them.
+
+> Only a rulerless, purely libertarian world can fulfill the qualifications of natural rights and natural law, or, more important, can fulfill the conditions of a universal ethic for all mankind. - The ethics of Libery, Rothbard
+
+Any aggression, whether carried out by government or individual, cannot have moral justification
+
+Voluntary and peaceful.
+
+## International and Online Settlement
+
+> As governments confiscated gold and issued their own money, it was no longer possible for global settlements between individuals and banks to be done with gold, and instead they were conducted with national currencies fluctuating in value, creating significant problems for international trade
+
+Bitcoin. Bitcoin does not have to be stored on a computer; the private key to a person's bitcoin hoard is a string of characters or a string of words the person remembers.
+
+> It is far easier to move around with a Bitcoin private key than with a hoard of gold, and far easier to send it across the world without having to risk it getting stolen or confiscated.
+
+With bitcoin as a reserve currency - individuals could audit in real time the holdings of the intermediary.
+
+The majority of transactions do not happen on chain - they are done on exchanges.
+
+> There are only a few currencies that are accepted for payment worldwide, namely the U.S. dollar, the euro, gold, and the IMF's Special Drawing Rights
+
+The high cost of these transactions lies primarily in the volatility of trading currencies and the problems of settlement between institutions in different countries, which necessitates the employment of several layers of intermediation.
+
+My calcaultion of how much of your net worth should be in bitcoin:
+
+(price of bitcoin($)/ 1000000) * percentage you understand and have verified the network, bitcoin-core, protocol and process
+
+For me September 2021: 48000/1000000 * 0.9 = 0.0432
+
+Bitcoin to be the reserve currency for banks.
+
+## Global Unit of Account
+
+Cross border economic activity is hampered by requiring to use the other countries money.
+
+Monetary status is a spontaneously emergent product of human action, not a rational product of human design.
+
+# 10. Bitcoin Questions
+
+> Only by making accuracy based on CPU cycles expended by members, in other words, employing a proof‐of‐work system, can Bitcoin solve the double‐spending problem without a trusted third party.
+
+PoW is the only method so far discovered for making the production of a digital good reliably expensive, allowing it to be a hard money.
+
+PoW makes the cost of writing a block extremely high and the cost of verifying its validity extremely low, almost eliminating the incentive for anyone to try to create invalid transactions.
+
+In January 2017, the processing power behind the Bitcoin network processing power behind the Bitcoin network is equivalent to that of 2 trillion consumer laptops. It is more than two million times larger than the processing power of the world's largest supercomputer, and more than 200,000 times larger than the world's top 500 supercomputers combined. By monetizing processing power directly, Bitcoin has become the largest single‐purpose computer network in the world.
+
+Should an attacker succeed in altering the record, he would be highly unlikely to gain any economic benefit from it, as compromising the network would probably reduce the value of bitcoins to close to nothing.
+
+> Being an entirely voluntary system, Bitcoin can only operate if it is honest, as users can very easily leave it otherwise.
+
+### Immutability
+
+> The nature of Bitcoin is such that once version 0.1 was released, the core design was set in stone for the rest of its lifetime. —Satoshi Nakamoto, 6/17/2010
+
+> It would be tempting here to say that node operators control Bitcoin, and that is true in an abstract collective manner. More realistically, node operators can only control their own nodes and decide for themselves which network rules to join and which transactions they deem valid or invalid.
+
+Voluntary - human action.
+
+> For as long as any members stay on the old network, they would benefit from the infrastructure of the network as it exists, the mining equipment, the network effect, and name recognition.
+
+The problem with forks - is for it to succeed you have to sell your coins on the old chain - and no one wants to do that.
+ 
+Bitcoin holders are required for a big shift - no group has the power.
+A change to increase the block reward may help miners - but not holders (not not miners because holders are negatively impacted)
+
+Coders can only propose changes - full node runners and users are free to choose which version they download and run.
+
+Gavin Andresen and Mike Hearn were hired by a crypto consoritium and financial instituitions. They wanted to increase the block size on BitcoinXT. In a ney york times article Hearn sold his bitcoin when price was $350.
+Trying to raise the blocksize from 1MB to 8MB with Bitcoin clasic also fizzled out by 2016.
+Then bitcoin unlimited was announced in 2017 - the owner of the bitcoin.com domain name also tried to convince people to use it.
+
+In August 2017, a group of programmers proped Bitcoin cash.
+It has a technical proplem - the forked chain has lower value coins so hashing power of bitcoin can quickly be switched to the forked coin and suffer an attack.
+
+### Antifragility
+
+Gaining from adversity and disorder.
+
+Bitcoin endures even through the hostility and bad press.
+
+In 2013, People thought the closing of silkroad would mean the end of bitcoin.
+In September 2017, China closed all chinese exchanges trading in bitcoin. It dropped by 40% but then rose to double in 2 months.
+
+### Can Bitcoin Scale?
+
+The 1MB block size forces 500,000 transactions per day?
+Payment processing will have to be centralised like Mastercard and Visa.
+Bitcoin max is 4 transactions per second - 350,000 per day.
+
+To match a visa or mastercard - bitcoin would need to 800MB every 10 minutes.
+42 terabytes per year.
+Not possible for the average consumer to run that full node.
+
+In 2013, Visa operated a network of 376 servers, 277 switches, 85 routers, and 42 firewalls.
+
+That is why transaction costs are rising and will continue to rise.
+The biggest scope for scaling bitcoin will happen off-chain.
+
+Merchants and customers cannot wait 1 to 12 minutes to receive the first confirmation.
+
+> Saving in Bitcoin by its very nature will not require many transactions, and so a high transaction fee is worth paying for it.
+
+> And for transactions that cannot be carried out through the regular banking system, such as people trying to get their money out of a country suffering inflation and capital controls, Bitcoin's high transaction fees will be a price well worth paying.
+
+> All that is happening is that the less important transactions are being moved off‐chain and the on‐chain transactions are growing in importance
+
+Also transactions in bitcoin casinoes and exchanges are much higher and happen off chain - until withdrawal.
+Bitcoin is already being used as a reserve asset.
+
+> While many Bitcoin purists value the freedom accorded to them by being able to hold their own money and not rely on a financial institution to access it, the vast majority of people would not want this freedom and prefer to not have their money under their responsibility for fear of theft or abduction
+
+In 2016 and 2017 the max number of transactions was being reached and bitcoin is acting more as a settlement network.
+
+### Is Bitcoin for Criminals?
+
+Bitcoins anonymity is the same as that of the internet. It depends how well you hide.
+It is hard to discard of a bitcoin address once used.
+
+Bitcoin is a technology for money and money has been used by criminals at all times.
+
+> If an action has no victims, it is no crime, regardless of what some self‐important voters or bureaucrats would like to believe about their prerogative to legislate morality for others.
+
+> So one can expect that victimless crimes, such as online gambling and evading capital controls, would use Bitcoin, but murder and terrorism would more likely not.
+
+> It is not a tool to be feared, but one to be embraced as an integral part of a peaceful and prosperous future.
+
+The best example of crime is ransomware - built around taking advantage of lax computer security.
+It has allowed the detection and exposure of security flaws - but not where the cost is the competitor gaining insider info.
+Initially hackers benefit from this - in the long run productive businesses do.
+
+### How to kill Bitcoin: A beginner's guide
+
+#### Hacking
+
+Bitcoin's hacking resistant proeprties:
+
+* simplicity
+* processing power
+* distributed nodes
+
+For most systems to run - certain computers are made impenetrable.
+Bitcoin takes the opposite approach, it does not secure any individual node - it expects each node to be a hostile attacker.
+Instead of trust - verification.
+The verification is based on proof of work - a brute force operation.
+Invulnerable to problems of access and credentials.
+Nodes have a low cost of detecting fraud - but a high cost to create it.
+The majority have a vested interest in bitcoin surviving.
+
+#### The 51% Attack
+
+During a fork they can double spend.
+In pracitce very hard to use. The longer the recipient waits, the less likely the attacker to succeed.
+A successful 51% attack undermines the value of bitcoin.
+
+They have a long term interest in the success of the network.
+Betcoin dice did get caught out on a double spend - because it was doing 0 confirmations.
+Always wait for at least 6 confirmations.
+
+A government or private entity could try it - not for profit.
+If a government made the big investment in mining equipment - it would incentivise capital investment on mining equipment and reward current miners.
+
+#### Hardware Backdoors
+
+Malware or spyware on mining rigs or to reveal private keys.
+
+> Such an attack on mining equipment is more likely to succeed given that there are only a few manufacturers of mining equipment, and this constitutes one of Bitcoin's most critical points of failure
+
+Private keys and addresses can be generated on offline devices.
+
+> Bitcoiners are generally far more technically competent than the average population, and they are very meticulous about examining the hardware and software they utilize
+
+#### Internet and Infrastructure Attacks
+
+Bitcoin is a software protocol, not a network.
+No single point of failure.
+The internet is also the protocol that allows computers to connect together - albeit via tier 0's.
+
+Bitcoin doesn't need that much - only 1MB every 10 minutes (excluding adding more nodes)
+
+Turning off the internet will damage society.
+
+#### Rise in cost of nodes and drop in their numbers
+
+Less than a dozen nodes - allows for collution. It stops being decentralised.
+Unlikely as the economic incentives are against it.
+
+#### The breaking of SHA256
+
+Hashing is a process that takes any stream of data as an input and transforms it into a dataset of fixed size (known as a hash) using a nonreversible mathematical formula.
+
+It is easy to figure out the hash from inputted data - but hard to figure out the inputted data from the hash.
+With improvements in computing power it might be possible to reverse calculate the hashing functions.
+
+The technical fix would be to move to a stronger encryption.
+It is likely in this case to avoid vulnerability - users will choose to hard fork.
+
+#### A Return to Sound Money
+
+> As long as the technology is useful for people, attempts at banning it will fail as people will continue to find ways of utilizing it, legally or not.
+
+The only way is by inventing a better replacement or obviating its use.
+
+> The typewriter could never be banned or legislated out of existence, but the rise of the PC did effectively kill it.
+
+The need is to bypass political controls and have an inflation resistant store of value.
+
+If the gold standard returned - the demand for bitcoin would decrease.
+
+This is extremely unlikely as governments now control education and the sheep blindly follow and believe.
+
+Why can copycat's not win?
+
+> Bitcoin is the only truly decentralized digital currency which has grown spontaneously as a finely balanced equilibrium between miners, coders, and users, none of whom can control it.
+
+> It was only ever possible to develop one currency based on this design, because once it became obvious that it is workable, any attempt at copying it will have been a top‐down and centrally controlled network which will never escape the control of its creators.
+
+#### Altcoins
+
+It is incorrect to call them alt coins, they are not alternatives or competitors.
+They can never have the properties that make bitcoin functional as digital cash or sound money.
+
+Bitcoin was created by an unknown.
+
+Hal Finney passed away in August 2014.
+
+Nakamoto left in mid-2010 for other projects - never to be heard from again.
+
+There are 1 million bitcoins in an account run by nakamoto (most likely)
+
+It is time to stop obsessing over the identity of Nakamoto, just as the inventor of the wheel no longer matters.
+
+Finney and Nakamoto gone - there is no central direction or leader (unlike Linux)
+
+> It is the sovereignty of Bitcoin code, backed by proof‐of‐work, which makes it a genuinely effective solution to the double‐spending problem, and a successful digital cash
+
+All shitcoins do not have natural demand.
+
+This is why virtually all altcoins have a team in charge; they began the project, marketed it, designed the marketing material, and plugged press releases into the press as if they were news items, while also having the advantage of mining a large number of coins early before anybody had heard of the coins.
+
+> With a group of developers in control of the majority of coins, processing power, and coding expertise, the currency is practically a centralized currency where the interests of the team dictate its development path.
+
+There is something deeply and fundamentally wrong about a centralized currency that adopts a highly cumbersome and inefficient design whose only advantage is the removal of a single point of failure.
+
+Ethereum DOA (Decentralised autonomous organisation) - the first implementation of smart contracts on Ethereum - in the aftermath of the hack Ethereum developers created a new version of ethereum confiscating the attackers funds and distributing to victims.
+
+The second largest network in terms of processing power can have its blockchain record altered when it goes in a way not suiting the development team - the notion that it is regulated by processing power is false.
+
+The concentration of power - defeats the purpose of the blockchain.
+
+Ethereum has not decided on its monetary policy - it is up for discussion.
+
+> Non‐Bitcoin digital currencies are, in the aggregate, easy money.
+
+#### Blockchain Technology
+
+> Perhaps the most persistent and high‐profile confusion is the notion that a mechanism that is part of Bitcoin's operation—putting transactions into blocks which are chained together to form the ledger—can somehow be deployed to solve or improve economic or social problems, or even “revolutionize” them, as is the wont of every newfangled overhyped toy invented these days.
+
+The only possible uses of this technology are in avenues where removing third‐party intermediation is of such paramount value to end users that it justifies the increased cost and lost efficiency.
+
+> The nature of sound money, as explained earlier, lies precisely in the fact that no human is able to control it, and hence, a predictable immutable algorithm is uniquely suited for this task
+
+### Potential applciations of BLockchain Technology
+
+#### Digital payments
+
+Removing the need for a trusted third party.
+Nodes compete to verify transactions - no single node need be trusted.
+
+#### Contracts
+
+Code is law - smart contracts.
+Problem is there is a handful of people that understand smart contracts.
+Those proficient take advantage of those that are not.
+
+> Smart contracts have not replaced courts with code, but they have replaced courts with software developers with little experience, knowledge, or accountability in arbitrating.
+
+The only existing meaningful blockchain contract applications are for simple time‐programmed payments and multi‐signature wallets, all of which are performed with the currency of the blockchain itself, mostly on the Bitcoin network.
+
+#### Database and Record Management
+
+> Blockchain is a reliable and tamper‐proof database and asset register, but only for the blockchain's native currency and only if the currency is valuable enough for the network to have strong enough processing power to resist attack.
+
+### Drawbacks of Blockchain Technology
+
+1. Redundancy - sharing exact copies of the information and the many compute resources required - has no benefit.
+2. Scaling - All nodes storing all transactions will have storage and computation exponentially increase. Why second layer networks for speed and efficiency are centralised and off the blockchain.
+3. Regulatory Compliance - Government or authority can do nothing. It cannot be regulated - it is self regulating by concensus. You cannot regulate the blockchain.
+4. Irreversibility - A reversal can only happen through a fork. It replicates cash transactions - online.
+5. Security - reliant on expenditure of processing power on verification of transactions and proof-of-work.
+
+> For every other blockchain project which was established by imitating Bitcoin's design, there was always a single group responsible for setting the rules of the system, and thus having the ability to change them. Whereas Bitcoin grew around the set of established consensus rules through human action, all other projects grew by active human design and management.
+
+> For this system to be secure, the verifiers who expend the processing power have to be compensated in the currency of the payment system itself, to align their incentive with the health and longevity of the network.
+
+> An open decentralized system built on verification by processing power is more secure the more open the system and the larger the number of network members expending processing power on verification.
+
+Bitcoin's creator was motivated by creating a “peer‐to‐peer electronic cash”, and he built a design for that end.
+
+Calling something a waste  - is an opinion. A consumer has chosen so clearly not a waste to him.
+
+If there is no victim - it is no crime.
 
 
 ## Source
