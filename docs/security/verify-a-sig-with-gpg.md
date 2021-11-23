@@ -10,7 +10,7 @@ title: How to Verify a .sig with PGP on Mac 10.13
 
 To verify a sig you need to use PGP - Pretty Good Privacy
 
-1. Install [GPG suite for MacOS 10.13](45c5aad48e4cace9d7be8496a33958e435e3272c2d2dd9876bf5610713b6555f) and verify with `sha256sum`
+1. Install [GPG suite for MacOS 10.13](https://gpgtools.org/releases/gpgsuite/release-notes.html) and verify with `sha256sum`
 2. Install it
 3. Get the key id of the file
 

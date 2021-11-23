@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-11-23: _Virtualisation_ [Types of Virtualisation Storage](virtualisation/types-of-storage.md)
+- 2021-10-12: _Virtualisation_ [Mastering KVM Notes](virtualisation/mastering-kvm.md)
+- 2021-10-01: _Stoic_ [Notes on Meditations by Marcus Aurelius](stoic/notes-on-meditations-aurelius.md)
+- 2021-09-20: _History_ [A Brief Timeline of World History](history/world-history-timeline.md)
+- 2021-09-20: _Stoic_ [50 Rules for Life - Daily Stoic](stoic/50-rules-for-life-daily-stoic.md)
+- 2021-09-20: _Stoic_ [Notes on Enchiridion by Epictetus](stoic/notes-on-enchiridion-epictetus.md)
+- 2021-09-20: _Stoic_ [Summarised Stoic Teachings and Quotes](stoic/summarised_stoic_teachings_and_quotes.md)
+- 2021-09-15: _Security_ [How to Verify a .sig with PGP on Mac 10.13](security/verify-a-sig-with-gpg.md)
+- 2021-09-15: _Trading_ [Momentum Masters](trading/momentum-masters-notes.md)
 - 2021-08-24: _Ansible_ [Awx Moving Custom Venvs to Execution Environments](ansible/awx-moving-custom-venvs-to-execution-environments.md)
-- 2021-08-12: _Bitcoin_ [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
-- 2021-08-05: _LDAP_ [LDAP System Administration](ldap/ldap-system-administration.md)
-- 2021-06-24: _Clojure_ [Getting Started Clojure](clojure/getting-started-clojure.md)
-- 2021-03-13: _Tools_ [TCPDump](tools/tcpdump.md)
-- 2021-02-04: _Juniper_ [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
-- 2021-01-07: _Networking_ [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
-- 2021-01-04: _Bitcoin_ [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
-- 2021-01-04: _Api_ [Api Product Manager](api/api-product-manager.md)
-- 2020-12-14: _BSD_ [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
 
 ## Table of Contents
 
@@ -135,9 +135,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Chess
 - 2020-11-10: [Chess - Basics](chess/basics.md)
-
-## Clojure
-- 2021-06-24: [Getting Started Clojure](clojure/getting-started-clojure.md)
 
 ## Composer
 - 2016-09-26: [Bus Error Core Dumped](composer/bus-error-core-dumped.md)
@@ -276,6 +273,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Grunt
 - 2015-01-18: [Grunt Setup](grunt/grunt-setup.md)
+
+## History
+- 2021-09-20: [A Brief Timeline of World History](history/world-history-timeline.md)
 
 ## Homebrew
 - 2015-10-09: [How To Update And Upgrade All Packages](homebrew/how-to-update-and-upgrade-all-packages.md)
@@ -630,6 +630,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-06-13: [Secops Tools](secops/secops-tools.md)
 
 ## Security
+- 2021-09-15: [How to Verify a .sig with PGP on Mac 10.13](security/verify-a-sig-with-gpg.md)
 - 2020-09-20: [SSH - The Secure Shell Book (Notes)](security/ssh.md)
 - 2020-06-23: [Openssl Cookbook](security/openssl-cookbook.md)
 - 2020-06-14: [Applied Cryptography Notes](security/applied-cryptography-notes.md)
@@ -657,6 +658,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-04-17: [Building Scalable Web Applications](startup/building-scalable-web-applications.md)
 - 2019-02-16: [Bad Blood](startup/bad-blood.md)
 
+## Stoic
+- 2021-10-01: [Notes on Meditations by Marcus Aurelius](stoic/notes-on-meditations-aurelius.md)
+- 2021-09-20: [50 Rules for Life - Daily Stoic](stoic/50-rules-for-life-daily-stoic.md)
+- 2021-09-20: [Notes on Enchiridion by Epictetus](stoic/notes-on-enchiridion-epictetus.md)
+- 2021-09-20: [Summarised Stoic Teachings and Quotes](stoic/summarised_stoic_teachings_and_quotes.md)
+
 ## Sublime-Text
 - 2015-01-18: [Increase Decrease Indentation](sublime-text/increase-decrease-indentation.md)
 
@@ -674,6 +681,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Tools
 - 2021-03-13: [TCPDump](tools/tcpdump.md)
 - 2017-02-01: [Mailcatcher Setup](tools/mailcatcher-setup.md)
+
+## Trading
+- 2021-09-15: [Momentum Masters](trading/momentum-masters-notes.md)
 
 ## Ubuntu-Debian
 - 2020-06-21: [Add Someone Elses Public Key To Remote Server](ubuntu-debian/add-someone-elses-public-key-to-remote-server.md)
@@ -718,6 +728,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-07-28: [Vim Basics](vim/vim-basics.md)
 - 2015-09-20: [Setting Vim To Tab Space 2](vim/setting-vim-to-tab-space-2.md)
 - 2015-09-20: [Setting Vim To Show Colours](vim/Setting-vim-to-show-colours.md)
+
+## Virtualisation
+- 2021-11-23: [Types of Virtualisation Storage](virtualisation/types-of-storage.md)
+- 2021-10-12: [Mastering KVM Notes](virtualisation/mastering-kvm.md)
 
 ## Vmware
 - 2020-06-14: [Vcenter Vs Vsphere Esxi](vmware/vcenter-vs-vsphere-esxi.md)

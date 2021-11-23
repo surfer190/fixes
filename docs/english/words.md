@@ -139,3 +139,10 @@ title: Words and Definitions
 * cogent - clear, logical and convincing
 * avail - take advantage of, make us of
 * askance - look of dissaproval
+* miasma - unhealthy smell or vapour
+* deprecate - express dissaproval of
+* abeyance - state of temporary disuse or suspension
+* perdition - state of eternal punishment, damnation
+* solemn - formal, dignified
+* levity - treating a seroious matter without respect
+* loath - reluctant, unwilling
