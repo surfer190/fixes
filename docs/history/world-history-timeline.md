@@ -110,6 +110,8 @@ title: A Brief Timeline of World History
 * 1950: North Korea invades South Korea
 
 
+## The Lessons of History
+
 > The influence of geographic factors diminishes as technology grows.
 
 * The first biological lesson of history is that life is competition
