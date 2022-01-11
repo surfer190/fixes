@@ -12,12 +12,17 @@ title: Summarised Stoic Teachings and Quotes
 
 Marcus Aurelius - Book5, 33
 
-"Don't hope that events will turn out the way you want, welcome events in whichever way they happen: this is the path to peace." Epictetus
+> "Don't hope that events will turn out the way you want, welcome events in whichever way they happen: this is the path to peace."
 
-‘Those who can make you believe absurdities, can make you commit atrocities.’ —Voltaire
+Epictetus
 
-"The essence of philosophy is that a man should so live that his happiness shall depend as little as possible on external things." Epictetus
+> Those who can make you believe absurdities, can make you commit atrocities.
 
+Voltaire
+
+> The essence of philosophy is that a man should so live that his happiness shall depend as little as possible on external things.
+
+Epictetus
 
 Gaius Musonius Rufus
 
@@ -29,15 +34,14 @@ Zeno
 
 Socrates
 
-The Stoics said we shouldn’t waste our precious time…
+    The Stoics said we shouldn’t waste our precious time…
 
-…worrying about other people’s opinions
-…judging other people
-…putting things off to the future
-…holding onto the past
-…arguing with reality
-…thinking you are going to live forever
-
+    ...worrying about other people’s opinions
+    ...judging other people
+    ...putting things off to the future
+    ...holding onto the past
+    ...arguing with reality
+    ...thinking you are going to live forever
 
 Marcus Aurelius:
 
@@ -47,7 +51,6 @@ Marcus Aurelius:
 4. You don't have to have an opinion
 5. You could leave life right now—let that determine what you do, say, and think
 
-
 ### The Backwards Law - Stop Trying to get it and you will get it
 
 https://www.youtube.com/watch?v=O42tZse-P6w
@@ -55,11 +58,11 @@ https://www.youtube.com/watch?v=O42tZse-P6w
 * It is difficult to get rid of a thought by force
 * Dissatisfaction from life with negative emotions - the more you try be less dissatisfied the more dissatisfied you become
 * Trying to be happy - trying to be content - is exactly the reason you aren't
-* Willpower and effort is something useful in the external world - getting money, imporiving fitness
+* Willpower and effort is something useful in the external world - getting money, improving fitness
 * What is happiness? Is it something we acquire from material things or love. 
 * Alan Watts: 1. you don't know what you want, you never can 2. you have it
 * Fire doesn't burn itself, a knife cannot cut itself
-* The human predicament is a dlussion stating that changing external things and circumstances: objects, money, adjustments of the body and changes of scenery. The backwards law tells us the opposite is the case.
+* The human predicament is a delusion stating that changing external things and circumstances: objects, money, adjustments of the body and changes of scenery. The backwards law tells us the opposite is the case.
 * Pursuing something only reinforces the fact that you lack it
 * The will to live
 * The mind perceives that the present moment is not enough - we try to escape what is into situations perceived as more pleasurable. Thus ever keen pleasure is an error and an illusion for no attained wish can give lasting satisfaction - Arthur Schopenhauer

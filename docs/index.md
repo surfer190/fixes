@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2021-12-24: _Network-Automation_ [Netbox Extensability Overview](network-automation/netbox-extensibility-overview.md)
+- 2021-12-23: _Keycloak_ [Notes on Keycloak - Identity and Access Management for Modern Applications](keycloak/identity-and-access-management-for-modern-applications.md)
+- 2021-12-20: _Economics_ [A Tour of Economics](economics/a-tour-of-economics.md)
+- 2021-12-20: _Django_ [Standalone Reusable Apps](django/standalone-app.md)
+- 2021-12-19: _Django_ [Django and HTMX](django/django-htmx.md)
+- 2021-11-25: _Network Automation_ [Step by step guide developing a netbox plugin](network-automation/netbox-plugin-step-by-step-guide.md)
 - 2021-11-23: _Virtualisation_ [Types of Virtualisation Storage](virtualisation/types-of-storage.md)
 - 2021-10-12: _Virtualisation_ [Mastering KVM Notes](virtualisation/mastering-kvm.md)
 - 2021-10-01: _Stoic_ [Notes on Meditations by Marcus Aurelius](stoic/notes-on-meditations-aurelius.md)
 - 2021-09-20: _History_ [A Brief Timeline of World History](history/world-history-timeline.md)
-- 2021-09-20: _Stoic_ [50 Rules for Life - Daily Stoic](stoic/50-rules-for-life-daily-stoic.md)
-- 2021-09-20: _Stoic_ [Notes on Enchiridion by Epictetus](stoic/notes-on-enchiridion-epictetus.md)
-- 2021-09-20: _Stoic_ [Summarised Stoic Teachings and Quotes](stoic/summarised_stoic_teachings_and_quotes.md)
-- 2021-09-15: _Security_ [How to Verify a .sig with PGP on Mac 10.13](security/verify-a-sig-with-gpg.md)
-- 2021-09-15: _Trading_ [Momentum Masters](trading/momentum-masters-notes.md)
-- 2021-08-24: _Ansible_ [Awx Moving Custom Venvs to Execution Environments](ansible/awx-moving-custom-venvs-to-execution-environments.md)
 
 ## Table of Contents
 
@@ -178,6 +178,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-27: [Stored Secrets Vault Project](devops/stored-secrets-vault-project.md)
 
 ## Django
+- 2021-12-20: [Standalone Reusable Apps](django/standalone-app.md)
+- 2021-12-19: [Django and HTMX](django/django-htmx.md)
 - 2020-06-21: [Django Orm](django/django-orm.md)
 - 2020-06-14: [Django Forms](django/django-forms.md)
 - 2020-06-14: [Getting Started](django/getting-started.md)
@@ -227,6 +229,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
 
 ## Economics
+- 2021-12-20: [A Tour of Economics](economics/a-tour-of-economics.md)
 - 2020-09-25: [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
@@ -307,6 +310,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Kafka](kafka/kafka.md)
 
 ## Keycloak
+- 2021-12-23: [Notes on Keycloak - Identity and Access Management for Modern Applications](keycloak/identity-and-access-management-for-modern-applications.md)
 - 2020-07-07: [Keycloak Single Sign Out](keycloak/keycloak-single-sign-out.md)
 - 2020-06-14: [Keycloak Essential](keycloak/keycloak-essential.md)
 - 2020-06-14: [Keycloak Adapters](keycloak/keycloak-adapters.md)
@@ -438,6 +442,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-27: [Turn On Mysql General Log](mysql/turn-on-mysql-general-log.md)
 
 ## Network-Automation
+- 2021-12-24: [Netbox Extensability Overview](network-automation/netbox-extensibility-overview.md)
+- 2021-11-25: [Step by step guide developing a netbox plugin](network-automation/netbox-plugin-step-by-step-guide.md)
 - 2020-10-15: [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
 - 2020-10-15: [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 - 2020-07-07: [Pyez Dev Guide](network-automation/pyez-dev-guide.md)

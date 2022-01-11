@@ -60,13 +60,13 @@ Reflect on this for all things - you will find it an impediment but not to yours
 On every event or accident - see how you can put it to use.
 A sexy woman - the power to resist.
 A painful hard job - endurance.
-Abusive words - paitence.
+Abusive words - patience.
 
 ### 11
 
 You do not own a thing - you merely borrow it.
 A wife, child or your estate.
-When you wife diss, you have not lost her - she has been restored.
+When you wife dies, you have not lost her - she has been restored.
 
 ### 12
 
@@ -106,9 +106,9 @@ It is in the things and your own power to derive benefit from it.
 
 ### 19
 
-Be careful not to precive someone in power as happy.
+Be careful not to perceive someone in power as happy.
 Carried away by appearance.
-If the nature of good is in our power - there is no jealousy or ency in you.
+If the nature of good is in our power - there is no jealousy or envy in you.
 You willl only be free to despise of things not in your power.
 
 ### 20
@@ -136,12 +136,12 @@ Appear to yourself as a philosopher and you will appear to others as one.
 ### 25
 
 Don't suck up to people. You gain not having to endure the person wanting flattery.
-You lose the potenical to obtain what you wanted though.
+You lose the potential to obtain what you wanted though.
 
 ### 26
 
 Learn about how good or bad things happen to others.
-These thinks may also happen to us.
+These things may also happen to us.
 Our reaction if they happen to us, should be the same as it happening to others.
 
 ### 27
@@ -154,7 +154,7 @@ God makes the mark to aim towards - there is not evil.
 
 ### 29
 
-Observe wheat preceds actions and what follows.
+Observe what precedes actions and what follows.
 Be consistent. One man, day in and day out.
 Do not give up - but strive to continue and endure.
 

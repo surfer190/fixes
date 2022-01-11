@@ -14,10 +14,10 @@ title: 50 Rules for Life - Daily Stoic
 5. Value time more than money and possessions - Senecus
 6. You are a product of your habits - Epictitus
 7. You have the power to have no opinion - if you didn't know it existed you don't need to have an opinion - Epictitus
-8. Own the morning - Have a good day have a good morning, Have a good life have a good day - Marcus Arrailius
+8. Own the morning - Have a good day have a good morning, Have a good life have a good day - Marcus Aurelius
 9. Put the day up for review - Senecus
 10. Don't suffer imagined troubles - Senecus
-11. Try to see the good in people - Marcus Aureilius
+11. Try to see the good in people - Marcus Aurelius
 12. Never be overheard complaining...even to yourself - complaints are for losers they solve nothing - Marcus Aureilius
 13. Two ears, one mouth for a reason - Zeno (Listen more than you talk)
 14. There is always something you can do - some progress - Zeno
@@ -39,7 +39,7 @@ title: 50 Rules for Life - Daily Stoic
 30. Finding one thing everyday - to be wise - 1 thing at a time
 31. Whats bad for the hive is bad for the bee - Marcus Aurelius
 32. Don't judge other people - Seneca (Scrubbing off your flaws - leave other people to their own mistakes)
-33. Study the lives of the greats - Seneka
+33. Study the lives of the greats - Seneca
 34. Forgive, forgive, forgive - a gift you give to yourself - let go
 35. Make a little progress each day - Zeno
 36. Journal - Meditations - Conversation with himself
@@ -47,7 +47,7 @@ title: 50 Rules for Life - Daily Stoic
 38. Look for the poetry in ordinary things - observations - beauty in the mundane
 39. To do wrong to one is to do wrong to yourself - we are all connected
 40. Always choose "alive time" - live this moment or waste time - every moment must matter
-41. Associate only with people that make you better - you become like your firends
+41. Associate only with people that make you better - you become like your friends
 42. If someone offends you, realise you are complicit in taking offence - how you respond
 43. Fate behaves as she pleases - understand it is not in your control
 44. Possessions are yours only in trust - you can only lose what you have - attachments

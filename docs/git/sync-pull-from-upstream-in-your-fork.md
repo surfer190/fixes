@@ -17,12 +17,12 @@ You should sync with the upstream repo frequently to ensure you have the latest 
 
 1. Add a new remote (the original), for example:
 
-    git remote add upstream git@github.com:hvac/hvac.git
+        git remote add upstream git@github.com:hvac/hvac.git
 
 2. Update your repo
 
-    git pull upstream master --allow-unrelated-histories
-    git push origin master
+        git pull upstream master --allow-unrelated-histories
+        git push origin master
 
 
 
