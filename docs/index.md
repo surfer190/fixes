@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-02-03: _Bitcoin_ [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
+- 2022-02-03: _OpenWRT_ [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
+- 2021-12-27: _OpenWRT_ [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
+- 2021-12-20: _Economics_ [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
 - 2021-11-23: _Virtualisation_ [Types of Virtualisation Storage](virtualisation/types-of-storage.md)
 - 2021-10-12: _Virtualisation_ [Mastering KVM Notes](virtualisation/mastering-kvm.md)
 - 2021-10-01: _Stoic_ [Notes on Meditations by Marcus Aurelius](stoic/notes-on-meditations-aurelius.md)
 - 2021-09-20: _History_ [A Brief Timeline of World History](history/world-history-timeline.md)
 - 2021-09-20: _Stoic_ [50 Rules for Life - Daily Stoic](stoic/50-rules-for-life-daily-stoic.md)
 - 2021-09-20: _Stoic_ [Notes on Enchiridion by Epictetus](stoic/notes-on-enchiridion-epictetus.md)
-- 2021-09-20: _Stoic_ [Summarised Stoic Teachings and Quotes](stoic/summarised_stoic_teachings_and_quotes.md)
-- 2021-09-15: _Security_ [How to Verify a .sig with PGP on Mac 10.13](security/verify-a-sig-with-gpg.md)
-- 2021-09-15: _Trading_ [Momentum Masters](trading/momentum-masters-notes.md)
-- 2021-08-24: _Ansible_ [Awx Moving Custom Venvs to Execution Environments](ansible/awx-moving-custom-venvs-to-execution-environments.md)
 
 ## Table of Contents
 
@@ -114,13 +114,11 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Bitcoin
+- 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
 - 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
-
-## Bsd
-- 2020-12-14: [Absolute FreeBSD Notes](bsd/absolute-free-bsd-notes.md)
 
 ## C
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
@@ -227,6 +225,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
 
 ## Economics
+- 2021-12-20: [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
 - 2020-09-25: [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
@@ -491,6 +490,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-11-04: [Openshift Web Console White Screen Of Death](openshift/openshift-web-console-white-screen-of-death.md)
 - 2019-11-04: [Okd  Cheatsheet](openshift/okd- cheatsheet.md)
 - 2019-10-14: [Openshift Registry Setup](openshift/openshift-registry-setup.md)
+
+## Openwrt
+- 2022-02-03: [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
+- 2021-12-27: [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
 
 ## Php
 - 2020-06-14: [Php7 Intro](php/php7-intro.md)
