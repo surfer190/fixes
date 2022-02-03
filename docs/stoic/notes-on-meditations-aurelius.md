@@ -17,7 +17,7 @@ title: Notes on Meditations by Marcus Aurelius
 ### Maximus
 
 * Self-control and resistance to distractions.
-* Optimism in adversity—especially illness.
+* Optimism in adversity — especially illness.
 * A personality in balance: dignity and grace together.
 * Doing your job without whining.
 * Never taken aback or apprehensive.

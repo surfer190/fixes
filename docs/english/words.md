@@ -146,3 +146,4 @@ title: Words and Definitions
 * solemn - formal, dignified
 * levity - treating a seroious matter without respect
 * loath - reluctant, unwilling
+* parsimonious - unwilling to spend or use resources
