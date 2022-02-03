@@ -101,6 +101,7 @@ title: A Brief Timeline of World History
     * Economic sanctions proved ineffective (ceased operations 1946)
 * 1929: October stock market crash (Great Depression) until second world war brought countries out
 * 1931: Japan invades manchuria
+* 1933: Reichstag fire, 27 February, 4 weeks after Adolfwas sworn in. Fire of the German parliament. A false flag operation - doing something to advance your objectives by pinning the blame on another. Amendments to the constituition paving way for Nazi dictatorship.
 * 1935: Italy invades abbysynia (Ethiopia)
 * 1940 - 1945: Winston Churchill (1874 – 1965) - Behind Iron curtain.
 * 1945: The Yalta conference - Frankin D roosevelt old and Truman coming in - didn't know about the atom bomb.

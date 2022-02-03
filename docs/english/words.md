@@ -26,7 +26,7 @@ title: Words and Definitions
 * nadir - the lowest or most unsuccessful point
 * parochialism - a limited or narrow outlook, focused on the local area
 * Laissez-faire - economic theory that opposes government involvement in business - a key part of freemarket capitalism.
-* pernicious - having a harmful effect in a subtle way
+* pernicious - having a harmful effect in a gradual and subtle way
 * orthogonol - statisticly independent
 * repeal - revoke or annul
 * sophistry - clever but flase argument with the intent to deceive
