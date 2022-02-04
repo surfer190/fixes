@@ -13,7 +13,7 @@ You can follow the basic guide on [openwrt for mikrotiks](https://openwrt.org/to
 
 > remember to [store your RouterOS license](https://openwrt.org/toh/mikrotik/common#saving_mikrotik_routerboard_license_key_using_winbox_and_windows)
 
-If the default gateway of the device is `192.168.101.1` it may be preconfigured. In which case you should [reset it as described inthis video](https://www.youtube.com/watch?v=OjLNA84ogUM&ab_channel=AtomicAccess)
+If the default gateway of the device is `192.168.101.1` it may be preconfigured. In which case you should [reset it as described in this video](https://www.youtube.com/watch?v=OjLNA84ogUM&ab_channel=AtomicAccess)
 
 The simplified version is:
 
@@ -77,24 +77,59 @@ You have successfully installed OpenWRT on the Mikrotik hap AC2. Now look at the
 
 ## Restoring RouterOS onto a Mikrotik OpenWRT
 
-> I did this with windows
+> I did this on ubuntu
 
-1. Get the netinstall package from [mikrotik downloads](https://mikrotik.com/download) at the bottom of the page and install it.
-2. Disable all other connections except ethernet
-3. Plug in the ethernet cable into the Eth1 on the mikrotik (or Internet/Poe port)
-4. Give a static ip address to the computers ehternet port
-5. Start net install
-6. Browse for the `.npk` you downlaoded
-7. Click `Net booting` -> Check `boot server enabled` -> Enter an ip from the subnet the computer is on.
-8. Then hold the reset button down and plug the power back in - it should blink then stop blinking after about 15 seconds - at which point it should show up in netinstall
+Follow these [instructions](https://help.mikrotik.com/docs/display/ROS/Netinstall)
 
-> It didn't for me...
+The important points to note:
 
+* if you have installed openwrt on the device you will need the keyfile to reinstall:
+
+    ./netinstall -r  -k <myfile>.key -a 192.168.88.3 routeros-7.1.1-arm.npk
+
+* You must [download the image](https://mikrotik.com/download) and netinstall binary marked as `stable`
+
+1. Set the static IP:
+
+    1. Ubuntu -> wired connection -> settings
+    2. Settings -> IPv4
+        Address: 192.168.88.2
+        Netmask: 255.255.255.0
+        Gateway: 192.168.88.1
+        DNS: 192.168.88.1 (Automatic off)
+    3. Apply
+    4. Turn the toggle on and off
+
+2. Run the script
+
+    sudo ./netinstall -r  -k <myfile>.key -a 192.168.88.3 routeros-7.1.1-arm.npk
+
+3. Enable the Etherboot
+
+    1. Put LAN Cable in ETH1 (Internet/PPPoe)
+    2. take out the power cable
+    3. Press `reset` in and hold
+    4. put power cable back in
+    5. Wait for the light to start flashing and then stop (about 20 seconds)
+    6. Release the reset
+    7. Script should start
+    
+4. When it is completed it should sat `Sent reboot command`
+
+    Will reset config
+    Using server IP: 192.168.88.2
+    Starting PXE server
+    Waiting for RouterBOARD...
+    PXE client: B8:69:F4:83:F9:98
+    Sending image: arm
+    Discovered RouterBOARD...
+    Formatting...
+    Sending package routeros-7.1.1-arm.npk ...
+    Ready for reboot...
+    Sent reboot command
 
 
 ### Sources
 
 * [Openwrt Mikrotik Common](https://openwrt.org/toh/mikrotik/common)
-* [Mikrotik Netinstall guide](https://wiki.mikrotik.com/wiki/Manual:Netinstall)
-* [Alduras Mikrotik](https://wiki.mikrotik.com/wiki/Manual:Netinstall)
-* [Restoring MikroTik (RouterOS) using NetInstall](https://ixnfo.com/en/restoring-mikrotik-routeros-using-netinstall.html)
+* [Restoring MikroTik (RouterOS) using NetInstall](https://help.mikrotik.com/docs/display/ROS/Netinstall)
