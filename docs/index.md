@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-04-26: _Buddha-Dharma_ [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
+- 2022-04-26: _Book Summaries_ [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
+- 2022-04-26: _Book Summaries_ [Remote - Office not Required](book-summaries/remote-office-not-required.md)
+- 2022-04-26: _Book Summaries_ [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
 - 2022-02-03: _Bitcoin_ [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
 - 2022-02-03: _OpenWRT_ [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
+- 2022-01-21: _Design Patterns_ [Python](python/design-patterns.md)
 - 2021-12-27: _OpenWRT_ [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
 - 2021-12-24: _Network-Automation_ [Netbox Extensability Overview](network-automation/netbox-extensibility-overview.md)
 - 2021-12-23: _Keycloak_ [Notes on Keycloak - Identity and Access Management for Modern Applications](keycloak/identity-and-access-management-for-modern-applications.md)
-- 2021-12-20: _Economics_ [A Tour of Economics](economics/a-tour-of-economics.md)
-- 2021-12-20: _Economics_ [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
-- 2021-12-20: _Django_ [Standalone Reusable Apps](django/standalone-app.md)
-- 2021-12-19: _Django_ [Django and HTMX](django/django-htmx.md)
-- 2021-11-25: _Network Automation_ [Step by step guide developing a netbox plugin](network-automation/netbox-plugin-step-by-step-guide.md)
 
 ## Table of Contents
 
@@ -119,6 +119,15 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
+
+## Book-Summaries
+- 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
+- 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)
+- 2022-04-26: [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
+- 2021-12-01: [Stormlight Archive](book-summaries/stormlight.md)
+
+## Buddha_Dharma
+- 2022-04-26: [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
 
 ## C
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
@@ -520,6 +529,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-01-21: [Python](python/design-patterns.md)
 - 2020-10-08: [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
 - 2020-10-07: [Convert XML to JSON](python/convert-xml-to-json.md)
 - 2020-06-21: [Refactoring Python](python/refactoring-python.md)

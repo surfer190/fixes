@@ -36,8 +36,9 @@ So instead of making the client wait for you to do all of those tasks, rather re
 * Processing images and video for the user
 * Generating eloborate reports (sent via email)
 * Any kind of data synchronisation
-* Aggregateion of feeds
+* Aggregation of feeds
 * A response times out
+* Returning an HTTP 202 - Accepted while sending for more processing
 
 ### Types of Protocols / Brokers
 
@@ -108,7 +109,7 @@ Apart from the above
 ## Rules
 
 1. Adding a task to the queue should be faster than performing the task itself
-2. You should consumer tasks faster than you produce them, otherwise add more workers.
+2. You should consume tasks faster than you produce them, otherwise add more workers.
 3. Ensure your task parameters are serialisable
 4. Use more queues, not just the default one
 5. Use celery's error handling mechanisms
@@ -129,7 +130,7 @@ Apart from the above
 A command line that runs a worker is standard.
 Use something like [`supervisord`](http://supervisord.org/running.html) or `god` to run your workers (consumers)
 
-## BUild your own task queue
+## Build your own task queue
 
 Nice to play with but don't reinvent the wheel.
 Existing task queues:
