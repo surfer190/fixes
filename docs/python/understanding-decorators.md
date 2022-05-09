@@ -1,3 +1,10 @@
+---
+author: ''
+category: Python
+date: '2022-04-15'
+summary: ''
+title: Summary of Understanding Decorators in Python
+---
 # Summary of Understanding Decorators in Python
 
 * Decorators are wrappers around Python functions (or classes) that change how these classes work
