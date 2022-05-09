@@ -520,6 +520,177 @@ More edge cases in the book...
 
 ### 15. Be Cautious when Relying on Dict Insertion Ordering
 
+In Python3.5 and prior - iterating over dictionary would return keys in random order.
+The order of iteration would not match the order of insertion.
+
+Functions `keys`, `values`, `items` and `popitem` would also show this behaviour - prior to python 3.6.
+
+There are many repercussions to this change.
+
+`**kwargs` would come in any order.
+
+Classes also use the `dict` type for their instance dictionaries `__dict__`
+
+`collections` used to be the goto for `OrderedDict` class that preserved insertion ordering - it may still be preferable over python's `dict` due to the speed.
+
+Python makes it easy to define custom container types for standard protocols `list`, `dict` and others.
+
+> Python is not statically typed - so most code relies on duck typing - where an object's behaviour is its defacto type - instead of rigid class hierachies.
+
+When you don't get the `dict` object but a similar duck typed object you have 3 options:
+
+1. Change your program to expect different objects
+2. Check the expected type and raise an Exception if it is different
+3. Use a type annotation to ensure it is a `dict` instance and not a `MutableMapping` with `mypy`
+
+Then check it with static analysis: `python3 -m mypy --strict example.py`
+
+### 16. Prefer `get` over `in` and `KeyError` to handle Missing Dict Keys
+
+    counters = {
+        'pumpernickel': 2,
+        'sourdough': 1,
+    }
+
+    count = counters.get(key, 0)
+    counters[key] = count + 1
+
+> There is a `Counter` class with a built-in `colletions` module
+
+If you wanted to know who voted for each type:
+
+    votes = {
+        'baguette': ['Bob', 'Alice'],
+        'ciabatta': ['Coco', 'Deb'],
+    }
+    key = 'brioche'
+    who = 'Elmer'
+
+    if key in votes:
+        names = votes[key]
+    else:
+        votes[key] = names = []
+
+    names.append(who)
+    print(votes)
+
+You could also use:
+
+    names = votes.get(key)
+    if names is None:
+        votes[key] = names = []
+
+or with an assignment expression:
+
+    if (names := votes.get(key)) is None:
+        votes[key] = names = []
+
+    names.append(who)
+
+> Not the most readable
+
+`setdefault` fetches the value of a key - if it isn't repsent it assigns the default value provided.
+
+    names = votes.setdefault(key, [])
+    names.append(who)
+
+> `setdefault` is not self explanatory - it should be `get_or_set` so new developers would understand faster and without having to look at the docs.
+
+Important that a new default value is set directly for each key and not copied. If the value assigned is modified after being set as the default it will change the key value.
+
+> There are only a few circumstances in which using setdefault is the shortest way to handle missing dictionary keys, such as when the default values are cheap to construct, mutable, and there’s no potential for raising exceptions (e.g., list instances).
+
+### 17. Prefer `defaultdict` Over `setdefault` to Handle Missing Items in Internal State
+
+For the instance where you are creating a mechanism for storing countries and cities:
+
+    class Visits:
+        def __init__(self):
+            self.data = {}
+
+        def add(self, country, city):
+            city_set = self.data.setdefault(country, set())
+            city_set.add(city)
+
+> hiding `setdefault` from the caller - a nicer interface for the caller
+
+    visits = Visits()
+    visits.add('Russia', 'Yekaterinburg')
+    visits.add('Tanzania', 'Zanzibar')
+    print(visits.data)
+
+    >>>
+    {'Russia': {'Yekaterinburg'}, 'Tanzania': {'Zanzibar'}}
+
+Using `defaultdict`:
+
+from collections import defaultdict
+
+    class Visits:
+        def __init__(self):
+            self.data = defaultdict(set)
+
+        def add(self, country, city):
+            self.data[country].add(city)
+    
+    visits = Visits()
+    visits.add('England', 'Bath')
+    visits.add('England', 'London')
+    print(visits.data)
+
+    >>> defaultdict(<class 'set'>, {'England': {'London', 'Bath'}})
+
+### 18. Know how to construct key dependent values with `__missing__`
+
+For example, say that I’m writing a program to manage social network profile pictures on the filesystem. I need a dictionary to map profile picture pathnames to open file handles so I can read and write those images as needed.
+
+> You can subclass the dict type and implement the __missing__ special method to add custom logic for handling missing keys
+
+    class Pictures(dict):
+        def __missing__(self, key):
+            value = open_picture(key)
+            self[key] = value
+            return value
+
+    pictures = Pictures()
+    handle = pictures[path]
+    handle.seek(0)
+    image_data = handle.read()
+
+* The `setdefault` method of dict is a bad fit when creating the default value has high computational cost or may raise exceptions.
+* The function passed to `defaultdict` must not require any arguments
+
+## Functions
+
+> Functions enable you to break large programs into smaller, simpler pieces with names to represent their intent. They improve readability and make code more approachable. They allow for reuse and refactoring.
+
+### 19. Never Unpack more than 3 Variables when functions return Multiple Values
+
+One effect of unpacking is it allows python functions to return more than 1 value
+
+    def get_stats(numbers):
+        minimum = min(numbers)
+        maximum = max(numbers)
+        return minimum, maximum
+
+    lengths = [63, 73, 72, 60, 67, 66, 71, 61, 72, 70]
+
+    minimum, maximum = get_stats(lengths) # Two return values
+
+Unpacking more than 3 makes it easy to reorder them - causing hard to spot bugs.
+
+    # Correct:
+    minimum, maximum, average, median, count = get_stats(lengths)
+
+    # Oops! Median and average swapped:
+    minimum, maximum, median, average, count = get_stats(lengths)
+
+The line line might become very long - PEP8 forces next line - hurting readability
+
+> Never unpack more than 3 - if you do want to unpack more than 3 you are better off defining a lightweight class or namedtuple
+
+### 20. Prefer Raising Exceptions to Returning None
+
 
 
 ### Use List Comprehensions Instead of map and filter
@@ -1497,7 +1668,6 @@ Check the book for a good example...
 * Use `@property`to give existing instance attributes new functionality
 * Make incremental progress towards better data models
 * Consider refactoring a class when using a `@property` too regularly
-
 ### Use Descriptors for reusable @property methods
 
 The big problem with `@property` is reuse. The methods it decorates cannot be reused for multiple attributes in the same class or external classes.
@@ -1903,7 +2073,7 @@ The `OrderedDict` class from the `collections` module is a special type of dicti
 
 #### Default Dictionary
 
-USeful for bookeeping and tracking statistics. 
+Useful for bookeeping and tracking statistics. 
 
 With dictionaries you cannot assume a key is present, making it difficult to increase a counter for example:
 

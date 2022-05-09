@@ -6,14 +6,14 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 - 2022-02-03: _Bitcoin_ [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
 - 2022-02-03: _OpenWRT_ [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
+- 2022-01-31: _Bitcoin_ [A Guide on Self Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
+- 2022-01-21: _Design Patterns_ [Python](python/design-patterns.md)
 - 2021-12-27: _OpenWRT_ [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
 - 2021-12-24: _Network-Automation_ [Netbox Extensability Overview](network-automation/netbox-extensibility-overview.md)
 - 2021-12-23: _Keycloak_ [Notes on Keycloak - Identity and Access Management for Modern Applications](keycloak/identity-and-access-management-for-modern-applications.md)
 - 2021-12-20: _Economics_ [A Tour of Economics](economics/a-tour-of-economics.md)
 - 2021-12-20: _Economics_ [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
 - 2021-12-20: _Django_ [Standalone Reusable Apps](django/standalone-app.md)
-- 2021-12-19: _Django_ [Django and HTMX](django/django-htmx.md)
-- 2021-11-25: _Network Automation_ [Step by step guide developing a netbox plugin](network-automation/netbox-plugin-step-by-step-guide.md)
 
 ## Table of Contents
 
@@ -115,6 +115,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Bitcoin
 - 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
+- 2022-01-31: [A Guide on Self Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
 - 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
@@ -520,6 +521,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-01-21: [Python](python/design-patterns.md)
 - 2020-10-08: [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
 - 2020-10-07: [Convert XML to JSON](python/convert-xml-to-json.md)
 - 2020-06-21: [Refactoring Python](python/refactoring-python.md)

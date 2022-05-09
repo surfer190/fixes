@@ -21,7 +21,7 @@ The article mentions [Simple Debugging using epdb](https://docs.ansible.com/ansi
 
 Apparently all you need to do is:
 
-    pip install epmd
+    pip install epdb
 
 Into your virtual env.
 
