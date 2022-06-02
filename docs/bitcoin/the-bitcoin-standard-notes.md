@@ -163,7 +163,7 @@ Silver became an industiral metal.
 
 Second place in monetary terms is equivlanet to nothing.
 
-The Hunt brothers tried buying and monetising Silver in 1970 but silver producers and holders and silver holders would sell it into the market.
+The Hunt brothers tried buying and monetising Silv§er in 1970 but silver producers and holders and silver holders would sell it into the market.
 
 Know about the _stock-to-flow_ ratio
 
@@ -383,9 +383,9 @@ Money is the good with the least _diminishing marginal utility_
 
 > Investment is a reward for taking risk, but sound money, having the least risk, offers no reward.
 
-![Oil priced in gold and dollar](img/money/oil-price-dollar-gold.png)
+![Oil priced in gold and dollar](/img/money/oil-price-dollar-gold.png)
 
-![Commodities priced in gold and dollar](img/money/commodities-price-dollar-gold.png)
+![Commodities priced in gold and dollar](/img/money/commodities-price-dollar-gold.png)
 
 > Relative stability of value is not just important to preserve the purchasing power of holders' savings, it is arguably more important for preserving the integrity of the monetary unit as a unit of account
 

@@ -1,6 +1,5 @@
 User-agent: *
 Allow: *
-Sitemap: https://fixes.co.za/sitemap.xml
 
 User-agent: Baiduspider
 Disallow: /
@@ -20,7 +19,15 @@ User-agent: Yisouspider
 Disallow: /
 User-agent: Bytespider
 Disallow: /
+User-agent: Sogou
+Disallow: /
 User-agent: Sogou web spider
 Disallow: /
 User-agent: Sogou inst spider
+Disallow: /
+User-agent: barkrowler
+Disallow: /
+User-agent: Iframely
+Disallow: /
+User-agent: dotbot
 Disallow: /

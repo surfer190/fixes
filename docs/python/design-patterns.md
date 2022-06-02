@@ -182,40 +182,40 @@ Explosion avoided as 2 types of classes are combined at runtime.
 
 What if we wanted to apply two different filters to the same log? The above solutions would not work.
 
-# The loggers all perform real output.
+        # The loggers all perform real output.
+        
+        class FileLogger:
+            def __init__(self, file):
+                self.file = file
 
-    class FileLogger:
-        def __init__(self, file):
-            self.file = file
+            def log(self, message):
+                self.file.write(message + '\n')
+                self.file.flush()
 
-        def log(self, message):
-            self.file.write(message + '\n')
-            self.file.flush()
+        class SocketLogger:
+            def __init__(self, sock):
+                self.sock = sock
 
-    class SocketLogger:
-        def __init__(self, sock):
-            self.sock = sock
+            def log(self, message):
+                self.sock.sendall((message + '\n').encode('ascii'))
 
-        def log(self, message):
-            self.sock.sendall((message + '\n').encode('ascii'))
+        class SyslogLogger:
+            def __init__(self, priority):
+                self.priority = priority
 
-    class SyslogLogger:
-        def __init__(self, priority):
-            self.priority = priority
+            def log(self, message):
+                syslog.syslog(self.priority, message)
 
-        def log(self, message):
-            syslog.syslog(self.priority, message)
+        # The filter calls the same method it offers.
 
-    # The filter calls the same method it offers.
+        class LogFilter:
+            def __init__(self, pattern, logger):
+                self.pattern = pattern
+                self.logger = logger
 
-    class LogFilter:
-        def __init__(self, pattern, logger):
-            self.pattern = pattern
-            self.logger = logger
-
-        def log(self, message):
-            if self.pattern in message:
-                self.logger.log(message)
+            def log(self, message):
+                if self.pattern in message:
+                    self.logger.log(message)
 
 For the first time, the filtering code has moved outside of any particular logger class
 
@@ -245,50 +245,50 @@ It wanted more flexibility - multiple loggers and multiple filters:
 
 Example:
 
-# There is now only one logger.
+        # There is now only one logger.
 
-class Logger:
-    def __init__(self, filters, handlers):
-        self.filters = filters
-        self.handlers = handlers
+        class Logger:
+            def __init__(self, filters, handlers):
+                self.filters = filters
+                self.handlers = handlers
 
-    def log(self, message):
-        if all(f.match(message) for f in self.filters):
-            for h in self.handlers:
-                h.emit(message)
+            def log(self, message):
+                if all(f.match(message) for f in self.filters):
+                    for h in self.handlers:
+                        h.emit(message)
 
-# Filters now know only about strings!
+        # Filters now know only about strings!
 
-    class TextFilter:
-        def __init__(self, pattern):
-            self.pattern = pattern
+            class TextFilter:
+                def __init__(self, pattern):
+                    self.pattern = pattern
 
-        def match(self, text):
-            return self.pattern in text
+                def match(self, text):
+                    return self.pattern in text
 
-    # Handlers look like “loggers” did in the previous solution.
+        # Handlers look like “loggers” did in the previous solution.
 
-    class FileHandler:
-        def __init__(self, file):
-            self.file = file
+        class FileHandler:
+            def __init__(self, file):
+                self.file = file
 
-        def emit(self, message):
-            self.file.write(message + '\n')
-            self.file.flush()
+            def emit(self, message):
+                self.file.write(message + '\n')
+                self.file.flush()
 
-    class SocketHandler:
-        def __init__(self, sock):
-            self.sock = sock
+        class SocketHandler:
+            def __init__(self, sock):
+                self.sock = sock
 
-        def emit(self, message):
-            self.sock.sendall((message + '\n').encode('ascii'))
+            def emit(self, message):
+                self.sock.sendall((message + '\n').encode('ascii'))
 
-    class SyslogHandler:
-        def __init__(self, priority):
-            self.priority = priority
+        class SyslogHandler:
+            def __init__(self, priority):
+                self.priority = priority
 
-        def emit(self, message):
-            syslog.syslog(self.priority, message)
+            def emit(self, message):
+                syslog.syslog(self.priority, message)
 
 Usage:
 

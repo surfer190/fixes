@@ -17,6 +17,11 @@ The whole collection of fixes can be viewed with your web browser at:
 
 The site is built with [mkdocs](https://www.mkdocs.org/) and is updated on a post-receive hook to this repo
 
+## Getting Started
+
+    source env/bin/activate
+    mkdocs serve
+
 ### Create / Update the index page
 
     source env/bin/activate

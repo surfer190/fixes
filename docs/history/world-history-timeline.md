@@ -16,21 +16,40 @@ title: A Brief Timeline of World History
 
 ### Timeline
 
+* 2,000,000 BC: Human life began in Africa - first stone tools (Olduvai Stone Chopping Tool - Tanzania). All of us descend from those African ancestors.
+* 1,400,000 BC: Olduvai Hand Axe - signs of speech and move upward from Africa.
+* 500,000 BC: Spread to the middle east
+* 40,000 BC: Last Ice Age. Sea level fell - exposing Bering Land Bridge between Siberia and Alaska.
+* 15,000 - 5,000 BC: Joman Pot (Japan) First bucket - made of hardened clay
+* 12,000 BC: Ice/Land Bridge melted.
+* 11,000 BC: Sculpture carved from a Mammoth's tusk - Franca
+* 11,000 BC: Clovis spear point - Arizona USA
+* 10,000 BC: Last Mammoth finished off - plants were chosen by humans.
+* 9000 - 3500 BC: Farming - humans settle.
+
+    > As the human species expanded across the globe, we had to compete with other animals going for the easy food. Where we couldn’t compete, we had to go for the difficult food. We went for things like the small hard grass seeds we call cereals, which are indigestible if eaten raw and may even be poisonous, which we have to pulp up and turn into things like bread and dough.
+
+* 4000 - 2000 BC: First cities (Iraq, egypt, pakistan and Indeia)
+* 3500 BC: Sculpture of Cattle: Milk and meat...farming.
 * 3000 BC (or 2100 BC): Sumeria - earliest known civilisation in Mesopotamia. First socialist state - rations doled out by government who owned farms.
 * 2000 BC: Mayans - Mexico and Guatemala
+* 1550 BC: Rhind Mathematical Papers - mathematical problems on papyrus Egypt
 * 1894 BC (or 1750 BC): Babylonia - fixed wages set for physicians, artisan and herdsman (communist).
 * 800 – 400 BC: Sythians - horse and archery (Eurasion Steppe)
 * 650 BC: Lydian Gold Coin - Ancient Greeks - first coin made of hold and silver
 * 631 – 609 BC: Fall of Assyria
-* 340 BC: Alexander the great (356 BC - 323 BC)
+* 550 BC: Gold Coin of Croesus - Western Turkey - Lydia
+* 522 BC: Darius the Great - third persian king of kings
+* 500 BC: Buddha
 * 490 BC: Leonidas (530-480 BC)- Spartan king
 * 490 BC: The battle of marathon - first persian invasion of Greece
 * 480 BC: Greeks and Persian wars: Battle of Thermopylae (Lost cause), Battle of Salamis - Peloponnesian War 
-* 500 BC: Buddha
-* 522 BC: Darius the Great - third persian king of kings
 * 399 BC: Socrates Dies
+* 340 BC: Alexander the great (356 BC - 323 BC)
 * 268 - 232 BC: Ashoka the Great (ruler of India)
 * 264 - 146 BC: Punich wars
+* 240 BC: Mummy of Hornedjitef, Egypt. During the reign of Ptolemy III.
+* 196 BC: Rossetta Stone. Egypt.
 * 183 BC: Hannibal - Carthage general fought Romans
 * 70 BC: Masada roman storm Jews (Lost cause)
 * 59 BC: Julius Caesar rewards romans that beared many children
@@ -43,6 +62,7 @@ title: A Brief Timeline of World History
 * 370 - 469: the Huns - central asian nomads - king Attila (Eurasian steppe)
 * 465: Rome succumbs to Barbarians
 * 550 - 700: Angles and Saxons invade England (after romans leave in 410)
+* 600: Sutton Hoo Helmey - Anglo-saxon helmet found Suffolk, England. Acid in soil dissolved the body and leather. Excavated in 1939.
 * 732: Defeat of the Moslems at Tours (Charles Martel) - kept France and spain from adopting the Koran
 * 1066: Battle of Hastings - Normans vs Anglo-saxons - the end of Scandanavian dominance in England
 * 1077: Henry IV recognized this claim by submitting to Pope Gregory VII at Canossa
@@ -53,6 +73,7 @@ title: A Brief Timeline of World History
 * 1300 - 1521: Aztec Empire
 * 1300 - 1400: Mongol Empire (Eurasian Steppe) descendents of Ghengis Khan
 * 1347: Black death, Bubonic Plague - originated in China and arrived in Europe with ships - 200 million * estimated deaths
+* 1375: Ming Paper Money - China.
 * 1381: Peasants revolt in Great Britain (from black death lack of workers) - then bigger problems from black death arose
 * 1492: Columbus and Vasco Da Gama Voyages
 * 1500: Nicolaus Copernicus placed Sun at centre of universe (not earth)
@@ -62,6 +83,7 @@ title: A Brief Timeline of World History
 * 1642 - 1651: English Civil War (Parliamentarians ("Roundheads") and Royalists ("Cavaliers")) Oliver * Cromwell became Lord Protectorate
 * 1652 - Jan van riebeeck finds Cape Town
 * 1759: pen name Voltaire (1694 - 1778) real name François-Marie Arouet - freedom writer
+* 1759: British National History Museum Opens
 * 1775 - 1783: American Revolutionary War - Americans vs British
 * 1800: Karl Marx and Freidrich Engel
 * The places adopting communism were more backward industrally - more peasant - russia, china, korea and cuba
@@ -79,7 +101,7 @@ title: A Brief Timeline of World History
 * 1903: Wright brothers flight
 * 1913: Woodrow wilson - 28th presisdent of US
 * 1914 (August): Battle of the Frontiers: Germans vs French and Belgium (1 month)
-* 1914 - 1918: WW1.
+* 1914 - 1918: WW1 - World War I.
     * Started looking like napolionic wars cavalry with shiny breatplate, spiked helmet and turned up moustaches - came back modern soliders.
     * Britain wiped out as most affluent nation.
     * Ottoman empire broken apart - Saudi Arabia formed as fought with British. 
@@ -99,6 +121,7 @@ title: A Brief Timeline of World History
     - Then blew up railway car.
 * 1920: League of nations: New language esperanto facilitate co-operation and trade. Idealistic intellectuals.
     * Economic sanctions proved ineffective (ceased operations 1946)
+* 1923: November - German Mark dies after hyper inflation
 * 1929: October stock market crash (Great Depression) until second world war brought countries out
 * 1931: Japan invades manchuria
 * 1933: Reichstag fire, 27 February, 4 weeks after Adolfwas sworn in. Fire of the German parliament. A false flag operation - doing something to advance your objectives by pinning the blame on another. Amendments to the constituition paving way for Nazi dictatorship.
@@ -174,3 +197,4 @@ It is the minds of peasants and serfs that short sightedly longs for communism
 
 * [The Lessons of History by Will Durant](https://www.goodreads.com/work/quotes/2674733-the-lessons-of-history)
 * Hardcore History Podcast
+* A History of the World in 100 Objects - MacGregor, Neil
