@@ -7,6 +7,26 @@ title: Quotes
 ---
 # Book Quotes
 
+## General
+
+"Whatever you do in life. Be Consistent. Stick at it and be consistent" - Porky's Corner
+
+The hero:
+
+- Knows hard times are merely a test
+- Believes in himself and others
+- Learns to find peace in chaos
+- Listens more than he speaks
+- Always speaks the truth
+- Fights for those in need
+- Plays the long game
+- Follows his heart
+- Admits mistakes
+- Overcomes fear
+- Acts
+
+
+
 ## Star Wars
 
 > Adapt he must as well. Cooperation is learned not through individual effort. Only together can you progress - Qui-gon (Master & Apprentice)
@@ -56,3 +76,7 @@ Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books.
 “But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.”
 
 Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
+
+“No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.”
+
+Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books. 

@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
+- 2022-05-20: _Video-streaming_ [Fundamentals of Media Streaming on the Internet](video-streaming/internet-video-streaming-resources.md)
+- 2022-05-20: _Buddha-Dharma_ [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
 - 2022-04-26: _Buddha-Dharma_ [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
 - 2022-04-26: _Book Summaries_ [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: _Book Summaries_ [Remote - Office not Required](book-summaries/remote-office-not-required.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-02-03: _Bitcoin_ [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
 - 2022-02-03: _OpenWRT_ [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
 - 2022-01-21: _Design Patterns_ [Python](python/design-patterns.md)
-- 2021-12-27: _OpenWRT_ [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
-- 2021-12-24: _Network-Automation_ [Netbox Extensability Overview](network-automation/netbox-extensibility-overview.md)
-- 2021-12-23: _Keycloak_ [Notes on Keycloak - Identity and Access Management for Modern Applications](keycloak/identity-and-access-management-for-modern-applications.md)
 
 ## Table of Contents
 
@@ -127,6 +127,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-12-01: [Stormlight Archive](book-summaries/stormlight.md)
 
 ## Buddha_Dharma
+- 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
 - 2022-04-26: [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
 
 ## C
@@ -658,6 +659,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-04: [Sha256 Checksum Verification](security/sha256-checksum-verification.md)
 - 2017-11-28: [Encryption Vs Cryptographic Hash](security/encryption-vs-cryptographic-hash.md)
 
+## Selling
+- 2022-06-03: [Tips on Selling Cars](selling/selling-cars.md)
+
 ## Servers
 - 2018-08-19: [Setup A Vps Quickly](servers/setup-a-vps-quickly.md)
 - 2016-08-12: [Copy Your Ssh Key To Clipboard Fast](servers/copy-your-ssh-key-to-clipboard-fast.md)
@@ -741,6 +745,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-03-23: [List Of Provisioners Integrated With Vagrant](vagrant/list-of-provisioners-integrated-with-vagrant.md)
 - 2015-03-23: [Common Vagrant Commands](vagrant/common-vagrant-commands.md)
 - 2015-03-23: [Vagrantfile Syntax](vagrant/Vagrantfile-syntax.md)
+
+## Video-Streaming
+- 2022-05-20: [Fundamentals of Media Streaming on the Internet](video-streaming/internet-video-streaming-resources.md)
 
 ## Vim
 - 2020-06-21: [Undo And Redo In Vim](vim/undo-and-redo-in-vim.md)

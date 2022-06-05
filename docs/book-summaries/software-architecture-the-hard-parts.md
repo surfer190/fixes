@@ -11,9 +11,7 @@ title: Software Architecture - The Hard Parts
 > There is no single development, in either technology or management technique, which by itself promises even one order of magnitude [tenfold] improvement within a decade in productivity, in reliability, in simplicity.
 Fred Brooks from “No Silver Bullet
 
-“Don’t try to find the best design in software architecture; instead, strive for the least worst combination of trade-offs.”
-
-Excerpt From: Neal Ford. “Software Architecture: The Hard Parts”. Apple Books. 
+> Don’t try to find the best design in software architecture; instead, strive for the least worst combination of trade-offs.
 
 For many in architecture, data is everything. Every enterprise building any system must deal with data, as it tends to live much longer than systems or architecture, requiring diligent thought and design
 
