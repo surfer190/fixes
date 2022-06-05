@@ -37,24 +37,25 @@ The hero:
 
 > Things that are thrown away or lost tell us as much about the past as many of those carefully preserved for posterity - MacGregor, Neil. “A History of the World in 100 Objects”
 
-“Just remember that the goal in war is victory, not revenge.”
+> “Just remember that the goal in war is victory, not revenge.” - Timothy Zahn. “Thrawn_Alliances_Star Wars”
 
-Excerpt From: Timothy Zahn. “Thrawn_Alliances_Star Wars”. Apple Books. 
+> The real purpose of doping is not to build muscles, but rather to help the body recover from competition or survive the rigours of training. - Grigory Rodchenkov. “The Rodchenkov Affair”.
 
-“The real purpose of doping is not to build muscles, but rather to help the body recover from competition or survive the rigours of training.”
+> “The inevitable conclusion was that there was no way to win without doping.” - Grigory Rodchenkov. “The Rodchenkov Affair”.
 
-Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
+> “The moment they or their coaches became aware of any changes in our laboratory practice, they would amend their doping regimens accordingly. We were like field marshals always condemned to fight the previous war.” - Grigory Rodchenkov. “The Rodchenkov Affair”. 
 
-“The inevitable conclusion was that there was no way to win without doping.”
+> “As long as they weren’t getting caught, they kept their mouths shut” - Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
 
-Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
+> “Here is what happens when you play by the rules: You lose.” - Grigory Rodchenkov. “The Rodchenkov Affair”.
 
-“The moment they or their coaches became aware of any changes in our laboratory practice, they would amend their doping regimens accordingly. We were like field marshals always condemned to fight the previous war.”
+> “You give but little when you give of your possessions. It is when you give of yourself that you truly give.” - Kahlil Gibran. “The Prophet”.
 
-Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
+> “You work that you may keep pace with the earth and the soul of the earth. For to be idle is to become a stranger unto the seasons, and to step out of life’s procession, that marches in majesty and proud submission towards the infinite.” - Kahlil Gibran. “The Prophet”.
 
-“As long as they weren’t getting caught, they kept their mouths shut”
+> “But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.” - Kahlil Gibran. “The Prophet”.
 
+<<<<<<< HEAD
 Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
 
 “Here is what happens when you play by the rules: You lose.”
@@ -80,3 +81,5 @@ Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books.
 “No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.”
 
 Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books. 
+=======
+>>>>>>> 1a34e03de300ba57bc2965b7eb9d777a36e09237

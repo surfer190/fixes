@@ -9,24 +9,26 @@ title: Create An Md5 Hash
 
 Import [Hashlib](https://docs.python.org/3/library/hashlib.html)
 
->>> import hashlib
+    >>> import hashlib
 
 Create an object of type `<type '_hashlib.HASH'>`
 
->>> m = hashlib.md5()
+    >>> m = hashlib.md5()
 
 Add a byte-string with the `update` method
 
->>> m.update(b"email@example.com")
+    >>> m.update(b"email@example.com")
 
 Check the digest
 
->>> m.digest()
-b'VX\xff\xcc\xee\x7f\x0e\xbf\xda+"b8\xb1\xebn'
+    >>> m.digest()
+    b'VX\xff\xcc\xee\x7f\x0e\xbf\xda+"b8\xb1\xebn'
 
 Check the hex digest
 
->>> m.hexdigest()
-'5658ffccee7f0ebfda2b226238b1eb6e'
+    >>> m.hexdigest()
+    '5658ffccee7f0ebfda2b226238b1eb6e'
 
-Source: [Hashlib Python 3.6](https://docs.python.org/3/library/hashlib.html)
+### Source
+
+* [Hashlib Python 3.6](https://docs.python.org/3/library/hashlib.html)

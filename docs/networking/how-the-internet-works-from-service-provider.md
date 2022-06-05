@@ -12,7 +12,23 @@ As with everything it depends on the solution provided - Fibre, Adsl and Wireles
 
 Looking from a Fibre perspective the flow is:
 
-    ONT -> OLT -> ENNI -> RADIUS -> BNG -> PACKET INTROSPECTION - P ROUTER - PEERING/IP TRANSIT
+    ONT (GPON or PON) -> OLT -> ENNI -> BNG (mediating with RADIUS) -> PACKET INTROSPECTION - P ROUTER - PEERING/IP TRANSIT
+
+Infrastrucutre providers - segments traffic into vlans - radius credentials - send variables attached to the username
+
+BNG - mediates between ENNI and Radius to provide service
+
+ONT tags all traffic from certain address
+
+ip address allocated out of radius
+
+sandvine enforces the cap
+
+Can split radius servers into different environments - on every authentication attempt
+BNG tells radius the amount of data users - sandvine
+dynamic ip is just done with ease
+
+Underlying fiber provider - .1q tunnel means it all goes (service vlan id)
 
 So let us go through what the above are:
 

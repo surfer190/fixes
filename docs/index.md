@@ -5,15 +5,15 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Most Recent Posts
 
 - 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
+- 2022-05-31: _API_ [None](api/api-design-loosely-coupled-microservices.md)
+- 2022-05-30: _API_ [Graphene GraphQL Library for Python](api/graphene-graphql-library-for-python.md)
+- 2022-05-30: _API_ [Api's - Rest vs Soap vs RPC vs GraphQL](api/apis-rest-soap-graphql-rpc.md)
+- 2022-05-26: _MySQL_ [Create a MySQL User and Grant Access to a Database](mysql/create-a-mysql-user-and-grant-access-to-a-db.md)
+- 2022-05-23: _MySQL_ [How to Delete a MySQL User](mysql/delete-a-mysql-user.md)
 - 2022-05-20: _Video-streaming_ [Fundamentals of Media Streaming on the Internet](video-streaming/internet-video-streaming-resources.md)
 - 2022-05-20: _Buddha-Dharma_ [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
-- 2022-04-26: _Buddha-Dharma_ [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
-- 2022-04-26: _Book Summaries_ [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
-- 2022-04-26: _Book Summaries_ [Remote - Office not Required](book-summaries/remote-office-not-required.md)
-- 2022-04-26: _Book Summaries_ [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
-- 2022-02-03: _Bitcoin_ [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
-- 2022-02-03: _OpenWRT_ [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
-- 2022-01-21: _Design Patterns_ [Python](python/design-patterns.md)
+- 2022-05-10: _Python_ [Common python Interview Questions](python/interview-questions.md)
+- 2022-05-09: _System Architecture_ [Databases, Events and Scale](system-architecture/scaling-databases-and-events.md)
 
 ## Table of Contents
 
@@ -42,6 +42,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-05-13: [Key Knowledge Angular Js](angular-js/Key-knowledge-angular-js.md)
 
 ## Ansible
+- 2022-03-15: [Awx - Get a List of Available Collections in your Execution Environment](ansible/awx-get-list-of-collections-in-execution-environment.md)
 - 2021-08-24: [Awx Moving Custom Venvs to Execution Environments](ansible/awx-moving-custom-venvs-to-execution-environments.md)
 - 2020-06-14: [Ansible Dynamic Inventory](ansible/ansible-dynamic-inventory.md)
 - 2020-06-14: [Awx Basics](ansible/awx-basics.md)
@@ -64,6 +65,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Add Existing Ubuntu User To Www Data Group](apache/add-existing-ubuntu-user-to-www-data-group.md)
 
 ## Api
+- 2022-05-31: [None](api/api-design-loosely-coupled-microservices.md)
+- 2022-05-30: [Graphene GraphQL Library for Python](api/graphene-graphql-library-for-python.md)
+- 2022-05-30: [Api's - Rest vs Soap vs RPC vs GraphQL](api/apis-rest-soap-graphql-rpc.md)
 - 2021-01-04: [Api Product Manager](api/api-product-manager.md)
 - 2020-07-29: [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 - 2020-07-29: [Api Security](api/api-security.md)
@@ -114,13 +118,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Bitcoin
+- 2022-02-08: [Mastering Lightning Network Notes](bitcoin/mastering-lightning-network-notes.md)
 - 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
+- 2022-01-31: [A Guide on Self Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
 - 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## Book-Summaries
+- 2022-05-06: [Fundamentals of Software Architecture - An Engineering Approach](book-summaries/fundamentals-of-software-architecture.md)
 - 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)
 - 2022-04-26: [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
@@ -182,6 +189,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-10-23: [Backtesting Algorithmic Trading With Python](datascience/backtesting-algorithmic-trading-with-python.md)
 
 ## Devops
+- 2022-04-01: [Naming Things](devops/naming-things.md)
 - 2019-09-23: [Deploying Vault](devops/deploying-vault.md)
 - 2019-08-27: [Stored Secrets Vault Project](devops/stored-secrets-vault-project.md)
 
@@ -446,6 +454,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-11-04: [Failing At Microservices](microservices/failing-at-microservices.md)
 
 ## Mysql
+- 2022-05-26: [Create a MySQL User and Grant Access to a Database](mysql/create-a-mysql-user-and-grant-access-to-a-db.md)
+- 2022-05-23: [How to Delete a MySQL User](mysql/delete-a-mysql-user.md)
+- 2022-02-14: [Create a database schema with the Correct Collation](mysql/create-database-schema-with-correct-collation.md)
 - 2020-06-14: [Enable Mysql General Log Mysql 5 7](mysql/enable-mysql-general-log-mysql-5-7.md)
 - 2019-10-24: [Groupwise Maximum](mysql/groupwise-maximum.md)
 - 2019-08-27: [Turn On Mysql General Log](mysql/turn-on-mysql-general-log.md)
@@ -530,6 +541,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-05-10: [Common python Interview Questions](python/interview-questions.md)
+- 2022-05-06: [Linked Lists](python/linked_lists.md)
+- 2022-04-15: [Summary of Understanding Decorators in Python](python/understanding-decorators.md)
 - 2022-01-21: [Python](python/design-patterns.md)
 - 2020-10-08: [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
 - 2020-10-07: [Convert XML to JSON](python/convert-xml-to-json.md)
@@ -691,6 +705,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Increase Decrease Indentation](sublime-text/increase-decrease-indentation.md)
 
 ## System-Architecture
+- 2022-05-09: [Databases, Events and Scale](system-architecture/scaling-databases-and-events.md)
 - 2018-08-10: [Multi Tenancy](system-architecture/multi-tenancy.md)
 
 ## Systemd

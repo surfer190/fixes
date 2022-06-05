@@ -7,11 +7,15 @@ title: Jinja Append To List
 ---
 ## Append to a List with Jinja
 
-To append to a list you need to use display brackets `{{` and `}}` and then use a hack to not actually display anything
+To append to a list you need to use display brackets `{{` and `}}`.
+Then use a hack to not actually display anything...
+
+
     {% set policy_list = [] %}
     {% for ip in host_ip  %}
         {{ policy_list.append(ip) or "" }}
-> So lame
+
+> Not the most obvious but it does work
 
 ### Source
 
