@@ -85,6 +85,18 @@ The goal in life is to develop a peaceful, calm, serene, and content mind with j
 
 > You need to accept responsibility for your own discontent mind and the emotions you experience. Rather than blaming pleasant feelings, painful feelings, and feelings that are neither painful-nor-pleasant on someone or something external, see the truth that you cause your own discontent mind.
 
+> the mind is deeply trained to no longer base its inner feelings on some impermanent condition.
+
+You can resolve the discontentedness in your own mind but you cannot resolve the discontentedness of someone else’s mind, only they can do that.
+
+The unEnlightened mind will constantly blame others for the difficulties and struggles it faces rather than accepting responsibility for its own decisions that are leading it to discontentedness. This is “wrong view”
+
+### Meditation
+
+#### Anapannasatti (Breathing Mindfulness Meditation)
+
+
+
 ### 3 Universal Teachings
 
 1. Universal Love for all Beings
@@ -98,6 +110,89 @@ Everything in this practice is obtained through personal choice.
 unaffected by everyday challenges that produce sadness, worry, anger, stress, anxiety, and other discontent feelings
 
 Happiness is impermanent - craving happiness is the reason we are not achieving lasting happiness
+
+### Eight Fold Path
+
+wisdom:
+
+* right view - no self and the 4 noble truths - descontent arises from within not externally
+* right intention - non-illwill and harmlessness - kind, positive and wholesome thoughts and intentions
+
+moral conduct:
+
+* right speech - refrain from lying, slander, harsh or frivolous speech
+* right action - refrain from killing, theft and misconduct
+* right livelihood
+
+mental discipline:
+
+* right effort - stir up will and energy
+* right mindfulness - having set aside craving and worry - aware and mindful
+* right concentration - tranquility of the mind - serene and calm
+
+#### Right Intention
+
+* Renunciation - Actively letting go
+* Non-ill-will - Loving kindness, wanting all beings to be well - even yourself
+* Harmlessness - Thinking and indenting only good things - any harm you do will be returned to you through kamma.
+
+#### Right Speech
+
+The five factors of well spoken speech:
+
+* Spoken at the proper time
+* What is said is True
+* Spoken gently
+* It is beneficial
+* With a Mind of Loving-kindness
+* Blameless
+
+If you make people work hard to understand what you are attempting to share, people will be less and less interested in communicating with you
+
+> While on the surface sarcasm may seem humorous and harmless, but in reality the true intention behind sarcasm is oftentimes malicious and with ill intent
+
+No one enjoys being blamed for anything or made to feel as if they are at fault.
+
+> If you don't have anything nice to say - say nothing at all
+
+### Right Livelihood
+
+Is your daily activities wholesome and helpful.
+
+> In some cases, a person may choose to pursue personal interests and skills rather than financial goals or a career. A stay at home parent is still a livelihood as this is a contribution to society and humanity.
+
+Life-sustaining activities.
+
+> For those who do generate income through their livelihood, focus on finding something you enjoy that happens to also provide financial support. This will ensure the best outcome and enthusiasm for your daily life. If you select a livelihood solely on the bases of making money, acquiring wealth, power, prestige, or a specific title, then you will find the mind will struggle to perform your duties and responsibilities on an ongoing consistent basis perhaps even becoming bored or disinterested.
+
+Finding a livelihood where you can acquire an income, help others, and you enjoy the activities required on a daily basis, will ensure that you never “work” one day in your life.
+
+Avoid:
+
+* scheming - corruption / deception
+* flattery - excessive insincere praise
+* Hinting - Suggest using subterfuge - manipulate
+* Belittling - Talking down to others - diminishing the achievements of other
+* Pursuing gain-with-gain - doing work just for profit and greed - no help to humanity
+
+### Right Effort
+
+* Prevent unwholesome mental states arising
+* Abandon unwholesome mental states arising in the mind
+* Produce un-arisen wholesome mental states - practice generousity and compassion
+* Maintain wholesome mental states
+
+### Right Mindfulness
+
+* Aware of the mind at the present moment - not dwelling onfuture or past moments.
+* To develop awareness of mind, you should not allow the mind to be lost in daydreams, anticipation, indulgences, worry, or dwell in other discontent feelings.
+
+### Right Concentration
+
+* Then, in daily life one should train the mind to only focus on one thing at a time to develop higher degrees of concentration or “singleness of mind
+* Focusing on the breath is singleness of mind
+
+> Nothing lasts forever, all “things” will cease to exist including all of humanity.
 
 ### Seven Factors of Enlightenment
 
@@ -124,10 +219,26 @@ Lower fetters:
 Higher fetters:
 
 * Desire for form - elimination of fear of death
-* Desire for the formless 
+* Desire for the formless - elimation of desire or fear of formless realms - heaven or hell
 * Conceit - arrogance, pride, judging, comparing and measuring as superior or inferior. Ego dissolved.
 * Restlessness - elimination of confusion, distraction, anxiousness (singleness of mind)
 * Ignorance - Learning, Reflection and Wisdom
 
+## The Middle way
 
+> When the mind holds onto things too tightly, the mind is muddled and unconcentrated. The mind does not perform optimally. When the mind is too loose, the mind is muddled and unconcentrated as complacency and laziness will arise.
 
+A Practitioner will need to find the middle where it can pursue goals and objectives but also find time for rest and relaxation.
+
+the goal is not to be happy. The goal is to be peaceful, calm, serene, and content with joy or to be “satisfied with what is”, “satisfied the way things are”
+
+It simply means that when we feel those emotions, we need to recognize them as being impermanent and train the mind to come back to the middle where it can reside peaceful, calm, serene, and content with joy.
+
+Apply effort to bring the mind to the middle.
+
+> If energy is aroused too forcefully this leads to restlessness, and if energy is too soft this leads to complacency.
+
+## Sources
+
+* [Audio dharma and guided meditation](https://www.audiodharma.org/)
+* [Buddha Daily Wisdom](https://www.buddhadailywisdom.com/)
