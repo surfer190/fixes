@@ -118,9 +118,9 @@ Use OpenSSL.
 * Easy automated and free Certificate Authority
 * Use `certbot`
 
-    wget https://dl.eff.org/certbot-auto
-    chmod a+x certbot-auto
-    ./certbot-auto certonly --webroot -w <your web root> -d <your domain>
+        wget https://dl.eff.org/certbot-auto
+        chmod a+x certbot-auto
+        ./certbot-auto certonly --webroot -w <your web root> -d <your domain>
 
 This creates:
 
@@ -301,11 +301,15 @@ Client caching can be set through the `Cache control`, `max-age` and `Expires` h
 * jS by default is fetched and prcoessed at the point in the HTML
 * If JS order is not critical and it must run before `onload` then mafe use of:
 
-    <script async src=”/js/myfile.js”>
+```
+<script async src=”/js/myfile.js”>
+```
 
 * If execution order is important but scripts can run after the DOM is loaded
 
-    <script defer src="/js/myjs.js">
+```
+<script defer src="/js/myjs.js">
+```
 
 * If JS is not critical to the view, then only fetch after `onload` fires
 

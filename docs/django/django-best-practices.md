@@ -29,11 +29,7 @@ Check django's [design philosophy](https://docs.djangoproject.com/en/1.11/misc/d
 
 ### 12 Factor App
 
-Be aware and implement [https://12factor.net/](The 12 factor app)
-
-## Source
-
-[https://www.twoscoopspress.com/](2 scoops of django)
+Be aware and implement [The 12 factor app](https://12factor.net/)
 
 ## Coding Style
 
@@ -111,7 +107,7 @@ to overcome naming collisions you can use `as`
 
 ### Use django style guide
 
-[https://docs.djangoproject.com/en/1.10/internals/contributing/writing-code/coding-style/](Django style guide)
+[Django style guide](https://docs.djangoproject.com/en/1.10/internals/contributing/writing-code/coding-style/)
 
 ### Use underscore in url() name
 
@@ -144,11 +140,11 @@ Also use underscores in template block names ie. `content_block`
 * Use the same db engine in all environments everywhere
 * Fixtures are not a reliable tool for moving data from different environments, they are fine to use for basic data with `loaddata` and `dumpdata` though.
 * Dob't use `sqlite3` with `django` in production
-* Use pip and virtualenv - toptip: use [https://virtualenvwrapper.readthedocs.io/en/latest/](virtualenvwrapper), unfortunately I have found it quite difficult to set up.
+* Use pip and virtualenv - toptip: use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/), unfortunately I have found it quite difficult to set up.
 
 Instead of typing something like
 
-        source Users/suefer190/projects/my-project/env/bin/activate
+        source Users/surfer190/projects/my-project/env/bin/activate
 
 You can simply type
 
@@ -156,7 +152,6 @@ You can simply type
 
 * Install django with `pip` and use `requirement` files
 * Eliminate differences between environments
-
 
         * Operating system differences - windows, osX, ubuntu
         * Python setup differences - python version
@@ -279,3 +274,6 @@ When to use `null=True` and `blank=True`
 
 `BooleanField`, use `NullBooleanField`
 
+## Sources
+
+* [2 scoops of django book](https://www.twoscoopspress.com/)

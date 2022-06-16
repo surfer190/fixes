@@ -3,6 +3,7 @@ site_url: https://fixes.co.za
 site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixes and solutions on software development and related topics
 site_author: surfer190
 theme:
+  language: en
   name: mkdocs
   highlightjs: true
   hljs_style: github
