@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 
+{% block site_meta %}
+    {{ super() }}
+    {% if page and page.meta.keywords %}<meta name="keywords" content="{{ page.meta.keywords }}"> {% endif %}
+    {% if page and page.meta.keywords %}<meta name="description" content="{{ page.meta.description }}"> {% endif %}
+{% endblock %}
+
+{% block site_nav %}
+<ul class="nav navbar-nav">
+    <li class="navitem active">
+        <a href="." class="nav-link">Home</a>
+    </li>
+    <li class="navitem">
+        <a href="about/" class="nav-link">About</a>
+    </li>
+</ul>
+{% endblock %}
+
 {% block next_prev %}
 {% endblock %}
 

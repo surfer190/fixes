@@ -17,34 +17,14 @@ markdown_extensions:
   - sane_lists
   - toc:
       permalink: "#"
+      baselevel: 2
+      separator: "_"
   - smarty
   - attr_list
+  - meta
 plugins:
   - search:
       min_search_length: 3
   - rss:
       length: 20
-nav:
-  - index.md
-  - about.md
-  - Keycloak:
-    - 'keycloak/keycloak-single-sign-out.md'
-    - 'keycloak/adding-attributes-to-a-user-in-keycloak.md'
-    - 'keycloak/keycloak-essential.md'
-    - 'keycloak/Creating-a-keycloak-theme.md'
-    - 'keycloak/keycloak-and-django.md'
-  - Django:
-    - 'django/make-django-rest-framework-date-time-fields-timezone-aware.md'
-    - 'django/django-rest-framework.md'
-    - 'django/django-class-based-views.md'
-  - Python:
-    - 'python/json-loads-invalid-control-character.md'
-    - 'python/convert-json-to-yaml.md'
-    - 'python/asyncio-concurrency.md'
-  - Ansible:
-    - 'ansible/awx-giving-a-project-a-custom-virtual-env-in-container-based-install.md'
-    - 'ansible/ansible-dynamic-inventory.md'
-    - 'ansible/awx-basics.md'
-  - Kubernetes:
-    - 'kubernetes/kubernetes-up-and-running.md'
-use_directory_urls: true
+use_directory_urls: false
