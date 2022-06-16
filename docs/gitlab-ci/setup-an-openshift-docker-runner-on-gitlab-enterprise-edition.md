@@ -3,9 +3,12 @@ author: ''
 category: Gitlab-Ci
 date: '2020-06-14'
 summary: ''
-title: Setup An Openshift Docker Runner On Gitlab Enterprise Edition
+title: Setup a Gitlab Runner on Openshift
 ---
-# Setup an Openshift Docker Runner on Gitlab Enterprise
+
+# Setup a Gitlab Runner on Openshift
+
+> Use this article at your own risk - openshift was difficult to work with. Perhaps looks at other projects that are downstream from kubernetes.
 
 When you install openshift - you get an already running default docker registry.
 You also get a default route...you get alot of things.

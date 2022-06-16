@@ -61,19 +61,19 @@ Eg. Main Content and a Sidebar
 
  You can replace instead of append by removing the `@parent`
 
- ## View Partials
+## View Partials
 
- Recurring views
+Recurring views
 
- #### Declaring
+#### Declaring
 
- In `resources/views/partials/row.blade.php`:
+In `resources/views/partials/row.blade.php`:
 
- ```
- <tr style="padding-brrom: 5px;">
-  <td>
-    {{ $link->name }}
-  </td>
+```
+<tr style="padding-brrom: 5px;">
+<td>
+  {{ $link->name }}
+</td>
 </tr>
 ```
 
@@ -81,11 +81,11 @@ Eg. Main Content and a Sidebar
 
 ```
 <table class="table borderless">
-  @foreach ($links as $link)
+@foreach ($links as $link)
 
-    @include('partials.row', array('link' => $link))
+  @include('partials.row', array('link' => $link))
 
-  @endforeach
+@endforeach
 </table>
 ```
 

@@ -3,7 +3,7 @@ author: ''
 category: Book Summaries
 date: '2022-05-06'
 summary: ''
-title: Fundamentals of Software Architecture - An Engineering Approach
+title: Fundamentals of Software Architecture
 ---
 
 # Fundamentals of Software Architecture - An Engineering Approach

@@ -3,9 +3,9 @@ author: ''
 category: Android
 date: '2015-05-29'
 summary: ''
-title: How To Create A Callback Method To Send Data From Fragment To The Activity
+title: Creating a Callback to Send Data From Fragment to Activity
 ---
-# How to Implement a Callback to Send Data from a Fragment to an Activity
+# How to Implement a Callback Method to Send Data from a Fragment to an Activity
 
 1. In the Fragment Class (MyFragment.java):
 

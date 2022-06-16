@@ -3,7 +3,7 @@ author: ''
 category: Django
 date: '2018-09-08'
 summary: ''
-title: Make Django Rest Framework Date Time Fields Timezone Aware
+title: Make Django Rest Framework Datetime Fields Timezone Aware
 ---
 ## How to Make Django Rest Framework's DateTimeField Timezone Aware when outputting
 

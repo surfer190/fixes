@@ -3,7 +3,7 @@ author: ''
 category: Ansible
 date: '2020-05-13'
 summary: ''
-title: Awx Giving A Project A Custom Virtual Env In Container Based Install
+title: Awx - Give a Project a Custom Virtual Env
 ---
 ## AWX How to give a Project a Custom VirtualEnv in the container based Install
 

@@ -25,12 +25,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-05-13: [Android Could Not Resolve Error](android/android-could-not-resolve-error.md)
 - 2016-03-26: [Publishing An App To Google Play Store](android/publishing-an-app-to-google-play-store.md)
 - 2015-09-13: [Android Improving Performance With Images In Memory](android/android-improving-performance-with-images-in-memory.md)
-- 2015-08-25: [Install And Setup Android Studio And Development Environment](android/install-and-setup-android-studio-and-development-environment.md)
+- 2015-08-25: [Install Android Studio Development Environment](android/install-and-setup-android-studio-and-development-environment.md)
 - 2015-07-06: [Android Project Setup Bible](android/android-project-setup-bible.md)
 - 2015-07-06: [Android Log All Sqlite Statements](android/android-log-all-sqlite-statements.md)
 - 2015-06-07: [Install An Apk](android/install-an-apk.md)
 - 2015-06-07: [Show Icons On Actionbar Not In Overflow Android](android/show-icons-on-actionbar-not-in-overflow-android.md)
-- 2015-05-29: [How To Create A Callback Method To Send Data From Fragment To The Activity](android/how-to-create-a-callback-method-to-send-data-from-fragment-to-the-activity.md)
+- 2015-05-29: [Creating a Callback to Send Data From Fragment to Activity](android/how-to-create-a-callback-method-to-send-data-from-fragment-to-the-activity.md)
 - 2015-05-28: [Remove Actionbar For Certain Activity](android/remove-actionbar-for-certain-activity.md)
 - 2015-05-15: [Check Your Key Hash Android](android/check-your-key-hash-android.md)
 - 2015-05-11: [Android Sending Data Fragments And Activities](android/android-sending-data-fragments-and-activities.md)
@@ -49,7 +49,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-05-28: [Awx Rest Api](ansible/awx-rest-api.md)
 - 2020-05-13: [Using External Ansible Modules](ansible/using-external-ansible-modules.md)
 - 2020-05-13: [Enter Python Debugger From Running An Ansible Playbook](ansible/enter-python-debugger-from-running-an-ansible-playbook.md)
-- 2020-05-13: [Awx Giving A Project A Custom Virtual Env In Container Based Install](ansible/awx-giving-a-project-a-custom-virtual-env-in-container-based-install.md)
+- 2020-05-13: [Awx - Give a Project a Custom Virtual Env](ansible/awx-giving-a-project-a-custom-virtual-env-in-container-based-install.md)
 - 2019-05-24: [Ansible Playbooks](ansible/ansible-playbooks.md)
 - 2019-05-23: [Ansible Ad Hoc Commands](ansible/ansible-ad-hoc-commands.md)
 - 2019-02-23: [Ansible Network Automation](ansible/ansible-network-automation.md)
@@ -120,14 +120,14 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Bitcoin
 - 2022-02-08: [Mastering Lightning Network Notes](bitcoin/mastering-lightning-network-notes.md)
 - 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
-- 2022-01-31: [A Guide on Self Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
+- 2022-01-31: [Self-Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
 - 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## Book-Summaries
-- 2022-05-06: [Fundamentals of Software Architecture - An Engineering Approach](book-summaries/fundamentals-of-software-architecture.md)
+- 2022-05-06: [Fundamentals of Software Architecture](book-summaries/fundamentals-of-software-architecture.md)
 - 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)
 - 2022-04-26: [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
@@ -206,7 +206,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-06-21: [Django Rotating Log](django/django-rotating-log.md)
 - 2019-04-24: [Django Class Based Views](django/django-class-based-views.md)
 - 2019-03-27: [Django Rest Framework](django/django-rest-framework.md)
-- 2018-09-08: [Make Django Rest Framework Date Time Fields Timezone Aware](django/make-django-rest-framework-date-time-fields-timezone-aware.md)
+- 2018-09-08: [Make Django Rest Framework Datetime Fields Timezone Aware](django/make-django-rest-framework-date-time-fields-timezone-aware.md)
 - 2018-06-13: [Django Locale](django/django-locale.md)
 - 2018-01-29: [Django Escaping Html In Test](django/django-escaping-html-in-test.md)
 - 2018-01-21: [Testing Model Is Registered On Admin Site](django/testing-model-is-registered-on-admin-site.md)
@@ -283,7 +283,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Install Latest Git On Ubuntu](git/install-latest-git-on-ubuntu.md)
 
 ## Gitlab-Ci
-- 2020-06-14: [Setup An Openshift Docker Runner On Gitlab Enterprise Edition](gitlab-ci/setup-an-openshift-docker-runner-on-gitlab-enterprise-edition.md)
+- 2020-06-14: [Setup a Gitlab Runner on Openshift](gitlab-ci/setup-an-openshift-docker-runner-on-gitlab-enterprise-edition.md)
 - 2020-06-14: [Continuous Integration Gitlab](gitlab-ci/continuous-integration-gitlab.md)
 - 2020-06-14: [Gitllab Runners](gitlab-ci/gitllab-runners.md)
 
