@@ -17,7 +17,7 @@ Outsources physical hardware, the human capital and intellectual property is mai
 - Security and Compliance
 - Pricing and availability
 
-[AWS Certification Tracks](https://doolan.pw/certifications/)
+[AWS Certification Tracks](https://fixes.co.za/aws/certifications/)
 
 ## Prerequisites (Requirements)
 

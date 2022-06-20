@@ -2,8 +2,10 @@
 author: ''
 category: Android
 date: '2016-05-13'
-summary: ''
+summary: 
 title: Android Could Not Resolve Error
+keywords: Android, failed, resolve
+description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
 ---
 # Android could not resolve error
 

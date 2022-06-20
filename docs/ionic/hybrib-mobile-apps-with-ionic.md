@@ -57,7 +57,7 @@ cordova -v
 
 ## What you need to know about Angular JS?
 
-[Key Knowledge required about Angular JS](https://doolan.pw/key-knowledge-angular-js)
+[Key Knowledge required about Angular JS](https://fixes.co.za/key-knowledge-angular-js)
 
 ## Start a New Ionic App
 

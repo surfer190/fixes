@@ -51,7 +51,7 @@ title: Key Knowledge Angular Js
 ### Custom directives
 
 - New html elements that create components
-- Exactly what [ionic](https://doolan.pw/hybrib-mobile-apps-with-ionic) does
+- Exactly what [ionic](https://fixes.co.za/hybrib-mobile-apps-with-ionic) does
 
 ### Factors or Services
 

@@ -7,6 +7,25 @@ title: Quotes
 ---
 # Book Quotes
 
+## General
+
+"Whatever you do in life. Be Consistent. Stick at it and be consistent" - Porky's Corner
+
+The hero:
+
+- Knows hard times are merely a test
+- Believes in himself and others
+- Learns to find peace in chaos
+- Listens more than he speaks
+- Always speaks the truth
+- Fights for those in need
+- Plays the long game
+- Follows his heart
+- Admits mistakes
+- Overcomes fear
+- Acts
+
+
 ## Star Wars
 
 > Adapt he must as well. Cooperation is learned not through individual effort. Only together can you progress - Qui-gon (Master & Apprentice)
@@ -37,4 +56,26 @@ title: Quotes
 
 > In other words, you should avoid rigid, military-style management—in which the decision-makers do not necessarily suffer personal consequences from their decisions—because it is especially prone to collapse. - Why Complex Systems Collapse Faster, TabletMag
 
+“Here is what happens when you play by the rules: You lose.”
 
+Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
+
+“You give but little when you give of your possessions.
+
+It is when you give of yourself that you truly give.”
+
+Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
+
+“You work that you may keep pace with the earth and the soul of the earth.
+
+For to be idle is to become a stranger unto the seasons, and to step out of life’s procession, that marches in majesty and proud submission towards the infinite.”
+
+Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
+
+“But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.”
+
+Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
+
+“No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.”
+
+Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books. 

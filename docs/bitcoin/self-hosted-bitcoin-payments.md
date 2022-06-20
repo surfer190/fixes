@@ -3,7 +3,7 @@ author: ''
 category: Bitcoin
 date: '2022-01-31'
 summary: ''
-title: A Guide on Self Hosted Python Based Bitcoin Payment Processors
+title: Self-Hosted Python Based Bitcoin Payment Processors
 ---
 
 # A Guide on Self Hosted Python Based Bitcoin Payment Processors

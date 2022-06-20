@@ -3,7 +3,7 @@ author: ''
 category: Android
 date: '2015-08-25'
 summary: ''
-title: Install And Setup Android Studio And Development Environment
+title: Install Android Studio Development Environment
 ---
 # Installing Android Studio and Setting up your Environment for Android Development
 
