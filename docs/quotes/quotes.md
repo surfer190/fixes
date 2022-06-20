@@ -26,7 +26,6 @@ The hero:
 - Acts
 
 
-
 ## Star Wars
 
 > Adapt he must as well. Cooperation is learned not through individual effort. Only together can you progress - Qui-gon (Master & Apprentice)
@@ -55,8 +54,7 @@ The hero:
 
 > “But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.” - Kahlil Gibran. “The Prophet”.
 
-<<<<<<< HEAD
-Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
+> In other words, you should avoid rigid, military-style management—in which the decision-makers do not necessarily suffer personal consequences from their decisions—because it is especially prone to collapse. - Why Complex Systems Collapse Faster, TabletMag
 
 “Here is what happens when you play by the rules: You lose.”
 
@@ -81,5 +79,3 @@ Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books.
 “No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.”
 
 Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books. 
-=======
->>>>>>> 1a34e03de300ba57bc2965b7eb9d777a36e09237

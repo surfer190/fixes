@@ -1665,7 +1665,7 @@ If employer pays subsidy - remember to deduct that subsidy from the overall cont
 
 # 12. Introduction to Investment Planning
 
-Important to evaluate investment decisions, investment performance and investment managers. Know how clients behave under certain circumsdtances espescially in a dramatic decline in market prices.
+Important to evaluate investment decisions, investment performance and investment managers. Know how clients behave under certain circumsdtances especially in a dramatic decline in market prices.
 
 Investment - current commitment of money for a period of time to derive future benefits.
 
@@ -1730,7 +1730,7 @@ Security analysis is the valuation on particular securities in a portfolio
 
 It is now called **wealth management** where both tasks are undertaken together.
 
-> Beware of conflict of interest, espescially if the owner of the asset management company is given you financial planning advice. They will usually put you in funds and positions that make them the most profit.
+> Beware of conflict of interest, especially if the owner of the asset management company is given you financial planning advice. They will usually put you in funds and positions that make them the most profit.
 
 Wealth management process:
 

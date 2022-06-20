@@ -7,7 +7,7 @@ title: Multi Tenancy
 ---
 # Architecting Multi-tenant Applications
 
-In building a Saas (Software-as-a-service) product, an essential ingredient is the ability to have multiple tenants or customers espescially when the target fo the product is a team, group or organisation.
+In building a Saas (Software-as-a-service) product, an essential ingredient is the ability to have multiple tenants or customers especially when the target fo the product is a team, group or organisation.
 
 There are three options:
 

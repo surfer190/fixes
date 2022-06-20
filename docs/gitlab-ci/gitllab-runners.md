@@ -7,7 +7,7 @@ title: Gitllab Runners
 ---
 # Gitlab Runners
 
-For a seemingly simple concept, gitlab runners are made to seem very complex espescially when aided by the constant redirection in the gitlab docs.
+For a seemingly simple concept, gitlab runners are made to seem very complex especially when aided by the constant redirection in the gitlab docs.
 
 Let's try and simplify the concept.
 

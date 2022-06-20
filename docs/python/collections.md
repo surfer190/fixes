@@ -3,13 +3,14 @@ author: ''
 category: Python
 date: '2017-02-19'
 summary: ''
-title: Collections
+title: Python collections
 ---
-# Collections or Containers in Python
+# Python: Collections and Containers
 
-List and strings are colelction
-
-Are **iterable**
+* List and strings are collections
+* Lists are mutable
+* Strings, tuples, floats and integers are immutable
+* Are **iterable**
 
 Strings are immutable _you cannot change them in place_ ... a new spot is needed in memory
 
@@ -22,7 +23,13 @@ With the `+` sign they both have to be lists
 favourite_things += ["new element"]
 ```
 
-`extend()`
+`extend()` - Extend list by appending elements from the iterable
+
+    my_list = [1, 2, 3]
+    my_list.extend([4, 5])
+    
+    my_list
+    >>> [1, 2, 3, 4, 5]
 
 `insert(<index to insert>, <thing to insert>)` - add a element at specific index
 
@@ -74,7 +81,7 @@ Start slice at end: `favourite_things(2:)`
 
 `my_list.sort()`
 
-This **sorts in place**, it does not return a sorted list. [Source](http://stackoverflow.com/questions/7301110/why-does-return-list-sort-return-none-not-the-list)
+This **sorts in place**, it does not return a sorted list.
 
 ## Range
 
@@ -282,12 +289,7 @@ Update (with mutiple sets): `low_primes.update({19, 23}, {2, 29})`
 
 `set1.intersection(set2)` or `set1 & set2`
 
+## Sources
 
-
-
-
-
-
-
-
-
+* [Lists: Mutable & Dynamic](https://realpython.com/lessons/lists-mutable-dynamic/)
+* [Stackoverflow: Sorting in place](http://stackoverflow.com/questions/7301110/why-does-return-list-sort-return-none-not-the-list)

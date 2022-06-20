@@ -200,7 +200,7 @@ and calling:
 
 is much clearer.
 
-* Use complex expressions to a help function, espescially when logic is repeated
+* Use complex expressions to a help function, especially when logic is repeated
 
 ### 6. Prefer Multiple Assignment Unpacking over Indexing
 
@@ -414,7 +414,7 @@ The stride lets you take every `nth` item
     >>> colours[::2]
     ['red', 'yellow', 'green']
 
-* Can be very confusing, espescially negative strides
+* Can be very confusing, especially negative strides
 * Avoid `start` and `end` when doing a stride
 * Use `itertools` module `islice` function if necessary
 
@@ -957,7 +957,7 @@ With each call to `__next__` of the iterator, it will advance to the next `yield
 
 * It is easier to read as references to the result list have been eliminated
 * The iterator returned by the generator can be converted with `list()`
-* Done line by line espescially useful in a stream of reading from a file
+* Done line by line especially useful in a stream of reading from a file
 
 ### Be Defensive when Iterating over Arguments
 
@@ -1146,7 +1146,7 @@ The convension for achieving the desired result is to set `when=None` and docume
         when = datetime.datetime.now() if when is None else when
         print('{}: {}'.format(when, message))
 
-The `None` arugment is espescially important for arguments that are mutable.
+The `None` arugment is especially important for arguments that are mutable.
 Say you want to decode some json with a default:
 
     def decode(data, default={}):
@@ -1471,7 +1471,7 @@ Calling the function now requires more parameters:
 
 ### Initialise Parent classes with Super
 
-Calling the parent class `__init__` mthod can ead to unpredictable behaviour espescially with multiple inheritance as the `__init__`.
+Calling the parent class `__init__` mthod can ead to unpredictable behaviour especially with multiple inheritance as the `__init__`.
 
 Python 2.2 introduced `super` and set the `MRO` - Method Resolution Order.
 Python 3 introduced `super` with no arguments and it should be used because it is clear, concise and always does the right thing.
@@ -2506,7 +2506,7 @@ dialog.py:
         import app  # Dynamic import
 
 It requires no structural changes to the way modules are defined and imported. 
-There are downsides: the cost can be bad espescially inside loops, by delaying execution there may be surprising failures at runtime.
+There are downsides: the cost can be bad especially inside loops, by delaying execution there may be surprising failures at runtime.
 
 
 ### Use Virtual Environments for isolated and reproducible Deendencies

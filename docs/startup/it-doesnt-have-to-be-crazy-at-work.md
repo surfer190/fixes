@@ -545,7 +545,7 @@ The team yields the scope hammer.
 
 Small projects ballon into massive projects and it is important to stop, cut and move on.
 
-Instead of estimates, the team uses budgets. Humans are bad at estimating espescially something they have not done before.
+Instead of estimates, the team uses budgets. Humans are bad at estimating especially something they have not done before.
 There is a 6 week budget to get this done.
 
 Constraints are liberating for a team.
@@ -632,7 +632,7 @@ The only sustainable method in business is to have these decisions made by indiv
 
 Someone in charge needs to make the final call.
 
-Trying to convince a stakeholder can be like pulling teeth (espescially with clients) instead someone else needs to make the decision and receive commitment.
+Trying to convince a stakeholder can be like pulling teeth (especially with clients) instead someone else needs to make the decision and receive commitment.
 
 > You can disagree and commit, as Bezos says
 

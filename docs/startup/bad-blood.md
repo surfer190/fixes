@@ -41,7 +41,7 @@ The book was written by John Carreyrou and exposes the full story behind the fai
 * Don't deal in equity of non public companies - you'll get fucked unless you are the corrupt one
 * A person that is unreasonable is bad
 * Beware the obsessive penny pincher 
-* Be careful on what you look at on your browser - espescially on corporate networks
+* Be careful on what you look at on your browser - especially on corporate networks
 * Moving companies changes your life
 * “The overall impression was that of an eighth-grade science project”
 * Too many moving parts and uncontrollables 

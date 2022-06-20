@@ -7,6 +7,8 @@ title: Awx - Give a Project a Custom Virtual Env
 ---
 ## AWX How to give a Project a Custom VirtualEnv in the container based Install
 
+**AWX no longer uses custom venvs and now uses execution environments see [moving to execution environments](https://fixes.co.za/ansible/awx-moving-custom-venvs-to-execution-environments/) or [execution environments docs](https://docs.ansible.com/automation-controller/latest/html/userguide/execution_environments.html)**
+
 When you create a new project on AWX you get the following screen
 
 ![AWX new project no custom environments](/img/awx/awx-new-project-no-custom-environment.png){: class="img-fluid" }

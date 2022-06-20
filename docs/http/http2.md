@@ -21,6 +21,7 @@ In 2009, HTTP/1.1 was a decade old.
 > Now loading a single web page often involved making hundreds of requests, slowing down the web
 
 Many alternative protocols were introduced:
+
 * Roy Fielding's WAKA
 * HTTP over SCTP 
 * Google's SPDY - making use of Chrome browser
@@ -213,8 +214,15 @@ Internet movement to more:
 
 #### The problems with HTTP/1
 
-* Head of line blocking - a browser usually wants many objects from a particular host. Each asset needs its own connection - it doesn't use a single connection. If any of those requests or responses have a problem - subsequent requests are blocked. Modern browsers open up to 6 connections per host.
-* Inefficient use of TCP - built in congestion avoidance mechanisms. It is not the fastest but it is the most reliable. Central to this is the _congestion window_ - the number of tcp packets a client can send before being acknowledged by the receiver.
+* Head of line blocking
+    - a browser usually wants many objects from a particular host.
+    - Each asset needs its own connection - it doesn't use a single connection.
+    - If any of those requests or responses have a problem - subsequent requests are blocked.
+    - Modern browsers open up to 6 connections per host.
+* Inefficient use of TCP
+    - built in congestion avoidance mechanisms.
+    - It is not the fastest but it is the most reliable.
+    - Central to this is the _congestion window_ - the number of tcp packets a client can send before being acknowledged by the receiver.
 
 > An internet protocol packet is a series of bytes encapsulated in a dataframe. The most data one packet can transmit is 1460 bytes.
 

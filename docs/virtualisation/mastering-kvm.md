@@ -1455,7 +1455,7 @@ On `PacktPhy02`:
 
 You might have a situation where the same vm is on 2 hypervisors - it happens when manually managing KVM hosts without a centralized control plane like ovirt.
 
-Accidently starting the same guest on 2 different hosts can lead to VM filesystem corruption - espescially when the filesystem is not cluster aware.
+Accidently starting the same guest on 2 different hosts can lead to VM filesystem corruption - especially when the filesystem is not cluster aware.
 
 In the book - how to use `lockd` to fix this problem...
 
@@ -1935,7 +1935,7 @@ VXLAN allows:
 
 Stretching layer 2 across sites (or different continents) would force to use a layer 2 VPN or MPLS based technology.
 
-Service providers aren't happy with "give me MPLS" or "give me layer 2 access" requests - espescially when including mutlicast.
+Service providers aren't happy with "give me MPLS" or "give me layer 2 access" requests - especially when including mutlicast.
 
 VTEPS can talk to each other.
 
