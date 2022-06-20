@@ -7,6 +7,12 @@ title: Freeing Up Space On Your Development Macbook
 ---
 ## Freeing Up Space on mac
 
+## Git
+
+    git gc
+
+> Use on repos
+
 ### Brew
 
     brew cleanup
