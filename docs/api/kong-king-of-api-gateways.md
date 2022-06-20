@@ -804,7 +804,7 @@ Kong has a CORS plugin to do this for you
 The API gateway may authenticate users but does not mean it can always authorize users.
 What if a user can view movies but not book one...should this authoization logic sit on the gateway level.
 A user's scope can be very specific and it can change the core of the system.
-It is better to put the user's authorization, espescially business authorization for a user in the level of service.
+It is better to put the user's authorization, especially business authorization for a user in the level of service.
 
 ### Composing Data in an API gateway
 

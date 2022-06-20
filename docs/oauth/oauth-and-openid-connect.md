@@ -40,7 +40,7 @@ It is an extension to OAuth that provides Identity.
 ## OAuth 2.:  History and the Problem
 
 There is a lot of wiggleroom with the [Oauth spec](https://tools.ietf.org/html/rfc6749) - it is not like HTTP in that there is only 1 way to use it.
-You are not alone it is very confusing espescially researching it online.
+You are not alone it is very confusing especially researching it online.
 
 Identity UseCases pre-2010:
 

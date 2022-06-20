@@ -253,7 +253,7 @@ decorative elements should not take attention from the site and should match the
 
 * drag drop and such
 * demonstrate features or give immediate feedback (better if there is a level of entertainment)
-* sometimes the boring old fashioned approach is ok as well (espescially for personas you target)
+* sometimes the boring old fashioned approach is ok as well (especially for personas you target)
 
 ## Downloads
 

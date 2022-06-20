@@ -28,7 +28,7 @@ To allow for independent deployablility the services need to be _loosely coupled
 
 We need explicit, well-defined and stable contracts between services
 
-Sharing of databases is espescially problematic
+Sharing of databases is especially problematic
 
 ### Modelled around a Business Domain
 

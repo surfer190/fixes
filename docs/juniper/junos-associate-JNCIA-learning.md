@@ -2255,7 +2255,7 @@ Firewall filter action types:
         }
     }
 
-> use `commit confirmed` espescially with firewall filters
+> use `commit confirmed` especially with firewall filters
 
 * policer - allows you to invoke a traffic policer
 * loss-priority - specifies class-of-service information

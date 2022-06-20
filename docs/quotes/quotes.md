@@ -35,3 +35,6 @@ title: Quotes
 
 > “But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.” - Kahlil Gibran. “The Prophet”.
 
+> In other words, you should avoid rigid, military-style management—in which the decision-makers do not necessarily suffer personal consequences from their decisions—because it is especially prone to collapse. - Why Complex Systems Collapse Faster, TabletMag
+
+

@@ -2764,7 +2764,7 @@ Rule of thumb: 1 docker container for each process in your stack
 
 There is a lot of shit going on in your development environment. But when sharing between developers and deploying you couldn't manage the environment.
 
-Emulating the environment is easier, espescially in corporates.
+Emulating the environment is easier, especially in corporates.
 
 Someone has to create the initial environment, there is a learning curve.
 
