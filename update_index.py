@@ -23,7 +23,7 @@ def get_entry(path):
                 Loader=yaml.SafeLoader
             )
         except yaml.YAMLError as exc:
-            print(exc)
+            print(f'Problem with Meta: {path}')
 
         return yaml_doc
 

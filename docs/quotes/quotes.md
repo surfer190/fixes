@@ -79,3 +79,8 @@ Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books.
 “No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.”
 
 Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books. 
+
+“If prices went up, people demanded not a stable purchasing power for the marks they had, but more marks to buy what they needed. More marks were printed, and more, and more.”
+
+Excerpt From: Bob Wolf. “When Money Dies.” iBooks. 
+

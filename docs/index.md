@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-06-24: _Microservices_ [Protocol Buffers](microservices/protocol-buffers.md)
+- 2022-06-23: _Http_ [Http3](http/http3.md)
+- 2022-06-22: _Python_ [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
+- 2022-06-22: _MySQL_ [MySQL - Performance, Scaling and Connections](mysql/mysql-performance-scaling-connections.md)
+- 2022-06-15: _Networking_ [Proxy vs Reverse Proxy](networking/proxy-vs-reverse-proxy.md)
+- 2022-06-15: _Code_ [Secrets of Code Review](code/secrets-of-code-review-book-summary.md)
 - 2022-06-05: _Microservices_ [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
 - 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
 - 2022-05-31: _API_ [None](api/api-design-loosely-coupled-microservices.md)
 - 2022-05-30: _API_ [Graphene GraphQL Library for Python](api/graphene-graphql-library-for-python.md)
-- 2022-05-30: _API_ [Api's - Rest vs Soap vs RPC vs GraphQL](api/apis-rest-soap-graphql-rpc.md)
-- 2022-05-26: _MySQL_ [Create a MySQL User and Grant Access to a Database](mysql/create-a-mysql-user-and-grant-access-to-a-db.md)
-- 2022-05-23: _MySQL_ [How to Delete a MySQL User](mysql/delete-a-mysql-user.md)
-- 2022-05-20: _Video-streaming_ [Fundamentals of Media Streaming on the Internet](video-streaming/internet-video-streaming-resources.md)
-- 2022-05-20: _Buddha-Dharma_ [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
-- 2022-05-10: _Python_ [Common python Interview Questions](python/interview-questions.md)
 
 ## Table of Contents
 
@@ -150,6 +150,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Chess
 - 2020-11-10: [Chess - Basics](chess/basics.md)
+
+## Code
+- 2022-06-15: [Secrets of Code Review](code/secrets-of-code-review-book-summary.md)
 
 ## Composer
 - 2016-09-26: [Bus Error Core Dumped](composer/bus-error-core-dumped.md)
@@ -301,6 +304,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-10-09: [How To Update And Upgrade All Packages](homebrew/how-to-update-and-upgrade-all-packages.md)
 
 ## Http
+- 2022-06-23: [Http3](http/http3.md)
 - 2020-07-29: [Http2](http/http2.md)
 - 2020-06-14: [Http Error Codes Simple Description](http/http-error-codes-simple-description.md)
 - 2020-03-05: [Debug Http Webhooks](http/debug-http-webhooks.md)
@@ -450,11 +454,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Meteorjs](meteorjs/meteorjs.md)
 
 ## Microservices
+- 2022-06-24: [Protocol Buffers](microservices/protocol-buffers.md)
 - 2022-06-05: [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
 - 2020-06-14: [Netflix Guide To Microservices](microservices/netflix-guide-to-microservices.md)
 - 2019-11-04: [Failing At Microservices](microservices/failing-at-microservices.md)
 
 ## Mysql
+- 2022-06-22: [MySQL - Performance, Scaling and Connections](mysql/mysql-performance-scaling-connections.md)
 - 2022-05-26: [Create a MySQL User and Grant Access to a Database](mysql/create-a-mysql-user-and-grant-access-to-a-db.md)
 - 2022-05-23: [How to Delete a MySQL User](mysql/delete-a-mysql-user.md)
 - 2022-02-14: [Create a database schema with the Correct Collation](mysql/create-database-schema-with-correct-collation.md)
@@ -484,6 +490,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-23: [Intro Ansible Network Automation](network-automation/intro-ansible-network-automation.md)
 
 ## Networking
+- 2022-06-15: [Proxy vs Reverse Proxy](networking/proxy-vs-reverse-proxy.md)
 - 2021-01-07: [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
 - 2020-11-25: [BGP](networking/bgp.md)
 - 2020-10-05: [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
@@ -542,6 +549,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-06-22: [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
 - 2022-05-10: [Common python Interview Questions](python/interview-questions.md)
 - 2022-05-06: [Linked Lists](python/linked_lists.md)
 - 2022-04-15: [Summary of Understanding Decorators in Python](python/understanding-decorators.md)
@@ -617,7 +625,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-07-12: [Basic Http Server](python/basic-http-server.md)
 - 2017-07-05: [Zen Of Python](python/zen-of-python.md)
 - 2017-04-18: [Using Databases With Python](python/using-databases-with-python.md)
-- 2017-02-19: [Collections](python/collections.md)
+- 2017-02-19: [Python collections](python/collections.md)
 - 2017-02-18: [Debugging Using Ipdb](python/debugging-using-ipdb.md)
 - 2017-02-16: [Unit Tests](python/unit_tests.md)
 - 2017-02-16: [Doc Tests](python/doc-tests.md)

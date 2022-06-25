@@ -7,6 +7,15 @@ title: Http2
 ---
 # Learning HTTP/2
 
+#### TL;DR
+
+    * `http2` only works on a TLS connection (not according to the spec but due to browsers blocking it on http1)
+    * In `http/1.0` each object requested from the server needed its own TCP connection
+    * In `http/1.1` a single connection is used per host and all the requests are done on that persistent connection - but a single slow request will block the next request - head-of-line blocking
+    * `http/2.0` used TCP efficiently and allowed multiple streams of data within a single connection - interleaving requests and response - called multiplexing. Streams can also be prioritised.
+
+### Intro
+
 HTTP/2 (`h2`) is the major revision of the network protocol used by the world wide web - **meant to improve the perceived performance of loading web content**
 
 HTTP/1.1 was approved in 1999 - since then nothing has changed.
@@ -364,7 +373,7 @@ Any browser not supporting H2 will just fall back
 * sharding - HTTP/2 uses a single socket - sharding breaks that goal
 * cookie-less domains - seperate domains should be avoided
 
-### third Parties
+### Third Parties
 
 * Can be a major drag on the performance gains of http2
 
@@ -741,3 +750,4 @@ Potencial Features:
 ### Sources
 
 * [Learning HTTP/2 - Stephen Ludin and Javier Garza](https://www.oreilly.com/library/view/learning-http2/9781491962435/)
+* [Digital Ocean - Difference between HTTP1 and HTTP2](https://www.digitalocean.com/community/tutorials/http-1-1-vs-http-2-what-s-the-difference)
