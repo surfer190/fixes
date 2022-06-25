@@ -4,7 +4,7 @@ site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixe
 site_author: surfer190
 theme:
   language: en
-  name: mkdocs
+  name: material
   highlightjs: true
   hljs_style: github
   nav_style: dark
@@ -26,5 +26,8 @@ plugins:
   - search:
       min_search_length: 3
   - rss:
-      length: 20
+      date_from_meta:
+        as_creation: "date"
+        as_update: false
+        datetime_format: "%Y-%m-%d"
 use_directory_urls: false
