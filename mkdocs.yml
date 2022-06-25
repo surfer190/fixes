@@ -5,14 +5,14 @@ site_author: surfer190
 theme:
   language: en
   name: material
-  highlightjs: true
-  hljs_style: github
-  nav_style: dark
-  prev_next_buttons_location: none
-  sticky_navigation: false
-  collapse_navigation: true
-  custom_dir: custom_theme/
-  include_search_page: true
+  # highlightjs: true
+  # hljs_style: github
+  # nav_style: dark
+  # prev_next_buttons_location: none
+  # sticky_navigation: false
+  # collapse_navigation: true
+  # custom_dir: custom_theme/
+  # include_search_page: true
 markdown_extensions:
   - sane_lists
   - toc:
