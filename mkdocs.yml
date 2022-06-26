@@ -25,13 +25,8 @@ theme:
         accent: green
         icon: material/lightbulb-outline
         name: Switch to light mode
-  # highlightjs: true
-  # hljs_style: github
-  # nav_style: dark
-  # prev_next_buttons_location: none
-  # sticky_navigation: false
   collapse_navigation: true
-  # custom_dir: custom_theme/
+  custom_dir: overrides
   include_search_page: true
 markdown_extensions:
   - sane_lists
