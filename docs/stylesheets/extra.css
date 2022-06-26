@@ -1,0 +1,21 @@
+.post-meta {
+    color: #828282;
+}
+
+.right-span {
+    float: right;
+}
+
+.md-typeset h1 {
+    font-weight: 700;
+}
+
+.md-typeset h3 {
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+.md-typeset h3 {
+    font-size: 1.2em;
+    font-weight: 500;
+}

@@ -1,6 +1,7 @@
 site_name: Fixes.co.za
 site_url: https://fixes.co.za
 repo_url: https://github.com/surfer190/fixes
+edit_uri: ''
 repo_name: fixes
 site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixes and solutions on software development and related topics
 site_author: surfer190
@@ -50,3 +51,5 @@ use_directory_urls: true
 extra:
   analytics:
     provider: custom
+extra_css:
+  - stylesheets/extra.css

@@ -1,0 +1,6 @@
+{% if page and page.meta.date and not page.is_homepage %}
+<p id="category-and-date">
+    <span class="post-meta">{{ page.meta.date }}</span>
+    <span class="post-meta right-span">{{ page.meta.category }}</span>
+</p>
+{% endif %}
