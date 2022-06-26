@@ -21,9 +21,9 @@ theme:
         name: Switch to dark mode
     # Palette toggle for dark mode
     - scheme: slate
+      primary: orange
+      accent: green
       toggle:
-        primary: orange
-        accent: green
         icon: material/lightbulb-outline
         name: Switch to light mode
   collapse_navigation: true
