@@ -97,18 +97,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-30: [Automation Wisdoms](automation/automation-wisdoms.md)
 - 2019-05-14: [Chatops](automation/chatops.md)
 
-## Aws
-- 2020-06-14: [Amazon Web Services Fundementals](aws/amazon-web-services-fundementals.md)
-- 2016-05-07: [Certifications](aws/certifications.md)
-- 2016-05-07: [Amazon Web Services Certification](aws/amazon-web-services-certification.md)
-
 ## Azure
-- 2020-04-20: [Certification Developer Associatiate](azure/certification-developer-associatiate.md)
-- 2017-06-13: [Azure Fundementals](azure/azure-fundementals.md)
-
-## Azure-Machine-Learning
-- 2017-06-13: [Basics Microsoft Machine Learning](azure-machine-learning/basics-microsoft-machine-learning.md)
-- 2016-08-21: [R Programming Lanurage Integration](azure-machine-learning/r-programming-lanurage-integration.md)
+- 2017-06-13: [Basics Microsoft Machine Learning](azure/basics-microsoft-machine-learning.md)
+- 2016-08-21: [R Programming Lanurage Integration](azure/r-programming-lanurage-integration.md)
 
 ## Azure-Vm
 - 2016-09-27: [Azure Linux Vm Active Directory](azure-vm/azure-linux-vm-active-directory.md)

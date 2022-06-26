@@ -1,11 +1,30 @@
 site_name: Fixes.co.za
 site_url: https://fixes.co.za
+repo_url: https://github.com/surfer190/fixes
 site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixes and solutions on software development and related topics
 site_author: surfer190
 theme:
   language: en
   name: material
+  # turn off google fonts
   font: false
+  icon:
+    logo: material/book-open-page-variant
+  favicon: img/favicon.ico
+  palette:
+    - scheme: default
+      primary: pink
+      accent: teal
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        primary: orange
+        accent: green
+        icon: material/lightbulb-outline
+        name: Switch to light mode
   # highlightjs: true
   # hljs_style: github
   # nav_style: dark
@@ -32,4 +51,6 @@ plugins:
         as_update: false
         datetime_format: "%Y-%m-%d"
 use_directory_urls: true
-
+extra:
+  analytics:
+    provider: custom
