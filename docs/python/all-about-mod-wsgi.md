@@ -7,7 +7,7 @@ title: All About Mod Wsgi
 ---
 # Mod WSGI
 
-**TL;DR - If you have the choice I found it simpler to use `nginx` and `gunicorn` for your prod server. Simple is better than complex**
+__TL;DR - If you have the choice I found it simpler to use `nginx` as the web server of files and `gunicorn` as the web server gateway for your prod server. Simple is better than complex.__
 
 ## What is ModWSGI?
 

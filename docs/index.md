@@ -12,7 +12,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-06-15: _Code_ [Secrets of Code Review](code/secrets-of-code-review-book-summary.md)
 - 2022-06-05: _Microservices_ [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
 - 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
-- 2022-05-31: _API_ [None](api/api-design-loosely-coupled-microservices.md)
+- 2022-05-31: _API_ [API Design - Loosely Coupled Microservices](api/api-design-loosely-coupled-microservices.md)
 - 2022-05-30: _API_ [Graphene GraphQL Library for Python](api/graphene-graphql-library-for-python.md)
 
 ## Table of Contents
@@ -65,7 +65,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Add Existing Ubuntu User To Www Data Group](apache/add-existing-ubuntu-user-to-www-data-group.md)
 
 ## Api
-- 2022-05-31: [None](api/api-design-loosely-coupled-microservices.md)
+- 2022-05-31: [API Design - Loosely Coupled Microservices](api/api-design-loosely-coupled-microservices.md)
 - 2022-05-30: [Graphene GraphQL Library for Python](api/graphene-graphql-library-for-python.md)
 - 2022-05-30: [Api's - Rest vs Soap vs RPC vs GraphQL](api/apis-rest-soap-graphql-rpc.md)
 - 2021-01-04: [Api Product Manager](api/api-product-manager.md)

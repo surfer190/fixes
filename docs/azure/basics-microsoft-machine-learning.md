@@ -6,8 +6,6 @@ summary: ''
 title: Basics Microsoft Machine Learning
 ---
 
-
-
 Data rich, information poor
 
 # 4 Pillars of analytics

@@ -5,7 +5,7 @@ date: '2016-08-21'
 summary: ''
 title: R Programming Lanurage Integration
 ---
-# The R Programming Lanuage and integrating it with Microsoft Azure Machine Learning
+# The R Programming Language and integrating it with Microsoft Azure Machine Learning
 
 ## What is R?
 
