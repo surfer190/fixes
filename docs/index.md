@@ -6,6 +6,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 - 2022-06-27: _Microservices_ [gRPC](microservices/grpc.md)
 - 2022-06-24: _Microservices_ [Protocol Buffers](microservices/protocol-buffers.md)
+- 2022-06-24: _Buddha-Dharma_ [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
 - 2022-06-23: _Http_ [Http3](http/http3.md)
 - 2022-06-22: _Python_ [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
 - 2022-06-22: _MySQL_ [MySQL - Performance, Scaling and Connections](mysql/mysql-performance-scaling-connections.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-06-15: _Code_ [Secrets of Code Review](code/secrets-of-code-review-book-summary.md)
 - 2022-06-05: _Microservices_ [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
 - 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
-- 2022-05-31: _API_ [API Design - Loosely Coupled Microservices](api/api-design-loosely-coupled-microservices.md)
 
 ## Table of Contents
 
@@ -125,6 +125,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-12-01: [Stormlight Archive](book-summaries/stormlight.md)
 
 ## Buddha_Dharma
+- 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
 - 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
 - 2022-04-26: [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
 
@@ -380,6 +381,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Less Syntax](less/less-syntax.md)
 
 ## Linux
+- 2020-06-14: [Python - avoid venv clashes with](linux/python-isolate-from-dist-packages.md)
 - 2020-05-12: [Set Timezone On Linux Server](linux/set-timezone-on-linux-server.md)
 - 2020-05-12: [View Banned Ips From Iptables In Fail2ban](linux/view-banned-ips-from-iptables-in-fail2ban.md)
 - 2019-10-07: [Lxd](linux/lxd.md)

@@ -9,7 +9,7 @@ title: Core Fundamental Teachings of Buddha
 ## Core Fundamental Teachings of Buddha
 
 * The history of buddhism and the buddha himself isn't essential
-* The esotheric, extensive detail, rites, rituals and the number of things are inconesquential
+* The esotheric, extensive detail, rites, rituals and the number of things are inconsequential
 * The worshipping and blind belief as buddha as a god is also false. He was a human and we are humans.
 * Do not blindly delieve. Independently verify through observation.
 * This is not a religion - with rites, rituals, ceremony and worship
@@ -68,20 +68,18 @@ Your given name is just a label.
 
 > The mind is searching and yearning to discover a self but it can never find one though it continues its pursuit seeking to know and find a self because the mind does not realize there isn’t one.
 
-
-
 ### The Four Noble truths
 
 Impermanence: Everything is constantly changing and there is no permanent state. Material objects/possessions, relationships, thoughts, ideas, states of mind, everything in the world is constantly changing. All conditioned feelings will cease to exist. All that arises will cease to exist. There is no steady, constant, or fixed mental state other than Enlightenment.
 
-1. First Noble Truth: Everyone that is unEnlightened will experience discontentedness.
+1. First Noble Truth: Everyone that is unenlightened will experience discontentedness.
 2. Second Noble Truth: Discontentedness is caused by our own cravings/desires/attachments because the mind wants everything to be permanent when everything in the world is impermanent.
 3. Third Noble Truth: The elimination of discontentedness is possible by eliminating cravings/desires/attachments.
 4. Fourth Noble Truth: The path to eliminating discontentedness is The Eight Fold Path.
 
 > The goal in life is not to be happy, as that is an impermanent feeling. When the mind is not happy, it will move to sadness, anger, or worse.
 
-The goal in life is to develop a peaceful, calm, serene, and content mind with joy free of cravings/desires/attachments that is “satisfied with what is… - the Enlightened mind.
+The goal in life is to develop a peaceful, calm, serene, and content mind with joy free of cravings/desires/attachments that is “satisfied with what is… - the Enlightened Mind.
 
 > You need to accept responsibility for your own discontent mind and the emotions you experience. Rather than blaming pleasant feelings, painful feelings, and feelings that are neither painful-nor-pleasant on someone or something external, see the truth that you cause your own discontent mind.
 
@@ -115,7 +113,7 @@ Happiness is impermanent - craving happiness is the reason we are not achieving 
 
 wisdom:
 
-* right view - no self and the 4 noble truths - descontent arises from within not externally
+* right view - no self and the 4 noble truths - discontent arises from within not externally
 * right intention - non-illwill and harmlessness - kind, positive and wholesome thoughts and intentions
 
 moral conduct:
@@ -134,7 +132,7 @@ mental discipline:
 
 * Renunciation - Actively letting go
 * Non-ill-will - Loving kindness, wanting all beings to be well - even yourself
-* Harmlessness - Thinking and indenting only good things - any harm you do will be returned to you through kamma.
+* Harmlessness - Thinking and implementing only good things - any harm you do will be returned to you through kamma.
 
 #### Right Speech
 
@@ -184,7 +182,7 @@ Avoid:
 
 ### Right Mindfulness
 
-* Aware of the mind at the present moment - not dwelling onfuture or past moments.
+* Aware of the mind at the present moment - not dwelling on future or past moments.
 * To develop awareness of mind, you should not allow the mind to be lost in daydreams, anticipation, indulgences, worry, or dwell in other discontent feelings.
 
 ### Right Concentration
@@ -203,6 +201,38 @@ Avoid:
 5. Tranquility - Relaxed, Peacefulness, Steadiness
 6. Concentration - singleness of mind, keep attention on one thing
 7. Equanimity - Mental calmness, composure, treating everyone impartially
+
+### The 5 Precepts
+
+> The first step on the path is to improve Moral conduct - you limit damage you do externally and kamma will see you receive less damage
+
+1. Refrain from intentional killing or taking of life
+    - compassion for all living beings
+    - prevent situation where you are in harms way - by following the 8 fold path and kamma
+    - rare situations self-defence can be used
+    - accept all food given to you and not show a preference (regarding being vegan)- choose not to if you have the choice
+2. Abandon taking what is not given, accepting what is given, living purely
+    - Stealing is born from craving and desire. It does harm and that harm will be returned to you.
+    - Do not ask for things - that is craving, desire and attachment. Remove expectations.
+3. Abandon unchastity and sexual misconduct
+    - Sexual misconduct
+    - There mut be a commited and loyal relationship for sex
+    - Multiple sexual partners leads to lieing - stress and anxiety
+    - Sexual activity is a pleasurable and natural part of life. It is not wrong and does not need to be avoided - sexual misconduct must be avoided.
+    - Excessive masturbation is rooted in desire and craving
+    - pornography - harms one's own mind and causes unwholesome secretive actions - this affects natural human connections. A downward spiral of craving, desire and attachment.
+4. Abandoning False Speech, truth-speaker and one to be relied upon
+    - Do not lie
+    - be dependable
+    - do not gossip, slander, lie or talk with deceit
+    - no sarcasm, no lying as part of a joke
+5. Refrain from strong drink and sloth producing drugs
+    - Do not take intoxicants
+    - heedlessness - not mindful
+    - poisons
+    - cannabis, cigarettes, caffeine - craving
+
+> The mind thinks that it is the next new shining object around the corner that is going to bring it permanent and lasting fulfillment, but the mind is never satisfied and keeps chasing after the objects of its affection never being permanently satisfied because the mind keeps craving, and craving, and craving
 
 ### 10 Fetters
 
@@ -223,6 +253,8 @@ Higher fetters:
 * Conceit - arrogance, pride, judging, comparing and measuring as superior or inferior. Ego dissolved.
 * Restlessness - elimination of confusion, distraction, anxiousness (singleness of mind)
 * Ignorance - Learning, Reflection and Wisdom
+
+> Causing harm to others - is really causing harm to yourself with the natural law of Kamma
 
 ## The Middle way
 

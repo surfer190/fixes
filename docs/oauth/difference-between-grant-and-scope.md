@@ -18,7 +18,7 @@ Also grants and scopes...what is the difference?
 
 #### Grants
 
-Grants are flows. They are used interchangably. The various authorization flows allowed in Oauth.
+Grants are flows. They are used interchangable. The various authorization flows allowed in Oauth.
 
 There are 4:
 
