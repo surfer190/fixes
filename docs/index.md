@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-06-27: _Microservices_ [gRPC](microservices/grpc.md)
 - 2022-06-24: _Microservices_ [Protocol Buffers](microservices/protocol-buffers.md)
 - 2022-06-23: _Http_ [Http3](http/http3.md)
 - 2022-06-22: _Python_ [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-06-05: _Microservices_ [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
 - 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
 - 2022-05-31: _API_ [API Design - Loosely Coupled Microservices](api/api-design-loosely-coupled-microservices.md)
-- 2022-05-30: _API_ [Graphene GraphQL Library for Python](api/graphene-graphql-library-for-python.md)
 
 ## Table of Contents
 
@@ -445,6 +445,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Meteorjs](meteorjs/meteorjs.md)
 
 ## Microservices
+- 2022-06-27: [gRPC](microservices/grpc.md)
 - 2022-06-24: [Protocol Buffers](microservices/protocol-buffers.md)
 - 2022-06-05: [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
 - 2020-06-14: [Netflix Guide To Microservices](microservices/netflix-guide-to-microservices.md)
@@ -700,6 +701,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-09-20: [50 Rules for Life - Daily Stoic](stoic/50-rules-for-life-daily-stoic.md)
 - 2021-09-20: [Notes on Enchiridion by Epictetus](stoic/notes-on-enchiridion-epictetus.md)
 - 2021-09-20: [Summarised Stoic Teachings and Quotes](stoic/summarised_stoic_teachings_and_quotes.md)
+
+## Stylesheets
 
 ## Sublime-Text
 - 2015-01-18: [Increase Decrease Indentation](sublime-text/increase-decrease-indentation.md)

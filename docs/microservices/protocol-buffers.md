@@ -179,6 +179,8 @@ You can create datatypes by creating new `message`s:
 
 I will now go through the [python tutorial on protocol buffers](https://developers.google.com/protocol-buffers/docs/pythontutorial)
 
+**Warning: The tutorial is very old and based on python2 - I have updated it as best I can however there may be more recent and relevant sources elsewhere**
+
 For more info check [python generated code guide](https://googleapis.dev/python/protobuf/latest/) and [python generated code](https://developers.google.com/protocol-buffers/docs/reference/python-generated)
 
 ### Install Protoc
@@ -261,7 +263,9 @@ or
 
 > we specify we want the python generated classes with `--python_out`
 
-Data access code is not generated directly like in `C++` and `java`
+Data access code is not generated directly like in `C++` and `java`.
+
+> In Python, the compiler only outputs code to build descriptors for the generated classes, and a Python metaclass does the real work. __It seems like this is the reason that the generated class for me did not contain the empty classes - so my IDE didn't pick them up but I could still use them at runtime__
 
 ### Creating a file
 
@@ -297,7 +301,89 @@ Reading and writing to binary:
 
 ### Writing a Message
 
+Earlier we created messages - but they were ephemeral and not written anywhere.
+Now we will write them to an output stream.
 
+This example reads the addressbook from a file, adds a new person and then writes it back to a file.
+
+    #!/usr/bin/env python3
+    from protocol_buffers import addressbook_pb2
+    import sys
+
+    # This function fills in a Person message based on user input.
+    def PromptForAddress(person):
+    person.id = int(input("Enter person ID number: "))
+    person.name = input("Enter name: ")
+
+    email = input("Enter email address (blank for none): ")
+    if email != "":
+        person.email = email
+
+    while True:
+        number = input("Enter a phone number (or leave blank to finish): ")
+        if number == "":
+        break
+
+        phone_number = person.phones.add()
+        phone_number.number = number
+
+        type = input("Is this a mobile, home, or work phone? ")
+        if type == "mobile":
+        phone_number.type = addressbook_pb2.Person.PhoneType.MOBILE
+        elif type == "home":
+        phone_number.type = addressbook_pb2.Person.PhoneType.HOME
+        elif type == "work":
+        phone_number.type = addressbook_pb2.Person.PhoneType.WORK
+        else:
+        print("Unknown phone type; leaving as default value.")
+
+    # Main procedure:  Reads the entire address book from a file,
+    #   adds one person based on user input, then writes it back out to the same
+    #   file.
+    if len(sys.argv) != 2:
+    print("Usage:", sys.argv[0], "ADDRESS_BOOK_FILE")
+    sys.exit(-1)
+
+    address_book = addressbook_pb2.AddressBook()
+
+    # Read the existing address book.
+    try:
+    f = open(sys.argv[1], "rb")
+    address_book.ParseFromString(f.read())
+    f.close()
+    except IOError:
+    print(sys.argv[1] + ": Could not open file.  Creating a new one.")
+
+    # Add an address.
+    PromptForAddress(address_book.people.add())
+
+    # Write the new address book back to disk.
+    f = open(sys.argv[1], "wb")
+    f.write(address_book.SerializeToString())
+    f.close()
+
+## Extending a Protocol Buffer
+
+Updating a protocol buffer so that old buffers are forward compatible and new buffers are backward compatible.
+Rules:
+
+* you must not change the tag numbers of any existing fields.
+* you must not add or delete any required fields.
+* you may delete optional or repeated fields.
+* you may add new optional or repeated fields but you must use fresh tag numbers (that is, tag numbers that were never used in this protocol buffer, not even by deleted fields).
+
+Considerations:
+
+* Old code will happily read new messages and simply ignore any new fields.
+* To the old code, optional fields that were deleted will simply have their default value, and deleted repeated fields will be empty.
+* New code will also transparently read old messages.
+* New optional fields will not be present in old messages, so you will need to either check explicitly whether they're set with `has_`, or provide a reasonable default value in your `.proto` file with `[default = value]` after the tag number.
+* If the default value is not specified for an optional element, a type-specific default value is used instead: for strings, the default value is the empty string. For booleans, the default value is false. For numeric types, the default value is zero.
+* A new repeated field, your new code will not be able to tell whether it was left empty (by new code) or never set at all (by old code) since there is no `has_` flag for it. 
+
+## Python API Reference
+
+* [More Information in the Python Protocol buffers API](https://googleapis.dev/python/protobuf/latest/)
 
 ## Sources
 
