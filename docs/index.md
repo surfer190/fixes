@@ -109,6 +109,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
 
 ## Bitcoin
+- 2022-03-30: [The Blocksize War - Summary Notes](bitcoin/blocksize-wars.md)
 - 2022-02-08: [Mastering Lightning Network Notes](bitcoin/mastering-lightning-network-notes.md)
 - 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
 - 2022-01-31: [Self-Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
