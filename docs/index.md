@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-07-05: _Tools_ [What is MQTT?](tools/mqtt.md)
+- 2022-07-05: _Python_ [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
+- 2022-07-05: _Git_ [Git Submodules](git/git-submodules.md)
 - 2022-06-27: _Microservices_ [gRPC](microservices/grpc.md)
 - 2022-06-24: _Microservices_ [Protocol Buffers](microservices/protocol-buffers.md)
 - 2022-06-24: _Buddha-Dharma_ [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-06-22: _Python_ [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
 - 2022-06-22: _MySQL_ [MySQL - Performance, Scaling and Connections](mysql/mysql-performance-scaling-connections.md)
 - 2022-06-15: _Networking_ [Proxy vs Reverse Proxy](networking/proxy-vs-reverse-proxy.md)
-- 2022-06-15: _Code_ [Secrets of Code Review](code/secrets-of-code-review-book-summary.md)
-- 2022-06-05: _Microservices_ [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
-- 2022-06-03: _Selling_ [Tips on Selling Cars](selling/selling-cars.md)
 
 ## Table of Contents
 
@@ -270,6 +270,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-12-19: [Flask Basics](flask/flask-basics.md)
 
 ## Git
+- 2022-07-05: [Git Submodules](git/git-submodules.md)
 - 2020-06-21: [Git Corrupt Loose Object](git/git-corrupt-loose-object.md)
 - 2019-07-22: [Fetch And Track All Remote Branches](git/fetch-and-track-all-remote-branches.md)
 - 2019-07-22: [Sync Pull From Upstream In Your Fork](git/sync-pull-from-upstream-in-your-fork.md)
@@ -544,6 +545,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-07-05: [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
 - 2022-06-22: [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
 - 2022-05-10: [Common python Interview Questions](python/interview-questions.md)
 - 2022-05-06: [Linked Lists](python/linked_lists.md)
@@ -723,6 +725,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-12: [Fast Test Slow Test](testing/fast_test_slow_test.md)
 
 ## Tools
+- 2022-07-05: [What is MQTT?](tools/mqtt.md)
 - 2021-03-13: [TCPDump](tools/tcpdump.md)
 - 2017-02-01: [Mailcatcher Setup](tools/mailcatcher-setup.md)
 
