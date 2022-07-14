@@ -2,6 +2,7 @@
 File that generates the config for navigation and the index page
 '''
 import os
+import sys
 import yaml
 
 DOCS_DIR = './docs'
@@ -41,10 +42,13 @@ if __name__ == '__main__':
                     if entry.name.endswith(".md") and entry.is_file():
                         #print(entry.name, dir_)
                         rec  = get_entry(entry.path)
-                        date = rec.get('date')
-                        title = rec.get('title')
-                        summary = rec.get('summary')
-                        category = rec.get('category')
+                        if isinstance(rec, dict):
+                            date = rec.get('date')
+                            title = rec.get('title')
+                            summary = rec.get('summary')
+                            category = rec.get('category')
+                        else:
+                            raise ValueError(f'{entry.path} has no front matter')
 
                         record = {
                             'date': date,

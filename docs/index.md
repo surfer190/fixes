@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-07-14: _Python_ [Tornado Web Server](python/tornado-web-server.md)
+- 2022-07-14: _Code_ [Remote Dev Debugging with SSHD](code/remote-dev-debugging-with-sshd.md)
+- 2022-07-14: _AWS_ [Commonly used AWS Services](aws/aws-services.md)
+- 2022-07-12: _Python_ [Packaging - Pip Install for Development](python/pip-install-in-development.md)
+- 2022-07-12: _Python_ [After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
 - 2022-07-05: _Tools_ [What is MQTT?](tools/mqtt.md)
 - 2022-07-05: _Python_ [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
 - 2022-07-05: _Git_ [Git Submodules](git/git-submodules.md)
 - 2022-06-27: _Microservices_ [gRPC](microservices/grpc.md)
 - 2022-06-24: _Microservices_ [Protocol Buffers](microservices/protocol-buffers.md)
-- 2022-06-24: _Buddha-Dharma_ [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
-- 2022-06-23: _Http_ [Http3](http/http3.md)
-- 2022-06-22: _Python_ [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
-- 2022-06-22: _MySQL_ [MySQL - Performance, Scaling and Connections](mysql/mysql-performance-scaling-connections.md)
-- 2022-06-15: _Networking_ [Proxy vs Reverse Proxy](networking/proxy-vs-reverse-proxy.md)
 
 ## Table of Contents
 
@@ -97,6 +97,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-30: [Automation Wisdoms](automation/automation-wisdoms.md)
 - 2019-05-14: [Chatops](automation/chatops.md)
 
+## Aws
+- 2022-07-14: [Commonly used AWS Services](aws/aws-services.md)
+
 ## Azure
 - 2017-06-13: [Basics Microsoft Machine Learning](azure/basics-microsoft-machine-learning.md)
 - 2016-08-21: [R Programming Lanurage Integration](azure/r-programming-lanurage-integration.md)
@@ -145,6 +148,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-10: [Chess - Basics](chess/basics.md)
 
 ## Code
+- 2022-07-14: [Remote Dev Debugging with SSHD](code/remote-dev-debugging-with-sshd.md)
 - 2022-06-15: [Secrets of Code Review](code/secrets-of-code-review-book-summary.md)
 
 ## Composer
@@ -545,6 +549,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-07-14: [Tornado Web Server](python/tornado-web-server.md)
+- 2022-07-12: [Packaging - Pip Install for Development](python/pip-install-in-development.md)
+- 2022-07-12: [After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
 - 2022-07-05: [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
 - 2022-06-22: [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
 - 2022-05-10: [Common python Interview Questions](python/interview-questions.md)

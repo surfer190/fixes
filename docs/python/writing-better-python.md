@@ -65,7 +65,6 @@ Enclosed in 3 quote marks (triplequotes)..`doc.py`
         """
         ....
 
-
 then check help
 
     help(doc.does_something)
@@ -76,31 +75,56 @@ Better to use them as docstring and not comments, use `#` for comments
 
 ## Logging
 
-        import logging
+    import logging
 
-        logging.info("You won't see this")
-        logging.warn("Oh no")
+    logging.info("You won't see this")
+    logging.warn("Oh no")
+    logger.info("You are %s", username)
 
-But this prints the `warn` out to standard output
+It is better to log through a logger, not directly through the package:
+
+        logger = logging.getLogger(__name__)
+        logger.info('Hello')
+
+### Logging Exceptions
+
+Use `logger.exception(...)`
+
+    try:
+        dangerous_code()
+    except Exception:
+        logger.exception("Something bad happened.")
+
+If you don't want to log at the `ERROR` level:
+
+    logger.info("Something slightly bad happened.", exc_info=True)
+
+### Logging Setup
+
+Only setup logging, filtering and verbosity in your main program
+
+    logging.basicConfig(level=logging.DEBUG)
 
 Some old packages use camelCase. 
 
-        logging.basicConfig(filename='game.log',level=logging.DEBUG)
+    logging.basicConfig(filename='game.log',level=logging.DEBUG)
+    logging.getLogger("some_library").setLevel(logging.WARNING)
 
-Now logs into filename (relative)
-
-Level specifies what logging to pay attention to
+* Now logs into filename (relative)
+* Level specifies what logging to pay attention to
 
 ### Logging Levels
 
-CRITICAL
-ERROR
-WARNING - Keep track of questionable things
-INFO - Monitoring
-DEBUG - Info about running of app
-NOTSET
+* `CRITICAL`
+* `ERROR`
+* `WARNING` - Keep track of questionable things
+* `INFO` - Monitoring
+* `DEBUG` - Info about running of app
+* `NOTSET`
 
 Also remember to log errors in the `Except` block
+
+[More tips on python logging](https://www.palkeo.com/en/blog/python-logging.html)
 
 ## Debugging
 
