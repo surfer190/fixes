@@ -25,6 +25,7 @@ def get_entry(path):
             )
         except yaml.YAMLError as exc:
             print(f'Problem with Meta: {path}')
+            sys.exit(1)
 
         return yaml_doc
 

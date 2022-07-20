@@ -1,4 +1,10 @@
-
+---
+author: ''
+category: NoSQL
+date: '2022-06-25'
+summary: ''
+title: Which Open Source (Self-hosted) NoSQL DB?
+---
 
 ## Which Open Source (self-hosted) NoSQL DB should I Test
 

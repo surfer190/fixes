@@ -518,6 +518,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Update Node Js](node/update-node-js.md)
 
 ## Nosql
+- 2022-06-25: [Which Open Source (Self-hosted) NoSQL DB?](nosql/nosql-db-options.md)
 - 2022-06-25: [MongoDB Basics](nosql/mongodb.md)
 
 ## Oauth
