@@ -84,3 +84,6 @@ Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books.
 
 Excerpt From: Bob Wolf. “When Money Dies.” iBooks. 
 
+We reject: kings, presidents and voting.
+We believe in: rough consensus and running code.
+    -Dave Clark at IETF 24

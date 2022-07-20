@@ -458,7 +458,7 @@ Hire for what people can become.
 
 ### Don't Negotiate Salaries
 
-To be paid fairly at most companies you don't jsut have to be good at your job, you need to be an ace negotiator.
+To be paid fairly at most companies you don't just have to be good at your job, you need to be an ace negotiator.
 Most people aren't _ace negotiators_ and end up getting short changed.
 
 Everyone in the same role is paid the same

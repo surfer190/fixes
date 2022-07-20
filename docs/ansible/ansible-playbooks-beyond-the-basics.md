@@ -117,7 +117,7 @@ in `/etc/environment`:
 
 ### Variables
 
-variables same as `python` but better to use jsut smalls and avoid numbers.
+variables same as `python` but better to use just smalls and avoid numbers.
 
 ##### Assignments
 

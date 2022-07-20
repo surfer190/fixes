@@ -217,7 +217,7 @@ Growing your business:
 3. get customers to stay longer
 
 As an early state startup **#1** is crucial and especially to get qualified leads. 
-Generating leads is wasted if nobody buys at the end of the trial. Building an effective free trial is not easy, you can't jsut _set and forget_
+Generating leads is wasted if nobody buys at the end of the trial. Building an effective free trial is not easy, you can't just _set and forget_
 
 > The goal of the free trial is to quickly get the prospect to a point where becoming a paying customer is the most logical next step, which is immediately after the customer achieves or that they could achieve the outcome by using the product
 

@@ -154,7 +154,7 @@ Only thing needed on the host is `docker`.
 
 When adding or removing nodes you need to repeat those steps.
 
-RKE uses `yaml` to define the cluster so after enntering the hosts and their roles you jsut run `rke up` and provision the clsuter.
+RKE uses `yaml` to define the cluster so after entering the hosts and their roles you just run `rke up` and provision the cluster.
 
 Command can be run from a local workstation.
 
@@ -1469,7 +1469,7 @@ Kubernetes delivers this with Persistent Volumes (PV's), Persistent Volume Claim
 Storage can be provisioned statically or dynamically.
 
 If you have provisioned storage - simply create a persistent volume that points to it.
-A PV does not provision the storage for you it jsut creates an object in the cluster pointing to existing storage.
+A PV does not provision the storage for you it just creates an object in the cluster pointing to existing storage.
 
 You need to add the PV to a PVC (Persistent volume claim) to add it to a workload.
 

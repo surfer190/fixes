@@ -49,6 +49,7 @@ title: A Brief Timeline of World History
 * 268 - 232 BC: Ashoka the Great (ruler of India)
 * 264 - 146 BC: Punich wars
 * 240 BC: Mummy of Hornedjitef, Egypt. During the reign of Ptolemy III.
+* 200BC: Eratostinese of Alexandra discovers the circumference of the Earth
 * 196 BC: Rossetta Stone. Egypt.
 * 183 BC: Hannibal - Carthage general fought Romans
 * 70 BC: Masada roman storm Jews (Lost cause)

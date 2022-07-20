@@ -1213,7 +1213,7 @@ The source of numpys flexibility in working with other systems and programming l
     In [40]: arr2.dtype
     Out[40]: dtype('int32')
 
-Knowing exact number of bits is not required, jsut a general idea of the type: int, float, decimal, str is ok.
+Knowing exact number of bits is not required, just a general idea of the type: int, float, decimal, str is ok.
 
 You can cast to another datatype with `astype`:
 
@@ -2324,7 +2324,7 @@ On a series index use `sort_index`:
 
     obj.sort_index()
 
-In a dataframe you can sort the whole thing or jsut a single axis:
+In a dataframe you can sort the whole thing or just a single axis:
 
     frame.sort_index()  
 

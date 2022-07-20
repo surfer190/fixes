@@ -751,3 +751,4 @@ Potencial Features:
 
 * [Learning HTTP/2 - Stephen Ludin and Javier Garza](https://www.oreilly.com/library/view/learning-http2/9781491962435/)
 * [Digital Ocean - Difference between HTTP1 and HTTP2](https://www.digitalocean.com/community/tutorials/http-1-1-vs-http-2-what-s-the-difference)
+* [Further reading: Web.dev HTTP/2](https://web.dev/performance-http2/)

@@ -36,7 +36,9 @@ Learn and Implement:
 7. The Seven Factors of Enlightenment
 8. Extensive Meditation Training 
 
-The Three Wholesome/Unwholesome Roots, The Natural Law of Kamma, The Cycle of Rebirth
+* The Three Wholesome/Unwholesome Roots
+* The Natural Law of Kamma
+* The Cycle of Rebirth
 
 ### The Three Universal Truths
 
@@ -269,6 +271,22 @@ It simply means that when we feel those emotions, we need to recognize them as b
 Apply effort to bring the mind to the middle.
 
 > If energy is aroused too forcefully this leads to restlessness, and if energy is too soft this leads to complacency.
+
+### The Three Unwholesome Roots (Three Poisons / Three Fires)
+
+* Greed - Desire
+* Hatred - Ill will
+* Delusion - Confusion
+
+The Elimination through:
+
+* Non-craving - generosity
+* Non-anger - loving-kindness
+* Non-ignorance - wisdom
+
+> The poison of craving creates an inner hunger so that we always seem to be chasing an unattainable goal. We mistakenly believe our contentedness is dependent upon that goal.
+
+
 
 ## Sources
 

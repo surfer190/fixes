@@ -306,7 +306,7 @@ View services:
     kubernetes   ClusterIP   10.43.0.1     <none>        443/TCP        131m
     nginx        NodePort    10.43.69.11   <none>        80:31612/TCP   33s
 
-Now jsut ensure that port is open on the firewall on the node and go:
+Now just ensure that port is open on the firewall on the node and go:
 
     my-ip:31612
 
