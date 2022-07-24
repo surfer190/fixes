@@ -280,11 +280,19 @@ Apply effort to bring the mind to the middle.
 
 The Elimination through:
 
-* Non-craving - generosity
-* Non-anger - loving-kindness
-* Non-ignorance - wisdom
+* Non-craving - generosity and breathing-mindfulness meditation
+* Non-anger - loving-kindness, compassion, patience, forgiveness (to external and internal anger). Letting go of loneliness, hurt, doubt, fear, insecurity, inadequacy and depression - this is habitual defence that does not serve us. Treating all beings polite, kind, friendly, and respectful without any interest in anything in return.
+* Non-ignorance - wisdom, right view, learning - removing self centered desires.
 
 > The poison of craving creates an inner hunger so that we always seem to be chasing an unattainable goal. We mistakenly believe our contentedness is dependent upon that goal.
+
+### The Natural Law of Kamma
+
+Each person has 100% ability to make decisions in their life, these are personal choices.
+
+While laws of society are defined and enforced by human beings, which means errors are introduced.
+
+Rebirth occurs when craving from an existence has not yet been extinguished.
 
 
 
