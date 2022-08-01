@@ -95,7 +95,19 @@ The unEnlightened mind will constantly blame others for the difficulties and str
 
 #### Anapannasatti (Breathing Mindfulness Meditation)
 
+You will always have thoughts, ideas, wisdom, even memories of past events or goals in the future you’d like to achieve. But when you are attached to these things, then it causes the mind to be discontent.
 
+The mind becomes an expert at “cutting off” unwholesome mental activity and then eventually, these destructive thoughts, ideas, emotions, and feelings will not even arise.
+
+Allow the breath, and the sound of the breath entering the body through the nose, to become the anchor that brings the mind into the present moment.
+
+The breath is the present moment.
+
+As any thought enters the mind, you should not observe the thought, attempt to figure it out, evaluate it in any way, or why it’s coming to the mind.
+
+Bring the mind back to the breath even if the mind wanders for some time, catch the mind and bring it back to the anchor of the breath.
+
+We cause our own discontentedness. We eliminate it by not craving.
 
 ### 3 Universal Teachings
 
@@ -293,8 +305,6 @@ Each person has 100% ability to make decisions in their life, these are personal
 While laws of society are defined and enforced by human beings, which means errors are introduced.
 
 Rebirth occurs when craving from an existence has not yet been extinguished.
-
-
 
 ## Sources
 

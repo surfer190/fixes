@@ -6,6 +6,10 @@ repo_name: fixes
 site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixes and solutions on software development and related topics
 site_author: surfer190
 theme:
+  hide:
+    - toc
+  features:
+    - navigation.top
   language: en
   name: material
   # turn off google fonts
