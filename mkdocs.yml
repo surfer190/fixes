@@ -7,7 +7,7 @@ site_description: Fixes.co.za is a repo of documentation, notes, summaries, fixe
 site_author: surfer190
 theme:
   features:
-    - navigation.tabs
+    - navigation.top
   language: en
   name: material
   # turn off google fonts
