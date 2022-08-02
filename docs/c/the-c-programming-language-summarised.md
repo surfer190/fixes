@@ -15,7 +15,7 @@ title: The C Programming Language Summarised
 
 ** The `cc` command is really using `gcc - GNU C Compiler`. Read more about this by tying `man cc`**
 
-### Consistuancy of programs
+### Consistancy of programs
 
 * Functions - Computing operations
 * Variables - Store Values

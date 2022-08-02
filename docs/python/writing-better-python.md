@@ -124,7 +124,11 @@ Some old packages use camelCase.
 
 Also remember to log errors in the `Except` block
 
-[More tips on python logging](https://www.palkeo.com/en/blog/python-logging.html)
+#### Sources
+
+* [More tips on python logging](https://www.palkeo.com/en/blog/python-logging.html)
+* [Python Logging: Basic Tutorial](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)
+* [Python logging: Cookbook](https://docs.python.org/3/howto/logging-cookbook.html)
 
 ## Debugging
 
