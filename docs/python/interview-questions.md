@@ -68,15 +68,16 @@ More flexibility for when requirements change.
 `program.py`:
 
  In program.py
-import music
+ 
+    import music
 
-config = {
-    'spotify_client_key': 'THE_SPOTIFY_CLIENT_KEY',
-    'spotify_client_secret': 'THE_SPOTIFY_CLIENT_SECRET',
-    'pandora_client_key': 'THE_PANDORA_CLIENT_KEY',
-    'pandora_client_secret': 'THE_PANDORA_CLIENT_SECRET',
-    'local_music_location': '/usr/data/music'
-}
+    config = {
+        'spotify_client_key': 'THE_SPOTIFY_CLIENT_KEY',
+        'spotify_client_secret': 'THE_SPOTIFY_CLIENT_SECRET',
+        'pandora_client_key': 'THE_PANDORA_CLIENT_KEY',
+        'pandora_client_secret': 'THE_PANDORA_CLIENT_SECRET',
+        'local_music_location': '/usr/data/music'
+    }
 
     pandora = music.factory.create('PANDORA', **config)
     pandora.test_connection()
@@ -93,11 +94,24 @@ config = {
 
 > metaprogramming refers to the potential for a program to have knowledge of or manipulate itself
 
+* The type of a class is a class.
+* The type is responsible for creating new instances. So if the type of a class is a class then we can write classes that create classes.
+* Done by overriding the `__new__`
+
+> metaclasses are to classes as classes are to instances
+
 [Source: RealPython Meta Classes](https://realpython.com/python-metaclasses/)
 
 ### What is Inheritance and do you have an example?
 
 
+### Read Committed vs Repeatable Read
+
+Read committed is an isolation level that guarantees that any data read was committed at the moment is read. It simply restricts the reader from seeing any intermediate, uncommitted, 'dirty' read. It makes no promise whatsoever that if the transaction re-issues the read, will find the Same data, data is free to change after it was read.
+
+Repeatable read is a higher isolation level, that in addition to the guarantees of the read committed level, it also guarantees that any data read cannot change, if the transaction reads the same data again, it will find the previously read data in place, unchanged, and available to read.
+
+More on [Read Committed vs Repeatabe Read on this answer](https://stackoverflow.com/questions/4034976/difference-between-read-commited-and-repeatable-read)
 
 ### What is an Abstract method, static method and class method?
 
@@ -140,7 +154,12 @@ An abstract method is a method that has a declaration but does not have an imple
 
 ### What and how is gRPC used?
 
-
+* gRPC stands for gRPC Remote Procedure Calls.
+* If is a client-server architecture - where you interact with remote objects as if they are local - using stubs / clients.
+* It is used for interservice communication but can also be used as a api to mobile apps and web clients.
+* It can be used with protocol buffers to allow for language agnostic remote procedure calls.
+* Used in distributed system for low-latency calls.
+* Can be used with serialisation schemas like protocol buffers - for forward and backward compatible messaging
 
 ### What are design patterns, can you name a few?
 
@@ -148,6 +167,12 @@ More detail on [design patterns](https://fixes.co.za/python/design-patterns/)
 
 ### If you are seeing bottlenecks in your Relational DB what can you do?
 
+* Profile
+* Check the number of connections
+* Check slow queries
+* Add Indexes
+* Sharding
+* Avoid complex queries for transactional data
 
 ### How does garbage collection work?
 
@@ -163,6 +188,9 @@ a memory leak - is when there is a ciruclar reference but nothing references the
 Generation scavaging?
 
 ### What is a bitmap database index and how is it implemented?
+
+A bitmap is a mapping from some domain to bits.
+Usually pixels.
 
 ### How does a Python Dict use hashing?
 

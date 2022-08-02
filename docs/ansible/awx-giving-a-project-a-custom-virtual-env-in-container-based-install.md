@@ -134,4 +134,4 @@ Go to `v2/settings/system/` and patch:
 
     {"CUSTOM_VENV_PATH":["/opt/awx_venvs"]}
 
-Actually the easiest is to jsut go to Setting -> System on the frontend and set it.
+Actually the easiest is to just go to Setting -> System on the frontend and set it.

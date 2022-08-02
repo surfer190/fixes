@@ -2713,7 +2713,7 @@ Use of BA:
 
 ### Multified Classifiers
 
-* Configured jsut like regular firewall filters
+* Configured just like regular firewall filters
 
 Put forwarding class and loss priority in the `then` clause of each term
 

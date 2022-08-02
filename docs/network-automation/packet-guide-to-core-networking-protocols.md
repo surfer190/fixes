@@ -28,7 +28,12 @@ These have gone away due to the popularity of `TCP/IP`
 
 > TCP/IP stands for Transmission Control Protocol / Internet Protocol
 
-This is the language of the internet
+This is the language of the internet.
+
+* host-to-host communication is handled by TCP
+* Internet Protocol (IP) communication is handled by internetwork communication
+
+It was invented by Bob Kahn and Vint Cerf.
 
 ## What is a Model?
 
@@ -1090,15 +1095,6 @@ Aggregation is a technique which reduces the number of routing table entries tha
 
 ...Alot of this stuff flew over my head
 
+## Source
 
-
-
-
-
-
-
-
-
-
-
-
+* [Bob Kahn - Inventor of TCP/IP](https://en.wikipedia.org/wiki/Bob_Kahn)

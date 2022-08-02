@@ -36,7 +36,9 @@ Learn and Implement:
 7. The Seven Factors of Enlightenment
 8. Extensive Meditation Training 
 
-The Three Wholesome/Unwholesome Roots, The Natural Law of Kamma, The Cycle of Rebirth
+* The Three Wholesome/Unwholesome Roots
+* The Natural Law of Kamma
+* The Cycle of Rebirth
 
 ### The Three Universal Truths
 
@@ -93,7 +95,19 @@ The unEnlightened mind will constantly blame others for the difficulties and str
 
 #### Anapannasatti (Breathing Mindfulness Meditation)
 
+You will always have thoughts, ideas, wisdom, even memories of past events or goals in the future you’d like to achieve. But when you are attached to these things, then it causes the mind to be discontent.
 
+The mind becomes an expert at “cutting off” unwholesome mental activity and then eventually, these destructive thoughts, ideas, emotions, and feelings will not even arise.
+
+Allow the breath, and the sound of the breath entering the body through the nose, to become the anchor that brings the mind into the present moment.
+
+The breath is the present moment.
+
+As any thought enters the mind, you should not observe the thought, attempt to figure it out, evaluate it in any way, or why it’s coming to the mind.
+
+Bring the mind back to the breath even if the mind wanders for some time, catch the mind and bring it back to the anchor of the breath.
+
+We cause our own discontentedness. We eliminate it by not craving.
 
 ### 3 Universal Teachings
 
@@ -269,6 +283,28 @@ It simply means that when we feel those emotions, we need to recognize them as b
 Apply effort to bring the mind to the middle.
 
 > If energy is aroused too forcefully this leads to restlessness, and if energy is too soft this leads to complacency.
+
+### The Three Unwholesome Roots (Three Poisons / Three Fires)
+
+* Greed - Desire
+* Hatred - Ill will
+* Delusion - Confusion
+
+The Elimination through:
+
+* Non-craving - generosity and breathing-mindfulness meditation
+* Non-anger - loving-kindness, compassion, patience, forgiveness (to external and internal anger). Letting go of loneliness, hurt, doubt, fear, insecurity, inadequacy and depression - this is habitual defence that does not serve us. Treating all beings polite, kind, friendly, and respectful without any interest in anything in return.
+* Non-ignorance - wisdom, right view, learning - removing self centered desires.
+
+> The poison of craving creates an inner hunger so that we always seem to be chasing an unattainable goal. We mistakenly believe our contentedness is dependent upon that goal.
+
+### The Natural Law of Kamma
+
+Each person has 100% ability to make decisions in their life, these are personal choices.
+
+While laws of society are defined and enforced by human beings, which means errors are introduced.
+
+Rebirth occurs when craving from an existence has not yet been extinguished.
 
 ## Sources
 

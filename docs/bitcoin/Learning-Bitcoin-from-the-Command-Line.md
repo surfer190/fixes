@@ -224,7 +224,7 @@ In `~/.bitcoin/bitcoin.conf` you can set:
 
 > restart bitcoin for this to take effect: `bitcoin-cli stop` and `bitcoind -daemon`
 
-Now you jsut need to send the amount:
+Now you just need to send the amount:
 
 Use:
 

@@ -101,7 +101,7 @@ Use `values()`
 
 courses = Courses.objects.filter(published=True).values('id', 'title')[:5]
 
-## Select jsut a single field from a bunch of record
+## Select just a single field from a bunch of record
 
 datetimes = Courses.objects.datetimes('created-at', 'year')
 

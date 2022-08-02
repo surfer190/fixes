@@ -85,6 +85,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Mac Osx Homebrew](apple/mac-osx-homebrew.md)
 
 ## Astronomy
+- 2022-06-30: [Cosmos](astronomy/cosmos.md)
 - 2017-02-16: [The Sun](astronomy/the-sun.md)
 - 2017-02-16: [Asteroids](astronomy/asteroids.md)
 - 2017-01-23: [Black Hole](astronomy/black-hole.md)
@@ -131,6 +132,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-12-01: [Stormlight Archive](book-summaries/stormlight.md)
 
 ## Buddha_Dharma
+- 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
 - 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
 - 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
 - 2022-04-26: [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
@@ -157,6 +159,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-09-26: [Bus Error Core Dumped](composer/bus-error-core-dumped.md)
 
 ## Containers
+- 2022-06-30: [Podman vs Cri-o vs Containerd](containers/podman-vs-crio-vs-containerd.md)
 - 2020-06-14: [Kata Containers](containers/kata-containers.md)
 - 2020-03-24: [Presentation On Containerisation](containers/presentation-on-containerisation.md)
 - 2020-02-14: [Tungsten Fabric](containers/tungsten-fabric.md)
@@ -259,6 +262,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-09-03: [Learning Emacs - Book Notes](emacs/learning-emacs-book-notes.md)
 
 ## English
+- 2022-06-30: [Fancy Words](english/fancy-bullshit-words.md)
 - 2020-10-30: [Words and Definitions](english/words.md)
 
 ## Es
@@ -403,6 +407,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-12: [Lxd Cluster](linux/lxd-cluster.md)
 - 2019-06-13: [Python Linux Exit Codes](linux/python-linux-exit-codes.md)
 
+## Load-Testing
+- 2022-06-28: [Using h2load](load-testing/using-h2load.md)
+- 2022-06-28: [Using Apache Bench](load-testing/using-apache-bench-ab.md)
+
 ## Mac
 - 2020-06-03: [Freeing Up Space On Your Development Macbook](mac/freeing-up-space-on-your development-macbook.md)
 - 2019-10-24: [How To Stop Mysql On Mac Os](mac/how-to-stop-mysql-on-mac-os.md)
@@ -511,6 +519,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-03-15: [Update Npm](node/update-npm.md)
 - 2015-01-18: [Update Npm Packages Globally](node/update-npm-packages-globally.md)
 - 2015-01-18: [Update Node Js](node/update-node-js.md)
+
+## Nosql
+- 2022-06-25: [Which Open Source (Self-hosted) NoSQL DB?](nosql/nosql-db-options.md)
+- 2022-06-25: [MongoDB Basics](nosql/mongodb.md)
 
 ## Oauth
 - 2020-08-13: [Difference Between Grant And Scope](oauth/difference-between-grant-and-scope.md)
@@ -647,6 +659,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-05-10: [Getting Help Using Pydoc And Help](python/getting-help-using-pydoc-and-help.md)
 - 2015-12-28: [Python Interactive](python/python-interactive.md)
 - 2015-12-28: [Ascii Encoding Issues Python International](python/ascii-encoding-issues-python-international.md)
+- 2015-09-13: [The C Programming Language Summarised](python/python-docs-offline.md)
 - 2015-06-07: [Basics Of Scrapy](python/basics-of-scrapy.md)
 - 2015-03-21: [Setup Virtual Environment On Ubuntu](python/setup-virtual-environment-on-ubuntu.md)
 - 2015-01-25: [Install Python On Ubuntu](python/install-python-on-ubuntu.md)

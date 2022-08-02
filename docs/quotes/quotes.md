@@ -84,3 +84,8 @@ Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books.
 
 Excerpt From: Bob Wolf. “When Money Dies.” iBooks. 
 
+We reject: kings, presidents and voting.
+We believe in: rough consensus and running code.
+    -Dave Clark at IETF 24
+
+He could never simply relax and enjoy life - he had to prove that he was better than everybody else. Life was a game, and he had to win at all costs. - Angelo Agrizzi "The real Bosasa Story"
