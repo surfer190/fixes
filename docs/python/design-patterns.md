@@ -421,6 +421,34 @@ A mixin is a class that defines and implements a single, well-defined feature.
 
 ...over it...check the source
 
+## Cool Pattern
+
+I noticed a cool pattern - when constructing an object you can also tell the class what underlying class to use. I saw it in the [Python Elasticsearch Client](https://elasticsearch-py.readthedocs.io/en/7.x/transports.html)
+
+You could run:
+
+    from elasticsearch import Elasticsearch, RequestsHttpConnection
+    es = Elasticsearch(
+        'my-es:9200',
+        use_tls=True,
+        headers={'my-api-key': 'XXX'},
+        connection_class=RequestsHttpConnection
+    )
+
+This told ElasticSearch to use the `RequestsHttpConnection` class. You could also use `Urllib3HttpConnection`.
+
+Then in `Elasticsearch::__init__`:
+
+    def __init__(self, hosts=None, transport_class=Transport, **kwargs):
+        """
+        :arg transport_class: :class:`~elasticsearch.Transport` subclass to use.
+        """
+        self.transport = transport_class(_normalize_hosts(hosts), **kwargs)
+
+In the constructor it instantiates the class with the host info and keyword arguments supplied.
+
+I am not sure what design pattern this is - or if it even is one - but it looked nice and let me set headers on the Elasticsearch client so I could auth. Pretty neat.
+
 ## Sources
 
 * [Python Design Patterns](https://python-patterns.guide/)

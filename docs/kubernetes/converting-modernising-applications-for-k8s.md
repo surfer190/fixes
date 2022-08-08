@@ -61,7 +61,7 @@ Application cache and session should also be available no matter the node that i
 
 It can be achieved with persistent block storage volumes to containers
 
-> To ensure that a Pod can maintain state and access the same persistent volume after a restart, the StatefulSet workload must be used
+> To ensure that a Pod can maintain state and access the same persistent volume after a restart, the `StatefulSet` workload must be used
 
 ### Implement Health Checks
 

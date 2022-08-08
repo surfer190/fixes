@@ -164,22 +164,22 @@ It’s quite likely that if you’re using submodules, you’re doing so because
 
 Otherwise you would probably instead be using a simpler dependency management system (such as Maven, Rubygems or Pip).
 
-> Git would get the changes and update the files in the subdirectory but will leave the sub-repository in what’s called a “detached HEAD” state - meaning there is no local branch tracking changes. So even if you commit the changes, the enxt time you run `git submodule update` your changes will be lost.
+> Git would get the changes and update the files in the subdirectory but will leave the sub-repository in what’s called a “detached HEAD” state - meaning there is no local branch tracking changes. So even if you commit the changes, the next time you run `git submodule update` your changes will be lost.
 
 1. Go to your submodule and checkout a branch
 
-    cd my-sub-module
-    # list remote branches
-    git branch -r
-    git checkout 42dev
+        cd my-sub-module
+        # list remote branches
+        git branch -r
+        git checkout 42dev
 
 2. Merge in changes from the remote
 
-    git submodule update --remote --merge
+        git submodule update --remote --merge
 
 3. A change happens on remote branch and you update stuff in your local:
 
-    git submodule update --remote --rebase
+        git submodule update --remote --rebase
 
     > If you forget to say `--rebase` or `--merge`, git will update the submodule to whatever is on the server and reset your project to a detached HEAD state. If this happens you can simply go back into the directory and check out your branch again and then merge or rebase `origin/42dev`
 
@@ -195,7 +195,7 @@ You can ask Git to check that all your submodules have been pushed properly befo
 
 > This push will fail if submodule changes haven't been pushed
 
-From the message it will mention to either `cd` to each submodule directory and push - or use `git push --recure-submodules=ondemand`
+From the message it will mention to either `cd` to each submodule directory and push - or use `git push --recurse-submodules=ondemand`
 
 #### Merging Submodule Changes
 
@@ -213,19 +213,19 @@ To solve the problem, you need to figure out what state the submodule should be 
 
 1. Use `git diff` to see the different commit SHA1's
 
-    $ git diff
-    diff --cc DbConnector
-    index eb41d76,c771610..0000000
-    --- a/DbConnector
-    +++ b/DbConnector
+        $ git diff
+        diff --cc DbConnector
+        index eb41d76,c771610..0000000
+        --- a/DbConnector
+        +++ b/DbConnector
 
 2. Create a new branch and merge in the changes from the other commit
 
-    cd DbConnector
-    git rev-parse HEAD
-    # eb41d764bccf88be77aced643c13a7fa86714135
-    git branch try-merge c771610 # create branch from other commit
-    git merge try-merge # merge branch into current branch
+        cd DbConnector
+        git rev-parse HEAD
+        # eb41d764bccf88be77aced643c13a7fa86714135
+        git branch try-merge c771610 # create branch from other commit
+        git merge try-merge # merge branch into current branch
 
 3. Resolve the conflict:
 

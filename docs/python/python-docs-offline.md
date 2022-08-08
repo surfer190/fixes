@@ -1,10 +1,11 @@
 ---
 author: ''
-category: C
-date: '2015-09-13'
+category: Python
+date: '2022-07-10'
 summary: ''
-title: The C Programming Language Summarised
+title: Offline Python Docs
 ---
+
 ## How to Access the Python Docs Offline
 
 It is too easy these days...just type what you want into a search engine eg. `python concurrency` or `python debugger` and the python docs will show up.

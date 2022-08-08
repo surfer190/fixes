@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
-- 2022-07-20: _Buddha-Dharma_ [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
-- 2022-07-14: _Python_ [Tornado Web Server](python/tornado-web-server.md)
-- 2022-07-14: _Code_ [Remote Dev Debugging with SSHD](code/remote-dev-debugging-with-sshd.md)
-- 2022-07-14: _AWS_ [Commonly used AWS Services](aws/aws-services.md)
-- 2022-07-12: _Python_ [Packaging - Pip Install for Development](python/pip-install-in-development.md)
-- 2022-07-12: _Python_ [After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
-- 2022-07-05: _Tools_ [What is MQTT?](tools/mqtt.md)
-- 2022-07-05: _Python_ [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
-- 2022-07-05: _Git_ [Git Submodules](git/git-submodules.md)
-- 2022-06-30: _Astronomy_ [Cosmos](astronomy/cosmos.md)
+- 2022-07-30: _Python_ [Python Gotchas](python/gotchas.md)
+- 2022-07-25: _Python_ [Python docs - The Import System](python/python-docs-the import system.md)
+- 2022-07-25: _Python_ [Docstring types](python/docstring-styles.md)
+- 2022-07-25: _Python_ [Nosetests](python/nosetests.md)
+- 2022-07-25: _Python_ [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
+- 2022-07-25: _Queues_ [Task Queue vs Message Queue](queues/task-queue-vs-message-queue.md)
+- 2022-07-25: _AWS_ [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
+- 2022-07-25: _AWS_ [Aws Cli Tips](aws/aws-cli-tips.md)
+- 2022-07-22: _Python_ [Sqlalchemy](python/sqlalchemy.md)
+- 2022-07-22: _Postgres_ [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 
 ## Table of Contents
 
@@ -99,6 +99,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-14: [Chatops](automation/chatops.md)
 
 ## Aws
+- 2022-07-25: [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
+- 2022-07-25: [Aws Cli Tips](aws/aws-cli-tips.md)
 - 2022-07-14: [Commonly used AWS Services](aws/aws-services.md)
 
 ## Azure
@@ -461,6 +463,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Meteorjs](meteorjs/meteorjs.md)
 
 ## Microservices
+- 2022-07-14: [Backend for Frontend - API Pattern](microservices/backends-for-frontends.md)
 - 2022-06-27: [gRPC](microservices/grpc.md)
 - 2022-06-24: [Protocol Buffers](microservices/protocol-buffers.md)
 - 2022-06-05: [Simple Description of Microservices](microservices/simple-description-of-microservices.md)
@@ -549,6 +552,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-07-22: [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 - 2017-10-02: [Postres Quick Start](postgres/postres-quick-start.md)
@@ -561,9 +565,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-07-30: [Python Gotchas](python/gotchas.md)
+- 2022-07-25: [Python docs - The Import System](python/python-docs-the import system.md)
+- 2022-07-25: [Docstring types](python/docstring-styles.md)
+- 2022-07-25: [Nosetests](python/nosetests.md)
+- 2022-07-25: [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
+- 2022-07-22: [Sqlalchemy](python/sqlalchemy.md)
 - 2022-07-14: [Tornado Web Server](python/tornado-web-server.md)
 - 2022-07-12: [Packaging - Pip Install for Development](python/pip-install-in-development.md)
 - 2022-07-12: [After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
+- 2022-07-10: [Offline Python Docs](python/python-docs-offline.md)
 - 2022-07-05: [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
 - 2022-06-22: [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
 - 2022-05-10: [Common python Interview Questions](python/interview-questions.md)
@@ -649,10 +660,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-05-10: [Getting Help Using Pydoc And Help](python/getting-help-using-pydoc-and-help.md)
 - 2015-12-28: [Python Interactive](python/python-interactive.md)
 - 2015-12-28: [Ascii Encoding Issues Python International](python/ascii-encoding-issues-python-international.md)
-- 2015-09-13: [The C Programming Language Summarised](python/python-docs-offline.md)
 - 2015-06-07: [Basics Of Scrapy](python/basics-of-scrapy.md)
 - 2015-03-21: [Setup Virtual Environment On Ubuntu](python/setup-virtual-environment-on-ubuntu.md)
 - 2015-01-25: [Install Python On Ubuntu](python/install-python-on-ubuntu.md)
+
+## Queues
+- 2022-07-25: [Task Queue vs Message Queue](queues/task-queue-vs-message-queue.md)
+- 2022-07-22: [ZeroMQ](queues/zero-mq.md)
 
 ## Quotes
 - 2019-07-27: [Quotes](quotes/quotes.md)

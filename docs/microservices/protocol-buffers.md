@@ -111,37 +111,37 @@ Commonly used defintions at google:
  * To the old code, fields that were deleted will have their default value, and deleted repeated fields will be empty.
  * New code will also transparently read old messages. New fields will not be present in old messages; in these cases protocol buffers provide a reasonable default value.
  
- ### When to not use Protocol Buffers
+### When to not use Protocol Buffers
  
- * The message is big (larger than a few MB)
- * Two messages cannot be compared in binary - representations will differ
- * Not good for specific compression like JPEG or PNG
- * Not good for large, multi-dimensional arrays of floating point numbers
- * They don't inherently describe their data - you need access to the proto file
- * Not a formal standard
+* The message is big (larger than a few MB)
+* Two messages cannot be compared in binary - representations will differ
+* Not good for specific compression like JPEG or PNG
+* Not good for large, multi-dimensional arrays of floating point numbers
+* They don't inherently describe their data - you need access to the proto file
+* Not a formal standard
  
- ### Who uses protocol buffers
+### Who uses protocol buffers
  
- * [gRPC](https://grpc.io/)
- 
- ### How do Protocol Buffers Work?
- 
- 1. Create a proto file
- 2. Generate code using the `protoc` compiler
- 3. Compile protocol buffer code with your project code
- 4. Use protocol buffer classes to serialise, share and deserialise data
- 
- ### Protocol Buffers Definition Syntax
- 
- [Field rules](https://developers.google.com/protocol-buffers/docs/proto#specifying-rules):
- 
- * `optional` - can have 0 or 1 of this field
- * `repeated` - can have repeated values any number of times
- * `singular` - 
- * `required` - (Discouraged as it breaks forward and backward compatability) well-formed message has exactly 1 field
- 
- Protocol buffers support the usual [primitive data types](https://developers.google.com/protocol-buffers/docs/proto#scalar):
- 
+* [gRPC](https://grpc.io/)
+
+### How do Protocol Buffers Work?
+
+1. Create a proto file
+2. Generate code using the `protoc` compiler
+3. Compile protocol buffer code with your project code
+4. Use protocol buffer classes to serialise, share and deserialise data
+
+### Protocol Buffers Definition Syntax
+
+[Field rules](https://developers.google.com/protocol-buffers/docs/proto#specifying-rules):
+
+* `optional` - can have 0 or 1 of this field
+* `repeated` - can have repeated values any number of times
+* `singular` - 
+* `required` - (Discouraged as it breaks forward and backward compatability) well-formed message has exactly 1 field
+
+Protocol buffers support the usual [primitive data types](https://developers.google.com/protocol-buffers/docs/proto#scalar):
+
 * `double`
 * `float`
 * `int32`

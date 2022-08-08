@@ -63,6 +63,9 @@ if __name__ == '__main__':
                         all_entries.append(record)
                         # print(date, title, summary, category)
 
+    for entry in all_entries:
+        if not entry.get('date'):
+            print('No date: ', entry)
 
     newlist = sorted(all_entries, key=lambda k: k['date'], reverse=True)
 

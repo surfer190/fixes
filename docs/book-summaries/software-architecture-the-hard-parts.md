@@ -19,7 +19,7 @@ Open source operating systems became commercially free and operationally free - 
 
 Microservices:
 
-* domain-driven design
+* domain-driven design - about functionality in your domain, corresponding to real life and modeling this (do one thing and one thing well)
 * limiting scope to a single function
 * single model
 * distributed system
