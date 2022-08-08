@@ -20,9 +20,9 @@ The simplified version is:
 1. Download the Snapshot and snapshot upgrade. It is important to note that the referenced version on the [hap_ac2](https://openwrt.org/toh/mikrotik/hap_ac2) page does not include the LuCi browser interface. So it is better to use the files from the [firmware selector](https://firmware-selector.openwrt.org/?version=21.02.1&target=ipq40xx%2Fmikrotik&id=mikrotik_hap-ac2)
 2. Boot into a linux OS or Live CD and make sure `dnsmasq` is installed
 
-    > `dnsmasq` is best [installed from source](https://thekelleys.org.uk/dnsmasq/docs/setup.html). But to use `ifconfig` you need `sudo apt install net-tools`. You also need to have `make` and `gcc` to compile. 
+    > `dnsmasq` is best [installed from source](https://thekelleys.org.uk/dnsmasq/docs/setup.html). To use `ifconfig` you need `sudo apt install net-tools`. You also need to have `make` and `gcc` to compile. 
 
-3. Create this script `loader.sh` (change the user and if your router defaults to `192.168.88.1` then this will work. Also change the file name to reflect your chosen.):
+3. Create this script `loader.sh` (change the user. If your router defaults to `192.168.88.1` then this will work - if not make sure to change the network address. Also change the `dhcp-boot` to reflect your chosen firmware.):
 
         #!/bin/bash
         USER=ubuntu
@@ -48,7 +48,7 @@ The simplified version is:
         chmod +x loader.sh
         sudo bash loader.sh
 
-4. Ensure your Mikrotik router is in DHCP boot mode
+4. Then make sure your Mikrotik router is in DHCP boot mode
 
     * Connect the router, plug in ethernet into LAN port 2. Go to 192.168.88.1, login.
     * System → Routerboard → Settings → Boot device: Try ethernet once then NAND

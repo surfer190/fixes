@@ -42,7 +42,7 @@ When reading the podman docs they refer to:
 
 So we know now that Docker is not a container runtime and uses containerd behind the scenes.
 
-
+[More info on LWN][lwn_link]
 
 
 ## Sources
@@ -52,3 +52,6 @@ So we know now that Docker is not a container runtime and uses containerd behind
 * [containerd](https://containerd.io/docs/getting-started/)
 * [cri-o](https://cri-o.io/)
 * [container terminology](https://developers.redhat.com/blog/2018/02/22/container-terminology-practical-introduction)
+
+<!-- https://arcticicestudio.github.io/styleguide-markdown/rules/links.html -->
+[lwn_link]: https://lwn.net/SubscriberLink/902049/374614a66c0367f3/

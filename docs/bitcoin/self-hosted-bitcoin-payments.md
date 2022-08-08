@@ -6,19 +6,19 @@ summary: ''
 title: Self-Hosted Python Based Bitcoin Payment Processors
 ---
 
-# A Guide on Self Hosted Python Based Bitcoin Payment Processors
+# A Guide on Self-hosted Python Based Bitcoin Payment Processors
 
-From what I have seen the go to payment processor is:
+From what I have seen the _go to_ payment processor is:
 
-* [BTC Pay Server](https://btcpayserver.org/) **3.2k**
+* [BTC Pay Server](https://btcpayserver.org/) **3.7k stars on github**
 
 Python based processors I found:
 
-* [Bitcart CC](https://bitcartcc.com/) **122** stars
-* [SatSale](https://github.com/nickfarrow/SatSale) **101** stars
-* [CypherpunkPay](https://cypherpunkpay.org/) **27** stars
+* [Bitcart CC](https://bitcartcc.com/) **158** stars
+* [SatSale](https://github.com/nickfarrow/SatSale) **142** stars
+* [CypherpunkPay](https://cypherpunkpay.org/) **46** stars - no longer active
 
-Naturally these providers are:
+All these providers are:
 
 * Open-source
 * Do not rely on a third party
@@ -35,11 +35,18 @@ These devices were recommended if you don't want to run your own:
 
 Read up for yourself [Bitcart CC Docs](https://docs.bitcartcc.com/)
 
-Uses:
-
 * Process payments as a merchant
 * A full invoicing system
+* Consists of: Bitcart API, Bitcart admin and bitcart store front
 * Can also just do ad hoc stuff with the [Bitcart CC SDK](https://sdk.bitcartcc.com/en/latest/)
+* Has a bitcart-cli
+* Supports various crypto shitcoins and Bitcoin (I am bitcoin only)
+* Wallet you use must support `xpub` (Full BIP32). Bitcoin-core does not support `xpub` and hence you cannot use that wallet with BitcartCC
+* Notifications for payments received on various platforms, intergration with ecommerce
+* Hard to add a donate button
+* Lots of good documentation
+* Lead developer is always available and on telegram
+* Works! (I tested on bitcoin testnet)
 
 Features:
 
@@ -55,61 +62,52 @@ Features:
 
 ### Manual Deployment
 
-I deployed a Ubuntu 20.04 VM with:
+I deployed it on a Debian 9 (stretch) VM with:
 
 * 1 vCPU
-* 1 GB RAM
-* 25 GB Disk
+* 2 GB RAM
+* 40 GB Disk
 
-As per the [installation docs](https://docs.bitcartcc.com/deployment/manual#typical-manual-installation):
-
-Encounted 2 issues where `python-gino` needs:
-
-    sqlalchemy<=1.4
-
-As per [this discussion](https://github.com/python-gino/gino/discussions/765)
-
-Also a more recent version of node is required - higher than that installed by the OS package manager:
-
-    error eslint-plugin-jest@25.7.0: The engine "node" is incompatible with this module. Expected version "^12.13.0 || ^14.15.0 || >=16.0.0". Got "10.19.0"
-error Found incompatible module.
-
-Also there is a requirement for [secp256k1](https://github.com/bitcoin-core/secp256k1#build-steps) not mentioned in the docs
+I followed the [manual installation docs](https://docs.bitcartcc.com/deployment/manual#typical-manual-installation)
 
 ### Docker Deployment
 
-Decent setup...takes about 10 minutes.
+BitcartCC recommends the [docker deployment](https://docs.bitcartcc.com/deployment/docker) as it is easier and more consistent. You can give it a whirl.
 
-I got an error:
-
-    Creating letsencrypt-nginx-proxy-companion ... 
-
-    ERROR: for letsencrypt-nginx-proxy-companion  UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=180)
-
-Just testing it out required the HTTPS cert setup and it was just complaining.
-
-Interesting that the docker deployment is almost exactly how the BTCpayServer works...similar wording and flow.
+There is also a [bitcartCC configurator](https://configurator.bitcartcc.com) for those that don't know what deployment method to use.
 
 #### Verdict
 
-* A few too many features I think
-* Heavy weight - lots of dependencies
-* Takes about 30 minutes to stand up at the shortest - if everything goes smoothly - unfortunately not the case.
+* The project is fairly active and has a full-time dev working on it
+* Architected in a modular way
+* Does not require private keys or seed
 * Still growing
-* Worth using BTCPayServer until Bitcart CC gains more stability
+* Gaining more stability
 
 ## Satsale
 
-* More lightweight
-* You must have a full node and must open it directly to satsale - a security concern for me.
-* 
+* Lightweight
+* Bitcoin Only
+* You must run a full node that satsale can connect to - a security concern for me mitigated by the use of SSH tunneling
+* Docs are sparse - it is pretty much the readme on github
+* Supports `xpub` but prefers use of your own bitcoin-core node
+* No notification - must check bitcoin wallet
+* No concept of an invoice - linking products to a bitcoin address
+* It works (Tested with bitcoin testnet)
 
-## Cypherpunk Pay
+### Deployment
 
-* Full node recommended
-* Easier to install - debian/ubuntu packages
-* 
+* Deployment is manual
+* Will take longer and require a lot more understanding: setting up your own node, networking, ensuring security and knowledge of python
+* Do it yourself - manual deploymeny.
 
+### Verdict
+
+* The project is gaining momentum
+* Good solution for a donation only site
+* Easy to link to on your website
+* Sticks to bitcoin-core reference
+* For the bitcoin maxi's
 
 ## Sources
 
