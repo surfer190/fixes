@@ -17,6 +17,10 @@ title: Black Magic Of Python Wheels
 
 ### The Wheel
 
+> Wheels are the new standard of Python distribution and are intended to replace eggs.
+
+A wheel is an already built distribution. Instead of a source distribution - that builds when teh user does a `pip install ...`
+
 * Directed by PEP 427, 376 and 426.
 * More portable, cannot contain `.pyc` files
 
@@ -71,14 +75,8 @@ Now we have to manage `C` code....oh no
 
 You invoke the `gcc` the GNU C Compiler
 
-
-
-
-
-
-
-
 ## Sources
 
 * [The Black Magic of Python Wheels](https://www.youtube.com/watch?v=02aAZ8u3wEQ)
-
+* [Python wheels](https://pythonwheels.com/)
+* [Python Wheels](https://realpython.com/python-wheels/)

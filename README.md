@@ -1,32 +1,36 @@
 # Fixes
 
-Summaries, Fixes, Solutions and Notes
+Mostly Technology related summaries, fixes, solutions and notes
 
 [fixes.co.za](http://fixes.co.za)
 
 [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes+mkdocs)](http://37.139.28.74:8080/job/fixes%20mkdocs/)
 
-Common problems and solutions, fixes and tips that I have gathered while trying to solve problems.
-
-Keeping a reference of common development problems and solutions I have come across to help others to be more efficient in problem solving.
+* These are common problems and solutions, fixes and tips that I have gathered while trying to solve problems
+* The _fixes_ are displayed as technical documentation using [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
+* It is mainly a reference of common development problems and solutions I have come across to help others to fix similar problems.
+* There are also some interpretations and summaries of tech related documentation and books
 
 ### Where to view Fixes
 
 The whole collection of fixes can be viewed with your web browser at:
 [http://fixes.co.za](http://fixes.co.za)
 
-The site is built with [mkdocs](https://www.mkdocs.org/) and is updated on a post-receive hook to this repo
-
 ## Getting Started
 
+    python3 -m venv env
     source env/bin/activate
     mkdocs serve
 
 ### Create / Update the index page
 
-    source env/bin/activate
+When making an update make sure to run:
 
-    python update_index.py
+    python3 update_index.py
+
+This updates the index page.
+
+### Install a `pre-commit` hook
 
 Install a `pre-commit` hook:
 
@@ -36,4 +40,3 @@ and write:
 
     #!/bin/sh
     source ./env/bin/activate && python update_index.py
-

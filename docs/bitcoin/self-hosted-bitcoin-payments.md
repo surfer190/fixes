@@ -108,7 +108,20 @@ There is also a [bitcartCC configurator](https://configurator.bitcartcc.com) for
 * Easy to link to on your website
 * Sticks to bitcoin-core reference
 * For the bitcoin maxi's
+* No community channels to talk and get info
+
+## Bonus Section: What is wrong with using a single static bitcoin address
+
+* It links a bitcoin address to a real world identity (your website or portal receiving donations)
+* You harm the privacy of people donating to you
+
+> The internet is forever. Once an address is posted it will forever be linked to you. There are surveillance companies and security analysts always watching. An example is [OXT](https://oxt.me/notes)
+
+An attacker can then know what you are spending the donations on.
+
+Also people who have had their addresses exposed - donating to you will also have that information add to their profile.
 
 ## Sources
 
 * [Awesome list of bitcoin payment processors](https://github.com/alexk111/awesome-bitcoin-payment-processors)
+* [Why Bitcoin Static Addresses are Bad...](https://www.ministryofnodes.com.au/bitcoin-static-donation-addresses-suck)

@@ -29,7 +29,7 @@ def get_entry(path):
 
         return yaml_doc
 
-if __name__ == '__main__':
+def main():
     categories = {}
     all_entries = []
 
@@ -106,3 +106,7 @@ if __name__ == '__main__':
 
             if len(records) > 12:
                 main_topics.append(key)
+
+
+if __name__ == '__main__':
+    main()

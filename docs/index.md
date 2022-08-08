@@ -4,6 +4,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-08-08: _Python_ [Python Packaging - an Overview](python/packaging-overview.md)
+- 2022-08-08: _Python_ [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
 - 2022-07-30: _Python_ [Python Gotchas](python/gotchas.md)
 - 2022-07-25: _Python_ [Python docs - The Import System](python/python-docs-the import system.md)
 - 2022-07-25: _Python_ [Docstring types](python/docstring-styles.md)
@@ -12,8 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-25: _Queues_ [Task Queue vs Message Queue](queues/task-queue-vs-message-queue.md)
 - 2022-07-25: _AWS_ [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
 - 2022-07-25: _AWS_ [Aws Cli Tips](aws/aws-cli-tips.md)
-- 2022-07-22: _Python_ [Sqlalchemy](python/sqlalchemy.md)
-- 2022-07-22: _Postgres_ [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 
 ## Table of Contents
 
@@ -565,6 +565,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-08-08: [Python Packaging - an Overview](python/packaging-overview.md)
+- 2022-08-08: [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
 - 2022-07-30: [Python Gotchas](python/gotchas.md)
 - 2022-07-25: [Python docs - The Import System](python/python-docs-the import system.md)
 - 2022-07-25: [Docstring types](python/docstring-styles.md)

@@ -9,7 +9,7 @@ title: Create And Publish A Python Package To Pypi
 
 Pypi (said py-pee-aye) - package repository for python maintainers
 
-A package - A module, class or functions that you deploy for other users
+A package - A collection of modules that you can deploy for other users
 
 ### Contents of a package
 
