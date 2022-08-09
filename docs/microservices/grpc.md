@@ -168,59 +168,59 @@ Generating the service from `.proto` files:
 2. Then generate the clients / stubs
 3. Create the server: `greeter_server.py`:
 
-    """The Python implementation of the GRPC helloworld.Greeter server."""
+        """The Python implementation of the GRPC helloworld.Greeter server."""
 
-    from concurrent import futures
-    import logging
+        from concurrent import futures
+        import logging
 
-    import grpc
-    import greeter_pb2
-    import greeter_pb2_grpc
-
-
-    class Greeter(greeter_pb2_grpc.GreeterServicer):
-        def SayHello(self, request, context):
-            return greeter_pb2.HelloReply(message='Hello, %s!' % request.name)
-
-        def SayHelloAgain(self, request, context):
-            return greeter_pb2.HelloReply(message='Hello again, %s!' % request.name)
+        import grpc
+        import greeter_pb2
+        import greeter_pb2_grpc
 
 
-    def serve():
-        server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-        greeter_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
-        server.add_insecure_port('[::]:50051')
-        server.start()
-        server.wait_for_termination()
+        class Greeter(greeter_pb2_grpc.GreeterServicer):
+            def SayHello(self, request, context):
+                return greeter_pb2.HelloReply(message='Hello, %s!' % request.name)
+
+            def SayHelloAgain(self, request, context):
+                return greeter_pb2.HelloReply(message='Hello again, %s!' % request.name)
 
 
-    if __name__ == '__main__':
-        logging.basicConfig()
-        serve()
+        def serve():
+            server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+            greeter_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+            server.add_insecure_port('[::]:50051')
+            server.start()
+            server.wait_for_termination()
+
+
+        if __name__ == '__main__':
+            logging.basicConfig()
+            serve()
 
 4. Create the client: `greeter_client.py`:
 
-    from __future__ import print_function
+        from __future__ import print_function
 
-    import logging
+        import logging
 
-    import grpc
-    import greeter_pb2
-    import greeter_pb2_grpc
-
-
-    def run():
-        with grpc.insecure_channel('localhost:50051') as channel:
-            stub = greeter_pb2_grpc.GreeterStub(channel)
-            response = stub.SayHello(greeter_pb2.HelloRequest(name='Happy Chappy'))
-            print("Greeter client received: " + response.message)
-            response = stub.SayHelloAgain(greeter_pb2.HelloRequest(name='Happy Chappy'))
-            print("Greeter client received: " + response.message)
+        import grpc
+        import greeter_pb2
+        import greeter_pb2_grpc
 
 
-    if __name__ == '__main__':
-        logging.basicConfig()
-        run()
+        def run():
+            with grpc.insecure_channel('localhost:50051') as channel:
+                stub = greeter_pb2_grpc.GreeterStub(channel)
+                response = stub.SayHello(greeter_pb2.HelloRequest(name='Happy Chappy'))
+                print("Greeter client received: " + response.message)
+                response = stub.SayHelloAgain(greeter_pb2.HelloRequest(name='Happy Chappy'))
+                print("Greeter client received: " + response.message)
+
+
+        if __name__ == '__main__':
+            logging.basicConfig()
+            run()
 
 
 5. Run the server: `python greeter_server.py` and then send client messages:
@@ -233,17 +233,17 @@ Generating the service from `.proto` files:
 
 ##### Function not implemented or mismatch of message types expected
 
-    grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
-            status = StatusCode.UNIMPLEMENTED
-            details = "Method not found!"
-            debug_error_string = "{"created":"@1656325966.282133000","description":"Error received from peer ipv6:[::1]:50051","file":"src/core/lib/surface/call.cc","file_line":967,"grpc_message":"Method not found!","grpc_status":12}"
+        grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+                status = StatusCode.UNIMPLEMENTED
+                details = "Method not found!"
+                debug_error_string = "{"created":"@1656325966.282133000","description":"Error received from peer ipv6:[::1]:50051","file":"src/core/lib/surface/call.cc","file_line":967,"grpc_message":"Method not found!","grpc_status":12}"
 
 ##### Server not running
 
-    grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
-            status = StatusCode.UNAVAILABLE
-            details = "failed to connect to all addresses"
-            debug_error_string = "{"created":"@1656326197.515755000","description":"Failed to pick subchannel","file":"src/core/ext/filters/client_channel/client_channel.cc","file_line":3261,"referenced_errors":[{"created":"@1656326197.515754000","description":"failed to connect to all addresses","file":"src/core/lib/transport/error_utils.cc","file_line":167,"grpc_status":14}]}"
+        grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+                status = StatusCode.UNAVAILABLE
+                details = "failed to connect to all addresses"
+                debug_error_string = "{"created":"@1656326197.515755000","description":"Failed to pick subchannel","file":"src/core/ext/filters/client_channel/client_channel.cc","file_line":3261,"referenced_errors":[{"created":"@1656326197.515754000","description":"failed to connect to all addresses","file":"src/core/lib/transport/error_utils.cc","file_line":167,"grpc_status":14}]}"
 
 ##### Enable logging on server side
 
