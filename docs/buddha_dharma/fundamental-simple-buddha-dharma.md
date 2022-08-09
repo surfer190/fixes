@@ -31,7 +31,7 @@ Learn and Implement:
 2. The Four Noble Truths
 3. The Eight Fold Path
 4. The Five Precepts
-5. The Brahmā-vihāras
+5. The Brahmā-vihāras (4 Healthy mental states)
 6. The Ten Fetters
 7. The Seven Factors of Enlightenment
 8. Extensive Meditation Training 
@@ -305,6 +305,25 @@ Each person has 100% ability to make decisions in their life, these are personal
 While laws of society are defined and enforced by human beings, which means errors are introduced.
 
 Rebirth occurs when craving from an existence has not yet been extinguished.
+
+## Other Notes
+
+> There is no such thing as a wholesome craving/desire/attachment as all cravings will produce discontentedness
+
+1. Discontendness is the warning light for craving - cut off the feeling
+2. One needs to have awareness - to recognise these unwholesome qualities - reflect on it
+3. Develop a plan to eliminate the craving/wanting - meditation trains the mind to be able to let go
+
+### Brahma-viharas (Healthy Mental States)
+
+* Loving kindness - good-will, interest in being well for all beings
+    - remedy foranger, hatred, ill will, hostility, aggression, and other harsh intentions, speech, and actions. Arrogance, conceit.
+* Compassion - concern for misfortunes
+    - remedy for lack of care and indifference
+* Sympathetic joy - joy for other's success
+    - remedy for envy, jealousy, and pride
+* Equanimity - mental calmness and composure, eveness of temper in all situations - treating everyone impartially
+    - remedy for overactive mind that has restlessness and worry. Eliminate measuring and comparing.
 
 ## Sources
 

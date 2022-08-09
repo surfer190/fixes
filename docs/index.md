@@ -118,7 +118,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-03-30: [The Blocksize War - Summary Notes](bitcoin/blocksize-wars.md)
 - 2022-02-08: [Mastering Lightning Network Notes](bitcoin/mastering-lightning-network-notes.md)
 - 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
-- 2022-01-31: [Self-Hosted Python Based Bitcoin Payment Processors](bitcoin/self-hosted-bitcoin-payments.md)
+- 2022-01-31: [Self-Hosted Python Based Bitcoin Payment Processors / Gateways](bitcoin/self-hosted-bitcoin-payment-gateways.md)
 - 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
 - 2020-11-07: [The Bitcoin Standard Notes](bitcoin/the-bitcoin-standard-notes.md)

@@ -3,7 +3,7 @@ author: ''
 category: Bitcoin
 date: '2022-01-31'
 summary: ''
-title: Self-Hosted Python Based Bitcoin Payment Processors
+title: Self-Hosted Python Based Bitcoin Payment Processors / Gateways
 ---
 
 # A Guide on Self-hosted Python Based Bitcoin Payment Processors
@@ -54,6 +54,12 @@ Features:
 * Uses the [Electrum wallet](https://electrum.org/#home) protocol and it's SPV (Simple Payment Verification)
 * Highly modular - just use the parts you need
 
+### Demos
+
+* The BitcartCC Store frontdemo: [https://store.bitcartcc.com/](https://store.bitcartcc.com/)
+* The BitcartCC Store Admin: [https://admin.bitcartcc.com/login](https://admin.bitcartcc.com/login)
+* The BitcartCC api docs: [https://api.bitcartcc.com/](https://api.bitcartcc.com/)
+
 ### How it keeps funds secure
 
 1. For each invoice, BitcartCC generates a new address, belonging to the xpub entered, and this address is presented to the user.
@@ -90,10 +96,16 @@ There is also a [bitcartCC configurator](https://configurator.bitcartcc.com) for
 * Bitcoin Only
 * You must run a full node that satsale can connect to - a security concern for me mitigated by the use of SSH tunneling
 * Docs are sparse - it is pretty much the readme on github
-* Supports `xpub` but prefers use of your own bitcoin-core node
+* Does not support `xpub`, You must use of your own bitcoin-core node
 * No notification - must check bitcoin wallet
 * No concept of an invoice - linking products to a bitcoin address
 * It works (Tested with bitcoin testnet)
+
+### Demos
+
+* The satsale donation example: [https://satsale.org/](https://satsale.org/)
+* The satsale store demo: [https://store.btcpyment.com/](https://satsale.org/)
+* The satsale api docs: [https://satsale.org/docs.html#tag/SatSale-api](https://satsale.org/docs.html#tag/SatSale-api)
 
 ### Deployment
 
