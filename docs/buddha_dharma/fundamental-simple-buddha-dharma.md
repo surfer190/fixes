@@ -58,7 +58,7 @@ The teachings allow you to find a mental state in the middle.
 
 > Discontentedness describes the mental state when the mind is unsatisfied, displeased, uncalm, or unpeaceful. The mind is shaken up, unsteady, or unstable.
 
-> There is no permanent self
+> There is no permanent self. Train the mind to become a nobody. The mind wants to be somebody. We are taught all our life: "You've got to be somebody", "You've got to leave your mark on the world", "You've got to accomplish these things" and "You've got to be a productive person" - if we don't do those things we feel like we are less of a person. You must train to detach from your label, detach from your body and detach from yourself. Detach from being an intellectual, being smart and being wise. Do not allow the mind to project itself - its craving - in a certain situation.
 
 > The misunderstanding that the mind has thinking there is a permanent self leads to the mind continuously wanting to protect the self image and self identity being unable to remain peaceful and calm when there is a disagreeable experience related to the self image or self identity.
 
@@ -324,6 +324,8 @@ Rebirth occurs when craving from an existence has not yet been extinguished.
     - remedy for envy, jealousy, and pride
 * Equanimity - mental calmness and composure, eveness of temper in all situations - treating everyone impartially
     - remedy for overactive mind that has restlessness and worry. Eliminate measuring and comparing.
+
+
 
 ## Sources
 

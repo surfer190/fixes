@@ -94,9 +94,9 @@ There is also a [bitcartCC configurator](https://configurator.bitcartcc.com) for
 
 * Lightweight
 * Bitcoin Only
-* You must run a full node that satsale can connect to - a security concern for me mitigated by the use of SSH tunneling
+* It is recommended you run a full node that satsale can connect to - a security concern for me mitigated by the use of SSH tunneling. This is for not requiring a third party reasons.
 * Docs are sparse - it is pretty much the readme on github
-* Does not support `xpub`, You must use of your own bitcoin-core node
+* Supports `xpub` - you can use any wallet that supports `xpub`.
 * No notification - must check bitcoin wallet
 * No concept of an invoice - linking products to a bitcoin address
 * It works (Tested with bitcoin testnet)
