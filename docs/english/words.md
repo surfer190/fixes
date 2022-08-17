@@ -147,3 +147,4 @@ title: Words and Definitions
 * levity - treating a seroious matter without respect
 * loath - reluctant, unwilling
 * parsimonious - unwilling to spend or use resources
+* Taciturn - reserved of speech - saying little

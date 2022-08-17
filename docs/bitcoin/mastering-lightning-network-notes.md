@@ -208,7 +208,7 @@ So far Eclair has only been a Bitcoin wallet.
 
 ### Lightning Channels
 
-A channel is a financial relationship
+* A channel is a financial relationship.
 The channel a wallet open a channel with is called a _channel peer_
 
 Not all channel peers are _good_. Well connected peers can route payments over shorter paths - increasing the chance of success. Some channels cannot handle large payments.

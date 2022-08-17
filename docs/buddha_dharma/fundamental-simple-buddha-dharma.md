@@ -11,15 +11,15 @@ title: Core Fundamental Teachings of Buddha
 * The history of buddhism and the buddha himself isn't essential
 * The esotheric, extensive detail, rites, rituals and the number of things are inconsequential
 * The worshipping and blind belief as buddha as a god is also false. He was a human and we are humans.
-* Do not blindly delieve. Independently verify through observation.
+* Do not blindly believe. Independently verify through observation.
 * This is not a religion - with rites, rituals, ceremony and worship
 * The mind is not the brain - it is intangible
-* The problem is craving, desire and attachment. The longing with strong eagerness (craving) - causes the mind to be discontent: sadness, anger, frustration, irritation, annoyance, guilt, shame, fear, boredom, lonliness, shyness, jealousy, resentment, stress, anxiety and many others.
-* To attain a mind that resides permanently peaceful, calm, serene, and content with joy - you need to establish a life practice
-* Meditation and teachers and guides.
-* dedicated to improving our own wisdom, moral conduct, and mental discipline that we will improve the world
-* gradual training and gradual practice to experience gradual progress
-* We can choose to be peaceful, kind, loving, and warm. We can choose to have wholesome interactions with all people. We can develop healthy qualities of the mind with loving-kindness, compassion, generosity along with other qualities that will produce a peaceful and content mind.
+* The problem is craving, desire and attachment. The longing with strong eagerness (craving) - causes the mind to be discontent: sadness, anger, frustration, irritation, annoyance, guilt, shame, fear, boredom, loneliness, shyness, jealousy, resentment, stress, anxiety and many others.
+* To attain a mind that resides permanently peaceful, calm, serene and content with joy - you need to establish a life practice
+* Meditation along with teachers and guides.
+* Dedicated to improving our own wisdom, moral conduct, and mental discipline that we will improve the world
+* Gradual training and gradual practice to experience gradual progress
+* We can choose to be peaceful, kind, loving and warm. We can choose to have wholesome interactions with all people. We can develop healthy qualities of the mind with loving-kindness, compassion, generosity along with other qualities that will produce a peaceful and content mind.
 
 > There are no rites, rituals, ceremonies, and worship required to attain Enlightenment. If someone explains certain chants that need to be repeated, certain postures the body needs to be trained to acquire, or sells/provides you any external devices that includes bells, strings, clothing, beads, music, statues, special drinks or food, etc. then this person has not attained Enlightenment.
 
@@ -56,9 +56,11 @@ The unenlightened mind has feelings based on impermanent conditions - leading to
 
 The teachings allow you to find a mental state in the middle.
 
-> Discontentedness describes the mental state when the mind is unsatisfied, displeased, uncalm, or unpeaceful. The mind is shaken up, unsteady, or unstable.
+> Discontentedness describes the mental state when the mind is unsatisfied, displeased, uncalm or unpeaceful. The mind is shaken up, unsteady or unstable.
 
 > There is no permanent self. Train the mind to become a nobody. The mind wants to be somebody. We are taught all our life: "You've got to be somebody", "You've got to leave your mark on the world", "You've got to accomplish these things" and "You've got to be a productive person" - if we don't do those things we feel like we are less of a person. You must train to detach from your label, detach from your body and detach from yourself. Detach from being an intellectual, being smart and being wise. Do not allow the mind to project itself - its craving - in a certain situation.
+
+> Eliminating and eradicating the fetter of personal existence view will allow the mind to peacefully and calmly exist without the constant need to protect and defend “the self”. 
 
 > The misunderstanding that the mind has thinking there is a permanent self leads to the mind continuously wanting to protect the self image and self identity being unable to remain peaceful and calm when there is a disagreeable experience related to the self image or self identity.
 
@@ -67,6 +69,10 @@ For example, if someone comments about the self image or self identity in a way 
 > When the mind holds on to a permanent self, one can oftentimes become very selfish, self centered, self absorbed, and pursue its own selfish desires. This inhibits a person from being able to observe the life changing wisdom that we are all interconnected and need to improve the way we function in the world through giving and sharing living harmoniously with each other.
 
 Your given name is just a label.
+
+> There is no need to mentally protect yourself from anyone when there is “no self”
+
+The mind functions much like an animal being uncomfortable unless it knows exactly where it is in the “pecking order” of the herd or pack of like species
 
 > The mind is searching and yearning to discover a self but it can never find one though it continues its pursuit seeking to know and find a self because the mind does not realize there isn’t one.
 
@@ -230,8 +236,8 @@ Avoid:
     - Do not ask for things - that is craving, desire and attachment. Remove expectations.
 3. Abandon unchastity and sexual misconduct
     - Sexual misconduct
-    - There mut be a commited and loyal relationship for sex
-    - Multiple sexual partners leads to lieing - stress and anxiety
+    - There must be a committed and loyal relationship for sex
+    - Multiple sexual partners leads to lying - stress and anxiety
     - Sexual activity is a pleasurable and natural part of life. It is not wrong and does not need to be avoided - sexual misconduct must be avoided.
     - Excessive masturbation is rooted in desire and craving
     - pornography - harms one's own mind and causes unwholesome secretive actions - this affects natural human connections. A downward spiral of craving, desire and attachment.
@@ -317,7 +323,7 @@ Rebirth occurs when craving from an existence has not yet been extinguished.
 ### Brahma-viharas (Healthy Mental States)
 
 * Loving kindness - good-will, interest in being well for all beings
-    - remedy foranger, hatred, ill will, hostility, aggression, and other harsh intentions, speech, and actions. Arrogance, conceit.
+    - remedy for anger, hatred, ill will, hostility, aggression, and other harsh intentions, speech, and actions. Arrogance, conceit.
 * Compassion - concern for misfortunes
     - remedy for lack of care and indifference
 * Sympathetic joy - joy for other's success
@@ -325,9 +331,25 @@ Rebirth occurs when craving from an existence has not yet been extinguished.
 * Equanimity - mental calmness and composure, eveness of temper in all situations - treating everyone impartially
     - remedy for overactive mind that has restlessness and worry. Eliminate measuring and comparing.
 
+### True Love
 
+* True love is to have care for another person not needing or wanting anything specific from the relationship other than to see that person be well and peaceful.
+* Love rooted in expectation and obligation is not true love.
+* Love yourself. Love others.
+* If we judge ourself, we often judge others as well, causing the mind to be discontent.
+* Love as it is or as they are - not unrealistic expectations
+
+> Note on parents: Our parents are rarely going to meet the expectations we have of a “perfect parent”. If we eliminate the expectations (i.e. the cravings/desires/attachments), and understand we have the parents we have and then be thankful for the life that they have given us and guided and cared for us, then perhaps we can eliminate whatever expectations we have and provide them unconditional “true love” that guides them in virtuous behavior, generosity, and wisdom.
+
+> Note on life partner: You will most likely not find perfection or the person of your dreams because that person only exists in the mind.
+
+### Eliminate Fear
+
+* It is the mental attachments to the past experiences that is causing the mind to be discontent and fearful
+* Put the mind in situation that it is fearful of in order to remove the fear
 
 ## Sources
 
 * [Audio dharma and guided meditation](https://www.audiodharma.org/)
 * [Buddha Daily Wisdom](https://www.buddhadailywisdom.com/)
+* David Roylance. “The Words of The Buddha - V1 - Developing a Life Practice.”
