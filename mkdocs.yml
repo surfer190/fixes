@@ -49,6 +49,10 @@ plugins:
         as_creation: "date"
         as_update: false
         datetime_format: "%Y-%m-%d"
+      enabled: true
+      feed_ttl: 1440
+      length: 20
+      pretty_print: false
 use_directory_urls: true
 extra:
   analytics:
