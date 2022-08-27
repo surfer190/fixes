@@ -15,14 +15,14 @@ Callback URL is the url the user is sent to after a user has been authorized
 
 For `all-auth` it is:
 
-        http://127.0.0.1:8000/github/login/callback/
+    http://127.0.0.1:8000/github/login/callback/
 
 Client ID: bcefd842ae02f725686e
 Client Secret: 04dd2f3b170af8cdb11a5cde9f8ecc4bf7fc98db
 
 ## Installing AllAuth
 
-        pip install django-allauth
+    pip install django-allauth
 
 ## Add Settings
 
@@ -37,19 +37,19 @@ Add `AUTHENTICATION_BACKENDS` to `settings.py`:
 
 Add the following apps to `INSTALLED_APPS`:
 
-        'django.contrib.sites',
-        'allauth',
-        'allauth.account',
-        'allauth.socialauth',
-        'allauth.socialauth.providers.github',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialauth',
+    'allauth.socialauth.providers.github',
 
 Set `SITE_ID` to share authentication across domains:
 
-        SITE_ID = 1
+    SITE_ID = 1
 
 Add `allauth` url's:
 
-        url(r"^accounts/", include("allauth.urls")),
+    url(r"^accounts/", include("allauth.urls")),
 
 Migrate
 
@@ -57,26 +57,24 @@ Migrate
 
 Login to the django admin section and add a site with correct domain name
 
-Add a social applciation
+Add a social application
 
 Add client is and client secret
 
-## Tempalte
+## Template
 
-Add tempalte tags: `{% import socialaccount %}`
+Add template tags: `{% import socialaccount %}`
 
 Add provider login: 
 
-        <li><a href="{% provider_login_url 'github' %}" class="btn btn-simple">Your Account</a></li>
+    <li><a href="{% provider_login_url 'github' %}" class="btn btn-simple">Your Account</a></li>
 
 ## Ensure email is verified and given
 
 Add to `settings.py`:
 
-        ACCOUNT_EMAIL_REQUIRED = True
-
-        ACCOUNT_EMAIL_VERIFICATION = True
-
-        ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_EMAIL_VERIFICATION = True
+    ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
 We will need to add some templates though

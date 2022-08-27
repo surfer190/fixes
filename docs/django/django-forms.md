@@ -19,13 +19,13 @@ Forms are a class
 
 Inherit from `forms.Form`
 
-        class SuggestionForm(forms.Form):
+    class SuggestionForm(forms.Form):
 
 Elements made in a similar way to models
 
-        name = forms.CharField()
-        email = forms.EmailField()
-        suggestion = forms.CharField(widget=forms.Textarea)
+    name = forms.CharField()
+    email = forms.EmailField()
+    suggestion = forms.CharField(widget=forms.Textarea)
 
 ## Validating a form
 
@@ -37,30 +37,30 @@ Elements made in a similar way to models
 
 Used to catch bots
 
-        honeypot = forms.CharField(widget=forms.HiddenInput, required=False)
+    honeypot = forms.CharField(widget=forms.HiddenInput, required=False)
 
 ### The clean method
 
 You can define a `clean_x` method in your form class which is repsonsible for cleaning and validating the data. 
 Problem is it is not abstracted, it can't be used for many forms.
 
-        def clean_honeypot(self):
-                honeypot = self.cleaned_data['honeypot']        
-                if len(honeypot):
-                raise forms.ValidationError(
-                        "honeypot should be left empty. Bad bot!"
-                )
-                return honeypot
+    def clean_honeypot(self):
+            honeypot = self.cleaned_data['honeypot']        
+            if len(honeypot):
+            raise forms.ValidationError(
+                    "honeypot should be left empty. Bad bot!"
+            )
+            return honeypot
 
 ### Utilising Validators
 
 You can set the `validators` field to a form field
 
-        honeypot = forms.CharField( required=False, 
-                                widget=forms.HiddenInput,
-                                label="Leave empty",
-                                validators=[validators.MaxLengthValidator(0)]
-                               )
+    honeypot = forms.CharField( required=False, 
+        widget=forms.HiddenInput,
+        label="Leave empty",
+        validators=[validators.MaxLengthValidator(0)]
+    )
 
 ## You can define a custom validator
 
@@ -76,31 +76,31 @@ Sometimes you need to validate 2 or more values as a combination.
 
 Use the `clean` method without a field name:
 
-        def clean(self):
-                cleaned_data = super().clean()
-                email = cleaned_data['email'] # or .get('email')
-                verify = cleaned_data['verify_email']
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data['email'] # or .get('email')
+        verify = cleaned_data['verify_email']
 
-                if email != verify:
-                raise forms.ValidationError(
-                        "You need to enter the same email in both fields"
-                )
+        if email != verify:
+        raise forms.ValidationError(
+                "You need to enter the same email in both fields"
+        )
 
 ## Related Fields
 
 Say you have a related field on the model:
 
-        company = models.ForeignKey('projects.Company', on_delete=models.PROTECT)
+    company = models.ForeignKey('projects.Company', on_delete=models.PROTECT)
 
 when you fill out the `ModelForm` for that model the company field will have different states.
 
-        >>>> form.data['company']
-        1
+    >>>> form.data['company']
+    1
 
 Only the `cleaned_data` actually gives you back the related object
 
-        >>>> form.cleaned_data['company']
-        <Company: Default Company>
+    >>>> form.cleaned_data['company']
+    <Company: Default Company>
 
 When assigning the foreign key with kwargs you can use the instance or the pk or primary key.
 
@@ -122,8 +122,8 @@ Django has 2 types of inheritance:
 
 In the models `Meta subclass` add:
 
-        class Meta:
-            abstract = True
+    class Meta:
+        abstract = True
 
 ## Specify how a model pluralises
 
@@ -160,25 +160,24 @@ We utilise [formsets](https://docs.djangoproject.com/en/1.11/topics/forms/formse
 
 To use formsets with models with use [model formsets](https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#model-formsets)
 
-        AnswerFormSet = forms.modelformset_factory(
-                models.Answer, 
-                form=AnswerForm,
-        )
+    AnswerFormSet = forms.modelformset_factory(
+            models.Answer, 
+            form=AnswerForm,
+    )
 
 To control the associated answers you send in a `queryst`
 
-        formSet = forms.AnswerFormSet(queryset=question.answer_set.all())
+    formSet = forms.AnswerFormSet(queryset=question.answer_set.all())
 
+    forms.AnswerFormSet(request.POST, queryset=question.answer_set.all())
 
-        forms.AnswerFormSet(request.POST, queryset=question.answer_set.all())
+    if formset.is_valid():
+            answers = formset.save(commit=False)
 
-        if formset.is_valid():
-                answers = formset.save(commit=False)
-
-                for answer in answers:
-                        answer.question = question
-                        answer.save()
-                return HttpResponseRedirect(question.quiz.get_absolute_url())
+            for answer in answers:
+                    answer.question = question
+                    answer.save()
+            return HttpResponseRedirect(question.quiz.get_absolute_url())
 
 ## Formsets
 
@@ -186,26 +185,26 @@ To control the associated answers you send in a `queryst`
 
 To create [model formsets](https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#model-formsets)
 
-        AnswerFormSet = forms.modelformset_factory(
-                models.Answer,
-                form=AnswerForm
-        )
+    AnswerFormSet = forms.modelformset_factory(
+            models.Answer,
+            form=AnswerForm
+    )
 
 Then on processing the form:
 
-        formset = forms.AnswerFormSet(queryset=question.answer_set.all())
+    formset = forms.AnswerFormSet(queryset=question.answer_set.all())
 
 So sets answers associated with that specific question
 
-        if request.method == 'POST':
-            formset = forms.AnswerFormSet(request.POST, queryset=question.answer_set.all())
+    if request.method == 'POST':
+        formset = forms.AnswerFormSet(request.POST, queryset=question.answer_set.all())
 
-            if formset.is_valid():
-                # Haven't set question for answers yet
-                answers = formset.save(commit=False)
-                for answer in answers:
-                    answer.question = question
-                    answer.save()
+        if formset.is_valid():
+            # Haven't set question for answers yet
+            answers = formset.save(commit=False)
+            for answer in answers:
+                answer.question = question
+                answer.save()
 
 Printing out the formset in the view is simple:
 
@@ -224,12 +223,12 @@ An important form for checking whether a form is valid
     {{ formset.management_form }}
 
     AnswerInlineFormSet = forms.inlineformset_factory(
-            models.Question,
-            models.Answer,
-            extra=0,
-            fields=['order', 'text', 'correct'],
-            formset=AnswerFormSet,
-            min_num=1
+        models.Question,
+        models.Answer,
+        extra=0,
+        fields=['order', 'text', 'correct'],
+        formset=AnswerFormSet,
+        min_num=1
     )
 
 Getting a blank queryset
@@ -254,14 +253,14 @@ Handling:
 
 Use `class Media`
 
-        class productForm(forms.modelForm):
-            class Media:
-                # all this stuff is in static
-                css = {'all': ('courses/css/order.css',)},
-                js = (
-                        'courses/js/vendor/jquery.fn.sortable.min.js',
-                        'courses/js/order.js'
-                )
+    class productForm(forms.modelForm):
+        class Media:
+            # all this stuff is in static
+            css = {'all': ('courses/css/order.css',)},
+            js = (
+                    'courses/js/vendor/jquery.fn.sortable.min.js',
+                    'courses/js/order.js'
+            )
 
 Still need to add to layout css and js blocks with:
 
@@ -274,17 +273,17 @@ Use `class Meta`...`widgets` attribute
 
 To use checkboxes instead of a MultiSelect, first import
 
-        from django.forms.widgets import CheckboxSelectMultiple
+    from django.forms.widgets import CheckboxSelectMultiple
 
 Then set the widget for your field
 
-        class MyForm(forms.ModelForm):
+    class MyForm(forms.ModelForm):
         class Meta:
-                model = MyModel
-                fields = ('tasks',)
-                widgets = {
-                'tasks': CheckboxSelectMultiple
-                }
+            model = MyModel
+            fields = ('tasks',)
+            widgets = {
+            'tasks': CheckboxSelectMultiple
+            }
 
 ## Working with a many-to-many field with an intermediary model
 
@@ -294,36 +293,35 @@ Then set the widget for your field
 
  The `many-to-many` field and models
 
-        class Project(models.Model):
-                '''Project model
-                '''
-                name = models.CharField(max_length=255, unique=True)
-                description = models.TextField()
-                tasks = models.ManyToManyField(Task)
-                users = models.ManyToManyField(
-                        settings.AUTH_USER_MODEL,
-                        through='ProjectMembership'
-)
+    class Project(models.Model):
+        '''Project model
+        '''
+        name = models.CharField(max_length=255, unique=True)
+        description = models.TextField()
+        tasks = models.ManyToManyField(Task)
+        users = models.ManyToManyField(
+            settings.AUTH_USER_MODEL,
+            through='ProjectMembership'
+        )
 
-
-        class ProjectMembership(models.Model):
-                '''Project Membership model
-                '''
-                user = models.ForeignKey(
-                        settings.AUTH_USER_MODEL,
-                        on_delete=models.PROTECT
-                )
-                project = models.ForeignKey(Project, on_delete=models.PROTECT)
-                is_project_manager = models.BooleanField(default=False)
-                full_time_equivalent = models.DecimalField(
-                        max_digits=5,
-                        decimal_places=2,
-                        default=100,
-                        validators=[
-                        MinValueValidator(Decimal(0)),
-                        MaxValueValidator(Decimal(100))
-                        ]
-                )
+    class ProjectMembership(models.Model):
+        '''Project Membership model
+        '''
+        user = models.ForeignKey(
+            settings.AUTH_USER_MODEL,
+            on_delete=models.PROTECT
+        )
+        project = models.ForeignKey(Project, on_delete=models.PROTECT)
+        is_project_manager = models.BooleanField(default=False)
+        full_time_equivalent = models.DecimalField(
+            max_digits=5,
+            decimal_places=2,
+            default=100,
+            validators=[
+                MinValueValidator(Decimal(0)),
+                MaxValueValidator(Decimal(100))
+            ]
+        )
 
 1. Create a form for the intermediary table in `forms.py`
 
@@ -351,7 +349,7 @@ Then set the widget for your field
         <h2>Create Project</h2>
         <hr/>
 
-                <form method='POST'>
+        <form method='POST'>
             {% csrf_token %}
             {% bootstrap_form form %}
             <div id="#inline">
@@ -359,7 +357,6 @@ Then set the widget for your field
             </div>
             <input type="submit" class="btn btn-primary btn-lg" values="Save">
         </form>
-            </div>
 
 4. Change the class-based view methods so that the formset is included and validated and data saved
 

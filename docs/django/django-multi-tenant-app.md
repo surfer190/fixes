@@ -19,12 +19,12 @@ A single schema in a single db, the `ForeignKey` identifies the tenant.
 
 Negatives:
 
-* Weak seperation of tenant data
+* Weak separation of tenant data
 * Tenant isolation code is intermixed with app code
 
 #### Shared Databse with isolated schema
 
-A single databse keeps the tenant's data. Each tenants data is in a seperate schema within a single db.
+A single database keeps the tenant's data. Each tenants data is in a seperate schema within a single db.
 
 #### Isolated databse with shared App Server
 

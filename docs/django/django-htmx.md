@@ -17,7 +17,7 @@ That perfect world is here. By using an HTMX/Django stack and the techniques in 
 HTMX allows:
 
 * The first superpower is the response of the server doesn't have to replace the whole page. It can replace just the pieces of the DOM you specify.
-* A user can make a request to the server with anything in the DOM. Clicking a <div> tag? That works. Moving their mouse over something? Sure! Typing something in an input field? Yes. We can even make a request every few seconds, without the user doing anything.
+* A user can make a request to the server with anything in the DOM. Clicking a `<div>` tag? That works. Moving their mouse over something? Sure! Typing something in an input field? Yes. We can even make a request every few seconds, without the user doing anything.
 
 ### Example Newsletter Signup
 

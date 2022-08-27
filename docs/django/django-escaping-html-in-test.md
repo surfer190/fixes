@@ -7,7 +7,7 @@ title: Django Escaping Html In Test
 ---
 # Django Escaping HTML in Test
 
-Import django's escpae it is different from `html.escpae`
+Import django's escape it is different from `html.escape`
 
     from django.utils.html import escape
     escape("'")

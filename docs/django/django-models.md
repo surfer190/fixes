@@ -73,10 +73,9 @@ Eg.
 
     field_name = models.ForeignKey(Modelname)
 
-If the asscoated model comes after the model declaration it must be in quotes
+If the associated model comes after the model declaration it must be in quotes
 
 Example:
 
     writer = models.ForeignKey('Writer')
-
     course = models.ForeignKey(Course)

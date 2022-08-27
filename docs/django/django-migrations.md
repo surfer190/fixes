@@ -7,19 +7,17 @@ title: Django Migrations
 ---
 # Django Migrations
 
-Migrating in django is sometimes tricky and a bit less intuitive if youhave come fromsomething like `yii` or `laravel`
-
 ## The workflow
 
 1. Create the model class in `models.py`
 
 2. Make sure the `app` is added to `INSTALLED_APPS`
 
-3. Create the migration
+3. Create the migration files
 
     ./manage.py makemigrations
 
-4. Migrate
+4. Run the Migration
 
     ./manage.py migrate
 
@@ -38,13 +36,13 @@ Say for example you are playing around with the model and make multiple changes 
 
 You will probably see something like this in `git`:
 
-        Untracked files:
-        (use "git add <file>..." to include in what will be committed)
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
 
-                entries/migrations/0006_auto_20171106_0930.py
-                entries/migrations/0007_auto_20171106_0938.py
-                entries/migrations/0008_auto_20171106_0939.py
-                entries/migrations/0009_auto_20171106_1004.py
+            entries/migrations/0006_auto_20171106_0930.py
+            entries/migrations/0007_auto_20171106_0938.py
+            entries/migrations/0008_auto_20171106_0939.py
+            entries/migrations/0009_auto_20171106_1004.py
 
 Now you want to remove these testing migrations and just apply a single one.
 
@@ -57,7 +55,6 @@ You can then delete the migrations and create a single one afresh with:
 
     ./manage.py makemigrations
     ./manage.py migrate
-
 
 ### Sources
 

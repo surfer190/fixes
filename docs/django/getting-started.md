@@ -3,9 +3,9 @@ author: ''
 category: Django
 date: '2020-06-14'
 summary: ''
-title: Getting Started
+title: Django - Getting Started
 ---
-## Django Getting Started
+## Django: Getting Started
 
 ### Create a project
 
@@ -57,10 +57,10 @@ All `views` have to accept a `request` object
 
 `views.py`:
 
-        from django.http import HttpResponse
+    from django.http import HttpResponse
 
-        def hello_world(request):
-            return HttpResponse('Hello World')
+    def hello_world(request):
+        return HttpResponse('Hello World')
 
 * Some frameworks have implicit routing by function name
 * Some functions lets you set route for function name
@@ -70,20 +70,20 @@ To import from the current directory use `from . import views`
 
 `urls.py`:
 
-       from django.conf.urls import url
-        from django.contrib import admin
+    from django.conf.urls import url
+    from django.contrib import admin
 
-        from . import views
+    from . import views
 
-        urlpatterns = [
-            url(r'^admin/', admin.site.urls),
-            url(r'^$', views.hello_world),
-        ]
+    urlpatterns = [
+        url(r'^admin/', admin.site.urls),
+        url(r'^$', views.hello_world),
+    ]
 
 ## Pluggable Apps
 
 * Apps - self contained bit of functionality
-* PLuggable - django apps that can be moved
+* Pluggable - django apps that can be moved
 
 ### Create an app
 
@@ -94,4 +94,3 @@ It is a good idea to name the app after it's main model
 `__init__.py` mark a directory as a module
 
 Add the `courses` to `INSTALLED APPS` in `settings.py` 
-

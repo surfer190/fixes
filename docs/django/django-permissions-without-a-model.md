@@ -15,7 +15,7 @@ You might also want to create the content type and permission in a migration.
 
 Create an [empty migrations](https://docs.djangoproject.com/en/3.1/topics/migrations/#data-migrations) with:
 
-        ./manage.py makemigrations --empty yourappname
+    ./manage.py makemigrations --empty yourappname
 
 Then in `<your_migration>.py`:
 

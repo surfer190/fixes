@@ -53,9 +53,6 @@ The admin section of django is part of your site too. Why should it not be teste
 
 5. The imports needed are
 
-    from django.test import TestCase
-    from django.contrib.auth import get_user_model
-    from django.core.urlresolvers import reverse
-
-
-
+        from django.test import TestCase
+        from django.contrib.auth import get_user_model
+        from django.core.urlresolvers import reverse
