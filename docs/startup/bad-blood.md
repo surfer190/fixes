@@ -85,7 +85,7 @@ The book was written by John Carreyrou and exposes the full story behind the fai
 * If you are threatened with being fired, you as good as gone.
 * “You cannot run a company through fear and intimidation”
 * Executives getting angry from poor financial results leads to lies and cooking books
-* Getting lucky once or having a good prior track record does not mean you are special and above the fundementals of sound management
+* Getting lucky once or having a good prior track record does not mean you are special and above the fundamentals of sound management
 * If it feels right in your gut to walk away yet your mind says youve spent too much time and money. Then walking away is the correct choice.
 * Better to speak up and raise concerns
 * Sometimes prolonging an argument is a waste of time

@@ -1523,7 +1523,7 @@ Without the `##`
 
     show interfaces ge-1/0/0 | display inheritance | except 
 
-## 9. Routing Fundementals
+## 9. Routing Fundamentals
 
 Routing - moving data between layer 3 (l3) networks
 
@@ -3337,7 +3337,7 @@ Security Viewpoints:
 * Security Efficacy - Advanced security, integrated threat detetion and fine grained policy
 * Business Agility - Scale up and out using a variety of deployment models
 
-## 16. IPv6 Fundementals
+## 16. IPv6 Fundamentals
 
 What is IPv6?
 

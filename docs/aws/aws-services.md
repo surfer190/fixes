@@ -32,8 +32,8 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 
 ### Management and Governance
 
-* `Cloudwatch` - Monitor resources and applications (elasticsearch, LibreNMS, Mmonit)
-* `CloudFormation` (CFN) - Create and manage resources with tempaltes - (terraform)
+* `Cloudwatch` - Monitor resources, applications and do logging (elasticsearch, LibreNMS, Mmonit, elastalert, rsyslog)
+* `CloudFormation` (CFN) - Create and manage resources with templates - (terraform)
 * `ControlTower` - Manage a Multi-account environment
 * `Service Catalog` - Create and use standardised products (foreman, terraform, ansible)
 
@@ -52,8 +52,6 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 ### Security, Identity and Compliance
 
 * `Secrets Manager` (Easily rotate, manage and retrieve secrets) - Hashicorp vault
-
-
 
 ## Other Things
 

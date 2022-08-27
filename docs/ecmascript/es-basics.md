@@ -1,9 +1,9 @@
 ---
 author: ''
-category: Es
+category: Ecmascript
 date: '2016-02-10'
 summary: ''
-title: Es Basics
+title: Ecmascript Basics
 ---
 ## Basics of Ecmascript
 

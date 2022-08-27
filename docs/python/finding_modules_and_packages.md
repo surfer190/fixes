@@ -13,7 +13,7 @@ Usually you will get an error:
 
     ImportError: No module named 'xxx'
 
-Before we get over this hurdle let's take a step nback and understand some of the fundementals
+Before we get over this hurdle let's take a step nback and understand some of the fundamentals
 
 ## Fundmentals of Modules and Packages
 

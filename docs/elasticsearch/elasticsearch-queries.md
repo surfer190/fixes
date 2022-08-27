@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Es
+category: Elasticsearch
 date: '2020-03-05'
 summary: ''
 title: Queries

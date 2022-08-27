@@ -79,7 +79,7 @@ A collection of packages addressing a number of problem domains in scientific co
 * `scipy.sparse` - Sparse matrices and sparse linear system solvers
 * `scipy.special` - Wrapper around `SPECFUN` A fortran library.
 * `scipy.stats` - Continuous and discrete probability distributions, density functions, samplers, statistical and descriptive tests.
-* `scipy.weave` - ools for using C++ to accelerate array computations
+* `scipy.weave` - Tools for using C++ to accelerate array computations
 
 ### Scikit-learn
 
@@ -87,7 +87,7 @@ A general purpose machine learning toolkit for python programmers.
 
 Submodules:
 
-* `classification` - SVM, nearest neighbours, random forest
+* `classification` - SVM, nearest neighbors, random forest
 * `Regression` - Lasso, Ridge regression, Logistic
 * `Clustering` - k-means, special clustering
 * `Dimensionality reduction` - PCA, feature selection, matrix factorisation

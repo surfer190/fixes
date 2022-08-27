@@ -18,11 +18,11 @@ Some predictions do not matter for "reflexivity".
 
 Weather, gasoline consumption are not reflexive.
 
-The point is to exeed the accuracy of traditional models.
+The point is to exceed the accuracy of traditional models.
 
 ## What are you trying to predict?
 
-Time horizone: 1 hour, 1 week, 1 months, 1 year
+Time horizon: 1 hour, 1 week, 1 months, 1 year
 
 Predict just sign or magnitude?
 

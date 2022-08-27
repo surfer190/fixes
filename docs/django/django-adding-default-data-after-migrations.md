@@ -7,11 +7,12 @@ title: Django Adding Default Data After Migrations
 ---
 # Django Adding default data After Migrations
 
-So we are talking `RunPython` here not fixtures
+We are talking `RunPython` here not fixtures.
+[Django Fixures](https://docs.djangoproject.com/en/4.1/howto/initial-data/) are used to created initial data for models - however they are not automatically run as part of migrations.
 
 Create an empty migration (remember to have already created the migrations for the table you are adding default data for)
 
-        ./manage.py makemigrations <app_name> --empty -n <name_of_migration>
+    ./manage.py makemigrations <app_name> --empty -n <name_of_migration>
 
 It will probably already have a dependency of the previous migration
 

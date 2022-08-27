@@ -38,4 +38,6 @@ So we need change the above request:
         verify=False
     )
 
-The [full OAuth Authorization framework spec RFC](https://tools.ietf.org/html/rfc6749)
+## Sources
+
+* The [full OAuth Authorization framework spec RFC](https://tools.ietf.org/html/rfc6749)

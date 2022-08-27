@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Es
+category: Elasticsearch
 date: '2019-12-10'
 summary: ''
 title: Elasticsearch And Python
@@ -21,7 +21,6 @@ What is the python client to use?
     # Create index
     test_index = Index(name='test')
     test_index.create()
-
 
 ## Checking things with HTTP
 

@@ -209,3 +209,7 @@ while ((c = getchar()) != EOF)
 ###### Precedence
 
 The precedence, the order of operation, of `!=` is higher than that of `=`
+
+## Source
+
+* [The C Programming Language Book - Brian Kernighan and Dennis Ritchie](http://cslabcms.nju.edu.cn/problem_solving/images/c/cc/The_C_Programming_Language_%282nd_Edition_Ritchie_Kernighan%29.pdf)

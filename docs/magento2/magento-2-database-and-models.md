@@ -5,7 +5,7 @@ date: '2020-06-14'
 summary: ''
 title: Magento 2 Database And Models
 ---
-# Magento 2 Fundementals: Db and Models
+# Magento 2 Fundamentals: Db and Models
 
 ## Databases
 

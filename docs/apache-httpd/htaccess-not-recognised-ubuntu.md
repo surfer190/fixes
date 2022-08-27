@@ -1,10 +1,11 @@
 ---
 author: ''
-category: Apache
+category: Apache-Httpd
 date: '2015-01-18'
 summary: ''
 title: Htaccess Not Recognised Ubuntu
 ---
+
 Apache is not recognising .htaccess 
 ===================================
 

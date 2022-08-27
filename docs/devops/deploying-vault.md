@@ -7,9 +7,7 @@ title: Deploying Vault
 ---
 # Deploying Vault
 
-Download vault from:
-
-    https://www.vaultproject.io/downloads.html
+Download vault from [https://www.vaultproject.io/downloads.html](https://www.vaultproject.io/downloads.html)
     
 Ensure SHA256 matches:
 
@@ -246,7 +244,5 @@ You can specify special parameters:
 
 ## Source
 
-
 * [DigitalOcean Vault setup on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-securely-manage-secrets-with-hashicorp-vault-on-ubuntu-16-04)
 * [Setup Hashicorp beginners guide](https://devopscube.com/setup-hashicorp-vault-beginners-guide/)
-

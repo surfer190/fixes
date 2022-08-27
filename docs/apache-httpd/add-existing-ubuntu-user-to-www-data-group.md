@@ -1,9 +1,9 @@
 ---
 author: ''
-category: Apache
+category: Apache-Httpd
 date: '2015-01-18'
 summary: ''
-title: Add Existing Ubuntu User To Www Data Group
+title: Add Existing Ubuntu User To www Data Group
 ---
 
 # Add existing ubuntu user to www-data group

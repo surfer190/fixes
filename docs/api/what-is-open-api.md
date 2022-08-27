@@ -3,7 +3,7 @@ author: ''
 category: Api
 date: '2020-06-14'
 summary: ''
-title: What Is Open Api
+title: What Is OpenApi
 ---
 # What is OpenAPI?
 

@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Es
+category: Ecmascript
 date: '2016-02-10'
 summary: ''
 title: Check If Using Jquery Or Prototype

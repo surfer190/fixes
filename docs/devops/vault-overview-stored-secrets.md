@@ -3,13 +3,13 @@ author: ''
 category: Devops
 date: '2019-08-27'
 summary: ''
-title: Stored Secrets Vault Project
+title: Vault Overview - Stored Secrets 
 ---
-# Stored Secrets Vault Project
+# Vault Overview - Stored Secrets
 
-Vault is a client-server application.
-Only the vault server interacts with the data storage backends.
-All operations are done over a TLS connection.
+* Vault is a client-server application.
+* Only the vault server interacts with the data storage backends.
+* All operations are done over a TLS connection.
 
 ## Install
 

@@ -3,7 +3,7 @@ author: ''
 category: Azure-Machine-Learning
 date: '2016-08-21'
 summary: ''
-title: R Programming Lanurage Integration
+title: R Programming Languaage Integration
 ---
 # The R Programming Language and integrating it with Microsoft Azure Machine Learning
 

@@ -3,9 +3,9 @@ author: ''
 category: Magento2
 date: '2020-06-14'
 summary: ''
-title: Magento 2 Fundementals Of Development
+title: Magento 2 Fundamentals Of Development
 ---
-## Magento 2 Fundementals of Development
+## Magento 2 Fundamentals of Development
 
 ### Six goals of Magento 2
 

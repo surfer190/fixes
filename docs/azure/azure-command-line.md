@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Azure-Vm
+category: Azure
 date: '2016-09-27'
 summary: ''
 title: Azure Command Line
@@ -39,6 +39,6 @@ But you can also just:
 
 **Don't think it is possible**
 
-Sources:
+### Sources:
 
-- [Microsoft install azure cli](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/)
+* [Microsoft install azure cli](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/)

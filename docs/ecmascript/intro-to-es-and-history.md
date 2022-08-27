@@ -1,9 +1,9 @@
 ---
 author: ''
-category: Es
+category: Ecmascript
 date: '2016-02-10'
 summary: ''
-title: Intro To Es And History
+title: Intro To Ecmascript And History
 ---
 # Introduction to Ecmascript (Javascript)
 

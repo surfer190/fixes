@@ -29,4 +29,4 @@ Control flow of traffic and apply security policies.
 # Sources
 
 * [Tungsten Fabric: Out of the Box Network Developers June 20 Meet Up](https://www.youtube.com/watch?v=xVJhD_INHuc)
-* [ntroduction to Tungsten Fabric & the vRouter](https://www.youtube.com/watch?v=5seP3HKBhAI)
+* [Introduction to Tungsten Fabric & the vRouter](https://www.youtube.com/watch?v=5seP3HKBhAI)

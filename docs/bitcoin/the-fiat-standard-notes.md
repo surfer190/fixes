@@ -3,10 +3,10 @@ author: ''
 category: Bitcoin
 date: '2022-02-03'
 summary: ''
-title: The Fiat Standard - Summarised Notes
+title: The Fiat Standard Notes
 ---
 
-# The Fiat Standard - Summarised Notes
+# The Fiat Standard Notes
 
 > The debt slavery alternative to Human Civilization
 

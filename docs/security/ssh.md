@@ -417,7 +417,7 @@ Many SSH products don't support PKI.
 
 ## PKI
 
-The reason I started reading this book was getting the fundementals of how to enable secure and scalable SSH through central auth using your own certificate authority. Known as Public Key Infrastructure.
+The reason I started reading this book was getting the fundamentals of how to enable secure and scalable SSH through central auth using your own certificate authority. Known as Public Key Infrastructure.
 
 So I search the book for that term and will paste the content:
 

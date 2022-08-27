@@ -60,9 +60,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Ansible Local Infrastructure](ansible/ansible-local-infrastructure.md)
 - 2015-01-25: [Install Ansible Ubuntu](ansible/install-ansible-ubuntu.md)
 
-## Apache
-- 2015-01-18: [Htaccess Not Recognised Ubuntu](apache/htaccess-not-recognised-ubuntu.md)
-- 2015-01-18: [Add Existing Ubuntu User To Www Data Group](apache/add-existing-ubuntu-user-to-www-data-group.md)
+## Apache-Httpd
+- 2015-01-18: [Htaccess Not Recognised Ubuntu](apache-httpd/htaccess-not-recognised-ubuntu.md)
+- 2015-01-18: [Add Existing Ubuntu User To www Data Group](apache-httpd/add-existing-ubuntu-user-to-www-data-group.md)
 
 ## Api
 - 2022-05-31: [API Design - Loosely Coupled Microservices](api/api-design-loosely-coupled-microservices.md)
@@ -71,18 +71,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-01-04: [Api Product Manager](api/api-product-manager.md)
 - 2020-07-29: [Requesting An Oauth Token](api/requesting-an-oauth-token.md)
 - 2020-07-29: [Api Security](api/api-security.md)
-- 2020-06-14: [What Is Open Api](api/what-is-open-api.md)
+- 2020-06-14: [What Is OpenApi](api/what-is-open-api.md)
 - 2020-06-14: [Designing Great Web Apis](api/designing-great-web-apis.md)
 - 2020-06-14: [Kong King Of Api Gateways](api/kong-king-of-api-gateways.md)
-- 2019-07-27: [Api Tools](api/api-tools.md)
-- 2019-04-12: [Good Api Resources](api/good-api-resources.md)
-
-## Apple
-- 2020-06-21: [Macbook Setup](apple/macbook-setup.md)
-- 2015-09-20: [Mac Php Caveats](apple/mac-php-caveats.md)
-- 2015-09-20: [Mac Osx Change Hostname](apple/mac-osx-change-hostname.md)
-- 2015-09-20: [Switching To Mac From Ubuntu](apple/switching-to-mac-from-ubuntu.md)
-- 2015-09-20: [Mac Osx Homebrew](apple/mac-osx-homebrew.md)
+- 2019-07-27: [Api Tools, Articles and Resources](api/api-tools.md)
 
 ## Astronomy
 - 2022-06-30: [Cosmos](astronomy/cosmos.md)
@@ -90,13 +82,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-02-16: [Asteroids](astronomy/asteroids.md)
 - 2017-01-23: [Black Hole](astronomy/black-hole.md)
 
-## Atom
-- 2020-06-21: [Install Atom Packages Behind A Proxy](atom/install-atom-packages-behind-a-proxy.md)
-- 2016-04-02: [Set The Pylint Executor Atom Editor](atom/set-the-pylint-executor-atom-editor.md)
-
 ## Automation
 - 2019-05-30: [Automation Wisdoms](automation/automation-wisdoms.md)
-- 2019-05-14: [Chatops](automation/chatops.md)
+- 2019-05-14: [Chatops Links](automation/chatops.md)
 
 ## Aws
 - 2022-07-25: [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
@@ -105,11 +93,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Azure
 - 2017-06-13: [Basics Microsoft Machine Learning](azure/basics-microsoft-machine-learning.md)
-- 2016-08-21: [R Programming Lanurage Integration](azure/r-programming-lanurage-integration.md)
-
-## Azure-Vm
-- 2016-09-27: [Azure Linux Vm Active Directory](azure-vm/azure-linux-vm-active-directory.md)
-- 2016-09-27: [Azure Command Line](azure-vm/azure-command-line.md)
+- 2016-09-27: [Azure Linux Vm Active Directory](azure/azure-linux-vm-active-directory.md)
+- 2016-09-27: [Azure Command Line](azure/azure-command-line.md)
+- 2016-08-21: [R Programming Languaage Integration](azure/r-programming-language-integration.md)
 
 ## Betting
 - 2020-10-30: [High Performance Sports Betting - Key Notes](betting/high-performance-sports-betting-notes.md)
@@ -117,7 +103,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Bitcoin
 - 2022-03-30: [The Blocksize War - Summary Notes](bitcoin/blocksize-wars.md)
 - 2022-02-08: [Mastering Lightning Network Notes](bitcoin/mastering-lightning-network-notes.md)
-- 2022-02-03: [The Fiat Standard - Summarised Notes](bitcoin/the-fiat-standard-notes.md)
+- 2022-02-03: [The Fiat Standard Notes](bitcoin/the-fiat-standard-notes.md)
 - 2022-01-31: [Self-Hosted Python Based Bitcoin Payment Processors / Gateways](bitcoin/self-hosted-bitcoin-payment-gateways.md)
 - 2021-08-12: [Learning Bitcoin from the Command Line Notes](bitcoin/Learning-Bitcoin-from-the-Command-Line.md)
 - 2021-01-04: [Grokking Bitcoin Notes](bitcoin/grokking-bitcoin-notes.md)
@@ -129,7 +115,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)
 - 2022-04-26: [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
-- 2021-12-01: [Stormlight Archive](book-summaries/stormlight.md)
 
 ## Buddha_Dharma
 - 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
@@ -161,42 +146,34 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Containers
 - 2022-06-30: [Podman vs Cri-o vs Containerd](containers/podman-vs-crio-vs-containerd.md)
 - 2020-06-14: [Kata Containers](containers/kata-containers.md)
-- 2020-03-24: [Presentation On Containerisation](containers/presentation-on-containerisation.md)
 - 2020-02-14: [Tungsten Fabric](containers/tungsten-fabric.md)
 - 2020-02-14: [Firecracker Microvm](containers/firecracker-microvm.md)
 
 ## Couch-Db
-- 2020-07-29: [Getting Started With Couchdb](couch-db/getting-started-with-couchdb.md)
 - 2020-07-29: [Quickstart Couch Db](couch-db/quickstart-couch-db.md)
 - 2020-02-14: [Couch Db Gui](couch-db/couch-db-gui.md)
 
 ## Css
 - 2018-11-18: [Bootstrap 4 Good Bits](css/bootstrap-4-good-bits.md)
 - 2017-06-13: [How To Maintain Line Breaks And Newline Formatting](css/how-to-maintain-line-breaks-and-newline-formatting.md)
-- 2016-02-22: [Circular Profile Image](css/circular-profile-image.md)
-- 2015-01-18: [Css Mistakes](css/css-mistakes.md)
-
-## Data-Warehousing
-- 2020-06-14: [Datawarehousing Fundementals](data-warehousing/datawarehousing-fundementals.md)
 
 ## Datascience
 - 2020-07-07: [Numpy](datascience/numpy.md)
 - 2020-06-14: [Python For Data Analysis](datascience/python-for-data-analysis.md)
 - 2020-06-14: [Pandas](datascience/pandas.md)
+- 2020-06-14: [Datawarehousing Terms](datascience/datawarehousing-fundementals.md)
 - 2020-05-25: [Finding Outliers And Bad Data In Stock Data](datascience/finding-outliers-and-bad-data-in-stock-data.md)
 - 2019-01-24: [Statistics](datascience/statistics.md)
-- 2019-01-24: [You Are Not So Smart](datascience/you-are-not-so-smart.md)
 - 2018-11-18: [Pandas How To Make Column Values Into Column Index](datascience/pandas-how-to-make-column-values-into-column-index.md)
-- 2018-10-30: [Pandas Change Column Data Type To Float Thousands Seperator](datascience/pandas-change-column-data-type-to-float-thousands-seperator.md)
+- 2018-10-30: [Pandas Change Column Data Type To Float Thousands Separator](datascience/pandas-change-column-data-type-to-float-thousands-seperator.md)
 - 2018-10-25: [Machine Learning In Financial Markets](datascience/machine-learning-in-financial-markets.md)
-- 2017-10-29: [Ipython](datascience/ipython.md)
 - 2017-10-29: [Datascience Getting Started](datascience/datascience-getting-started.md)
 - 2017-10-23: [Backtesting Algorithmic Trading With Python](datascience/backtesting-algorithmic-trading-with-python.md)
 
 ## Devops
 - 2022-04-01: [Naming Things](devops/naming-things.md)
 - 2019-09-23: [Deploying Vault](devops/deploying-vault.md)
-- 2019-08-27: [Stored Secrets Vault Project](devops/stored-secrets-vault-project.md)
+- 2019-08-27: [Vault Overview - Stored Secrets](devops/vault-overview-stored-secrets.md)
 
 ## Django
 - 2021-12-20: [Standalone Reusable Apps](django/standalone-app.md)
@@ -249,12 +226,19 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-09-23: [Docker Systemd Script](docker/docker-systemd-script.md)
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
 
+## Ecmascript
+- 2016-02-10: [Check If Using Jquery Or Prototype](ecmascript/check-if-using-jquery-or-prototype.md)
+- 2016-02-10: [Intro To Ecmascript And History](ecmascript/intro-to-es-and-history.md)
+- 2016-02-10: [Ecmascript Basics](ecmascript/es-basics.md)
+
 ## Economics
 - 2021-12-20: [A Tour of Economics](economics/a-tour-of-economics.md)
 - 2021-12-20: [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
 - 2020-09-25: [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
+- 2020-03-05: [Queries](elasticsearch/elasticsearch-queries.md)
+- 2019-12-10: [Elasticsearch And Python](elasticsearch/elasticsearch-and-python.md)
 - 2019-05-30: [Logstash](elasticsearch/logstash.md)
 - 2016-09-26: [Elastic Search Basics](elasticsearch/elastic-search-basics.md)
 
@@ -264,13 +248,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## English
 - 2022-06-30: [Fancy Words](english/fancy-bullshit-words.md)
 - 2020-10-30: [Words and Definitions](english/words.md)
-
-## Es
-- 2020-03-05: [Queries](es/queries.md)
-- 2019-12-10: [Elasticsearch And Python](es/elasticsearch-and-python.md)
-- 2016-02-10: [Check If Using Jquery Or Prototype](es/check-if-using-jquery-or-prototype.md)
-- 2016-02-10: [Intro To Es And History](es/intro-to-es-and-history.md)
-- 2016-02-10: [Es Basics](es/es-basics.md)
 
 ## Financial-Planning
 - 2020-06-14: [South African Financial Planning](financial-planning/south-african-financial-planning.md)
@@ -389,9 +366,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Ldap
 - 2021-08-05: [LDAP System Administration](ldap/ldap-system-administration.md)
 
-## Less
-- 2015-01-18: [Less Syntax](less/less-syntax.md)
-
 ## Linux
 - 2020-06-14: [Python - avoid venv clashes with](linux/python-isolate-from-dist-packages.md)
 - 2020-05-12: [Set Timezone On Linux Server](linux/set-timezone-on-linux-server.md)
@@ -430,7 +404,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Permissions Mcrypt Gd Must  Be Loaded](magento/permissions-mcrypt-gd-must -be-loaded.md)
 
 ## Magento2
-- 2020-06-14: [Magento 2 Fundementals Of Development](magento2/magento-2-fundementals-of-development.md)
+- 2020-06-14: [Magento 2 Fundamentals Of Development](magento2/magento-2-fundementals-of-development.md)
 - 2020-06-14: [Theming Magento 2 Layout Basics](magento2/theming-magento-2-layout-basics.md)
 - 2020-06-14: [Magento 2 Api](magento2/magento-2-api.md)
 - 2020-06-14: [Theming Magento 2 Customisation](magento2/theming-magento-2-customisation.md)
@@ -633,6 +607,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-12-24: [Pipenv](python/pipenv.md)
 - 2017-11-08: [Comprehensions](python/comprehensions.md)
 - 2017-11-07: [Make A Python 3 Virtual Environment](python/make-a-python-3-virtual-environment.md)
+- 2017-10-29: [Ipython](python/ipython.md)
 - 2017-10-16: [Static Class Methods](python/static-class-methods.md)
 - 2017-10-15: [Anaconda](python/anaconda.md)
 - 2017-09-26: [Create An Md5 Hash](python/create-an-md5-hash.md)

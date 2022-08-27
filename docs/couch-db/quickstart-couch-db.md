@@ -27,7 +27,7 @@ Install couch db using one of the [installation guides](http://docs.couchdb.org/
 
 [Setup couch db](http://docs.couchdb.org/en/stable/setup/index.html#setup), I will be using the single node setup.
 
-Visit Fauxton at: `http://127.0.0.1:5984/_utils#setup`
+Visit [Fauxton](https://couchdb.apache.org/fauxton-visual-guide/index.html) (The Couch DB web interface) at: `http://127.0.0.1:5984/_utils#setup`
 
 Ensure it is running by issuing a `GET` request to port `5984`
 
