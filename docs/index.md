@@ -766,7 +766,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-17: [Jq Json Processor](utilities/jq-json-processor.md)
 
 ## Utorrent
-- 2017-01-16: [Fix Utorrent Disconnecting The Internet](utorrent/fix-utorrent-disconnecting-the-internet.md)
+- 2017-01-16: [Fix Utorrent making your Router disconnect from the Internet](utorrent/fix-utorrent-disconnecting-the-internet.md)
 
 ## Ux
 - 2020-06-14: [Ux Design In 60 Seconds](ux/ux-design-in-60-seconds.md)
@@ -777,12 +777,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-25: [Vagrant How To Save And Store Images](vagrant/vagrant-how-to-save-and-store-images.md)
 - 2015-03-23: [Where Do Downloaded Vagrant Boxes Get Stored](vagrant/where-do-downloaded-vagrant-boxes-get-stored.md)
 - 2015-03-23: [Things Vagrant Can Do](vagrant/things-vagrant-can-do.md)
-- 2015-03-23: [List Of Provisioners Integrated With Vagrant](vagrant/list-of-provisioners-integrated-with-vagrant.md)
 - 2015-03-23: [Common Vagrant Commands](vagrant/common-vagrant-commands.md)
-- 2015-03-23: [Vagrantfile Syntax](vagrant/Vagrantfile-syntax.md)
-
-## Video-Streaming
-- 2022-05-20: [Fundamentals of Media Streaming on the Internet](video-streaming/internet-video-streaming-resources.md)
 
 ## Vim
 - 2020-06-21: [Undo And Redo In Vim](vim/undo-and-redo-in-vim.md)
@@ -796,7 +791,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Vmware
 - 2020-06-14: [Vcenter Vs Vsphere Esxi](vmware/vcenter-vs-vsphere-esxi.md)
-- 2020-06-14: [Cloud Marketplace](vmware/cloud-marketplace.md)
 - 2020-06-14: [Vsphere Rest Api](vmware/vsphere-rest-api.md)
 - 2020-05-28: [Vmware Remote](vmware/vmware-remote.md)
 
@@ -810,10 +804,4 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-06-13: [Vue Js Directives](vuejs/vue-js-directives.md)
 - 2017-06-13: [Vue Js Components](vuejs/vue-js-components.md)
 - 2017-06-13: [Vue Js Forms](vuejs/vue-js-forms.md)
-
-## Xamarin
-- 2016-10-27: [Xamarin Mvvm](xamarin/xamarin_mvvm.md)
-
-## Yii
-- 2015-01-18: [Csqldataprovider Cgridview Cbuttoncolumn Trying To Set Property Of Undefined](yii/csqldataprovider-cgridview-cbuttoncolumn-trying-to-set-property-of-undefined.md)
 

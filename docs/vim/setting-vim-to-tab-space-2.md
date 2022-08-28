@@ -7,12 +7,12 @@ title: Setting Vim To Tab Space 2
 ---
 ## Setting vim to tab space two spaces at a time
 
-1. `vim ~/.vimrc`
+Edit your vim config:
 
-2.
+    vim ~/.vimrc
 
-```
-:set expandtab
-:set tabstop=2
-:set shiftwidth=2
-```
+Write these line:
+
+    :set expandtab
+    :set tabstop=2
+    :set shiftwidth=2

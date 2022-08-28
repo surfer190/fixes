@@ -5,9 +5,9 @@ date: '2019-10-24'
 summary: ''
 title: Convert Mardown To Docs
 ---
-# Convert Markdown to Docs
+# Convert Markdown to Word Docx
 
-To Convert Markdown to Docs, you need to install [pandoc](https://pandoc.org/).
+To Convert Markdown to Word Docx, you need to install [pandoc](https://pandoc.org/).
 
 Then run:
 
@@ -16,4 +16,3 @@ Then run:
 ## Sources
 
 * [Pandoc](https://pandoc.org/)
-

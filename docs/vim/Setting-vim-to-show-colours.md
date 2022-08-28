@@ -7,10 +7,10 @@ title: Setting Vim To Show Colours
 ---
 ## Setting Vim to Show Colours
 
-```
-vim ~/.vimrc
+Edit your vim config:
 
+    vim ~/.vimrc
 
-############
+Write this line:
+
 syntax on
-```

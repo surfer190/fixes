@@ -20,4 +20,3 @@ Use these 3 links:
 > There’s no substitute for documentation written, organized, and edited by hand
 
 > I’ll even go further and say that auto-generated documentation is worse than useless: it lets maintainers fool themselves into thinking they have documentation, thus putting off actually writing good reference by hand
-
