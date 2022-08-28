@@ -3,19 +3,15 @@ author: ''
 category: Redis
 date: '2020-06-14'
 summary: ''
-title: Redis Labs
+title: Redis Basics
 ---
 # Redis
 
-Remote Dictionary Server
-
-Database for the instant experience
-
-In memory open source database
-
-Redis Enterprise is the product - backups, replication and clustering.
-
-Redis is for ephemeral data 
+* Remote Dictionary Server
+* Database for the instant experience
+* In memory open source database
+* Redis Enterprise is the product - backups, replication and clustering.
+* Redis is for ephemeral data 
 
 Data structures:
 
@@ -375,26 +371,11 @@ however that will break images stored as string
 
 Redis Streams - Data processing pipeline and are time directed.
 
-
-
-
-
-
-### Sources
-
-* [Redis.io](https://redis.io/documentation)
-
-
-
 ## Why Redis?
 
 IoT, eCommerce, Personalizaton, Search...
 
 Telecoms Billing: CDR's and SDR's
-
-
-
-
 
 ### Connect
 
@@ -406,3 +387,6 @@ Quoting to set values to a specific key, you need to use quoting when value has 
 
     SET somekey "this is a test"
 
+### Sources
+
+* [Redis.io](https://redis.io/documentation)

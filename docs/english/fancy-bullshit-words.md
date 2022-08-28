@@ -19,7 +19,7 @@ I can understand using words that are _fancy_ in the specific context they were 
 
 ### Examples
 
-Ortoganal means independent (or at right angles in the correct context)
+Orthoganal means independent (or at right angles in the correct context)
 
 >  The commands are non-orthogonal and when two commands perform the same task they often have inconsistent options or are described with different terminology.
 
@@ -30,3 +30,5 @@ Opaque means "not see through" - "do not reveal" - "not visible" - "convoluted /
 > Metadata is opaque to gRPC itself - it lets the client provide information
 
 In this instance the author could have written: 
+
+Nomenclature

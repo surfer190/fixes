@@ -10,7 +10,7 @@ title: Notes on Enchiridion by Epictetus
 
 ## 1
 
-Things in our power - opinon, movement, desire, aversion - our own acts.
+Things in our power - opinion, movement, desire, aversion - our own acts.
 Things not in our power - property, reputation, power, offices - not our own acts.
 Things in our power are free - not subject to hinderance.
 Things not in our power are subject to restraint - the power of others.

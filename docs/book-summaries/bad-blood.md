@@ -1,9 +1,9 @@
 ---
 author: ''
-category: Startup
+category: Book Summaries
 date: '2019-02-16'
 summary: ''
-title: Bad Blood
+title: Bad Blood Book Summary
 ---
 # Notes on Bad Blood - Secrets and Lies in a Silicon Valley Startup 
 

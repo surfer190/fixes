@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Utilities
+category: Tools
 date: '2019-09-23'
 summary: ''
 title: Writing Good Documentation

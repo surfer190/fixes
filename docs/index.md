@@ -115,6 +115,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)
 - 2022-04-26: [Hard-Boiled Egg Index (Zimbabwe Inflation)](book-summaries/hard-boiled-egg-index.md)
+- 2020-06-14: [Zero To One](book-summaries/zero-to-one.md)
+- 2019-02-16: [Bad Blood Book Summary](book-summaries/bad-blood.md)
 
 ## Buddha_Dharma
 - 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
@@ -291,15 +293,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-08-24: [Rest Api](http/rest-api.md)
 - 2017-07-14: [Introduction To Http](http/introduction-to-http.md)
 
-## Ionic
-- 2020-06-21: [Hybrib Mobile Apps With Ionic](ionic/hybrib-mobile-apps-with-ionic.md)
-- 2016-05-24: [Ionic 2 Tutorial](ionic/ionic-2-tutorial.md)
-
 ## Java
 - 2019-08-16: [Find Java Home On Mac](java/find-java-home-on-mac.md)
-
-## Javscript
-- 2016-10-19: [Working With Xpath And Google Chrome Developer Tools](javscript/working-with-xpath-and-google-chrome-developer-tools.md)
 
 ## Jenkins
 - 2015-10-28: [Jenkins Host Key Verification Failed When Testing Ssh](jenkins/jenkins-host-key-verification-failed-when-testing-ssh.md)
@@ -320,7 +315,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-02-14: [Authentication Flow](keycloak/authentication-flow.md)
 - 2020-02-14: [Multitenancy](keycloak/multitenancy.md)
 - 2020-02-14: [Roles](keycloak/roles.md)
-- 2020-02-14: [Other Features](keycloak/other-features.md)
 - 2020-02-14: [Keycloak And Django](keycloak/keycloak-and-django.md)
 - 2020-02-14: [Groups](keycloak/groups.md)
 - 2020-02-14: [Events](keycloak/events.md)
@@ -369,7 +363,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Python - avoid venv clashes with](linux/python-isolate-from-dist-packages.md)
 - 2020-05-12: [Set Timezone On Linux Server](linux/set-timezone-on-linux-server.md)
 - 2020-05-12: [View Banned Ips From Iptables In Fail2ban](linux/view-banned-ips-from-iptables-in-fail2ban.md)
-- 2019-10-07: [Lxd](linux/lxd.md)
 - 2019-09-23: [Ssh Agent Forwarding](linux/ssh-agent-forwarding.md)
 - 2019-09-04: [View Process Listening On Ports](linux/view-process-listening-on-ports.md)
 - 2019-09-04: [Unix Sockets](linux/unix-sockets.md)
@@ -429,12 +422,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2016-11-02: [Issuing A Letsencrypt Certification For Magento2 With Nginx](magento2/issuing_a_letsencrypt_certification_for_magento2_with_nginx.md)
 - 2016-07-28: [Magento 2 Intial Admin Configuration](magento2/magento-2-intial-admin-configuration.md)
 
-## Metatrader-Mql5
-- 2016-07-30: [Mql5 Primer](metatrader-mql5/mql5-primer.md)
-
-## Meteorjs
-- 2015-09-20: [Meteorjs](meteorjs/meteorjs.md)
-
 ## Microservices
 - 2022-07-14: [Backend for Frontend - API Pattern](microservices/backends-for-frontends.md)
 - 2022-06-27: [gRPC](microservices/grpc.md)
@@ -448,13 +435,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-05-26: [Create a MySQL User and Grant Access to a Database](mysql/create-a-mysql-user-and-grant-access-to-a-db.md)
 - 2022-05-23: [How to Delete a MySQL User](mysql/delete-a-mysql-user.md)
 - 2022-02-14: [Create a database schema with the Correct Collation](mysql/create-database-schema-with-correct-collation.md)
-- 2020-06-14: [Enable Mysql General Log Mysql 5 7](mysql/enable-mysql-general-log-mysql-5-7.md)
 - 2019-10-24: [Groupwise Maximum](mysql/groupwise-maximum.md)
 - 2019-08-27: [Turn On Mysql General Log](mysql/turn-on-mysql-general-log.md)
 
 ## Network-Automation
 - 2021-12-24: [Netbox Extensability Overview](network-automation/netbox-extensibility-overview.md)
 - 2021-11-25: [Step by step guide developing a netbox plugin](network-automation/netbox-plugin-step-by-step-guide.md)
+- 2021-01-07: [Network Automation Cookbook Notes](network-automation/network-automation-cookbook-notes.md)
 - 2020-10-15: [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
 - 2020-10-15: [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 - 2020-07-07: [Pyez Dev Guide](network-automation/pyez-dev-guide.md)
@@ -465,19 +452,17 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-05-28: [Sdn Nfv Openflow Whitebox Switching](network-automation/sdn-nfv-openflow-whitebox-switching.md)
 - 2019-07-30: [Terraform With Vmware](network-automation/terraform-with-vmware.md)
 - 2019-04-30: [Napalm Network Automation Basics](network-automation/napalm-network-automation-basics.md)
-- 2019-04-12: [Network Automation Resources](network-automation/network-automation-resources.md)
 - 2019-03-14: [Key Takeaways Network Automation](network-automation/key-takeaways-network-automation.md)
 - 2019-03-14: [Ansible Molecule Testing](network-automation/ansible-molecule-testing.md)
 - 2019-03-14: [Test Infra](network-automation/test-infra.md)
-- 2019-02-24: [Network Automation Terms](network-automation/network-automation-terms.md)
-- 2019-02-23: [Basic Networking Utilities Cheatsheet](network-automation/basic_networking_utilities_cheatsheet.md)
+- 2019-02-24: [Network Automation Terms Glossary](network-automation/network-automation-terms-glossary.md)
 - 2019-02-23: [Intro Ansible Network Automation](network-automation/intro-ansible-network-automation.md)
+- 2019-02-23: [Basic Networking Utilities Cheatsheet](network-automation/basic-networking-utilities-cheatsheet.md)
 
 ## Networking
 - 2022-06-15: [Proxy vs Reverse Proxy](networking/proxy-vs-reverse-proxy.md)
-- 2021-01-07: [Network Automation Cookbook Notes](networking/network-automation-cookbook-notes.md)
 - 2020-11-25: [BGP](networking/bgp.md)
-- 2020-10-05: [How does a Subscriber's Internet travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
+- 2020-10-05: [How does a Internet Subscriber's traffic Flow travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
 - 2020-06-03: [Ipv6 And Never Going Sub Slash 64](networking/ipv6-and-never-going-sub-slash-64.md)
 - 2019-07-27: [Find Local Devices Dhcp](networking/find-local-devices-dhcp.md)
 - 2019-06-13: [Centos Routes](networking/centos-routes.md)
@@ -504,14 +489,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Openshift
 - 2020-06-14: [Django Openshift](openshift/django-openshift.md)
 - 2020-06-14: [Deploying To Openshift](openshift/deploying-to-openshift.md)
-- 2020-03-24: [Deploying Apps As Microservices On Openshift4](openshift/deploying-apps-as-microservices-on-openshift4.md)
 - 2019-11-18: [Add User To Cluster Admin Role](openshift/add-user-to-cluster-admin-role.md)
 - 2019-11-18: [Internal Registry](openshift/internal-registry.md)
 - 2019-11-18: [Minishift On Mac](openshift/minishift-on-mac.md)
 - 2019-11-04: [Autoscaling In Openshift](openshift/autoscaling-in-openshift.md)
 - 2019-11-04: [Openshift Cli](openshift/openshift-cli.md)
 - 2019-11-04: [Openshift Web Console White Screen Of Death](openshift/openshift-web-console-white-screen-of-death.md)
-- 2019-11-04: [Okd  Cheatsheet](openshift/okd- cheatsheet.md)
 - 2019-10-14: [Openshift Registry Setup](openshift/openshift-registry-setup.md)
 
 ## Openwrt
@@ -519,7 +502,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-12-27: [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
 
 ## Php
-- 2020-06-14: [Php7 Intro](php/php7-intro.md)
 - 2017-08-02: [Php Testing](php/php-testing.md)
 - 2017-06-13: [Switch Php Version On Ubuntu 16](php/switch-php-version-on-ubuntu-16.md)
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
@@ -528,11 +510,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-22: [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
-- 2017-10-02: [Postres Quick Start](postgres/postres-quick-start.md)
-
-## Powershell
-- 2019-11-04: [Powershell Basics](powershell/powershell-basics.md)
-- 2019-03-20: [Installing Powershell Modules](powershell/installing-powershell-modules.md)
 
 ## Project-Management
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
@@ -549,7 +526,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-22: [Sqlalchemy](python/sqlalchemy.md)
 - 2022-07-14: [Tornado Web Server](python/tornado-web-server.md)
 - 2022-07-12: [Packaging - Pip Install for Development](python/pip-install-in-development.md)
-- 2022-07-12: [After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
+- 2022-07-12: [After Dropping into a Python Debugger the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
 - 2022-07-10: [Offline Python Docs](python/python-docs-offline.md)
 - 2022-07-05: [Packaging - Wheel vs Egg](python/packaging-wheel-vs-egg.md)
 - 2022-06-22: [Asking for Forgiveness or Look Before you Jump](python/asking-for-forgivess-or-look-before-you-jump.md)
@@ -656,14 +633,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Rabbitmq
 - 2019-10-24: [Rabbit Mq Basics](rabbitmq/rabbit-mq-basics.md)
-- 2016-07-15: [Routing](rabbitmq/routing.md)
 
 ## Reactjs
 - 2015-12-03: [Reactjs](reactjs/reactjs.md)
-- 2015-12-02: [Make React Full Stack](reactjs/make-react-full-stack.md)
 
 ## Redis
-- 2020-06-14: [Redis Labs](redis/redis-labs.md)
+- 2020-06-14: [Redis Basics](redis/redis-basics.md)
 
 ## Ruby
 - 2020-06-14: [Convert Rails Sqlite To Mysql](ruby/convert-rails-sqlite-to-mysql.md)
@@ -676,9 +651,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Initial Setup Rails](ruby/initial-setup-rails.md)
 - 2015-01-18: [Installing With Without Rdoc Ri](ruby/installing_with_without_rdoc_ri.md)
 - 2015-01-18: [Initialise A Gemfile](ruby/initialise_a_gemfile.md)
-
-## Secops
-- 2019-06-13: [Secops Tools](secops/secops-tools.md)
 
 ## Security
 - 2021-09-15: [How to Verify a .sig with PGP on Mac 10.13](security/verify-a-sig-with-gpg.md)
@@ -707,10 +679,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Startup
 - 2020-07-07: [It Doesnt Have To Be Crazy At Work](startup/it-doesnt-have-to-be-crazy-at-work.md)
-- 2020-06-14: [Zero To One](startup/zero-to-one.md)
 - 2020-06-14: [Software As A Service](startup/software-as-a-service.md)
 - 2020-04-17: [Building Scalable Web Applications](startup/building-scalable-web-applications.md)
-- 2019-02-16: [Bad Blood](startup/bad-blood.md)
 
 ## Stoic
 - 2021-10-01: [Notes on Meditations by Marcus Aurelius](stoic/notes-on-meditations-aurelius.md)
@@ -720,15 +690,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Stylesheets
 
-## Sublime-Text
-- 2015-01-18: [Increase Decrease Indentation](sublime-text/increase-decrease-indentation.md)
-
 ## System-Architecture
 - 2022-05-09: [Databases, Events and Scale](system-architecture/scaling-databases-and-events.md)
 - 2018-08-10: [Multi Tenancy](system-architecture/multi-tenancy.md)
 
 ## Systemd
 - 2020-06-21: [Create A Systemd Script For Mailcatcher](systemd/create-a-systemd-script-for-mailcatcher.md)
+- 2019-05-31: [SystemD Overview](systemd/systemd.md)
 
 ## Testing
 - 2020-11-08: [Test Automation strategy Notes](testing/test-automation-strategy.md)
@@ -738,32 +706,26 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Tools
 - 2022-07-05: [What is MQTT?](tools/mqtt.md)
 - 2021-03-13: [TCPDump](tools/tcpdump.md)
+- 2019-11-18: [Free Html Single Size Simple Logos](tools/free-html-single-size-simple-logos.md)
+- 2019-10-24: [Convert Mardown To Docs](tools/convert-mardown-to-docs.md)
+- 2019-10-07: [Tmux](tools/tmux.md)
+- 2019-09-23: [Sphinx Readthedocs](tools/sphinx-readthedocs.md)
+- 2019-09-23: [Writing Good Documentation](tools/writing-good-documentation.md)
+- 2019-08-17: [Jq Json Processor](tools/jq-json-processor.md)
 - 2017-02-01: [Mailcatcher Setup](tools/mailcatcher-setup.md)
-
-## Trading
-- 2021-09-15: [Momentum Masters](trading/momentum-masters-notes.md)
 
 ## Ubuntu-Debian
 - 2020-06-21: [Add Someone Elses Public Key To Remote Server](ubuntu-debian/add-someone-elses-public-key-to-remote-server.md)
 - 2020-06-21: [Search For Text In Multiple Pdf And Show Line Numbers](ubuntu-debian/search-for-text-in-multiple-pdf-and-show-line-numbers.md)
 - 2019-08-27: [How To Scp Files Between Machines](ubuntu-debian/how-to-scp-files-between-machines.md)
-- 2019-05-31: [Systemd](ubuntu-debian/systemd.md)
 - 2016-12-14: [Create New User](ubuntu-debian/create-new-user.md)
-- 2016-12-14: [Setup Firewall Ubuntu](ubuntu-debian/setup-firewall-ubuntu.md)
+- 2016-12-14: [Setup Firewall on Ubuntu (UFW)](ubuntu-debian/setup-firewall-ubuntu.md)
 - 2016-10-27: [Compress And Decompress Tar.Bz2 Files](ubuntu-debian/compress-and-decompress-tar.bz2-files.md)
 - 2016-08-06: [How To Setup Key Based Ssh Authentication](ubuntu-debian/how-to-setup-key-based-ssh-authentication.md)
 - 2015-10-21: [Run Commands On A Remote Machine As Root](ubuntu-debian/run-commands-on-a-remote-machine-as-root.md)
-- 2015-08-25: [Copy The Contents Of A File Top Cliipboard From Commandline](ubuntu-debian/copy-the-contents-of-a-file-top-cliipboard-from-commandline.md)
+- 2015-08-25: [Copy The Contents Of A File Top Clipboard From Commandline](ubuntu-debian/copy-the-contents-of-a-file-top-cliipboard-from-commandline.md)
 - 2015-08-25: [Genymotion Unable To Load Virtualbox Engine Restart Virtualbox](ubuntu-debian/genymotion-unable-to-load-virtualbox-engine-restart-virtualbox.md)
 - 2015-08-25: [Setup Ssh Aliases](ubuntu-debian/setup-ssh-aliases.md)
-
-## Utilities
-- 2019-11-18: [Free Html Single Size Simple Logos](utilities/free-html-single-size-simple-logos.md)
-- 2019-10-24: [Convert Mardown To Docs](utilities/convert-mardown-to-docs.md)
-- 2019-10-07: [Tmux](utilities/tmux.md)
-- 2019-09-23: [Sphinx Readthedocs](utilities/sphinx-readthedocs.md)
-- 2019-09-23: [Writing Good Documentation](utilities/writing-good-documentation.md)
-- 2019-08-17: [Jq Json Processor](utilities/jq-json-processor.md)
 
 ## Utorrent
 - 2017-01-16: [Fix Utorrent making your Router disconnect from the Internet](utorrent/fix-utorrent-disconnecting-the-internet.md)
@@ -788,6 +750,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Virtualisation
 - 2021-11-23: [Types of Virtualisation Storage](virtualisation/types-of-storage.md)
 - 2021-10-12: [Mastering KVM Notes](virtualisation/mastering-kvm.md)
+- 2019-10-07: [Lxd](virtualisation/lxd.md)
 
 ## Vmware
 - 2020-06-14: [Vcenter Vs Vsphere Esxi](vmware/vcenter-vs-vsphere-esxi.md)

@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Linux
+category: Virtualisation
 date: '2019-10-07'
 summary: ''
 title: Lxd

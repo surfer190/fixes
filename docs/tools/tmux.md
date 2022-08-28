@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Utilities
+category: Tools
 date: '2019-10-07'
 summary: ''
 title: Tmux

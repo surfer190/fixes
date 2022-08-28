@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Startup
+category: Book Summaries
 date: '2020-06-14'
 summary: ''
 title: Zero To One

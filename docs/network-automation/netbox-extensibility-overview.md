@@ -32,9 +32,9 @@ From easiest to hardest
 
 Usage:
 
-1.
+1. Install
 
-    pip install napalm
+        pip install napalm
 
 2. Create Platform and specify NAPALM driver
 3. Assign platform to device with primary IP

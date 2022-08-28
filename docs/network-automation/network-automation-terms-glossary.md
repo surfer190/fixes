@@ -3,7 +3,7 @@ author: ''
 category: Network-Automation
 date: '2019-02-24'
 summary: ''
-title: Network Automation Terms
+title: Network Automation Terms Glossary
 ---
 # Network Automation Terminology
 
@@ -85,7 +85,7 @@ loopback - used for identifying and testing localhost
 
 ARP maps MAC addresses to IP Addresses
 
-## Network AUtomation Specific
+## Network Automation Specific
 
 * OpenDaylight - A controller infrastructure built for SDN deployments
 * OpenContrail - An open-source network virtualization platform for the cloud

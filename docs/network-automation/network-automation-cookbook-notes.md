@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Networking
+category: Network Automation
 date: '2021-01-07'
 summary: ''
 title: Network Automation Cookbook Notes

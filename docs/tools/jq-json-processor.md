@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Utilities
+category: Tools
 date: '2019-08-17'
 summary: ''
 title: Jq Json Processor

@@ -102,4 +102,3 @@ You will get an error in the keycloak logs if they do not work:
 I also started receiving a `LOGOUT_ERROR`:
 
     07:18:52,019 WARN  [org.keycloak.events] (default task-60) type=LOGOUT_ERROR, realmId=customers, clientId=ovirt-engine, userId=null, ipAddress=41.193.44.126, error=invalid_token, client_auth_method=client-secret
-

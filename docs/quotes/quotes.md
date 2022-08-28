@@ -9,7 +9,7 @@ title: Quotes
 
 ## General
 
-"Whatever you do in life. Be Consistent. Stick at it and be consistent" - Porky's Corner
+> "Whatever you do in life. Be Consistent. Stick at it and be consistent" - Porky's Corner
 
 The hero:
 
@@ -56,36 +56,18 @@ The hero:
 
 > In other words, you should avoid rigid, military-style management—in which the decision-makers do not necessarily suffer personal consequences from their decisions—because it is especially prone to collapse. - Why Complex Systems Collapse Faster, TabletMag
 
-“Here is what happens when you play by the rules: You lose.”
+> “Here is what happens when you play by the rules: You lose.” - Grigory Rodchenkov. “The Rodchenkov Affair”.
 
-Excerpt From: Grigory Rodchenkov. “The Rodchenkov Affair”. Apple Books. 
+“You give but little when you give of your possessions. It is when you give of yourself that you truly give.” -  Kahlil Gibran. “The Prophet”
 
-“You give but little when you give of your possessions.
+> “You work that you may keep pace with the earth and the soul of the earth. For to be idle is to become a stranger unto the seasons, and to step out of life’s procession, that marches in majesty and proud submission towards the infinite.” - Kahlil Gibran. “The Prophet”.
 
-It is when you give of yourself that you truly give.”
+“But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.” - Kahlil Gibran. “The Prophet”.
 
-Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
+> “No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.” - Brandon Sanderson. “The Emperor’s Soul”
 
-“You work that you may keep pace with the earth and the soul of the earth.
+“If prices went up, people demanded not a stable purchasing power for the marks they had, but more marks to buy what they needed. More marks were printed, and more, and more. -  Bob Wolf. “When Money Dies.” 
 
-For to be idle is to become a stranger unto the seasons, and to step out of life’s procession, that marches in majesty and proud submission towards the infinite.”
-
-Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
-
-“But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.”
-
-Excerpt From: Kahlil Gibran. “The Prophet”. Apple Books. 
-
-“No matter how good you were, someone was better. Live by that knowledge, and you would never grow so confident that you became sloppy.”
-
-Excerpt From: Brandon Sanderson. “The Emperor’s Soul”. Apple Books. 
-
-“If prices went up, people demanded not a stable purchasing power for the marks they had, but more marks to buy what they needed. More marks were printed, and more, and more.”
-
-Excerpt From: Bob Wolf. “When Money Dies.” iBooks. 
-
-We reject: kings, presidents and voting.
-We believe in: rough consensus and running code.
-    -Dave Clark at IETF 24
+> We reject: kings, presidents and voting. We believe in: rough consensus and running code. - Dave Clark at IETF 24
 
 He could never simply relax and enjoy life - he had to prove that he was better than everybody else. Life was a game, and he had to win at all costs. - Angelo Agrizzi "The real Bosasa Story"

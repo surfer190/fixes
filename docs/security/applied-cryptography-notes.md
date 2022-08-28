@@ -11,7 +11,7 @@ title: Applied Cryptography Notes
 
 This is about stopping major governments from reading your files
 
-types or encryption:
+Types of encryption:
 
 * file
 * email
@@ -28,12 +28,12 @@ What we have learnt is the NSA circumvents and does not break cryptography. It h
 
 You have to be targeted - bulk collection is not feasible.
 
-The technical difficulties of implementing cryptography are farore difficult than the mathemtical chanllenges of making crypto secure.
+The technical difficulties of implementing cryptography are far more difficult than the mathematical challenges of making crypto secure.
 
 ## Foundations
 
 * plaintext - message
-* enryption - disguising a message
+* encryption - disguising a message
 * ciphertext - encrypted message
 * decryption - turning ciphertext into a message
 * cryptography - art and science of keeping messages secure
@@ -54,12 +54,12 @@ The range of possible values is called the **keyspace**
 
 Encryption and decryption operations use a key.
 
-Some systems have a seperate encryption key from the decryption key
+Some systems have a separate encryption key from the decryption key
 
 The security is based on the key - meaning that the algorithm can be published and analysed.
 If an eavesdropper knows your algorithm - she still can't read the message without the key.
 
-Types of keybased algorithms:
+Types of key-based algorithms:
 
 * Symmetric - the encryption key can be calculated from the decryption key. Usually a single key - that both sender and received agree on. The security rests on the key - the key must remain secret.
     * Stream ciphers - work on a single bit at a time
@@ -115,17 +115,17 @@ Hiding secret messages in other messages - like invisible ink, pin puntures. Mor
 
 ### Substitution and Transposition Ciphers
 
-Before computers - character based algorithms were used. Subsituting or transposing (changing the order) characters.
-These days the philosphy remains the same just that work is done on bits instead of characters - a change in the alphabet size from 26 to 2.
+Before computers - character based algorithms were used. Substituting or transposing (changing the order) characters.
+These days the philosophy remains the same just that work is done on bits instead of characters - a change in the alphabet size from 26 to 2.
 
 Types of Substitution Ciphers:
 
-* simple substitution (monoalphabetic) - each character is recplaced with a corresponding ciphertext character
+* simple substitution (monoalphabetic) - each character is replaced with a corresponding ciphertext character
 * homophonic substitution - single character can map to one of several ciphertext characters
-* polygram subsititution - blocks of characters are encrypted in groups
+* polygram substitution - blocks of characters are encrypted in groups
 * polyalphabetic substitution - multiple simple substitution ciphers
 
-Caesar cipher - each plaintext character is subsituted with that 3 to the right - modulo 26.
+Caesar cipher - each plaintext character is substituted with that 3 to the right - modulo 26.
 
 In transposition ciphers the plaintext remains the same but the order of characters is shuffled around.
 
@@ -135,11 +135,11 @@ Transposition is troublesome as it uses lots of memory and requires messages to 
 
 #### Rotor Machines
 
-Mechanical automation of encryption. A 4-rotor machine takses substitution from the output of one rotar as input to the next.
+Mechanical automation of encryption. A 4-rotor machine takes substitution from the output of one rotar as input to the next.
 The combination of rotors and gearing makes it secure.
 
-Best example is the German Engima from World War 2.
-The German Enigma had three rotors, chosen from a set of five, a plugboard that slightly permuted the plaintext, and a reflecting rotor that caused each rotor to oper­ ate on each plaintext letter twice
+Best example is the German Enigma from World War 2.
+The German Enigma had three rotors, chosen from a set of five, a plugboard that slightly permuted the plaintext, and a reflecting rotor that caused each rotor to oper­ate on each plaintext letter twice
 
 ### Simple XOR
 
@@ -150,16 +150,6 @@ A standard operation on bits.
 
 ...a lot of good info in this book...just it goes a bit too deep on certain subjects and fundamentals are not concisely explained. It is a tad long winded for someone not wanting to study cryptography.
 
-
-
 ## Source
 
 * Applied Cryptography Protocols, Algorithms and Source Code in C - Bruce Schneier
-
-
-
-
-
-
-
-

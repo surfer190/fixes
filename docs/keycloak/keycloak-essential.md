@@ -38,6 +38,18 @@ If you wanted to log the person out you need to invlaidate the HTTP session.
 * Single sign-out
 * Import and Export from a JSON file
 
+## Other Features of Keycloak
+
+* Clustering and Caching
+* Account management console
+* Authorization services
+* Highly customisable through SPI's - Service Provider Interface
+* X.509 Authentication
+* Admin Rest/CLI
+* Client REST/CLi
+* Brute Force Password Protection
+* Password Policies
+
 ## The Problem
 
 > You wouldn't implement a database would you. So why are you implementing your own IAM.

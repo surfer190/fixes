@@ -43,11 +43,11 @@ Symmetric encryption - key used to decrypt is the same used to encrypt.
 * Created in the 1500's by Battista Bellaso
 * Used by Confederates in American Civil War
 
-Differect from Caesar Cipher as it uses a key. A colleciton of letters representing their place in the alphabet.
+Different from Caesar Cipher as it uses a key. A collection of letters representing their place in the alphabet.
 
     DUH -> 3, 20, 7
 
-In practice, entrpying the message: "CRYPTO"
+In practice, encrypting the message: "CRYPTO"
 
     C shifted 3 positions -> F
     R shifted 20 positions -> L
@@ -60,17 +60,17 @@ In practice, entrpying the message: "CRYPTO"
 
 Breaking this cipher:
 
-1. figure out the key length -> view repeated sections - indiciating the same word was enrypted using the same key
-2. determine actual key using frequency analysis -> exploit uneven distribution of letters in languages (E is most common in Engligh)
+1. figure out the key length -> view repeated sections - indicating the same word was encrypted using the same key
+2. determine actual key using frequency analysis -> exploit uneven distribution of letters in languages (E is most common in English)
 
 #### How Ciphers Work
 
 * permutation - function that transforms an item for a unique inverse
-* mode of operation - algorithm that uses a permutation for arbitrary mesage size (mode of Caesar is more simple than the Vigenere - where letters at different positions specifiy difference permutations)
+* mode of operation - algorithm that uses a permutation for arbitrary message size (mode of Caesar is more simple than the Vigenere - where letters at different positions specify difference permutations)
 
 ##### Permutation
 
-Most classical ciphers work by substitution - replcing one character with another.
+Most classical ciphers work by substitution - replacing one character with another.
 If each letter does not have exactly one inverse then it is not a permutation.
 
 For a permutation to be secure:
@@ -81,7 +81,7 @@ For a permutation to be secure:
 
 ##### Mode of Operation
 
-By analysing duplicates in the ciphertet you might learn something about the message.
+By analysing duplicates in the ciphertext you might learn something about the message.
 The mode mitigates the exposure of duplicate letters
 
 > If the key is N letters long, then N different permutations will be used for every N consecutive letters. However, this can still result in patterns in the ciphertext because every Nth letter of the message uses the same permutation. That’s why frequency analysis works to break the Vigenère cipher
@@ -92,7 +92,7 @@ For a secure cipher, you must combine a secure cipher with a secure mode.
 
 #### Why classical ciphers are insecure
 
-They are limited to oeprations you can do in your head or a piece of paper.
+They are limited to operations you can do in your head or a piece of paper.
 They lack computational power.
 
 A cipher's permutation should look random and to look random it should be random.
@@ -148,7 +148,7 @@ So probability of a randomly chosen key is correct is:
 
     1 / 2^n
 
-The proability of not being correct is 1 - p:
+The probability of not being correct is 1 - p:
 
     1 - (2 / 2^n)
 
@@ -193,7 +193,7 @@ Security of the cipher should rely only on the secrecy of the key and not of the
 
 Symmetric encryption - two parties share a key and use it for both encryption and decryption.
 
-Assymetric encryption - in assymetric encryption there are 2 keys. The encryption key (the public key) and the decryption key (the private key)
+Asymetric encryption - in asymetric encryption there are 2 keys. The encryption key (the public key) and the decryption key (the private key)
 
 The public key can be computer form the private key but (obviously) the private key cannot be computer from the public key.
 
@@ -295,20 +295,20 @@ You need 2 things
 * A cryptographic algorithm to produce high quality random bits from the source of entropy [PRNG]
 
 
-* Randomness comes from the uncertain and unpredicatable environment
+* Randomness comes from the uncertain and unpredictable environment
 * Examples: Temperature, acoustic noise, air turbulence, or electrical static
 * harvest the entropy in a running operating system by drawing from attached sensors, I/O devices, network or disk activity, system logs, running processes, and user activities such as key presses and mouse movement
 * QRNG (Quantum RNG) - radioactive decay, vacuum fluctuations and photon's polarization - can provide real randomness.
 * PRNG (Pseudo RNG) - reliably produce many artificial random bits from a few true random bits.
 * RNG would not produce bits if you stopped moving your mouse, whereas PRNG will always return.
 
-RNG - true random bits, analog sources, slow, non-deterministic, no gaurentee of high entropy
+RNG - true random bits, analog sources, slow, non-deterministic, no guarantee of high entropy
 PRNG - random-looking bits, digital sources, deterministic, high entropy
 
 #### How PRNG works
 
 * recieves random bits from RNG at regular intervals to update an entropy pool
-* determinitic random bit generator (DRBG) is deterministic - given one input you get the same output
+* deterministic random bit generator (DRBG) is deterministic - given one input you get the same output
 * reseeding is reseting the entropy pool
 
 #### Security concerns
@@ -332,11 +332,11 @@ Generate a random file with OpenSSL
 
 ### Real World PRNG's
 
-Ubiquotous: desktops, laptops, routers, virtual machines, set-top boxes and mobile phones
+Ubiquitous (Appearing everywhere): desktops, laptops, routers, virtual machines, set-top boxes and mobile phones
 
 #### Generating Random Bits in Unix Based Systems
 
-The device file `/dev/urandom` is the userland interface to the crytpo PRNG of common *nix systems.
+The device file `/dev/urandom` is the userland interface to the crypto PRNG of common *nix systems.
 Because it is a device file, generating bits from it is done by reading it as a file.
 
 Writing 10MB of random bits to a file
@@ -356,7 +356,7 @@ That is a bad idea:
 * entropy estimators are notoriously unreliable
 * it runs out of entropy quickly and can lead to denial of service conditions
 
-You can check the current enrtropy of `/dev/random` with:
+You can check the current entropy of `/dev/random` with:
 
     cat /proc/sys/kernel/random/entropy_avail
 

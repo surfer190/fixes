@@ -7,7 +7,7 @@ title: Openssl Cookbook
 ---
 # OpenSSL Cookbook Notes and Summaries
 
-One of the most important open source projects. It is widely used and a large portion of internet infrastrcuture relies on it.
+One of the most important open source projects. It is widely used and a large portion of internet infrastructure relies on it.
 
 Project contents:
 
@@ -962,8 +962,7 @@ OCSP stapling is requested using the `-status` switch
 
 **Best practices are in the book**
 
-
-## Source
+## Sources
 
 * [OpenSSL Cookbook (free Ebook) - Ivan Ristić](https://www.feistyduck.com/books/openssl-cookbook/)
 * [Bulletproof TLS](https://www.feistyduck.com/books/bulletproof-ssl-and-tls/)

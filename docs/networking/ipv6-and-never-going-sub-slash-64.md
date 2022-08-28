@@ -9,8 +9,7 @@ title: Ipv6 And Never Going Sub Slash 64
 
 The best site to go to is [slash64.net](https://slash64.net/)
 
-* Assignmetn to end sites: anything of length /64 or shorter works from a standards perspective.
-* 
+* Assignment to end sites: anything of length /64 or shorter works from a standards perspective.
 
 ### Email
 

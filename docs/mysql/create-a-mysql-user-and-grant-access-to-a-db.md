@@ -20,7 +20,6 @@ Grant the user access:
 
     GRANT ALL PRIVILEGES ON database.* TO 'user'@'%';
 
-
 ## Sources:
 
 * [How To Create a New User and Grant Permissions in MySQL](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)

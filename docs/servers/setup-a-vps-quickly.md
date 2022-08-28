@@ -13,58 +13,58 @@ After creating a server
 
 1. Login as root
 
-        ssh root@123.123.123.123
+    ssh root@123.123.123.123
 
 2. Update and upgrade
 
-        sudo apt update
-        sudo apt upgrade
+    sudo apt update
+    sudo apt upgrade
 
 3. Create a user
 
-        adduser newuser
+    adduser newuser
 
 4. Add user to the `sudo` group
 
-        usermod -aG sudo newuser
+    usermod -aG sudo newuser
 
 5. Become the new user
 
-        sudo su newuser -
+    sudo su newuser -
 
 6. Create an ssh key
 
-        ssh-keygen -t rsa -b 4096 -C "stephen@synergysystems.co.za"
+    ssh-keygen -t rsa -b 4096 -C "stephen@synergysystems.co.za"
 
 7. logout of the server
 
-        exit
+    exit
 
 8. On your local machine, copy your ssh key to the new user on the server
 
-        ssh-copy-id newuser@123.123.123.123
+    ssh-copy-id newuser@123.123.123.123
 
 9. Test log in
 
-        ssh newuser@123.123.123.123
+    ssh newuser@123.123.123.123
 
 10. Disable password auth
 
-        vim /etc/ssh/sshd_config
+    vim /etc/ssh/sshd_config
 
 set
 
-        PasswordAuthentication no
+    PasswordAuthentication no
 
 11. Reload ssh
 
-        sudo systemctl reload sshd
+    sudo systemctl reload sshd
 
 12. Allow ssh and enable the [ufw (uncomplicated firewall)](https://help.ubuntu.com/community/UFW) firewall
 
-        sudo ufw app list
-        sudo ufw allow OpenSSH
-        sudo ufw enable
+    sudo ufw app list
+    sudo ufw allow OpenSSH
+    sudo ufw enable
 
 ## Add the server to your ssh config for easy ssh
 

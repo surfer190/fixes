@@ -21,6 +21,6 @@ title: Switch Php Version With Mac Homebrew
 
     brew link php70
 
-###### Source
+#### Source
 
-[How to switch PHP verisions](https://www.symfony.fi/page/how-to-run-both-php-5-6-and-php-7-x-with-homebrew-on-os-x-with-php-fpm)
+* [How to switch PHP verisions](https://www.symfony.fi/page/how-to-run-both-php-5-6-and-php-7-x-with-homebrew-on-os-x-with-php-fpm)

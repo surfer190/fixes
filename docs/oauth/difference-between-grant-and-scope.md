@@ -34,8 +34,3 @@ There are 4:
 This is what the user gives consent to the application to access.
 
 In the client credentials flow - it does not make as much sense - as there is no delegation of authorization happening.
-
-
-
-
-

@@ -3,10 +3,10 @@ author: ''
 category: Python
 date: '2022-07-12'
 summary: ''
-title: After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands
+title: After Dropping into a Python Debugger the Prompt does not type back commands
 ---
 
-## After Dropoping into a Python Debugger (like ipdb) the Prompt does not type back commands
+## After Dropping into a Python Debugger the Prompt does not type back commands
 
 If you have encountered this problem. Just type `reset` in the terminal.
 

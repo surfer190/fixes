@@ -1,9 +1,9 @@
 ---
 author: ''
-category: Ubuntu-Debian
+category: SystemD
 date: '2019-05-31'
 summary: ''
-title: Systemd
+title: SystemD Overview
 ---
 # SystemD
 
@@ -124,8 +124,6 @@ Enable and start it:
     systemctl enable elastalert.service
     systemctl start elastalert.service
     systemctl status elastalert.service
-
-
 
 ## Source
 

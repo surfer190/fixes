@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Utilities
+category: Tools
 date: '2019-10-24'
 summary: ''
 title: Convert Mardown To Docs

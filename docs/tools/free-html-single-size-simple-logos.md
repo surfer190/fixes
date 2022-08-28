@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Utilities
+category: Tools
 date: '2019-11-18'
 summary: ''
 title: Free Html Single Size Simple Logos

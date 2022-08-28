@@ -3,9 +3,14 @@ author: ''
 category: Ubuntu-Debian
 date: '2016-12-14'
 summary: ''
-title: Setup Firewall Ubuntu
+title: Setup Firewall on Ubuntu (UFW)
 ---
-# How to setup firewall ubuntu
+# How to setup firewall on Ubuntu
+
+UFW stands for uncomplicated firewall.
+It is a friendly interface to `iptables`.
+
+Some commands:
 
     sudo ufw app list
 
@@ -17,4 +22,6 @@ title: Setup Firewall Ubuntu
 
     sudo ufw enable
 
-    
+## Source
+
+* [UFW Ubuntu Help](https://help.ubuntu.com/community/UFW)
