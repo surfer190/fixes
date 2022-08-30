@@ -6,6 +6,13 @@ summary: ''
 title: Docstring types
 ---
 
+Docstring conventions were propsed as part of [PEP257](https://peps.python.org/pep-0257/)
+
+* A docstring is a string literal that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the `__doc__` special attribute of that object.
+* They are not recognized by the Python bytecode compiler and are not accessible as runtime object attributes
+
+> A universal convention supplies all of maintainability, clarity, consistency, and a foundation for good programming habits too. What it doesn’t do is insist that you follow it against your will. That’s Python!” — Tim Peters on comp.lang.python, 2001-06-16
+
 ### DocBlockr
 
     def __init__(self, driver, username, password, host, port, db_name, app_name=None):
@@ -102,3 +109,4 @@ title: Docstring types
 ## Source
 
 * [Autodocstring vscode extensions](https://github.com/NilsJPWerner/autoDocstring/)
+* [PEP257 - Docstring conventions](https://peps.python.org/pep-0257/)

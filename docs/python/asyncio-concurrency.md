@@ -379,7 +379,7 @@ When you `task.cancel` internally it will do a  `coro.throw()` to raise a `async
 ...
 Much more intense shit dicussed in the book for about 40 - 50 pages
 
-## 4. Asyncio librariesyou aren't using
+## 4. Asyncio libraries you aren't using
 
 ### Streams (Standard Library)
 

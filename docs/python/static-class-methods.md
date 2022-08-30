@@ -45,6 +45,10 @@ Also they do not take a `self` or `cls` argument.
 Class methods are similar to instance methods, but they differ in that an instance need not be created.
 Ie. they can be called without an instance. They do require the `cls` as an argument which is not the instance but the actual class or blueprint for creating objects.
 
+With a classmethod you don't call `__init__` you call `cls()`
+
+Class methods allow for inheritance among classes - not objects.
+
     class MyClass:
         @classmethod
         def classmethod(cls):

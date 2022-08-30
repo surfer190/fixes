@@ -383,7 +383,7 @@ And if you use `copy.copy()` you are not using references, but copy by reference
                     books.append(Book(title, author))
                 return cls(books)
 
-**Remember with classmethod you don't call init, you just cal cls()**
+**Remember with classmethod you don't call init, you just call cls()**
 
 Usage:
 

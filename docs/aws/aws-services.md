@@ -10,6 +10,10 @@ title: Commonly used AWS Services
 
 This _fix_ shows a few common AWS services and similar other services you may have worked with outside of the public cloud
 
+## Analytics
+
+* `MSK` (Apache Kafka) - Managed Service for Apache Kafka
+
 ### Compute
 
 * `EC2` - Virtual machines (vmware vcloud director, digital ocean droplets, virtual private servers)

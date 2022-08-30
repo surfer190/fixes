@@ -36,3 +36,14 @@ Add to the bottom of the file:
       unittest.main()
 
 It checks if we run the file directly then run with unittest
+
+### Structuring your tests
+
+If your folder `tests/` and `module/` is in a `package/` folder. Then you can `cd package/` and run:
+
+  python -m unittest discover -s tests/
+
+
+
+### Running Tests with Setup.py
+

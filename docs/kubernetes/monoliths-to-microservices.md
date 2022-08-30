@@ -54,6 +54,8 @@ All 3 tiers are in the single service - a bit of application logic, some data st
 
 So our teams are organised around the business domain.
 
+> Another top tip is to use seperate AWS accounts for your different environments: QA, PP and PROD.
+
 ### Own their Data
 
 Microservices should not share databases.
