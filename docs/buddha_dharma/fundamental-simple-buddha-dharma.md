@@ -9,7 +9,7 @@ title: Core Fundamental Teachings of Buddha
 ## Core Fundamental Teachings of Buddha
 
 * The history of buddhism and the buddha himself isn't essential
-* The esotheric, extensive detail, rites, rituals and the number of things are inconsequential
+* The esoteric, extensive detail, rites, rituals and the number of things are inconsequential
 * The worshipping and blind belief as buddha as a god is also false. He was a human and we are humans.
 * Do not blindly believe. Independently verify through observation.
 * This is not a religion - with rites, rituals, ceremony and worship

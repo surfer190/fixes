@@ -145,3 +145,5 @@ Repeat a mantra to blow the festering mind away - I am not the body - not even t
 The fraction of infinity, of that vast abyss of time, allotted to each of us. Absorbed in an instant into eternity.
 
 That whatever happens has always happened, and always will, and is happening at this very moment, everywhere. Just like this.
+
+We have the full ability to make free will choices that improve our life or cause our life to decline. Everything that we have experienced, are experiencing, or will experience in life is based on our own free will decisions. - David Roylance. “The Words of The Buddha - V1 - Developing a Life Practice.”
