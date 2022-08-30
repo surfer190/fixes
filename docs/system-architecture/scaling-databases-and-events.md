@@ -111,7 +111,7 @@ workflow:
 
 NoSQL workbench for DynamoDB
 
-Source:
+### Sources:
 
 * [Scaling SQL and NoSQL](https://betterprogramming.pub/scaling-sql-nosql-databases-1121b24506df)
 * [SQL, NoSQL, Scale and DynamoDB](https://www.alexdebrie.com/posts/dynamodb-no-bad-queries/)

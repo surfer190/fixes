@@ -3,26 +3,34 @@ author: ''
 category: Networking
 date: '2020-10-05'
 summary: ''
-title: How does a Subscriber's Internet travel from Service Provider Perspective
+title: How does a Internet Subscriber's traffic Flow travel from Service Provider Perspective
 ---
 
-## How does a Subscriber's Internet travel from Service Provider Perspective
+## How does a Subscriber's Internet Traffic Flow
 
-As with everything it depends on the solution provided - Fibre, Adsl and Wireless technology like 3g, 4g and LTE
+As with everything it depends on the solution provided:
+
+* Fibre
+* Adsl
+* Wireless technology - 3g, 4g and LTE
 
 Looking from a Fibre perspective the flow is:
 
     ONT (GPON or PON) -> OLT -> ENNI -> BNG (mediating with RADIUS) -> PACKET INTROSPECTION - P ROUTER - PEERING/IP TRANSIT
 
-Infrastrucutre providers - segments traffic into vlans - radius credentials - send variables attached to the username
+Infrastructure providers:
 
-BNG - mediates between ENNI and Radius to provide service
+- segments traffic into vlans
+- radius credentials
+- send variables attached to the username
 
-ONT tags all traffic from certain address
+BNG (Border Network Gateways) - mediates between ENNI and Radius to provide service
+
+ONT (Optical Network Terminal) tags all traffic from certain address
 
 ip address allocated out of radius
 
-sandvine enforces the cap
+Sandvine packet introspection enforces the cap
 
 Can split radius servers into different environments - on every authentication attempt
 BNG tells radius the amount of data users - sandvine

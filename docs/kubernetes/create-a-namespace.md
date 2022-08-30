@@ -6,7 +6,6 @@ summary: ''
 title: Create A Namespace
 ---
 
-
     kubectl create -f namespace-dev.json
 
     kubectl create namespace <namespace>

@@ -9,19 +9,19 @@ title: Django Admin
 
 Create a super user
 
-`./manage.py createsuperuser`
+    ./manage.py createsuperuser
 
-Go to `<your-ip>/admin`
+Go to `<your-django-ip>/admin`
 
 ## Registering our model
 
-        admin.site.register(models.Course)
+    admin.site.register(models.Course)
 
 ## Changing Administration Name
 
-Add a template in `<root>/template/admin/base-site.html`, that is the a template with a namespace for the `admin` app
+Add a template in `<root>/template/admin/base-site.html` - that is the a template with a namespace for the `admin` app.
 
-`base-site.html` ships with the django source code in `django.contrib.admin.templates.admin`
+The `base-site.html` file ships with the django source code in `django.contrib.admin.templates.admin`
 
 We override the django file and change the title
 
@@ -49,16 +49,16 @@ If a list grows so big we can add a `search_fields` attribute to the `ModelAdmin
 
 This adds a search box to the listview
 
-        class CourseAdmin(admin.ModelAdmin):
-            search_fields = ['title', 'description']
+    class CourseAdmin(admin.ModelAdmin):
+        search_fields = ['title', 'description']
 
-        admin.site.register(models.Course, CourseAdmin)
+    admin.site.register(models.Course, CourseAdmin)
 
 ### Filters
 
 You can add filters to a model to quickly filter data with `list_filter`
 
-        list_filter = ['created_at', 'is_live']
+    list_filter = ['created_at', 'is_live']
 
 Filters can also be stacked
 
@@ -66,35 +66,35 @@ Filters can also be stacked
 
 Inherit from `SimpleListFilter`
 
-        class YearListFilter(admin.SimpleListFilter):
-            # title is what comes after "by"
-            title = 'year created'
+    class YearListFilter(admin.SimpleListFilter):
+        # title is what comes after "by"
+        title = 'year created'
 
-            # what shows in url
-            parameter_name = 'year'
+        # what shows in url
+        parameter_name = 'year'
 
-            # creates clickable links in sidebar
-            # first element is what shows on front, second element shows in url
-            def lookups(self, request, model_admin):
-                return (
-                            ('2015', '2015'),
-                            ('2016', '2016'),
+        # creates clickable links in sidebar
+        # first element is what shows on front, second element shows in url
+        def lookups(self, request, model_admin):
+            return (
+                        ('2015', '2015'),
+                        ('2016', '2016'),
+            )
+
+        # returns data
+        def queryset(self, request, queryset):
+            if self.value() == '2015':
+                return queryset.filter(created_at__gte=date(2015, 1, 1),
+                                        created_at__lte=date(2016, 12, 31),
                 )
-
-            # returns data
-            def queryset(self, request, queryset):
-                if self.value() == '2015':
-                    return queryset.filter(created_at__gte=date(2015, 1, 1),
-                                            created_at__lte=date(2016, 12, 31),
-                    )
-                if self.value() == '2016':
-                    return queryset.filter(created_at__gte=date(2016, 1, 1),
-                                            created_at__lte=date(2017, 12, 31),
-                    )
+            if self.value() == '2016':
+                return queryset.filter(created_at__gte=date(2016, 1, 1),
+                                        created_at__lte=date(2017, 12, 31),
+                )
 
 Then add this filter to the filters for model
 
-            list_filter = [YearListFilter]
+    list_filter = [YearListFilter]
 
 ## Show fields instead of __str__
 
@@ -130,30 +130,30 @@ Careful could cause a `race condition` where 2 people are editing at the same ti
 
 In a `ModelAdmin`:
 
-        class TextAdmin(admin.ModelAdmin):
-            fieldsets = (
-                (None, {
-                    'fields': ('course', 'title', 'order', 'description')
-                }),
-                ('Add Content', {
-                    'fields': ('content',),
-                    'classes': ('collapse',)
-                })
-            )
+    class TextAdmin(admin.ModelAdmin):
+        fieldsets = (
+            (None, {
+                'fields': ('course', 'title', 'order', 'description')
+            }),
+            ('Add Content', {
+                'fields': ('content',),
+                'classes': ('collapse',)
+            })
+        )
 
 The tuple first attribute has the name of the section.
 `classes` sets the class and allows to be collapsed initially
 
 ### Make a field a radio button instead of select
 
-        radio_fields = {
-            'quiz': admin.HORIZONTAL
-        }
+    radio_fields = {
+        'quiz': admin.HORIZONTAL
+    }
 
 ## TabularInline and StackedInline
 
-        class AnswerInline(admin.TabularInline):
-            model = models.Answer
+    class AnswerInline(admin.TabularInline):
+        model = models.Answer
 
 ## A custom edit and update template
 
@@ -169,14 +169,14 @@ To this: `{% include "admin/courses/course/includes/fieldset.html" %}`
 
 Define a function in the root of `admin.py` that does the action
 
-        def make_published(modeladmin, request, queryset):
-            queryset.update(status='p', is_live=True)
+    def make_published(modeladmin, request, queryset):
+        queryset.update(status='p', is_live=True)
 
 Add a `short_desription` for that function
 
-        make_published.short_description = "Mark selected courses as published"
+    make_published.short_description = "Mark selected courses as published"
 
 Then add it to the `ModelAdmin` action:
 
-        class CourseAdmin(admin.ModelAdmin):
-            actions = [make_published]
+    class CourseAdmin(admin.ModelAdmin):
+        actions = [make_published]

@@ -13,7 +13,7 @@ title: Sdn Nfv Openflow Whitebox Switching
 
 Many definitions - the main thing is programmability and automation
 
-* Physical seperation of network control plane from the forwarding plane - where the control plane controls several devices
+* Physical separation of network control plane from the forwarding plane - where the control plane controls several devices
 * Connects application layer -> controler layer -> infrastucture layer 
 * Open flow controller: ODL (Open daylight), Rewho and Onos
 * Openflow, NETCONF, BGP-LS, SNMP are protocols

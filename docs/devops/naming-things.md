@@ -43,8 +43,7 @@ For example to go to ovirt management console:
 
     ovirt.example.com
 
-Is obvious. xkm65099vm.example.com is not.
-
+Is obvious. `xkm65099vm.example.com` is not.
 
 ## Sources
 

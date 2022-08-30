@@ -109,7 +109,6 @@ List existing bindings
 
     rabbitmqctl list_bindings
 
-
 ## Message Acknowledgement
 
 What if a consumer dies with a task only halfway done?
@@ -121,7 +120,7 @@ Currently rabbitMQ will mark a message for deletion as it is delivered
 For this RabbitMQ supports message acknowledgements.
 An `ack` tells RabbitMQ that it is free to delete a task
 
-Manualy message acknowledgements are enabled by default. We turn that off with:
+Manually message acknowledgements are enabled by default. We turn that off with:
 
     channel.basic_consume(
         queue='hello',
@@ -221,4 +220,3 @@ Once a consumer connection is closed the queue should be deleted:
 ### Bindings
 
 The relationship between the exchange and the queue
-

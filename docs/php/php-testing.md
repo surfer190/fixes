@@ -7,7 +7,7 @@ title: Php Testing
 ---
 # PHP Testing
 
-A catastrophic failure is usually the indicator for using automated testing
+A catastrophic failure is usually the indicator that you should be using automated testing
 
 ### TDD Test driven development
 

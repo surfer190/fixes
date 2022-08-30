@@ -56,11 +56,11 @@ So `from django.contrib.auth.models import User`
 
 `update()` can be called on a queryset but not a single record
 
-        models.Course.objects.update(published=True)
+    models.Course.objects.update(published=True)
 
 But that is the same as using `all()` so we can use `filter()` or `exclude()` the same way
 
-        models.Course.objects.all().update(published=True)
+    models.Course.objects.all().update(published=True)
 
 Much better than using a `loop`
 
@@ -68,9 +68,9 @@ A `delete()` can also be run on a `querySet`
 
 ## Filter
 
-        courses = models.objects.Course.filter(
-                teacher__username=teacher
-            )
+    courses = models.objects.Course.filter(
+            teacher__username=teacher
+        )
 
 What does the `__` do?
 
@@ -78,11 +78,11 @@ It jumps from one relationship to another
 
 Funny things like greater or equal to filter is:
 
-        reviews = models.Review.objects.filter(rating__gte = 3)
+    reviews = models.Review.objects.filter(rating__gte = 3)
 
 Instead of the intuitive
 
-        reviews = models.Review.objects.filter(rating >= 3)
+    reviews = models.Review.objects.filter(rating >= 3)
 
 More Info on [field lookups](https://docs.djangoproject.com/en/1.11/ref/models/querysets/#field-lookups)
 
@@ -107,7 +107,7 @@ datetimes = Courses.objects.datetimes('created-at', 'year')
 
 ## Order By
 
-        .order_by('-created_at')
+    .order_by('-created_at')
 
 `created_at` is the field to order by, normally we do it in `Ascending` order
 
@@ -119,20 +119,20 @@ Allow you to refer to value in database not in instance which could be outdated
 
 Use on sensitive data that has to be correct and real time, avoid race conditions
 
-        from django.db.models import F
+    from django.db.models import F
 
 Example
 
-        quiz.times_taken = F('times_taken') + 1
-        quiz.save()
+    quiz.times_taken = F('times_taken') + 1
+    quiz.save()
 
 So `quiz.times_taken` becomes a `CombinedExpression`
 
-        quiz.refresh_from_db()
+    quiz.refresh_from_db()
 
 Can do a db update on live data with:
 
-        Course.objects.all().update(rating = F('rating') * 2)
+    Course.objects.all().update(rating = F('rating') * 2)
 
 ## Q objects
 
@@ -140,22 +140,22 @@ Can do a db update on live data with:
 
 When you add a filter:
 
-        .filter(
-            title__iconatins = 'red',
-            description_icontains = 'green'
-        )
+    .filter(
+        title__iconatins = 'red',
+        description_icontains = 'green'
+    )
 
 It adds an `AND` not an `OR`
 
 You can also add multiple `.filter().filter()` but then that will act as a chain
 
-        from django.db.models import Q
+    from django.db.models import Q
 
 Q object filter 
 
-        filter(
-            Q(title__icontains=title)|Q(description__icontains=term)
-        )
+    filter(
+        Q(title__icontains=title)|Q(description__icontains=term)
+    )
 
 Q objects are sub-queries
 
@@ -171,17 +171,17 @@ Searching is better to use a dedicated search engine like elasticsearch
 
 Let django run operations on each item in a queryset and append the result of that as a new attribute
 
-        from django.db.models import Count, Sum
+    from django.db.models import Count, Sum
 
-        courses = models.course.objects.filter(
-            published=True
-        ).annotate(
-            total_steps=Count('text',distinct(True)) + Count('quiz', distinct(True))
-        )
+    courses = models.course.objects.filter(
+        published=True
+    ).annotate(
+        total_steps=Count('text',distinct(True)) + Count('quiz', distinct(True))
+    )
 
 ## Aggregates
 
-        total = courses.aggregate(total=Sum(total_steps))
+    total = courses.aggregate(total=Sum(total_steps))
 
 Aggregates are done on qurysets
 
@@ -191,19 +191,19 @@ Aggregates are done on qurysets
 
 Sometimes you can check the SQL debug toolbar to see any duplciate queries and extended time
 
-        try:
-            models.Course.objects.prefetch_related(
-                'quiz_set', 'text_set', 'quiz_set__question_set'
-            ).get(pk=pk)
-        catch models.Course.DoesNotExist:
-            raise Http404
+    try:
+        models.Course.objects.prefetch_related(
+            'quiz_set', 'text_set', 'quiz_set__question_set'
+        ).get(pk=pk)
+    catch models.Course.DoesNotExist:
+        raise Http404
 
 `selected_related` is for smaller amounts of items (one)
 The foreign key field, going from `sub` to `parent`
 
-        step = models.Quiz.objects.select_related('course').get(
-            course_id=course_pk, pk=step.pk, course__published=True
-        )
+    step = models.Quiz.objects.select_related('course').get(
+        course_id=course_pk, pk=step.pk, course__published=True
+    )
 
 **These can make some huge performance improvements on SQL side**
 

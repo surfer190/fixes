@@ -5,7 +5,7 @@ date: '2020-06-21'
 summary: ''
 title: Undo And Redo In Vim
 ---
-# How to Undo and Redo in vim
+# How to Undo and Redo in Vim
 
 ## Undo
 

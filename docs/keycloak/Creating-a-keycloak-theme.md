@@ -9,12 +9,12 @@ title: Creating A Keycloak Theme
 
 1. Mount a local theme to the container (assuming keycloak already running)
 
-        # Create directory for the theme
-        mkdir my-theme
+    # Create directory for the theme
+    mkdir my-theme
 
-        docker container list
-        docker commit <running-container-id> <commit-name>
-        docker run -d -p 5000:8080 --mount type=bind,source=<my-source>,target=<my-target> <commit-name>
+    docker container list
+    docker commit <running-container-id> <commit-name>
+    docker run -d -p 5000:8080 --mount type=bind,source=<my-source>,target=<my-target> <commit-name>
 
 2. Disable Cache
 

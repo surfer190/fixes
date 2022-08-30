@@ -16,7 +16,7 @@ title: Building Scalable Web Applications
 7. Make use of asynchronous communication where possible
 8. Use queues to make your tasks atomic - easy retrieved when they fail
 9. Always have the ability to roll back your code for failed deploys
-10. Load test your applicatino every day
+10. Load test your application every day
 11. Root out a single point of failure
 12. Automate everything to run continuously
 

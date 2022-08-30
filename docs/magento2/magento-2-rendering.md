@@ -5,7 +5,7 @@ date: '2020-06-14'
 summary: ''
 title: Magento 2 Rendering
 ---
-# Magento 2 Fundementals: Rendering
+# Magento 2 Fundamentals: Rendering
 
 ## Templates
 

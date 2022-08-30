@@ -167,7 +167,7 @@ Use [Cookie Cutter](http://cookiecutter-django.readthedocs.io/en/latest/index.ht
 - Second level: project root: `django project`
 - Configuration root: `settings module`
 
-# Django App Design Fundementals
+# Django App Design Fundamentals
 
 > Write apps that do one thing and do it well
 

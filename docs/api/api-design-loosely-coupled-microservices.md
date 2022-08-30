@@ -6,7 +6,7 @@ summary: ''
 title: API Design - Loosely Coupled Microservices
 ---
 
-Independence it vital for independent scaling - horizontally scaling or deprecating just the service needed based on usage.
+Independence is vital for independent scaling - horizontally scaling or deprecating just the service needed based on usage.
 
 If they are too dependent on each other (or closely coupled) - a break or change in one microservice will affect the others.
 

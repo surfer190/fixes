@@ -41,6 +41,3 @@ Load an index template
     sudo filebeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
 
 > Filebeat comes packaged with sample Kibana dashboards that allow you to visualize Filebeat data in Kibana
-
-
-

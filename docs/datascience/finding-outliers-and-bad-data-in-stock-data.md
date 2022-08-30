@@ -92,10 +92,6 @@ So I looked at [this answer](https://stackoverflow.com/questions/40701267/how-to
 
 But this only works if there is only 1 continuous instance of bad data.
 
-
-
-
-
 ### Source
 
 * [Stackoverflow: Detect and exclude outliers in pandas dataframe](https://stackoverflow.com/questions/23199796/detect-and-exclude-outliers-in-pandas-data-frame)

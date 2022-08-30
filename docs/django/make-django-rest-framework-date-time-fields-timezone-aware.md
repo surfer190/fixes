@@ -34,6 +34,6 @@ Now the `json` output of the viewset will be in the expected timezone.
 
 __Writing tests for these scenarios is very important__
 
-Sources:
+### Sources:
 
-[Make DRF Timezone aware](https://stackoverflow.com/questions/17331578/django-rest-framework-timezone-aware-renderers-parsers)
+* [Make DRF Timezone aware](https://stackoverflow.com/questions/17331578/django-rest-framework-timezone-aware-renderers-parsers)

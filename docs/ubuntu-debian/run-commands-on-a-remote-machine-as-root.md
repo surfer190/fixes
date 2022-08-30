@@ -13,5 +13,6 @@ or
 
 `ssh -t user@host sudo 'cmd'`
 
-Source: [Cyberciti.biz](http://cyberciti.biz)
+### Source
 
+* [Cyberciti.biz](http://cyberciti.biz)

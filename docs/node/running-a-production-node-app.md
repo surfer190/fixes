@@ -7,8 +7,6 @@ title: Running A Production Node App
 ---
 # Running a node app in production
 
-_I don't know much about js, I also don't like it_
-
 Usually you can run your app in `dev` mode with:
 
     node app.js

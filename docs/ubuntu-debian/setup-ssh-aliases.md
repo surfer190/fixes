@@ -39,4 +39,6 @@ ssh somealias
 ssh anotheralias
 ```
 
-source: [Servers for Hackers - SSH Tricks](https://serversforhackers.com/ssh-tricks)
+### Source
+
+* [Servers for Hackers - SSH Tricks](https://serversforhackers.com/ssh-tricks)

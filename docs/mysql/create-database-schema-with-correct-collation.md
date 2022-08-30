@@ -10,6 +10,6 @@ title: Create a database schema with the Correct Collation
 
     CREATE DATABASE mydb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-## Sources
+## Source
 
 * [DBA Overflow](https://dba.stackexchange.com/questions/76788/create-a-mysql-database-with-charset-utf-8)

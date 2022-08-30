@@ -11,7 +11,7 @@ The core tool for performant numerical computing with Python
 
 ### Numpy arrays
 
-* multi-demensional arrays
+* multi-dimensional arrays
 * closed to hardware - faster
 * designed for scientific computation
 

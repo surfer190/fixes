@@ -6,7 +6,7 @@ summary: ''
 title: High Performance Sports Betting - Key Notes
 ---
 
-# High Performance Sprots Betting Notes
+# High Performance Sports Betting Notes
 
 ## Typical Mistakes
 
@@ -39,7 +39,7 @@ Mastery:
 
 > Winning is less important than not losing
 
-Know what money is - the fundementals - how it is created. Respect it, but understand that it needs to be put at risk.
+Know what money is - the fundamentals - how it is created. Respect it, but understand that it needs to be put at risk.
 
 > You should also remember that your winnings aren’t actually won till you’ve sent them from your bookmaker’s account to your bank account
 
@@ -78,9 +78,9 @@ Create an inner driver for success
 
 ### Prepare to win
 
-1. known the game - learn about betting markets and probabilities. Research extensively first.
-2. stack the odds in your favour - ensure a positive expectancy
-3. specialise to get an edge -  many different sportds and markets - choose one's you win in.
+1. Known the game - learn about betting markets and probabilities. Research extensively first.
+2. Stack the odds in your favour - ensure a positive expectancy
+3. Specialise to get an edge -  many different sports and markets - choose one's you win in.
 4. Preparation - Plan -> Execute -> Evaluate
 > Get rich slowly
 
@@ -101,5 +101,3 @@ The majority of people in sports betting do not keep a record of their bets - an
 > Your memory is coded largely by the strength of the emotional attachment to that memory
 
 Find the sports that you win on and focus on that. Cut out sports that you lose on.
-
-

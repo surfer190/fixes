@@ -72,8 +72,8 @@ PasswordAuthentication no
 ```
 sudo service ssh restart
 ```
+
 #### Sources:
 
-[cyberciti](http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/)
-
-[digitaloceans](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)
+* [cyberciti](http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/)
+* [digitaloceans](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)

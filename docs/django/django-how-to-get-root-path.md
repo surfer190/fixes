@@ -13,6 +13,8 @@ From any file included in your django project you can run:
     import os
     os.path.dirname(os.path.realpath(__name__))
 
+> `__name__` is the name of the class, function, method, descriptor or generator
+
 That will give
 
     ~/projects/my-django-project

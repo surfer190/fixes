@@ -23,8 +23,8 @@ The different storage types hold, organise and present data in different ways.
 * Organised into chunks of evenly sized volumes
 * Each block has a unique identifier
 * Decouples data and puts across multiple environments
-* Usually in SAN (Storager Area Network) environments and must be tied to a functioning server
-* No single path to data - can be accessed qucikly
+* Usually in SAN (Storage Area Network) environments and must be tied to a functioning server
+* No single path to data - can be accessed quickly
 * Efficient, reliable, easy to manage
 * Better for lots of data
 * Expensive

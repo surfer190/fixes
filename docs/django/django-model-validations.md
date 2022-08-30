@@ -24,14 +24,14 @@ Add the following method to your model
 These validations will fire when creating objects with a `ModelForm` but they will not if you are just creating the object directly.
 
     full_time_equivalent = models.DecimalField(
-            max_digits=5,
-            decimal_places=2,
-            default=100,
-            validators=[
-                MinValueValidator(Decimal(0)),
-                MaxValueValidator(Decimal(100))
-            ]
-        )
+        max_digits=5,
+        decimal_places=2,
+        default=100,
+        validators=[
+            MinValueValidator(Decimal(0)),
+            MaxValueValidator(Decimal(100))
+        ]
+    )
 
 So it is again as above you need to run the `self.full_clean()` method on `save()`
 

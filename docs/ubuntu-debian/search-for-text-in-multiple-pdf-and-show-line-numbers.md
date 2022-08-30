@@ -5,7 +5,7 @@ date: '2020-06-21'
 summary: ''
 title: Search For Text In Multiple Pdf And Show Line Numbers
 ---
-#Search for Text though Multiple PDFs in a Driectory and Show Line Numbers, Output to a Text File
+#Search for Text though Multiple PDFs in a Directory and Show Line Numbers, Output to a Text File
 
 ```
 find <path> -name '*.pdf' -exec sh -c 'pdftotext "{}" - | grep -in --with-filename --label="{}" --color "<pattern>"' \; > <filename>.txt

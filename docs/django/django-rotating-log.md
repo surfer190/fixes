@@ -36,4 +36,3 @@ In your django settings file:
 
 * [Stackoverflow Location of Rotating Logs](https://stackoverflow.com/questions/19256919/location-of-django-logs-and-errors/19257221)
 * [LogHandler Can't set max bytes](https://stackoverflow.com/questions/50677053/django-logging-cant-set-maxbytes)
-

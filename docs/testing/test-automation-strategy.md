@@ -41,9 +41,6 @@ Execution - multiple times a day in its own CI job or integrated into CI wheneve
 
 > Automated tests need to be maintained
 
-
-
-
 ## Source
 
 * [Test Automation University: Foundation for Successful Testing](https://testautomationu.applitools.com/setting-a-foundation-for-successful-test-automation/chapter1.html)

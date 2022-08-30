@@ -33,13 +33,13 @@ To create a field storing workday hours it is sometimes good to use `seconds`to 
         (36000, '10')
     )
 
-        workday_hours = models.PositiveIntegerField(
-            choices=WORKDAY_CHOICES,
-            default=28800
-        )
+    workday_hours = models.PositiveIntegerField(
+        choices=WORKDAY_CHOICES,
+        default=28800
+    )
 
 But there is a way to do this with a list comprehension
 
-         choices = [(3600 * num, num) for num in range(0, 10, 1)]
+    choices = [(3600 * num, num) for num in range(0, 10, 1)]
 
 Unfortunately `range()` does not work with a decimal step

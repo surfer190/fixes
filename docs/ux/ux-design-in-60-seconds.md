@@ -313,4 +313,4 @@ Users actually will spend more time in the future.
 
 ### Source
 
-[Lynda: Chris Nodder User Experience Fundementals](http://www.lynda.com/User-Experience-tutorials/User-Experience-Fundamentals-Web-Design/421802-2.html)
+[Lynda: Chris Nodder User Experience Fundamentals](http://www.lynda.com/User-Experience-tutorials/User-Experience-Fundamentals-Web-Design/421802-2.html)

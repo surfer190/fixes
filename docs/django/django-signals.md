@@ -54,7 +54,6 @@ Alternatively you can connect to signals without the `decorator`:
 
         user_logged_out.connect(add_message_on_logout)
 
-
 ### Source
 
 [Stackoverflow Signals](https://stackoverflow.com/questions/7115097/the-right-place-to-keep-my-signals-py-files-in-django/21612050#21612050)

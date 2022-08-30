@@ -5,7 +5,7 @@ date: '2020-06-14'
 summary: ''
 title: Obey The Testing Goat
 ---
-# Notes to obey the testing goat
+# Notes to Obey the testing goat
 
 ## Installing Geckodriver
 
