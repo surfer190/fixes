@@ -26,8 +26,8 @@ Add `become: yes` to top of playbook
 
 #### Error: msg: No package matching 'XXXXX' is available
 
-  failed: [default] => (item=XXXXX) => {"failed": true, "item": "XXXXX"}
-  msg: No package matching 'XXXXX' is available
+    failed: [default] => (item=XXXXX) => {"failed": true, "item": "XXXXX"}
+    msg: No package matching 'XXXXX' is available
 
 **Solution**
 
@@ -46,20 +46,17 @@ Eg. `php-mysql` => `php5-mysql`
 
 ### ERROR! template error while templating string: expected token 'end of print statement', got 'key'
 
-```
-fatal: [localhost]: FAILED! => {"failed": true, "msg": "ERROR! template error while templating string: expected token 'end of print statement', got 'key'"}
-```
+    fatal: [localhost]: FAILED! => {"failed": true, "msg": "ERROR! template error while templating string: expected token 'end of print statement', got 'key'"}
 
 This is usually an issue with a variable containing a space
 
-`ssh_pub_key={{ public key }}`
+    ssh_pub_key={{ public key }}
 
 Should be:
 
-`ssh_pub_key={{ public_key }}`
-
-Source: [Stackoverflow](http://stackoverflow.com/questions/31295662/ansible-copy-fails-template-error)
+    ssh_pub_key={{ public_key }}
 
 #### Sources
 
 * [Six Ansible Practices](http://hakunin.com/six-ansible-practices)
+* [Stackoverflow: Ansible copy fails template error](http://stackoverflow.com/questions/31295662/ansible-copy-fails-template-error)
