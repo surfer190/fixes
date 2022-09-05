@@ -2040,17 +2040,17 @@ Transaction outputs consist of:
 * An amount of bitcoin denominated in satoshis
 * A cryptographic puzzle that determines the conditions required to spend the output - known as the `scriptPubKey`, locking or witness script.
 
-    "vout": [
-        {
-        "value": 50.00000000,
-        "n": 0,
-        "scriptPubKey": {
-            "asm": "0496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858ee OP_CHECKSIG",
-            "hex": "410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac",
-            "type": "pubkey"
-        }
-        }
-    ],
+        "vout": [
+            {
+            "value": 50.00000000,
+            "n": 0,
+            "scriptPubKey": {
+                "asm": "0496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858ee OP_CHECKSIG",
+                "hex": "410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac",
+                "type": "pubkey"
+            }
+            }
+        ],
 
 Using the bitcoin cli the value is in bitcoin, but in the transaction itself it is in satoshis.
 The script is a specific scripting language.

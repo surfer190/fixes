@@ -145,3 +145,13 @@ Repeat a mantra to blow the festering mind away - I am not the body - not even t
 The fraction of infinity, of that vast abyss of time, allotted to each of us. Absorbed in an instant into eternity.
 
 That whatever happens has always happened, and always will, and is happening at this very moment, everywhere. Just like this.
+
+We have the full ability to make free will choices that improve our life or cause our life to decline. Everything that we have experienced, are experiencing, or will experience in life is based on our own free will decisions. - David Roylance. “The Words of The Buddha - V1 - Developing a Life Practice.”
+
+> Being sick is not an excuse for being impolite, unkind, unfriendly, and disrespectful to others.
+
+ When you have attained Enlightenment, you will not experience any anger, have feelings of frustration, or blame others for the problems you face.
+ 
+ You will not have anxiety, sadness, boredom, loneliness, fears, or other discontent feelings. When you attain Enlightenment, you will have eliminated your cravings and addictions. You will have generosity, loving-kindness, and compassion for “all beings”. You will not discriminate or judge others. You will not have a desire to always be “right” and argue.
+ 
+   

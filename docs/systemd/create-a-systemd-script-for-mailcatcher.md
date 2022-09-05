@@ -15,29 +15,24 @@ A lot of this stuff needs to be done as root so you might as well log in as root
 
 3. Put the following contents in there:
 
-    ```
-    [Unit]
-    Description=Mailcatcher Service
+        [Unit]
+        Description=Mailcatcher Service
 
-    [Service]
-    Type=simple
-    ExecStart=/usr/local/bin/mailcatcher
-    Restart=always
+        [Service]
+        Type=simple
+        ExecStart=/usr/local/bin/mailcatcher
+        Restart=always
 
-    [Install]
-    WantedBy=multi-user.target
-    ```
+        [Install]
+        WantedBy=multi-user.target
 
 4. Enable the mailcatcher service and automatically create the symlink to
 
-    `enable mailcatcher.service`
+        enable mailcatcher.service
 
 5. To enable boot time start you need to symlink it to `/etc/systemd/system` with:
 
-
-    ```
-    ln -s /lib/systemd/mailcatcher.service /etc/systemd/system/mailcatcher.service
-    ```
+        ln -s /lib/systemd/mailcatcher.service /etc/systemd/system/mailcatcher.service
 
 ### Source
 
