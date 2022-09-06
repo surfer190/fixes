@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-08-13: _Python_ [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
 - 2022-08-08: _Python_ [Python Packaging - an Overview](python/packaging-overview.md)
 - 2022-08-08: _Python_ [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-25: _Python_ [Nosetests](python/nosetests.md)
 - 2022-07-25: _Python_ [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
 - 2022-07-25: _Queues_ [Task Queue vs Message Queue](queues/task-queue-vs-message-queue.md)
-- 2022-07-25: _AWS_ [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
 
 ## Table of Contents
 
@@ -119,6 +119,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-16: [Bad Blood Book Summary](book-summaries/bad-blood.md)
 
 ## Buddha_Dharma
+- 2022-09-01: [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
 - 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
 - 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)

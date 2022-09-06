@@ -40,7 +40,7 @@ When packaging the `snapshot` top level folder should be part of the archive.
 
 So how do we get the configuration dumps?
 
-I use `junos pyez` so connect to a list of inventory devices and write the config to files.
+I use `junos pyez` to connect to a list of inventory devices and write the config to files.
 The `rpc` I use is:
 
     text_config = dev.rpc.get_config(options={
@@ -128,7 +128,7 @@ Then start the notebook:
 
 ### Interacting with batfish
 
-Then you need to import some packages, set the network and snapshot and then sdtart asking questions:
+You need to import some packages, set the network and snapshot - then start asking questions:
 
     import pandas as pd
     from pybatfish.client.commands import *
@@ -220,7 +220,7 @@ They provide some ideas from their [public notebooks](https://pybatfish.readthed
 
 ### Sources
 
-* [](https://pc.nanog.org/static/published/meetings/NANOG75/1878/20190218_Halperin_Using_Open_Source_v1.pdf)
+* [Nanog: Batfish and Pybatfish](https://pc.nanog.org/static/published/meetings/NANOG75/1878/20190218_Halperin_Using_Open_Source_v1.pdf)
 * [Batfish Introduction](https://sudonull.com/post/32566-Batfish-Introduction)
 * [Unleashing the Batfish (Part 1 - Configuration Analysis)](https://www.packetflow.co.uk/unleashing-the-batfish-part-1-configuration-analysis/)
 * [Batfish: Cheatsheet](https://www.batfish.org/assets/cheat-sheet.pdf)
