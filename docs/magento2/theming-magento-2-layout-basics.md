@@ -9,7 +9,7 @@ title: Theming Magento 2 Layout Basics
 
 ## Layouts
 
-Pull together entire set of tempalte files to be rendered by the browser
+Pull together entire set of template files to be rendered by the browser
 
 View configuration is built into a structure.
 
@@ -38,7 +38,7 @@ Iterated the sequence from last ancestor to the current theme
 
 #### Core Layout Files
 
-Module specific pagelayout in `./view/frontend/page_layout`
+Module specific page layout in `./view/frontend/page_layout`
 
 Page configuration and generic layout files in `./view/frontend/layout` and `./view/frontend/base`
 
@@ -82,7 +82,7 @@ For example to move `compare products` in `default.xml`:
 
 ## Different XML File Types
 
-* Page layout - overall strcuture
+* Page layout - overall structure
 * Page layout declaration - registers page layouts in Magento
 * Page configuration - overall page config and head section (meta, css, js)
 * Generic layout - rare, mostly used for ajax response content.
@@ -96,7 +96,7 @@ Finding them: Grep search `<layout (.*?)page_layout.xsd">`
 
 ## Container
 
-Sole purpose of assigning content strcuture to a page. Just included elements.
+Sole purpose of assigning content structure to a page. Just included elements.
 
 A block employs templates into a page.
 
@@ -131,8 +131,8 @@ Check [Layout Files Types](http://devdocs.magento.com/guides/v2.0/frontend-dev-g
 
 * `<container name="">` - create new container
 * `<referenceContainer name="">` - reference existing container element
-* `<move element="" destination="">` - move an lement into a new parent container
-* `<update handle="">` - include instrctions from another handle and execute recursively
+* `<move element="" destination="">` - move an element into a new parent container
+* `<update handle="">` - include instructions from another handle and execute recursively
 
 ### Page Layout Declararion
 
@@ -209,7 +209,7 @@ Remove a container:
 
     <referenceContainer name="container.name" remove="true" />
 
-### Manageing a block
+### Managing a block
 
 Declare a block:
 
@@ -258,7 +258,7 @@ Eg. `$this->getCssClass()`
 
 Templates are snippets of HTML code and PHP elements
 
-Templates are lcoated in the module: `app/code/<Vendor>/<module>/view/_area_/tempaltes`
+Templates are located in the module: `app/code/<Vendor>/<module>/view/_area_/templates`
 
 Can enable template hints
 
@@ -282,7 +282,7 @@ Create `app/design/frontend/<Vendor>/<theme>/Magento_Theme/layout/default.xml`
 
     <page ...>
       <referenceContainer name="content">
-        <block class="Magento\Framework\View\Element\Tempalte" name="custom.name" tempalte="path/to/my/template.phtml">
+        <block class="Magento\Framework\View\Element\Template" name="custom.name" template="path/to/my/template.phtml">
       </referenceBlock/>
     </page>
 

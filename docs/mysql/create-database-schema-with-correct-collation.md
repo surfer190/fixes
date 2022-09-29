@@ -12,4 +12,4 @@ title: Create a database schema with the Correct Collation
 
 ## Source
 
-* [DBA Overflow](https://dba.stackexchange.com/questions/76788/create-a-mysql-database-with-charset-utf-8)
+* [DBA Overflow MySQL db charset utf8](https://dba.stackexchange.com/questions/76788/create-a-mysql-database-with-charset-utf-8)

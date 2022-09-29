@@ -21,7 +21,7 @@ title: Setup Free Ssl Letsencypt Https Certificate Magento 2
 
 The key part is allowing the `.well-known/acme-challenge`
 
-## step 2
+## Step 2
 
 Then make sure to point `letsencypt` to the `pub` directory
 

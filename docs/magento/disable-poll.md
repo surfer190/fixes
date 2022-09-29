@@ -3,7 +3,7 @@ author: ''
 category: Magento
 date: '2015-01-18'
 summary: ''
-title: Disable Poll
+title: Disable Poll Magento 1
 ---
 # Magento Disable Poll
 

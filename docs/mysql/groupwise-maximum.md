@@ -24,8 +24,6 @@ I tried this, but unfortunately I got an error from mysql:
 
     Lost connection to MySQL during query
 
-
-
 ### Sources
 
 * [Ordering within a sql group by clause](https://thoughtbot.com/blog/ordering-within-a-sql-group-by-clause)

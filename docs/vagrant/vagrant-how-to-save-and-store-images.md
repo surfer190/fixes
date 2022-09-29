@@ -35,5 +35,7 @@ vagrant box add package.box --name "laravel/homestead"
 vagrant box list
 ```
 
-Source: [Vagrant Package Docs](https://docs.vagrantup.com/v2/cli/package.html)
-[Box File Format](https://docs.vagrantup.com/v2/boxes/format.html)
+### Sources
+
+* [Vagrant Package Docs](https://docs.vagrantup.com/v2/cli/package.html)
+* [Box File Format](https://docs.vagrantup.com/v2/boxes/format.html)

@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Rabbitmq
+category: Queues
 date: '2019-10-24'
 summary: ''
 title: Rabbit Mq Basics

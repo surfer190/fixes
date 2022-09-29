@@ -68,4 +68,3 @@ Three checks are being performed:
 Running jsnapy:
 
     jsnapy --snapcheck -f jsnapy_config.yaml -v
-

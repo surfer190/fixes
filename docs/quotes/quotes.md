@@ -71,3 +71,13 @@ The hero:
 > We reject: kings, presidents and voting. We believe in: rough consensus and running code. - Dave Clark at IETF 24
 
 He could never simply relax and enjoy life - he had to prove that he was better than everybody else. Life was a game, and he had to win at all costs. - Angelo Agrizzi "The real Bosasa Story"
+
+> Rome wasn't built in a day
+
+Man shall eat from the sweat of his brow - Genesis 3:19
+
+> For even when we were with you, we gave you this rule: "The one who is unwilling to work shall not eat." 2 Thessalonians 3:10
+
+The wherewithal - money
+
+

@@ -25,6 +25,8 @@ title: Set Up Mail Magento2
 
 ### Note: Disable other mail modules
 
-Like Ebizmarts
+Like Ebizmarts..
 
-[Source](http://lukepeters.me/blog/getting-the-php-mail-function-to-work-on-ubuntu)
+### Source
+
+* [Getting the PHP Mail Function to work on Ubuntu](http://lukepeters.me/blog/getting-the-php-mail-function-to-work-on-ubuntu)

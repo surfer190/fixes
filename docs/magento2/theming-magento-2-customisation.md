@@ -17,7 +17,7 @@ It is then automatically recognised
 
 Why?
 
-* Faster deveopment
+* Faster development
 * Simpler customisation
 * Cleaner Structure
 * Selectors nesting

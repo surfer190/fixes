@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-09-16: _Python_ [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-08-13: _Python_ [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
 - 2022-08-08: _Python_ [Python Packaging - an Overview](python/packaging-overview.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-25: _Python_ [Docstring types](python/docstring-styles.md)
 - 2022-07-25: _Python_ [Nosetests](python/nosetests.md)
 - 2022-07-25: _Python_ [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
-- 2022-07-25: _Queues_ [Task Queue vs Message Queue](queues/task-queue-vs-message-queue.md)
 
 ## Table of Contents
 
@@ -37,9 +37,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-02-26: [Android Studio Cheatsheet](android/android-studio-cheatsheet.md)
 - 2015-02-13: [Create A New Activity With Navigation Android](android/create-a-new-activity-with-navigation-android.md)
 - 2015-02-13: [View All Methods Local To A Class Android Studio](android/view-all-methods-local-to-a-class-android-studio.md)
-
-## Angular-Js
-- 2016-05-13: [Key Knowledge Angular Js](angular-js/Key-knowledge-angular-js.md)
 
 ## Ansible
 - 2022-03-15: [Awx - Get a List of Available Collections in your Execution Environment](ansible/awx-get-list-of-collections-in-execution-environment.md)
@@ -228,11 +225,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-09-23: [Docker Systemd Script](docker/docker-systemd-script.md)
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
 
-## Ecmascript
-- 2016-02-10: [Check If Using Jquery Or Prototype](ecmascript/check-if-using-jquery-or-prototype.md)
-- 2016-02-10: [Intro To Ecmascript And History](ecmascript/intro-to-es-and-history.md)
-- 2016-02-10: [Ecmascript Basics](ecmascript/es-basics.md)
-
 ## Economics
 - 2021-12-20: [A Tour of Economics](economics/a-tour-of-economics.md)
 - 2021-12-20: [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
@@ -253,7 +245,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Financial-Planning
 - 2020-06-14: [South African Financial Planning](financial-planning/south-african-financial-planning.md)
-- 2020-06-14: [Excel Financial Planning](financial-planning/excel-financial-planning.md)
 
 ## Flask
 - 2017-12-19: [Flask Basics](flask/flask-basics.md)
@@ -277,14 +268,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-06-07: [Install Golang On Ubuntu](golang/install-golang-on-ubuntu.md)
 - 2015-06-07: [Getting Started With Golang](golang/getting-started-with-golang.md)
 
-## Grunt
-- 2015-01-18: [Grunt Setup](grunt/grunt-setup.md)
-
 ## History
 - 2021-09-20: [A Brief Timeline of World History](history/world-history-timeline.md)
-
-## Homebrew
-- 2015-10-09: [How To Update And Upgrade All Packages](homebrew/how-to-update-and-upgrade-all-packages.md)
 
 ## Http
 - 2022-06-23: [Http3](http/http3.md)
@@ -385,19 +370,19 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Magento
 - 2020-06-21: [How To Debug Local Email On Development Machine Magento Without A Smtp Server](magento/how-to-debug-local-email-on-development-machine-magento-without-a-smtp-server.md)
-- 2020-06-21: [Log To A File](magento/log-to-a-file.md)
-- 2017-01-14: [Magento 1 Link](magento/magento-1-link.md)
-- 2015-01-18: [Enable Logging](magento/enable-logging.md)
-- 2015-01-18: [Add Customjs To Cms Page](magento/add-customjs-to-cms-page.md)
-- 2015-01-18: [Disable Poll](magento/disable-poll.md)
-- 2015-01-18: [Create A Custom Block](magento/create-a-custom-block.md)
+- 2020-06-21: [Log To A File in Magento 1](magento/log-to-a-file.md)
+- 2017-01-14: [Magento 1 Links](magento/magento-1-link.md)
+- 2015-01-18: [Enable Logging Magento 1](magento/enable-logging.md)
+- 2015-01-18: [Add Customjs To Cms Page Magento 1](magento/add-customjs-to-cms-page.md)
+- 2015-01-18: [Disable Poll Magento 1](magento/disable-poll.md)
+- 2015-01-18: [Create A Custom Block in Magento 1](magento/create-a-custom-block.md)
 - 2015-01-18: [Top Tips Magento](magento/top-tips-magento.md)
 - 2015-01-18: [Set Layout Of Category Page](magento/set-layout-of-category-page.md)
 - 2015-01-18: [Move Sidebar Shop By Or Categories To Left Or Right](magento/move-sidebar-shop-by-or-categories-to-left-or-right.md)
 - 2015-01-18: [Permissions Mcrypt Gd Must  Be Loaded](magento/permissions-mcrypt-gd-must -be-loaded.md)
 
 ## Magento2
-- 2020-06-14: [Magento 2 Fundamentals Of Development](magento2/magento-2-fundementals-of-development.md)
+- 2020-06-14: [Magento 2 Fundamentals Of Development](magento2/magento-2-fundamentals-of-development.md)
 - 2020-06-14: [Theming Magento 2 Layout Basics](magento2/theming-magento-2-layout-basics.md)
 - 2020-06-14: [Magento 2 Api](magento2/magento-2-api.md)
 - 2020-06-14: [Theming Magento 2 Customisation](magento2/theming-magento-2-customisation.md)
@@ -409,16 +394,11 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-06-30: [Magento 2 Logrotate For Logs Getting Large](magento2/magento-2-logrotate-for-logs-getting-large.md)
 - 2017-05-24: [Profiling With Nginx](magento2/profiling-with-nginx.md)
 - 2017-04-08: [Setup Free Ssl Letsencypt Https Certificate Magento 2](magento2/setup-free-ssl-letsencypt-https-certificate-magento-2.md)
-- 2017-02-23: [Cool Features In Magento 2](magento2/cool-features-in-magento-2.md)
-- 2017-02-01: [Managing Your Magento 2 Store](magento2/managing-your-magento-2-store.md)
 - 2017-02-01: [Responsive Web Design Magento2](magento2/responsive-web-design-magento2.md)
 - 2017-02-01: [Set Up Mail Magento2](magento2/set-up-mail-magento2.md)
 - 2017-01-27: [Magento 2 Links](magento2/magento-2-links.md)
 - 2017-01-16: [Magento 2 Get Thumbnail Image From A Product](magento2/magento-2-get-thumbnail-image-from-a-product.md)
 - 2017-01-09: [Magento 2 Custom Stock Status Custom Development](magento2/magento-2-custom-stock-status-custom-development.md)
-- 2017-01-09: [Magento 2 Learning Bootcamp](magento2/magento-2-learning-bootcamp.md)
-- 2017-01-09: [Magento 2 Performance Info](magento2/magento-2-performance-info.md)
-- 2016-12-14: [How To Access Standard Php Files From Doc Root. With Nginx](magento2/how-to-access-standard-php-files-from-doc-root.-with-nginx.md)
 - 2016-12-14: [Install Php7 Magento 2 Dependencies](magento2/install-php7-magento-2-dependencies.md)
 - 2016-11-02: [Issuing A Letsencrypt Certification For Magento2 With Nginx](magento2/issuing_a_letsencrypt_certification_for_magento2_with_nginx.md)
 - 2016-07-28: [Magento 2 Intial Admin Configuration](magento2/magento-2-intial-admin-configuration.md)
@@ -446,7 +426,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-10-15: [Getting Started with Juniper and Batfish](network-automation/getting-started-with-juniper-and-batfish.md)
 - 2020-10-15: [Advanced Batfish: Integrationg Network validation and CI](network-automation/advanced-batfish-integrating-with-ci-cd.md)
 - 2020-07-07: [Pyez Dev Guide](network-automation/pyez-dev-guide.md)
-- 2020-07-07: [Packet Guide To Core Networking Protocols](network-automation/packet-guide-to-core-networking-protocols.md)
 - 2020-06-14: [Terraform Overview](network-automation/terraform-overview.md)
 - 2020-06-14: [Jsnapy](network-automation/jsnapy.md)
 - 2020-06-14: [Network Programmability And Automation](network-automation/network-programmability-and-automation.md)
@@ -461,14 +440,15 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-23: [Basic Networking Utilities Cheatsheet](network-automation/basic-networking-utilities-cheatsheet.md)
 
 ## Networking
-- 2022-06-15: [Proxy vs Reverse Proxy](networking/proxy-vs-reverse-proxy.md)
 - 2020-11-25: [BGP](networking/bgp.md)
 - 2020-10-05: [How does a Internet Subscriber's traffic Flow travel from Service Provider Perspective](networking/how-the-internet-works-from-service-provider.md)
+- 2020-07-07: [Packet Guide To Core Networking Protocols](networking/packet-guide-to-core-networking-protocols.md)
 - 2020-06-03: [Ipv6 And Never Going Sub Slash 64](networking/ipv6-and-never-going-sub-slash-64.md)
 - 2019-07-27: [Find Local Devices Dhcp](networking/find-local-devices-dhcp.md)
 - 2019-06-13: [Centos Routes](networking/centos-routes.md)
 
 ## Nginx
+- 2022-06-15: [Nginx - Proxy vs Reverse Proxy](nginx/proxy-vs-reverse-proxy.md)
 - 2019-09-04: [SELinux And Nginx](nginx/SELinux-and-nginx.md)
 - 2019-05-30: [Nginx On Centos](nginx/nginx-on-centos.md)
 - 2016-12-14: [Enable A Site From Sites Available](nginx/enable-a-site-from-sites-available.md)
@@ -516,6 +496,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-09-16: [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-08-13: [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
 - 2022-08-08: [Python Packaging - an Overview](python/packaging-overview.md)
 - 2022-08-08: [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
@@ -622,6 +603,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Queues
 - 2022-07-25: [Task Queue vs Message Queue](queues/task-queue-vs-message-queue.md)
 - 2022-07-22: [ZeroMQ](queues/zero-mq.md)
+- 2019-10-24: [Rabbit Mq Basics](queues/rabbit-mq-basics.md)
 
 ## Quotes
 - 2019-07-27: [Quotes](quotes/quotes.md)
@@ -631,12 +613,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Exploratory Data Analysis](r-stats/exploratory-data-analysis.md)
 - 2018-05-23: [Regression Models](r-stats/regression-models.md)
 - 2018-03-19: [Setting Up R On Macos](r-stats/setting-up-r-on-macos.md)
-
-## Rabbitmq
-- 2019-10-24: [Rabbit Mq Basics](rabbitmq/rabbit-mq-basics.md)
-
-## Reactjs
-- 2015-12-03: [Reactjs](reactjs/reactjs.md)
 
 ## Redis
 - 2020-06-14: [Redis Basics](redis/redis-basics.md)
@@ -667,7 +643,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-06-03: [Tips on Selling Cars](selling/selling-cars.md)
 
 ## Servers
-- 2018-08-19: [Setup A Vps Quickly](servers/setup-a-vps-quickly.md)
+- 2018-08-19: [Setup An Ubuntu Vps Quickly](servers/setup-a-vps-quickly.md)
 - 2016-08-12: [Copy Your Ssh Key To Clipboard Fast](servers/copy-your-ssh-key-to-clipboard-fast.md)
 - 2015-09-20: [Ssh Into An Aws Box](servers/ssh-into-an-aws-box.md)
 
@@ -760,12 +736,4 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Vscode
 - 2017-11-08: [Setting Python Path With Vscode](vscode/setting-python-path-with-vscode.md)
-
-## Vuejs
-- 2020-06-14: [Vue Js Workflow](vuejs/vue-js-workflow.md)
-- 2017-06-22: [Vue Js 2](vuejs/vue-js-2.md)
-- 2017-06-22: [Vue Js Animations](vuejs/vue-js-animations.md)
-- 2017-06-13: [Vue Js Directives](vuejs/vue-js-directives.md)
-- 2017-06-13: [Vue Js Components](vuejs/vue-js-components.md)
-- 2017-06-13: [Vue Js Forms](vuejs/vue-js-forms.md)
 

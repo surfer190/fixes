@@ -15,7 +15,7 @@ title: Netflix Guide To Microservices
 
 ### Monolithic Database
 
-* On epeice of hardware running 1 big database
+* One piece of hardware running 1 big database
 * When it went down, everything went down
 * Looking for bigger hardware to vertically scale the application
 * Adding a column to a table was a big cross functional process
@@ -25,7 +25,7 @@ title: Netflix Guide To Microservices
 Developing a single application as a suite of small services, each running in its own process.
 Communicating with lightweight mechanisms often an HTTP resource API. - Martin Fowler
 
-* Seperation of concerns
+* Separation of concerns
 * scalability - lend themselves to horizontal scaling and workload partitioning
 * Virtualisation and elasticity - automated operations and on demand provisioning
 
@@ -190,7 +190,3 @@ Any piece of software reflects the organisational structure that produced it
 This is not solutions first, it was organisation first.
 
 Organisation should be refactored based on the value or way we deliver value.
-
-
-
-

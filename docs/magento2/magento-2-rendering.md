@@ -15,7 +15,7 @@ templates are `*.phtml` files
 
 ## Blocks
 
-Move reusable functionality from PHP temalte files into classes for reuse
+Move reusable functionality from PHP template files into classes for reuse
 
 Blocks provides data to template. Blocks instantiate models to query database.
 
@@ -29,8 +29,7 @@ pull together entire set of template files to be rendered in browser
 
 ## Process flow
 
-`Gather layout Configuration -> Generate page layout XML -> Generate blocks -> Execute output blocks ->
-Include tempaltes -> Execute child blocks -> Flush output`
+`Gather layout Configuration -> Generate page layout XML -> Generate blocks -> Execute output blocks -> Include tempaltes -> Execute child blocks -> Flush output`
 
 2 rendering systems:
 
@@ -87,13 +86,13 @@ Related to JS
 
 ## Blocks
 
-Every web page is a hierachy of blocks that can have any number of content blockd or child containers
+Every web page is a hierarchy of blocks that can have any number of content blocked or child containers
 
 Role:
 
 * Change look and feel of website
 * Add something to the page
-* Change the style of certain elemnt on a page
+* Change the style of certain element on a page
 * Change data on a page
 
 Magento 2 structure is more complex. Structure is defined by layout xml files
@@ -107,7 +106,7 @@ In a template, access to block's instance provides access to the data:
 ### AbstractBlock Methods
 
 * `_prepareLayout()` - method executed when a block is created.
-* `addChild()` - For hierachical layout
+* `addChild()` - For hierarchical layout
 * `_toHtml()` - before rendering
 * `_beforeToHtml()`/`_afterHtml()`/`toHtml()`
 
@@ -154,7 +153,6 @@ In magento 2, you can specify another object as the data container for a templat
 * `View\Layout\Generator\Block`
 * `View\Layout\Generator\Container`
 * `View\Layout\Generator\UiComponent`
-
 
 ### UiComponent
 
@@ -280,7 +278,7 @@ In `head/script`:
 
 #### CSS
 
-It can take a firect file name of module name:
+It can take a direct file name of module name:
 
 In`head/css` element:
 
@@ -319,7 +317,7 @@ You need to explicitly state what is being to refereed to `<referenceBlock>` or 
 
 #### Container
 
-Atrrbiutes:
+Attributes:
 
 * name (required)
 * htmlTag
@@ -377,7 +375,7 @@ Ui_components are predefined generic blocks, most common use is in `adminhtml` g
 </block>
 ```
 
-It is then passed to the constrcutor part of `data` injected through the `object manager`
+It is then passed to the constructor part of `data` injected through the `object manager`
 
 ### Action element
 
@@ -464,7 +462,7 @@ eg. `frontend/Magento/blank/*_*/layout/override/base/*.xml` or `frontend/Magento
 #### Layout Handles
 
 Requests that render output are associated with one or more layout handles
-Almost every request is assocaited with the default handle: `default.xml`
+Almost every request is associated with the default handle: `default.xml`
 
 Page specific handles: consists of the route, controller and action
 

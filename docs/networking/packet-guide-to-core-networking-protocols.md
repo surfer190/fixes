@@ -1,6 +1,6 @@
 ---
 author: ''
-category: Network-Automation
+category: Networking
 date: '2020-07-07'
 summary: ''
 title: Packet Guide To Core Networking Protocols
@@ -9,7 +9,7 @@ title: Packet Guide To Core Networking Protocols
 
 * Many books are too focused on a single technology or too broad
 * Network basic building blocks: routers, switches, access points and hosts
-* These building blocks have a set of rules when forwarding bets of info to eachother
+* These building blocks have a set of rules when forwarding bets of info to each other
 * Bits are wrapped in neat packages called **packets**
 * If a packet is present, it is there because some device or network host put it there
 
@@ -39,7 +39,7 @@ It was invented by Bob Kahn and Vint Cerf.
 
 * Organisation of functions and features to define its structural design
 * Compared to a postal system: each part has its own rules to obey but ultimately are there to deliver mail
-* The job of each device is determined by the hierachy or layer it is on
+* The job of each device is determined by the hierarchy or layer it is on
 * An email application on user pc should not be responsible for choosing the encoding sequence and signal type between client and server
 * The Network Interface Card (NIC) is not in the business of message header construction
 * Each layer has a function to perform and protocols associated with each layer
@@ -107,7 +107,7 @@ Goal is to improve standards, flexibility and openness (mutually accepted standa
 
 * End-to-end between OSI nodes
 * deal with low cost and reliable data transfer
-* transport connectoin establishment, release, data transfer and Qos
+* transport connection establishment, release, data transfer and Qos
 * **Not responsible for routing**, but does map to network layer addressing
 * Handle error control
 
@@ -120,7 +120,7 @@ Goal is to improve standards, flexibility and openness (mutually accepted standa
 
 #### Data Link Layer (Layer 2)
 
-* Reponsible for conneciton of data link between network layer entities
+* Responsible for connection of data link between network layer entities
 * Addresses are unique within the open system set of devices
 
 #### Physical Layer (Layer 1)
@@ -132,7 +132,7 @@ Goal is to improve standards, flexibility and openness (mutually accepted standa
 * Communication between peer entities
     * modes of communication
     * relationship between services provided at each adjacent layer boundary
-    * Mode conversion funcions (transport and network layers)
+    * Mode conversion functions (transport and network layers)
 * Identifiers (N-Addresses) - unambiguous names to identify access points at a particular layer
 * Properties of service access points
 * Definitions and descriptions of data units
@@ -153,7 +153,7 @@ Goal is to improve standards, flexibility and openness (mutually accepted standa
 
 * Guidelines for developing protocols
 
-Interesting that the 2 layer 4 protocols used today: TCP (Tranmission Control Protocol) and UDP (User Datagram Protocol) are differentiated from each other in the exact same way.
+Interesting that the 2 layer 4 protocols used today: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are differentiated from each other in the exact same way.
 * UDP - Connectionless, not concerned if packets arrive or not
 * TCP - Connection oriented, concerned that packets arrive at destination
 
@@ -163,9 +163,9 @@ Practically OSI/ITU-T Protocols are not seen as often as the TCP/IP model, altho
 
 * The Language of the Internet
 * Applications are built around this protocol suite
-* At Layer 4 there are 2 protocls both UDP and TCP but the model shares its name with the later.
+* At Layer 4 there are 2 protocols both UDP and TCP but the model shares its name with the later.
 * Layers 1 and 2 are government by the Local Area Network Protocol
-* Layer 3 belongs to IP with ICMP (Internet Control Message Protocol) and IGMP (Internt Group Membershp Protocol)
+* Layer 3 belongs to IP with ICMP (Internet Control Message Protocol) and IGMP (Internet Group Membership Protocol)
 
 Historically networks have been built on many technologies: FDDI (Fibre Distributed Data interface), Localtalk, Token ring, Ethernet and Wireless protocols like 802.11. Today **only Ethernet and 802.11** have survived
 
@@ -175,7 +175,7 @@ The dominance of TCP/IP can be seen in Wireshark
 * Almost 100% of layer 3 traffic is IPv4 (a small amount IPv6)
 * At layer 4: TCP and UDP dominate. ARP and 802.1x contribute.
 
-The TCP/IP model layers do not seperate apllication, pesentation and session; they are merged into a single layer called **application layer**
+The TCP/IP model layers do not seperate application, presentation and session; they are merged into a single layer called **application layer**
 
 TCP Model:
 1. Physical layer
@@ -222,7 +222,7 @@ Network interface, framing and media access
 
 #### Physical Layer
 
-The network interface cardor port
+The network interface card or port
 
 ### The Practical Side of TCP/IP
 
@@ -261,17 +261,17 @@ If port scanning is done on layer 4 then the solution is probably not going to b
 * Applying layers to equipment the capabilities and traffic on a device is easier to understand
 * **Routers and switches** form the building blocks of almost any network
 * **They all provide the same basic services when you plug them in, regardless of the vendor**.
-* Switches oeprate at level 2 and forward LAN frames based on MAC addresses in those frames, they also perform error checking on each frame and provide network segmentation through network traffic control from MAC addresses.
+* Switches operate at level 2 and forward LAN frames based on MAC addresses in those frames, they also perform error checking on each frame and provide network segmentation through network traffic control from MAC addresses.
 * Switches use SNMP (Simple Network Management Protocol) and VLAN's (Virtual Local Area Networks)
 * Routers process IP packets with the main function to get IP packets to the proper destination
 * The router checks Qos and fragmentation information
-* Many routers support firewalling, virtual private networks terminati, authentication and Network Address Translation (NAT)
+* Many routers support firewalling, virtual private networks terminate, authentication and Network Address Translation (NAT)
 * The term gateway has several meanings
 * Routers and network hosts are configured with a default gateway - but this is actually a router
 * It is called a default gateway because this is the network path to the rest of the world
 * The traditional gateway on layer 4 are used to convert between systems that do not share the same networking model
 * With VoIP the gateway is making a comeback - a gateway is required for a TCP/IP and SS7 (signaling system 7) to communicate with a regular telephone.
-* An _access point_ is sometimes referred to as a wireless hub because it broadcasts certain kidnds of traffic everywhere. However it (like an ethernet switch) uses MAC addresses to make forwarding decisions.
+* An _access point_ is sometimes referred to as a wireless hub because it broadcasts certain kinds of traffic everywhere. However it (like an ethernet switch) uses MAC addresses to make forwarding decisions.
 * Multi-layer switching has blurred the line between processing frames at Layer 2 and higher level functions like routing
 
 #### Layers vs Equipment
@@ -286,7 +286,7 @@ If port scanning is done on layer 4 then the solution is probably not going to b
 
 > Computers cabled together in a network are almost certainly going to be connected via ethernet
 
-It is the technology describing the rules used i ncommunication between LAN-based systems and is considered Layer 2.
+It is the technology describing the rules used in communication between LAN-based systems and is considered Layer 2.
 
 It is ubiquitous and has forced desktop and laptop products to include ethernet cables
 
@@ -353,7 +353,7 @@ How do you know:
 * How would you decide which computers had permission to speak / transmit?
 
 1. Ethernet uses MAC addresses to identify source and destination
-2. data rate is a function of the Network interface card usually capable of 2 or 3 speeds (10Mbps, 100 Mbps or 1Gbps) so either the NIC neogtiates the rate or will use the frame's preamble to sync the incoming connection
+2. data rate is a function of the Network interface card usually capable of 2 or 3 speeds (10Mbps, 100 Mbps or 1Gbps) so either the NIC negotiates the rate or will use the frame's preamble to sync the incoming connection
 3. The medium must be clear for transmission, handled with CSMA/CD along with a truncated binary exponential random backoff algorithm. - Geez
 
 First the node will listen for other transmissions, hearing None it will begin its own transmission. If the line is not clear the node waits for the transmission to complete then sends its own frame
@@ -364,7 +364,6 @@ Early ethernet operated on a bus topology meaning every node on the network can 
 
 * 10Base5 and 10Base2 - connected nodes with coavial cables into the central shared conductor
 * 10Base-T - dropped coaxial and used Unshielded Twisted Pair (UTP), still a bus
-* 
 
 > Ethernet collisions are just like vehicle collisions...bad. The two nodes involved must back off and try again later.
 
@@ -411,7 +410,7 @@ Other types of signaling and topologies are discussed in the book...
 * Anyone can build an Ethernet network
 * Most configuration is made without configuration from us
 * Most network admins can just take a switch out the box and the network works instantly
-* The real work is trying to understand what is hppening when things go wrong - optimising performance or improving security
+* The real work is trying to understand what is happening when things go wrong - optimising performance or improving security
 
 # 3. Internet Protocol
 
@@ -444,7 +443,7 @@ IP Packet:
 * Time to live - protection from routing loops and remove continuously circulating datagrams the TTL is used (number of hops it can make - each device subtracts 1)
 * Protocol - eight-bit field specifying what is being carried [0x01 - ICMP, 0x11 - (17) UDP, 0x06 (6 - TCP)]
 * Header checksum
-* Source and destinatino IP addresses
+* Source and destination IP addresses
 * Options 
 
 ## Addressing
@@ -460,12 +459,12 @@ Reserved IP addresses:
 * 0.0.0.0 : All zeroes, used for DHCP to obtain a working IP address
 * 129.21.0.0: Network portion all zeroes, specifies a particular network
 * 129.21.255.255: Network portio all ones, broadcast packet to a particular network
-* 255.255.255.255: All ones, limited boradcast to current network
+* 255.255.255.255: All ones, limited broadcast to current network
 * 127.x.x.x: loopback, used for testing and identifying localhost
 
 Also: 192.168.1.1, an IP used for network address translation
 
-Also: 169.254.0.0 - 169.254.255.255: IETF Zero confirugation standard, used for networks in the absense of DNS and DHCP.
+Also: 169.254.0.0 - 169.254.255.255: IETF Zero configuration standard, used for networks in the absense of DNS and DHCP.
 
 ## Sample Host Configuration
 
@@ -482,7 +481,7 @@ These values are mostly acquired from a DHCP server
 
 They no little about the pathway to the endpoint, error control and nothing to ensure delivery.
 
-> The internet protocol treats each internet datagram as an independent wntity unrelated to any other internet datagream, There are no connections or logical circuits.
+> The internet protocol treats each internet datagram as an independent entity unrelated to any other internet datagram, There are no connections or logical circuits.
 
 The key is that all routers and hosts follow the same set of rules.
 Amazingly they are run by humans who typically do not follow the rules.
@@ -490,7 +489,7 @@ Amazingly they are run by humans who typically do not follow the rules.
 1. When a host initiates a communication via an application some data is inserted into a TCP or UDP datagram
 2. This datagram is placed inside an IP packet
 3. The IP packet is created after examing the host routing table - determine if sending to node in local network or outside
-4. Packets destined for local  network go via local forwarding on MAC addresses and ARP (ARP maps IP addresses to MAC Addresess)
+4. Packets destined for local  network go via local forwarding on MAC addresses and ARP (ARP maps IP addresses to MAC Addresses)
 5. Header checksums calculated and sent
 6. If the packet is snt off the current network the packet must be routed via the host's default gateway. A router interface reachable by the host - packets are sent to the local router for forwarding to the next router
 
@@ -508,10 +507,10 @@ The router's routing table contains information about other networks (not the lo
 IANA (Internet Assigned Numbers Authority):
 
 * Responsible for DNS - root zone, .int and .arpa
-* IP addreses
+* IP addresses
 * maintaining codes and numbers
 
-IANA is operated by ICANN (Inernet Corporation for Assigned Names and Numbers) - which is a nonprofit partnership that organises the public IP address space for the entire world.
+IANA is operated by ICANN (Internet Corporation for Assigned Names and Numbers) - which is a nonprofit partnership that organises the public IP address space for the entire world.
 
 # 4. Address Resolution Protocol
 
@@ -550,7 +549,7 @@ Methods for destination MAC address:
 ## Protocol Description
 
 * ARP request and ARP reply
-* An ARP asks for the MAC addresss, the hosts never say no if they can help it
+* An ARP asks for the MAC addresses, the hosts never say no if they can help it
 
 ## Structure
 
@@ -601,12 +600,12 @@ Upon receiving the reply:
 * ping target IP as proof of life - sends a ICMP echo request encapsulated in an IP packet, encapsulated in an ethernet frame
 * Same ARP would have been needed with Telnet, FTP or HTTP
 
-2. Semder and Target on Seperate LAN's
+2. Sender and Target on Separate LAN's
 
 * The destination node is on a remote LAN
 * Since Layer-2 MAC addressing is restricted to the local network, assistance is required from the designated **default gateway** that will route the frame to the destination network.
 * Router ARP behaviour is similar to that of the hosts
-* In this case the MAC address for the degault gateway is used but the IP address for the distant node
+* In this case the MAC address for the default gateway is used but the IP address for the distant node
 
 ## Additional Operations
 
@@ -618,7 +617,7 @@ Upon receiving the reply:
 ### Gratuitous ARP
 
 * When a host boots up it either receives an IP address via DHCP or has one statically configured.
-* But it needs to ensure no other network node is uding the same address - so it ARP's itself.
+* But it needs to ensure no other network node is using the same address - so it ARP's itself.
 * If a device answers, the sender is alerted - it knows there is a device with the same IP.
 
 ## Security Warning
@@ -635,11 +634,11 @@ Upon receiving the reply:
 
 * ARP is absent in IPv6. Instead networks hosts use a series of messages called redirects, solicitations and 
 advertisements in a process called neighbour discovery
-* It tries to disvocer network info before it is needed
+* It tries to discover network info before it is needed
 
 ## Summary
 
-* ARP can add alot of traffic to the network
+* ARP can add a lot of traffic to the network
 * The beginning of a work day can be a problem with all hosts concurrently discovering
 * The routers and next hop routers also need to do ARP discovery
 * IPv6 also sends multicast messages
@@ -733,9 +732,9 @@ How do switches work:
 
 Switch procedure:
 1. Frame received: buffer the frame and perform the frame error check - discard the frames if there are problems
-2. Copy the cource address and port number into the SAT
+2. Copy the source address and port number into the SAT
 3. Look in the SAT for the destination MAC address
-4. If address is known, forward to the correct port. If the address is not known, send the frame everyhwere except the source port (called _flooding_)
+4. If address is known, forward to the correct port. If the address is not known, send the frame everywhere except the source port (called _flooding_)
 5. If the destination is a broadcast address (ff:ff:ff:ff:ff:ff) send the frame everywhere except the source
 
 > Switches will continue forwarding broadcast frames until it reaches a layer-3 boundary (a router)
@@ -756,7 +755,7 @@ What is an Access Point supposed to do:
 * Forward traffic between wired and wireless sections of the network
 * Handling traffic for all of the wireless nodes currently connected
 * Encrypting data traffic
-* Handling nodes in opwer save mode
+* Handling nodes in power save mode
 
 
 Nodes connecting to a wireless network:
@@ -764,9 +763,9 @@ Nodes connecting to a wireless network:
 2. Node must authenticate with the network
 3. Node is associated with the network
 
-Actually a node associates with an Access Point possessng the service set identifier (SSID) for thedesired network
+Actually a node associates with an Access Point possessing the service set identifier (SSID) for the desired network
 
-* An AP will not foreward traffic for nonassociated nodes
+* An AP will not forward traffic for non-associated nodes
 * An 802.11 dataframe contains a destination MAC, source MAC and BSSID
 * The destination and source MAC addresses are the same as an ethernet frame.
 * The BSSID is the MAC address of the Access Point, allowing the access point to determine which frames to process
@@ -779,7 +778,7 @@ Actually a node associates with an Access Point possessng the service set identi
 
 > Routers live in Layer 3 and cares about layer 3 addesses
 
-Routers will forward traffic between IP based networks after ecaming the layer-3 header
+Routers will forward traffic between IP based networks after scaning the layer-3 header
 
 * Routers require IP addresses in order to operate - switches and AP's do not
 * They use and respond to ARP messages
@@ -806,7 +805,7 @@ Single use switches and routers are also fading away
 * A single device will do both routing and switching
 * A single device can route between VLAN's
 
-A topolgy can be built with less network devices, less power outets, less network ports and use less cooling
+A topology can be built with less network devices, less power outlets, less network ports and use less cooling
 
 A home gateway consists of:
 
@@ -819,7 +818,7 @@ A home gateway consists of:
 
 ## Security
 
-* A layer-1 hub operate in a shared medi and do not filter traffic
+* A layer-1 hub operate in a shared media and do not filter traffic
 * A layer-2 switch filter traffic based on the MAC address but they are willing to forward broadcast frames everywhere - an attacked can eavesdrop
 * Wireless security (WEP and WPA-PSK) have been cracked. WPA2-PSK should be used
 * Routers provide the greatest inherent filtering and will not forward anything unless the packets are destined for another network - but routers have IP address and can be connected to the outside world
@@ -829,10 +828,10 @@ A home gateway consists of:
 * ICMP provides error messages and feedback during network operations
 * They give insight into the current state of the network and make it simpler to  troubleshoot connectivity problems
 * Ask for network information
-* Exists within Layer 3 (Internetwork layer) - in a TCP/IP datagrame
+* Exists within Layer 3 (Internetwork layer) - in a TCP/IP datagram
 * ICMP error messages are not created about other ICMP error messages and only the first of a fragment
 * No security as messages are clear text
-* Most devices repsond to ICMP requests without hesitation
+* Most devices respond to ICMP requests without hesitation
 
 ## Structure
 
@@ -842,7 +841,7 @@ A home gateway consists of:
 ### Type
 
 * 0 - Echo reply
-* 3 - DEstinatino unreachable
+* 3 - Destination unreachable
 * 4 - Source quench
 * 5 - Redirect
 * 8 - Echo request (ping)
@@ -859,7 +858,7 @@ A home gateway consists of:
 * checksum
 * identifier - reference for matching echo reply
 * sequence number - matching requests and replies
-* internet header + 64 bits of data datagrame - response contains copy of original IP header
+* internet header + 64 bits of data datagram - response contains copy of original IP header
 * payload - data from the ICMP process
 
 ## Operations and Types
@@ -883,8 +882,8 @@ Pretty complicated
 * An ICMP "time to live exceeded" message is generated indicating the packet was dropped
 * Type 11
 * Help to identify loops in topologies
-* A common example is when neighnouring routers are configured with each other as the forwarding router
-* A less obvious rpbolem is a link or route going down resulting in a path being removed from a routing table
+* A common example is when neighboring routers are configured with each other as the forwarding router
+* A less obvious problem is a link or route going down resulting in a path being removed from a routing table
 
 #### Tracing a route
 
@@ -894,14 +893,14 @@ Pretty complicated
 
 ### Destination Unreachable (Type 3)
 
-* Tells a source host that the path to a destinatino is unknown
+* Tells a source host that the path to a destination is unknown
 * Common when a router does not have a default route - gateway of last resort
 * It will not be able to forward traffic to any network not configured via directly connected, static or dynamic routes
-* When a default gateway is not configured the operating system returns "destinatino unrachable"
+* When a default gateway is not configured the operating system returns "destination unreachable"
 
 #### Codes
 
-* 0 - Net unrachable
+* 0 - Net unreachable
 * 1 - Host unreachable
 * 2 - Protocol unreachable
 * 3 - Port unreachable
@@ -921,10 +920,10 @@ The operating system with a default gateway set but host can't be found:
 ### Router Solicitation (Type 10) and Router Advertisements (Type 9)
 
 * Not as common as they have been supplanted by the DHCP (Dynamic host configuration protocol)
-* They are used to request or provice information regarding routers on the LAN
+* They are used to request or provide information regarding routers on the LAN
 * If a host has an IP address but does not have a default gateway it can ask the network for an answer by sending an ICMP router solicitation
 * Some routers periodically advertise themselves
-* Router solicitationa nd advertisements are still useful in wireless applications
+* Router solicitation and advertisements are still useful in wireless applications
 * A mobile device is not assigned an IP address when it arrives, instead in contacts a device called a _foreign agent_ found via this type of ICMP message
 
 ## IPv6
@@ -933,7 +932,7 @@ The operating system with a default gateway set but host can't be found:
 
 Types:
 
-* Type 1 - Destinatino unreachable
+* Type 1 - Destination unreachable
 * Type 2 - packet too big
 * Type 3 - Time exceeded
 * Type 4 - Parameter problem
@@ -961,7 +960,7 @@ A device requires the following for connectivity:
 * IP address - logical location
 * network mask - determines the network
 * gateway - router providing a pathway off the current network
-* DNS address - converts huamsn friendly addresses to IP addresses
+* DNS address - converts human friendly addresses to IP addresses
 
 ## How do we use the Mask?
 
@@ -1019,14 +1018,14 @@ In a network mask the ones (1) represent the network portion, zeroes (0) indicat
 Counting the number of bits (1's) show class A networks have 8-bit masks, class B have 16-bit masks and class C have 24-bit masks
 
 
-loopback (itsself): 127.x.x.x
+loopback (itself): 127.x.x.x
 200.150.100.255: directed broadcast address - to  reach all hosts on a network
 
 Hosts in this network (computer, routers, printers) will all use addresses between 200.150.100.1 and 200.150.100.254
 
 ## What is a subnet?
 
-work exactly like classful networks in that they require a router to get to other networks and have a netwrok address, a directed broadcast address and a specific set of hosts.
+work exactly like classful networks in that they require a router to get to other networks and have a network address, a directed broadcast address and a specific set of hosts.
 
 > Logically visible subsections of a single internet network
 
@@ -1042,24 +1041,24 @@ Weird calcualtions follow in the book...stealing successive bits?
 
 ### Subnet Patterns
 
-* The number of subnets and the numbe rof hosts will always be a power of 2
+* The number of subnets and the number of hosts will always be a power of 2
 
 ### Shorthand Technique
 
-You are given the classful address space 200.150.100.0 and 255.255.255.0, and musdt divide the network into 4 equal parts.
+You are given the classful address space 200.150.100.0 and 255.255.255.0, and must divide the network into 4 equal parts.
 
-256 / 4 = 64
+    256 / 4 = 64
 
 Start counting at 0:
 
-200.150.100.0 - 63
-200.150.100.64 - 127
-200.150.100.128 - 191
-200.150.100.192 - 255
+    200.150.100.0 - 63
+    200.150.100.64 - 127
+    200.150.100.128 - 191
+    200.150.100.192 - 255
 
 ### Effect on address space
 
-* each subnet also needs an address for the router, the network itself and the brodcast address.
+* each subnet also needs an address for the router, the network itself and the broadcast address.
 * So creating 4 subnets, loses 8 addresses.
 
 Masks are not present in packets traveling on the network - that is why network admins are advised to refrain from using subnets that include all 1 and all 0 subnets.
@@ -1072,13 +1071,13 @@ Eg:
 ## Supernetting
 
 * Combines chunks of address space together
-* A large number of nodes may be grouped together because they are not simultaneously active, network load is small or out of a derire for route aggregation
+* A large number of nodes may be grouped together because they are not simultaneously active, network load is small or out of a desired for route aggregation
 
 Instead of hosts stolen from the hosts portion, bits are stolen from the network portion
 
 * Supernetting increases the size of the network in terms of the number of hosts
 
-More calcuation related stuff in the book
+More calculation related stuff in the book
 
 ## Classless Inter-domain Routing (CIDR)
 
@@ -1089,7 +1088,6 @@ More calcuation related stuff in the book
 * Every small home network should not be granted its own network - it is not possible
 * Routing tables would grow until performance for routers on interconnected networks was severly hampered
 * It takes time to construct and maintain a routing table
-* 
 
 Aggregation is a technique which reduces the number of routing table entries that can be used to forward traffic to downstream routers
 
