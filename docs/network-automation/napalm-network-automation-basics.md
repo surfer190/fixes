@@ -5,7 +5,7 @@ date: '2019-04-30'
 summary: ''
 title: Napalm Network Automation Basics
 ---
-# Napalm Netowrk Automation Basics
+# Napalm Network Automation Basics
 
 ## Getting Started
 

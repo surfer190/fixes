@@ -18,7 +18,6 @@ TOR Switches
 SNMP - Simple Network Management Protocol - these tools poll certain MIB's (Management Information Bases)
 IOS device
 
-
 ### Traditional Protocols
 
 BGP (Border Gateway Protocol) - establishing neighbour adjecencies iwth other BGP routeres
@@ -26,7 +25,6 @@ LLDP
 OSPF - routing protocol used to communicate with other routers
 Spanning Tree
 RIP - routing protocol used to communicate with other routers
-
 
 ### WAN
 
@@ -85,7 +83,7 @@ loopback - used for identifying and testing localhost
 
 ARP maps MAC addresses to IP Addresses
 
-## Network Automation Specific
+## Network Automation: Software defined Architecture
 
 * OpenDaylight - A controller infrastructure built for SDN deployments
 * OpenContrail - An open-source network virtualization platform for the cloud

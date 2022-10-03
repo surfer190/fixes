@@ -72,7 +72,7 @@ Directly supported languages:
 
 If you're defining message types or enums that you anticipate will be widely used outside of your immediate team, you can put them in their own file with no dependencies.
 
-Commonly used defintions at google:
+Commonly used definitions at google:
 
 [`status.proto`](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto):
 

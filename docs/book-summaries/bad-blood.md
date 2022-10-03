@@ -10,28 +10,28 @@ title: Bad Blood Book Summary
 The book was written by John Carreyrou and exposes the full story behind the failed blood testing startup, Theranos. These notes are simply things I thought while reading it.
 
 * Pushing your children and having "excellence running through the family" is a problem
-* Euopeans who force their young children to learn Mandarin may lead to psychopath tendencies
-* The made up contraints and deadlines should be reasonable and achievable if they are made at all
+* Europeans who force their young children to learn Mandarin may lead to psychopath tendencies
+* The made up constraints and deadlines should be reasonable and achievable if they are made at all
 * Good and smart people are corrupted by pressure and money
 * Sleep 8 to 9 hours and enjoy a stress free life - you decide your happiness levels
-* Even if everyone tells you that some person is good or a don - use your own judgement and gut. Your bs detector has served yu this far in life.
+* Even if everyone tells you that some person is good or a don - use your own judgement and gut. Your bs detector has served you this far in life.
 * Don't get caught up in the hype
 * Rich and famous people are sick, lonely psychopaths 
-* A manager that pushes back against unreasonable emands from executives is someone to be cherished
+* A manager that pushes back against unreasonable demands from executives is someone to be cherished
 * You will know when you come across a good person, choose the good person over the money, over your own greed.
 * There's good advice and then there's kak advice. You know what is good if you trust and know the person has your best interest in mind instead of just sounding cool.
 * Rushing is bad always (in tech)
 
 * When the entire company is called together and told something negative and uncomfortable (something like former employees are being sued, or if you don't like using x then leave now) - then you probably should leave
 * If you need a non-disclose agreement then you're a corporate and might be doing it wrong
-* Tightening the grip on the flow of information up instead of across is bad - the less barriers between clear comms the better
-* Elizabeth Holmes delibrately modified her voice like a psychopath to a barratone in public and wore steve jobs attire. Don't be fake, be yourself. - You create your own prisons.
-* Tight network controls result in hours of lost productivity and loss of teh business objective
+* Tightening the grip on the flow of information up instead of across is bad - the less barriers between clear communications the better
+* Elizabeth Holmes deliberately modified her voice like a psychopath to a baritone in public and wore steve job's attire. Don't be fake, be yourself. - You create your own prisons.
+* Tight network controls result in hours of lost productivity and loss of the business objective
 * Beware of the after hours pizza or dinner
 * The more secret the more prone to moral breaches
 * Rapid hirings / entries can be just as bad as Rapid firings or exits
-* At some stage integraton and functional tests will be an answer to the business question, unit tests rarely are.
-* Some eople don't have ethics and can do terrible things
+* At some stage integration and functional tests will be an answer to the business question, unit tests rarely are. Unit tests however ensure the platform is reliable.
+* Some people don't have ethics and can do terrible things
 * No one is above you and no one is below you. Don't despise someone due to their status at the same time do not hale those of a perceived status.
 * Enron was built on the belief in the projections of negotiations (perceived future deals) not on concrete deals. Much like Theranos.
 * You need deals in writing
@@ -44,7 +44,7 @@ The book was written by John Carreyrou and exposes the full story behind the fai
 * Be careful on what you look at on your browser - especially on corporate networks
 * Moving companies changes your life
 * “The overall impression was that of an eighth-grade science project”
-* Too many moving parts and uncontrollables 
+* Too many moving parts and uncontrollables
 * Why this what biotech was built on - holy smokes
 * No matter how much you spend - if your product and process is a joke, its a joke. Keep it lean.
 * “When the drugmakers’ executives asked if the Theranos system could be customized to suit their needs, Elizabeth would always answer, “Absolutely.” - wonder who is going to hold the bag at the end of this.

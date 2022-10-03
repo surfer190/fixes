@@ -1,16 +1,16 @@
 ---
 author: ''
-category: Networking
+category: Nginx
 date: '2022-06-15'
 summary: ''
-title: Proxy vs Reverse Proxy
+title: Nginx - Proxy vs Reverse Proxy
 ---
 
 [Proxy definition](https://en.wiktionary.org/wiki/proxy)
 
 > To act or substitute an authorised act for another
 
-## Proxy Server
+## "Normal" Proxy Server (Forward Proxy)
 
 A proxy server is a networking device or application that is positioned between the default gateway and the internet / external network.
 Its primary use is in corporate to decrease the amount of internet traffic. If someone else had downloaded a file - the file would be cached on the proxy server so no external network request was required.
@@ -33,6 +33,14 @@ For example: a reverse proxy receiving a request for a static asset file may ser
 * The client only communicates with the reverse proxy.
 * Heavy lifting done on the server side.
 * The purpose of a reverse proxy is to protect servers.
+
+### In an Image: Forward Proxy vs Reverse Proxy
+
+A picture paints a thousand words...
+
+![Forward vs Reverse Proxy](/img/forward-vs-reverse-proxy.jpg){: class="img-fluid" }
+
+Credit to [ByteByte Go Blog](https://blog.bytebytego.com/) and this tweet on [Forward vs Reverse Proxy](https://twitter.com/alexxubyte/status/1575511993414389762)
 
 ### Source
 

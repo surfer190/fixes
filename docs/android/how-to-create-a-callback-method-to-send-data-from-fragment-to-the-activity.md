@@ -11,41 +11,35 @@ title: Creating a Callback to Send Data From Fragment to Activity
 
 	Declare an Interface with as many abstract methods as required
 
-	```
-	public interface Callbacks {
-		public void runAbstractMethod(MyData mydata);
-	}
-	```
+        public interface Callbacks {
+            public void runAbstractMethod(MyData mydata);
+        }
 
 	**Remember only signiture is required for an interface**
 
 2. In the Activity Class:
 
-	Add Code to the class declaration to Implment the Interface in the Fragment class
+    Add Code to the class declaration to Implment the Interface in the Fragment class
 
-	```
-	public class MainActivity extends Activity
-		implements MyFragment.Callbacks {
-	```
+        public class MainActivity extends Activity
+            implements MyFragment.Callbacks {
 
-	Implement the methods (Alt + Enter) creates.
+    Implement the methods (Alt + Enter) creates.
 
-	```
-		@Override
-		public void runAbstractMethod(MyData mydata){
-		//Get a reference to the bundle representing all of the MyData objects data
-		//Uses a custom method of the MyData Class
-		Bundle b = mydata.makeBundle();
-		//or if your class implements serializable you can use
-		b.putSerialiazble("myData", (java.io.Serializable) mydata);
+        @Override
+        public void runAbstractMethod(MyData mydata){
+            //Get a reference to the bundle representing all of the MyData objects data
+            //Uses a custom method of the MyData Class
+            Bundle b = mydata.makeBundle();
+            //or if your class implements serializable you can use
+            b.putSerialiazble("myData", (java.io.Serializable) mydata);
 
-		//Create an Intent to Launch the Activity
-		Intent intent = new Intent(this, MyDataActivity.class);
-		intent.putExtra("MY_KEY", b);
-		//Want to See a Result so use
-		startActivityForResult(intent, "100");
-	}
-	```
+            //Create an Intent to Launch the Activity
+            Intent intent = new Intent(this, MyDataActivity.class);
+            intent.putExtra("MY_KEY", b);
+            //Want to See a Result so use
+            startActivityForResult(intent, "100");
+        }
 
 3. Setup Communication from Fragment to Actviity
 
@@ -83,27 +77,25 @@ title: Creating a Callback to Send Data From Fragment to Activity
 
 	In **MyDataActivity.java**:
 
-	```
-	MyFragment fragment = new MyFragment();
-	//after instantiating the fragment class
-	Bundle args = getIntent().getBundleExtra("MY_KEY");
-	fragment.setArguments(args);
+        MyFragment fragment = new MyFragment();
+        //after instantiating the fragment class
+        Bundle args = getIntent().getBundleExtra("MY_KEY");
+        fragment.setArguments(args);
 
-	//use fragement manager and send it
-	```
+        //use fragement manager and send it
 
 5. Receive Arguments - in Fragments `OnCreate`
 
 	In **MyFragment.java**:
 
-	```
-	public void OnCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstance);
+    public void OnCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstance);
 
-		bundle b = getArguments();
-		if (b != null){
-			MyData mydata = new Flower(b);
-		}
-	```
+        bundle b = getArguments();
+        if (b != null){
+            MyData mydata = new Flower(b);
+        }   
 
-Source: Lynda Building Adaptive Android Apps with Fragments
+## Sources
+
+* [Lynda Building Adaptive Android Apps with Fragments](https://www.linkedin.com/learning/building-flexible-android-apps-with-the-fragments-api-with-java/understanding-fragments)

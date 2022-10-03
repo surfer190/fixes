@@ -361,6 +361,19 @@ Rebirth occurs when craving from an existence has not yet been extinguished.
 * It is the mental attachments to the past experiences that is causing the mind to be discontent and fearful
 * Put the mind in situation that it is fearful of in order to remove the fear
 
+> Conformity does not lead to Enlightenment
+
+Buddha taught us to be humble, peaceful, calm, polite, kind, friendly, and respectful.
+
+> We have such a strong craving to exist that we continue to exist on this planet and oftentimes search for meaning or purpose in life. This outward searching and seeking importance is just the human ego seeking significance. The ego wants the purpose.
+
+There is no purpose. Dissolve the ego.
+
+An Enlightened mind is liberated from the outward seeking and searching for satisfaction based on impermanent conditions and is inwardly peaceful, calm, serene, and content with joy - permanently.
+
+ 
+
+
 ## Sources
 
 * [Audio dharma and guided meditation](https://www.audiodharma.org/)

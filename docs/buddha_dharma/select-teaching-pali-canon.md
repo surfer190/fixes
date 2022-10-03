@@ -127,3 +127,34 @@ When you’re diligent, skillful qualities arise and unskillful qualities declin
 What two?
 Freedom from anger and hostility … freedom from disdain and contempt … freedom from jealousy and stinginess … freedom from deceit and deviousness … conscience and prudence.
 When they have these two things, some people—when their body breaks up, after death—are reborn in a good place, a heavenly realm.
+
+## sn35.85 - The World is Empty
+
+And then Venerable Ānanda … said to the Buddha:
+“Sir, they say that ‘the world is empty’.
+What does the saying ‘the world is empty’ refer to?”
+“Ānanda, they say that ‘the world is empty’ because it’s empty of self or what belongs to self.
+And what is empty of self or what belongs to self?
+The eye,
+sights, eye consciousness, and eye contact are empty of self or what belongs to self. …
+The pleasant, painful, or neutral feeling that arises conditioned by mind contact is also empty of self or what belongs to self.
+They say that ‘the world is empty’ because it’s empty of self or what belongs to self.” 
+
+## an4.157 - Illness
+
+Mendicants, there are two kinds of illness.
+What two?
+Mental and physical.
+Some sentient beings are seen who can claim to be free of physical illness for a year, or two, or three years … even up to a hundred years or more.
+But it’s very hard to find any sentient beings in the world who can claim to be free of mental illness even for a moment, apart from those who have ended the defilements.
+There are four kinds of illness for those gone forth.
+What four?
+To start with, a mendicant has many wishes, is frustrated, and is not content with any kind of robes, almsfood, lodgings, and medicines and supplies for the sick.
+Because of this, they focus their corrupt wishes on being looked up to, and on getting material possessions, honor, and popularity.
+They try hard, strive, and make an effort to get these things.
+They have an ulterior motive when they visit families. They have an ulterior motive when they sit down, when they speak on Dhamma, and even when they hold it in when they need to go to the toilet.
+These are the four kinds of illness for those gone forth.
+So you should train like this:
+‘We will not have many wishes or be frustrated. We will be content with any kind of robes, almsfood, lodgings, and medicines and supplies for the sick. We won’t focus our corrupt wishes on being looked up to, and on getting material possessions, honor, and popularity. We won’t try hard, strive, and make an effort to get these things. We will endure cold, heat, hunger, and thirst. We will endure the touch of flies, mosquitoes, wind, sun, and reptiles. We will endure rude and unwelcome criticism. We will put up with physical pain—sharp, severe, acute, unpleasant, disagreeable, and life-threatening.’
+That’s how you should train.
+

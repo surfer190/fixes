@@ -5,7 +5,7 @@ date: '2019-08-27'
 summary: ''
 title: Turn On Mysql General Log
 ---
-### How to turn on Mysql General Log
+### How to turn onthe  Mysql General Log
 
 Add the log settings in `/etc/mysql/my.cnf`
 
@@ -21,6 +21,6 @@ Restart the service:
 
     sudo systemctl restart mysql
 
-#### Source
+### Source
 
 * [AskUbuntu MySQL](https://askubuntu.com/questions/699964/how-to-activate-mysql-general-log-in-version-5-6)

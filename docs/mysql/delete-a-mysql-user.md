@@ -29,7 +29,6 @@ Delete (Drop) the user:
 
     DROP USER 'helloworld'@'localhost';
 
-
 ## Sources:
 
 * [How to delete or remove a MySQL/MariaDB user account on Linux/Unix](https://www.cyberciti.biz/faq/how-to-delete-remove-user-account-in-mysql-mariadb/)

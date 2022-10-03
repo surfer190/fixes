@@ -6,9 +6,9 @@ summary: ''
 title: Simple Description of Microservices
 ---
 
-I came across a concise definition of mciroservices:
+I came across a concise definition of microservices:
 
-Microservices is an architectural style:
+Microservices is an architectural style...
 
 * Highly maintainable and testable
 * Loosely coupled

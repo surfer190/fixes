@@ -49,3 +49,4 @@ title: Magento 2 Links
 ## Performance
 
 * [Improve google Pagespeed move render blocking js to bottom](https://t.co/7iU0N36hzK)
+* [A great slideshow by Max Pronko about real world magento 2 performance enhancements.](http://www.slideshare.net/MaksymPronko/real-use-cases-of-performance-optimization-in-magento-2)

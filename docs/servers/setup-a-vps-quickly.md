@@ -3,9 +3,9 @@ author: ''
 category: Servers
 date: '2018-08-19'
 summary: ''
-title: Setup A Vps Quickly
+title: Setup An Ubuntu Vps Quickly
 ---
-# Setup and secure a VPS Quickly
+# Setup and secure an Ubuntu VPS Quickly
 
 Quick guide to setting up a virtual private server quickly
 
@@ -87,7 +87,7 @@ Now you can ssh into the server with:
 
     ssh newserver
 
-### References
+### Sources
 
 * [Securing ubuntu 16.04 server](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
 * [Github create ssh key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)

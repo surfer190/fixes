@@ -9,13 +9,13 @@ title: Magento 2 Api
 
 ## Service Contracts
 
-Service contracts - set of interfaces for modules to delcate stard API's
+Service contracts - set of interfaces for modules to delcare standard API's
 
 * Improve upgrade process
 * Formalise customisation
 * Decouple modules
 
-Magento 2 implements "Development based on interface", developer relies only on public methods declated in an interface
+Magento 2 implements "Development based on interface", developer relies only on public methods declared in an interface
 
 Modules communicate through the API
 
@@ -45,8 +45,8 @@ Pros:
 
 * Customise based on documentation, not module internals
 * Better decoupling
-* Minimisng conflicts
-* Ability to rely on interface not implmentation
+* Minimising conflicts
+* Ability to rely on interface not implementation
 
 Drawbacks:
 
@@ -59,13 +59,13 @@ Drawbacks:
 
 API provides structured form of communication between modules
 
-Describe the sturcutre of API components:
+Describe the structure of API components:
 
 * Repository - equivalent service-level collections (typically using `getList()`)
 * Business API - actual business operations
 * Data API - May extend `AbstractExtensibleObject` (Does not extend of use any framework components)
 
-These tasks use an API instead of a mageto 1 type object (collection):
+These tasks use an API instead of a magento 1 type object (collection):
 
 * Fetch a list of objects from a database
 * To save or delete an object

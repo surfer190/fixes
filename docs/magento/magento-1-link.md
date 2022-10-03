@@ -3,7 +3,7 @@ author: ''
 category: Magento
 date: '2017-01-14'
 summary: ''
-title: Magento 1 Link
+title: Magento 1 Links
 ---
 # Magento 1 Links
 

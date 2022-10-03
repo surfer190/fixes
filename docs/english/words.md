@@ -148,3 +148,6 @@ title: Words and Definitions
 * loath - reluctant, unwilling
 * parsimonious - unwilling to spend or use resources
 * Taciturn - reserved of speech - saying little
+* assiduity - careful and close attention to what one is doing
+* vindictive - having a strong desire for revenge
+* nebulous - in the form of a cloud or haze
