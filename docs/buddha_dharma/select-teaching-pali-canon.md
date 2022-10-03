@@ -120,3 +120,10 @@ This is the noble eightfold path that should be developed for the direct knowled
 
 “Mendicants, I do not see a single thing that gives rise to skillful qualities, or makes unskillful qualities decline like diligence.
 When you’re diligent, skillful qualities arise and unskillful qualities decline.” 
+
+## an225–229
+
+“When they have two things, some people — when their body breaks up, after death—are reborn in a good place, a heavenly realm.
+What two?
+Freedom from anger and hostility … freedom from disdain and contempt … freedom from jealousy and stinginess … freedom from deceit and deviousness … conscience and prudence.
+When they have these two things, some people—when their body breaks up, after death—are reborn in a good place, a heavenly realm.

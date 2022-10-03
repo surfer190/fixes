@@ -1,4 +1,10 @@
-
+---
+author: ''
+category: Python
+date: '2022-08-20'
+summary: ''
+title: Python Logging
+---
 
 ## Python Logging
 

@@ -22,7 +22,7 @@ title: Network Programmability And Automation
 
 # 1. Network Industry Trends
 
-## The Rise of Software Defined Netoworks
+## The Rise of Software Defined Networks
 
 Martin Casado - influencing large network incumbents that operations, agility and managability must change
 

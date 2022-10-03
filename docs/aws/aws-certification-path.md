@@ -1,4 +1,10 @@
-
+---
+author: ''
+category: AWS
+date: '2022-08-03'
+summary: ''
+title: AWS Certification Path
+---
 
 ## Step 1: AWS Cloud Practitioner
 

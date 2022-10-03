@@ -181,5 +181,3 @@ Continue from
 ## Source
 
 * [SQLALchemy Overview](https://docs.sqlalchemy.org/en/14/intro.html)
-
-

@@ -36,7 +36,7 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 
 ### Management and Governance
 
-* `Cloudwatch` - Monitor resources, applications and do logging (elasticsearch, LibreNMS, Mmonit, elastalert, rsyslog)
+* `Cloudwatch` - Monitor resources, applications and do logging (elasticsearch, LibreNMS, Mmonit, elastalert, rsyslog, grafana loki)
 * `CloudFormation` (CFN) - Create and manage resources with templates - (terraform)
 * `ControlTower` - Manage a Multi-account environment
 * `Service Catalog` - Create and use standardised products (foreman, terraform, ansible)
