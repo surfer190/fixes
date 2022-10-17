@@ -45,6 +45,10 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 
 * `Route 53` - DNS and Domain registration (Your DNS manager, PowerDNS)
 
+### Migration and Transfer
+
+* `AWS Transfer Family` - File transfers with SFTP, FTPS and FTP (OpenSSH)
+
 ### Storage
 
 * `S3` - Storage in the cloud (Minio, dropbox, CDN provider)

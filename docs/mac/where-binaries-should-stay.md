@@ -15,13 +15,10 @@ So I googled and found that local binaries should go in: `/usr/local/bin` which 
 
 All I needed to do was:
 
-    cp ~/Downloads/vault /usr/loca/bin
+    cp ~/Downloads/vault /usr/local/bin
 
 and the binary became available
 
 ## Source
 
 * [Conventional places binaries should exist on OSX](https://superuser.com/questions/7150/mac-os-x-conventional-places-where-binary-files-should-live)
-
-
-

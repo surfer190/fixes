@@ -175,9 +175,11 @@ Continue from
 
 [https://docs.sqlalchemy.org/en/14/tutorial/metadata.html](https://docs.sqlalchemy.org/en/14/tutorial/metadata.html)
 
+## SQLAlchemy Query get raw SQL query
 
-
-
+    from sqlalchemy.dialects import postgresql
+    >>> print(str(query.statement.compile(dialect=postgresql.dialect())))
 ## Source
 
 * [SQLALchemy Overview](https://docs.sqlalchemy.org/en/14/intro.html)
+* [How do I get a raw, compiled SQL query from a SQLAlchemy expression](https://stackoverflow.com/questions/4617291/how-do-i-get-a-raw-compiled-sql-query-from-a-sqlalchemy-expression)

@@ -7,6 +7,8 @@ title: Python Linux Exit Codes
 ---
 # Python Linux Exit Codes
 
+> If a program exits with a non-zero code - it was not successful
+
 Sometimes you need to create scripts that give an exit status code to the calling program.
 Here is some info with [exit codes with special meaning](http://tldp.org/LDP/abs/html/exitcodes.html)
 
@@ -20,4 +22,3 @@ In python that is done using [`sys.exit()`](https://docs.python.org/2/library/sy
     import sys
     # fail
     sys.exit(1)
-
