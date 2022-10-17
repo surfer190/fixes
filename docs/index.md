@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-10-13: _Linux_ [Grep Regex Invert and Lookahead](linux/grep-regex-invert-and-lookahead.md)
+- 2022-10-10: _Postgres_ [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
+- 2022-10-01: _AWS_ [AWS Codebuild](aws/aws-codebuild.md)
 - 2022-09-16: _Python_ [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-09-01: _SQLite_ [Fundamentals of SQlite](sqlite/fundamentals-of-sqlite.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-08-20: _Python_ [Python Logging](python/logging.md)
 - 2022-08-15: _Python_ [Python Tutorial](python/python-tutorial.md)
 - 2022-08-13: _Python_ [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
-- 2022-08-08: _Python_ [Python Packaging - an Overview](python/packaging-overview.md)
-- 2022-08-08: _Python_ [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
-- 2022-08-03: _AWS_ [AWS Certification Path](aws/aws-certification-path.md)
 
 ## Table of Contents
 
@@ -84,6 +84,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-14: [Chatops Links](automation/chatops.md)
 
 ## Aws
+- 2022-10-01: [AWS Codebuild](aws/aws-codebuild.md)
 - 2022-08-03: [AWS Certification Path](aws/aws-certification-path.md)
 - 2022-08-01: [AWS Lambda](aws/aws-lambda.md)
 - 2022-07-25: [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
@@ -347,6 +348,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-08-05: [LDAP System Administration](ldap/ldap-system-administration.md)
 
 ## Linux
+- 2022-10-13: [Grep Regex Invert and Lookahead](linux/grep-regex-invert-and-lookahead.md)
 - 2022-08-30: [How to View the Command Name in Top](linux/view-command-name-in-top.md)
 - 2020-06-14: [Python - avoid venv clashes with](linux/python-isolate-from-dist-packages.md)
 - 2020-05-12: [Set Timezone On Linux Server](linux/set-timezone-on-linux-server.md)
@@ -490,6 +492,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
 - 2022-07-22: [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
