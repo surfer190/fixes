@@ -97,6 +97,8 @@ You can resolve the discontentedness in your own mind but you cannot resolve the
 
 The unEnlightened mind will constantly blame others for the difficulties and struggles it faces rather than accepting responsibility for its own decisions that are leading it to discontentedness. This is “wrong view”
 
+> Clinging to form and consciousness is equivalent to personal existence view
+
 ### Meditation
 
 #### Anapannasatti (Breathing Mindfulness Meditation)

@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-10-25: _Sqlalchemy_ [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
+- 2022-10-25: _Postgres_ [Postgres Performance](postgres/postgres-performance.md)
+- 2022-10-24: _Postgres_ [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
 - 2022-10-13: _Linux_ [Grep Regex Invert and Lookahead](linux/grep-regex-invert-and-lookahead.md)
 - 2022-10-10: _Postgres_ [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
 - 2022-10-01: _AWS_ [AWS Codebuild](aws/aws-codebuild.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-09-01: _SQLite_ [Fundamentals of SQlite](sqlite/fundamentals-of-sqlite.md)
 - 2022-08-30: _Linux_ [How to View the Command Name in Top](linux/view-command-name-in-top.md)
-- 2022-08-20: _Python_ [Python Logging](python/logging.md)
-- 2022-08-15: _Python_ [Python Tutorial](python/python-tutorial.md)
-- 2022-08-13: _Python_ [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
 
 ## Table of Contents
 
@@ -492,9 +492,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
+- 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
 - 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
 - 2022-07-22: [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
+- 2018-09-10: [psql](postgres/psql.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
 ## Project-Management
@@ -512,8 +515,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-25: [Docstring types](python/docstring-styles.md)
 - 2022-07-25: [Nosetests](python/nosetests.md)
 - 2022-07-25: [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
-- 2022-07-22: [Sqlalchemy](python/sqlalchemy.md)
-- 2022-07-22: [Sqlalchemy - Alembic Migrations](python/sqlalchemy-alembic-migrations.md)
 - 2022-07-14: [Tornado Web Server](python/tornado-web-server.md)
 - 2022-07-12: [Packaging - Pip Install for Development](python/pip-install-in-development.md)
 - 2022-07-12: [After Dropping into a Python Debugger the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
@@ -654,6 +655,11 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-08-19: [Setup An Ubuntu Vps Quickly](servers/setup-a-vps-quickly.md)
 - 2016-08-12: [Copy Your Ssh Key To Clipboard Fast](servers/copy-your-ssh-key-to-clipboard-fast.md)
 - 2015-09-20: [Ssh Into An Aws Box](servers/ssh-into-an-aws-box.md)
+
+## Sqlalchemy
+- 2022-10-25: [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
+- 2022-07-22: [Sqlalchemy - Alembic Migrations](sqlalchemy/sqlalchemy-alembic-migrations.md)
+- 2022-07-22: [Sqlalchemy](sqlalchemy/sqlalchemy-fundamentals.md)
 
 ## Sqlite
 - 2022-09-01: [Fundamentals of SQlite](sqlite/fundamentals-of-sqlite.md)
