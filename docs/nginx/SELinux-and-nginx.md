@@ -80,7 +80,7 @@ Or edit `/etc/sysconfig/selinux` and set:
 
 **That fixed it for me, if that does not work for you you can check the source below**
 
-## Source
+## Sources
 
 * [Using Nginx with SeLinux](https://www.nginx.com/blog/using-nginx-plus-with-selinux/)
 * [Nginx can't access a uWSGI unix socket on CentOS 7](https://stackoverflow.com/questions/26334526/nginx-cant-access-a-uwsgi-unix-socket-on-centos-7)

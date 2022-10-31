@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-10-25: _Sqlalchemy_ [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
+- 2022-10-25: _Postgres_ [Postgres Performance](postgres/postgres-performance.md)
+- 2022-10-24: _Postgres_ [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
+- 2022-10-13: _Linux_ [Grep Regex Invert and Lookahead](linux/grep-regex-invert-and-lookahead.md)
+- 2022-10-10: _Postgres_ [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
 - 2022-10-05: _Book Summaries_ [The Speedbag Bible Routines](book-summaries/the-speedbag-bible-routines.md)
 - 2022-10-05: _Book Summaries_ [Steinhoff - Steinheist (Corporate Accounting Fraud)](book-summaries/investing-steinhoff-stienheist.md)
+- 2022-10-01: _AWS_ [AWS Codebuild](aws/aws-codebuild.md)
 - 2022-09-16: _Python_ [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
-- 2022-08-13: _Python_ [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
-- 2022-08-08: _Python_ [Python Packaging - an Overview](python/packaging-overview.md)
-- 2022-08-08: _Python_ [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
-- 2022-07-30: _Python_ [Python Gotchas](python/gotchas.md)
-- 2022-07-25: _Python_ [Python docs - The Import System](python/python-docs-the import system.md)
-- 2022-07-25: _Python_ [Docstring types](python/docstring-styles.md)
 
 ## Table of Contents
 
@@ -84,6 +84,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-14: [Chatops Links](automation/chatops.md)
 
 ## Aws
+- 2022-10-01: [AWS Codebuild](aws/aws-codebuild.md)
+- 2022-08-03: [AWS Certification Path](aws/aws-certification-path.md)
+- 2022-08-01: [AWS Lambda](aws/aws-lambda.md)
 - 2022-07-25: [ECS - Elastic Container Service](aws/ecs-elastic-container-service.md)
 - 2022-07-25: [Aws Cli Tips](aws/aws-cli-tips.md)
 - 2022-07-14: [Commonly used AWS Services](aws/aws-services.md)
@@ -262,7 +265,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-01-18: [Install Latest Git On Ubuntu](git/install-latest-git-on-ubuntu.md)
 
 ## Gitlab-Ci
-- 2020-06-14: [Setup a Gitlab Runner on Openshift](gitlab-ci/setup-an-openshift-docker-runner-on-gitlab-enterprise-edition.md)
 - 2020-06-14: [Continuous Integration Gitlab](gitlab-ci/continuous-integration-gitlab.md)
 - 2020-06-14: [Gitllab Runners](gitlab-ci/gitllab-runners.md)
 
@@ -348,6 +350,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-08-05: [LDAP System Administration](ldap/ldap-system-administration.md)
 
 ## Linux
+- 2022-10-13: [Grep Regex Invert and Lookahead](linux/grep-regex-invert-and-lookahead.md)
+- 2022-08-30: [How to View the Command Name in Top](linux/view-command-name-in-top.md)
 - 2020-06-14: [Python - avoid venv clashes with](linux/python-isolate-from-dist-packages.md)
 - 2020-05-12: [Set Timezone On Linux Server](linux/set-timezone-on-linux-server.md)
 - 2020-05-12: [View Banned Ips From Iptables In Fail2ban](linux/view-banned-ips-from-iptables-in-fail2ban.md)
@@ -490,8 +494,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
+- 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
+- 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
 - 2022-07-22: [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
+- 2018-09-10: [psql](postgres/psql.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
 ## Project-Management
@@ -499,6 +507,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Python
 - 2022-09-16: [Fluent Python Notes](python/fluent-python-notes.md)
+- 2022-08-20: [Python Logging](python/logging.md)
+- 2022-08-15: [Python Tutorial](python/python-tutorial.md)
 - 2022-08-13: [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
 - 2022-08-08: [Python Packaging - an Overview](python/packaging-overview.md)
 - 2022-08-08: [Click - command line arguments in python](python/click-command-line-arguments-in-python.md)
@@ -507,7 +517,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-25: [Docstring types](python/docstring-styles.md)
 - 2022-07-25: [Nosetests](python/nosetests.md)
 - 2022-07-25: [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
-- 2022-07-22: [Sqlalchemy](python/sqlalchemy.md)
 - 2022-07-14: [Tornado Web Server](python/tornado-web-server.md)
 - 2022-07-12: [Packaging - Pip Install for Development](python/pip-install-in-development.md)
 - 2022-07-12: [After Dropping into a Python Debugger the Prompt does not type back commands](python/after-dropping-into-ipdb-terminal-no-longer-types-commands.md)
@@ -648,6 +657,14 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-08-19: [Setup An Ubuntu Vps Quickly](servers/setup-a-vps-quickly.md)
 - 2016-08-12: [Copy Your Ssh Key To Clipboard Fast](servers/copy-your-ssh-key-to-clipboard-fast.md)
 - 2015-09-20: [Ssh Into An Aws Box](servers/ssh-into-an-aws-box.md)
+
+## Sqlalchemy
+- 2022-10-25: [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
+- 2022-07-22: [Sqlalchemy - Alembic Migrations](sqlalchemy/sqlalchemy-alembic-migrations.md)
+- 2022-07-22: [Sqlalchemy](sqlalchemy/sqlalchemy-fundamentals.md)
+
+## Sqlite
+- 2022-09-01: [Fundamentals of SQlite](sqlite/fundamentals-of-sqlite.md)
 
 ## Stackstorm
 - 2020-06-14: [Stackstorm](stackstorm/stackstorm.md)

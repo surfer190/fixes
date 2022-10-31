@@ -9,8 +9,14 @@ title: Task Queues
 
 ## The Problem that task queues solve
 
-You have a web app that needs to do a number of time consuming tasks. However, the best thing to do is respond as quick as possible to the requestor (client).
-So instead of making the client wait for you to do all of those tasks, rather register those tasks to a task queue and respond to the incoming request as fast as possible.
+You have a web app that needs to do a number of time consuming tasks. However, we know that the best thing to do is respond as quick as possible to the requestor (client).
+Clients often set a timeout to 5 to 30 seconds.
+So instead of making the client wait or have the client give a ReadTimeout, rather register those tasks to a task queue and respond to the incoming request as fast as possible.
+
+> Task queues are commonly-used in web-based applications, as they allow decoupling time-consuming computation from the request/response cycle.
+
+Another benefit over HTTP is a HTTP server must be listening all the time - if it goes down for a split second the requester will get an error.
+A task queue however can queue up the requests and respond as soon as the server is available.
 
 ## Terms
 
@@ -179,3 +185,4 @@ Then move on to use [Using celery with django](http://docs.celeryproject.org/en/
 * [Quick Tips working 2 years with celery](https://medium.com/@taylorhughes/three-quick-tips-from-two-years-with-celery-c05ff9d7f9eb)
 * [Long computations with rest over http in python](https://medium.com/@grzegorzolechwierowicz/long-computations-over-rest-http-in-python-4569b1187e80)
 * [Using Celery to perform long-running tasks in a web application](https://medium.com/@prabhakarparam/using-celery-to-perform-long-running-tasks-in-a-web-application-31da725833cc)
+* [Multi-process task queue using Redis Streams](https://charlesleifer.com/blog/multi-process-task-queue-using-redis-streams/)

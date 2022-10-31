@@ -10,6 +10,10 @@ title: Commonly used AWS Services
 
 This _fix_ shows a few common AWS services and similar other services you may have worked with outside of the public cloud
 
+## Analytics
+
+* `MSK` (Apache Kafka) - Managed Service for Apache Kafka
+
 ### Compute
 
 * `EC2` - Virtual machines (vmware vcloud director, digital ocean droplets, virtual private servers)
@@ -32,7 +36,7 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 
 ### Management and Governance
 
-* `Cloudwatch` - Monitor resources, applications and do logging (elasticsearch, LibreNMS, Mmonit, elastalert, rsyslog)
+* `Cloudwatch` - Monitor resources, applications and do logging (elasticsearch, LibreNMS, Mmonit, elastalert, rsyslog, grafana loki)
 * `CloudFormation` (CFN) - Create and manage resources with templates - (terraform)
 * `ControlTower` - Manage a Multi-account environment
 * `Service Catalog` - Create and use standardised products (foreman, terraform, ansible)
@@ -40,6 +44,10 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 ### Networking and Content Delivery
 
 * `Route 53` - DNS and Domain registration (Your DNS manager, PowerDNS)
+
+### Migration and Transfer
+
+* `AWS Transfer Family` - File transfers with SFTP, FTPS and FTP (OpenSSH)
 
 ### Storage
 

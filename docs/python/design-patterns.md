@@ -7,13 +7,15 @@ title: Python
 ---
 # Design Patterns
 
-## The Composition Over Inheritance Principle
+## Gang of Four: Principles
+
+### The Composition Over Inheritance Principle
 
 > In Python as in other programming languages, this grand principle encourages software architects to escape from Object Orientation and enjoy the simpler practices of Object Based programming instead.
 
 **Favor object composition over class inheritance**
 
-### The subclass explosion
+#### The subclass explosion
 
 A logger:
 
@@ -68,7 +70,7 @@ However now we want to filter the logged do a `error` word:
 The problem now if if you want to use the filtered logger with a socket.
 You need to create another class.
 
-Exponentially creating classes: 
+Exponentially creating classes:
 
     Logger            FilteredLogger
     SocketLogger      FilteredSocketLogger
@@ -76,7 +78,7 @@ Exponentially creating classes:
 
 > The solution is to recognize that a class responsible for both filtering messages and logging messages is too complicated. In modern Object Oriented practice, it would be accused of violating the “Single Responsibility Principle.”
 
-### Solution 1: The Adapter Pattern
+#### Solution 1: The Adapter Pattern
 
 Decide that the original logger does not need to be improved because any mechanism for outputting messages can be wrapped up to look like the file the logged expects.
 
@@ -122,7 +124,7 @@ Use:
 
 > Note that it was only for the sake of example that the FileLikeSocket class is written out above — in real life that adapter comes built-in to Python’s Standard Library. Simply call any socket’s `makefile()` method to receive a complete adapter that makes the socket look like a file.
 
-### Solution 2: The Bridge Pattern
+#### Solution 2: The Bridge Pattern
 
 The Bridge Pattern splits a class’s behavior between an outer “abstraction” object that the caller sees and an “implementation” object that’s wrapped inside
 
@@ -178,7 +180,7 @@ Abstraction objects and implementation objects can be freely combined at runtime
 
 Explosion avoided as 2 types of classes are combined at runtime.
 
-### Solution 3: The Decorator Pattern
+#### Solution 3: The Decorator Pattern
 
 What if we wanted to apply two different filters to the same log? The above solutions would not work.
 
@@ -234,10 +236,9 @@ Use:
     log3.log('Error: this is bad, but not that bad')
     log3.log('Error: this is pretty severe')
 
-### Solution 4: Beyond the Gang of Four patterns
+#### Solution 4: Beyond the Gang of Four patterns
 
 It wanted more flexibility - multiple loggers and multiple filters:
-
 
 1. The Logger class that callers interact with doesn’t itself implement either filtering or output. Instead, it maintains a list of filters and a list of handlers.
 2. For each log message, the logger calls each of its filters. The message is discarded if any filter rejects it.
@@ -301,7 +302,7 @@ Usage:
 
 > There’s a crucial lesson here: design principles like Composition Over Inheritance are, in the end, more important than individual patterns like the Adapter or Decorator. 
 
-### Dodge: “if” statements
+#### Dodge: “if” statements
 
 Simple is better than complex - why not add if statements instead.
 
@@ -343,8 +344,7 @@ What has been lost:
 5. Efficiency - code only runs for features declared - not all conditions
 
 > One of the strongest signals about code health that our tests provide is how many lines of irrelevant code have to run before reaching the line under test.
-
-### Dodge: Multiple Inheritance
+#### Dodge: Multiple Inheritance
 
 But Python supports multiple inheritance, so the new FilteredSocketLogger can list both SocketLogger and FilteredLogger as base classes and inherit from both:
 
@@ -391,8 +391,7 @@ Unit tests:
 * Multiple inheritance has introduced a new `__init__()` method because neither base class’s `__init__()` method accepts enough arguments for a combined filter and logger
 * You will have to test every combination to ensure it is safe - an explosion of subclasses
 
-
-### Dodge: Mixins
+#### Dodge: Mixins
 
 A mixin is a class that defines and implements a single, well-defined feature.
 
@@ -417,11 +416,11 @@ A mixin is a class that defines and implements a single, well-defined feature.
     logger.log('Warning: not that important')
     logger.log('Error: this is important')
 
-### Dodge: Building classes dynamically
+#### Dodge: Building classes dynamically
 
 ...over it...check the source
 
-## Cool Pattern
+### Cool Pattern
 
 I noticed a cool pattern - when constructing an object you can also tell the class what underlying class to use. I saw it in the [Python Elasticsearch Client](https://elasticsearch-py.readthedocs.io/en/7.x/transports.html)
 
@@ -449,6 +448,204 @@ In the constructor it instantiates the class with the host info and keyword argu
 
 I am not sure what design pattern this is - or if it even is one - but it looked nice and let me set headers on the Elasticsearch client so I could auth. Pretty neat.
 
+## Python-Specific Patterns
+
+### The Global Object Pattern
+
+> Python parses the outer level of each module as normal code. Un-indented assignment statements, expressions, and even loops and conditionals will execute as the module is imported. An excellent opportunity for constants and data structures that callers will find useful. The dangers are that global objects can wind up coupling distant code, and I/O operations impose import-time expense and side effects.
+
+Every Python module is a separate namespace.
+
+Separate namespaces are crucial to making a programming language tractable.
+
+> Programmers who are forced to code in a language without namespaces soon find themselves festooning global names with prefixes, suffixes, and extra punctuation in a desperate race to keep them from conflicting.
+
+#### The Constant Pattern
+
+Examples from the standard library
+
+    January = 1                   # calendar.py
+    WARNING = 30                  # logging.py
+    MAX_INTERPOLATION_DEPTH = 10  # configparser.py
+    SSL_HANDSHAKE_TIMEOUT = 60.0  # asyncio.constants.py
+    TICK = "'"                    # email.utils.py
+    CRLF = "\r\n"                 # smtplib.py
+
+constants can also be tuples or frozensets:
+
+    all_errors = (Error, OSError, EOFError)  # ftplib.py
+    bytes_types = (bytes, bytearray)         # pickle.py
+    DIGITS = frozenset("0123456789")         # sre_parse.py
+    _EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)  # datetime
+
+Even mutable dtastructures are used:
+
+    # socket.py
+    _blocking_errnos = { EAGAIN, EWOULDBLOCK }
+    # locale.py
+    windows_locale = {
+    0x0436: "af_ZA", # Afrikaans
+    0x041c: "sq_AL", # Albanian
+    0x0484: "gsw_FR",# Alsatian - France
+    ...
+    0x0435: "zu_ZA", # Zulu
+    }
+
+> Constants are often introduced as a refactoring: the programmer notices that the same value `60.0` is appearing repeatedly in their code, and so introduces a constant `SSL_HANDSHAKE_TIMEOUT` for the value instead. Each use of the name will now incur the slight cost of a search into the global scope, but this is balanced by a couple of advantages. The constant’s name now documents the value’s meaning, improving the code’s readability. And the constant’s assignment statement now provides a single location where the value can be edited in the future without needing to hunt through the code for each place `60.0` was used.
+
+#### Dunder Constants
+
+* `__name__` - the functions name - remember the fake name `'__main__'` is set for any command-line top level script
+* `__file__` - the full filesystem path to the module’s Python file itself
+
+Used to find data files:
+
+    here = os.path.dirname(__file__)
+
+If `__all__` is assigned a sequence of identifiers eg. `__all__ = ['run', 'walk', 'jump']`. Only those names are imported when you do a `from x import *`
+
+`import *` became an anti-pattern but `__all__` is still used for sphinx autodoc. It is better to assign it as a tuple.
+
+#### Global Objects that are mutable
+
+For example `os.environ`
+
+* Affecting tests and tests that run in parrallel mofifying this global object
+* If tests don't restore environ to the original state
+
+#### Import-time I/O
+
+For example if `/etc/hosts` does not exist.
+
+> Avoid network or file oeprations at import time
+
+* Errors at import time are far more serious than errors at runtime - there are still a stack of imports the program is going through and will not be in a error hanlding place `try...except`
+* Sometimes your library is imported but not even used
+
+Your libraries should wait until they’re first called before opening files and creating sockets
+
+### The Prebound Method Pattern
+
+...
+
+
+### The Sentinel Object Pattern
+
+...
+
+## Gang of Four: Creational Patterns
+
+### The Singleton Pattern
+
+Python already had a singleton - before it became a thing.
+
+* A tuple of length one is called a singleton - it reflects the original definition of a singleton in mathematics: a set containing exactly one element
+* Modules are “singletons” in Python because import only creates a single copy of each module - subsequent import of the same module return the same object
+* A singleton is a class instance that has been defined a global name - [How do I share global variables across modules?](https://docs.python.org/3/faq/programming.html#how-do-i-share-global-variables-across-modules)
+* The actual singleton design pattern: the lone object returned by its class every time the class is called - there can only be one.
+
+In Python3 `None` and `Ellipsis` were upgraded to use the singleton pattern.
+
+So you can:
+
+    Nonetype = type(None)
+    new_none = NoneType()
+    print(new_none)
+    >>> None
+
+> Rarely used - usually ther global object pattern is used and you just type the name `None`
+
+#### The Gang of Four's Implementation
+
+> Unlike a global function, a class method avoided adding yet another name to the global namespace, and unlike a static method, it could support subclasses that were singletons as well.
+
+    class Logger(object):
+        _instance = None
+
+        def __init__(self):
+            raise RuntimeError('Call instance() instead')
+
+        @classmethod
+        def instance(cls):
+            if cls._instance is None:
+                print('Creating new instance')
+                cls._instance = cls.__new__(cls)
+                # Put any initialization here.
+            return cls._instance
+
+This prevents the client from institating the object from the class.
+Callers are instructed to use the `instance()` method which returns the object.
+
+    log1 = Logger.instance()
+    print(log1)
+    log2 = Logger.instance()
+    print(log2)
+    print('Are they the same object?', log1 is log2)
+
+Subsequent calls do not initiatialise again and returns the same object.
+
+> Apparently this is not a good fit for python
+
+#### A more Pythonic implementation
+
+Python started with a head start - by lacking a `new` keyword. Instead objects are created by invoking a callable.
+There is no limitation on what the callable does.
+
+    log = Logger()
+
+Python 2.4 added the [`__new__()`](https://docs.python.org/3/reference/datamodel.html?highlight=__new__#object.__new__) dunder method to support alternative creational patterns like the Singleton Pattern and the Flyweight pattern.
+
+The problem is `__init__()` always gets called on the return value, whether the object that’s being returned is new or not
+
+    class Logger(object):
+        _instance = None
+
+        def __new__(cls):
+            if cls._instance is None:
+                print('Creating the object')
+                cls._instance = super(Logger, cls).__new__(cls)
+                # Put any initialization here.
+            return cls._instance
+
+> the above pattern is the basis of every Python class that hides a singleton object behind what reads like normal class instantiation.
+
+Drawbacks:
+
+* Difficult to read compared to the global object pattern, you need to know what `__new__()` does
+* Hard to test a singleton - you are forced to use the class in a specific way - Unless the caller is willing to stoop to monkey patching; or temporarily modifying _instance to subvert the logic in `__new__()`
+* It is not obvious you are instantiating a singleton
+
+The pattern is generally best avoided in favour of the global object pattern or [sharing global objects across modules](https://docs.python.org/3/faq/programming.html#how-do-i-share-global-variables-across-modules)
+
+> If your program only needs one of a certain object, you can just make one
+
+    class ChessBoard:
+        def __init__(self):
+            ...
+
+    the_chess_board = ChessBoard()
+
+If you want centralised management, make it global:
+
+    _the_chess_board = None
+
+    def the_chess_board():
+        global _the_chess_board
+        if _the_chess_board is None:
+            _the_chess_board = ChessBoard()
+        return _the_chess_board
+
+
+## Gang of Four: Structural Patterns
+
+...
+
+## Gang of Four: Behavioral Patterns
+
+...
+
+
 ## Sources
 
 * [Python Design Patterns](https://python-patterns.guide/)
+* [Singleton is a bad idea - Ned Batchelder](https://nedbatchelder.com/blog/202204/singleton_is_a_bad_idea.html)

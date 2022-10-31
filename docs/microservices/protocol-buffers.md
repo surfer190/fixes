@@ -267,6 +267,12 @@ Data access code is not generated directly like in `C++` and `java`.
 
 > In Python, the compiler only outputs code to build descriptors for the generated classes, and a Python metaclass does the real work. __It seems like this is the reason that the generated class for me did not contain the empty classes - so my IDE didn't pick them up but I could still use them at runtime__
 
+### Install the Python Protobuf Libary
+
+Install [python protobuf package](https://pypi.org/project/protobuf/)
+
+    pip install protobuf
+
 ### Creating a file
 
     from protocol_buffers import addressbook_pb2

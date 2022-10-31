@@ -1321,7 +1321,7 @@ Refer to the book for more information...
 
 ### Use @classmethod Polymorphism to construct methods generically
 
-Polymorphism is a way for multiple classes in a hierachu to implement their own unique version of a method. 
+Polymorphism is a way for multiple classes in a hierachu to implement their own unique version of a method.
 
 > This allows many classes to fulfill the same interface or abstract base class while providing different functionality
 
@@ -1369,7 +1369,7 @@ The concrete subclass of `Worker`:
 
 Now the big hurdle...**What connects these pieces?**
 
-I have a set of classes with reaonable abstractions and interfaces, but they are only useful once the class is constructed. What is responsible for building the objects and orchestrating the map reduce?
+I have a set of classes with reasonable abstractions and interfaces, but they are only useful once the class is constructed. What is responsible for building the objects and orchestrating the map reduce?
 
 We can manually build this with helper functions:
 
@@ -1399,7 +1399,7 @@ We can manually build this with helper functions:
         return execute(workers)
 
 There is a big problem here. The **functions are not generic at all**.
-If you write a different type of `InputData` or `Worker` subclass you would have to rewrite all of these functions. This boils down to **needing a generic way to construct objects**. 
+If you write a different type of `InputData` or `Worker` subclass you would have to rewrite all of these functions. This boils down to **needing a generic way to construct objects**.
 
 In other languages you could solve this problem with constructor polymorphism, making each subclass of `InputData` have a special constrcutor that can be used generically.
 
@@ -1407,7 +1407,9 @@ The problem is that python only has a single constructor method: `__init__`. It 
 
 The best way to solve this is with: `@classmethod` polymorphism
 
-This polymorphism extends to whole classes, not just their constructed objects.
+**Python class method polymorphism extends to whole classes, not just their constructed objects.**
+
+> Remember polymorphism means to take on different forms
 
 class GenericInputData(object):
     def read(self):
@@ -1432,7 +1434,7 @@ class PathInputData(GenericInputData):
         for name in os.listdir(data_dir):
             yield cls(os.path.join(data_dir, name))
 
-> Similarly, I can make the create_workers helper part of the GenericWorker class. Here, I use the input_class parameter, which must be a subclass of GenericInputData, to generate the necessary inputs. I construct instances of the GenericWorker concrete subclass using cls() as a generic constructor.
+> Similarly, I can make the create_workers helper part of the GenericWorker class. Here, I use the input_class parameter, which must be a subclass of GenericInputData, to generate the necessary inputs. I construct instances of the GenericWorker concrete subclass using `cls()` as a generic constructor.
 
     class GenericWorker(object):
         # ...

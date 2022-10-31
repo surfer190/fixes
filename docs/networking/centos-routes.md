@@ -31,4 +31,3 @@ Add a route
 Delete a route
 
     route del -net 196.41.6.162 netmask 255.255.255.255 gw 10.200.1.249
-

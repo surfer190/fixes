@@ -23,7 +23,11 @@ to change databases, close the old connection and reconnect on the new database:
     select * 
     from schema1.the_table;
 
-### View schemas in a db
+View the size of a database:
+
+    \l+ <database_name>
+
+View schemas in a db
 
     select nspname from pg_catalog.pg_namespace;
 
@@ -92,4 +96,23 @@ list tables
     \dt
 
 
+## How to Query an Array Field
 
+Check if an array field contains a value
+
+    select * from mytable where 'Journal'=ANY(array_test_types);
+
+An array field is seen as `int[]` or `bigint[]` in PG Admin.
+
+## Difference Between Double Quotes and Single Quotes in Postgres SQL
+
+> There is a difference between single quotes and double quotes in PostgreSQL. Unlike python.
+
+* Double quotes are for names of tables or fields.
+* The single quotes are for string constants
+
+
+## Sources
+
+* [Postgres: Check if array field contains a value](https://stackoverflow.com/questions/39643454/postgres-check-if-array-field-contains-value)
+* [Postgres docs: String constants](https://www.postgresql.org/docs/9.4/sql-syntax-lexical.html)
