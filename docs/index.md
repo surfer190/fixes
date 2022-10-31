@@ -4,6 +4,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-10-05: _Book Summaries_ [The Speedbag Bible Routines](book-summaries/the-speedbag-bible-routines.md)
+- 2022-10-05: _Book Summaries_ [Steinhoff - Steinheist (Corporate Accounting Fraud)](book-summaries/investing-steinhoff-stienheist.md)
 - 2022-09-16: _Python_ [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-08-13: _Python_ [Why does the Python Debugger not Work Sometimes](python/why-does-the-python-debugger-not-work-sometimes.md)
@@ -12,8 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-07-30: _Python_ [Python Gotchas](python/gotchas.md)
 - 2022-07-25: _Python_ [Python docs - The Import System](python/python-docs-the import system.md)
 - 2022-07-25: _Python_ [Docstring types](python/docstring-styles.md)
-- 2022-07-25: _Python_ [Nosetests](python/nosetests.md)
-- 2022-07-25: _Python_ [What is the meaning of Underscores in Variables Names in Python?](python/meaning-of-underscores-in-variable-name.md)
 
 ## Table of Contents
 
@@ -108,6 +108,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## Book-Summaries
+- 2022-10-05: [The Speedbag Bible Routines](book-summaries/the-speedbag-bible-routines.md)
+- 2022-10-05: [Steinhoff - Steinheist (Corporate Accounting Fraud)](book-summaries/investing-steinhoff-stienheist.md)
 - 2022-05-06: [Fundamentals of Software Architecture](book-summaries/fundamentals-of-software-architecture.md)
 - 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)

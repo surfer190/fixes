@@ -151,7 +151,7 @@ The full name is created with: `__package__ + __name__`
 
 For any of this to work the `package` directory must be in the python search path `sys.path`
 
-## My Solution
+## The Solution
 
 The most important thing to do is find out what `__name__` and `__package__` is.
 
@@ -189,13 +189,13 @@ So you will get issues where `import threading` is importing your file/folder in
 
 Your expected package for the threading module may be: `my_package.utils.threading`
 
-> `from __future__ import absolute_import` means that if you import string, Python will always look for a top-level `strin`g` module, rather than `current_package.string`. This is default behaviour on python2.7 and up.
+> `from __future__ import absolute_import` means that if you import string, Python will always look for a top-level `string` module, rather than `current_package.string`. This is default behaviour on python2.7 and up.
 
 ### __package__
 
 * empty string / `""` : Package is root or top level and run with `python -m current_module` or `import current_module`
 * None: Module is run with the filename `python current_module.py`
-* A dot seperated package name: when the module is a package: the `__package__` is the same as `__name__`, when it is not a package it is set to the parent package name `utils.current_module` for example.
+* A dot separated package name: when the module is a package: the `__package__` is the same as `__name__`, when it is not a package it is set to the parent package name `utils.current_module` for example.
 
 ### Omitting __init__.py
 

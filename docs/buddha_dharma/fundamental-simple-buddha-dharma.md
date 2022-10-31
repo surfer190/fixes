@@ -8,6 +8,23 @@ title: Core Fundamental Teachings of Buddha
 
 ## Core Fundamental Teachings of Buddha
 
+TL;DR:
+
+* Give up clinging to love and hate, just rest with things as they are
+* Do not try to become anything.
+* Do not make yourself into anything.
+* Do not be a meditator.
+* Do not become enlightened.
+* When you sit, let it be.
+* When you walk, let it be.
+* Grasp at nothing. Resist nothing.
+
+- Ajahn Chah - [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
+
+* good in the beginning as virtue
+* good in the middle as concentration
+* good in the end as wisdom
+
 * The history of buddhism and the buddha himself isn't essential
 * The esoteric, extensive detail, rites, rituals and the number of things are inconsequential
 * The worshipping and blind belief as buddha as a god is also false. He was a human and we are humans.
@@ -88,6 +105,9 @@ Impermanence: Everything is constantly changing and there is no permanent state.
 > The goal in life is not to be happy, as that is an impermanent feeling. When the mind is not happy, it will move to sadness, anger, or worse.
 
 The goal in life is to develop a peaceful, calm, serene, and content mind with joy free of cravings/desires/attachments that is “satisfied with what is… - the Enlightened Mind.
+
+In life we are told "Never give up", "Never quit" always strive to achieve. This is clinging - with a string eagerness.
+Instead - give up. Get rid of the self.
 
 > You need to accept responsibility for your own discontent mind and the emotions you experience. Rather than blaming pleasant feelings, painful feelings, and feelings that are neither painful-nor-pleasant on someone or something external, see the truth that you cause your own discontent mind.
 
