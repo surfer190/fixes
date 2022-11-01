@@ -6,19 +6,19 @@ Mostly Technology related summaries, fixes, solutions and notes
 
 [![Build Status](http://37.139.28.74:8080/buildStatus/icon?job=fixes+mkdocs)](http://37.139.28.74:8080/job/fixes%20mkdocs/)
 
-* These are common problems and solutions, fixes, notes and tips that I have gathered while trying to solve problems
-* The _fixes_ are displayed as technical documentation using [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
-* There are also some interpretations and summaries of tech related documentation and books
+* Common problems and solutions, fixes, notes and tips gathered while trying to solve problems
+* _fixes_ are displayed as technical documentation using [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
+* Some interpretations and summaries of tech related documentation and books
 
 ### Where to view Fixes
 
-The whole collection of fixes can be viewed with your web browser at:
-[http://fixes.co.za](http://fixes.co.za)
+The collection of fixes can be viewed with your web browser at: [http://fixes.co.za](http://fixes.co.za)
 
 ## Getting Started
 
     python3 -m venv env
     source env/bin/activate
+    pip install -r requirements.txt
     mkdocs serve
 
 ### Create / Update the index page
