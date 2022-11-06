@@ -1,22 +1,14 @@
-<script type="text/javascript">
+<script>
     var _paq = window._paq = window._paq || [];
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {
-      var u="https://matomo.fixes.co.za/";
+      var u="https://analytics.fixes.co.za/";
       _paq.push(['setTrackerUrl', u+'matomo.php']);
       _paq.push(['setSiteId', '9']);
       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
     })();
-
-    if (window.addEventListener) { 
-        window.addEventListener("load", embedTrackingCode, false); 
-    } else if (window.attachEvent) { 
-        window.attachEvent("onload",embedTrackingCode); 
-    } else {
-        embedTrackingCode();
-    }
 </script>
 <script>
     (function(f, a, t, h, o, m){
