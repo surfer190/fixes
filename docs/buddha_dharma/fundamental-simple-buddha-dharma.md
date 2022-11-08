@@ -21,6 +21,14 @@ TL;DR:
 
 - Ajahn Chah - [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
 
+> To cut a path through the forest, you need not cut down all the trees - you don't need to read all the dharma
+
+Cures For Restlessness:
+
+* Take very little food.
+* Do not talk with anyone.
+* After the meal, return to your hut, close the doors and windows, wrap yourself up in a lot of robes, and sit, no matter how you feel. In this way, you can face the restlessness directly. When feelings arise, question them and realize that they are only feelings.
+
 * good in the beginning as virtue
 * good in the middle as concentration
 * good in the end as wisdom

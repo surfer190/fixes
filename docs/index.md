@@ -4,6 +4,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-11-08: _Postgres_ [Postgres  Terminology](postgres/postgres-terminology.md)
 - 2022-10-25: _Sqlalchemy_ [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
 - 2022-10-25: _Postgres_ [Postgres Performance](postgres/postgres-performance.md)
 - 2022-10-24: _Postgres_ [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
@@ -13,7 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-10-05: _Book Summaries_ [Steinhoff - Steinheist (Corporate Accounting Fraud)](book-summaries/investing-steinhoff-stienheist.md)
 - 2022-10-01: _AWS_ [AWS Codebuild](aws/aws-codebuild.md)
 - 2022-09-16: _Python_ [Fluent Python Notes](python/fluent-python-notes.md)
-- 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 
 ## Table of Contents
 
@@ -494,6 +494,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-11-08: [Postgres  Terminology](postgres/postgres-terminology.md)
 - 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
 - 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
 - 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
