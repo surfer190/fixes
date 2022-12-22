@@ -103,7 +103,7 @@ Use `select version();` inside `psql` to check the version.
 
 * psql - postgreSQL's command line interface that comes with the core distribution
 * pgAdmin - a popular, free GUI tool for Postgres. It is the `postgres` version of MySQLWorkbench. Although I have found MySQL workbench superior to use. That being said administration and monitoring can be done on pgAdmin as it is open source. pgAdmin does not have a desktop app is is used through a browser.
-* phpPgAdmin - Postgres version of PHPMyAdmin. Don;t use this thing it is shit.
+* phpPgAdmin - Postgres version of PHPMyAdmin. Not the best tool - but horses for courses.
 * Adminer - Useful if you are manging postgres and other databases together. A lightweight PHP application. It has a nice relational diagrammer (which makes up for PgAdmin's lack of one). It is a lowest common denominator package.
 
 ### Postgres Databse Objects

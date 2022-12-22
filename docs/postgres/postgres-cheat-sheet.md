@@ -54,7 +54,7 @@ In psql:
 
     \du 
 
-[View the scemas in a postgres database](https://dba.stackexchange.com/questions/40045/how-do-i-list-all-schemas-in-postgresql/40051)
+[View the schemas in a postgres database](https://dba.stackexchange.com/questions/40045/how-do-i-list-all-schemas-in-postgresql/40051)
 
 In psql:
 
@@ -91,10 +91,37 @@ Select a database
 
     \c <db_name>
 
-list tables
+list tables (and owners)
 
     \dt
 
+## Get the version
+
+    postgres=# SELECT version();
+    PostgreSQL 10.21 (Ubuntu 10.21-0ubuntu0.18.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0, 64-bit
+    (1 row)
+
+## Trouble shooting ownership
+
+Ever get this:
+
+    psycopg2.errors.InsufficientPrivilege: must be owner of table section
+    peewee.ProgrammingError: must be owner of table section
+
+then the owner of the table is not the current user - so it cannot drop that table.
+
+Check table ownership with:
+
+    \dt+
+
+## Delete a database
+
+    DROP database <mydbname>;
+
+## Create a user and grant access to a db
+
+    create user pali_canon with encrypted password 'pali_canon';
+    grant all privileges on database pali_canon to pali_canon;
 
 ## How to Query an Array Field
 
@@ -116,3 +143,4 @@ An array field is seen as `int[]` or `bigint[]` in PG Admin.
 
 * [Postgres: Check if array field contains a value](https://stackoverflow.com/questions/39643454/postgres-check-if-array-field-contains-value)
 * [Postgres docs: String constants](https://www.postgresql.org/docs/9.4/sql-syntax-lexical.html)
+* [Install and Configure postgres 14 on ubuntu 20.04](https://www.atlantic.net/dedicated-server-hosting/how-to-install-and-configure-postgres-14-on-ubuntu-20-04/)

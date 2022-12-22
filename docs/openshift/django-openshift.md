@@ -27,7 +27,7 @@ There are a few key things to understand about docker images on openshift:
 
     pip freeze > requirements.txt
 
-4. Create a dockerfile based on an [example dockerfile](https://github.com/openshift-katacoda/blog-django-py/blob/master/Dockerfile) don't use a [shit dockerfile like this](https://github.com/CentOS/CentOS-Dockerfiles/blob/master/Django/centos7/Dockerfile)
+4. Create a dockerfile based on an [example dockerfile](https://github.com/openshift-katacoda/blog-django-py/blob/master/Dockerfile) probably best to avoid a [dockerfile like this](https://github.com/CentOS/CentOS-Dockerfiles/blob/master/Django/centos7/Dockerfile)
 
     # pull official python alpine image
     FROM python:3.8-alpine

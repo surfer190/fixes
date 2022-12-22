@@ -19,7 +19,26 @@ TL;DR:
 * When you walk, let it be.
 * Grasp at nothing. Resist nothing.
 
-- Ajahn Chah - [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
+- Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
+
+The Dharma of the Buddha is not found in books. If you want to really see for yourself what the Buddha was talking about, you don't need to bother with books. Watch your own mind. Examine to see how feelings and thoughts come and go. Don't be attached to anything, just be mindful of whatever there is to see. This is the way to the truths of the Buddha. Be natural. Everything you do in your life here is a chance to practice. It is all Dharma. When you do your chores, try to be mindful. If you are emptying a spittoon or cleaning a toilet, don't feel you are doing it as a favor for anyone else. There is Dharma in emptying spittoons. Don't feel you are practicing only when sitting still, cross-legged. Some of you have complained that there is not enough time to meditate. Is there enough time to breathe? This is your meditation: mindfulness, naturalness, in whatever you do. - Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
+
+There's one essential point that all good practice must eventually come to-not clinging - Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
+
+You may wish to travel, to visit other teachers and try other systems. Some of you have already done so. This is a natural desire. You will find out that a thousand questions asked and knowledge of many systems will not bring you to the truth. Eventually you will get bored. You will see that only by stopping and examining your own heart can you find out what the Buddha talked about. No need to go searching outside yourself. Eventually, you must return to face your own true nature. Right where you are is where you can understand the Dharma.- Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
+
+> The answer is not out there - it is in you. Stop the frantic mind running and chasing and let go.
+
+> Don't make comparisons. Don't discriminate.
+
+    Q: Then what is your advice to new practitioners?
+    A: The same as for old practitioners! Keep at it. - Ajahn Chah
+
+> Even peace must be seen as impermanent. If you are attached to peaceful states of mind, you will suffer when you do not have them. Give up everything, even peace.
+
+> You cannot find peace on a mountain or in a cave; you can travel to the site of Buddha's enlightenment without coming any closer to the truth.
+
+Lots of people come here with a high position in society and views about things: about themselves, about the practice of meditation, about the Buddha’s teachings. Some of them are wealthy merchants, some have degrees, some are teachers or government officials. Their brains are full of views about all kinds of things. They’re too clever to listen to other people. It’s like water in a cup. If the cup is full of dirty water, it can’t be used for anything. Only when you pour out the water can the cup be put to use. You have to empty your mind of views before you can learn. - Ajahn Chah. “In Simple Terms.” A dirty cup. 
 
 > To cut a path through the forest, you need not cut down all the trees - you don't need to read all the dharma
 
@@ -28,6 +47,8 @@ Cures For Restlessness:
 * Take very little food.
 * Do not talk with anyone.
 * After the meal, return to your hut, close the doors and windows, wrap yourself up in a lot of robes, and sit, no matter how you feel. In this way, you can face the restlessness directly. When feelings arise, question them and realize that they are only feelings.
+
+> Exercising the body to strengthen it and exercising the mind to strengthen it are the same sort of thing, but the methods are different. In exercising the body, you have to move the different parts, but in exercising the mind you make it stop and rest, as when you do concentration. Try to get the mind to let go of everything. - Ajahn Chah. “In Simple Terms.” Knife
 
 * good in the beginning as virtue
 * good in the middle as concentration
@@ -401,7 +422,11 @@ There is no purpose. Dissolve the ego.
 
 An Enlightened mind is liberated from the outward seeking and searching for satisfaction based on impermanent conditions and is inwardly peaceful, calm, serene, and content with joy - permanently.
 
- 
+### Inside You is Nothing, Nothing at All
+
+In my third year as a monk, I had doubts about the nature of samadhi and wisdom. Really desiring to experience samadhi, I strove ceaselessly in my practice. As I sat in meditation, I would try to figure out the process, and therefore my mind was especially distracted. When I did nothing in particular and was not meditating, I was fine. But when I determined to concentrate my mind, it would become extremely agitated.
+
+"What's going on?" I wondered. "Why should it be like this?" After a while, I realized that concentration is like breathing. If you determine to force your breaths to be deep or shallow, fast or slow, breathing becomes difficult. But when you are just walking along, not aware of your inhalation and exhalation, breathing is natural and smooth. In the same way, any attempt to force yourself to become tranquil is just an expression of attachment and desire and will prevent your attention from settling down.
 
 
 ## Sources
@@ -409,3 +434,4 @@ An Enlightened mind is liberated from the outward seeking and searching for sati
 * [Audio dharma and guided meditation](https://www.audiodharma.org/)
 * [Buddha Daily Wisdom](https://www.buddhadailywisdom.com/)
 * David Roylance. “The Words of The Buddha - V1 - Developing a Life Practice.”
+* [ajahn Chah - A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm#Lessons%20in%20the%20Forest)

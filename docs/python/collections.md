@@ -131,7 +131,7 @@ Delete a portion
 
 Usages: `my_dict = {"title": "Surfer190"}`
 
-Can create with `dict` keyword: `a = dict([['Title', 'Surfer190']])` <- but clearly shit
+Can create with `dict` keyword: `a = dict([['Title', 'Surfer190']])`
 
 ### Get an element
 

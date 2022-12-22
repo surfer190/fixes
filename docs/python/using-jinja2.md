@@ -59,6 +59,8 @@ We are concerned about 2 variables `trim_blocks` and `lstrip_blocks`:
         lstrip_blocks=True
     )
 
+Read the docs: [Jinja: Template Designer Documentation](https://jinja.palletsprojects.com/en/3.0.x/templates/)
+
 ## Source
 
 * [Jinja 2: Working with jinja 2 templates](https://devinpractice.com/2017/06/12/python-working-with-jinja2-templates/)
