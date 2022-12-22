@@ -48,7 +48,7 @@ In psql:
 
     \l
 
-[View the users of a postgres instance](https://unix.stackexchange.com/questions/201666/command-to-list-postgresql-user-accounts)
+[View the users and roles of a postgres instance](https://unix.stackexchange.com/questions/201666/command-to-list-postgresql-user-accounts)
 
 In psql:
 
@@ -72,18 +72,23 @@ In psql:
 
 Dump a remote database
 
-    pg_dump -U <username> -h <ip> -p 5432 <database_name> > <backup_name>.bak
+    pg_dump -U {username} -h {ip} -p 5432 {database_name} > {backup_name}.bak
+
+> ensure your pg_dump version matches or you might get something like:
+
+    pg_dump: error: server version: 14.5; pg_dump version: 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1)
+    pg_dump: error: aborting because of server version mismatch
 
 Create a database and user for access to it:
 
     sudo -u postgres psql
-    create database <db_name>;
-    create user <username> with encrypted password '<password>';
-    grant all privileges on database <db_name> to <username>;
+    create database {db_name};
+    create user {username} with encrypted password '{password}';
+    grant all privileges on database {db_name} to {username};
 
 Restore the database:
 
-    sudo -u postgres psql <db_name> < <backup_name>.bak
+    sudo -u postgres psql {db_name} < {backup_name}.bak
 
 ## PSQL Cheatsheet
 
@@ -138,9 +143,126 @@ An array field is seen as `int[]` or `bigint[]` in PG Admin.
 * Double quotes are for names of tables or fields.
 * The single quotes are for string constants
 
+## Enable Extension
+
+    CREATE EXTENSION <extension name>;
+
+eg. `CREATE EXTENSION pg_stat_statements;`
+
+## Disable Extension
+
+    DROP EXTENSION IF EXISTS <extension_name>;
+
+eg. `DROP EXTENSION IF EXISTS pg_stat_statements;`
+
+## Reset PgStatStatement
+
+    select pg_stat_statements_reset();
+
+## Check if extension is enabled
+
+From `psql`:
+
+    \dx
+
+or in plain old SQL:
+
+    SELECT * FROM pg_extension;
+
+## View indexes on a table
+
+From `psql`:
+
+    \d+ <table_name>
+
+## Check available extensions
+
+    SELECT name FROM pg_available_extensions;
+
+## Drop index
+
+    DROP INDEX CONCURRENTLY <index_name>
+
+[Postgres docs: Drop index](https://www.postgresql.org/docs/current/sql-dropindex.html)
+
+## Check the size of an index
+
+In psql:
+
+    \di+
+
+## Check Index Stats
+
+    SELECT
+        relname,
+        indexrelname,
+        idx_scan,
+        idx_tup_read,
+        idx_tup_fetch,
+        pg_size_pretty(pg_relation_size(indexrelname::regclass)) as size
+    FROM
+        pg_stat_all_indexes
+    WHERE
+        schemaname = 'public'
+        AND indexrelname NOT LIKE 'pg_toast_%'
+    ORDER BY
+        pg_relation_size(indexrelname::regclass) DESC;
+
+## Check Table Stats (Shows Index vs Sequential scans)
+
+    SELECT pg_stat_user_tables.schemaname,
+        pg_stat_user_tables.relname,
+        pg_stat_user_tables.seq_scan,
+        pg_stat_user_tables.seq_tup_read,
+        pg_stat_user_tables.idx_scan,
+        pg_stat_user_tables.idx_tup_fetch
+        FROM pg_stat_user_tables;
+
+## Get size of a specific table
+
+    SELECT pg_size_pretty (pg_relation_size('table_name'));
+
+eg:
+
+    SELECT pg_size_pretty (pg_relation_size('products'));
+
+## Check when Last the Stats Database has been Reset
+
+    SELECT datname, stats_reset FROM pg_stat_database;
+
+## Reset Stats for a Database
+
+    SELECT pg_stat_reset();
+
+> Only resets stats on db of connected session
+
+## Drop a table
+
+    DROP TABLE <table_name>
+
+[Postgres docs: Drop table](https://www.postgresql.org/docs/current/sql-droptable.html)
+
+## Create a multi-column index
+
+Do the index types have to be the same?
+
+    CREATE INDEX CONCURRENTLY test2_mm_idx ON test2 (major, minor);
+
+[Postgres docs: Create a multicolumn index](https://www.postgresql.org/docs/9.6/indexes-multicolumn.html)
+
+## Reindex an index
+
+REINDEX INDEX CONCURRENTLY <table_name>
+
+## View active connections
+
+    select *
+    from pg_stat_activity
+    where datname = 'mydatabasename';
 
 ## Sources
 
 * [Postgres: Check if array field contains a value](https://stackoverflow.com/questions/39643454/postgres-check-if-array-field-contains-value)
 * [Postgres docs: String constants](https://www.postgresql.org/docs/9.4/sql-syntax-lexical.html)
 * [Install and Configure postgres 14 on ubuntu 20.04](https://www.atlantic.net/dedicated-server-hosting/how-to-install-and-configure-postgres-14-on-ubuntu-20-04/)
+* [Postgres: list installed extensions](https://stackoverflow.com/questions/21799956/using-psql-how-do-i-list-extensions-installed-in-a-database/21799995)

@@ -9,14 +9,14 @@ title: Python Generators
 
 This is not a simple topic, avoid it for a while.
 
-Generators allow you to decalre functions that behave like iterators.
+Generators allow you to declare functions that behave like iterators.
 
 ### Iterator
 
 * An iterator is an object that can be iterated (looped) upon
 * Any class implementing `__iter__` and `__next__`
 * Save memory as only compute when you ask for it: `lazy evaluation`
-* Important in large data sets (doesn;tstop you from working)
+* Important in large data sets (doesn't stop you from working)
 
 Example:
 

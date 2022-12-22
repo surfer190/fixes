@@ -45,8 +45,23 @@ Solved by:
 2. Adding tries to store individual symbols more efficiently
 3. Optimizing for fast reads using Segment Trees - reads turn from O(n) to Olog(n)
 
+## Setup
 
+### Create server
 
+    docker run -it -p 4040:4040 pyroscope/pyroscope:latest server
+
+### Add to App
+
+    pip install pyroscope-io
+
+Add code to your application:
+
+    import pyroscope
+    pyroscope.configure(
+        application_name = "service_name.service",
+        server_address   = "http://localhost:4040",
+    )
 
 ## Sources
 
