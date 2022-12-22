@@ -80,4 +80,14 @@ Man shall eat from the sweat of his brow - Genesis 3:19
 
 The wherewithal - money
 
+    How to play the long game:
 
+    Don’t worry about being the best. Worry about being the best at getting better.
+
+    Don’t aim to be consistently great. Aim to be great at being consistent.
+
+    Ignore hacks, trends, and fads. Focus on nailing the basics over and over again.
+
+    Sleep at night.
+
+- Brad Stulberg - The Practice of Groundedness

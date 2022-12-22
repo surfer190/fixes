@@ -13,9 +13,9 @@ Usually you will get an error:
 
     ImportError: No module named 'xxx'
 
-Before we get over this hurdle let's take a step nback and understand some of the fundamentals
+Before we get over this hurdle let's take a step back and understand some of the fundamentals
 
-## Fundmentals of Modules and Packages
+## Fundamentals of Modules and Packages
 
 * A module is a single python file
 * A package is a folder containing python files along with a `__init__.py` that tells python it is a package to import files from
@@ -36,7 +36,6 @@ To find out the directories where python is looking for modules and packages use
 
     import sys
     print(sys.path)
-
 
 ## How do I add a directory to the PYTHONPATH
 

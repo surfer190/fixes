@@ -111,6 +111,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## Book-Summaries
+- 2022-10-05: [The Speedbag Bible Routines](book-summaries/the-speedbag-bible-routines.md)
+- 2022-10-05: [Steinhoff - Steinheist (Corporate Accounting Fraud)](book-summaries/investing-steinhoff-stienheist.md)
 - 2022-05-06: [Fundamentals of Software Architecture](book-summaries/fundamentals-of-software-architecture.md)
 - 2022-04-26: [Software Architecture - The Hard Parts](book-summaries/software-architecture-the-hard-parts.md)
 - 2022-04-26: [Remote - Office not Required](book-summaries/remote-office-not-required.md)
@@ -492,12 +494,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+<<<<<<< HEAD
 - 2022-12-14: [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
 - 2022-12-05: [Postgres - Explaining EXPLAIN](postgres/explain.md)
 - 2022-12-01: [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
 - 2022-11-29: [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
 - 2022-11-25: [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
+=======
+- 2022-11-08: [Postgres  Terminology](postgres/postgres-terminology.md)
+>>>>>>> ee9d057297feb907b171c11194d3de8e9bb535e3
 - 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
 - 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
 - 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)

@@ -151,3 +151,6 @@ title: Words and Definitions
 * assiduity - careful and close attention to what one is doing
 * vindictive - having a strong desire for revenge
 * nebulous - in the form of a cloud or haze
+* erudite - having or showing great knowledge or learning
+* cerebral - intellectual rather than physical or emotional
+* prescienct - showing knowledge of events before they take place
