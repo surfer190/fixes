@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2022-12-20: _profiling_ [Pyroscope](profiling/pyroscope.md)
+- 2022-12-14: _postgres_ [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
+- 2022-12-12: _postgres_ [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-10: _Redis_ [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
+- 2022-12-05: _postgres_ [Postgres - Explaining EXPLAIN](postgres/explain.md)
+- 2022-12-01: _postgres_ [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
+- 2022-11-29: _postgres_ [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
+- 2022-11-25: _postgres_ [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
+- 2022-11-10: _Python_ [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
 - 2022-10-25: _Sqlalchemy_ [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
-- 2022-10-25: _Postgres_ [Postgres Performance](postgres/postgres-performance.md)
-- 2022-10-24: _Postgres_ [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
-- 2022-10-13: _Linux_ [Grep Regex Invert and Lookahead](linux/grep-regex-invert-and-lookahead.md)
-- 2022-10-10: _Postgres_ [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
-- 2022-10-01: _AWS_ [AWS Codebuild](aws/aws-codebuild.md)
-- 2022-09-16: _Python_ [Fluent Python Notes](python/fluent-python-notes.md)
-- 2022-09-01: _Buddha-Dharma_ [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
-- 2022-09-01: _SQLite_ [Fundamentals of SQlite](sqlite/fundamentals-of-sqlite.md)
-- 2022-08-30: _Linux_ [How to View the Command Name in Top](linux/view-command-name-in-top.md)
 
 ## Table of Contents
 
@@ -492,6 +492,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-12-14: [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
+- 2022-12-12: [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-05: [Postgres - Explaining EXPLAIN](postgres/explain.md)
+- 2022-12-01: [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
+- 2022-11-29: [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
+- 2022-11-25: [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
 - 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
 - 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
 - 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
@@ -500,10 +506,14 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [psql](postgres/psql.md)
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
+## Profiling
+- 2022-12-20: [Pyroscope](profiling/pyroscope.md)
+
 ## Project-Management
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-11-10: [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
 - 2022-09-16: [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-08-20: [Python Logging](python/logging.md)
 - 2022-08-15: [Python Tutorial](python/python-tutorial.md)
@@ -624,6 +634,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-03-19: [Setting Up R On Macos](r-stats/setting-up-r-on-macos.md)
 
 ## Redis
+- 2022-12-10: [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
+- 2022-06-14: [Redis Key Patterns](redis/redis-key-patterns.md)
 - 2020-06-14: [Redis Basics](redis/redis-basics.md)
 
 ## Ruby

@@ -42,7 +42,7 @@ Every method at the very least **takes the self** argument
 
 Eg. `def battlecry(self):`
 
-`self` always represents the instance you are calling the method on (doesn;t have to be called self)
+`self` always represents the instance you are calling the method on (doesn't have to be called self)
 
 Can use self variable to get info about the current instance
 
