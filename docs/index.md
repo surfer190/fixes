@@ -4,29 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
-<<<<<<< HEAD
 - 2022-12-19: _nginx_ [Nginx Cookbook](nginx/nginx-cookbook.md)
 - 2022-12-14: _postgres_ [Pgbench](postgres/pgbench-postgres-benchmarking.md)
-- 2022-12-11: _postgres_ [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
-- 2022-12-10: _redis_ [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
-- 2022-12-05: _Postgres_ [Postgres - PGBouncer](postgres/pgbouncer.md)
-- 2022-12-02: _profiling_ [Profiling Memory](profiling/memray.md)
-- 2022-11-30: _Python_ [Python Redis Cache](python/python-redis-cache.md)
-- 2022-11-30: _Python_ [Python Caching](python/python-caching.md)
-- 2022-11-26: _django_ [Django Cache](django/django-cache.md)
-- 2022-11-26: _book-summaries_ [Free to Choose](book-summaries/free-to-choose.md)
-=======
-- 2022-12-20: _profiling_ [Pyroscope](profiling/pyroscope.md)
 - 2022-12-14: _postgres_ [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: _postgres_ [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-11: _postgres_ [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
+- 2022-12-10: _redis_ [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
 - 2022-12-10: _Redis_ [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
 - 2022-12-05: _postgres_ [Postgres - Explaining EXPLAIN](postgres/explain.md)
-- 2022-12-01: _postgres_ [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
-- 2022-11-29: _postgres_ [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
-- 2022-11-25: _postgres_ [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
-- 2022-11-10: _Python_ [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
-- 2022-10-25: _Sqlalchemy_ [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
->>>>>>> 30c42d2b9edc09b822c75ae0ed7a7af4fca9de1f
+- 2022-12-05: _Postgres_ [Postgres - PGBouncer](postgres/pgbouncer.md)
+- 2022-12-02: _profiling_ [Profiling Memory](profiling/memray.md)
 
 ## Table of Contents
 
@@ -515,24 +502,17 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
-<<<<<<< HEAD
 - 2022-12-14: [Pgbench](postgres/pgbench-postgres-benchmarking.md)
-- 2022-12-11: [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
-- 2022-12-05: [Postgres - PGBouncer](postgres/pgbouncer.md)
-- 2022-11-08: [Postgres  Terminology](postgres/postgres-terminology.md)
-- 2022-11-07: [Upgrading Postgresql on Ubuntu](postgres/upgrading-postgres-on-ubuntu.md)
-=======
-<<<<<<< HEAD
 - 2022-12-14: [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-11: [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
 - 2022-12-05: [Postgres - Explaining EXPLAIN](postgres/explain.md)
+- 2022-12-05: [Postgres - PGBouncer](postgres/pgbouncer.md)
 - 2022-12-01: [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
 - 2022-11-29: [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
 - 2022-11-25: [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
-=======
 - 2022-11-08: [Postgres  Terminology](postgres/postgres-terminology.md)
->>>>>>> ee9d057297feb907b171c11194d3de8e9bb535e3
->>>>>>> 30c42d2b9edc09b822c75ae0ed7a7af4fca9de1f
+- 2022-11-07: [Upgrading Postgresql on Ubuntu](postgres/upgrading-postgres-on-ubuntu.md)
 - 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
 - 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
 - 2022-10-15: [GIve a user access to read stats](postgres/pg_stat_statement_insufficient_privileges.md)
@@ -543,23 +523,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
 ## Profiling
-<<<<<<< HEAD
 - 2022-12-02: [Profiling Memory](profiling/memray.md)
 - 2022-11-13: [Pyroscope profiling](profiling/pyroscope.md)
-=======
-- 2022-12-20: [Pyroscope](profiling/pyroscope.md)
->>>>>>> 30c42d2b9edc09b822c75ae0ed7a7af4fca9de1f
 
 ## Project-Management
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
-<<<<<<< HEAD
 - 2022-11-30: [Python Redis Cache](python/python-redis-cache.md)
 - 2022-11-30: [Python Caching](python/python-caching.md)
-=======
 - 2022-11-10: [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
->>>>>>> 30c42d2b9edc09b822c75ae0ed7a7af4fca9de1f
 - 2022-09-16: [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-08-20: [Python Logging](python/logging.md)
 - 2022-08-15: [Python Tutorial](python/python-tutorial.md)
@@ -680,12 +653,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-03-19: [Setting Up R On Macos](r-stats/setting-up-r-on-macos.md)
 
 ## Redis
-<<<<<<< HEAD
 - 2022-12-10: [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
-=======
 - 2022-12-10: [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
 - 2022-06-14: [Redis Key Patterns](redis/redis-key-patterns.md)
->>>>>>> 30c42d2b9edc09b822c75ae0ed7a7af4fca9de1f
 - 2020-06-14: [Redis Basics](redis/redis-basics.md)
 
 ## Ruby
