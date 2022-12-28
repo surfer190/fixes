@@ -82,7 +82,7 @@ Deploying code:
 
 Go the the `Test` tab and run the function
 
-![Successful run image](img/lambda/success-example.png){: class="img-fluid" }
+![Successful run image](/img/lambda/success-example.png){: class="img-fluid" }
 
 There is a summary reported in the log output:
 

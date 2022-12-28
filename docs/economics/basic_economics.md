@@ -3,7 +3,7 @@ author: ''
 category: Economics
 date: '2020-09-25'
 summary: ''
-title: Quotes and Excerpts from Thomas Sowell
+title: Basic Economics - Thomas Sowell
 ---
 
 # Basic Economics 4th Ed. - Thomas Sowell
@@ -241,4 +241,17 @@ In short, although corporations may be thought of as big, impersonal and inscrut
 One of the biggest advantages of an economy coordinated by prices and operating under the incentives created by profit and loss is that it can tap scarce knowledge and insights, even when most of the people—or even their intellectual and political elites—do not have such knowledge.
 
 > In a market economy, Penney did not have to convince anybody of anything. All he had to do was deliver the merchandise to the consumers at lower prices.
+
+Neither individuals nor companies are successful forever.
+
+> What is important is not the success or failure of particular individuals or companies, but the success of particular knowledge and insights in prevailing despite the blindness or resistance of particular business owners and managers.
+
+No economic system can depend on the continuing wisdom of its current leaders - two bicycle mechanics created the aeroplane. No academic degree or lack of money can stop ideas that work.
+
+Let the prices guide the economy - easier and more efficient and effective that central planners.
+
+The vast amounts of knowledge never have to be organised centrally - they are coordinated with prices decentrally.
+
+A business executive is directed and controlled by the market - customers sending signals and him recieving them. Information from those with more knowledge (the people) to those with less knowledge (the executives). Government only gives orders and hence information moves from those with less knowledge to those with more.
+
 
