@@ -166,4 +166,4 @@ Sometimes you can't visualise data until you have run the experiment
 
 # Top Tips
 
-When uploading a `csv` that is `;` semicolon seperated, you need to change it to a `,`, American style cSV otherwise Azure gives shit.
+When uploading a `csv` that is `;` semicolon separated, you need to change it to a `,`, American style CSV otherwise Azure raises issues.

@@ -303,7 +303,7 @@ Be considerate, let other people work. They will respond when they are free.
 
 ### FOMO ... try JOMO
 
-The fear of missing out on some king shit notification or news
+The fear of missing out on some notification or news
 
 There is the Joy of Missing out...JOMO.
 

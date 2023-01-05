@@ -3,7 +3,7 @@ author: ''
 category: Economics
 date: '2020-09-25'
 summary: ''
-title: Quotes and Excerpts from Thomas Sowell
+title: Basic Economics - Thomas Sowell
 ---
 
 # Basic Economics 4th Ed. - Thomas Sowell
@@ -139,7 +139,39 @@ Price buts are greeted favourably from consumers however when producers stop sel
 An apple is not easy to define because apples differ in size, freshness, and appearance, quite aside from the different varieties of apples. Under price control, however, the amount of apples demanded at an artificially low price exceeds the amount supplied, so there is no need to spend so much time and money sorting out apples, as they will all be sold anyway.
 
 Under Britain’s government-controlled medical system, a twelve-year-old girl was given a breast implant while 10,000 people waited 15 months or more for surgery.
-Prices cause individuals to consider priorities -  
+Prices cause individuals to consider priorities.
+
+> A surplus, like a shortage, is a price phenomenon. A surplus does not mean that there is some excess relative to the people. There was not “too much” food relative to the population during the Great Depression. The people simply did not have enough money to buy everything that was produced at the artificially high prices set by the government.
+
+So long as the market price of the agricultural product covered by price controls stays above the level at which the government is legally obligated to buy it, the product is sold in the market at a price determined by supply and demand. But, when there is either a sufficient increase in the amount supplied or a sufficient reduction in the amount demanded, the resulting lower price can fall to a level at which the government buys what the market is unwilling to buy.
+
+> Persistent surpluses are as much a result of keeping prices artificially high as persistent shortages are of keeping prices artificially low
+
+## 4. Overview
+
+### Cause and Effect
+
+> “Because systemic causation involves reciprocal interactions, rather than one-way causation, that in turn reduces the role of individual intentions. As Friedrich Engels put it, “what each individual wills is obstructed by everyone else, and what emerges is something that no one willed.”
+
+Economics is about results not intentions.
+
+> Not only can prices not be set and sustained by an act of will, neither can businesses that compete with other businesses make other important decisions on the whim of the owner and expect to survive. When Henry Ford headed the largest automobile manufacturing company in the world, he thought that he could offer his car in just one color (black) and just one style from year to year. But that is the very reason General Motors overtook the Ford Motor Company to become number one in the automobile industry, by offering cars in a variety of colors and changing the style from year to year.
+
+Just as rent control reduces the supply of housing, so price controls and interest rate controls can reduce the number of stores, pawn shops, local finance companies, and check-cashing agencies willing to operate in neighborhoods with higher costs, when those costs cannot be recovered by legally permissible prices and interest rates.
+
+> it is both intellectually and emotionally easier to blame high prices on those who collect them, rather than on those who cause them. Even though the cost and risk of doing business in bad neighbourhoods is higher.
+
+It is also more politically popular to blame outsiders, especially if those outsiders are of a different ethnic background.
+
+> During the Stalin era in the Soviet Union, for example, there was at one time a severe shortage of mining equipment, but the manager of a factory producing such machines kept them in storage after they were built, rather than sending them out to the mines, where they were sorely needed. The reason was that the official orders called for these machines to be painted with red, oil-resistant paint and the manufacturer had on hand only green, oil-resistant paint and red varnish that was not oil-resistant. Nor could he readily get the prescribed paint, since there was no free market.
+
+**Under any economic or political system, people can make their choices only among the alternatives actually available—and different economic systems present different alternatives.**
+
+A waitress brings food to your table, not because of your hunger, but because her salary and tips depend on it. In the absence of such incentives, service in restaurants in the Soviet Union was notoriously bad.
+
+> Being prohibitive is precisely how prices limit how much each person uses. If everything were made affordable by government decree, there would still not be any more to go around than when things were prohibitively expensive.
+
+
 
 
 ## Sources
@@ -178,5 +210,48 @@ Prices cause individuals to consider priorities -
 
 > The sight of aisle after aisle of shelves neatly stacked with every conceivable type of foodstuff and household item, each in a dozen varieties, both amazed and depressed him. For Yeltsin, like many other first-time Russian visitors to America, this was infinitely more impressive than tourist attractions like the Statue of Liberty and the Lincoln Memorial
 
-> The market is cordinated by prices - automatically. Human intervention is only required at the most basic level raising and lower you bid and ask prices.
+> The market is coordinated by prices - automatically. Human intervention is only required at the most basic level raising and lower you bid and ask prices.
+
+Scarcity means that we do not have the option to choose whether or not to have an economy in which people compete
+
+> Society as a whole always has to pay the full costs
+
+Simply waiting until what you want becomes available has been a common form of non-price rationing. The queues and waiting lists for government things.
+
+> A price-coordinated economy facilitates incremental substitution, but political decision-making tends toward categorical priorities—that is, declaring one thing absolutely more important than another and creating laws and policies accordingly.
+
+The creation of red tape is understandable in view of the incentives facing those who create government forms, rules, and requirements for innumerable activities that need official approval. Nothing is easier than thinking of additional requirements that might be useful in some way or other, and nothing is harder than remembering to ask the crucial incremental question: **At what cost?**
+
+> People who are spending their own money are confronted with those costs at every turn, whether they remember or not, but people who are spending the taxpayers’ money—or who are simply imposing uncounted costs on businesses, homeowners, and others—have no real incentives to even find out how much the additional costs are, much less to hold off on adding requirements when the incremental costs threaten to become larger than the incremental benefits to those on whom these costs are imposed by the government
+
+Making anything artificially cheap usually means that it will be wasted, whatever that thing might be and wherever it might be located.
+
+> Sometimes the rationale for removing particular things from the process of weighing costs against benefits is expressed in some such question as: “How can you put a price on art?”—or education, health, music, etc. The fundamental fallacy underlying this question is the belief that prices are simply “put” on things. So long as art, education, health, music, and thousands of other things all require time, effort, and raw material, the costs of these inputs are inherent. These costs do not go away because a law prevents them from being conveyed through prices in the marketplace.
+
+In a market economy, it is not necessary that the innumerable decision-makers understand the costs entailed by their decisions. It is only necessary that they be confronted with those costs in the prices charged. In a “planned” economy, however, those who plan the production and distribution have to be able to understand and quantify the costs their decisions entail—a far more formidable task, if actually done, but a task that can be evaded with rhetoric or with estimates whose validity the public is usually unable to judge at the time, and which will usually be forgotten by the time the real costs become clear, often years later.
+
+## 5. The Rise and Fall of Businesses
+
+> The companies which first introduce a product that consumers like may make large profits, but those very profits attract more investments into existing companies and encourage new companies to form, both of which add to output, driving down prices and profit margins through competition, as prices decline in response to supply and demand.
+
+In short, although corporations may be thought of as big, impersonal and inscrutable institutions, they are ultimately run by human beings who all differ from one another and who all have shortcomings and make mistakes, as happens with economic enterprises in every kind of economic system and in countries around the world.
+
+> losses force businesses to change with changing conditions or find themselves losing out to competitors who spot the new trends sooner or who understand their implications better and respond faster.
+
+One of the biggest advantages of an economy coordinated by prices and operating under the incentives created by profit and loss is that it can tap scarce knowledge and insights, even when most of the people—or even their intellectual and political elites—do not have such knowledge.
+
+> In a market economy, Penney did not have to convince anybody of anything. All he had to do was deliver the merchandise to the consumers at lower prices.
+
+Neither individuals nor companies are successful forever.
+
+> What is important is not the success or failure of particular individuals or companies, but the success of particular knowledge and insights in prevailing despite the blindness or resistance of particular business owners and managers.
+
+No economic system can depend on the continuing wisdom of its current leaders - two bicycle mechanics created the aeroplane. No academic degree or lack of money can stop ideas that work.
+
+Let the prices guide the economy - easier and more efficient and effective that central planners.
+
+The vast amounts of knowledge never have to be organised centrally - they are coordinated with prices decentrally.
+
+A business executive is directed and controlled by the market - customers sending signals and him recieving them. Information from those with more knowledge (the people) to those with less knowledge (the executives). Government only gives orders and hence information moves from those with less knowledge to those with more.
+
 

@@ -7,17 +7,19 @@ title: Where Binaries Should Stay
 ---
 # Where should mac binaries go
 
-I recently [downloaded vault](https://learn.hashicorp.com/vault/getting-started/install) (the binary) and was unsure where to put it for it to automatically be available on the `echo $PATH`
+Recently [downloaded vault](https://learn.hashicorp.com/vault/getting-started/install) which is a simple binary. Unsure where to put it for it to be available on the `echo $PATH` and not much help from the docs...
 
-The documents they recommended were also shit.
+A search was initiated and found that local binaries should go in: `/usr/local/bin` which is already part of the path.
 
-So I googled and found that local binaries should go in: `/usr/local/bin` which is already part of the path
-
-All I needed to do was:
+One can do:
 
     cp ~/Downloads/vault /usr/local/bin
 
-and the binary became available
+and the binary became available.
+
+Another option is using `install`:
+
+    sudo install -m 0755 ~/Downloads/vault /usr/local/bin/
 
 ## Source
 

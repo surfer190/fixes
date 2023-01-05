@@ -2447,9 +2447,9 @@ Import `dialog` at the bottom of `app`:
     import dialog  # Moved
     dialog.show()
 
-This will avoid the `AttributeError` but it goes agianst `PEP8`
+This will avoid the `AttributeError` but it goes against `PEP8`
 
-#### Import, COnfigure, Run
+#### Import, Configure, Run
 
 Have modules minimise side effects at import time.
 Have modules only define `functions`, `classes` and `constants`
@@ -2487,8 +2487,9 @@ main.py:
     dialog.show() 
 
 Then your `main.py` should:
+
 1. Import
-2. Configre
+2. Configure
 3. Run
 
 This can make your code harder to read but will allow for the _dependency injection_ design pattern.

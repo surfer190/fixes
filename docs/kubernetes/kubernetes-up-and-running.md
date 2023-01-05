@@ -1841,7 +1841,7 @@ Contour translates ingress objects into something envoy can understand.
 
     kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
 
-It creates all this shit:
+It creates all this:
 
     namespace/projectcontour created
     serviceaccount/contour created

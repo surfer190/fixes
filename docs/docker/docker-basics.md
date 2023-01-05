@@ -2762,7 +2762,7 @@ Rule of thumb: 1 docker container for each process in your stack
 
 ## Benefits of Docker
 
-There is a lot of shit going on in your development environment. But when sharing between developers and deploying you couldn't manage the environment.
+There is a lot of things going on in your development environment. But when sharing between developers and deploying you couldn't manage the environment.
 
 Emulating the environment is easier, especially in corporates.
 

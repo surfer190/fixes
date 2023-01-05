@@ -4,8 +4,6 @@ Mostly Technology related summaries, fixes, solutions and notes
 
 [fixes.co.za](http://fixes.co.za)
 
-![Build Status](https://jenkins.fixes.co.za/buildStatus/icon?job=fixes)
-
 * Common problems and solutions, fixes, notes and tips gathered while trying to solve problems
 * _fixes_ are displayed as technical documentation using [mkdocs](https://www.mkdocs.org/) and [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 * Some interpretations and summaries of tech related documentation and books

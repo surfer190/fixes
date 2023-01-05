@@ -3313,7 +3313,7 @@ Unified Threat Management (UTM): combine into single device
 
 Sky Advanced Threat Protected (ATP)
 
-Protect agianst malware and ransomware
+Protect against malware and ransomware
 
 * Sandbox
 * Machine learning

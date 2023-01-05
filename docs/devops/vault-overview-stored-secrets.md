@@ -275,8 +275,6 @@ There are special paths in AWS:
 
 A role in vault is a human-friendly identifier to an action (a symlink)
 
-**Warning shit gets real here**
-
 we create a role (map this policy document to a named role) with:
 
     vault write aws/roles/my-role \

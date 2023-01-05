@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
-- 2022-12-20: _profiling_ [Pyroscope](profiling/pyroscope.md)
+- 2022-12-19: _nginx_ [Nginx Cookbook](nginx/nginx-cookbook.md)
+- 2022-12-14: _postgres_ [Pgbench](postgres/pgbench-postgres-benchmarking.md)
 - 2022-12-14: _postgres_ [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: _postgres_ [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-11: _postgres_ [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
+- 2022-12-10: _redis_ [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
 - 2022-12-10: _Redis_ [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
 - 2022-12-05: _postgres_ [Postgres - Explaining EXPLAIN](postgres/explain.md)
-- 2022-12-01: _postgres_ [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
-- 2022-11-29: _postgres_ [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
-- 2022-11-25: _postgres_ [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
-- 2022-11-10: _Python_ [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
-- 2022-10-25: _Sqlalchemy_ [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
+- 2022-12-05: _Postgres_ [Postgres - PGBouncer](postgres/pgbouncer.md)
+- 2022-12-02: _profiling_ [Profiling Memory](profiling/memray.md)
 
 ## Table of Contents
 
@@ -111,6 +111,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-11-02: [Mastering Bitcoin Notes](bitcoin/mastering-bitcoin-notes.md)
 
 ## Book-Summaries
+- 2022-11-26: [Free to Choose](book-summaries/free-to-choose.md)
 - 2022-10-05: [The Speedbag Bible Routines](book-summaries/the-speedbag-bible-routines.md)
 - 2022-10-05: [Steinhoff - Steinheist (Corporate Accounting Fraud)](book-summaries/investing-steinhoff-stienheist.md)
 - 2022-05-06: [Fundamentals of Software Architecture](book-summaries/fundamentals-of-software-architecture.md)
@@ -181,6 +182,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-08-27: [Vault Overview - Stored Secrets](devops/vault-overview-stored-secrets.md)
 
 ## Django
+- 2022-11-26: [Django Cache](django/django-cache.md)
 - 2021-12-20: [Standalone Reusable Apps](django/standalone-app.md)
 - 2021-12-19: [Django and HTMX](django/django-htmx.md)
 - 2020-06-21: [Django Orm](django/django-orm.md)
@@ -276,6 +278,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-09-20: [A Brief Timeline of World History](history/world-history-timeline.md)
 
 ## Http
+- 2022-11-09: [HTTP Caching](http/http-caching.md)
 - 2022-06-23: [Http3](http/http3.md)
 - 2020-07-29: [Http2](http/http2.md)
 - 2020-06-14: [Http Error Codes Simple Description](http/http-error-codes-simple-description.md)
@@ -370,6 +373,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-06-28: [Using Apache Bench](load-testing/using-apache-bench-ab.md)
 
 ## Mac
+- 2022-11-20: [Installing Binaries on Mac](mac/installing-binaries-on-mac.md)
 - 2020-06-03: [Freeing Up Space On Your Development Macbook](mac/freeing-up-space-on-your development-macbook.md)
 - 2019-10-24: [How To Stop Mysql On Mac Os](mac/how-to-stop-mysql-on-mac-os.md)
 - 2019-07-22: [Where Binaries Should Stay](mac/where-binaries-should-stay.md)
@@ -454,6 +458,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-06-13: [Centos Routes](networking/centos-routes.md)
 
 ## Nginx
+- 2022-12-19: [Nginx Cookbook](nginx/nginx-cookbook.md)
 - 2022-06-15: [Nginx - Proxy vs Reverse Proxy](nginx/proxy-vs-reverse-proxy.md)
 - 2019-09-04: [SELinux And Nginx](nginx/SELinux-and-nginx.md)
 - 2019-05-30: [Nginx On Centos](nginx/nginx-on-centos.md)
@@ -488,24 +493,29 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-02-03: [Openwrt Userguide Notes](openwrt/open-wrt-user-guide-notes.md)
 - 2021-12-27: [Installing OpenWRT on a Mikrotik Hap AC2](openwrt/mikrotik-hap-ac2.md)
 
+## Peewee
+- 2022-11-24: [Enable Logging peewee](peewee/enable-logging.md)
+
 ## Php
 - 2017-08-02: [Php Testing](php/php-testing.md)
 - 2017-06-13: [Switch Php Version On Ubuntu 16](php/switch-php-version-on-ubuntu-16.md)
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
-<<<<<<< HEAD
+- 2022-12-14: [Pgbench](postgres/pgbench-postgres-benchmarking.md)
 - 2022-12-14: [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-11: [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
 - 2022-12-05: [Postgres - Explaining EXPLAIN](postgres/explain.md)
+- 2022-12-05: [Postgres - PGBouncer](postgres/pgbouncer.md)
 - 2022-12-01: [Postgresql - Statistics Collector](postgres/postgres-statistics-collector.md)
 - 2022-11-29: [The Art of Postgresql](postgres/the-art-of-postgresql-notes.md)
 - 2022-11-25: [Postgres - Cool and Useful Postgresql Tools](postgres/postgresql-tools.md)
-=======
 - 2022-11-08: [Postgres  Terminology](postgres/postgres-terminology.md)
->>>>>>> ee9d057297feb907b171c11194d3de8e9bb535e3
+- 2022-11-07: [Upgrading Postgresql on Ubuntu](postgres/upgrading-postgres-on-ubuntu.md)
 - 2022-10-25: [Postgres Performance](postgres/postgres-performance.md)
 - 2022-10-24: [Postgres - Finding Missing Indexes](postgres/finding-missing-indexes.md)
+- 2022-10-15: [GIve a user access to read stats](postgres/pg_stat_statement_insufficient_privileges.md)
 - 2022-10-10: [Postgres - Transaction Isolation](postgres/transaction-isolation.md)
 - 2022-07-22: [Postgres Connections and Load](postgres/postgres-connections-and-load.md)
 - 2020-08-13: [Postgres Cheat Sheet](postgres/postgres-cheat-sheet.md)
@@ -513,12 +523,15 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
 ## Profiling
-- 2022-12-20: [Pyroscope](profiling/pyroscope.md)
+- 2022-12-02: [Profiling Memory](profiling/memray.md)
+- 2022-11-13: [Pyroscope profiling](profiling/pyroscope.md)
 
 ## Project-Management
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2022-11-30: [Python Redis Cache](python/python-redis-cache.md)
+- 2022-11-30: [Python Caching](python/python-caching.md)
 - 2022-11-10: [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
 - 2022-09-16: [Fluent Python Notes](python/fluent-python-notes.md)
 - 2022-08-20: [Python Logging](python/logging.md)
@@ -640,6 +653,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-03-19: [Setting Up R On Macos](r-stats/setting-up-r-on-macos.md)
 
 ## Redis
+- 2022-12-10: [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
 - 2022-12-10: [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
 - 2022-06-14: [Redis Key Patterns](redis/redis-key-patterns.md)
 - 2020-06-14: [Redis Basics](redis/redis-basics.md)
@@ -716,6 +730,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-12: [Fast Test Slow Test](testing/fast_test_slow_test.md)
 
 ## Tools
+- 2022-11-23: [Pngquant compress images in place](tools/pngquant-decrease-png-image-size.md)
 - 2022-07-05: [What is MQTT?](tools/mqtt.md)
 - 2021-03-13: [TCPDump](tools/tcpdump.md)
 - 2019-11-18: [Free Html Single Size Simple Logos](tools/free-html-single-size-simple-logos.md)

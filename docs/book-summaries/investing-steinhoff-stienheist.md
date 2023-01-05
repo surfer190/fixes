@@ -501,6 +501,12 @@ They were paid in Steinhoff shares - not cash with a 3 year lock-in clause.
 
 Between 2003 and 2017, Jooste took home R492.7m – including R212m in “bonuses”. Even after tax (of which he seemed furiously and philosophically opposed to paying), Jooste would have got more than R300m over those years.
 
+## SMS Insider TRading
+
+Sent on 30 November 2017, steinhoff told to take the current price.
+
+
+
 
 ## Source
 

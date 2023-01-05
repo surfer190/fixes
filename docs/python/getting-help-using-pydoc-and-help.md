@@ -29,6 +29,10 @@ You can also view a specific function or a package:
 
   `pydoc file.seek`
 
+It can also be run as a function:
+
+    python3.9 -m pydoc functools.cache
+
 ## Help
 
 To use help you need to be inside the python shell
@@ -50,3 +54,7 @@ returns:
     When step is given, it specifies the increment (or decrement).
     For example, range(4) returns [0, 1, 2, 3].  The end point is omitted!
     These are exactly the valid indices for a list of 4 elements.
+
+## Sources
+
+* [youtube: anthonywritescode - lrucache](https://www.youtube.com/watch?v=sVjtp6tGo0g)
