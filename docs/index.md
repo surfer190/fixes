@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2023-01-04: _Python_ [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
+- 2023-01-04: _profiling_ [Snakeviz](profiling/snakeviz.md)
+- 2022-12-23: _php_ [PHP FPM](php/php-fpm.md)
+- 2022-12-21: _postgres_ [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 - 2022-12-19: _nginx_ [Nginx Cookbook](nginx/nginx-cookbook.md)
 - 2022-12-14: _postgres_ [Pgbench](postgres/pgbench-postgres-benchmarking.md)
 - 2022-12-14: _postgres_ [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: _postgres_ [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
+- 2022-12-12: _elasticsearch_ [Change Mapping of an Index in Kibana](elasticsearch/change-mapping-of-an-index.md)
 - 2022-12-11: _postgres_ [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
-- 2022-12-10: _redis_ [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
-- 2022-12-10: _Redis_ [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
-- 2022-12-05: _postgres_ [Postgres - Explaining EXPLAIN](postgres/explain.md)
-- 2022-12-05: _Postgres_ [Postgres - PGBouncer](postgres/pgbouncer.md)
-- 2022-12-02: _profiling_ [Profiling Memory](profiling/memray.md)
 
 ## Table of Contents
 
@@ -235,9 +235,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Economics
 - 2021-12-20: [A Tour of Economics](economics/a-tour-of-economics.md)
 - 2021-12-20: [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
-- 2020-09-25: [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
+- 2020-09-25: [Basic Economics - Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
+- 2022-12-12: [Change Mapping of an Index in Kibana](elasticsearch/change-mapping-of-an-index.md)
 - 2020-03-05: [Queries](elasticsearch/elasticsearch-queries.md)
 - 2019-12-10: [Elasticsearch And Python](elasticsearch/elasticsearch-and-python.md)
 - 2019-05-30: [Logstash](elasticsearch/logstash.md)
@@ -497,11 +498,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-11-24: [Enable Logging peewee](peewee/enable-logging.md)
 
 ## Php
+- 2022-12-23: [PHP FPM](php/php-fpm.md)
 - 2017-08-02: [Php Testing](php/php-testing.md)
 - 2017-06-13: [Switch Php Version On Ubuntu 16](php/switch-php-version-on-ubuntu-16.md)
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2022-12-21: [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 - 2022-12-14: [Pgbench](postgres/pgbench-postgres-benchmarking.md)
 - 2022-12-14: [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
@@ -523,6 +526,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
 ## Profiling
+- 2023-01-04: [Snakeviz](profiling/snakeviz.md)
 - 2022-12-02: [Profiling Memory](profiling/memray.md)
 - 2022-11-13: [Pyroscope profiling](profiling/pyroscope.md)
 
@@ -530,6 +534,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2023-01-04: [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
 - 2022-11-30: [Python Redis Cache](python/python-redis-cache.md)
 - 2022-11-30: [Python Caching](python/python-caching.md)
 - 2022-11-10: [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
