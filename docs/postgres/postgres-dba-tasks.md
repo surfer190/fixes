@@ -220,8 +220,34 @@ or:
         'max_slot_wal_keep_size', 'wal_keep_size', 'wal_sender_timeout'
     );
 
+## Get Size in Gb of a Relation / Table
+
+Table size = Toast size + Relation size
+
+    SELECT pg_size_pretty(pg_table_size('catalogue'));
+
+Total relation size = Table size + Index size (`pg_table_size()` and `pg_indexes_size()`)
+
+    SELECT pg_size_pretty(pg_total_relation_size('catalogue'));
+
+Relation size = Table size - Toast Size
+
+    SELECT pg_size_pretty(pg_relation_size('catalogue');
+
+## Altering a Table that is nullable (without a default)
+
+> The alter-table will not take that long, as long as no write-lock is on the table. Adding a field that is nullable or with a default value, will not update the rows (it only changes the schema).
+
+    ALTER TABLE <table_name> ADD COLUMN <column_name> <datatype>;
+
+Eg.
+
+    ALTER TABLE catalogue ADD COLUMN price FLOAT;
+
 
 ## Sources
 
 * [Hakibenita: Unused Indexes](https://hakibenita.com/postgresql-unused-index-size)
 * [Killing postgres sessions](https://www.sqlprostudio.com/blog/8-killing-cancelling-a-long-running-postgres-query)
+* [PgPedia: Total Relation Size](https://pgpedia.info/p/pg_total_relation_size.html)
+* [Cybertec: Alter and drop columns done right](https://www.cybertec-postgresql.com/en/postgresql-alter-table-add-column-done-right/)
