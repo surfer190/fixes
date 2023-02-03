@@ -69,6 +69,18 @@ Cures For Restlessness:
 
 > There are no rites, rituals, ceremonies, and worship required to attain Enlightenment. If someone explains certain chants that need to be repeated, certain postures the body needs to be trained to acquire, or sells/provides you any external devices that includes bells, strings, clothing, beads, music, statues, special drinks or food, etc. then this person has not attained Enlightenment.
 
+Buddha advised focusing only on questions dealing with the power of human action. Questions such as: Is the universe finite or infinite? Is it eternal or not? Is everything One? Or is it a plurality of things? What is a person? Do we have a self or do we not? - were left alone as unhelpful - Ṭhānissaro Bhikkhu. “The Buddha’s Teachings: An Introduction.”
+ 
+Without some measure of freedom of choice to shape the present, the idea of a path of practice would make no sense, because you wouldn’t be free to decide whether to follow it or not - Ṭhānissaro Bhikkhu. “The Buddha’s Teachings: An Introduction.”
+
+> You have several competing desires at any one time, they will lead you to experience competing inner worlds and competing senses of who you are. This is why you can feel divided against yourself and unsure of your place in the world. This is one of the most common ways in which becoming leads to suffering.
+
+> as soon as our "self" gets involved, we suffer immediately
+
+> Right view: Look at the mind objectively - the craving and wanting causing your own discontentment. Blaming other people is not fixing the true problem.
+
+> Right Intention: Renunciation letting go, non-ill will interest in other being well, harmlessness - not interesting in causing harm to others.
+
 ### Attaining Enlightenment
 
 Learn and Implement:
@@ -86,7 +98,7 @@ Learn and Implement:
 * The Natural Law of Kamma
 * The Cycle of Rebirth
 
-### The Three Universal Truths
+### The Three Universal Truths (Characteristics)
 
 1. Impermanence (Pāli: anicca)
 2. Discontentedness (Pāli: dukkha)
@@ -116,11 +128,17 @@ For example, if someone comments about the self image or self identity in a way 
 
 Your given name is just a label.
 
+Tools of virtue, concentration, and discernment.
+
 > There is no need to mentally protect yourself from anyone when there is “no self”
 
 The mind functions much like an animal being uncomfortable unless it knows exactly where it is in the “pecking order” of the herd or pack of like species
 
 > The mind is searching and yearning to discover a self but it can never find one though it continues its pursuit seeking to know and find a self because the mind does not realize there isn’t one.
+
+The path, however, does not cause the deathless. After all, if anything caused the deathless, it wouldn’t be unconditioned. Instead, the path leads to the deathless
+
+> Some people have misinterpreted the teaching on not-self to mean that there is no self, but the Buddha identified both the view, “I have a self,” and the view, “I have no self,” as wrong views. Instead, “not-self” is a value judgment, saying simply that the object you perceive as not-self isn’t worth claiming as “me,” “my self,” or “what I am,” because such a claim automatically entails suffering. - Ṭhānissaro Bhikkhu. “The Buddha’s Teachings: An Introduction.”
 
 ### The Four Noble truths
 
@@ -182,18 +200,18 @@ Happiness is impermanent - craving happiness is the reason we are not achieving 
 
 ### Eight Fold Path
 
-wisdom:
+wisdom (discernment):
 
 * right view - no self and the 4 noble truths - discontent arises from within not externally
 * right intention - non-illwill and harmlessness - kind, positive and wholesome thoughts and intentions
 
-moral conduct:
+moral conduct (virtue):
 
 * right speech - refrain from lying, slander, harsh or frivolous speech
 * right action - refrain from killing, theft and misconduct
 * right livelihood
 
-mental discipline:
+mental discipline (concentration):
 
 * right effort - stir up will and energy
 * right mindfulness - having set aside craving and worry - aware and mindful
@@ -251,10 +269,14 @@ Avoid:
 * Produce un-arisen wholesome mental states - practice generousity and compassion
 * Maintain wholesome mental states
 
+> There is a common misunderstanding that the Buddha identified all forms of desire as causes of suffering, but that is not the case. Right effort is motivated by desires that bring an end to clinging, which is why they are part of the path to the end of suffering. - Ṭhānissaro Bhikkhu. “The Buddha’s Teachings: An Introduction. 
+
 ### Right Mindfulness
 
 * Aware of the mind at the present moment - not dwelling on future or past moments.
 * To develop awareness of mind, you should not allow the mind to be lost in daydreams, anticipation, indulgences, worry, or dwell in other discontent feelings.
+
+> right mindfulness means keeping in mind the need to abandon unskillful qualities and to develop skillful qualities - Ṭhānissaro Bhikkhu. “The Buddha’s Teachings: An Introduction.”
 
 ### Right Concentration
 
@@ -317,6 +339,22 @@ Avoid:
     I undertake the precept to refrain from beautifying and adorning myself with garlands, perfumes, and makeup.
     I undertake the precept to refrain from high and luxurious beds.
     I undertake the precept to refrain from receiving gold and money. 
+
+### 5 Piles (Aggregates)
+
+* Form - body and objects fed on
+* Feeling - painful feeling of hunger, pleasant feeling after filling the gap
+* Perception - ability to identify the type of hunger, what is food?
+* Fabrication - shaping the experience - finding food, cooking food etc.
+* Consciousness - being aware of these activities
+
+> Clinging to them makes discontentedness
+
+### 3 Thirsts
+
+* Craving for Sensuality
+* Craving for Becoming
+* Craving for not becoming
 
 ### 10 Fetters
 
@@ -428,6 +466,11 @@ In my third year as a monk, I had doubts about the nature of samadhi and wisdom.
 
 "What's going on?" I wondered. "Why should it be like this?" After a while, I realized that concentration is like breathing. If you determine to force your breaths to be deep or shallow, fast or slow, breathing becomes difficult. But when you are just walking along, not aware of your inhalation and exhalation, breathing is natural and smooth. In the same way, any attempt to force yourself to become tranquil is just an expression of attachment and desire and will prevent your attention from settling down.
 
+## Not Self
+
+We are constantly trying to reaffirm self. Which already shows that this "self" is a very fragile and rather wispy sort of affair, because if it weren't why would we constantly have to reaffirm it? Why are we constantly afraid of the "self" being threatened of its being insecure, of its not getting what it needs for survival? If it were such a solid entity as we believe it to be, we would not feel threatened so often.
+
+> Buddha compared listeners to four different kinds of clay vessels. The first clay vessel is one that has holes at the bottom. If you pour water into it, it runs right out. In other words, whatever you teach that person is useless. The second clay vessel he compared to one that had cracks in it. If you pour water into it, the water seeps out. These people cannot remember. Cannot put two and two together. Cracks in the understanding. The third listener he compared to a vessel that was completely full. Water cannot be poured in for it's full to the brim. Such a person, so full of views he can't learn anything new! But hopefully, we are the fourth kind. The empty vessels without any holes or cracks. Completely empty.
 
 ## Sources
 

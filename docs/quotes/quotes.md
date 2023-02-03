@@ -91,3 +91,6 @@ The wherewithal - money
     Sleep at night.
 
 - Brad Stulberg - The Practice of Groundedness
+
+If you start thinking you're chocolate, you might start eating yourself - Brendan Ingle
+

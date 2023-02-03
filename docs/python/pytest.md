@@ -5,7 +5,7 @@ date: '2019-07-16'
 summary: ''
 title: Pytest
 ---
-# Pytest and the Summary of a Gentle Introduction to Pytest
+# Pytest and a Summary of a Gentle Introduction to Pytest
 
 * A test is code that executes code.
 * You can define your requirements as code
@@ -177,7 +177,6 @@ To drop into `pdb` after an exception (not very useful):
 To begin a trace at the start of the last test that failed:
 
     pytest --lf --trace
-
 
 ## Sources
 

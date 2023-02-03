@@ -3,9 +3,9 @@ author: ''
 category: Kafka
 date: '2020-06-14'
 summary: ''
-title: Kafka
+title: Kafka Short Intro
 ---
-# Kafka
+# Kafka Short Intro
 
 A distributed streaming platform.
 

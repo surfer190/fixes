@@ -32,7 +32,10 @@ Grant the user access on the public schema:
 
     psql
     \c <db_name>
-    GRANT USAGE, CREATE ON SCHEMA public TO <username>;
+    GRANT ALL ON SCHEMA public TO <username>;
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to 
+    <username>;
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO <username>;
 
 > You may get an error `FATAL:  Peer authentication failed for user "pali_canon"` when attempting to login with `psql -U <username> -W`
 

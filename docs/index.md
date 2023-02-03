@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dharma/simple-core-path-of-buddha.md)
+- 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
+- 2023-01-25: _Kafka_ [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
+- 2023-01-15: _Python_ [Testing with Pytest](python/testing-with-pytest-book.md)
+- 2022-12-23: _php_ [PHP FPM](php/php-fpm.md)
+- 2022-12-21: _postgres_ [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
+- 2022-12-20: _Tools_ [Varnish Cache](tools/varnish-cache.md)
 - 2022-12-19: _nginx_ [Nginx Cookbook](nginx/nginx-cookbook.md)
-- 2022-12-14: _postgres_ [Pgbench](postgres/pgbench-postgres-benchmarking.md)
-- 2022-12-14: _postgres_ [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
-- 2022-12-12: _postgres_ [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
-- 2022-12-11: _postgres_ [Extension Must be Loaded via Shared Preload Libraries](postgres/extension-must-be-loaded-by-shared-preload-libraries.md)
-- 2022-12-10: _redis_ [Redis Sysadmin Tasks](redis/redis-sysadmin-tasks.md)
-- 2022-12-10: _Redis_ [Redis - MISCONF Redis is configured to save RDB snapshots](redis/redis-misconf-error.md)
-- 2022-12-05: _postgres_ [Postgres - Explaining EXPLAIN](postgres/explain.md)
-- 2022-12-05: _Postgres_ [Postgres - PGBouncer](postgres/pgbouncer.md)
-- 2022-12-02: _profiling_ [Profiling Memory](profiling/memray.md)
+- 2022-12-15: _MySQL_ [Monitoring Performance](mysql/monitoring-performance.md)
+- 2022-12-15: _Economics_ [Quotes](economics/quotes.md)
 
 ## Table of Contents
 
@@ -122,6 +122,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-02-16: [Bad Blood Book Summary](book-summaries/bad-blood.md)
 
 ## Buddha_Dharma
+- 2023-01-30: [Simple Core Path of Buddha](buddha_dharma/simple-core-path-of-buddha.md)
 - 2022-09-01: [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
 - 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
@@ -233,9 +234,10 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-05-30: [Docker Host Network](docker/docker-host-network.md)
 
 ## Economics
+- 2022-12-15: [Quotes](economics/quotes.md)
 - 2021-12-20: [A Tour of Economics](economics/a-tour-of-economics.md)
 - 2021-12-20: [Notes on Education Free and Compulsory - Murray Rothbard](economics/education-free-and-compulsory-notes.md)
-- 2020-09-25: [Quotes and Excerpts from Thomas Sowell](economics/basic_economics.md)
+- 2020-09-25: [Basic Economics - Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
 - 2020-03-05: [Queries](elasticsearch/elasticsearch-queries.md)
@@ -296,7 +298,8 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-02-04: [Juniper associate JNCIA Learning Notes](juniper/junos-associate-JNCIA-learning.md)
 
 ## Kafka
-- 2020-06-14: [Kafka](kafka/kafka.md)
+- 2023-01-25: [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
+- 2020-06-14: [Kafka Short Intro](kafka/kafka-short-intro.md)
 
 ## Keycloak
 - 2021-12-23: [Notes on Keycloak - Identity and Access Management for Modern Applications](keycloak/identity-and-access-management-for-modern-applications.md)
@@ -422,6 +425,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2019-11-04: [Failing At Microservices](microservices/failing-at-microservices.md)
 
 ## Mysql
+- 2022-12-15: [Monitoring Performance](mysql/monitoring-performance.md)
 - 2022-06-22: [MySQL - Performance, Scaling and Connections](mysql/mysql-performance-scaling-connections.md)
 - 2022-05-26: [Create a MySQL User and Grant Access to a Database](mysql/create-a-mysql-user-and-grant-access-to-a-db.md)
 - 2022-05-23: [How to Delete a MySQL User](mysql/delete-a-mysql-user.md)
@@ -497,11 +501,14 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-11-24: [Enable Logging peewee](peewee/enable-logging.md)
 
 ## Php
+- 2022-12-23: [PHP FPM](php/php-fpm.md)
 - 2017-08-02: [Php Testing](php/php-testing.md)
 - 2017-06-13: [Switch Php Version On Ubuntu 16](php/switch-php-version-on-ubuntu-16.md)
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2023-01-30: [Choosing a primary key](postgres/choosing-a-primary-key.md)
+- 2022-12-21: [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 - 2022-12-14: [Pgbench](postgres/pgbench-postgres-benchmarking.md)
 - 2022-12-14: [Postgres - Querying the pg_stats_statements view](postgres/postgres-pg-stat-statement.md)
 - 2022-12-12: [Postgres - DBA Tasks](postgres/postgres-dba-tasks.md)
@@ -530,6 +537,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2023-01-15: [Testing with Pytest](python/testing-with-pytest-book.md)
 - 2022-11-30: [Python Redis Cache](python/python-redis-cache.md)
 - 2022-11-30: [Python Caching](python/python-caching.md)
 - 2022-11-10: [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
@@ -553,7 +561,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-05-10: [Common python Interview Questions](python/interview-questions.md)
 - 2022-05-06: [Linked Lists](python/linked_lists.md)
 - 2022-04-15: [Summary of Understanding Decorators in Python](python/understanding-decorators.md)
-- 2022-01-21: [Python](python/design-patterns.md)
+- 2022-01-21: [Design Patterns](python/design-patterns.md)
 - 2020-10-08: [How to show server rendered graphviz on html frontend](python/how-to-show-server-rendered-graphviz-on-html-frontend.md)
 - 2020-10-07: [Convert XML to JSON](python/convert-xml-to-json.md)
 - 2020-06-21: [Refactoring Python](python/refactoring-python.md)
@@ -730,6 +738,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-12: [Fast Test Slow Test](testing/fast_test_slow_test.md)
 
 ## Tools
+- 2022-12-20: [Varnish Cache](tools/varnish-cache.md)
 - 2022-11-23: [Pngquant compress images in place](tools/pngquant-decrease-png-image-size.md)
 - 2022-07-05: [What is MQTT?](tools/mqtt.md)
 - 2021-03-13: [TCPDump](tools/tcpdump.md)

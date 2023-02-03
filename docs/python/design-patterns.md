@@ -1,9 +1,9 @@
 ---
 author: ''
-category: Design Patterns
+category: Python
 date: '2022-01-21'
 summary: ''
-title: Python
+title: Design Patterns
 ---
 # Design Patterns
 

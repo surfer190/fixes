@@ -65,3 +65,27 @@ Find common called with slow exec time:
     WHERE calls > 50 AND mean_exec_time > 0.5
     ORDER BY calls DESC
     LIMIT 50;
+
+Analyse queries from a specific database:
+
+    SELECT QUERY,
+        CALLS,
+        TOTAL_EXEC_TIME,
+        MIN_EXEC_TIME,
+        MAX_EXEC_TIME,
+        MEAN_EXEC_TIME,
+        STDDEV_EXEC_TIME,
+        ROWS,
+        SHARED_BLKS_HIT,
+        SHARED_BLKS_READ,
+        SHARED_BLKS_DIRTIED,
+        SHARED_BLKS_WRITTEN,
+        TEMP_BLKS_READ,
+        TEMP_BLKS_WRITTEN,
+        BLK_READ_TIME
+    FROM PG_STAT_STATEMENTS,
+        PG_DATABASE
+    WHERE PG_DATABASE.OID = PG_STAT_STATEMENTS.DBID
+        AND CALLS > 50
+        AND DATNAME = '<my_db_name>'
+    ORDER BY CALLS DESC;
