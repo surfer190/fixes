@@ -2699,6 +2699,11 @@ Python provides `profile` in pure python and `cProfile` a C-extension with low o
     stats.sort_stats('cumulative')
     stats.print_stats()
 
+Also a nice visualizer is [snakeviz](https://jiffyclub.github.io/snakeviz/)
+
+    python -m cProfile -o expiring_dict_test expiring_dict_test.py
+    snakeviz expiring_dict_test
+
 Results:
 
     $ python test.py

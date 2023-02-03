@@ -175,7 +175,79 @@ or:
 
     SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE state = 'active' and pid <> pg_backend_pid();
 
+## Check When last an Autovacuum was run on Tables
+
+    SELECT
+    schemaname, relname,
+    last_vacuum, last_autovacuum,
+    vacuum_count, autovacuum_count
+    FROM pg_stat_user_tables;
+
+## Get the Estimate Count
+
+    SELECT reltuples::bigint AS estimate FROM pg_class WHERE relname = ‘catalogue’;
+
+## View Replication Slots
+
+    SELECT * FROM pg_replication_slots;
+
+## View Replication Stats
+
+    SELECT
+    client_addr AS client, usename AS user, application_name AS name,
+    state, sync_state AS mode,
+    (pg_wal_lsn_diff(pg_current_wal_lsn(),sent_lsn) / 1024)::bigint as pending,
+    (pg_wal_lsn_diff(sent_lsn,write_lsn) / 1024)::bigint as write,
+    (pg_wal_lsn_diff(write_lsn,flush_lsn) / 1024)::bigint as flush,
+    (pg_wal_lsn_diff(flush_lsn,replay_lsn) / 1024)::bigint as replay,
+    (pg_wal_lsn_diff(pg_current_wal_lsn(),replay_lsn))::bigint / 1024 as total_lag
+    FROM pg_stat_replication;
+
+## How many GB behind is a Replication Slot
+
+    SELECT redo_lsn, slot_name,restart_lsn,
+    round((redo_lsn-restart_lsn) / 1024 / 1024 / 1024, 2) AS GB_behind
+    FROM pg_control_checkpoint(), pg_replication_slots;
+
+## Drop a Replication Slot
+
+    select pg_drop_replication_slot('<name of replication slot>');
+
+## Get WAL related settings
+
+    SELECT name, setting from pg_settings where name in (
+        'max_replication_slots', 'wal_level', 'max_wal_senders', 'hot_standby',
+        'max_slot_wal_keep_size', 'wal_keep_size', 'wal_sender_timeout'
+    );
+
+## Get Size in Gb of a Relation / Table
+
+Table size = Toast size + Relation size
+
+    SELECT pg_size_pretty(pg_table_size('catalogue'));
+
+Total relation size = Table size + Index size (`pg_table_size()` and `pg_indexes_size()`)
+
+    SELECT pg_size_pretty(pg_total_relation_size('catalogue'));
+
+Relation size = Table size - Toast Size
+
+    SELECT pg_size_pretty(pg_relation_size('catalogue');
+
+## Altering a Table that is nullable (without a default)
+
+> The alter-table will not take that long, as long as no write-lock is on the table. Adding a field that is nullable or with a default value, will not update the rows (it only changes the schema).
+
+    ALTER TABLE <table_name> ADD COLUMN <column_name> <datatype>;
+
+Eg.
+
+    ALTER TABLE catalogue ADD COLUMN price FLOAT;
+
+
 ## Sources
 
 * [Hakibenita: Unused Indexes](https://hakibenita.com/postgresql-unused-index-size)
 * [Killing postgres sessions](https://www.sqlprostudio.com/blog/8-killing-cancelling-a-long-running-postgres-query)
+* [PgPedia: Total Relation Size](https://pgpedia.info/p/pg_total_relation_size.html)
+* [Cybertec: Alter and drop columns done right](https://www.cybertec-postgresql.com/en/postgresql-alter-table-add-column-done-right/)

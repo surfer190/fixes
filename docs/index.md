@@ -8,12 +8,12 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
 - 2023-01-25: _Kafka_ [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
 - 2023-01-15: _Python_ [Testing with Pytest](python/testing-with-pytest-book.md)
+- 2023-01-04: _Python_ [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
+- 2023-01-04: _profiling_ [Snakeviz](profiling/snakeviz.md)
 - 2022-12-23: _php_ [PHP FPM](php/php-fpm.md)
 - 2022-12-21: _postgres_ [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 - 2022-12-20: _Tools_ [Varnish Cache](tools/varnish-cache.md)
 - 2022-12-19: _nginx_ [Nginx Cookbook](nginx/nginx-cookbook.md)
-- 2022-12-15: _MySQL_ [Monitoring Performance](mysql/monitoring-performance.md)
-- 2022-12-15: _Economics_ [Quotes](economics/quotes.md)
 
 ## Table of Contents
 
@@ -240,6 +240,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-09-25: [Basic Economics - Thomas Sowell](economics/basic_economics.md)
 
 ## Elasticsearch
+- 2022-12-12: [Change Mapping of an Index in Kibana](elasticsearch/change-mapping-of-an-index.md)
 - 2020-03-05: [Queries](elasticsearch/elasticsearch-queries.md)
 - 2019-12-10: [Elasticsearch And Python](elasticsearch/elasticsearch-and-python.md)
 - 2019-05-30: [Logstash](elasticsearch/logstash.md)
@@ -530,6 +531,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [Postgres Up And Running](postgres/postgres-up-and-running.md)
 
 ## Profiling
+- 2023-01-04: [Snakeviz](profiling/snakeviz.md)
 - 2022-12-02: [Profiling Memory](profiling/memray.md)
 - 2022-11-13: [Pyroscope profiling](profiling/pyroscope.md)
 
@@ -538,6 +540,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Python
 - 2023-01-15: [Testing with Pytest](python/testing-with-pytest-book.md)
+- 2023-01-04: [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
 - 2022-11-30: [Python Redis Cache](python/python-redis-cache.md)
 - 2022-11-30: [Python Caching](python/python-caching.md)
 - 2022-11-10: [Mocks - Where to Patch?](python/mocks-where-to-patch.md)
