@@ -62,6 +62,15 @@ The world says that the best things are:
 
 > This things will change on you. To get those things one ends up doing unskillful things.
 
+Four preliminary practices of:
 
-https://www.buddhismtoday.com/english/buddha/Teachings/basicteaching3.htm
-[A Simple Guide to Life by Robert Bogoda](https://www.accesstoinsight.org/lib/authors/bogoda/wheel397.html#intro)
+* keeping the precepts
+* guarding the senses
+* maintaining mindfulness
+* being content with little are practices that you need to make the four cornerstones of your basic way of life
+ 
+
+
+* [A Simple Guide to Life by Robert Bogoda](https://www.accesstoinsight.org/lib/authors/bogoda/wheel397.html#intro)
+* [Buddhism Today: Basic Teaching](https://www.buddhismtoday.com/english/buddha/Teachings/basicteaching3.htm)
+* Excerpt From: Leigh Brasington. “Right Concentration.” iBooks.

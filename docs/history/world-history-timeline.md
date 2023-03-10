@@ -65,6 +65,7 @@ title: A Brief Timeline of World History
 * 550 - 700: Angles and Saxons invade England (after romans leave in 410)
 * 600: Sutton Hoo Helmey - Anglo-saxon helmet found Suffolk, England. Acid in soil dissolved the body and leather. Excavated in 1939.
 * 732: Defeat of the Moslems at Tours (Charles Martel) - kept France and spain from adopting the Koran
+* 768 - 814: Reign of Charlemagne (Charles the Great) uniter of Western Europe
 * 1066: Battle of Hastings - Normans vs Anglo-saxons - the end of Scandanavian dominance in England
 * 1077: Henry IV recognized this claim by submitting to Pope Gregory VII at Canossa
 * 1095 - 1291: Crusades - religious wars during medieval period

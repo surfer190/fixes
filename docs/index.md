@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2023-02-10: _Postgres_ [DBA General Health Tasks](postgres/dba-general-health.md)
 - 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dharma/simple-core-path-of-buddha.md)
 - 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
 - 2023-01-25: _Kafka_ [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
 - 2023-01-15: _Python_ [Testing with Pytest](python/testing-with-pytest-book.md)
+- 2023-01-10: _Python_ [High Performance Python](python/high-performance-python.md)
 - 2023-01-04: _Python_ [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
 - 2023-01-04: _profiling_ [Snakeviz](profiling/snakeviz.md)
 - 2022-12-23: _php_ [PHP FPM](php/php-fpm.md)
 - 2022-12-21: _postgres_ [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
-- 2022-12-20: _Tools_ [Varnish Cache](tools/varnish-cache.md)
-- 2022-12-19: _nginx_ [Nginx Cookbook](nginx/nginx-cookbook.md)
 
 ## Table of Contents
 
@@ -126,7 +126,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2022-09-01: [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
 - 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
 - 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
-- 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dharma.md)
+- 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dhamma.md)
 - 2022-04-26: [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
 
 ## C
@@ -508,6 +508,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-04-16: [Switch Php Version With Mac Homebrew](php/switch-php-version-with-mac-homebrew.md)
 
 ## Postgres
+- 2023-02-10: [DBA General Health Tasks](postgres/dba-general-health.md)
 - 2023-01-30: [Choosing a primary key](postgres/choosing-a-primary-key.md)
 - 2022-12-21: [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 - 2022-12-14: [Pgbench](postgres/pgbench-postgres-benchmarking.md)
@@ -540,6 +541,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Python
 - 2023-01-15: [Testing with Pytest](python/testing-with-pytest-book.md)
+- 2023-01-10: [High Performance Python](python/high-performance-python.md)
 - 2023-01-04: [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
 - 2022-11-30: [Python Redis Cache](python/python-redis-cache.md)
 - 2022-11-30: [Python Caching](python/python-caching.md)

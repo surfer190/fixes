@@ -431,4 +431,43 @@ That’s what I said, and this is why I said it.”
 That is what the Buddha said.
 Satisfied, the mendicants were happy with what the Buddha said. 
 
+## Thag 1.37 - On Travel and Losing Meditation
 
+[thag 1.37](http://buddha.co.za/discourse/thag.1.37/text)
+
+Some travel to different countries,
+wandering undisciplined.
+If they lose their meditation,
+what will such rotten conduct achieve?
+So you should dispel pride,
+practicing absorption undistracted
+
+## Ud 1.9
+
+[ud 1.9](http://buddha.co.za/discourse/ud.1.9/html)
+
+It is not rights and rituals...but through the dhamma and the truth that purity is gained
+
+## MN 107
+
+[Gradual Progress - Moggallāna the Accountant](http://buddha.co.za/discourse/mn.107)
+
+## SN.35.204
+
+[The Interior and What’s Impermanent in the Past](http://buddha.co.za/discourse/sn.35.204)
+
+## SN.22.98
+
+[Nothing in Dependent Origination is Permanent](http://buddha.co.za/discourse/sn.22.98)
+
+## AN.10.2
+
+[No will or volition is needed...the natural state of things arise](http://buddha.co.za/discourse/an.10.2/html)
+
+## SN.18.5 (Impermanent feelings from the 6 senses)
+
+[Impermanent Feelings from the 6 senses](http://buddha.co.za/discourse/sn.18.5)
+
+## SN.4.3: The middle way - delighting in material things
+
+[He Delights](http://buddha.co.za/discourse/sn.4.8)

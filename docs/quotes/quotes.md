@@ -94,3 +94,16 @@ The wherewithal - money
 
 If you start thinking you're chocolate, you might start eating yourself - Brendan Ingle
 
+    But pleasures are like poppies spread:
+    You seize the flower, its bloom is shed;
+    Or like the snow fall on the river,
+    A moment white - then melts forever,
+    Or like the Aurora Borealis rays,
+    That move before you can point to their place;
+    Or like the rainbow’s lovely form,
+    Vanishing amid the storm.
+    
+    - [Robert burns: Tam o' Shanter](http://www.robertburns.org.uk/Assets/Poems_Songs/tamoshanter.htm)
+
+
+

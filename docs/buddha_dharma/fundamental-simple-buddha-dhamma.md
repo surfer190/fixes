@@ -8,6 +8,10 @@ title: Core Fundamental Teachings of Buddha
 
 ## Core Fundamental Teachings of Buddha
 
+> The middle way - freedom from strong feelings
+
+To no longer be concerned
+
 TL;DR:
 
 * Give up clinging to love and hate, just rest with things as they are

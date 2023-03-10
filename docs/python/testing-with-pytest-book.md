@@ -850,6 +850,202 @@ Monkey path has a few functions:
 
 ## 5. Parameterisation
 
+Turning one test function into many test cases
+
+3 ways:
+
+* parameterising functions
+* parameterising fixtures
+* using a hook function called `pytest_generate_tests`
+
+Testing the state of a task when running `finish()`:
+
+    from cards import Card
+
+    def test_finish_from_in_prog(cards_db):
+        index = cards_db.add_card(Card("second edition", state="in prog"))
+        cards_db.finish(index)
+        card = cards_db.get_card(index)
+        assert card.state == "done"
+
+    def test_finish_from_done(cards_db):
+        index = cards_db.add_card(Card("second edition", state="done"))
+        cards_db.finish(index)
+        card = cards_db.get_card(index)
+        assert card.state == "done"
+
+    def test_finish_from_todo(cards_db):
+        index = cards_db.add_card(Card("second edition", state="todo"))
+        cards_db.finish(index)
+        card = cards_db.get_card(index)
+        assert card.state == "done"
+
+Results:
+
+
+    test_finish.py::test_finish_from_in_prog PASSED                                                                                        [ 33%]
+    test_finish.py::test_finish_from_done PASSED                                                                                           [ 66%]
+    test_finish.py::test_finish_from_todo PASSED   
+
+One way to combine the above into a single test:
+
+    def test_combined(cards_db):
+        for card_status in ['todo', 'done', 'in prog']:
+            index = cards_db.add_card(Card("second edition", state=card_status))
+            cards_db.finish(index)
+            card = cards_db.get_card(index)
+            assert card.state == "done"
+
+Results:
+
+    test_combined.py::test_combined PASSED 
+
+Problems:
+
+* Only 1 test case reported
+* If one test fails - unknown which one - needs further investigation
+* If one test fails - the execution of other tests will not continue
+
+### Parameterising Functions
+
+> The pytest spelling is: `parametrize`
+
+Use `@pytest.mark.parametrize()`
+
+import pytest
+
+    from cards import Card
+
+    @pytest.mark.parametrize(
+        "start_summary, start_state",
+        [
+            ("write a book", "done"),
+            ("second edition", "in prog"),
+            ("create course", "todo")
+        ]
+    )
+    def test_finish(cards_db, start_summary, start_state):
+        initial_card = Card(summary=start_summary, state=start_state)
+        index = cards_db.add_card(initial_card)
+        
+        cards_db.finish(index)
+        
+        card = cards_db.get_card(index)
+        assert card.state == "done"
+
+Results:
+
+    test_func_param.py::test_finish[write a book-done] PASSED                                                                              [ 33%]
+    test_func_param.py::test_finish[second edition-in prog] PASSED                                                                         [ 66%]
+    test_func_param.py::test_finish[create course-todo] PASSED                                                                             [100%]
+
+* The first argument to `@pytest.mark.parametrize` is a list of names of parameters.
+* The second argument is a list of test cases
+* The first argument can be used as a fixture (in test function signature)
+
+### Parameterising Fixtures
+
+Shifting the parameterising to the fixture.
+Every down stream test depending on the fixture is parameterised.
+
+    import pytest
+
+    from cards import Card
+
+    @pytest.fixture(params=["done", "in prog", "todo"])
+    def start_state(request):
+        return request.param
+
+    def test_finish(cards_db, start_state):
+        initial_card = Card(summary="write a book", state=start_state)
+        index = cards_db.add_card(initial_card)
+        
+        cards_db.finish(index)
+        
+        card = cards_db.get_card(index)
+        assert card.state == "done"
+
+* `start_state` is called 3 times, one for each param
+* Each value is saved to `request.param`
+* In each `start_state` some code could do modification and return the params
+* Benefit is a fixture run for each argument
+
+
+### Parameterisation with Pytest_generate_tests
+
+Using a hook function `pytest_generate_tests`
+
+    from cards import Card
+
+    def pytest_generate_tests(metafunc):
+        if "start_state" in metafunc.fixturenames:
+            metafunc.parametrize("start_state", ["done", "in prog", "todo"])
+        
+    def test_finish(cards_db, start_state):
+        initial_card = Card(summary="write a book", state=start_state)
+        index = cards_db.add_card(initial_card)
+        
+        cards_db.finish(index)
+        
+        card = cards_db.get_card(index)
+        assert card.state == "done"
+
+### Running a Subset of Tests
+
+Say we just wanted to test the `todo` case:
+
+Use the `-k` option flag
+
+    pytest -v -k todo
+
+    test_finish.py::test_finish_from_todo PASSED                                                                                           [ 25%]
+    test_func_param.py::test_finish[create course-todo] PASSED                                                                             [ 50%]
+    test_gen.py::test_finish[todo] PASSED                                                                                                  [ 75%]
+    test_para_fixture.py::test_finish[todo] PASSED
+
+> Best to quote the parameter to not conflict with the shell
+
+One can do something like this `pytest -v -k "not(in prog or todo)"`
+
+## 6. Markers
+
+A way to tell pytest there is something special about a test.
+
+* `@pytest.mark.slow` - mark a test as slow and do not run when in a hurry
+* `@pytest.mark.smoke` - early stage tests in the pipeline
+* `@pytest.mark.parametrize` - used before to run with multiple parameters
+* `@pytest.mark.filterwarnings(warning)` - warning filter to given test
+* `@pytest.mark.skip(reason=None)` - skips a test with optional reason
+* `@pytest.mark.xfail(condition, ..., *, reason, run=True, raises=None, strict=xfail_strict)` - expecting a test to fail
+
+Examples in the book...
+
+## 7. Strategy
+
+### Determining Test Scope
+
+More stuff in the book...
+
+## 8. Configuration Files
+
+Define how pytest runs.
+
+> If you find yourself always using certain flags in your tests, like `--verbose` or `--strict-markers`, you can tuck those away in a config file and not have to type them all the time.
+
+Files:
+
+* `pytest.ini` - primary config file in the root directory of the tests
+* `conftest.py` - fixtures and hook functions
+* `tox.ini` - alternate to pytest.ini - `tox` is a cli testing tool
+* `pyproject.toml` - used for packaging python projects
+* `setup.cfg` - used for packaging
+
+### Settings and Flags in Pytest.ini
+
+
+
+
+
 
 
 
