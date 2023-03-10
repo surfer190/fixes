@@ -5,7 +5,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Most Recent Posts
 
 - 2023-02-10: _Postgres_ [DBA General Health Tasks](postgres/dba-general-health.md)
-- 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dharma/simple-core-path-of-buddha.md)
+- 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dhamma/simple-core-path-of-buddha.md)
 - 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
 - 2023-01-25: _Kafka_ [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
 - 2023-01-15: _Python_ [Testing with Pytest](python/testing-with-pytest-book.md)
@@ -121,13 +121,13 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2020-06-14: [Zero To One](book-summaries/zero-to-one.md)
 - 2019-02-16: [Bad Blood Book Summary](book-summaries/bad-blood.md)
 
-## Buddha_Dharma
-- 2023-01-30: [Simple Core Path of Buddha](buddha_dharma/simple-core-path-of-buddha.md)
-- 2022-09-01: [Teachings from the Pali Canon](buddha_dharma/select-teaching-pali-canon.md)
-- 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dharma/meditation.md)
-- 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dharma/who-ordered-the-truckload-of-dung-stories-summarised.md)
-- 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dharma/fundamental-simple-buddha-dhamma.md)
-- 2022-04-26: [The 108 Defilements - Buddha](buddha_dharma/the-108-defilements.md)
+## Buddha_Dhamma
+- 2023-01-30: [Simple Core Path of Buddha](buddha_dhamma/simple-core-path-of-buddha.md)
+- 2022-09-01: [Teachings from the Pali Canon](buddha_dhamma/select-teaching-pali-canon.md)
+- 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dhamma/meditation.md)
+- 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dhamma/who-ordered-the-truckload-of-dung-stories-summarised.md)
+- 2022-05-20: [Core Fundamental Teachings of Buddha](buddha_dhamma/fundamental-simple-buddha-dhamma.md)
+- 2022-04-26: [The 108 Defilements - Buddha](buddha_dhamma/the-108-defilements.md)
 
 ## C
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
