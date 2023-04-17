@@ -4,6 +4,9 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2023-12-12: _sqlalchemy_ [Remove and add indexes programmatically](sqlalchemy/sql-alchemy-adding-and-removing-indexes-programmaticially.md)
+- 2023-04-10: _python_ [Cool Python Articles](python/cool-python-posts.md)
+- 2023-04-10: _git_ [Git Checkout a Tag](git/git-checkout-tag.md)
 - 2023-02-10: _Postgres_ [DBA General Health Tasks](postgres/dba-general-health.md)
 - 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dhamma/simple-core-path-of-buddha.md)
 - 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
@@ -11,9 +14,6 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2023-01-15: _Python_ [Testing with Pytest](python/testing-with-pytest-book.md)
 - 2023-01-10: _Python_ [High Performance Python](python/high-performance-python.md)
 - 2023-01-04: _Python_ [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
-- 2023-01-04: _profiling_ [Snakeviz](profiling/snakeviz.md)
-- 2022-12-23: _php_ [PHP FPM](php/php-fpm.md)
-- 2022-12-21: _postgres_ [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 
 ## Table of Contents
 
@@ -260,6 +260,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-12-19: [Flask Basics](flask/flask-basics.md)
 
 ## Git
+- 2023-04-10: [Git Checkout a Tag](git/git-checkout-tag.md)
 - 2022-07-05: [Git Submodules](git/git-submodules.md)
 - 2020-06-21: [Git Corrupt Loose Object](git/git-corrupt-loose-object.md)
 - 2019-07-22: [Fetch And Track All Remote Branches](git/fetch-and-track-all-remote-branches.md)
@@ -540,6 +541,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2023-04-10: [Cool Python Articles](python/cool-python-posts.md)
 - 2023-01-15: [Testing with Pytest](python/testing-with-pytest-book.md)
 - 2023-01-10: [High Performance Python](python/high-performance-python.md)
 - 2023-01-04: [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
@@ -702,6 +704,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-20: [Ssh Into An Aws Box](servers/ssh-into-an-aws-box.md)
 
 ## Sqlalchemy
+- 2023-12-12: [Remove and add indexes programmatically](sqlalchemy/sql-alchemy-adding-and-removing-indexes-programmaticially.md)
 - 2022-10-25: [SQLAlchemy - Enable logging](sqlalchemy/sqlalchemy-enable-logging.md)
 - 2022-07-22: [Sqlalchemy - Alembic Migrations](sqlalchemy/sqlalchemy-alembic-migrations.md)
 - 2022-07-22: [Sqlalchemy](sqlalchemy/sqlalchemy-fundamentals.md)

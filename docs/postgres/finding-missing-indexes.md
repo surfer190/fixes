@@ -90,7 +90,7 @@ You need to edit you `postgres.conf` and set:
 
 Then check the calls and total time:
 
-    SELECT mean_time, calls, query 
+    SELECT mean_exec_time, calls, query 
     FROM pg_stat_statements 
     ORDER BY mean_time DESC 
     LIMIT 100;

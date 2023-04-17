@@ -147,7 +147,7 @@ Instantaneous views
 
 ## PG_Locks
 
-[`pg_locks` view][https://www.postgresql.org/docs/current/view-pg-locks.html]
+[`pg_locks` view](https://www.postgresql.org/docs/current/view-pg-locks.html)
 
     SELECT * FROM pg_locks;
 

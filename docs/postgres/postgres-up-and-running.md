@@ -336,15 +336,15 @@ All running queries should be stopped and connectins terminated before making ba
 
 1. Retrieve a list of active connections:
 
-    SELECT * FROM pg_stat_activity;
+        SELECT * FROM pg_stat_activity;
 
 2. Cancel active queries on a connection with PID 1234
 
-    SELECT pg_cancel_backend(1234);
+        SELECT pg_cancel_backend(1234);
 
 3. Terminate the connection
 
-    SELECT pg_terminate_backend(1234);
+        SELECT pg_terminate_backend(1234);
 
 This is especially important prior to a database restore. If you don’t terminate the connection, the client may immediately reconnect after restore and run the offending query anew.
 

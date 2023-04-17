@@ -68,6 +68,8 @@ In psql:
 
 [Postgres connection strings](https://stackoverflow.com/questions/3582552/postgresql-connection-url)
 
+    postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
+
 ## Dump (Backup) and Restore
 
 Dump a remote database
