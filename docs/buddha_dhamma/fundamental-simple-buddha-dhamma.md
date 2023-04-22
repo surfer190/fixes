@@ -25,6 +25,87 @@ TL;DR:
 
 - Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
 
+If we cut a log of wood and throw it into a river, it floats downstream.
+If that log doesn’t rot or get stuck on one of the banks of the river, it will finally reach the ocean. Likewise the mind that practises the Middle Way and doesn’t attach to either extreme of sensual indulgence or self-mortification will inevitably attain true peace.
+
+- Ajahn Chah: [A tree in the Forest](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_1.htm#Log)
+
+If you clearly see the truth through meditation, then suffering
+will become unwound, just like a screw. When you unwind a
+screw, it withdraws. It’s not tightly fixed as when you screw
+it, clockwise. e mind withdraws like this. It lets go, it relin-
+quishes. It’s not tightly bound within good and evil, within
+possessions, praise and blame, happiness or suffering. If we
+don’t know the truth, it’s like tightening the screw all the time.
+You screw it down until it crushes you and you suffer over eve-
+rything. When you unwind out of all that, you become free
+and at peace.
+
+- Ajahn Chah [A tree in the Forest - Screw](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_1.htm#Screw)
+
+Likewise happiness and unhappiness, pleasure and sadness, arise from the same snake: wanting.
+When we get the things we like, such as wealth, prestige, praise or happiness, we become pleased, but the mind remains uneasy for fear of losing them.
+
+- Ajahn Chah [A tree in the Forest - Snake](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_1.htm#Snake)
+
+Contact...
+
+All things are just as they are. They don’t cause suffering to any-
+body. It’s just like a thorn, a really sharp thorn. Does it make
+you suffer? No, it’s just a thorn. It doesn’t bother anybody. But
+if you go and stand on it, you’ll suffer.
+
+Form, feeling, perception, volition, consciousness...
+all the things in this world are simply as they
+are. It’s We who pick fights with them. And if we hit them,
+they hit us back. If they’re left alone, they won’t bother any-
+body
+
+- Ajahn Chah [A tree in the Forest - Thorn](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_1.htm#Thorn)
+
+Everything that one loves and that is dear to one will become separated - [Ajahn Jayasara - How to Deal with Distressing Situations](https://www.youtube.com/watch?v=cQQTpgHv-Nw)
+
+>  Don’t think either that your happiness depends upon whether you’re living alone or with others. - Ajahn Chah [Red Hot Coal](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_2.htm#Red_Hot_Coal_and_Bird)
+
+Rules and conventions are established to make things more
+convenient, that’s all. Let’s take money, for example. In olden
+times, people used materials and goods to barter as money. But
+they were difficult to keep, so they started to use coins and
+notes. Perhaps in the future we’ll have a new royal decree say-
+ing only lumps of wax can be used as money throughout the
+country, or chicken dung. en people would start fighting and
+killing each other over wax or chicken dung. is is just the
+way it is. What we use for money is simply a convention that
+we have set up. It is money because we have decided it to be so,
+but in reality what is money? Nobody can say. When there is a
+popular agreement about something, then a convention comes
+about to fulfill the need. e world is just conventions.
+But it is difficult to get ordinary people to understand
+this. Our money, house, family, our children and relatives are
+simply conventions that we have invented, and we really believe
+they are all ours, but seen in the light of Dhamma, they don’t
+belong to us. It’s when we think that they do that we suffer.
+
+- Ajahn Chah [Money is Convention](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_2.htm#Money_Wax_and_Chicken_Dung)
+
+> No matter how much you like something you should reflect that it’s uncertain. 
+
+People think that doing this and memorizing that, studying
+such-and-such, will cause suffering to end. But it’s just like a
+person who wants a lot of things. He tries to amass as much as
+possible, thinking if he gets enough his suffering will get less.
+It’s like trying to lighten your load by putting on more things
+on your back. is is how people think, but their thinking is
+astray of the true path, just like one person going northward
+and another going southward, and yet believing that they are
+going in the same direction.
+
+- Ajahn Chah [Going Astray](https://www.dhammatalks.net/Books/Ajahn_Chah_A_Tree_in_the_Forest_Part_2.htm#Going_Astray)
+
+> An enlightened person still thinks, however he knows that the thinking process is impermanent, unsatisfactory, and empty.
+
+Feelings are just feelings. Thoughts are just thoughts. The body is just the body. The mind is just the mind.
+
 The Dharma of the Buddha is not found in books. If you want to really see for yourself what the Buddha was talking about, you don't need to bother with books. Watch your own mind. Examine to see how feelings and thoughts come and go. Don't be attached to anything, just be mindful of whatever there is to see. This is the way to the truths of the Buddha. Be natural. Everything you do in your life here is a chance to practice. It is all Dharma. When you do your chores, try to be mindful. If you are emptying a spittoon or cleaning a toilet, don't feel you are doing it as a favor for anyone else. There is Dharma in emptying spittoons. Don't feel you are practicing only when sitting still, cross-legged. Some of you have complained that there is not enough time to meditate. Is there enough time to breathe? This is your meditation: mindfulness, naturalness, in whatever you do. - Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
 
 There's one essential point that all good practice must eventually come to-not clinging - Ajahn Chah: [A Still Forest Pool](https://dhammatalks.net/Books2/Ajahn_Chah_A_Still_Forest_Pool.htm)
@@ -45,6 +126,9 @@ You may wish to travel, to visit other teachers and try other systems. Some of y
 Lots of people come here with a high position in society and views about things: about themselves, about the practice of meditation, about the Buddha’s teachings. Some of them are wealthy merchants, some have degrees, some are teachers or government officials. Their brains are full of views about all kinds of things. They’re too clever to listen to other people. It’s like water in a cup. If the cup is full of dirty water, it can’t be used for anything. Only when you pour out the water can the cup be put to use. You have to empty your mind of views before you can learn. - Ajahn Chah. “In Simple Terms.” A dirty cup. 
 
 > To cut a path through the forest, you need not cut down all the trees - you don't need to read all the dharma
+
+The mind is the thing doing the liking, disliking, judging and discriminating.
+It is a sense - one of the 6 senses. It is not you.
 
 Cures For Restlessness:
 

@@ -187,14 +187,14 @@ The main features an end user should care about:
 * Waiting for multiple tasks to complete
 * Closing the loop after all concurrent tasks have completed
 
-    import asyncio, time
+        import asyncio, time
 
-    async def main():
-        print(f'{time.ctime()} Hello!')
-        await asyncio.sleep(1.0)
-        print(f'{time.ctime()} Goodbye!')
+        async def main():
+            print(f'{time.ctime()} Hello!')
+            await asyncio.sleep(1.0)
+            print(f'{time.ctime()} Goodbye!')
 
-    asyncio.run(main())
+        asyncio.run(main())
 
 Asyncio provides a `run()` function to execute an `async def` and all other functions from there.
 

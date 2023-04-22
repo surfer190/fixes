@@ -198,6 +198,267 @@ Results interpreted:
 
 ### Visualizing cProfile Output with SnakeViz
 
+Snakeviz is a visualiser for cProfile. Use it to get a high level view.
+
+    pip install snakeviz
+
+Generate an output file:
+
+    python -m cProfile -o nopil_stats julia1_nopil.py
+
+> The `sort` can be set within snakeviz
+
+View stats:
+
+    snakeviz nopil_stats
+
+The output:
+
+![Python snakeviz calc](/img/python/python-performance-snakeviz-calc-z.png)
+
+From the screenshot - one can see most of the time is spent in `calculate_z_serial_purepython`
+
+### Lineprofiler
+
+[pypi: line_profiler](https://pypi.org/project/line-profiler/)
+
+There is a [quickstart on the github readme](https://github.com/pyutils/line_profiler#quick-start)
+
+    pip install line_profiler[ipython]
+
+Easiest way to get started is using the `kernprof` cli tool:
+
+    kernprof -l script_to_profile.py
+
+> One caveat is that the lines one wants to profile should be decorated with `@profile`
+
+The result file will be of the form:
+
+    script_to_profile.py.lprof
+
+One can view it with:
+
+    python -m line_profiler script_to_profile.py.lprof
+
+Example output (note the line by line data):
+
+    $ python -m line_profiler julia1_nopil.py.lprof 
+    Timer unit: 1e-06 s
+
+    Total time: 37.7054 s
+    File: julia1_nopil.py
+    Function: calculate_z_serial_purepython at line 9
+
+    Line #      Hits         Time  Per Hit   % Time  Line Contents
+    ==============================================================
+        9                                           @profile
+        10                                           def calculate_z_serial_purepython(maxiter, zs, cs):
+        11                                               """Calculate output list using Julia update rule"""
+        12         1       4748.0   4748.0      0.0      output = [0] * len(zs)
+        13   1000000     354483.0      0.4      0.9      for i in range(len(zs)):
+        14   1000000     272454.0      0.3      0.7          n = 0
+        15   1000000     321252.0      0.3      0.9          z = zs[i]
+        16   1000000     289563.0      0.3      0.8          c = cs[i]
+        17  33219980   15822738.0      0.5     42.0          while abs(z) < 2 and n < maxiter:
+        18  33219980   11018905.0      0.3     29.2              z = z * z + c
+        19  33219980    9304361.0      0.3     24.7              n += 1
+        20   1000000     316912.0      0.3      0.8          output[i] = n
+        21         1          0.0      0.0      0.0      return output
+
+### MemoryProfiler
+
+[pypi: memory_profiler](https://pypi.org/project/memory-profiler/)
+
+It depends on [psutil](https://pypi.org/project/psutil/)
+
+[github readme](https://github.com/pythonprofilers/memory_profiler)
+
+> No longer actively maintained
+
+    pip install memory_profiler
+
+Run without profile statements and plot:
+
+    mprof run --python python julia1_nopil.py
+
+or plot with:
+
+    mprof run julia1_memoryprofiler.py
+
+## 2. Lists and Tuples
+
+Ordering is important. If the order is known (the position of items is known) they can be retrieved in `O(1)`.
+
+* Lists - dynamic - can be modified and resized
+* Tuples - static - fixed and immutable
+
+System memory can be seen as numbered buckets - each holding a number.
+Python stores data by reference - the number it stores points to the data we care about.
+These buckets can store any type of data.
+
+When array is created - a request is made to the kernel for N consecutive blocks.
+
+> In python, lists also store how large they are. The zeroth item is the length.
+
+By keeping the list in consecutive addresses - if one needed element 5. You would just get the data from the address at address zero + 5.
+
+It is `O(n)` regardless of the size of the list.
+
+Proof:
+
+    import timeit
+
+    if __name__ == "__main__":
+
+        result_10 = timeit.timeit(
+            "list_10[5]", setup="list_10 = list(range(10))", number=10_000_000
+        )
+        print(f"{result_10:.10f} s")
+
+        result_10_000_000 = timeit.timeit(
+            "list_10_000_000[100_000]",
+            setup="list_10_000_000 = list(range(10_000_000))",
+            number=10_000_000,
+        )
+        print(f"{result_10_000_000:.10f} s")
+
+Should return results that are equal:
+
+    $ python timeit_lists.py 
+    0.2828672480 s
+    0.2874119540 s
+
+What if the elements are not ordered?
+
+A search operation needs to be performed. The basic approach is a linear search.
+Where we iterate over every item and check for equality.
+
+    def linear_search(needle, array):
+        for i, item in enumerate(array):
+            if item == needle:
+                return i
+        return -1
+
+The worst case is `O(n)`
+
+This is the exact algorithm that `list.index()` uses.
+
+If the list is sorted - special algorithms can bring down search time to `O(log n)`
+
+Tim sort can sort through a list in `O(n)` in the best case (and in `O(n log n)` in the worst case)
+
+> timsort hybridises insertion and merge sort
+
+Once sorted a list can be searched in `O(log n)` at the average case. Halving the list each time.
+
+> Tuples are cached by the Python runtime, which means that we don’t need to talk to the kernel to reserve memory every time we want to use one.
+
+> generic code will be much slower than code specifically designed to solve a particular problem
+
+Python overallocates (assigned more memory than is strictly necessary) when an `append` is received on a list. It does not overallocate on list creation.
+
+> `memit` is installed via `memory_profiler`
+
+List allocation equation:
+
+    M = (N >> 3) + (3 if N < 9 else 6)
+
+> [Known as bitwise operations](https://wiki.python.org/moin/BitwiseOperators) Shift n 3 bits right. Add 3 if N < 9 else add 6.
+
+eg. (100 >> 3) + (3 if 100 < 9 else 6) = 18
+
+So 118 will be allocated for a list with 100 elements when `append` is called on it.
+
+Even for 100,000 elements, we use 2.7× the memory by building the list with appends versus a list comprehension:
+
+    from memory_profiler import profile
+
+    @profile
+    def run_append():
+        my_list = [];
+        for i in range(100_000):
+                my_list.append(i*i)
+
+    @profile
+    def run_lc():
+        result = [i*i for i in range(100_000)]
+
+    if __name__ == "__main__":
+        run_lc()
+        
+        run_append()
+
+Results:
+
+    Line #    Mem usage    Increment  Occurrences   Line Contents
+    =============================================================
+        9     15.0 MiB     15.0 MiB           1   @profile
+        10                                         def run_lc():
+        11     18.5 MiB  -1121.4 MiB      100003       result = [i*i for i in range(100_000)]
+
+
+    Filename: /Users/stephen/projects/playground/python-performance/3/memit_list_append.py
+
+    Line #    Mem usage    Increment  Occurrences   Line Contents
+    =============================================================
+        3     16.4 MiB     16.4 MiB           1   @profile
+        4                                         def run_append():
+        5     16.4 MiB      0.0 MiB           1       my_list = [];
+        6     18.6 MiB  -1123.3 MiB      100001       for i in range(100_000):
+        7     18.6 MiB  -1121.0 MiB      100000               my_list.append(i*i)
+
+> appending used more memory (9.3% more)
+
+Timing:
+
+    import timeit
+
+    if __name__ == "__main__":
+
+        result_lc = timeit.timeit("[i*i for i in range(100_000)]", number=100)
+        print(f"{result_lc:.10f} s")
+
+        result_append = timeit.timeit(
+            """
+    my_list = []
+    for i in range(100_000):
+        my_list.append(i*i)
+    """,
+            number=100,
+        )
+        print(f"{result_append:.10f} s")
+
+Results:
+
+    0.8004545310 s
+    1.1344103980 s
+
+> It is a bit slower as there are more statements to run and the cost of reallocating memory
+
+Due to resource caching. Tuples allocate faster.
+
+    In [1]: %timeit l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    61.9 ns ± 2.73 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+
+    In [2]: %timeit t = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    12.2 ns ± 0.484 ns per loop (mean ± std. dev. of 7 runs, 100,000,000 loops each)
+
+> Lists and tuples are low overhead when there is intrinsic ordering
+
+## Dictionaries and Sets
+
+Sets and dictionaries are good for data that has no intrinsic order, but has a unique object to reference it.
+The reference object is the key and the value is the data.
+Sets are a collection of keys.
+
+Lists and tuples give at best `O(logn)` lookup times. Dicitonaries and sets give `O(1)` lookup time.
+Dictionaries and sets also have `O(1)` insert time.
+The underlying data structure is an open address hash table.
+
+Sets are unique. There are never duplicates. Properties of good keys.
+
+
+
 
 
 

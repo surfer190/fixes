@@ -4,16 +4,16 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Most Recent Posts
 
+- 2023-04-20: _Python_ [10 Python Performance Tips](python/python-performance-tips.md)
 - 2023-02-10: _Postgres_ [DBA General Health Tasks](postgres/dba-general-health.md)
 - 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dhamma/simple-core-path-of-buddha.md)
 - 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
 - 2023-01-25: _Kafka_ [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
+- 2023-01-20: _Buddha-Dharma_ [Right Concentration - Meditation Guide](buddha_dhamma/right-concentraion-meditation-guide.md)
 - 2023-01-15: _Python_ [Testing with Pytest](python/testing-with-pytest-book.md)
 - 2023-01-10: _Python_ [High Performance Python](python/high-performance-python.md)
 - 2023-01-04: _Python_ [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)
 - 2023-01-04: _profiling_ [Snakeviz](profiling/snakeviz.md)
-- 2022-12-23: _php_ [PHP FPM](php/php-fpm.md)
-- 2022-12-21: _postgres_ [Create a Postgres User and Grant Access to a Database](postgres/create-a-postgres-user-and-grant-access-to-a-db.md)
 
 ## Table of Contents
 
@@ -123,6 +123,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Buddha_Dhamma
 - 2023-01-30: [Simple Core Path of Buddha](buddha_dhamma/simple-core-path-of-buddha.md)
+- 2023-01-20: [Right Concentration - Meditation Guide](buddha_dhamma/right-concentraion-meditation-guide.md)
 - 2022-09-01: [Teachings from the Pali Canon](buddha_dhamma/select-teaching-pali-canon.md)
 - 2022-07-20: [Meditation - My thoughts and selected texts from readings](buddha_dhamma/meditation.md)
 - 2022-06-24: [Who ordered the Truckload of Dung Stories Summarised](buddha_dhamma/who-ordered-the-truckload-of-dung-stories-summarised.md)
@@ -540,6 +541,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2023-04-20: [10 Python Performance Tips](python/python-performance-tips.md)
 - 2023-01-15: [Testing with Pytest](python/testing-with-pytest-book.md)
 - 2023-01-10: [High Performance Python](python/high-performance-python.md)
 - 2023-01-04: [Importing a module gives module has no attribute](python/importing-module-has-no-attribute.md)

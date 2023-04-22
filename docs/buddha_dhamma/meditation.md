@@ -6,6 +6,8 @@ summary: ''
 title: Meditation - My thoughts and selected texts from readings
 ---
 
+> There is a choice one makes. To examine and expound on passing thoughts, or to let them go. The way is letting the thoughts go. Not caring, not concerned with a strong eagerness.
+
 ## The Self
 
 Observe and think about the universe. The vastness. The galaxies millions of light years away. The Aeons of time.

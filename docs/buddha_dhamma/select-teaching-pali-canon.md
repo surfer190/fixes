@@ -113,7 +113,7 @@ One discriminates, thinking that ‘I’m better’ or ‘I’m equal’ or ‘I
 These are the three kinds of discrimination.
 The noble eightfold path should be developed for the direct knowledge, complete understanding, finishing, and giving up of these three kinds of discrimination.
 What is the noble eightfold path?
-It’s when a mendicant develops right view, right thought, right speech, right action, right livelihood, right effort, right mindfulness, and right immersion, which rely on seclusion, fading away, and cessation, and ripen as letting go.
+It’s when a mendicant develops right view, right intention (not thought - which is to be removed), right speech, right action, right livelihood, right effort, right mindfulness, and right immersion, which rely on seclusion, fading away, and cessation, and ripen as letting go.
 This is the noble eightfold path that should be developed for the direct knowledge, complete understanding, finishing, and giving up of these three kinds of discrimination.”
 
 ## an1.59 - Deligence
@@ -471,3 +471,55 @@ It is not rights and rituals...but through the dhamma and the truth that purity 
 ## SN.4.3: The middle way - delighting in material things
 
 [He Delights](http://buddha.co.za/discourse/sn.4.8)
+
+## an.10.55 - Decline
+
+[Decline](http://buddha.co.za/discourse/an.10.55)
+
+One should ask oneself:
+
+1. Am I often without longing?
+2. Am I often without ill will?
+3. Am I often free from dullness and drowsiness?
+4. Am I often calm? Does this quality exist in me or not?
+5. Am I often free from doubt? Does this quality exist in me or not?
+6. Am I often without anger? Does this quality exist in me or not?
+7. Is my mind often undefiled? Does this quality exist in me or not?
+8. Do I gain internal joy of the Dhamma?
+9. Do I gain internal serenity of mind?
+10. Do I gain the higher wisdom of insight into phenomena?
+
+## an.10.212 - Heaven and Hell
+
+1. Abandon and abstain from the destruction of life - conscientious and kindly, dwell compassionate toward all living beings.
+2. Abandon and abstain from the taking of what is not given
+3. Abandon and abstain from sexual misconduct
+4. Abandon and abstain from false speech
+5. Abandon and abstain from divisive speech
+6. Abandon and abstain from harsh speech
+7. Abandon and abstain from idle chatter
+8. Abandon and abstain from longing (being covetous)
+9. Abandon and abstain from ill will
+10. Abandon and abstain from wrong view and incorrect perspective
+
+[Hell](http://buddha.co.za/discourse/an.10.212)
+
+## 2 Things: Freedom and wisdom
+
+“There are, mendicants, these two things.
+What two?
+Knowledge and freedom.
+These are the two things.” 
+
+[2 Things](http://buddha.co.za/discourse/an.2.90)
+
+## Intention (an.1.56)
+
+> Intention shapes all phenomena whatsoever that are unskillful
+
+## Loss of Wealth
+
+> Loss of wealth, mendicants, is a small thing. Wisdom is the worst thing to lose.
+
+[an.1.78](http://buddha.co.za/discourse/an.1.78)
+

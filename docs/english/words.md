@@ -154,3 +154,4 @@ title: Words and Definitions
 * erudite - having or showing great knowledge or learning
 * cerebral - intellectual rather than physical or emotional
 * prescienct - showing knowledge of events before they take place
+* epicurean - a person devoted to sensual enjoyment (sensual desire)

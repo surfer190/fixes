@@ -105,5 +105,29 @@ If you start thinking you're chocolate, you might start eating yourself - Brenda
     
     - [Robert burns: Tam o' Shanter](http://www.robertburns.org.uk/Assets/Poems_Songs/tamoshanter.htm)
 
+> Just one thing keeps ego around—comfort. Pursuing great work—whether it is in sports or art or business—is often terrifying. Ego soothes that fear. It’s a salve to that insecurity. Replacing the rational and aware parts of our psyche with bluster and self-absorption, ego tells us what we want to hear, when we want to hear it. But it is a short-term fix with a long-term consequence - Ryan Holiday. “Ego Is the Enemy.”
+
+* Humble in our aspirations
+* Gracious in our success
+* Resilient in our failures
+
+    Ryan Holiday. “Ego Is the Enemy.”
+
+> Silence. The ability to deliberately keep yourself out of the conversation and subsist without its validation. Silence is the respite of the confident and the strong. - “Ego Is the Enemy.”
+
+What is real accomplishment? Is it the job title, the business school they went to, the number of assistants they have, the location of their parking space, the grants they earn, their access to the CEO, the size of their paycheck, or the number of fans they have. Appearances are deceiving.
+
+Updating your appraisal of your talents in a downward direction is one of the most difficult things to do in life—but it is almost always a component of mastery - Ryan Holiday. “Ego Is the Enemy.”
+
+> Say little, do much. Do the grunt work. Enjoy the process of mastery instead of the outcome that only last a moment and may be different from what is expected.
+
+To hate even the thought of subservience. To despise those who have more means, more experience, or more status than you. That is the ego. Preventing mastery.
+
+* Find what nobody else wants to do and do it.
+* Find inefficiencies and waste and redundancies. Identify leaks and patches to free up resources for new areas.
+* Produce more than everyone else and give your ideas away
+
+> Those who have subdued their ego understand that it doesn’t degrade you when others treat you poorly; it degrades them. Instead, you must do nothing. Take it. Eat it until you’re sick. Endure it. Quietly brush it off and work harder. Play the game. Ignore the noise; do not let it distract you. Restraint is a difficult skill but a critical one. - Ryan Holiday. “Ego Is the Enemy.”
+
 
 
