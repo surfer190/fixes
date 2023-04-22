@@ -30,14 +30,28 @@ To find indexes that were not scanned or fetched since the last time the statist
     ORDER BY
         pg_relation_size(indexrelname::regclass) DESC;
 
+Vies the indexes that are used as well:
+
+    SELECT
+        relname,
+        indexrelname,
+        idx_scan,
+        idx_tup_read,
+        idx_tup_fetch,
+        pg_size_pretty(pg_relation_size(indexrelname::regclass)) as size
+    FROM
+        pg_stat_all_indexes
+    WHERE
+        schemaname = 'public'
+        AND indexrelname NOT LIKE 'pg_toast_%'
+    ORDER BY
+        idx_scan DESC,
+        pg_relation_size(indexrelname::regclass) DESC;
+
 It is good to reset the statistics when you are done:
 
-    -- Find table oid by name
-    SELECT oid FROM pg_class c WHERE relname = 'table_name';
-    -- Reset counts for all indexes of table
-    SELECT pg_stat_reset_single_table_counters(14662536);
-
-    ?
+    -- Careful this reset all stats
+    SELECT pg_stat_reset();
 
 ## Index and Table Bloat
 
@@ -185,7 +199,7 @@ or:
 
 ## Get the Estimate Count
 
-    SELECT reltuples::bigint AS estimate FROM pg_class WHERE relname = ‘catalogue’;
+    SELECT reltuples::bigint AS estimate FROM pg_class WHERE relname = 'catalogue';
 
 ## View Replication Slots
 

@@ -43,6 +43,10 @@ The connection string (`"sqlite+pysqlite:///:memory:"`) indicates:
 * The DB-API we are using (`pysqlite`) - the third-party driver in this case the `sqlite` standard library
 * How to locate the database (`/:memory`) - an in-memory database
 
+[Postgres psycopg connection string as per sqlalchemy docs](https://docs.sqlalchemy.org/en/14/dialects/postgresql.html#dialect-postgresql-psycopg2-connect):
+
+    postgresql+psycopg2://user:password@host:port/dbname[?key=value&key=value...]
+
 > Lazy initialization - the connection is only established when it is first used
 
 We used `echo=True` a shortcut to setup python logging
