@@ -136,7 +136,7 @@ It created a race condition. The inline `+=` is implemented in C code as:
 2. add the new value `knives` to the value in the temp lcoaiton
 3. Copy the new total from the temp location into the original
 
-The problem with prememptive multitasking is that any thread can be stopped at _any time_...
+The problem with pre-emptive multitasking is that any thread can be stopped at _any time_...
 
 Suppose ThreadBotA does step 1, the the OS scheduler pauses A and switches to ThreadbotB.
 B also reads the value of `self.knives`. Then execution goes back to `A`...A increments its total and writes it back.
