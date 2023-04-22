@@ -228,7 +228,7 @@ All these steps are done for you with `asyncio.run()`
 
 #### How to run blocking functions
 
-I/O bound functions need to coopoerate - o achieve coopoerative multitasking.
+I/O bound functions need to co-operate - to achieve co-operative multitasking.
 That means allowing a context switch back to the loop using `await`.
 
 Most python code does not do this - it relies on you running such functions in threads.
