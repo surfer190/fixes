@@ -110,7 +110,7 @@ clients:
 * Can extend primary object views
 
 * List views
-* No burden of forking the project and maintaining the intergration and upstream
+* No burden of forking the project and maintaining the integration and upstream
 
 ## Sources
 

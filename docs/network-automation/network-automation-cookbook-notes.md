@@ -1952,7 +1952,7 @@ On docker:
 
 [More info on batfish](https://github.com/batfish/docker)
 
-### Intergrating Batfish with Ansible
+### Integrating Batfish with Ansible
 
 Install batfish
 

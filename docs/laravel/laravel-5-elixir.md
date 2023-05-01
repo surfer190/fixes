@@ -9,7 +9,7 @@ title: Laravel 5 Elixir
 
 A task runner: minify images, compile CSS, minify and run tests
 
-Intergrates (wrapper for) [gulp.js](http://gulpjs.com/)
+Integrates (wrapper for) [gulp.js](http://gulpjs.com/)
 
 ## Installing Elixir
 

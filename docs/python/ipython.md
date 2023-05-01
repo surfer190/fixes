@@ -7,28 +7,28 @@ title: Ipython
 ---
 ## IPython
 
-[Interactive python](http://ipython.org/))
+[Interactive python](http://ipython.org/)
 
 Enter `ipython` by typing `ipython` in terminal
 
 You can use print:
 
-        In [1]: print("Hello world")
-        Hello world
+    In [1]: print("Hello world")
+    Hello world
 
 Get help with `<function_name>?`:
 
-        In [2]: print?
-        Docstring:
-        print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+    In [2]: print?
+    Docstring:
+    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
-        Prints the values to a stream, or to sys.stdout by default.
-        Optional keyword arguments:
-        file:  a file-like object (stream); defaults to the current sys.stdout.
-        sep:   string inserted between values, default a space.
-        end:   string appended after the last value, default a newline.
-        flush: whether to forcibly flush the stream.
-        Type:      builtin_function_or_method
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+    Type:      builtin_function_or_method
 
 [IPython Documentation](http://ipython.org/ipython-doc/dev/index.html) and [Jupyter Notebooks Documentation](http://jupyter.readthedocs.io/en/latest/content-quickstart.html)
 

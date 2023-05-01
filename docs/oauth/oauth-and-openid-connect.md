@@ -24,7 +24,7 @@ Key that there is a seperation of authorization, keeping user's safe as they nev
 
 * When you want to allow end user's of an app - to give permission to use your API on the user's behalf.
 * When that app has user's that have permission / identity on your API
-* Allow secure intergrations into your API
+* Allow secure integrations into your API
 
 ## What is OpenID Connect?
 

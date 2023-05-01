@@ -34,15 +34,15 @@ This also leads to people saying: "Everytime we change the code we have to updat
 
 Often said by the guy that thinks tests are stupid and argues against his teams ability to test effectively.
 
-With these fragile system tests we get specific Regression protection. Protection against layers intergrating incorrectly, not the fine grained elements.
+With these fragile system tests we get specific Regression protection. Protection against layers integrating incorrectly, not the fine grained elements.
 
 No help with refactoring as it is slow.
 
-Not interacting with small components and not enhacing design.
+Not interacting with small components and not enhancing design.
 
 ## How to Fail
 
-* If you use selenium as your primary testing tool you will fail. It can't be run before commiting cause it is so slow.
+* If you use selenium as your primary testing tool you will fail. It can't be run before committing cause it is so slow.
 Broken all the time.
 * Unit tests that are too big. Run time of test grows linearly.
 * Writing fine-grained tests around legacy code. Tight tests that bake the badness in forever.

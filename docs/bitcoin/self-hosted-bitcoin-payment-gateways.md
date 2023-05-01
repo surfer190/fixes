@@ -42,7 +42,7 @@ Read up for yourself [Bitcart CC Docs](https://docs.bitcartcc.com/)
 * Has a bitcart-cli
 * Supports various crypto shitcoins and Bitcoin (I am bitcoin only)
 * Wallet you use must support `xpub` (Full BIP32). Bitcoin-core does not support `xpub` and hence you cannot use that wallet with BitcartCC
-* Notifications for payments received on various platforms, intergration with ecommerce
+* Notifications for payments received on various platforms, integration with ecommerce
 * Hard to add a donate button
 * Lots of good documentation
 * Lead developer is always available and on telegram

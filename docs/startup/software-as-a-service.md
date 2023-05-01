@@ -185,12 +185,12 @@ Source of the above note is [Neil Patel: Never losing a Saas Customer](https://n
 
 ## Nailing Saas Onboarding
 
-Once you know the cutomer success path or milestones, you need to decide on low or high touch onboarding.
+Once you know the customer success path or milestones, you need to decide on low or high touch onboarding.
 
 #### Low touch onboarding
 
 Low touch is automated onboarding, a one-to-many approach, best suited for many low value customers. Some low touch strategies are: An email series based on behaviour, tour videos (preferably small chunks), webinars, social media groups and a knowledge base.
-Importantly you want to minimise the amount of manual work a customer needs to do with the correct intergrations for this method.
+Importantly you want to minimise the amount of manual work a customer needs to do with the correct integrations for this method.
 
 #### High touch onboarding
 

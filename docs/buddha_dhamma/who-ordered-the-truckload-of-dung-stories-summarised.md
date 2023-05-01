@@ -9,13 +9,12 @@ title: Who ordered the Truckload of Dung Stories Summarised
 * Focusing on fault - blinds you from the correct and normal
 * the messy garden is perfect - so enjoy it
 * what's done is finished - to have a break or retreat, the work must be finished - so simply call it finished (let it go)
-* look at the work you have done instead of what remains- forget faults
-* guilt and absolution - Guilt is hammered into us "“Better to light a candle than complain about the darkness."
+* look at the work you have done instead of what remains - forget faults
+* guilt and absolution - Guilt is hammered into us "Better to light a candle than complain about the darkness."
 * the human mind wants to correlate things and outsmarts itself into believing the falseness - just be kind, true and honest
 * You are not defined by your mistakes  - there is no you
 * We are all crims - if we focus on the negative we become negative - look at the good
 * Letting go of guilt forever - convince yourself you can be forgiven - forgive yourself - be kind to yourself - let go - be free
-
 
 ## Love and Commitment
 
@@ -31,8 +30,8 @@ title: Who ordered the Truckload of Dung Stories Summarised
 
 ## Fear and Pain
 
-* If you are rules by fear - you are in prison
-* You future will be uncertain - Ajahn Chah
+* If you are ruled by fear - you are in prison
+* Your future will be uncertain - Ajahn Chah
 * Fear is finding fault with the future
 * Fear is dissolved in the uncertainty of the future. But if we don’t use our wisdom, fear can dissolve us.
 * All fear begins with the thought What if and continues with something disastrous.
@@ -73,9 +72,9 @@ Unpleasant things, like coming last in our class, happen in life. They happen to
 
 Gradually you use the dung to fertilise the garden and eventually it goes away and you are much wiser for it.
 
-Pain is good - it dierects us away from danger.
+Pain is good - it directs us away from danger.
 
-Kamma - when we are made to sufferknow that some bad decision or act was done by you in the past
+Kamma - when we are made to suffer know that some bad decision or act was done by you in the past
 
 ## Critical Problems and their Compassionate Solutions
 
@@ -195,7 +194,6 @@ When you are young you long for being old. When you are old you long for being y
 Grief is seeing only what has been taken away from you. The celebration of a life is recognizing all that we were blessed with, and feeling so very grateful.
 
 > Some people simply don’t want to be free from trouble. If they haven’t got enough problems of their own to worry about, then they tune in to the television soaps to worry about fictional characters’ problems. Many take anxiety to be stimulating; they regard what is suffering to be good fun. They don’t want to be happy, because they are too attached to their burdens.
-
 
 ## Source
 

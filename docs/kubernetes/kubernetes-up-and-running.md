@@ -1663,7 +1663,7 @@ or you can specify this when creating the service
 
     kubectl expose --type=NodePort
 
-> This can be intergrated with hardware or software load balancers
+> This can be integrated with hardware or software load balancers
 
 View the port assigned to the pod:
 
@@ -4006,7 +4006,7 @@ Cloning clusterroles to others is error prone and time consuming.
 Some more info in the book...
 
 
-# 15. Intergrating Storage Solutions and Kubernetes
+# 15. Integrating Storage Solutions and Kubernetes
 
 Decoupling state from applications and building your microservices to be as statless as possible result in maximally reliable, manageable systems.
 
@@ -4026,7 +4026,7 @@ Most containerized systems are usually adapted from existing systems deployed in
 
 Storage is often an externalised cloud service - it can never really exist inside of the k8s cluster.
 
-Variety of approaches of intergrating storage:
+Variety of approaches of integrating storage:
 
 * Importing External services (cloud or vm)
 * Reliable singletons running in k8s

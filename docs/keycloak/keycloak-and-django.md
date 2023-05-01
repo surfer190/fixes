@@ -34,4 +34,4 @@ Follow the guide here: https://blog.jonharrington.org/static/integrate-django-wi
 ### Sources
 
 * [Connecting Django with Keycloak](https://number1.co.za/openid-connect-clients-for-python/)
-* [Intergrate Django with Keycloak](https://blog.jonharrington.org/static/integrate-django-with-keycloak)
+* [Integrate Django with Keycloak](https://blog.jonharrington.org/static/integrate-django-with-keycloak)

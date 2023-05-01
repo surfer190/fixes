@@ -689,7 +689,7 @@ Examples:
 * `ae` - aggregated ethernet interface (physical interfaces are aggregated for max traffic reasons)
 * `as` - aggregated SONET
 * `vlan` - vlan interface
-* `irb` - intergrating routing and bridging
+* `irb` - integrating routing and bridging
 
 Internally generated non-configurable:
 
@@ -3319,7 +3319,7 @@ Protect against malware and ransomware
 * Machine learning
 * Threat Intelligence
 
-ATP intergrates with SRX.
+ATP integrates with SRX.
 Juniper deceives malware tricking into identifying itself.
 Actionable intelligence to compromise hosts are pushed to SRX.
 

@@ -189,7 +189,7 @@ The trick is convincing people to use it.
 Bitcoin is sometimes compared to the internet.
 Imagine someone creating a new internet using a different protocol. By using that protocol you are no longer connected to the internet. The strength of the internet arises from everyone using it.
 
-> Imagine someone coming up with a different internet (using a different protocol but no superior technology). No one would use it. The current internet is the chosen one and so heavily adopted - that only new technology is intergrated with it. For example IPv6 integrates with IPv4 seemlessly.
+> Imagine someone coming up with a different internet (using a different protocol but no superior technology). No one would use it. The current internet is the chosen one and so heavily adopted - that only new technology is integrated with it. For example IPv6 integrates with IPv4 seamlessly.
 
 _network effect_ people tend to go where other people are
 

@@ -40,11 +40,11 @@ API publishers can break consumers with slight alternations
 
 proto-api's: ETL, file transfer and application integration (batch mode)
 
-Key capabiltiies of API Management platform:
+Key capabilities of API Management platform:
 
 * Accelerate mobile and IoT development
 * Unlock the value of customer data
-* The abiity to intergrate and create API's
+* The ability to integrate and create API's
 * Ability to secure the Open Enterprise
 
 > Private APIs may be distributed publicly but the interface itself is not public
@@ -58,7 +58,7 @@ capabilities in the enterprise:
 * ID/authentication
 * Reporting and analytics
 
-capibilities outside the enterprise:
+capabilities outside the enterprise:
 
 * Internet of things
 * Mobile
@@ -84,16 +84,16 @@ IT governance considerations:
 * Development: Dev Ops
 * Application architecture: Microservices
 * Deployment and Packaging: Containers
-* Applicaiton infrastructure: Cloud
+* Application infrastructure: Cloud
 
 API Gateway:
 
 * Live runtime capability
-* API traffic mangement and enforcement
+* API traffic management and enforcement
 
 Hybrid API management:
 
-* Seperate of design time and runtime
+* Separate of design time and runtime
 
 Benefits of Hybrid API management:
 
@@ -142,7 +142,7 @@ Parts:
 
 ### For Machines
 
-Formats that have dissapeared from usage:
+Formats that have disappeared from usage:
 
 * WADL
 * RAML
@@ -154,7 +154,6 @@ Formats that have dissapeared from usage:
 
 OpenAPI schema is based on the [json schema standard](https://json-schema.org/)
 
-
 ### For API Designers
 
 * Create a style guide
@@ -165,7 +164,7 @@ Contents of style guide:
 * Methods supported
 * Error messages
 * Status codes
-* Respresentations - currency, time
+* Representations - currency, time
 * Special features - pagination, filtering
 * Use of Links
 
@@ -193,7 +192,7 @@ Special rules:
 * data privacy
 * frequency of change
 
-> Make it difficultt for developers to make mistakes
+> Make it difficult for developers to make mistakes
 
 Snippets:
 
@@ -209,7 +208,7 @@ level 3: Conceptual
 level 4: Interactive - try it out
 level 5: Predictive and Adaptive
 
-## API as a product: DevOps Scalabiltiy and Evolvability
+## API as a product: DevOps Scalabilty and Evolvability
 
 Devops - development and operations
 
@@ -231,7 +230,7 @@ Leverage the cloud
 Scale and evolve:
 
 * Leverage existing assets in the API
-* Provide continuous testing, monitoring, intergation, delivery and deployment
+* Provide continuous testing, monitoring, integration, delivery and deployment
 * Automate change management
 * Use microservices to quicken development
 
