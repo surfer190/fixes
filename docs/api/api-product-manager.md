@@ -196,17 +196,19 @@ Special rules:
 
 Snippets:
 
-* demonstate a small part of the api
+* demonstrate a small part of the api
 * use familiar programming languages
 * show the request and response
 * are located in close proximity to the information being demonstrated
 
+```
 level 0: Implementation
 level 1: Reference
 level 2: Examples
 level 3: Conceptual
 level 4: Interactive - try it out
 level 5: Predictive and Adaptive
+```
 
 ## API as a product: DevOps Scalabilty and Evolvability
 
