@@ -68,11 +68,11 @@ Methods of checking bloat:
 1. Recreate the index
 2. Rebuild the index (instead of dropping and recreating yourself), this will obtain a lock on the table and prevent it from being changed while the operation is in progress.
 
-    REINDEX INDEX index_name;
+        REINDEX INDEX index_name;
 
 3. Rebuild the index concurrently (without locking):
 
-    REINDEX INDEX CONCURRENTLY index_name;
+        REINDEX INDEX CONCURRENTLY index_name;
 
 > When using REINDEX CONCURRENTLY, PostgreSQL creates a new index with a name suffixed with `_ccnew`
 
@@ -248,6 +248,20 @@ Relation size = Table size - Toast Size
 
     SELECT pg_size_pretty(pg_relation_size('catalogue');
 
+## Get size of all tables
+
+    SELECT  schemaname,
+    relname as "Table",
+    pg_size_pretty(pg_total_relation_size(relid)) As " table_Size",
+    pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) as "External Size"
+    FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC;
+
+## Get size of all dbs
+
+In psql:
+
+    \l+
+
 ## Altering a Table that is nullable (without a default)
 
 > The alter-table will not take that long, as long as no write-lock is on the table. Adding a field that is nullable or with a default value, will not update the rows (it only changes the schema).
@@ -265,3 +279,4 @@ Eg.
 * [Killing postgres sessions](https://www.sqlprostudio.com/blog/8-killing-cancelling-a-long-running-postgres-query)
 * [PgPedia: Total Relation Size](https://pgpedia.info/p/pg_total_relation_size.html)
 * [Cybertec: Alter and drop columns done right](https://www.cybertec-postgresql.com/en/postgresql-alter-table-add-column-done-right/)
+* [Tutorialdba: Get size of database](https://www.tutorialdba.com/2018/06/how-to-get-table-size-database-size_26.html)

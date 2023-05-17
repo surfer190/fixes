@@ -22,9 +22,18 @@ Create a user:
     # create user <username> with encrypted password '<password>';
     CREATE USER <username> WITH PASSWORD '<password>';
 
+Add a user to a role:
+
+    GRANT read_only_role TO <username>;
+
 Grant the user access on a database (includes create on schema - not table):
 
     grant all privileges on database <db_name> to <username>;
+
+Grant a role read access to all dbs on a schema:
+
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO read_only_role;
+    GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO read_only_role;
     
 Grant the user access on the public schema:
 
@@ -64,3 +73,4 @@ If you set the `host` it would work:
 * [ubiq.co: How to create a user in postgres](https://ubiq.co/database-blog/create-user-postgresql/)
 * [postgres: config file locations](https://www.postgresql.org/docs/current/runtime-config-file-locations.html)
 * [Postgres: Why is a new user allowed to create a table?](https://dba.stackexchange.com/questions/35316/why-is-a-new-user-allowed-to-create-a-table)
+* [Serverfault: Grant select to all tables in postgresql](https://serverfault.com/questions/60508/grant-select-to-all-tables-in-postgresql)

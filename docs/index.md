@@ -5,15 +5,15 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 ## Most Recent Posts
 
 - 2023-12-12: _sqlalchemy_ [Remove and add indexes programmatically](sqlalchemy/sql-alchemy-adding-and-removing-indexes-programmaticially.md)
+- 2023-05-15: _git_ [Revert a Merge](git/revert-a-merge.md)
+- 2023-05-02: _HTTP_ [Check if Gzip is Enabled](http/checking-if-gzip-compression-is-enabled.md)
+- 2023-05-01: _Python_ [Joblib and Memoization](python/joblib-and-memoization.md)
 - 2023-04-20: _Python_ [10 Python Performance Tips](python/python-performance-tips.md)
 - 2023-04-20: _Random_ [Engine](random/engine.md)
+- 2023-04-17: _Celery_ [Celery vs Faust](celery/celery-vs-faust.md)
 - 2023-04-10: _python_ [Cool Python Articles](python/cool-python-posts.md)
 - 2023-04-10: _git_ [Git Checkout a Tag](git/git-checkout-tag.md)
 - 2023-02-10: _Postgres_ [DBA General Health Tasks](postgres/dba-general-health.md)
-- 2023-01-30: _Buddha-Dharma_ [Simple Core Path of Buddha](buddha_dhamma/simple-core-path-of-buddha.md)
-- 2023-01-30: _Postgres_ [Choosing a primary key](postgres/choosing-a-primary-key.md)
-- 2023-01-25: _Kafka_ [Kafka Definitive Guide](kafka/kafka-definitive-guide-book-summary.md)
-- 2023-01-20: _Buddha-Dharma_ [Right Concentration - Meditation Guide](buddha_dhamma/right-concentraion-meditation-guide.md)
 
 ## Table of Contents
 
@@ -134,6 +134,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2015-09-13: [The C Programming Language Summarised](c/the-c-programming-language-summarised.md)
 
 ## Celery
+- 2023-04-17: [Celery vs Faust](celery/celery-vs-faust.md)
 - 2020-06-14: [Celery Basics](celery/celery-basics.md)
 - 2019-12-24: [Adding Tasks To A Celery Queue On An Infinite Loop](celery/adding-tasks-to-a-celery-queue-on-an-infinite-loop.md)
 
@@ -261,6 +262,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2017-12-19: [Flask Basics](flask/flask-basics.md)
 
 ## Git
+- 2023-05-15: [Revert a Merge](git/revert-a-merge.md)
 - 2023-04-10: [Git Checkout a Tag](git/git-checkout-tag.md)
 - 2022-07-05: [Git Submodules](git/git-submodules.md)
 - 2020-06-21: [Git Corrupt Loose Object](git/git-corrupt-loose-object.md)
@@ -283,6 +285,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2021-09-20: [A Brief Timeline of World History](history/world-history-timeline.md)
 
 ## Http
+- 2023-05-02: [Check if Gzip is Enabled](http/checking-if-gzip-compression-is-enabled.md)
 - 2022-11-09: [HTTP Caching](http/http-caching.md)
 - 2022-06-23: [Http3](http/http3.md)
 - 2020-07-29: [Http2](http/http2.md)
@@ -542,6 +545,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 - 2018-09-10: [The Mythical Man Month](project-management/the-mythical-man-month.md)
 
 ## Python
+- 2023-05-01: [Joblib and Memoization](python/joblib-and-memoization.md)
 - 2023-04-20: [10 Python Performance Tips](python/python-performance-tips.md)
 - 2023-04-10: [Cool Python Articles](python/cool-python-posts.md)
 - 2023-01-15: [Testing with Pytest](python/testing-with-pytest-book.md)
@@ -716,6 +720,7 @@ A repo of documentation, notes, summaries, fixes and solutions on software devel
 
 ## Sqlite
 - 2022-09-01: [Fundamentals of SQlite](sqlite/fundamentals-of-sqlite.md)
+- 2022-09-01: [SQLite and Python](sqlite/sqlite-and-python.md)
 
 ## Stackstorm
 - 2020-06-14: [Stackstorm](stackstorm/stackstorm.md)

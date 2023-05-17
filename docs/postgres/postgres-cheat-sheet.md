@@ -177,6 +177,10 @@ From `psql`:
 
     \d+ <table_name>
 
+## Checking Table Sizes
+
+    \d+
+
 ## Check available extensions
 
     SELECT name FROM pg_available_extensions;

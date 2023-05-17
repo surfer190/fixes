@@ -867,7 +867,7 @@ Similar to SQL UPDATE
 ## SQLAlchemy Query get raw SQL query
 
     from sqlalchemy.dialects import postgresql
-    >>> print(str(query.compile(dialect=postgresql.dialect())))
+    >>> print(str(query.statement.compile(dialect=postgresql.dialect())))
 
 ## Source
 

@@ -53,7 +53,7 @@ In `tasks.py`:
 For rabbitmq: `amqp://localhost`
 For redis: `redis://localhost`
 
-You create a singel task that returns the sum of 2 values
+You create a single task that returns the sum of 2 values
 
 ## Running the Celery Worker Server
 
@@ -98,7 +98,3 @@ You can then keep the `AsyncResult`:
     
     #If there was an error
     result.traceback
-
-
-
-
