@@ -60,6 +60,12 @@ Check:
 
 > Consider pgBouncer
 
+## Cancel or terminate a session
+
+    SELECT pg_cancel_backend(<pid>);
+
+    SELECT pg_terminate_backend(<pid>);
+
 ### Source
 
 * [Five Tips For a Healthier Postgres Database](https://www.crunchydata.com/blog/five-tips-for-a-healthier-postgres-database-in-the-new-year)

@@ -502,7 +502,7 @@ Language agnostic library for networking applications giving smart sockets - it 
 
 It will still send out the info when reconnecting - providing functions of a message broker directly in the socket themselves. It is referred to as _brokerless messaging_
 
-ZeroMQ sockets are already asyncronous - they can maintain many thousands of connections. 
+ZeroMQ sockets are already asynchronous - they can maintain many thousands of connections. 
 We will use ZeroMQ via [PyZMQ](https://github.com/zeromq/pyzmq)
 
 For more in depth examples check out [ZGuide](http://zguide.zeromq.org/page:all)

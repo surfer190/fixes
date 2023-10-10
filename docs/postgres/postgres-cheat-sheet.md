@@ -258,7 +258,11 @@ Do the index types have to be the same?
 
 ## Reindex an index
 
-REINDEX INDEX CONCURRENTLY <table_name>
+    REINDEX INDEX CONCURRENTLY <table_name>
+
+## Reindex all indexes on a table
+
+    REINDEX TABLE CONCURRENTLY <table_name>;
 
 ## View active connections
 

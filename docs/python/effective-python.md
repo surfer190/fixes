@@ -2143,17 +2143,23 @@ Teh binay search is logarithmic.
 `itertools` contains a large number of functions for organising and interacting with iterators.
 
 There are 3 main categories:
-1. Linking iterators together
+
+1. Linking iterators together:
+
     * `chain` - Combines multiple iteractors into a single  sequential iterator
     * `cycle` - Repeat's an iterators items forever
     * `tee` - Splits a single iterator into multiple parrallel iterators
     * `zip_longest` - `zip` for iterators of differing lengths
-2. Filtering
+
+2. Filtering:
+
     * `islice` - slices an iteractor by numerical indexes without copying
     * `takewhile` - returns items from an iteractor while predicate condition is true
     * `dropwhile` - returns items from an iteractor when previous function returns `False` he first time
     * `filterfalse` - Returns items from iteractor when predicate function returns false
-3. Comnbinations
+
+3. Comnbinations:
+
     * `product` - returns cartesian product of items from an iterator
     * `permutations` - returns ordered permutations of length N with items from an iterator
     * `combination` - returns ordered combinations of length N with unrepeated items from an iterator

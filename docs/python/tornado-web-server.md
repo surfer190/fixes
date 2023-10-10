@@ -85,7 +85,7 @@ Tested:
     99%     24
     100%     24 (longest request)
 
-`ab` or tornado seems to break (on mac) when there are more than 200 conurrect requests:
+`ab` or tornado seems to break (on mac) when there are more than 200 concurrect requests:
 
     apr_socket_recv: Connection reset by peer (54)
 
@@ -123,7 +123,7 @@ Tornado does not parse json request bodies - if you want to do that you can over
 2. `initialize()` is called with the argument defined in main
 3. `prepare()` is called - usually in the base class - may produce output; if it calls finish (or redirect, etc), processing stops here
 4. One of the http methods is called `get()`, `post()`, `put()`
-5. When finished `on_finish()` is called. Synchronously it runs after `get()`, asyncronously it runs after `finish()`
+5. When finished `on_finish()` is called. Synchronously it runs after `get()`, asynchronously it runs after `finish()`
 
 Commonly overidden things of [RequestHandler](https://www.tornadoweb.org/en/branch4.5/web.html#tornado.web.RequestHandler):
 
@@ -277,7 +277,7 @@ Info on [authentication](https://www.tornadoweb.org/en/branch4.5/guide/security.
 
 * Tornado is not thread-safe - manipulation of shared data structures between threads can have unintended consequences - like race conditions.
 * `IOLoop.add_callback` is the only method safe to call from other threads
-* `IOLoop.run_in_executor` is the recommended way to runsynchronously blocking code in another thread
+* `IOLoop.run_in_executor` is the recommended way to run synchronously blocking code in another thread
 * Integrated with standard lib `ayncio` (only in versions 6 and greater)
 
 ### Asynchronous and non-blocking IO
@@ -292,7 +292,7 @@ This means that all application code should aim to be asynchronous and non-block
 * An asynchronous function returns before it is finished
 * They do work in the background before triggering a future action
 * Synchronous functions do everything they need to do before returning
-* asynchronous functions by definition interact differently with their callers - there is no free way to make a syncronous function asyncronous
+* asynchronous functions by definition interact differently with their callers - there is no free way to make a synchronous function asynchronous
 * systems like gevent use lightweight threads to offer performance comparable to asynchronous systems, but they do not actually make things asynchronous
 
 Styles of asynchronous interfaces:

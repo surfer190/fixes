@@ -179,7 +179,8 @@ When you release 10GB from your primary database, you also release roughly the s
 
 ## Check dead tuples
 
-    select n_live_tup, n_dead_tup, relname from pg_stat_all_tables;
+    select n_live_tup, n_dead_tup, relname from pg_stat_all_tables
+    ORDER BY n_dead_tup DESC;
 
 ## Killing Postgres Sessions
 
@@ -252,8 +253,9 @@ Relation size = Table size - Toast Size
 
     SELECT  schemaname,
     relname as "Table",
-    pg_size_pretty(pg_total_relation_size(relid)) As " table_Size",
-    pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) as "External Size"
+    pg_size_pretty(pg_total_relation_size(relid)) As "table + index size",
+    pg_size_pretty(pg_relation_size(relid)) as "table size",
+    pg_size_pretty(pg_indexes_size(relid)) as "indexes size"
     FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC;
 
 ## Get size of all dbs
@@ -280,3 +282,4 @@ Eg.
 * [PgPedia: Total Relation Size](https://pgpedia.info/p/pg_total_relation_size.html)
 * [Cybertec: Alter and drop columns done right](https://www.cybertec-postgresql.com/en/postgresql-alter-table-add-column-done-right/)
 * [Tutorialdba: Get size of database](https://www.tutorialdba.com/2018/06/how-to-get-table-size-database-size_26.html)
+* [Dev.to: Postgres performance tuning vacuum analyse](https://dev.to/nilanth/postgresql-performance-tuning-a-guide-to-vacuum-analyze-and-reindex-7kk)
