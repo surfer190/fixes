@@ -2423,7 +2423,7 @@ It is a `circular dependency` if you try to use the `app` module you will get:
 
     AttributeError: 'module' object has no attribute 'prefs'
 
-So how does python's import work?...In dept first order:
+So how does python's import work?...In depth first order:
 
 1. Searches for your module in `sys.path`
 2. Loads the code and ensures it compiles

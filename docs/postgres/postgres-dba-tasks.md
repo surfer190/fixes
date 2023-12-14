@@ -235,6 +235,27 @@ or:
         'max_slot_wal_keep_size', 'wal_keep_size', 'wal_sender_timeout'
     );
 
+## View All Triggers
+
+    select * from information_schema.triggers;
+
+View shortened:
+
+    SELECT  event_object_table AS table_name ,trigger_name         
+    FROM information_schema.triggers  
+    GROUP BY table_name , trigger_name 
+    ORDER BY table_name ,trigger_name;
+
+## Handling Locks
+
+    SELECT * FROM pg_locks;
+
+    SELECT * FROM pg_stat_activity;
+
+    SELECT pg_cancel_backend(<pid>);
+
+    SELECT pg_terminate_backend(<pid>);
+
 ## Get Size in Gb of a Relation / Table
 
 Table size = Toast size + Relation size

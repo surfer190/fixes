@@ -48,6 +48,7 @@ This _fix_ shows a few common AWS services and similar other services you may ha
 ### Migration and Transfer
 
 * `AWS Transfer Family` - File transfers with SFTP, FTPS and FTP (OpenSSH)
+* `Database MIgration Service` - Managed Database Migration Service
 
 ### Storage
 
