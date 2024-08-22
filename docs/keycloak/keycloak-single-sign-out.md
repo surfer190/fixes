@@ -11,7 +11,7 @@ How do you provide single sign out or log out with keycloak?
 
 What this means is when you issue a log out from one application or client that is logged in with keycloak, all other open sessions will be terminated.
 
-According to the [mozzila-oidc-django package](https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html#log-user-out-of-the-openid-connect-provider), support for ending a session is not part of the OpenID Connect specification.
+According to the [mozilla-oidc-django package](https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html#log-user-out-of-the-openid-connect-provider), support for ending a session is not part of the OpenID Connect specification.
 
 However the flow would work something like this:
 
